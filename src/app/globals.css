@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #3b82f6; /* Blue 500 */
+  --color-primary-hover: #2563eb; /* Blue 600 */
+  --color-primary-active: #1d4ed8; /* Blue 700 */
+  --color-secondary: #f1f5f9; /* Slate 100 */
+  --color-secondary-hover: #e2e8f0; /* Slate 200 */
+  
+  --color-surface: #ffffff;
+  --color-surface-hover: #f8fafc;
+  --color-border: #e2e8f0;
+  
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #64748b;
+  --color-text-muted: #94a3b8;
+
+  --color-success: #10b981;
+  --color-success-hover: #059669;
+  --color-error: #ef4444;
+  --color-error-hover: #dc2626;
+
+  /* Thumb zone and spacing overrides */
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+  
+  --shadow-soft: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+  --shadow-elevated: 0 10px 30px -5px rgba(0, 0, 0, 0.08);
+}
+
+:root {
+  --background: #f8fafc;
+  --foreground: var(--color-text-primary);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f172a;
+    --foreground: #f8fafc;
+  }
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: inherit;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom interactive classes */
+.touch-zone-btn {
+  @apply rounded-2xl sm:rounded-3xl shadow-sm hover:shadow-soft active:shadow-none transition-all duration-200 border-b-4 active:border-b-0 active:translate-y-1;
+}

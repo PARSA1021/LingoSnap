@@ -1,0 +1,3602 @@
+[
+  {
+    "id": "v1",
+    "word": "absolutely",
+    "meaning": "절대적으로, 완전히",
+    "example": "I am absolutely certain about it.",
+    "exampleTranslation": "나는 그것에 대해 완전히 확신해.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v2",
+    "word": "accept",
+    "meaning": "받아들이다, 수락하다",
+    "example": "Please accept my apology.",
+    "exampleTranslation": "제 사과를 받아주세요.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v3",
+    "word": "access",
+    "meaning": "접근, 접근하다",
+    "example": "You need a password to access the system.",
+    "exampleTranslation": "시스템에 접근하려면 비밀번호가 필요합니다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v4",
+    "word": "accident",
+    "meaning": "사고, 우연",
+    "example": "I met him by accident.",
+    "exampleTranslation": "나는 그를 우연히 만났다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v5",
+    "word": "accommodate",
+    "meaning": "수용하다, 편의를 도모하다",
+    "example": "This hotel can accommodate up to 500 guests.",
+    "exampleTranslation": "이 호텔은 500명까지 수용할 수 있습니다.",
+    "level": "intermediate",
+    "category": "travel"
+  },
+  {
+    "id": "v6",
+    "word": "according",
+    "meaning": "~에 따르면",
+    "example": "According to the weather forecast, it will rain tomorrow.",
+    "exampleTranslation": "일기예보에 따르면 내일 비가 올 것입니다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v7",
+    "word": "account",
+    "meaning": "계좌, 설명",
+    "example": "I opened a new bank account yesterday.",
+    "exampleTranslation": "나는 어제 새 은행 계좌를 열었다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v8",
+    "word": "accurate",
+    "meaning": "정확한",
+    "example": "We need accurate information to make a decision.",
+    "exampleTranslation": "결정을 내리려면 정확한 정보가 필요합니다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v9",
+    "word": "achieve",
+    "meaning": "성취하다, 이루다",
+    "example": "She worked hard to achieve her goal.",
+    "exampleTranslation": "그녀는 목표를 이루기 위해 열심히 일했다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v10",
+    "word": "acknowledge",
+    "meaning": "인정하다",
+    "example": "He refused to acknowledge his mistake.",
+    "exampleTranslation": "그는 자신의 실수를 인정하기를 거부했다.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "v11",
+    "word": "acquire",
+    "meaning": "얻다, 획득하다",
+    "example": "She acquired a new skill from the course.",
+    "exampleTranslation": "그녀는 코스에서 새로운 기술을 얻었다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v12",
+    "word": "actually",
+    "meaning": "사실은, 실제로",
+    "example": "I actually like this idea better.",
+    "exampleTranslation": "나는 사실 이 아이디어가 더 마음에 들어.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v13",
+    "word": "adapt",
+    "meaning": "적응하다",
+    "example": "It takes time to adapt to a new environment.",
+    "exampleTranslation": "새로운 환경에 적응하는 데는 시간이 걸린다.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v14",
+    "word": "additional",
+    "meaning": "추가의",
+    "example": "We need additional staff for this project.",
+    "exampleTranslation": "우리는 이 프로젝트에 추가 인력이 필요합니다.",
+    "level": "beginner",
+    "category": "business"
+  },
+  {
+    "id": "v15",
+    "word": "address",
+    "meaning": "주소, 다루다",
+    "example": "We need to address this problem immediately.",
+    "exampleTranslation": "우리는 이 문제를 즉시 다뤄야 합니다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v16",
+    "word": "adjust",
+    "meaning": "조정하다",
+    "example": "You need to adjust your seat belt.",
+    "exampleTranslation": "안전벨트를 조정해야 합니다.",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "v17",
+    "word": "admire",
+    "meaning": "존경하다, 감탄하다",
+    "example": "I really admire her dedication.",
+    "exampleTranslation": "나는 그녀의 헌신을 정말 존경한다.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v18",
+    "word": "admit",
+    "meaning": "인정하다",
+    "example": "He admitted that he was wrong.",
+    "exampleTranslation": "그는 자신이 틀렸다는 것을 인정했다.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v19",
+    "word": "advance",
+    "meaning": "전진하다, 사전의",
+    "example": "Please let me know in advance.",
+    "exampleTranslation": "사전에 제게 알려주세요.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v20",
+    "word": "advantage",
+    "meaning": "장점, 유리",
+    "example": "One advantage of living here is the great weather.",
+    "exampleTranslation": "이곳에 사는 한 가지 장점은 날씨가 좋다는 점입니다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v21",
+    "word": "advice",
+    "meaning": "조언",
+    "example": "I need some advice on buying a car.",
+    "exampleTranslation": "차를 사는 것에 대해 약간의 조언이 필요해.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v22",
+    "word": "affect",
+    "meaning": "영향을 미치다",
+    "example": "The weather can affect your mood.",
+    "exampleTranslation": "날씨는 기분에 영향을 미칠 수 있습니다.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v23",
+    "word": "afford",
+    "meaning": "여유가 되다",
+    "example": "I can't afford a new laptop right now.",
+    "exampleTranslation": "나는 지금 새 노트북을 살 여유가 없어.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v24",
+    "word": "agency",
+    "meaning": "대행사, 에이전시",
+    "example": "I booked my trip through a travel agency.",
+    "exampleTranslation": "나는 여행사를 통해 여행을 예약했다.",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "v25",
+    "word": "agreement",
+    "meaning": "합의, 계약",
+    "example": "We finally reached an agreement.",
+    "exampleTranslation": "우리는 마침내 합의에 도달했다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v26",
+    "word": "allow",
+    "meaning": "허락하다",
+    "example": "Smoking is not allowed here.",
+    "exampleTranslation": "여기는 흡연이 허용되지 않습니다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v27",
+    "word": "alternative",
+    "meaning": "대안",
+    "example": "Do we have any alternative options?",
+    "exampleTranslation": "우리가 선택할 수 있는 다른 대안이 있나요?",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v28",
+    "word": "although",
+    "meaning": "비록 ~일지라도",
+    "example": "Although it was raining, we went for a walk.",
+    "exampleTranslation": "비가 왔음에도 불구하고 우리는 산책을 나갔다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v29",
+    "word": "ambition",
+    "meaning": "야망",
+    "example": "Her ambition is to become a successful CEO.",
+    "exampleTranslation": "그녀의 야망은 성공적인 CEO가 되는 것입니다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v30",
+    "word": "analyze",
+    "meaning": "분석하다",
+    "example": "We need to analyze the data carefully.",
+    "exampleTranslation": "우리는 데이터를 주의 깊게 분석해야 합니다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v31",
+    "word": "announce",
+    "meaning": "발표하다",
+    "example": "They announced their engagement yesterday.",
+    "exampleTranslation": "그들은 어제 약혼을 발표했다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v32",
+    "word": "anticipate",
+    "meaning": "예상하다",
+    "example": "We anticipate a drop in sales this quarter.",
+    "exampleTranslation": "이번 분기에는 판매 감소를 예상합니다.",
+    "level": "advanced",
+    "category": "business"
+  },
+  {
+    "id": "v33",
+    "word": "anxiety",
+    "meaning": "불안, 걱정",
+    "example": "He has a lot of anxiety about his future.",
+    "exampleTranslation": "그는 자신의 미래에 대한 많은 불안을 가지고 있다.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "v34",
+    "word": "anyway",
+    "meaning": "어쨌든",
+    "example": "Anyway, let's talk about it later.",
+    "exampleTranslation": "어쨌든 그 이야기는 나중에 합시다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v35",
+    "word": "apologize",
+    "meaning": "사과하다",
+    "example": "I want to apologize for my mistake.",
+    "exampleTranslation": "내 실수에 대해 사과하고 싶어.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v36",
+    "word": "apparent",
+    "meaning": "분명한",
+    "example": "It was apparent that she didn't want to go.",
+    "exampleTranslation": "그녀가 가고 싶어 하지 않는다는 것이 분명했다.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v37",
+    "word": "appeal",
+    "meaning": "호소하다, 매력",
+    "example": "The idea doesn't appeal to me much.",
+    "exampleTranslation": "그 아이디어는 내게 별로 매력적이지 않아.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "v38",
+    "word": "appreciate",
+    "meaning": "감사하다",
+    "example": "I really appreciate your help.",
+    "exampleTranslation": "당신의 도움에 정말 감사합니다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v39",
+    "word": "approach",
+    "meaning": "접근, 다가가다",
+    "example": "We need a new approach to solve this.",
+    "exampleTranslation": "이것을 해결하기 위해 새로운 접근 방식이 필요합니다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v40",
+    "word": "approve",
+    "meaning": "승인하다",
+    "example": "The boss approved my vacation request.",
+    "exampleTranslation": "사장이 내 휴가 요청을 승인했다.",
+    "level": "beginner",
+    "category": "business"
+  },
+  {
+    "id": "v41",
+    "word": "argue",
+    "meaning": "논쟁하다",
+    "example": "They always argue about money.",
+    "exampleTranslation": "그들은 항상 돈 문제로 논쟁한다.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v42",
+    "word": "arise",
+    "meaning": "발생하다",
+    "example": "Several problems have arisen recently.",
+    "exampleTranslation": "최근 몇 가지 문제들이 발생했다.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v43",
+    "word": "arrange",
+    "meaning": "배열하다, 준비하다",
+    "example": "Can you arrange a meeting for tomorrow?",
+    "exampleTranslation": "내일로 회의를 잡아 주실 수 있나요?",
+    "level": "beginner",
+    "category": "business"
+  },
+  {
+    "id": "v44",
+    "word": "aspect",
+    "meaning": "측면",
+    "example": "Cost is an important aspect to consider.",
+    "exampleTranslation": "비용은 고려해야 할 중요한 측면입니다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v45",
+    "word": "assume",
+    "meaning": "가정하다, 추정하다",
+    "example": "I assume you're coming to the party.",
+    "exampleTranslation": "네가 파티에 올 거라고 가정할게.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v46",
+    "word": "assure",
+    "meaning": "확신시키다",
+    "example": "I assure you everything will be fine.",
+    "exampleTranslation": "모든 게 다 잘 될 거라고 내가 확신해.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "v47",
+    "word": "attach",
+    "meaning": "첨부하다",
+    "example": "I forgot to attach the files to the email.",
+    "exampleTranslation": "이메일에 파일을 첨부하는 것을 깜빡했어요.",
+    "level": "beginner",
+    "category": "business"
+  },
+  {
+    "id": "v48",
+    "word": "attempt",
+    "meaning": "시도, 시도하다",
+    "example": "He will attempt to break the world record.",
+    "exampleTranslation": "그는 세계 기록을 깨기 위해 시도할 것이다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v49",
+    "word": "attend",
+    "meaning": "참석하다",
+    "example": "I have to attend a conference tomorrow.",
+    "exampleTranslation": "나는 내일 회의에 참석해야 해.",
+    "level": "beginner",
+    "category": "business"
+  },
+  {
+    "id": "v50",
+    "word": "attitude",
+    "meaning": "태도",
+    "example": "She has a very positive attitude toward work.",
+    "exampleTranslation": "그녀는 일에 대해 매우 긍정적인 태도를 가졌다.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v51",
+    "word": "attract",
+    "meaning": "끌어들이다",
+    "example": "The museum attracts millions of visitors.",
+    "exampleTranslation": "그 박물관은 수백만 명의 방문객을 끌어들인다.",
+    "level": "intermediate",
+    "category": "travel"
+  },
+  {
+    "id": "v52",
+    "word": "audience",
+    "meaning": "청중",
+    "example": "The audience clapped loudly at the end.",
+    "exampleTranslation": "청중은 마지막에 큰 박수를 쳤다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v53",
+    "word": "available",
+    "meaning": "이용 가능한, 시간이 있는",
+    "example": "Are you available for a chat later?",
+    "exampleTranslation": "이따가 대화할 시간 되나요?",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v54",
+    "word": "average",
+    "meaning": "평균",
+    "example": "The average temperature here is quite high.",
+    "exampleTranslation": "이곳의 평균 기온은 꽤 높습니다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v55",
+    "word": "avoid",
+    "meaning": "피하다",
+    "example": "You should avoid eating too late.",
+    "exampleTranslation": "너무 늦게 먹는 것은 피해야 한다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v56",
+    "word": "aware",
+    "meaning": "알고 있는",
+    "example": "Are you aware of the risks involved?",
+    "exampleTranslation": "관련된 위험들을 알고 있나요?",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v57",
+    "word": "background",
+    "meaning": "배경",
+    "example": "They have very different cultural backgrounds.",
+    "exampleTranslation": "그들은 매우 다른 문화적 배경을 가지고 있다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v58",
+    "word": "balance",
+    "meaning": "균형",
+    "example": "It's hard to find work-life balance.",
+    "exampleTranslation": "일과 삶의 균형을 찾기 어렵다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v59",
+    "word": "barely",
+    "meaning": "거의 ~않다, 간신히",
+    "example": "I can barely hear you.",
+    "exampleTranslation": "네 목소리가 겨우 들려.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v60",
+    "word": "benefit",
+    "meaning": "이익, 혜택",
+    "example": "What are the benefits of this plan?",
+    "exampleTranslation": "이 계획의 혜택이 무엇인가요?",
+    "level": "beginner",
+    "category": "business"
+  },
+  {
+    "id": "v61",
+    "word": "blame",
+    "meaning": "비난하다, 탓하다",
+    "example": "Don't blame me for what happened.",
+    "exampleTranslation": "일어난 일에 대해 나를 원망하지 마세요.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "v62",
+    "word": "board",
+    "meaning": "탑승하다, 이사회",
+    "example": "It's time to board the plane.",
+    "exampleTranslation": "비행기에 탑승할 시간이다.",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "v63",
+    "word": "borrow",
+    "meaning": "빌리다",
+    "example": "Can I borrow your pen for a second?",
+    "exampleTranslation": "잠깐 펜 좀 빌릴 수 있을까?",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v64",
+    "word": "bother",
+    "meaning": "괴롭히다, 성가시게 하다",
+    "example": "I'm sorry to bother you, but I need help.",
+    "exampleTranslation": "성가시게 해서 죄송하지만, 도움이 필요해요.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v65",
+    "word": "brief",
+    "meaning": "짧은, 간결한",
+    "example": "Let's keep the meeting brief.",
+    "exampleTranslation": "회의를 짧게 합시다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v66",
+    "word": "brilliant",
+    "meaning": "훌륭한, 눈부신",
+    "example": "That's a brilliant idea!",
+    "exampleTranslation": "정말 훌륭한 아이디어야!",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v67",
+    "word": "budget",
+    "meaning": "예산",
+    "example": "We need to plan our travel budget.",
+    "exampleTranslation": "우리는 여행 예산을 계획해야 합니다.",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "v68",
+    "word": "cancel",
+    "meaning": "취소하다",
+    "example": "I had to cancel my flight because of work.",
+    "exampleTranslation": "일 때문에 비행편을 취소해야 했다.",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "v69",
+    "word": "capacity",
+    "meaning": "용량, 능력",
+    "example": "The stadium is filled to full capacity.",
+    "exampleTranslation": "경기장이 꽉 찼습니다.",
+    "level": "advanced",
+    "category": "general"
+  },
+  {
+    "id": "v70",
+    "word": "casual",
+    "meaning": "우연한, 평상복의",
+    "example": "It was just a casual conversation.",
+    "exampleTranslation": "그것은 그저 가벼운 대화였다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v71",
+    "word": "cause",
+    "meaning": "원인, 일으키다",
+    "example": "What caused the delay?",
+    "exampleTranslation": "무엇이 지연을 일으켰나요?",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v72",
+    "word": "certain",
+    "meaning": "확실한",
+    "example": "Are you certain about the time?",
+    "exampleTranslation": "시간에 대해 확실해?",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v73",
+    "word": "challenge",
+    "meaning": "도전, 난제",
+    "example": "I am ready for a new challenge.",
+    "exampleTranslation": "나는 새로운 도전을 할 준비가 되어 있다.",
+    "level": "beginner",
+    "category": "business"
+  },
+  {
+    "id": "v74",
+    "word": "charge",
+    "meaning": "청구하다, 요금",
+    "example": "How much do they charge for the service?",
+    "exampleTranslation": "그들은 서비스에 얼마를 청구하나요?",
+    "level": "intermediate",
+    "category": "travel"
+  },
+  {
+    "id": "v75",
+    "word": "circumstance",
+    "meaning": "상황, 정황",
+    "example": "Under no circumstances should you open the door.",
+    "exampleTranslation": "어떤 상황에서도 문을 열어서는 안 됩니다.",
+    "level": "advanced",
+    "category": "daily"
+  },
+  {
+    "id": "v76",
+    "word": "colleague",
+    "meaning": "동료",
+    "example": "I am having lunch with a colleague today.",
+    "exampleTranslation": "오늘 동료와 점심을 먹을 예정입니다.",
+    "level": "beginner",
+    "category": "business"
+  },
+  {
+    "id": "v77",
+    "word": "collect",
+    "meaning": "모으다, 수집하다",
+    "example": "She collects old coins as a hobby.",
+    "exampleTranslation": "그녀는 취미로 옛날 동전을 수집한다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v78",
+    "word": "commit",
+    "meaning": "저지르다, 약속하다",
+    "example": "Are you ready to commit to this project?",
+    "exampleTranslation": "이 프로젝트에 헌신할 준비가 되었나요?",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v79",
+    "word": "communicate",
+    "meaning": "의사소통하다",
+    "example": "We communicate mainly by email.",
+    "exampleTranslation": "우리는 주로 이메일로 소통합니다.",
+    "level": "beginner",
+    "category": "business"
+  },
+  {
+    "id": "v80",
+    "word": "community",
+    "meaning": "지역사회, 공동체",
+    "example": "She is very active in the local community.",
+    "exampleTranslation": "그녀는 지역 사회에서 매우 활동적이다.",
+    "level": "beginner",
+    "category": "general"
+  },
+  {
+    "id": "v81",
+    "word": "compare",
+    "meaning": "비교하다",
+    "example": "Don't compare yourself to others.",
+    "exampleTranslation": "자신을 다른 사람과 비교하지 마세요.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v82",
+    "word": "complain",
+    "meaning": "불평하다",
+    "example": "Some customers complained about the slow service.",
+    "exampleTranslation": "일부 고객들이 느린 서비스에 대해 불평했다.",
+    "level": "beginner",
+    "category": "business"
+  },
+  {
+    "id": "v83",
+    "word": "complex",
+    "meaning": "복잡한",
+    "example": "That's a very complex problem.",
+    "exampleTranslation": "그것은 매우 복잡한 문제입니다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v84",
+    "word": "concentrate",
+    "meaning": "집중하다",
+    "example": "I can't concentrate with all this noise.",
+    "exampleTranslation": "이 소음 때문에 집중할 수가 없다.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v85",
+    "word": "concept",
+    "meaning": "개념",
+    "example": "The concept of time travel is fascinating.",
+    "exampleTranslation": "시간 여행이라는 개념은 매력적이다.",
+    "level": "intermediate",
+    "category": "general"
+  },
+  {
+    "id": "v86",
+    "word": "concern",
+    "meaning": "걱정, 다루다",
+    "example": "This issue is of great concern to us.",
+    "exampleTranslation": "이 문제는 우리에게 큰 관심사(걱정) 입니다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v87",
+    "word": "confirm",
+    "meaning": "확인하다",
+    "example": "Can you confirm your reservation, please?",
+    "exampleTranslation": "예약을 확인해 주시겠습니까?",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "v88",
+    "word": "conflict",
+    "meaning": "갈등, 충돌",
+    "example": "We need to avoid any further conflict.",
+    "exampleTranslation": "우리는 추가적인 갈등을 피해야 한다.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "v89",
+    "word": "connect",
+    "meaning": "연결하다",
+    "example": "Please connect to the Wi-Fi network.",
+    "exampleTranslation": "Wi-Fi 네트워크에 연결해 주세요.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v90",
+    "word": "consider",
+    "meaning": "고려하다",
+    "example": "We are considering moving to another city.",
+    "exampleTranslation": "우리는 다른 도시로 이사할 것을 고려하고 있다.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v91",
+    "word": "constant",
+    "meaning": "끊임없는, 일정한",
+    "example": "The child requires constant attention.",
+    "exampleTranslation": "그 아이는 끊임없는 관심이 필요하다.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "v92",
+    "word": "consult",
+    "meaning": "상담하다",
+    "example": "You should consult a doctor about this.",
+    "exampleTranslation": "이에 대해 의사와 상담하는 것이 좋겠습니다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v93",
+    "word": "consumer",
+    "meaning": "소비자",
+    "example": "Consumer spending has increased this year.",
+    "exampleTranslation": "올해 소비자 지출이 증가했다.",
+    "level": "advanced",
+    "category": "business"
+  },
+  {
+    "id": "v94",
+    "word": "contact",
+    "meaning": "연락, 연락하다",
+    "example": "Feel free to contact me anytime.",
+    "exampleTranslation": "언제든지 저에게 편하게 연락주세요.",
+    "level": "beginner",
+    "category": "business"
+  },
+  {
+    "id": "v95",
+    "word": "contract",
+    "meaning": "계약서",
+    "example": "Please sign the contract before Friday.",
+    "exampleTranslation": "금요일 전까지 계약서에 서명해 주세요.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v96",
+    "word": "contribute",
+    "meaning": "기여하다",
+    "example": "She contributed a lot to the team's success.",
+    "exampleTranslation": "그녀는 팀의 성공에 많은 기여를 했다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v97",
+    "word": "convenience",
+    "meaning": "편리함",
+    "example": "I value convenience over price.",
+    "exampleTranslation": "나는 가격보다 편리함을 중시한다.",
+    "level": "intermediate",
+    "category": "travel"
+  },
+  {
+    "id": "v98",
+    "word": "convince",
+    "meaning": "설득하다",
+    "example": "I tried to convince him to join us.",
+    "exampleTranslation": "나는 그에게 합류하라고 설득하려 했다.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "v99",
+    "word": "critical",
+    "meaning": "중대한, 비판적인",
+    "example": "This is a critical moment for the company.",
+    "exampleTranslation": "지금은 회사를 위해 매우 중대한 시기이다.",
+    "level": "advanced",
+    "category": "business"
+  },
+  {
+    "id": "v100",
+    "word": "curious",
+    "meaning": "호기심이 많은",
+    "example": "I'm curious about the result.",
+    "exampleTranslation": "나는 결과가 궁금해.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v101",
+    "word": "ability",
+    "meaning": "능력",
+    "example": "She has the ability to solve complex problems quickly.",
+    "exampleTranslation": "그녀는 복잡한 문제를 빠르게 해결할 수 있는 능력이 있다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v102",
+    "word": "absent",
+    "meaning": "결석한, 없는",
+    "example": "He was absent from the important meeting.",
+    "exampleTranslation": "그는 중요한 회의에 결석했다.",
+    "level": "beginner",
+    "category": "business"
+  },
+  {
+    "id": "v103",
+    "word": "absolute",
+    "meaning": "절대적인",
+    "example": "This is an absolute necessity for the project.",
+    "exampleTranslation": "이것은 프로젝트에 절대적으로 필요한 것이다.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v104",
+    "word": "absorb",
+    "meaning": "흡수하다",
+    "example": "The sponge can absorb all the water.",
+    "exampleTranslation": "스폰지는 모든 물을 흡수할 수 있다.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v105",
+    "word": "academic",
+    "meaning": "학문적인, 학술의",
+    "example": "He chose an academic career after graduation.",
+    "exampleTranslation": "그는 졸업 후 학문적 경로를 선택했다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v106",
+    "word": "accelerate",
+    "meaning": "가속하다",
+    "example": "We need to accelerate the development process.",
+    "exampleTranslation": "개발 과정을 가속해야 한다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v107",
+    "word": "accent",
+    "meaning": "억양",
+    "example": "Her American accent is very clear.",
+    "exampleTranslation": "그녀의 미국 억양은 매우 또렷하다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v108",
+    "word": "acceptance",
+    "meaning": "수락, 인정",
+    "example": "The acceptance letter arrived yesterday.",
+    "exampleTranslation": "수락 통지서가 어제 도착했다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v109",
+    "word": "accompany",
+    "meaning": "동반하다",
+    "example": "Would you like me to accompany you to the airport?",
+    "exampleTranslation": "공항까지 동행해 드릴까요?",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "v110",
+    "word": "accomplish",
+    "meaning": "이루다, 완수하다",
+    "example": "We accomplished all our goals this year.",
+    "exampleTranslation": "올해 모든 목표를 완수했다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v111",
+    "word": "achievement",
+    "meaning": "성취",
+    "example": "This is a great achievement for the team.",
+    "exampleTranslation": "팀에게 큰 성취이다.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v112",
+    "word": "accurate",
+    "meaning": "정확한",
+    "example": "The report must be accurate and detailed.",
+    "exampleTranslation": "보고서는 정확하고 상세해야 한다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v113",
+    "word": "action",
+    "meaning": "행동",
+    "example": "We need to take immediate action.",
+    "exampleTranslation": "즉시 행동을 취해야 한다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v114",
+    "word": "active",
+    "meaning": "활동적인",
+    "example": "She is very active in sports.",
+    "exampleTranslation": "그녀는 스포츠에 매우 활동적이다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v115",
+    "word": "activity",
+    "meaning": "활동",
+    "example": "Outdoor activities are popular here.",
+    "exampleTranslation": "야외 활동이 이곳에서 인기 있다.",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "v116",
+    "word": "add",
+    "meaning": "추가하다",
+    "example": "Please add your name to the list.",
+    "exampleTranslation": "리스트에 이름을 추가해 주세요.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v117",
+    "word": "adequate",
+    "meaning": "충분한",
+    "example": "We have adequate resources for the task.",
+    "exampleTranslation": "그 작업에 충분한 자원이 있다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v118",
+    "word": "adopt",
+    "meaning": "채택하다",
+    "example": "The company decided to adopt the new policy.",
+    "exampleTranslation": "회사는 새 정책을 채택하기로 했다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v119",
+    "word": "adult",
+    "meaning": "성인",
+    "example": "This movie is for adults only.",
+    "exampleTranslation": "이 영화는 성인 전용이다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v120",
+    "word": "advance",
+    "meaning": "전진하다, 사전의",
+    "example": "Please pay in advance.",
+    "exampleTranslation": "사전에 지불해 주세요.",
+    "level": "intermediate",
+    "category": "travel"
+  },
+  {
+    "id": "v121",
+    "word": "advantage",
+    "meaning": "장점",
+    "example": "Living in the city has many advantages.",
+    "exampleTranslation": "도시에 사는 데는 많은 장점이 있다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v122",
+    "word": "advertise",
+    "meaning": "광고하다",
+    "example": "They advertise their products on TV.",
+    "exampleTranslation": "그들은 TV에서 제품을 광고한다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v123",
+    "word": "advice",
+    "meaning": "조언",
+    "example": "Thanks for your valuable advice.",
+    "exampleTranslation": "소중한 조언 감사합니다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v124",
+    "word": "advise",
+    "meaning": "조언하다",
+    "example": "I advise you to book early.",
+    "exampleTranslation": "일찍 예약하라고 조언한다.",
+    "level": "intermediate",
+    "category": "travel"
+  },
+  {
+    "id": "v125",
+    "word": "affair",
+    "meaning": "일, 사건",
+    "example": "It's a private affair.",
+    "exampleTranslation": "개인적인 일이다.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "v126",
+    "word": "affect",
+    "meaning": "영향을 미치다",
+    "example": "The news affected everyone deeply.",
+    "exampleTranslation": "그 소식은 모두에게 깊은 영향을 미쳤다.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v127",
+    "word": "afford",
+    "meaning": "여유가 되다",
+    "example": "I can't afford to buy a car now.",
+    "exampleTranslation": "지금은 차를 살 여유가 없다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v128",
+    "word": "afraid",
+    "meaning": "두려워하는",
+    "example": "I'm afraid of heights.",
+    "exampleTranslation": "나는 고소공포증이 있다.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v129",
+    "word": "agency",
+    "meaning": "대행사",
+    "example": "I used a recruitment agency.",
+    "exampleTranslation": "채용 대행사를 이용했다.",
+    "level": "beginner",
+    "category": "business"
+  },
+  {
+    "id": "v130",
+    "word": "agenda",
+    "meaning": "의제",
+    "example": "Let's set the agenda for the meeting.",
+    "exampleTranslation": "회의 의제를 정합시다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v131",
+    "word": "agree",
+    "meaning": "동의하다",
+    "example": "I agree with your opinion.",
+    "exampleTranslation": "네 의견에 동의해.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v132",
+    "word": "agreement",
+    "meaning": "합의",
+    "example": "We signed the agreement yesterday.",
+    "exampleTranslation": "어제 합의서에 서명했다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v133",
+    "word": "aim",
+    "meaning": "목표",
+    "example": "My aim is to improve my English.",
+    "exampleTranslation": "내 목표는 영어를 향상시키는 것이다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v134",
+    "word": "aircraft",
+    "meaning": "항공기",
+    "example": "The aircraft landed safely.",
+    "exampleTranslation": "항공기가 안전하게 착륙했다.",
+    "level": "intermediate",
+    "category": "travel"
+  },
+  {
+    "id": "v135",
+    "word": "airline",
+    "meaning": "항공사",
+    "example": "Which airline are you flying with?",
+    "exampleTranslation": "어느 항공사를 이용하나요?",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "v136",
+    "word": "airport",
+    "meaning": "공항",
+    "example": "We arrived at the airport early.",
+    "exampleTranslation": "우리는 공항에 일찍 도착했다.",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "v137",
+    "word": "alarm",
+    "meaning": "경보, 알람",
+    "example": "The alarm clock woke me up.",
+    "exampleTranslation": "알람 시계가 나를 깨웠다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v138",
+    "word": "alert",
+    "meaning": "경계하는",
+    "example": "Stay alert while driving.",
+    "exampleTranslation": "운전 중에 경계를 유지하세요.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v139",
+    "word": "allow",
+    "meaning": "허락하다",
+    "example": "Smoking is not allowed in this area.",
+    "exampleTranslation": "이 구역에서는 흡연이 허용되지 않습니다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v140",
+    "word": "almost",
+    "meaning": "거의",
+    "example": "I almost missed the train.",
+    "exampleTranslation": "기차를 거의 놓칠 뻔했다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v141",
+    "word": "alone",
+    "meaning": "혼자",
+    "example": "I prefer to work alone sometimes.",
+    "exampleTranslation": "가끔은 혼자 일하는 걸 선호한다.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v142",
+    "word": "along",
+    "meaning": "~을 따라",
+    "example": "Walk along the river.",
+    "exampleTranslation": "강을 따라 걸으세요.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v143",
+    "word": "already",
+    "meaning": "이미",
+    "example": "I have already finished the report.",
+    "exampleTranslation": "이미 보고서를 끝냈다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v144",
+    "word": "alternative",
+    "meaning": "대안",
+    "example": "We have no alternative choice.",
+    "exampleTranslation": "다른 대안이 없다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v145",
+    "word": "although",
+    "meaning": "비록 ~일지라도",
+    "example": "Although tired, he continued working.",
+    "exampleTranslation": "피곤했지만 그는 계속 일했다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v146",
+    "word": "amaze",
+    "meaning": "놀라게 하다",
+    "example": "The view amazed everyone.",
+    "exampleTranslation": "그 경관은 모두를 놀라게 했다.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v147",
+    "word": "amazing",
+    "meaning": "놀라운",
+    "example": "It was an amazing experience.",
+    "exampleTranslation": "놀라운 경험이었다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v148",
+    "word": "ambition",
+    "meaning": "야망",
+    "example": "His ambition drives him forward.",
+    "exampleTranslation": "그의 야망이 그를 앞으로 나아가게 한다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v149",
+    "word": "amount",
+    "meaning": "양, 금액",
+    "example": "The amount of money is too high.",
+    "exampleTranslation": "금액이 너무 높다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v150",
+    "word": "amuse",
+    "meaning": "즐겁게 하다",
+    "example": "The joke amused the children.",
+    "exampleTranslation": "그 농담은 아이들을 즐겁게 했다.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v151",
+    "word": "analyze",
+    "meaning": "분석하다",
+    "example": "We must analyze the market trends.",
+    "exampleTranslation": "시장 동향을 분석해야 한다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v152",
+    "word": "ancient",
+    "meaning": "고대의",
+    "example": "We visited ancient ruins.",
+    "exampleTranslation": "고대 유적을 방문했다.",
+    "level": "intermediate",
+    "category": "travel"
+  },
+  {
+    "id": "v153",
+    "word": "anger",
+    "meaning": "분노",
+    "example": "He couldn't control his anger.",
+    "exampleTranslation": "그는 분노를 제어할 수 없었다.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v154",
+    "word": "angry",
+    "meaning": "화난",
+    "example": "She was angry about the delay.",
+    "exampleTranslation": "그녀는 지연에 화가 났다.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v155",
+    "word": "announce",
+    "meaning": "발표하다",
+    "example": "The CEO will announce the new plan.",
+    "exampleTranslation": "CEO가 새 계획을 발표할 것이다.",
+    "level": "beginner",
+    "category": "business"
+  },
+  {
+    "id": "v156",
+    "word": "annoy",
+    "meaning": "짜증나게 하다",
+    "example": "The noise annoyed me.",
+    "exampleTranslation": "그 소음이 나를 짜증나게 했다.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v157",
+    "word": "annual",
+    "meaning": "연간의",
+    "example": "This is our annual report.",
+    "exampleTranslation": "이것은 우리 연간 보고서이다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v158",
+    "word": "anxiety",
+    "meaning": "불안",
+    "example": "She felt anxiety before the exam.",
+    "exampleTranslation": "그녀는 시험 전에 불안을 느꼈다.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "v159",
+    "word": "anxious",
+    "meaning": "불안한",
+    "example": "He is anxious about the results.",
+    "exampleTranslation": "그는 결과에 불안해한다.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "v160",
+    "word": "anybody",
+    "meaning": "누구든",
+    "example": "Anybody can join the club.",
+    "exampleTranslation": "누구든 클럽에 가입할 수 있다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v161",
+    "word": "anymore",
+    "meaning": "더 이상",
+    "example": "I don't live there anymore.",
+    "exampleTranslation": "더 이상 그곳에 살지 않는다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v162",
+    "word": "anyway",
+    "meaning": "어쨌든",
+    "example": "Anyway, let's move on.",
+    "exampleTranslation": "어쨌든 계속 진행하자.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v163",
+    "word": "apologize",
+    "meaning": "사과하다",
+    "example": "I apologize for being late.",
+    "exampleTranslation": "늦어서 사과드립니다.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v164",
+    "word": "apology",
+    "meaning": "사과",
+    "example": "Please accept my apology.",
+    "exampleTranslation": "사과를 받아주세요.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v165",
+    "word": "appear",
+    "meaning": "나타나다",
+    "example": "The stars appear at night.",
+    "exampleTranslation": "별은 밤에 나타난다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v166",
+    "word": "appearance",
+    "meaning": "외모",
+    "example": "He cares about his appearance.",
+    "exampleTranslation": "그는 외모를 신경 쓴다.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v167",
+    "word": "appetite",
+    "meaning": "식욕",
+    "example": "I lost my appetite.",
+    "exampleTranslation": "식욕이 떨어졌다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v168",
+    "word": "applaud",
+    "meaning": "박수치다",
+    "example": "The audience applauded loudly.",
+    "exampleTranslation": "청중이 크게 박수를 쳤다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v169",
+    "word": "apple",
+    "meaning": "사과",
+    "example": "An apple a day keeps the doctor away.",
+    "exampleTranslation": "하루에 사과 하나면 의사가 필요 없다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v170",
+    "word": "application",
+    "meaning": "신청, 응용",
+    "example": "Fill out the application form.",
+    "exampleTranslation": "신청서를 작성하세요.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v171",
+    "word": "apply",
+    "meaning": "지원하다",
+    "example": "I will apply for the job.",
+    "exampleTranslation": "그 일자리에 지원할 것이다.",
+    "level": "beginner",
+    "category": "business"
+  },
+  {
+    "id": "v172",
+    "word": "appoint",
+    "meaning": "임명하다",
+    "example": "They appointed a new manager.",
+    "exampleTranslation": "그들은 새 매니저를 임명했다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v173",
+    "word": "appointment",
+    "meaning": "약속, 예약",
+    "example": "I have a doctor's appointment.",
+    "exampleTranslation": "의사 예약이 있다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v174",
+    "word": "appreciate",
+    "meaning": "감사하다",
+    "example": "I really appreciate your support.",
+    "exampleTranslation": "당신의 지원에 정말 감사합니다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v175",
+    "word": "approach",
+    "meaning": "접근하다",
+    "example": "A new approach is needed.",
+    "exampleTranslation": "새로운 접근법이 필요하다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v176",
+    "word": "appropriate",
+    "meaning": "적절한",
+    "example": "This is not appropriate behavior.",
+    "exampleTranslation": "이것은 적절한 행동이 아니다.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v177",
+    "word": "approve",
+    "meaning": "승인하다",
+    "example": "The manager approved the budget.",
+    "exampleTranslation": "매니저가 예산을 승인했다.",
+    "level": "beginner",
+    "category": "business"
+  },
+  {
+    "id": "v178",
+    "word": "approximate",
+    "meaning": "대략적인",
+    "example": "Give me an approximate number.",
+    "exampleTranslation": "대략적인 숫자를 알려주세요.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v179",
+    "word": "area",
+    "meaning": "지역, 면적",
+    "example": "This is a residential area.",
+    "exampleTranslation": "이곳은 주거 지역이다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v180",
+    "word": "argue",
+    "meaning": "논쟁하다",
+    "example": "They argue every day.",
+    "exampleTranslation": "그들은 매일 논쟁한다.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v181",
+    "word": "argument",
+    "meaning": "논쟁",
+    "example": "We had a heated argument.",
+    "exampleTranslation": "격렬한 논쟁을 벌였다.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v182",
+    "word": "arise",
+    "meaning": "발생하다",
+    "example": "Problems may arise later.",
+    "exampleTranslation": "나중에 문제가 발생할 수 있다.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v183",
+    "word": "arrange",
+    "meaning": "준비하다",
+    "example": "I will arrange everything.",
+    "exampleTranslation": "모든 것을 준비하겠다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v184",
+    "word": "arrival",
+    "meaning": "도착",
+    "example": "We are waiting for your arrival.",
+    "exampleTranslation": "당신의 도착을 기다리고 있다.",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "v185",
+    "word": "arrive",
+    "meaning": "도착하다",
+    "example": "The train will arrive soon.",
+    "exampleTranslation": "기차가 곧 도착할 것이다.",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "v186",
+    "word": "art",
+    "meaning": "예술",
+    "example": "I love modern art.",
+    "exampleTranslation": "현대 예술을 좋아한다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v187",
+    "word": "article",
+    "meaning": "기사",
+    "example": "Read this interesting article.",
+    "exampleTranslation": "이 흥미로운 기사를 읽어보세요.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v188",
+    "word": "artificial",
+    "meaning": "인공의",
+    "example": "This is artificial intelligence.",
+    "exampleTranslation": "이것은 인공지능이다.",
+    "level": "intermediate",
+    "category": "general"
+  },
+  {
+    "id": "v189",
+    "word": "artist",
+    "meaning": "예술가",
+    "example": "He is a famous artist.",
+    "exampleTranslation": "그는 유명한 예술가이다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v190",
+    "word": "aspect",
+    "meaning": "측면",
+    "example": "Every aspect is important.",
+    "exampleTranslation": "모든 측면이 중요하다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v191",
+    "word": "assemble",
+    "meaning": "조립하다",
+    "example": "We need to assemble the team.",
+    "exampleTranslation": "팀을 조립(구성)해야 한다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v192",
+    "word": "assert",
+    "meaning": "주장하다",
+    "example": "She asserted her rights.",
+    "exampleTranslation": "그녀는 자신의 권리를 주장했다.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "v193",
+    "word": "assess",
+    "meaning": "평가하다",
+    "example": "We will assess the situation.",
+    "exampleTranslation": "상황을 평가할 것이다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v194",
+    "word": "asset",
+    "meaning": "자산",
+    "example": "The company has many assets.",
+    "exampleTranslation": "회사에는 많은 자산이 있다.",
+    "level": "advanced",
+    "category": "business"
+  },
+  {
+    "id": "v195",
+    "word": "assign",
+    "meaning": "배정하다",
+    "example": "The teacher assigned homework.",
+    "exampleTranslation": "선생님이 숙제를 배정했다.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v196",
+    "word": "assignment",
+    "meaning": "과제",
+    "example": "This is my next assignment.",
+    "exampleTranslation": "이것이 다음 과제이다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v197",
+    "word": "assist",
+    "meaning": "도와주다",
+    "example": "Can you assist me with this?",
+    "exampleTranslation": "이것 좀 도와줄 수 있나요?",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v198",
+    "word": "assistant",
+    "meaning": "조수",
+    "example": "She works as an assistant manager.",
+    "exampleTranslation": "그녀는 부매니저로 일한다.",
+    "level": "beginner",
+    "category": "business"
+  },
+  {
+    "id": "v199",
+    "word": "associate",
+    "meaning": "연관짓다",
+    "example": "Do not associate with bad people.",
+    "exampleTranslation": "나쁜 사람들과 어울리지 마라.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v200",
+    "word": "association",
+    "meaning": "협회",
+    "example": "He joined the business association.",
+    "exampleTranslation": "그는 비즈니스 협회에 가입했다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v201",
+    "word": "decide",
+    "meaning": "결정하다",
+    "example": "I can't decide which one to buy.",
+    "exampleTranslation": "어느 걸 살지 결정할 수 없어.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v202",
+    "word": "describe",
+    "meaning": "설명하다",
+    "example": "Can you describe what happened?",
+    "exampleTranslation": "무슨 일이 있었는지 설명해줄 수 있어?",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v203",
+    "word": "develop",
+    "meaning": "개발하다, 성장하다",
+    "example": "The company is developing a new app.",
+    "exampleTranslation": "회사가 새로운 앱을 개발하고 있다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v204",
+    "word": "different",
+    "meaning": "다른",
+    "example": "This is completely different from last time.",
+    "exampleTranslation": "이건 지난번과 완전히 다르다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v205",
+    "word": "difficult",
+    "meaning": "어려운",
+    "example": "Learning a new language is difficult but rewarding.",
+    "exampleTranslation": "새로운 언어를 배우는 것은 어렵지만 보람이 있다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v206",
+    "word": "discuss",
+    "meaning": "논의하다",
+    "example": "We need to discuss the budget.",
+    "exampleTranslation": "예산에 대해 논의해야 한다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v207",
+    "word": "effort",
+    "meaning": "노력",
+    "example": "She put a lot of effort into the presentation.",
+    "exampleTranslation": "그녀는 프레젠테이션에 많은 노력을 기울였다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v208",
+    "word": "enjoy",
+    "meaning": "즐기다",
+    "example": "I really enjoy traveling alone.",
+    "exampleTranslation": "나는 혼자 여행하는 걸 정말 즐긴다.",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "v209",
+    "word": "enough",
+    "meaning": "충분한",
+    "example": "Is this enough money for the trip?",
+    "exampleTranslation": "여행하기에 이 돈이 충분한가?",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v210",
+    "word": "familiar",
+    "meaning": "익숙한",
+    "example": "This song sounds familiar.",
+    "exampleTranslation": "이 노래는 익숙하게 들린다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v211",
+    "word": "favorite",
+    "meaning": "가장 좋아하는",
+    "example": "What's your favorite movie?",
+    "exampleTranslation": "네가 가장 좋아하는 영화는 뭐야?",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v212",
+    "word": "feature",
+    "meaning": "특징, 기능",
+    "example": "The new phone has many great features.",
+    "exampleTranslation": "새 폰에는 멋진 기능이 많다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v213",
+    "word": "general",
+    "meaning": "일반적인",
+    "example": "In general, people prefer shorter meetings.",
+    "exampleTranslation": "일반적으로 사람들은 짧은 회의를 선호한다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v214",
+    "word": "generally",
+    "meaning": "일반적으로",
+    "example": "Generally speaking, it's a good idea.",
+    "exampleTranslation": "일반적으로 말하자면 좋은 생각이다.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v215",
+    "word": "habit",
+    "meaning": "습관",
+    "example": "Drinking coffee is a daily habit for me.",
+    "exampleTranslation": "커피 마시는 건 나의 일상 습관이다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v216",
+    "word": "happen",
+    "meaning": "일어나다",
+    "example": "What happened to your car?",
+    "exampleTranslation": "네 차에 무슨 일이 있었어?",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v217",
+    "word": "however",
+    "meaning": "그러나",
+    "example": "I like the idea; however, it's too expensive.",
+    "exampleTranslation": "그 아이디어가 마음에 들지만, 너무 비싸다.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v218",
+    "word": "idea",
+    "meaning": "아이디어",
+    "example": "That's a brilliant idea!",
+    "exampleTranslation": "정말 멋진 아이디어야!",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v219",
+    "word": "imagine",
+    "meaning": "상상하다",
+    "example": "Imagine living on a tropical island.",
+    "exampleTranslation": "열대 섬에서 사는 걸 상상해봐.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v220",
+    "word": "join",
+    "meaning": "합류하다",
+    "example": "Would you like to join us for dinner?",
+    "exampleTranslation": "저녁 같이 먹을래?",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v221",
+    "word": "journey",
+    "meaning": "여정",
+    "example": "The journey from Seoul to Busan was smooth.",
+    "exampleTranslation": "서울에서 부산까지의 여정이 순조로웠다.",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "v222",
+    "word": "keep",
+    "meaning": "유지하다",
+    "example": "You should keep trying.",
+    "exampleTranslation": "계속 시도해야 해.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v223",
+    "word": "knowledge",
+    "meaning": "지식",
+    "example": "He has a lot of knowledge about history.",
+    "exampleTranslation": "그는 역사에 대한 지식이 많다.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v224",
+    "word": "language",
+    "meaning": "언어",
+    "example": "Learning a new language opens doors.",
+    "exampleTranslation": "새로운 언어를 배우면 많은 기회가 열린다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v225",
+    "word": "machine",
+    "meaning": "기계",
+    "example": "This coffee machine is very fast.",
+    "exampleTranslation": "이 커피 머신은 정말 빠르다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v226",
+    "word": "natural",
+    "meaning": "자연스러운",
+    "example": "It feels natural to speak English now.",
+    "exampleTranslation": "이제 영어로 말하는 게 자연스럽게 느껴진다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v227",
+    "word": "necessary",
+    "meaning": "필요한",
+    "example": "It's necessary to book in advance.",
+    "exampleTranslation": "사전에 예약하는 게 필요하다.",
+    "level": "intermediate",
+    "category": "travel"
+  },
+  {
+    "id": "v228",
+    "word": "object",
+    "meaning": "물건, 반대하다",
+    "example": "I object to this plan.",
+    "exampleTranslation": "이 계획에 반대한다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v229",
+    "word": "package",
+    "meaning": "포장, 패키지",
+    "example": "The travel package includes flights and hotel.",
+    "exampleTranslation": "그 여행 패키지는 항공과 호텔이 포함되어 있다.",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "v230",
+    "word": "pain",
+    "meaning": "고통",
+    "example": "I have a pain in my back.",
+    "exampleTranslation": "등에 통증이 있다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v231",
+    "word": "quality",
+    "meaning": "품질",
+    "example": "The quality of this product is excellent.",
+    "exampleTranslation": "이 제품의 품질은 훌륭하다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v232",
+    "word": "quantity",
+    "meaning": "양",
+    "example": "We need a large quantity of supplies.",
+    "exampleTranslation": "많은 양의 물품이 필요하다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v233",
+    "word": "question",
+    "meaning": "질문",
+    "example": "Do you have any questions?",
+    "exampleTranslation": "질문 있나요?",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v234",
+    "word": "quiet",
+    "meaning": "조용한",
+    "example": "Please be quiet during the meeting.",
+    "exampleTranslation": "회의 중에는 조용히 해주세요.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v235",
+    "word": "quite",
+    "meaning": "꽤",
+    "example": "It's quite cold today.",
+    "exampleTranslation": "오늘 꽤 춥다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v236",
+    "word": "raise",
+    "meaning": "올리다, 키우다",
+    "example": "They want to raise the price.",
+    "exampleTranslation": "그들은 가격을 올리고 싶어한다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v237",
+    "word": "range",
+    "meaning": "범위",
+    "example": "The price range is $50 to $200.",
+    "exampleTranslation": "가격 범위는 50달러에서 200달러이다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v238",
+    "word": "safe",
+    "meaning": "안전한",
+    "example": "Is this neighborhood safe at night?",
+    "exampleTranslation": "이 동네 밤에 안전한가?",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v239",
+    "word": "safety",
+    "meaning": "안전",
+    "example": "Safety is our top priority.",
+    "exampleTranslation": "안전이 최우선이다.",
+    "level": "intermediate",
+    "category": "travel"
+  },
+  {
+    "id": "v240",
+    "word": "table",
+    "meaning": "테이블, 표",
+    "example": "Please check the table on page 5.",
+    "exampleTranslation": "5페이지 표를 확인해 주세요.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v241",
+    "word": "talent",
+    "meaning": "재능",
+    "example": "She has a real talent for singing.",
+    "exampleTranslation": "그녀는 노래에 진짜 재능이 있다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v242",
+    "word": "talk",
+    "meaning": "이야기하다",
+    "example": "Let's talk about your plans.",
+    "exampleTranslation": "네 계획에 대해 이야기하자.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v243",
+    "word": "ultimate",
+    "meaning": "최종의, 궁극적인",
+    "example": "This is the ultimate goal of the project.",
+    "exampleTranslation": "이것이 프로젝트의 궁극적인 목표이다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v244",
+    "word": "unable",
+    "meaning": "할 수 없는",
+    "example": "I'm unable to attend the meeting.",
+    "exampleTranslation": "회의에 참석할 수 없다.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v245",
+    "word": "under",
+    "meaning": "~아래에",
+    "example": "The price is under $100.",
+    "exampleTranslation": "가격이 100달러 이하이다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v246",
+    "word": "vacation",
+    "meaning": "휴가",
+    "example": "I'm going on vacation next week.",
+    "exampleTranslation": "다음 주에 휴가를 간다.",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "v247",
+    "word": "valid",
+    "meaning": "유효한",
+    "example": "Your ticket is valid for one month.",
+    "exampleTranslation": "티켓은 한 달간 유효하다.",
+    "level": "intermediate",
+    "category": "travel"
+  },
+  {
+    "id": "v248",
+    "word": "value",
+    "meaning": "가치",
+    "example": "I really value your opinion.",
+    "exampleTranslation": "나는 네 의견을 정말 소중하게 생각한다.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v249",
+    "word": "wait",
+    "meaning": "기다리다",
+    "example": "I can't wait to see you again.",
+    "exampleTranslation": "너를 다시 만나는 게 기다려 죽겠다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v250",
+    "word": "wake",
+    "meaning": "깨우다",
+    "example": "Don't wake me up early tomorrow.",
+    "exampleTranslation": "내일 일찍 깨우지 마.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v251",
+    "word": "x-ray",
+    "meaning": "엑스레이",
+    "example": "The doctor took an x-ray of my leg.",
+    "exampleTranslation": "의사가 내 다리의 엑스레이를 찍었다.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v252",
+    "word": "year",
+    "meaning": "해, 년",
+    "example": "This has been the best year of my life.",
+    "exampleTranslation": "올해는 내 인생 최고의 해였다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v253",
+    "word": "yesterday",
+    "meaning": "어제",
+    "example": "I met her yesterday at the cafe.",
+    "exampleTranslation": "어제 카페에서 그녀를 만났다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v254",
+    "word": "young",
+    "meaning": "젊은",
+    "example": "He is too young to drive.",
+    "exampleTranslation": "그는 운전하기엔 너무 어리다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v255",
+    "word": "yourself",
+    "meaning": "스스로",
+    "example": "You should believe in yourself.",
+    "exampleTranslation": "너 자신을 믿어야 해.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v256",
+    "word": "zero",
+    "meaning": "영, 제로",
+    "example": "The temperature dropped to zero degrees.",
+    "exampleTranslation": "기온이 영하로 떨어졌다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v257",
+    "word": "zone",
+    "meaning": "지역, 구역",
+    "example": "This is a no-parking zone.",
+    "exampleTranslation": "여기는 주차 금지 구역이다.",
+    "level": "intermediate",
+    "category": "travel"
+  },
+  {
+    "id": "v258",
+    "word": "zoo",
+    "meaning": "동물원",
+    "example": "We took the kids to the zoo.",
+    "exampleTranslation": "아이들을 동물원에 데려갔다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v259",
+    "word": "basically",
+    "meaning": "기본적으로",
+    "example": "Basically, the meeting was a success.",
+    "exampleTranslation": "기본적으로 회의는 성공이었다.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v260",
+    "word": "definitely",
+    "meaning": "확실히",
+    "example": "I will definitely come to the party.",
+    "exampleTranslation": "파티에 확실히 갈게.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v261",
+    "word": "literally",
+    "meaning": "말 그대로",
+    "example": "I literally ran out of time.",
+    "exampleTranslation": "말 그대로 시간이 다 떨어졌다.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v262",
+    "word": "probably",
+    "meaning": "아마",
+    "example": "It will probably rain tomorrow.",
+    "exampleTranslation": "내일 아마 비가 올 거야.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v263",
+    "word": "actually",
+    "meaning": "사실은",
+    "example": "Actually, I changed my mind.",
+    "exampleTranslation": "사실 생각이 바뀌었어.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v264",
+    "word": "obviously",
+    "meaning": "명백히",
+    "example": "Obviously, we need more time.",
+    "exampleTranslation": "명백히 시간이 더 필요하다.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v265",
+    "word": "seriously",
+    "meaning": "진지하게",
+    "example": "Are you seriously quitting?",
+    "exampleTranslation": "진짜 그만두는 거야?",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v266",
+    "word": "honestly",
+    "meaning": "솔직히",
+    "example": "Honestly, I didn't like the movie.",
+    "exampleTranslation": "솔직히 그 영화 별로였어.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v267",
+    "word": "maybe",
+    "meaning": "아마도",
+    "example": "Maybe we can meet next week.",
+    "exampleTranslation": "아마 다음 주에 만날 수 있을 거야.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v268",
+    "word": "perhaps",
+    "meaning": "아마",
+    "example": "Perhaps you should ask the manager.",
+    "exampleTranslation": "아마 매니저에게 물어봐야 할 거야.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v269",
+    "word": "suddenly",
+    "meaning": "갑자기",
+    "example": "It suddenly started raining.",
+    "exampleTranslation": "갑자기 비가 내리기 시작했다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v270",
+    "word": "finally",
+    "meaning": "마침내",
+    "example": "We finally finished the project.",
+    "exampleTranslation": "마침내 프로젝트를 끝냈다.",
+    "level": "beginner",
+    "category": "business"
+  },
+  {
+    "id": "v271",
+    "word": "quickly",
+    "meaning": "빠르게",
+    "example": "Please reply as quickly as possible.",
+    "exampleTranslation": "가능한 한 빨리 답장해 주세요.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v272",
+    "word": "slowly",
+    "meaning": "천천히",
+    "example": "She walked slowly down the street.",
+    "exampleTranslation": "그녀는 천천히 거리를 걸었다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v273",
+    "word": "carefully",
+    "meaning": "주의 깊게",
+    "example": "Read the instructions carefully.",
+    "exampleTranslation": "지시사항을 주의 깊게 읽으세요.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v274",
+    "word": "easily",
+    "meaning": "쉽게",
+    "example": "You can easily book online.",
+    "exampleTranslation": "온라인으로 쉽게 예약할 수 있다.",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "v275",
+    "word": "hardly",
+    "meaning": "거의 ~않다",
+    "example": "I hardly ever eat fast food.",
+    "exampleTranslation": "나는 거의 패스트푸드를 먹지 않는다.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v276",
+    "word": "nearly",
+    "meaning": "거의",
+    "example": "We're nearly finished.",
+    "exampleTranslation": "거의 다 끝났어.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v277",
+    "word": "recently",
+    "meaning": "최근에",
+    "example": "I recently moved to a new apartment.",
+    "exampleTranslation": "최근에 새 아파트로 이사했다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v278",
+    "word": "already",
+    "meaning": "이미",
+    "example": "I have already booked the tickets.",
+    "exampleTranslation": "이미 티켓을 예약했다.",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "v279",
+    "word": "still",
+    "meaning": "여전히",
+    "example": "I still don't understand.",
+    "exampleTranslation": "여전히 이해가 안 돼.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v280",
+    "word": "yet",
+    "meaning": "아직",
+    "example": "I haven't finished yet.",
+    "exampleTranslation": "아직 끝내지 못했어.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v281",
+    "word": "always",
+    "meaning": "항상",
+    "example": "She always arrives on time.",
+    "exampleTranslation": "그녀는 항상 제시간에 도착한다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v282",
+    "word": "never",
+    "meaning": "절대 ~않다",
+    "example": "I never give up.",
+    "exampleTranslation": "나는 절대 포기하지 않는다.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v283",
+    "word": "sometimes",
+    "meaning": "가끔",
+    "example": "Sometimes I work from home.",
+    "exampleTranslation": "가끔 집에서 일한다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v284",
+    "word": "usually",
+    "meaning": "보통",
+    "example": "I usually wake up at 7.",
+    "exampleTranslation": "보통 7시에 일어난다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v285",
+    "word": "often",
+    "meaning": "자주",
+    "example": "We often go out for dinner.",
+    "exampleTranslation": "우리는 자주 외식한다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v286",
+    "word": "rarely",
+    "meaning": "드물게",
+    "example": "I rarely drink coffee.",
+    "exampleTranslation": "나는 커피를 드물게 마신다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v287",
+    "word": "believe",
+    "meaning": "믿다",
+    "example": "I believe you can do it.",
+    "exampleTranslation": "너라면 할 수 있다고 믿어.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v288",
+    "word": "remember",
+    "meaning": "기억하다",
+    "example": "Do you remember our first trip?",
+    "exampleTranslation": "우리 첫 여행 기억해?",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v289",
+    "word": "forget",
+    "meaning": "잊다",
+    "example": "Don't forget to call me.",
+    "exampleTranslation": "나한테 전화하는 거 잊지 마.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v290",
+    "word": "know",
+    "meaning": "알다",
+    "example": "I know exactly what you mean.",
+    "exampleTranslation": "네가 무슨 뜻인지 정확히 알아.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v291",
+    "word": "understand",
+    "meaning": "이해하다",
+    "example": "I don't understand the instructions.",
+    "exampleTranslation": "지시사항을 이해 못 하겠어.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v292",
+    "word": "think",
+    "meaning": "생각하다",
+    "example": "What do you think about the new plan?",
+    "exampleTranslation": "새 계획에 대해 어떻게 생각해?",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v293",
+    "word": "feel",
+    "meaning": "느끼다",
+    "example": "I feel really happy today.",
+    "exampleTranslation": "오늘 정말 행복한 기분이야.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v294",
+    "word": "seem",
+    "meaning": "보이다",
+    "example": "It seems like a good idea.",
+    "exampleTranslation": "좋은 아이디어처럼 보인다.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v295",
+    "word": "appear",
+    "meaning": "나타나다",
+    "example": "He didn't appear at the meeting.",
+    "exampleTranslation": "그는 회의에 나타나지 않았다.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v296",
+    "word": "become",
+    "meaning": "되다",
+    "example": "She wants to become a doctor.",
+    "exampleTranslation": "그녀는 의사가 되고 싶어한다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v297",
+    "word": "change",
+    "meaning": "변하다",
+    "example": "Things change quickly in tech.",
+    "exampleTranslation": "기술 분야에서는 상황이 빠르게 변한다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v298",
+    "word": "improve",
+    "meaning": "개선하다",
+    "example": "We need to improve customer service.",
+    "exampleTranslation": "고객 서비스를 개선해야 한다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v299",
+    "word": "create",
+    "meaning": "만들다",
+    "example": "Let's create a new marketing strategy.",
+    "exampleTranslation": "새 마케팅 전략을 만들자.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v300",
+    "word": "build",
+    "meaning": "쌓다, 건설하다",
+    "example": "It takes time to build trust.",
+    "exampleTranslation": "신뢰를 쌓는 데는 시간이 걸린다.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "v301",
+    "word": "design",
+    "meaning": "설계하다",
+    "example": "She designed the whole website.",
+    "exampleTranslation": "그녀가 웹사이트 전체를 디자인했다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v302",
+    "word": "despite",
+    "meaning": "에도 불구하고",
+    "example": "Despite the rain, we went hiking.",
+    "exampleTranslation": "비가 왔음에도 불구하고 등산을 갔다.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v303",
+    "word": "during",
+    "meaning": "~동안",
+    "example": "I studied English during my vacation.",
+    "exampleTranslation": "휴가 동안 영어를 공부했다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v304",
+    "word": "except",
+    "meaning": "~을 제외하고",
+    "example": "Everyone came except John.",
+    "exampleTranslation": "존을 제외하고 모두 왔다.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v305",
+    "word": "include",
+    "meaning": "포함하다",
+    "example": "The price includes tax.",
+    "exampleTranslation": "가격에 세금이 포함되어 있다.",
+    "level": "intermediate",
+    "category": "travel"
+  },
+  {
+    "id": "v306",
+    "word": "instead",
+    "meaning": "대신에",
+    "example": "Let's go to the park instead of the mall.",
+    "exampleTranslation": "쇼핑몰 대신 공원에 가자.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v307",
+    "word": "although",
+    "meaning": "비록 ~일지라도",
+    "example": "Although it was expensive, I bought it.",
+    "exampleTranslation": "비싸긴 했지만 샀다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v308",
+    "word": "because",
+    "meaning": "때문에",
+    "example": "I stayed home because I was sick.",
+    "exampleTranslation": "아파서 집에 있었다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v309",
+    "word": "since",
+    "meaning": "~이후로",
+    "example": "I've been learning English since 2020.",
+    "exampleTranslation": "2020년부터 영어를 배우고 있다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v310",
+    "word": "while",
+    "meaning": "~하는 동안",
+    "example": "I listen to music while working.",
+    "exampleTranslation": "일하면서 음악을 듣는다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v311",
+    "word": "whether",
+    "meaning": "~인지 아닌지",
+    "example": "I don't know whether to go or not.",
+    "exampleTranslation": "갈지 말지 모르겠어.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v312",
+    "word": "unless",
+    "meaning": "~하지 않는 한",
+    "example": "I won't go unless you come with me.",
+    "exampleTranslation": "너와 함께 가지 않는 한 안 갈 거야.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v313",
+    "word": "once",
+    "meaning": "일단 ~하면",
+    "example": "Once you start, you'll enjoy it.",
+    "exampleTranslation": "일단 시작하면 즐길 거야.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v314",
+    "word": "after",
+    "meaning": "~후에",
+    "example": "We'll talk after the meeting.",
+    "exampleTranslation": "회의 후에 이야기하자.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v315",
+    "word": "before",
+    "meaning": "~전에",
+    "example": "Call me before you leave.",
+    "exampleTranslation": "떠나기 전에 전화해.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v316",
+    "word": "until",
+    "meaning": "~까지",
+    "example": "Wait until I finish.",
+    "exampleTranslation": "내가 끝날 때까지 기다려.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v317",
+    "word": "through",
+    "meaning": "~을 통해",
+    "example": "I learned a lot through this experience.",
+    "exampleTranslation": "이 경험을 통해 많은 걸 배웠다.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v318",
+    "word": "across",
+    "meaning": "~을 가로질러",
+    "example": "She traveled across Europe.",
+    "exampleTranslation": "그녀는 유럽을 가로질러 여행했다.",
+    "level": "intermediate",
+    "category": "travel"
+  },
+  {
+    "id": "v319",
+    "word": "among",
+    "meaning": "~중에",
+    "example": "She is among the best in the team.",
+    "exampleTranslation": "그녀는 팀에서 최고 중 하나이다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v320",
+    "word": "between",
+    "meaning": "~사이에",
+    "example": "Choose between these two options.",
+    "exampleTranslation": "이 두 옵션 중에서 선택해.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v321",
+    "word": "without",
+    "meaning": "~없이",
+    "example": "I can't do it without your help.",
+    "exampleTranslation": "네 도움 없이 할 수 없어.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v322",
+    "word": "within",
+    "meaning": "~이내에",
+    "example": "Finish the report within two days.",
+    "exampleTranslation": "이틀 안에 보고서를 끝내.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v323",
+    "word": "outside",
+    "meaning": "밖의",
+    "example": "It's cold outside.",
+    "exampleTranslation": "밖이 춥다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v324",
+    "word": "inside",
+    "meaning": "안의",
+    "example": "Stay inside during the storm.",
+    "exampleTranslation": "폭풍 동안 안에서 있어.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v325",
+    "word": "above",
+    "meaning": "~위에",
+    "example": "The plane flew above the clouds.",
+    "exampleTranslation": "비행기가 구름 위를 날았다.",
+    "level": "intermediate",
+    "category": "travel"
+  },
+  {
+    "id": "v326",
+    "word": "below",
+    "meaning": "~아래에",
+    "example": "The temperature is below freezing.",
+    "exampleTranslation": "기온이 영하이다.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v327",
+    "word": "behind",
+    "meaning": "~뒤에",
+    "example": "The answer is behind the question.",
+    "exampleTranslation": "답은 질문 뒤에 있다.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v328",
+    "word": "beside",
+    "meaning": "~옆에",
+    "example": "Sit beside me.",
+    "exampleTranslation": "내 옆에 앉아.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v329",
+    "word": "near",
+    "meaning": "~근처에",
+    "example": "The hotel is near the beach.",
+    "exampleTranslation": "호텔이 해변 근처에 있다.",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "v330",
+    "word": "far",
+    "meaning": "멀리",
+    "example": "The airport is far from here.",
+    "exampleTranslation": "공항이 여기서 멀다.",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "v331",
+    "word": "close",
+    "meaning": "가까운",
+    "example": "The station is close to my house.",
+    "exampleTranslation": "역이 집에서 가깝다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v332",
+    "word": "next",
+    "meaning": "다음",
+    "example": "See you next week.",
+    "exampleTranslation": "다음 주에 보자.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v333",
+    "word": "last",
+    "meaning": "마지막",
+    "example": "This is my last chance.",
+    "exampleTranslation": "이게 마지막 기회야.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v334",
+    "word": "first",
+    "meaning": "첫 번째",
+    "example": "First, let me introduce myself.",
+    "exampleTranslation": "먼저 자기소개를 하겠다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v335",
+    "word": "second",
+    "meaning": "두 번째",
+    "example": "Second, we need more data.",
+    "exampleTranslation": "두 번째로, 더 많은 데이터가 필요하다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v336",
+    "word": "third",
+    "meaning": "세 번째",
+    "example": "Third, the budget is approved.",
+    "exampleTranslation": "세 번째로, 예산이 승인되었다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v337",
+    "word": "early",
+    "meaning": "일찍",
+    "example": "I arrived early to get a good seat.",
+    "exampleTranslation": "좋은 자리를 얻으려고 일찍 도착했다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v338",
+    "word": "late",
+    "meaning": "늦은",
+    "example": "Sorry I'm late.",
+    "exampleTranslation": "늦어서 미안.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v339",
+    "word": "soon",
+    "meaning": "곧",
+    "example": "I'll call you back soon.",
+    "exampleTranslation": "곧 다시 전화할게.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v340",
+    "word": "later",
+    "meaning": "나중에",
+    "example": "We'll discuss it later.",
+    "exampleTranslation": "나중에 논의하자.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v341",
+    "word": "now",
+    "meaning": "지금",
+    "example": "I need the report now.",
+    "exampleTranslation": "지금 보고서가 필요해.",
+    "level": "beginner",
+    "category": "business"
+  },
+  {
+    "id": "v342",
+    "word": "today",
+    "meaning": "오늘",
+    "example": "Today is a beautiful day.",
+    "exampleTranslation": "오늘은 날씨가 좋다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v343",
+    "word": "tomorrow",
+    "meaning": "내일",
+    "example": "See you tomorrow.",
+    "exampleTranslation": "내일 봐.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v344",
+    "word": "week",
+    "meaning": "주",
+    "example": "I'm busy this week.",
+    "exampleTranslation": "이번 주 바빠.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v345",
+    "word": "month",
+    "meaning": "달",
+    "example": "The project will take two months.",
+    "exampleTranslation": "프로젝트는 두 달 걸릴 거야.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v346",
+    "word": "year",
+    "meaning": "년",
+    "example": "This is my first year here.",
+    "exampleTranslation": "여기 온 지 첫 해다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v347",
+    "word": "time",
+    "meaning": "시간",
+    "example": "We don't have much time left.",
+    "exampleTranslation": "시간이 많이 남지 않았다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v348",
+    "word": "minute",
+    "meaning": "분",
+    "example": "I'll be there in five minutes.",
+    "exampleTranslation": "5분 후에 갈게.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v349",
+    "word": "hour",
+    "meaning": "시간",
+    "example": "The meeting lasted two hours.",
+    "exampleTranslation": "회의가 두 시간 걸렸다.",
+    "level": "beginner",
+    "category": "business"
+  },
+  {
+    "id": "v350",
+    "word": "day",
+    "meaning": "날",
+    "example": "Have a nice day!",
+    "exampleTranslation": "좋은 하루 되세요!",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v351",
+    "word": "night",
+    "meaning": "밤",
+    "example": "Good night, sleep well.",
+    "exampleTranslation": "잘 자, 좋은 밤.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v352",
+    "word": "morning",
+    "meaning": "아침",
+    "example": "I drink coffee every morning.",
+    "exampleTranslation": "매일 아침 커피를 마신다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v353",
+    "word": "afternoon",
+    "meaning": "오후",
+    "example": "Let's meet in the afternoon.",
+    "exampleTranslation": "오후에 만나자.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v354",
+    "word": "evening",
+    "meaning": "저녁",
+    "example": "I usually relax in the evening.",
+    "exampleTranslation": "보통 저녁에 쉬는다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v355",
+    "word": "weekend",
+    "meaning": "주말",
+    "example": "What are you doing this weekend?",
+    "exampleTranslation": "이번 주말에 뭐 할 거야?",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v356",
+    "word": "holiday",
+    "meaning": "휴일",
+    "example": "We're closed on public holidays.",
+    "exampleTranslation": "공휴일에는 문을 닫습니다.",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "v357",
+    "word": "birthday",
+    "meaning": "생일",
+    "example": "Happy birthday to you!",
+    "exampleTranslation": "생일 축하해!",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v358",
+    "word": "celebrate",
+    "meaning": "축하하다",
+    "example": "Let's celebrate your promotion.",
+    "exampleTranslation": "승진 축하하자.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v359",
+    "word": "party",
+    "meaning": "파티",
+    "example": "We're having a party on Friday.",
+    "exampleTranslation": "금요일에 파티를 열 거야.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v360",
+    "word": "gift",
+    "meaning": "선물",
+    "example": "I bought a gift for her birthday.",
+    "exampleTranslation": "그녀 생일 선물을 샀다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v361",
+    "word": "surprise",
+    "meaning": "놀라게 하다",
+    "example": "It was a nice surprise.",
+    "exampleTranslation": "기분 좋은 놀라움이었다.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v362",
+    "word": "excited",
+    "meaning": "흥분된",
+    "example": "I'm so excited about the trip.",
+    "exampleTranslation": "여행 생각에 너무 신나.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v363",
+    "word": "nervous",
+    "meaning": "긴장된",
+    "example": "I feel nervous before interviews.",
+    "exampleTranslation": "면접 전에 긴장된다.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "v364",
+    "word": "relaxed",
+    "meaning": "편안한",
+    "example": "I feel relaxed after yoga.",
+    "exampleTranslation": "요가 후에 편안해진다.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v365",
+    "word": "tired",
+    "meaning": "피곤한",
+    "example": "I'm really tired today.",
+    "exampleTranslation": "오늘 정말 피곤해.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v366",
+    "word": "hungry",
+    "meaning": "배고픈",
+    "example": "I'm hungry. Let's eat.",
+    "exampleTranslation": "배고파. 먹자.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v367",
+    "word": "thirsty",
+    "meaning": "목마른",
+    "example": "I'm thirsty after the run.",
+    "exampleTranslation": "달리기 후에 목이 마르다.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v368",
+    "word": "happy",
+    "meaning": "행복한",
+    "example": "She looks really happy.",
+    "exampleTranslation": "그녀가 정말 행복해 보인다.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v369",
+    "word": "sad",
+    "meaning": "슬픈",
+    "example": "I feel sad when I see that movie.",
+    "exampleTranslation": "그 영화를 보면 슬퍼진다.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v370",
+    "word": "angry",
+    "meaning": "화난",
+    "example": "Don't be angry with me.",
+    "exampleTranslation": "나한테 화내지 마.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v371",
+    "word": "scared",
+    "meaning": "무서운",
+    "example": "I'm scared of spiders.",
+    "exampleTranslation": "거미가 무서워.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v372",
+    "word": "bored",
+    "meaning": "지루한",
+    "example": "I'm bored with this movie.",
+    "exampleTranslation": "이 영화 지루해.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v373",
+    "word": "interested",
+    "meaning": "관심 있는",
+    "example": "I'm interested in learning Korean.",
+    "exampleTranslation": "한국어 배우는 데 관심 있어.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v374",
+    "word": "surprised",
+    "meaning": "놀란",
+    "example": "I was surprised by the news.",
+    "exampleTranslation": "그 소식에 놀랐다.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v375",
+    "word": "worried",
+    "meaning": "걱정되는",
+    "example": "I'm worried about the exam.",
+    "exampleTranslation": "시험 때문에 걱정돼.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "v376",
+    "word": "confused",
+    "meaning": "혼란스러운",
+    "example": "I'm confused about the directions.",
+    "exampleTranslation": "길 안내가 혼란스러워.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v377",
+    "word": "proud",
+    "meaning": "자랑스러운",
+    "example": "I'm proud of my team.",
+    "exampleTranslation": "우리 팀이 자랑스러워.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v378",
+    "word": "grateful",
+    "meaning": "감사한",
+    "example": "I'm grateful for your support.",
+    "exampleTranslation": "네 지원에 감사해.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "v379",
+    "word": "sorry",
+    "meaning": "미안한",
+    "example": "I'm sorry for the mistake.",
+    "exampleTranslation": "실수해서 미안해.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v380",
+    "word": "thankful",
+    "meaning": "감사하는",
+    "example": "I'm thankful for this opportunity.",
+    "exampleTranslation": "이 기회에 감사한다.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "v381",
+    "word": "hope",
+    "meaning": "희망하다",
+    "example": "I hope everything goes well.",
+    "exampleTranslation": "모든 게 잘 되길 바래.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "v382",
+    "word": "wish",
+    "meaning": "바라다",
+    "example": "I wish you a happy new year.",
+    "exampleTranslation": "새해 복 많이 받아.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v383",
+    "word": "dream",
+    "meaning": "꿈",
+    "example": "My dream is to travel the world.",
+    "exampleTranslation": "내 꿈은 세계 여행이야.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v384",
+    "word": "goal",
+    "meaning": "목표",
+    "example": "Set a clear goal for this year.",
+    "exampleTranslation": "올해 명확한 목표를 세워.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v385",
+    "word": "plan",
+    "meaning": "계획",
+    "example": "What's your plan for the weekend?",
+    "exampleTranslation": "주말 계획이 뭐야?",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v386",
+    "word": "future",
+    "meaning": "미래",
+    "example": "I'm excited about the future.",
+    "exampleTranslation": "미래가 기대돼.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v387",
+    "word": "past",
+    "meaning": "과거",
+    "example": "Don't dwell on the past.",
+    "exampleTranslation": "과거에 집착하지 마.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "v388",
+    "word": "present",
+    "meaning": "현재",
+    "example": "Live in the present moment.",
+    "exampleTranslation": "현재 순간을 살아.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v389",
+    "word": "moment",
+    "meaning": "순간",
+    "example": "Enjoy every moment.",
+    "exampleTranslation": "매 순간을 즐겨.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v390",
+    "word": "memory",
+    "meaning": "기억",
+    "example": "This trip created great memories.",
+    "exampleTranslation": "이 여행은 좋은 추억을 만들었다.",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "v391",
+    "word": "experience",
+    "meaning": "경험",
+    "example": "Traveling is a wonderful experience.",
+    "exampleTranslation": "여행은 멋진 경험이다.",
+    "level": "intermediate",
+    "category": "travel"
+  },
+  {
+    "id": "v392",
+    "word": "lesson",
+    "meaning": "교훈",
+    "example": "That was a good lesson for me.",
+    "exampleTranslation": "나에게 좋은 교훈이었다.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v393",
+    "word": "problem",
+    "meaning": "문제",
+    "example": "We solved the problem quickly.",
+    "exampleTranslation": "문제를 빠르게 해결했다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v394",
+    "word": "solution",
+    "meaning": "해결책",
+    "example": "What's the best solution?",
+    "exampleTranslation": "최선의 해결책은 뭐야?",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "v395",
+    "word": "idea",
+    "meaning": "아이디어",
+    "example": "I have a better idea.",
+    "exampleTranslation": "더 좋은 아이디어가 있어.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "v396",
+    "word": "thought",
+    "meaning": "생각",
+    "example": "That's an interesting thought.",
+    "exampleTranslation": "흥미로운 생각이네.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v397",
+    "word": "opinion",
+    "meaning": "의견",
+    "example": "What's your opinion on this?",
+    "exampleTranslation": "이거에 대한 네 의견은 뭐야?",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v398",
+    "word": "view",
+    "meaning": "견해",
+    "example": "I respect your point of view.",
+    "exampleTranslation": "네 관점을 존중해.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v399",
+    "word": "point",
+    "meaning": "요점",
+    "example": "That's a good point.",
+    "exampleTranslation": "좋은 지적이야.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "v400",
+    "word": "reason",
+    "meaning": "이유",
+    "example": "Give me one good reason.",
+    "exampleTranslation": "한 가지 좋은 이유를 말해봐.",
+    "level": "beginner",
+    "category": "daily"
+  }
+]
