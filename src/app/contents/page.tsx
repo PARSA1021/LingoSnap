@@ -8,13 +8,14 @@ import { useLearningStore } from '@/store/useLearningStore';
 import { BottomSheet } from '@/components/ui/BottomSheet';
 import { getNormalizedWordData, NormalizedWordData } from '@/lib/dictionary';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Lightbulb } from 'lucide-react';
 
 export default function ContentsPage() {
   const { contentFilter, setContentFilter } = useLearningStore();
   const [selectedWord, setSelectedWord] = React.useState<string | null>(null);
   const [wordData, setWordData] = React.useState<NormalizedWordData | null>(null);
   const [isLoading, setIsLoading] = React.useState(false);
+  const [isQuizMode, setIsQuizMode] = React.useState(false);
 
   const filteredContents = React.useMemo(() => {
     if (contentFilter === 'all') return mediaContents;
@@ -33,7 +34,7 @@ export default function ContentsPage() {
       setWordData({
         id: 'error',
         word: word,
-        meaning: '뜻을 불러오지 못했습니다. 네트워크 상태를 확인하세요.',
+        meaning: '뜻을 불러오지 못했습니다.',
         example: '',
         exampleTranslation: '',
         phonetic: '',
@@ -47,57 +48,52 @@ export default function ContentsPage() {
   };
 
   return (
-    <main className="min-h-screen flex flex-col bg-slate-50 overscroll-y-auto pb-[calc(env(safe-area-inset-bottom)+6rem)]">
-      
-      {/* Scrollable Main Area */}
-      <div className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 pt-6">
+    <main className="min-h-screen flex flex-col bg-background pb-20 dot-pattern">
+      <div className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-8 pt-8">
         
-        {/* Inline Filters */}
-        <div className="flex gap-2 mb-8 overflow-x-auto pb-4 scrollbar-none sticky top-20 z-20 bg-slate-50/80 backdrop-blur-xl -mx-4 px-4 sm:-mx-6 sm:px-6 py-2">
-          <FilterChip 
-            label="전체보기" 
-            isActive={contentFilter === 'all'} 
-            onClick={() => setContentFilter('all')} 
-          />
-          <FilterChip 
-            label="영화 🎬" 
-            isActive={contentFilter === 'movie'} 
-            onClick={() => setContentFilter('movie')} 
-          />
-          <FilterChip 
-            label="드라마 📺" 
-            isActive={contentFilter === 'drama'} 
-            onClick={() => setContentFilter('drama')} 
-          />
+        {/* Tactile Control Bar */}
+        <div className="flex flex-col sm:flex-row gap-6 mb-12 sticky top-20 z-20 bg-surface border-b-4 border-border -mx-4 px-6 sm:-mx-8 sm:px-10 py-6 items-center justify-between shadow-sm">
+          <div className="flex gap-2 overflow-x-auto scrollbar-none w-full sm:w-auto">
+            <FilterChip label="전체" isActive={contentFilter === 'all'} onClick={() => setContentFilter('all')} />
+            <FilterChip label="영화 🎬" isActive={contentFilter === 'movie'} onClick={() => setContentFilter('movie')} />
+            <FilterChip label="드라마 📺" isActive={contentFilter === 'drama'} onClick={() => setContentFilter('drama')} />
+          </div>
+
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setIsQuizMode(!isQuizMode)}
+            className={`flex items-center gap-3 px-8 py-3 rounded-2xl font-black text-sm transition-all border-b-4 active:border-b-0 active:translate-y-1 ${
+              isQuizMode 
+                ? 'bg-primary text-white border-primary/30' 
+                : 'bg-muted text-muted-foreground border-border hover:bg-muted/80'
+            }`}
+          >
+            <Lightbulb className={`w-5 h-5 ${isQuizMode ? 'fill-current animate-pulse' : ''}`} />
+            퀴즈 모드 {isQuizMode ? 'ON' : 'OFF'}
+          </motion.button>
         </div>
 
-        {/* Responsive Grid Feed */}
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
+        {/* Tactile Feed */}
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-12">
           <AnimatePresence mode="popLayout">
             {filteredContents.map((content) => (
               <motion.div
                 key={content.id}
                 layout
-                initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ type: 'spring', bounce: 0.3 }}
-                className="h-full"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
               >
                 <ContentCard 
                   content={content} 
-                  onWordClick={handleWordClick} 
+                  onWordClick={handleWordClick}
+                  isQuizMode={isQuizMode}
                 />
               </motion.div>
             ))}
           </AnimatePresence>
         </motion.div>
-        
-        {filteredContents.length === 0 && (
-          <div className="w-full py-24 flex justify-center">
-            <span className="text-slate-400 font-bold">콘텐츠가 없습니다.</span>
-          </div>
-        )}
       </div>
 
       <BottomSheet 
@@ -105,34 +101,30 @@ export default function ContentsPage() {
         onClose={() => setSelectedWord(null)}
         title={selectedWord || ''}
       >
-        <div className="min-h-[200px] flex flex-col pt-2">
+        <div className="min-h-[250px] flex flex-col pt-4">
           {isLoading ? (
-            <div className="flex-1 flex flex-col items-center justify-center text-slate-400 gap-4 py-8">
-              <Loader2 className="w-8 h-8 animate-spin text-blue-500" />
-              <p className="font-medium animate-pulse">실시간 번역 및 사전 검색 중...</p>
+            <div className="flex-1 flex flex-col items-center justify-center py-12 gap-4">
+              <Loader2 className="w-12 h-12 animate-spin text-primary opacity-40" />
+              <p className="font-black text-muted-foreground uppercase tracking-widest text-sm">Searching...</p>
             </div>
           ) : wordData ? (
-            <motion.div 
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="flex flex-col gap-4"
-            >
-              <div className="bg-blue-50/50 rounded-2xl p-6 border border-blue-100">
-                 <h4 className="font-bold text-blue-400 text-xs mb-2 uppercase tracking-wide">한국어 의미</h4>
-                 <p className="text-2xl font-extrabold text-slate-800 break-words">{wordData.meaning}</p>
+            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col gap-6">
+              <div className="bg-muted rounded-3xl p-8 border-2 border-border shadow-inner">
+                 <h4 className="font-black text-primary text-xs mb-2 uppercase tracking-widest">한국어 의미</h4>
+                 <p className="text-3xl font-black text-foreground break-keep">{wordData.meaning}</p>
                  {wordData.level && (
-                   <span className="inline-block mt-3 px-3 py-1 bg-white rounded-full text-xs font-bold text-slate-400 shadow-sm border border-slate-100">
-                     Level: {wordData.level.toUpperCase()}
+                   <span className="inline-block mt-4 px-4 py-1.5 bg-white rounded-xl text-xs font-black text-primary border-2 border-primary/10">
+                     LV: {wordData.level.toUpperCase()}
                    </span>
                  )}
               </div>
               
               {wordData.example && (
-                <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
-                  <h4 className="font-bold text-slate-400 text-xs mb-2 uppercase tracking-wide">사전 예문</h4>
-                  <p className="text-lg font-medium text-slate-700 italic leading-snug">"{wordData.example}"</p>
+                <div className="bg-white rounded-3xl p-8 border-2 border-border shadow-sm">
+                  <h4 className="font-black text-muted-foreground text-xs mb-2 uppercase tracking-widest">실전 예문</h4>
+                  <p className="text-xl font-bold text-foreground italic leading-snug">"{wordData.example}"</p>
                   {wordData.exampleTranslation && (
-                    <p className="text-slate-500 font-medium mt-3 border-t border-slate-200/60 pt-3">{wordData.exampleTranslation}</p>
+                    <p className="text-muted-foreground font-bold text-lg mt-4 pt-4 border-t-2 border-dashed border-border">{wordData.exampleTranslation}</p>
                   )}
                 </div>
               )}
@@ -148,10 +140,10 @@ function FilterChip({ label, isActive, onClick }: { label: string, isActive: boo
   return (
     <button
       onClick={onClick}
-      className={`px-5 py-2.5 rounded-full font-extrabold text-[13px] sm:text-sm transition-all duration-300 focus:outline-none touch-manipulation whitespace-nowrap shrink-0 ${
+      className={`px-6 py-2.5 rounded-full font-black text-sm transition-all whitespace-nowrap shrink-0 border-b-4 active:border-b-0 active:translate-y-1 ${
         isActive 
-          ? 'bg-slate-800 text-white shadow-lg shadow-slate-200 ring-2 ring-slate-800 ring-offset-2 ring-offset-slate-50 scale-100' 
-          : 'bg-white text-slate-500 border-2 border-slate-100 hover:border-slate-300 hover:bg-slate-50 relative top-[2px]'
+          ? 'bg-accent text-accent-foreground border-accent-foreground/30 shadow-tactile' 
+          : 'bg-white text-muted-foreground border-border hover:bg-muted'
       }`}
     >
       {label}

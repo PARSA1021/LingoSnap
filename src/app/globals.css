@@ -1,54 +1,129 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #3b82f6; /* Blue 500 */
-  --color-primary-hover: #2563eb; /* Blue 600 */
-  --color-primary-active: #1d4ed8; /* Blue 700 */
-  --color-secondary: #f1f5f9; /* Slate 100 */
-  --color-secondary-hover: #e2e8f0; /* Slate 200 */
-  
-  --color-surface: #ffffff;
-  --color-surface-hover: #f8fafc;
-  --color-border: #e2e8f0;
-  
-  --color-text-primary: #0f172a;
-  --color-text-secondary: #64748b;
-  --color-text-muted: #94a3b8;
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-foreground: var(--surface-foreground);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
 
-  --color-success: #10b981;
-  --color-success-hover: #059669;
-  --color-error: #ef4444;
-  --color-error-hover: #dc2626;
+  /* Playful Duo/Cake Palette */
+  --color-success: #58CC02;
+  --color-success-foreground: #ffffff;
+  --color-error: #FF4B4B;
+  --color-error-foreground: #ffffff;
+  --color-warning: #FF9600;
+  --color-info: #1CB0F6;
 
-  /* Thumb zone and spacing overrides */
-  --radius-xl: 1rem;
+  /* Radius & Shadows - App Style */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
   --radius-2xl: 1.5rem;
   --radius-3xl: 2rem;
+  --radius-full: 9999px;
   
-  --shadow-soft: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
-  --shadow-elevated: 0 10px 30px -5px rgba(0, 0, 0, 0.08);
+  --shadow-tactile: 0 4px 0 0 rgba(0, 0, 0, 0.1);
+  --shadow-tactile-active: 0 0 0 0 transparent;
 }
 
 :root {
-  --background: #f8fafc;
-  --foreground: var(--color-text-primary);
+  --background: #FFFFFF;
+  --foreground: #3C3C3C;
+  
+  --primary: #1CB0F6; /* Sky Blue */
+  --primary-foreground: #FFFFFF;
+  
+  --secondary: #E5E5E5;
+  --secondary-foreground: #777777;
+  
+  --surface: #FFFFFF;
+  --surface-foreground: #3C3C3C;
+  
+  --border: #E5E5E5;
+  
+  --muted: #F7F7F7;
+  --muted-foreground: #AFAFAF;
+
+  --accent: #DDF4FF;
+  --accent-foreground: #1899D6;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0f172a;
-    --foreground: #f8fafc;
-  }
+.dark {
+  --background: #131F24;
+  --foreground: #FFFFFF;
+  
+  --primary: #1CB0F6;
+  --primary-foreground: #FFFFFF;
+  
+  --secondary: #37464F;
+  --secondary-foreground: #AFBBBF;
+  
+  --surface: #131F24;
+  --surface-foreground: #FFFFFF;
+  
+  --border: #37464F;
+  
+  --muted: #202F36;
+  --muted-foreground: #7D8E95;
+
+  --accent: #1B313B;
+  --accent-foreground: #1CB0F6;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: inherit;
+  transition: background-color 0.3s ease;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Custom interactive classes */
-.touch-zone-btn {
-  @apply rounded-2xl sm:rounded-3xl shadow-sm hover:shadow-soft active:shadow-none transition-all duration-200 border-b-4 active:border-b-0 active:translate-y-1;
+/* Duolingo/Cake Tactile Utilities */
+.btn-tactile {
+  border-bottom-width: 4px;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  transition: all 0.1s ease;
 }
+
+.btn-tactile:active {
+  border-bottom-width: 0;
+  transform: translateY(4px);
+}
+
+.card-tactile {
+  border: 2px solid var(--border);
+  border-bottom-width: 6px;
+  border-radius: 1.5rem;
+}
+
+.glass {
+  background-color: var(--surface);
+  border-bottom: 2px solid var(--border);
+}
+
+/* Simplified Layout Backgrounds */
+.bg-soft {
+  background-color: var(--muted);
+}
+
+.dot-pattern {
+  background-image: radial-gradient(var(--border) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Selection Highlight - Cleaner */
+.selection-highlight {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+}
+

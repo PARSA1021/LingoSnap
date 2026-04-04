@@ -21,7 +21,7 @@ export function BottomNav() {
     <motion.nav 
       initial={{ y: 100 }}
       animate={{ y: 0 }}
-      className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t-[3px] border-slate-100 pb-safe pb-4 sm:pb-6"
+      className="fixed bottom-0 left-0 right-0 z-50 bg-background border-t-[3px] border-border pb-safe pb-4 sm:pb-6"
     >
       <div className="max-w-3xl mx-auto flex justify-between items-end px-6 pt-3 relative">
         {tabs.map((tab) => {
@@ -36,20 +36,20 @@ export function BottomNav() {
               <div 
                 className={`relative px-4 py-2 rounded-2xl transition-all duration-300 ${
                   isActive 
-                    ? 'text-blue-600 bg-blue-50' 
-                    : 'text-slate-400 group-hover:text-slate-600 group-hover:bg-slate-50'
+                    ? 'text-primary bg-primary/10' 
+                    : 'text-muted-foreground group-hover:text-foreground group-hover:bg-muted'
                 }`}
               >
                 {isActive && (
                   <motion.div 
                     layoutId="bubble"
-                    className="absolute inset-0 bg-blue-100/50 rounded-2xl border-2 border-blue-200"
+                    className="absolute inset-0 bg-primary/20 rounded-2xl border-2 border-primary/30"
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}
                 <div className="relative z-10">{tab.icon}</div>
               </div>
-              <span className={`text-[11px] sm:text-xs font-black tracking-wide ${isActive ? 'text-blue-600' : 'text-slate-400'}`}>
+              <span className={`text-[11px] sm:text-xs font-black tracking-wide ${isActive ? 'text-primary' : 'text-muted-foreground'}`}>
                 {tab.name}
               </span>
             </Link>

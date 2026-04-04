@@ -59,9 +59,9 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
       onError: (err: string) => {
         console.error(err);
         if (err === 'not-allowed') {
-          setErrorMsg('마이크 접근 권한이 거부되었습니다. 브라우저 설정에서 마이크를 허용해주세요.');
+          setErrorMsg('마이크 접근 권한이 없어요.');
         } else {
-          setErrorMsg(`녹음 중 오류가 발생했습니다: ${err}`);
+          setErrorMsg(`오류 발생: ${err}`);
         }
       },
       onEnd: () => setIsRecording(false)
@@ -94,168 +94,116 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
   };
 
   return (
-    <Card className="w-full max-w-lg mx-auto overflow-visible bg-white border-b-[6px] border-slate-200 relative">
-      <div className="absolute top-4 right-4 z-10 flex gap-2">
+    <Card className="w-full max-w-lg mx-auto bg-surface card-tactile relative overflow-visible">
+      <div className="absolute top-4 right-4 z-20">
         <motion.button
-          whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => setQuizMode(!quizMode)}
-          className={`p-2.5 rounded-full transition-all border shadow-sm ${
+          className={`p-3 rounded-2xl transition-all border-b-4 active:border-b-0 active:translate-y-1 ${
             quizMode 
-              ? 'bg-amber-100 border-amber-200 text-amber-600 shadow-amber-100 active:bg-amber-200' 
-              : 'bg-white border-slate-100 text-slate-300 hover:text-amber-400'
+              ? 'bg-primary text-white border-primary/30' 
+              : 'bg-muted text-muted-foreground border-border'
           }`}
         >
           <Lightbulb className={`w-6 h-6 ${quizMode ? 'fill-current' : ''}`} />
         </motion.button>
       </div>
 
-      <CardContent className="p-6 sm:p-10 flex flex-col items-center text-center space-y-8 select-none">
+      <CardContent className="p-8 sm:p-12 flex flex-col items-center text-center space-y-10 select-none">
         
         <div className="space-y-6 w-full pt-4">
-          <p className="text-sm font-black text-emerald-500 uppercase tracking-widest bg-emerald-50 px-4 py-1.5 rounded-full w-fit mx-auto">
-            소리 내어 읽어보세요
-          </p>
-          <div className="relative">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-800 leading-snug break-keep flex flex-wrap justify-center gap-x-2 gap-y-3">
+           <p className="text-xs font-black text-primary uppercase tracking-[0.2em] bg-accent px-4 py-1.5 rounded-full w-fit mx-auto border-2 border-primary/20">소리 내어 읽어보세요</p>
+          <div className="bg-muted rounded-[2rem] p-8 border-2 border-border shadow-inner">
+            <h2 className="text-2xl sm:text-4xl font-black text-foreground leading-snug break-keep flex flex-wrap justify-center gap-2">
               {words.map((word, i) => {
                 const isHidden = hiddenWordIndices.includes(i);
                 return (
                   <motion.span
                     key={`${word}-${i}`}
                     onClick={() => handleWordClick(i)}
-                    className={`${isHidden ? 'bg-slate-100 text-slate-200 w-24 rounded-lg inline-block text-center ring-2 ring-slate-200/50 cursor-pointer' : ''}`}
+                    className={`${isHidden ? 'bg-white/80 text-transparent w-20 rounded-xl border-2 border-dashed border-border cursor-pointer' : ''}`}
                   >
                     {isHidden ? '?' : word}
                   </motion.span>
                 );
               })}
             </h2>
-            <div className="mt-8 flex justify-center">
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <div className="mt-8">
                 <Button
-                  variant="outline"
-                  size="sm"
-                  className="rounded-full px-6 h-12 text-slate-600 bg-white border border-slate-200 font-bold shadow-sm"
                   onClick={() => playTTS(expectedSentence)}
+                  className="rounded-2xl px-6 h-12 bg-white text-primary border-2 border-primary/10 shadow-sm font-black hover:bg-white/90"
                 >
-                  <Volume2 className="h-5 w-5 mr-3 text-blue-500" />
-                  원어민 발음 듣기
+                  <Volume2 className="h-5 w-5 mr-3" /> 발음 듣기
                 </Button>
-              </motion.div>
             </div>
           </div>
         </div>
 
         {/* Mic Control */}
-        <div className="relative flex flex-col items-center pt-6 pb-2">
-          <div className={`absolute -inset-8 bg-blue-100 rounded-full scale-0 transition-transform duration-700 ease-out ${isRecording ? 'scale-100 animate-pulse' : ''}`} />
-          <motion.div whileTap={{ scale: 0.85 }}>
+        <div className="relative flex flex-col items-center pt-4">
+          <motion.div whileTap={{ scale: 0.9 }}>
             <Button
-               size="xl"
-              variant={isRecording ? 'danger' : 'primary'}
-              className={`w-28 h-28 rounded-full relative shadow-[0_10px_40px_-10px_rgba(59,130,246,0.5)] ${isRecording ? 'shadow-red-500/50' : ''} border-none`}
+              className={`w-32 h-32 rounded-full relative transition-all duration-300 border-b-8 active:border-b-0 active:translate-y-2 ${
+                isRecording 
+                  ? 'bg-error text-white border-error/50 shadow-[0_8px_0_0_#D32F2F]' 
+                  : 'bg-primary text-white border-primary/50 shadow-[0_8px_0_0_#1899D6]'
+              }`}
               onClick={isRecording ? handleStopRecording : handleStartRecording}
             >
               {isRecording ? <Square className="w-12 h-12" /> : <Mic className="w-12 h-12" />}
             </Button>
           </motion.div>
-          <p className="mt-6 text-sm font-bold text-slate-400 min-h-[20px] tracking-wide">
-            {isRecording ? '듣고 있어요... 탭해서 완료' : '마이크를 눌러 시작하세요'}
+          <p className={`mt-10 font-black tracking-tight uppercase text-sm ${isRecording ? 'text-error animate-pulse' : 'text-muted-foreground'}`}>
+            {isRecording ? '듣는 중... 완료하려면 버튼 클릭' : '마이크를 눌러 시작'}
           </p>
-          {errorMsg && (
-            <motion.p 
-              initial={{ scale: 0.9, opacity: 0 }} 
-              animate={{ scale: 1, opacity: 1 }} 
-              className="mt-4 text-sm font-bold text-red-500 bg-red-50 px-5 py-3 rounded-2xl w-full max-w-xs break-keep shadow-sm"
-            >
-              {errorMsg}
-            </motion.p>
+          {errorMsg && <p className="mt-4 text-error font-bold text-sm bg-error/5 px-4 py-2 rounded-xl">{errorMsg}</p>}
+        </div>
+
+        {/* Feedback Section */}
+        <AnimatePresence mode="wait">
+          {transcript && (
+            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="w-full space-y-6">
+               <div className="bg-white p-6 rounded-3xl border-2 border-border shadow-sm text-left">
+                  <p className="text-[10px] font-black text-muted-foreground uppercase mb-2">당신이 말한 내용</p>
+                  <p className="text-xl font-black text-foreground">"{transcript.trim()}"</p>
+               </div>
+
+               {status === 'evaluating' && <Loader2 className="w-10 h-10 animate-spin text-primary mx-auto" />}
+               
+               {status === 'success' && (
+                 <div className="flex flex-col items-center gap-3 text-success">
+                    <CheckCircle2 className="w-16 h-16" />
+                    <p className="text-2xl font-black text-foreground">완벽해요!</p>
+                 </div>
+               )}
+
+               {status === 'failed' && (
+                 <div className="bg-error/5 p-6 rounded-3xl border-2 border-error/20">
+                    <div className="flex items-center gap-3 text-error mb-4 justify-center">
+                       <XCircle className="w-8 h-8" />
+                       <p className="text-xl font-black text-foreground">조금 더 노력이 필요해요</p>
+                    </div>
+                    {grammarErrors.length > 0 && (
+                      <ul className="text-left space-y-2 text-sm font-bold text-muted-foreground list-disc pl-5">
+                         {grammarErrors.map((e, idx) => <li key={idx}>{e.message}</li>)}
+                      </ul>
+                    )}
+                 </div>
+               )}
+
+               {status !== 'evaluating' && (
+                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                    <Button onClick={handleStartRecording} className="flex-1 h-14 bg-secondary text-secondary-foreground btn-tactile border-secondary-foreground/20 rounded-2xl font-black">
+                       <RotateCcw className="mr-2 h-5 w-5" /> 다시 시도
+                    </Button>
+                    <Button onClick={() => onContinue(status === 'success')} className="flex-[1.5] h-14 bg-primary text-white btn-tactile border-primary/30 rounded-2xl font-black text-lg">
+                       계속하기 <ArrowRight className="ml-2 h-6 w-6" />
+                    </Button>
+                 </div>
+               )}
+            </motion.div>
           )}
-        </div>
-
-        {/* Result Breakdown UI */}
-        <div className="w-full">
-          <AnimatePresence mode="popLayout">
-            {transcript && (
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                className="w-full space-y-5"
-              >
-                <div className="p-4 rounded-3xl flex flex-col gap-2 text-left bg-slate-50 border-2 border-slate-100 shadow-inner break-words">
-                  <p className="text-xs font-black text-slate-400 uppercase tracking-widest pl-2 pt-1">내 발음</p>
-                  <p className="text-slate-800 text-xl font-bold leading-snug px-2 pb-2">"{transcript.trim()}"</p>
-                </div>
-
-                <AnimatePresence mode="wait">
-                  {status === 'evaluating' && (
-                    <motion.div 
-                      key="eval"
-                      initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                      className="flex items-center justify-center gap-3 text-blue-600 flex-col py-6"
-                    >
-                      <Loader2 className="w-8 h-8 animate-spin" />
-                      <p className="text-sm font-bold tracking-wide">발음을 점검하고 있어요...</p>
-                    </motion.div>
-                  )}
-
-                  {status === 'success' && (
-                    <motion.div 
-                      key="succ"
-                      initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
-                      className="flex flex-col items-center justify-center gap-3 text-green-600 py-6"
-                    >
-                      <div className="p-4 bg-green-100 rounded-full shadow-inner mb-2">
-                        <CheckCircle2 className="w-12 h-12" />
-                      </div>
-                      <p className="font-extrabold text-2xl tracking-tight">완벽해요! 너무 잘했어요.</p>
-                    </motion.div>
-                  )}
-
-                  {status === 'failed' && (
-                    <motion.div 
-                      key="fail"
-                      initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }}
-                      className="space-y-4 py-4"
-                    >
-                      <div className="flex flex-col items-center justify-center gap-2 text-red-500">
-                        <XCircle className="w-10 h-10 mb-2 opacity-50" />
-                        <p className="font-extrabold text-xl">조금 아쉽네요. 다시 한번 해볼까요?</p>
-                      </div>
-                      
-                      {grammarErrors.length > 0 && (
-                        <div className="text-left bg-orange-50 border-[3px] border-orange-100 p-5 rounded-3xl text-orange-900 mt-4 shadow-sm">
-                          <p className="text-xs font-black uppercase tracking-widest text-orange-400 mb-2">피드백 가이드</p>
-                          <ul className="list-disc pl-5 space-y-1.5 text-base leading-relaxed font-bold">
-                            {grammarErrors.map((e, i) => (
-                              <li key={i}>{e.message}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-
-                {status !== 'evaluating' && status !== 'idle' && (
-                  <motion.div 
-                    initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
-                    className="flex flex-col sm:flex-row gap-3 pt-4 w-full"
-                  >
-                    <Button size="lg" variant="secondary" className="flex-1 bg-slate-100 text-slate-700 h-14" onClick={handleStartRecording}>
-                      <RotateCcw className="w-6 h-6 mr-2" /> 다시하기
-                    </Button>
-                    <Button size="lg" variant="primary" className="flex-1 h-14" onClick={() => onContinue(status === 'success')}>
-                      계속하기 <ArrowRight className="w-6 h-6 ml-2" />
-                    </Button>
-                  </motion.div>
-                )}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+        </AnimatePresence>
       </CardContent>
     </Card>
   );

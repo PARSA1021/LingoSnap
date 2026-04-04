@@ -3,32 +3,31 @@
 import * as React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ContentLine } from '@/data/contents';
-import { Play, Languages, Bookmark, Lightbulb, Check } from 'lucide-react';
+import { Play, Languages, Bookmark, Volume2, Search, X } from 'lucide-react';
 import { playTTS } from '@/lib/tts';
 import { useLearningStore } from '@/store/useLearningStore';
+import { cn } from '@/lib/utils/cn';
 
 interface ContentCardProps {
   content: ContentLine;
   onWordClick: (word: string) => void;
+  isQuizMode?: boolean;
 }
 
-export function ContentCard({ content, onWordClick }: ContentCardProps) {
+export function ContentCard({ content, onWordClick, isQuizMode = false }: ContentCardProps) {
   const { savedContents, toggleSavedContent } = useLearningStore();
   const [showKo, setShowKo] = React.useState(false);
-  const [quizMode, setQuizMode] = React.useState(false);
+  const [selection, setSelection] = React.useState<{ start: number; end: number } | null>(null);
+  const [isDragging, setIsDragging] = React.useState(false);
   
-  // Track hidden words for the quiz mode
   const [hiddenWordIndices, setHiddenWordIndices] = React.useState<number[]>([]);
 
-  // Split punctuation out so only the alphanumeric word is sent to API
-  const words = React.useMemo(() => content.line_en.split(' '), [content]);
-  
+  const words = React.useMemo(() => content.line_en.split(/\s+/), [content]);
   const isSaved = savedContents.includes(content.id);
 
-  // Initialize Quiz Mode by randomly picking 1-2 words to blank out
   React.useEffect(() => {
-    if (quizMode) {
-      const numToHide = words.length > 5 ? 2 : 1;
+    if (isQuizMode) {
+      const numToHide = Math.min(words.length, words.length > 5 ? 2 : 1);
       const indices: number[] = [];
       while (indices.length < numToHide) {
         const r = Math.floor(Math.random() * words.length);
@@ -38,17 +37,32 @@ export function ContentCard({ content, onWordClick }: ContentCardProps) {
     } else {
       setHiddenWordIndices([]);
     }
-  }, [quizMode, words]);
+  }, [isQuizMode, words]);
 
-  const handleWordClick = (wordRaw: string, index: number, e: React.MouseEvent) => {
-    e.stopPropagation(); 
-    
-    // If quiz mode and word is hidden, reveal it
-    if (quizMode && hiddenWordIndices.includes(index)) {
+  const handlePointerDown = (index: number) => {
+    setIsDragging(true);
+    setSelection({ start: index, end: index });
+  };
+
+  const handlePointerEnter = (index: number) => {
+    if (isDragging && selection) {
+      setSelection({ ...selection, end: index });
+    }
+  };
+
+  const handlePointerUp = () => {
+    setIsDragging(false);
+    if (selection && selection.start === selection.end) {
+      const wordRaw = words[selection.start];
+      handleSingleWordClick(wordRaw, selection.start);
+      setSelection(null);
+    }
+  };
+
+  const handleSingleWordClick = (wordRaw: string, index: number) => {
+    if (isQuizMode && hiddenWordIndices.includes(index)) {
       setHiddenWordIndices(prev => prev.filter(i => i !== index));
     }
-
-    // TTS & Search Lookup
     const cleanWord = wordRaw.replace(/[^a-zA-Z0-9-']/g, '');
     if (cleanWord) {
       playTTS(cleanWord, 'en-US'); 
@@ -56,120 +70,121 @@ export function ContentCard({ content, onWordClick }: ContentCardProps) {
     }
   };
 
+  const getSelectedText = () => {
+    if (!selection) return '';
+    const start = Math.min(selection.start, selection.end);
+    const end = Math.max(selection.start, selection.end);
+    return words.slice(start, end + 1).join(' ');
+  };
+
+  const clearSelection = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setSelection(null);
+  };
+
+  const isIndexSelected = (index: number) => {
+    if (!selection) return false;
+    const start = Math.min(selection.start, selection.end);
+    const end = Math.max(selection.start, selection.end);
+    return index >= start && index <= end;
+  };
+
   return (
     <motion.div
       layout
-      whileHover={{ y: -4 }}
-      className={`relative w-full h-full bg-white rounded-3xl p-5 sm:p-7 flex flex-col justify-between gap-6 cursor-pointer touch-manipulation transition-all duration-300 ${
-        showKo 
-          ? 'shadow-[0_15px_40px_-10px_rgb(59,130,246,0.15)] ring-2 ring-blue-100 overflow-hidden' 
-          : 'shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 hover:shadow-[0_12px_35px_rgb(0,0,0,0.06)]'
-      }`}
-      onClick={() => setShowKo(prev => !prev)}
+      className={cn(
+        "relative w-full h-full bg-surface card-tactile p-6 sm:p-8 flex flex-col justify-between gap-6 transition-all duration-300 overflow-visible select-none",
+        showKo ? "border-primary" : "border-border"
+      )}
+      onPointerLeave={() => setIsDragging(false)}
     >
-      <AnimatePresence>
-        {showKo && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="absolute inset-0 bg-gradient-to-br from-blue-50/60 via-white to-purple-50/40 pointer-events-none"
-          />
-        )}
-      </AnimatePresence>
-
-      <div className="relative z-10">
-        <div className="flex justify-between items-start mb-6">
-          <div className="flex flex-col items-start gap-2">
-            <span className={`text-[10px] sm:text-xs font-black tracking-widest uppercase px-3 py-1.5 rounded-xl ${
-              content.category === 'movie' 
-                ? 'bg-blue-50 text-blue-600' 
-                : 'bg-purple-50 text-purple-600'
-            }`}>
-              {content.category === 'movie' ? '🎬 MOVIE' : '📺 DRAMA'}
-            </span>
-            <div>
-              <h3 className="font-extrabold text-slate-800 text-lg sm:text-xl leading-tight">
-                {content.title}
-              </h3>
-              <p className="text-slate-500 font-bold text-sm mt-1">
-                {content.scene}
-              </p>
-            </div>
+      <div className="relative z-10 flex flex-col gap-6">
+        <div className="flex justify-between items-start">
+          <div className="flex flex-col gap-1">
+             <span className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">{content.category} • {content.scene}</span>
+             <h3 className="font-black text-foreground text-xl sm:text-2xl leading-tight tracking-tight">{content.title}</h3>
           </div>
-
-          <div className="flex gap-2 shrink-0">
-            <button
-              onClick={(e) => { e.stopPropagation(); setQuizMode(!quizMode); }}
-              className={`p-2.5 rounded-full transition-all touch-manipulation border ${
-                quizMode 
-                  ? 'bg-amber-50 border-amber-200 text-amber-500 active:bg-amber-100' 
-                  : 'bg-white border-slate-100 text-slate-400 hover:text-amber-500 hover:bg-slate-50'
-              }`}
-            >
-              <Lightbulb className={`w-4 h-4 sm:w-5 sm:h-5 ${quizMode ? 'fill-current' : ''}`} />
-            </button>
-            <button
-              onClick={(e) => { e.stopPropagation(); toggleSavedContent(content.id); }}
-              className={`p-2.5 rounded-full transition-all touch-manipulation border ${
-                isSaved 
-                  ? 'bg-rose-50 border-rose-200 text-rose-500 active:bg-rose-100' 
-                  : 'bg-white border-slate-100 text-slate-400 hover:text-rose-500 hover:bg-slate-50'
-              }`}
-            >
-              <Bookmark className={`w-4 h-4 sm:w-5 sm:h-5 ${isSaved ? 'fill-current' : ''}`} />
-            </button>
-          </div>
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            onClick={(e) => { e.stopPropagation(); toggleSavedContent(content.id); }}
+            className={cn(
+              "p-2.5 rounded-xl border-b-4 active:border-b-0 active:translate-y-1 transition-all",
+              isSaved ? "bg-error text-white border-error/30" : "bg-muted text-muted-foreground border-border"
+            )}
+          >
+            <Bookmark className={cn("w-5 h-5", isSaved && "fill-current")} />
+          </motion.button>
         </div>
 
-        <div className="flex flex-wrap gap-x-1.5 gap-y-3">
+        <div className="relative flex flex-wrap gap-x-1.5 gap-y-3 py-2 min-h-[80px]" onPointerUp={handlePointerUp}>
           {words.map((word, i) => {
             const isHidden = hiddenWordIndices.includes(i);
+            const isSelected = isIndexSelected(i);
+            
             return (
-              <motion.button
+              <motion.span
                 key={`${word}-${i}`}
-                whileHover={!isHidden ? { scale: 1.05, y: -1 } : { scale: 1.02 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={(e) => handleWordClick(word, i, e)}
-                className={`text-2xl sm:text-3xl font-extrabold transition-all duration-300 cursor-pointer outline-none touch-manipulation px-1.5 -mx-1.5 rounded-lg
-                  ${isHidden 
-                    ? 'bg-slate-100 text-slate-200 w-20 h-8 sm:h-10 ring-2 ring-slate-200/50 flex items-center justify-center' 
-                    : 'text-slate-800 hover:text-blue-600 hover:bg-blue-50 active:text-blue-700'
-                  }`}
+                onPointerDown={() => handlePointerDown(i)}
+                onPointerEnter={() => handlePointerEnter(i)}
+                className={cn(
+                  "text-xl sm:text-3xl font-black rounded-lg transition-all px-1.5 py-0.5 cursor-pointer",
+                  isHidden && !isSelected 
+                    ? "bg-muted text-transparent border-2 border-dashed border-border w-20 h-8 sm:h-10" 
+                    : "text-foreground",
+                  isSelected && "bg-accent text-accent-foreground ring-2 ring-accent-foreground/20 shadow-sm",
+                  !isSelected && !isHidden && "hover:text-primary active:scale-95"
+                )}
               >
-                {isHidden ? '' : word}
-              </motion.button>
+                {isHidden && !isSelected ? '' : word}
+              </motion.span>
             );
           })}
+
+          <AnimatePresence>
+            {selection && selection.start !== selection.end && !isDragging && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                className="absolute -top-14 left-1/2 -translate-x-1/2 z-50 bg-white border-2 border-primary/20 rounded-2xl shadow-tactile p-2 flex items-center gap-2 min-w-max"
+              >
+                 <button onClick={() => playTTS(getSelectedText(), 'en-US')} className="p-2 hover:bg-accent rounded-lg text-primary transition-colors"><Volume2 className="w-5 h-5" /></button>
+                 <button onClick={() => { onWordClick(getSelectedText()); setSelection(null); }} className="p-2 hover:bg-accent rounded-lg text-primary transition-colors"><Search className="w-5 h-5" /></button>
+                 <button onClick={clearSelection} className="p-2 hover:bg-error/10 rounded-lg text-error transition-colors"><X className="w-5 h-5" /></button>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         <AnimatePresence>
           {showKo && (
             <motion.div
-              initial={{ opacity: 0, y: 10, filter: 'blur(4px)' }}
-              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              exit={{ opacity: 0, y: -5, filter: 'blur(4px)' }}
-              className="mt-6 pt-5 border-t-[3px] border-dashed border-blue-100"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              className="p-5 bg-muted rounded-2xl border-2 border-border/50 text-lg font-black text-foreground break-keep leading-snug"
             >
-              <p className="text-lg sm:text-xl font-bold text-blue-600 leading-relaxed">
-                {content.line_ko}
-              </p>
+              {content.line_ko}
             </motion.div>
           )}
         </AnimatePresence>
       </div>
 
-      <div className="relative z-10 flex justify-between items-center mt-2 pt-4">
-        <div className="flex items-center gap-2 text-sm font-bold text-slate-400">
-          <Languages className="w-4 h-4" />
-          {showKo ? '터치하여 접기' : '터치하여 번역 보기'}
-        </div>
-        <button
-          onClick={(e) => { e.stopPropagation(); playTTS(content.line_en, 'en-US'); }}
-          className="p-3 bg-slate-800 text-white rounded-full hover:bg-blue-600 active:scale-95 transition-all shadow-md shadow-slate-200"
+      <div className="relative z-10 flex justify-between items-center pt-4 border-t border-border/20">
+        <button 
+          onClick={() => setShowKo(!showKo)}
+          className="text-xs font-black text-muted-foreground uppercase tracking-widest hover:text-primary transition-colors flex items-center gap-2"
         >
-          <Play className="w-5 h-5 fill-current ml-0.5" />
+          <Languages className="w-4 h-4" />
+          {showKo ? 'Hide Translation' : 'See Translation'}
         </button>
+        <motion.button
+          whileTap={{ scale: 0.9 }}
+          onClick={(e) => { e.stopPropagation(); playTTS(content.line_en, 'en-US'); }}
+          className="p-3 bg-primary text-white rounded-xl btn-tactile border-primary/30"
+        >
+          <Play className="w-5 h-5 fill-current" />
+        </motion.button>
       </div>
     </motion.div>
   );

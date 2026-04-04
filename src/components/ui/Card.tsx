@@ -13,7 +13,7 @@ export const Card = React.forwardRef<HTMLDivElement, HTMLMotionProps<"div">>(
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
       className={cn(
-        "rounded-3xl border-2 border-slate-100 bg-white text-slate-950 shadow-[0_8px_30px_rgb(0,0,0,0.04)]",
+        "rounded-3xl border-2 border-border bg-surface text-foreground shadow-soft",
         className
       )}
       {...props}
@@ -38,7 +38,7 @@ export const CardTitle = React.forwardRef<HTMLParagraphElement, React.HTMLAttrib
     <h3
       ref={ref}
       className={cn(
-        "text-2xl font-bold leading-none tracking-tight text-slate-800",
+        "text-2xl font-bold leading-none tracking-tight text-foreground",
         className
       )}
       {...props}
@@ -46,6 +46,7 @@ export const CardTitle = React.forwardRef<HTMLParagraphElement, React.HTMLAttrib
   )
 );
 CardTitle.displayName = "CardTitle";
+
 
 export const CardContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => (

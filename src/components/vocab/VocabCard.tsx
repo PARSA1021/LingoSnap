@@ -25,8 +25,6 @@ export function VocabCard({ word, onNext, onPrev, showPrev }: VocabCardProps) {
   const favorites = useLearningStore(state => state.favorites);
 
   React.useEffect(() => {
-    // Check if new word triggers auto quiz/meaning logic
-    // In quiz mode, meaning is ALWAYS shown but word is hidden.
     if (quizMode) {
        setShowMeaning(true);
     }
@@ -44,12 +42,10 @@ export function VocabCard({ word, onNext, onPrev, showPrev }: VocabCardProps) {
   }, [word.word]);
 
   const isFavorite = favorites.some(w => w.word === word.word);
-  
-  // When quiz mode is active and the user hasn't explicitly clicked "Reveal Word" (which we handle by just disabling quiz mode)
   const isWordHidden = quizMode;
 
   return (
-    <Card className="w-full max-w-lg mx-auto bg-white border-b-[6px] border-slate-200 relative transition-all duration-300">
+    <Card className="w-full max-w-lg mx-auto bg-surface card-tactile relative overflow-visible">
       {/* Top Absolute Actions */}
       <div className="absolute top-4 right-4 z-20 flex gap-2">
         <motion.button
@@ -60,10 +56,10 @@ export function VocabCard({ word, onNext, onPrev, showPrev }: VocabCardProps) {
             setQuizMode(newQuizMode);
             if (newQuizMode) setShowMeaning(true);
           }}
-          className={`p-2.5 rounded-full transition-all border shadow-sm ${
+          className={`p-3 rounded-2xl transition-all border-b-4 active:border-b-0 active:translate-y-1 ${
             quizMode 
-              ? 'bg-amber-100 border-amber-200 text-amber-600 shadow-amber-100 active:bg-amber-200' 
-              : 'bg-white border-slate-100 text-slate-300 hover:text-amber-400'
+              ? 'bg-primary text-white border-primary/30' 
+              : 'bg-muted text-muted-foreground border-border'
           }`}
         >
           <Lightbulb className={`w-6 h-6 ${quizMode ? 'fill-current' : ''}`} />
@@ -73,138 +69,100 @@ export function VocabCard({ word, onNext, onPrev, showPrev }: VocabCardProps) {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => toggleFavorite(word)}
-          className={`p-2.5 rounded-full transition-all border shadow-sm ${
+          className={`p-3 rounded-2xl transition-all border-b-4 active:border-b-0 active:translate-y-1 ${
             isFavorite 
-              ? 'bg-yellow-50 border-yellow-200 text-yellow-400 active:bg-yellow-100'
-              : 'bg-white border-slate-100 text-slate-300 hover:text-yellow-400'
+              ? 'bg-warning text-white border-warning/30'
+              : 'bg-muted text-muted-foreground border-border'
           }`}
         >
-          <Star 
-            className={`w-6 h-6 transition-colors duration-300 ${isFavorite ? 'fill-yellow-400 text-yellow-500' : ''}`} 
-          />
+          <Star className={`w-6 h-6 ${isFavorite ? 'fill-current' : ''}`} />
         </motion.button>
       </div>
 
-      <CardContent className="p-6 sm:p-10 flex flex-col items-center text-center space-y-8 select-none pt-12">
+      <CardContent className="p-8 sm:p-12 flex flex-col items-center text-center space-y-8 select-none">
         
         {/* Word Stage */}
-        <div className="space-y-4 w-full pt-2">
-          <motion.div 
-            initial={{ scale: 0.9, opacity: 0 }} 
-            animate={{ scale: 1, opacity: 1 }} 
-            className="flex flex-col items-center justify-center gap-5 relative min-h-[140px]"
-          >
+        <div className="w-full pt-8 min-h-[140px] flex items-center justify-center">
+          <AnimatePresence mode="wait">
             {isWordHidden ? (
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                key="hidden-word"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
                 onClick={() => setQuizMode(false)}
-                className="bg-slate-100 text-slate-400 w-full max-w-[240px] h-20 rounded-2xl flex items-center justify-center ring-4 ring-slate-200/50 cursor-pointer shadow-inner"
+                className="w-full max-w-[280px] h-24 bg-muted/30 border-2 border-dashed border-border rounded-3xl flex items-center justify-center gap-3 text-muted-foreground font-black text-xl hover:bg-muted/50 transition-colors"
               >
-                <div className="font-extrabold text-lg text-slate-400 uppercase tracking-widest flex items-center gap-2">
-                  <Check className="w-5 h-5" /> 터치하여 단어 보기
-                </div>
+                <Check className="w-6 h-6" /> 단어 확인하기
               </motion.button>
             ) : (
-              <>
-                <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tighter px-2 break-all">{word.word}</h2>
-                {word.phonetic && (
-                  <p className="text-slate-400 font-mono text-xl tracking-widest">{word.phonetic}</p>
-                )}
-                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                  <Button 
-                    variant="secondary" 
-                    size="icon" 
-                    className="rounded-full shadow-md w-14 h-14 bg-blue-50 text-blue-600 hover:bg-blue-100 hover:text-blue-700 border-none"
-                    onClick={() => playTTS(word.word)}
-                  >
-                    <Volume2 className="h-7 w-7" />
-                  </Button>
-                </motion.div>
-              </>
-            )}
-          </motion.div>
-        </div>
-
-        {/* Dynamic Definition Dropdown */}
-        <div className="w-full min-h-[140px] flex items-center justify-center">
-          <AnimatePresence mode="wait">
-            {!showMeaning && !quizMode ? (
-              <motion.div
-                key="hidden"
-                initial={{ opacity: 0, y: -10 }}
+              <motion.div 
+                key="visible-word"
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.2 }}
-                className="w-full"
+                className="flex flex-col items-center gap-4"
               >
+                <h2 className="text-5xl sm:text-7xl font-black text-foreground tracking-tighter">{word.word}</h2>
+                {word.phonetic && <p className="text-secondary-foreground font-mono text-xl">{word.phonetic}</p>}
                 <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="w-full py-8 text-xl font-bold bg-slate-50 border-dashed border-2 border-slate-300 text-slate-400 hover:bg-slate-100 hover:text-slate-600" 
-                  onClick={() => setShowMeaning(true)}
+                  onClick={() => playTTS(word.word)}
+                  className="w-14 h-14 rounded-2xl bg-primary text-white btn-tactile border-primary/30 flex items-center justify-center"
                 >
-                  눌러서 뜻 확인하기
+                  <Volume2 className="h-7 w-7" />
                 </Button>
-              </motion.div>
-            ) : (
-              <motion.div
-                key="revealed"
-                initial={{ opacity: 0, scale: 0.95, y: 10 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                className="w-full space-y-4 text-left"
-              >
-                <div className="bg-slate-50 border-2 border-slate-100 p-6 rounded-3xl shadow-inner break-keep transition-all">
-                  <div className="space-y-4">
-                    <div>
-                      <p className="text-xs font-black text-blue-400 uppercase tracking-widest mb-1.5">한국어 뜻</p>
-                      <p className="text-2xl sm:text-3xl font-extrabold text-slate-800 leading-snug">{word.meaning}</p>
-                    </div>
-
-                    <AnimatePresence>
-                      {englishDef && (
-                        <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }}>
-                          <p className="text-xs font-black text-indigo-400 uppercase tracking-widest mt-2 mb-1.5">English Meaning</p>
-                          <p className="text-lg font-bold text-slate-600 leading-relaxed bg-white border border-slate-100 p-3 rounded-2xl shadow-sm">
-                            {englishDef}
-                          </p>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                  
-                  {word.example && (
-                    <div className="pt-4 border-t-2 border-slate-100 space-y-2 mt-4">
-                      <p className="text-xs font-black text-blue-400 uppercase tracking-widest">예문</p>
-                      <p className="text-slate-600 font-medium text-lg italic bg-white p-3 rounded-xl shadow-sm border border-slate-50">"{word.example}"</p>
-                      {word.exampleTranslation && (
-                         <p className="text-slate-500 font-medium text-base px-1">↳ {word.exampleTranslation}</p>
-                      )}
-                    </div>
-                  )}
-                </div>
               </motion.div>
             )}
           </AnimatePresence>
         </div>
 
-        {/* Action Bottom Controls */}
-        <div className="w-full flex gap-3 sm:gap-4 flex-col sm:flex-row pt-4">
+        {/* Meaning Area */}
+        <div className="w-full min-h-[140px]">
+          <AnimatePresence mode="wait">
+            {!showMeaning && !quizMode ? (
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} key="hide-mean">
+                <Button 
+                  onClick={() => setShowMeaning(true)}
+                  className="w-full py-10 bg-accent text-accent-foreground border-accent-foreground/20 border-b-4 active:border-b-0 active:translate-y-1 rounded-[2rem] text-2xl font-black"
+                >
+                  의미 확인하기
+                </Button>
+              </motion.div>
+            ) : (
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                key="show-mean"
+                className="text-left space-y-4"
+              >
+                 <div className="bg-muted/50 p-6 rounded-3xl border-2 border-border/50">
+                    <p className="text-3xl font-black text-foreground mb-2 break-keep">{word.meaning}</p>
+                    {englishDef && <p className="text-base font-bold text-muted-foreground italic">"{englishDef}"</p>}
+                 </div>
+
+                 {word.example && (
+                   <div className="bg-primary/5 p-6 rounded-3xl border-l-8 border-primary">
+                      <p className="font-black text-lg italic text-foreground">"{word.example}"</p>
+                      {word.exampleTranslation && <p className="text-muted-foreground font-bold mt-1 text-sm">↳ {word.exampleTranslation}</p>}
+                   </div>
+                 )}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+
+        {/* Action Controls */}
+        <div className="w-full flex gap-3 pt-4">
           {showPrev && (
-            <Button variant="secondary" size="lg" onClick={onPrev} className="flex-[0.3] w-full bg-slate-200 text-slate-700 h-14">
-              <ArrowLeft className="h-6 w-6" />
+            <Button onClick={onPrev} className="flex-1 bg-secondary text-secondary-foreground btn-tactile border-secondary-foreground/20 h-16 rounded-2xl font-black text-lg">
+              <ArrowLeft className="mr-2" /> 이전
             </Button>
           )}
-          
           {onNext && (
             <Button 
-              size="lg" 
-              variant="primary" 
-              disabled={(!showMeaning && !quizMode) || (quizMode && isWordHidden)}
-              className="flex-1 w-full text-xl shadow-blue-500/30 shadow-lg disabled:opacity-40 disabled:shadow-none h-14" 
               onClick={onNext}
+              disabled={(!showMeaning && !quizMode) || (quizMode && isWordHidden)}
+              className="flex-[2] bg-primary text-white btn-tactile border-primary/30 h-16 rounded-2xl font-black text-xl"
             >
-              다음 <ArrowRight className="h-6 w-6 ml-2" />
+              다음 <ArrowRight className="ml-2" />
             </Button>
           )}
         </div>
