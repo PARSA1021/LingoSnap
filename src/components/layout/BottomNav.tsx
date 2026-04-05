@@ -18,12 +18,11 @@ export function BottomNav() {
   ];
 
   return (
-    <motion.nav 
-      initial={{ y: 100 }}
-      animate={{ y: 0 }}
-      className="fixed bottom-0 left-0 right-0 z-50 bg-background border-t-[3px] border-border pb-safe pb-4 sm:pb-6"
+    <nav 
+      aria-label="Main Navigation"
+      className="fixed bottom-0 left-0 right-0 z-50 bg-background border-t-[3px] border-border pb-safe pt-2 sm:pt-3"
     >
-      <div className="max-w-3xl mx-auto flex justify-between items-end px-6 pt-3 relative">
+      <div className="max-w-3xl mx-auto flex justify-between items-end px-6 relative">
         {tabs.map((tab) => {
           const isActive = pathname === tab.href || (tab.href !== '/' && pathname.startsWith(tab.href));
           
@@ -31,7 +30,9 @@ export function BottomNav() {
             <Link 
               key={tab.name} 
               href={tab.href}
-              className="flex flex-col items-center gap-1 group w-1/5 select-none touch-manipulation"
+              aria-label={tab.name}
+              aria-current={isActive ? 'page' : undefined}
+              className="flex flex-col items-center gap-1 group w-1/5 select-none touch-manipulation pb-2 sm:pb-4"
             >
               <div 
                 className={`relative px-4 py-2 rounded-2xl transition-all duration-300 ${
@@ -44,7 +45,7 @@ export function BottomNav() {
                   <motion.div 
                     layoutId="bubble"
                     className="absolute inset-0 bg-primary/20 rounded-2xl border-2 border-primary/30"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    transition={{ type: "spring", bounce: 0.1, duration: 0.4 }}
                   />
                 )}
                 <div className="relative z-10">{tab.icon}</div>
@@ -56,6 +57,6 @@ export function BottomNav() {
           );
         })}
       </div>
-    </motion.nav>
+    </nav>
   );
 }

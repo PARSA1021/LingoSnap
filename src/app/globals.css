@@ -16,12 +16,19 @@
   --color-accent-foreground: var(--accent-foreground);
 
   /* Playful Duo/Cake Palette */
-  --color-success: #58CC02;
-  --color-success-foreground: #ffffff;
-  --color-error: #FF4B4B;
-  --color-error-foreground: #ffffff;
-  --color-warning: #FF9600;
-  --color-info: #1CB0F6;
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-shadow: var(--success-shadow);
+  --color-error: var(--error);
+  --color-error-foreground: var(--error-foreground);
+  --color-error-shadow: var(--error-shadow);
+  --color-warning: var(--warning);
+  --color-warning-shadow: var(--warning-shadow);
+  --color-info: var(--info);
+  --color-info-shadow: var(--info-shadow);
+
+  --color-primary-shadow: var(--primary-shadow);
+  --color-secondary-shadow: var(--secondary-shadow);
 
   /* Radius & Shadows - App Style */
   --radius-sm: 0.5rem;
@@ -42,9 +49,11 @@
   
   --primary: #1CB0F6; /* Sky Blue */
   --primary-foreground: #FFFFFF;
+  --primary-shadow: #1899D6;
   
   --secondary: #E5E5E5;
   --secondary-foreground: #777777;
+  --secondary-shadow: #AFAFAF;
   
   --surface: #FFFFFF;
   --surface-foreground: #3C3C3C;
@@ -56,42 +65,70 @@
 
   --accent: #DDF4FF;
   --accent-foreground: #1899D6;
+
+  --success: #58CC02;
+  --success-shadow: #45A302;
+  --error: #FF4B4B;
+  --error-shadow: #D32F2F;
+  --warning: #FF9600;
+  --warning-shadow: #E17500;
+  --info: #1CB0F6;
+  --info-shadow: #1899D6;
 }
 
 .dark {
-  --background: #131F24;
+  --background: #0B1215; /* Deeper dark background */
   --foreground: #FFFFFF;
   
   --primary: #1CB0F6;
   --primary-foreground: #FFFFFF;
+  --primary-shadow: #1899D6;
   
-  --secondary: #37464F;
-  --secondary-foreground: #AFBBBF;
+  --secondary: #202F36;
+  --secondary-foreground: #FFFFFF; /* High contrast for dark mode */
+  --secondary-shadow: #000000;
   
-  --surface: #131F24;
+  --surface: #131F24; /* Elevated surface */
   --surface-foreground: #FFFFFF;
   
-  --border: #37464F;
+  --border: #202F36;
   
-  --muted: #202F36;
+  --muted: #1B313B;
   --muted-foreground: #7D8E95;
 
   --accent: #1B313B;
   --accent-foreground: #1CB0F6;
+
+  --success: #58CC02;
+  --success-shadow: #45A302;
+  --error: #FF4B4B;
+  --error-shadow: #D32F2F;
+  --warning: #FF9600;
+  --warning-shadow: #E17500;
+  --info: #1CB0F6;
+  --info-shadow: #1899D6;
+}
+
+:root {
+  --tactile-shadow-opacity: 0.2;
+}
+
+.dark {
+  --tactile-shadow-opacity: 0.4;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: inherit;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.38s cubic-bezier(0.4, 0, 0.2, 1);
   -webkit-font-smoothing: antialiased;
 }
 
 /* Duolingo/Cake Tactile Utilities */
 .btn-tactile {
   border-bottom-width: 4px;
-  border-bottom-color: rgba(0, 0, 0, 0.2);
+  border-bottom-color: rgba(0, 0, 0, var(--tactile-shadow-opacity));
   transition: all 0.1s ease;
 }
 
@@ -103,7 +140,9 @@ body {
 .card-tactile {
   border: 2px solid var(--border);
   border-bottom-width: 6px;
+  border-bottom-color: var(--border); /* Use border color for card tactile by default */
   border-radius: 1.5rem;
+  background-color: var(--surface);
 }
 
 .glass {

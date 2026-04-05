@@ -10,12 +10,12 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: "bg-primary text-primary-foreground border-b-4 border-primary/70 hover:brightness-110 active:border-b-0 active:translate-y-1 shadow-sm",
-        secondary: "bg-secondary text-secondary-foreground border-b-4 border-border hover:bg-secondary/80 active:border-b-0 active:translate-y-1",
-        outline: "border-2 border-border bg-transparent hover:bg-muted hover:text-foreground border-b-4 active:border-b-2 active:translate-y-[2px] text-muted-foreground",
+        primary: "bg-primary text-primary-foreground border-b-4 border-primary-shadow hover:brightness-110 active:border-b-0 active:translate-y-1 shadow-sm",
+        secondary: "bg-secondary text-secondary-foreground border-b-4 border-secondary-shadow hover:bg-secondary/80 active:border-b-0 active:translate-y-1",
+        outline: "border-2 border-border bg-transparent hover:bg-muted hover:text-foreground border-b-4 border-border active:border-b-2 active:translate-y-[2px] text-muted-foreground",
         ghost: "hover:bg-muted hover:text-foreground text-muted-foreground rounded-xl",
-        danger: "bg-error text-error-foreground border-b-4 border-error/70 hover:brightness-110 active:border-b-0 active:translate-y-1",
-        success: "bg-success text-success-foreground border-b-4 border-success/70 hover:brightness-110 active:border-b-0 active:translate-y-1",
+        danger: "bg-error text-error-foreground border-b-4 border-error-shadow hover:brightness-110 active:border-b-0 active:translate-y-1",
+        success: "bg-success text-success-foreground border-b-4 border-success-shadow hover:brightness-110 active:border-b-0 active:translate-y-1",
       },
       size: {
         default: "h-14 px-6 py-2",

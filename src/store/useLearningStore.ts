@@ -16,6 +16,7 @@ interface LearningState {
   currentSentenceIndex: number;
   stage: 'idle' | 'vocab' | 'sentences' | 'speaking' | 'result';
   contentFilter: 'all' | 'movie' | 'drama';
+  difficultyFilter: 'all' | 'easy' | 'medium' | 'hard';
   
   // Actions
   setWords: (words: Word[]) => void;
@@ -29,6 +30,7 @@ interface LearningState {
   toggleFavorite: (word: Word) => void;
   removeRecentSearch: (query: string) => void;
   setContentFilter: (filter: 'all' | 'movie' | 'drama') => void;
+  setDifficultyFilter: (filter: 'all' | 'easy' | 'medium' | 'hard') => void;
   toggleSavedContent: (id: string) => void;
 }
 
@@ -44,6 +46,7 @@ export const useLearningStore = create<LearningState>()(
       currentSentenceIndex: 0,
       stage: 'idle',
       contentFilter: 'all',
+      difficultyFilter: 'all',
       
       setWords: (words) => set({ words }),
       
@@ -79,6 +82,7 @@ export const useLearningStore = create<LearningState>()(
         }
       }),
             setContentFilter: (filter) => set({ contentFilter: filter }),
+      setDifficultyFilter: (filter) => set({ difficultyFilter: filter }),
 
       toggleSavedContent: (id) => set((state) => {
         const isSaved = state.savedContents.includes(id);
@@ -95,6 +99,7 @@ export const useLearningStore = create<LearningState>()(
         recentSearches: state.recentSearches,
         favorites: state.favorites,
         contentFilter: state.contentFilter,
+        difficultyFilter: state.difficultyFilter,
         savedContents: state.savedContents
       })
     }

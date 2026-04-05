@@ -87,9 +87,10 @@ export default function LearnFlowPage() {
           {stage === 'vocab' && (
             <motion.div 
               key={`vocab-${currentWordIndex}`}
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 10 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
+              exit={{ opacity: 0, x: -10 }}
+              transition={{ duration: 0.2 }}
               className="w-full flex-1 flex flex-col"
             >
               <div className="mb-8 text-center">
@@ -115,9 +116,10 @@ export default function LearnFlowPage() {
           {stage === 'speaking' && (
             <motion.div 
               key="speaking"
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.2 }}
               className="w-full flex-1 flex flex-col"
             >
                <div className="mb-8 text-center">
@@ -134,9 +136,10 @@ export default function LearnFlowPage() {
           {stage === 'result' && (
             <motion.div 
               key="result"
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              className="w-full max-w-xl mx-auto flex flex-col items-center justify-center space-y-12 text-center py-12 px-8 bg-surface card-tactile"
+              transition={{ duration: 0.3 }}
+              className="w-full max-w-xl mx-auto flex flex-col items-center justify-center space-y-12 text-center py-12 px-8 bg-surface card-tactile border-b-success-shadow"
             >
               <div className="h-40 w-40 bg-success text-white rounded-full flex items-center justify-center shadow-tactile border-8 border-white">
                 <CheckCircle2 className="h-24 w-24" />
@@ -150,11 +153,11 @@ export default function LearnFlowPage() {
               </div>
               
               <div className="pt-6 flex flex-col gap-4 w-full">
-                <Button onClick={() => { store.resetSession(); window.location.reload(); }} className="h-16 w-full text-lg rounded-2xl font-black bg-secondary text-secondary-foreground btn-tactile border-secondary-foreground/20">
+                <Button variant="secondary" onClick={() => { store.resetSession(); window.location.reload(); }} className="h-16 w-full text-lg rounded-2xl font-black">
                   <RefreshCw className="mr-2 h-5 w-5" /> 다시 학습하기
                 </Button>
                 <Link href="/" className="w-full">
-                  <Button className="w-full text-2xl h-20 rounded-2xl bg-primary text-white btn-tactile border-primary/30 font-black">
+                  <Button size="lg" className="text-2xl h-20 rounded-2xl font-black">
                     홈으로 돌아가기 <ArrowRight className="ml-3" />
                   </Button>
                 </Link>

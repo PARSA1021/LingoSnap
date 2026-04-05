@@ -8,6 +8,7 @@ import { speechService } from '@/lib/speech';
 import { playTTS } from '@/lib/tts';
 import { checkGrammar } from '@/lib/grammar';
 import { motion, AnimatePresence } from 'framer-motion';
+import { cn } from '@/lib/utils/cn';
 
 interface SpeakingPracticeProps {
   expectedSentence: string;
@@ -99,9 +100,10 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
         <motion.button
           whileTap={{ scale: 0.9 }}
           onClick={() => setQuizMode(!quizMode)}
+          aria-label="Toggle Quiz Mode"
           className={`p-3 rounded-2xl transition-all border-b-4 active:border-b-0 active:translate-y-1 ${
             quizMode 
-              ? 'bg-primary text-white border-primary/30' 
+              ? 'bg-primary text-white border-primary-shadow' 
               : 'bg-muted text-muted-foreground border-border'
           }`}
         >
@@ -118,20 +120,23 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
               {words.map((word, i) => {
                 const isHidden = hiddenWordIndices.includes(i);
                 return (
-                  <motion.span
+                  <span
                     key={`${word}-${i}`}
                     onClick={() => handleWordClick(i)}
-                    className={`${isHidden ? 'bg-white/80 text-transparent w-20 rounded-xl border-2 border-dashed border-border cursor-pointer' : ''}`}
+                    className={cn(
+                      isHidden && "bg-muted text-transparent w-20 rounded-xl border-2 border-dashed border-border cursor-pointer transition-all"
+                    )}
                   >
                     {isHidden ? '?' : word}
-                  </motion.span>
+                  </span>
                 );
               })}
             </h2>
             <div className="mt-8">
                 <Button
                   onClick={() => playTTS(expectedSentence)}
-                  className="rounded-2xl px-6 h-12 bg-white text-primary border-2 border-primary/10 shadow-sm font-black hover:bg-white/90"
+                  aria-label="Play pronunciation"
+                  className="rounded-2xl px-6 h-12 bg-surface text-primary border-2 border-primary/10 shadow-sm font-black hover:bg-muted"
                 >
                   <Volume2 className="h-5 w-5 mr-3" /> 발음 듣기
                 </Button>
@@ -141,18 +146,18 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
 
         {/* Mic Control */}
         <div className="relative flex flex-col items-center pt-4">
-          <motion.div whileTap={{ scale: 0.9 }}>
-            <Button
-              className={`w-32 h-32 rounded-full relative transition-all duration-300 border-b-8 active:border-b-0 active:translate-y-2 ${
-                isRecording 
-                  ? 'bg-error text-white border-error/50 shadow-[0_8px_0_0_#D32F2F]' 
-                  : 'bg-primary text-white border-primary/50 shadow-[0_8px_0_0_#1899D6]'
-              }`}
-              onClick={isRecording ? handleStopRecording : handleStartRecording}
-            >
-              {isRecording ? <Square className="w-12 h-12" /> : <Mic className="w-12 h-12" />}
-            </Button>
-          </motion.div>
+          <Button
+            aria-label={isRecording ? "Stop recording" : "Microphone"}
+            className={cn(
+              "w-32 h-32 rounded-full relative transition-all duration-300 border-b-8 active:border-b-0 active:translate-y-2",
+              isRecording 
+                ? 'bg-error text-white border-error-shadow shadow-none' 
+                : 'bg-primary text-white border-primary-shadow shadow-none'
+            )}
+            onClick={isRecording ? handleStopRecording : handleStartRecording}
+          >
+            {isRecording ? <Square className="w-12 h-12" /> : <Mic className="w-12 h-12" />}
+          </Button>
           <p className={`mt-10 font-black tracking-tight uppercase text-sm ${isRecording ? 'text-error animate-pulse' : 'text-muted-foreground'}`}>
             {isRecording ? '듣는 중... 완료하려면 버튼 클릭' : '마이크를 눌러 시작'}
           </p>
@@ -162,10 +167,10 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
         {/* Feedback Section */}
         <AnimatePresence mode="wait">
           {transcript && (
-            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="w-full space-y-6">
-               <div className="bg-white p-6 rounded-3xl border-2 border-border shadow-sm text-left">
+            <motion.div initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} className="w-full space-y-6">
+               <div className="bg-muted/50 p-6 rounded-3xl border-2 border-border/50 shadow-sm text-left">
                   <p className="text-[10px] font-black text-muted-foreground uppercase mb-2">당신이 말한 내용</p>
-                  <p className="text-xl font-black text-foreground">"{transcript.trim()}"</p>
+                  <p className="text-xl font-bold text-foreground italic leading-snug">&quot;{transcript.trim()}&quot;</p>
                </div>
 
                {status === 'evaluating' && <Loader2 className="w-10 h-10 animate-spin text-primary mx-auto" />}
@@ -193,10 +198,10 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
 
                {status !== 'evaluating' && (
                  <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                    <Button onClick={handleStartRecording} className="flex-1 h-14 bg-secondary text-secondary-foreground btn-tactile border-secondary-foreground/20 rounded-2xl font-black">
+                    <Button variant="secondary" onClick={handleStartRecording} className="flex-1 h-14 rounded-2xl font-black">
                        <RotateCcw className="mr-2 h-5 w-5" /> 다시 시도
                     </Button>
-                    <Button onClick={() => onContinue(status === 'success')} className="flex-[1.5] h-14 bg-primary text-white btn-tactile border-primary/30 rounded-2xl font-black text-lg">
+                    <Button onClick={() => onContinue(status === 'success')} className="flex-[1.5] h-14 rounded-2xl font-black text-lg">
                        계속하기 <ArrowRight className="ml-2 h-6 w-6" />
                     </Button>
                  </div>

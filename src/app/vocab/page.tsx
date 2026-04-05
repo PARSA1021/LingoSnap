@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { Word } from '@/types';
 import { VocabCard } from '@/components/vocab/VocabCard';
+import { Button } from '@/components/ui/Button';
 import { Search, Loader2, BookOpen, Sparkles, Star, History, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLearningStore } from '@/store/useLearningStore';
@@ -77,7 +78,7 @@ export default function VocabSearchPage() {
 
   return (
     <div className="flex-1 p-4 md:p-8 flex flex-col w-full max-w-4xl mx-auto min-h-[80vh] dot-pattern">
-      <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="w-full mt-4 mb-10">
+      <div className="w-full mt-4 mb-10">
         <form onSubmit={handleApiSearch} className="relative w-full group">
           <div className="absolute inset-y-0 left-6 flex items-center pointer-events-none z-10 text-muted-foreground group-focus-within:text-primary transition-colors">
             <Search className="h-7 w-7" />
@@ -90,33 +91,33 @@ export default function VocabSearchPage() {
             onChange={(e) => setQuery(e.target.value)}
           />
           <div className="absolute inset-y-2 right-2 flex items-center z-10">
-            <button 
+            <Button 
               type="submit" 
               disabled={loading || !query.trim()}
-              className="h-14 sm:h-18 px-6 sm:px-8 rounded-2xl bg-primary text-white font-black btn-tactile border-primary/30 disabled:opacity-50 disabled:translate-y-0 disabled:border-b-0 transition-all text-sm sm:text-lg"
+              className="h-14 sm:h-18 px-6 sm:px-8 text-sm sm:text-lg"
             >
               {loading ? <Loader2 className="w-6 h-6 animate-spin" /> : '사전 검색'}
-            </button>
+            </Button>
           </div>
         </form>
-      </motion.div>
+      </div>
 
       <div className="w-full flex-1">
         <AnimatePresence mode="wait">
           {error && (
-            <motion.div key="err" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-6 bg-error/5 border-2 border-error/20 rounded-3xl text-error font-black text-center">
+            <motion.div key="err" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.2 }} className="p-6 bg-error/5 border-2 border-error/20 rounded-3xl text-error font-black text-center">
               {error}
             </motion.div>
           )}
 
           {showEmptyState && (
-             <motion.div key="empty" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-12">
+            <motion.div key="empty" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.2 }} className="space-y-12">
                 {favorites.length > 0 && (
                   <div className="space-y-4">
                     <p className="flex items-center gap-2 text-warning font-black text-xs uppercase tracking-widest pl-4"><Star className="w-4 h-4 fill-current" /> Favorites</p>
                     <div className="flex flex-wrap gap-2 px-2">
                        {favorites.map((fav, i) => (
-                         <button key={i} onClick={() => setQuery(fav.word)} className="px-5 py-2.5 bg-warning/10 text-warning font-black rounded-xl border-b-4 border-warning/10 active:border-b-0 active:translate-y-1 transition-all">{fav.word}</button>
+                         <button key={i} onClick={() => setQuery(fav.word)} className="px-5 py-2.5 bg-warning/10 text-warning font-black rounded-xl border-b-4 border-warning-shadow active:border-b-0 active:translate-y-1 transition-all">{fav.word}</button>
                        ))}
                     </div>
                   </div>
@@ -127,7 +128,7 @@ export default function VocabSearchPage() {
                     <p className="flex items-center gap-2 text-muted-foreground font-black text-xs uppercase tracking-widest pl-4"><History className="w-4 h-4" /> Recent</p>
                     <div className="flex flex-wrap gap-2 px-2">
                        {recentSearches.map((term, i) => (
-                         <button key={i} onClick={() => setQuery(term)} className="px-5 py-2.5 bg-muted text-muted-foreground font-black rounded-xl border-b-4 border-border active:border-b-0 active:translate-y-1 transition-all">{term}</button>
+                         <button key={i} onClick={() => setQuery(term)} className="px-5 py-2.5 bg-muted text-muted-foreground font-black rounded-xl border-b-4 border-secondary-shadow active:border-b-0 active:translate-y-1 transition-all">{term}</button>
                        ))}
                     </div>
                   </div>
@@ -137,26 +138,25 @@ export default function VocabSearchPage() {
                   <p className="flex items-center gap-2 text-primary font-black text-xs uppercase tracking-widest pl-4"><Sparkles className="w-5 h-5" /> Recommended</p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {recommendedWords.map((rec, i) => (
-                      <motion.div 
+                      <div 
                         key={i}
-                        whileTap={{ scale: 0.98 }}
                         onClick={() => setQuery(rec.word)}
-                        className="bg-surface p-6 rounded-3xl border-2 border-border border-b-4 active:border-b-0 active:translate-y-1 cursor-pointer transition-all flex justify-between items-center group"
+                        className="bg-surface p-6 rounded-3xl border-2 border-border border-b-4 border-b-secondary-shadow active:border-b-0 active:translate-y-1 cursor-pointer transition-all flex justify-between items-center group"
                       >
                          <div>
                             <p className="text-xl font-black text-foreground">{rec.word}</p>
                             <p className="text-sm font-bold text-muted-foreground mt-1">{rec.meaning}</p>
                          </div>
                          <ArrowRight className="w-5 h-5 text-primary opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
-                      </motion.div>
+                      </div>
                     ))}
                   </div>
                 </div>
-             </motion.div>
+            </motion.div>
           )}
 
           {apiWord && (
-             <motion.div key="api-res" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="pb-10">
+             <motion.div key="api-res" initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }} className="pb-10">
                 <div className="flex justify-between items-center mb-4 px-2">
                    <p className="text-primary font-black text-xs uppercase tracking-widest">Search Result</p>
                    <button onClick={() => setApiWord(null)} className="text-muted-foreground hover:text-foreground text-xs font-black">Clear ✕</button>
@@ -166,7 +166,7 @@ export default function VocabSearchPage() {
           )}
 
           {!showEmptyState && matchedWords.length > 0 && !apiWord && (
-            <motion.div key="local-res" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-8 pb-10">
+            <motion.div key="local-res" initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }} className="space-y-8 pb-10">
               <p className="px-2 text-primary font-black text-xs uppercase tracking-widest">Local Matches</p>
               {matchedWords.map((w, index) => <VocabCard key={index} word={w} />)}
             </motion.div>

@@ -43,8 +43,24 @@ export interface NormalizedWordData {
   category?: string;
 }
 
-export async function getNormalizedWordData(wordText: string, defaultMeaning: string = '', defaultExample: string = ''): Promise<NormalizedWordData> {
-  const definition = await fetchWordDefinition(wordText);
+/**
+ * In-memory cache for dictionary lookups to enable "instant" UI responses.
+ */
+const dictionaryCache = new Map<string, NormalizedWordData>();
+
+export async function getNormalizedWordData(
+  wordText: string, 
+  defaultMeaning: string = '', 
+  defaultExample: string = ''
+): Promise<NormalizedWordData> {
+  const cleanWord = wordText.toLowerCase().trim();
+  
+  // Check cache first
+  if (dictionaryCache.has(cleanWord)) {
+    return dictionaryCache.get(cleanWord)!;
+  }
+
+  const definition = await fetchWordDefinition(cleanWord);
   
   let phonetic = '';
   let audioUrl = '';
@@ -75,13 +91,7 @@ export async function getNormalizedWordData(wordText: string, defaultMeaning: st
       const enDef = firstMeaning.definitions?.[0]?.definition || '';
       
       if (!meaning || meaning === '검색된 의미 없음') {
-         // Attempt to translate the root word first
-         const translated = await fetchKoreanTranslation(wordText);
-         if (translated) {
-            meaning = translated;
-         } else if (enDef) {
-            meaning = enDef; // Fallback to raw English if translation completely fails
-         }
+          meaning = enDef;
       }
       
       if (!example || example === '') {
@@ -90,19 +100,49 @@ export async function getNormalizedWordData(wordText: string, defaultMeaning: st
     }
   }
 
-  // Final Translation Check: Translate the example sentence if there's no native one
+  // Fallback to Translation if meaning is still empty or English
+  // (We prefer Korean meaning if available)
+  const isEnglish = (text: string) => /^[a-zA-Z0-9\s.,!?'"]+$/.test(text);
+  
+  if (!meaning || isEnglish(meaning)) {
+    const translated = await fetchKoreanTranslation(cleanWord);
+    if (translated && !translated.toLowerCase().includes('mymemory')) {
+      meaning = translated;
+    }
+  }
+
+  // Final Translation Check for example
   let exampleTranslation = '';
   if (example && example !== defaultExample) {
      const exTrans = await fetchKoreanTranslation(example);
-     if (exTrans) exampleTranslation = exTrans;
+     if (exTrans && !exTrans.toLowerCase().includes('mymemory')) {
+       exampleTranslation = exTrans;
+     }
   }
 
-  return {
-    word: wordText,
-    meaning,
+  const result: NormalizedWordData = {
+    word: cleanWord,
+    meaning: meaning || '의미를 찾을 수 없습니다.',
     example,
     exampleTranslation,
     phonetic,
     audioUrl
   };
+
+  // Save to cache
+  dictionaryCache.set(cleanWord, result);
+  return result;
+}
+
+/**
+ * Utility to pre-warm the cache for a list of words.
+ */
+export async function prefetchWords(words: string[]) {
+  const uniqueWords = [...new Set(words.map(w => w.toLowerCase().trim().replace(/[^a-z0-9]/g, '')))].filter(Boolean);
+  await Promise.all(uniqueWords.map(w => {
+    if (!dictionaryCache.has(w)) {
+      return getNormalizedWordData(w);
+    }
+    return Promise.resolve();
+  }));
 }

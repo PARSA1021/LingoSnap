@@ -1,17 +1,10 @@
-'use client';
-
 import * as React from 'react';
 import { cn } from '@/lib/utils/cn';
-import { motion, HTMLMotionProps } from 'framer-motion';
 
-export const Card = React.forwardRef<HTMLDivElement, HTMLMotionProps<"div">>(
+export const Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => (
-    <motion.div
+    <div
       ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.95 }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
       className={cn(
         "rounded-3xl border-2 border-border bg-surface text-foreground shadow-soft",
         className
