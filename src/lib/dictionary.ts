@@ -8,7 +8,7 @@ export async function fetchWordDefinition(word: string) {
     const data = await res.json();
     return data;
   } catch (err) {
-    console.error('Dictionary API Error:', err);
+    console.warn('Dictionary API Warning:', err);
     return null;
   }
 }
@@ -139,10 +139,16 @@ export async function getNormalizedWordData(
  */
 export async function prefetchWords(words: string[]) {
   const uniqueWords = [...new Set(words.map(w => w.toLowerCase().trim().replace(/[^a-z0-9]/g, '')))].filter(Boolean);
-  await Promise.all(uniqueWords.map(w => {
+  
+  for (const w of uniqueWords) {
     if (!dictionaryCache.has(w)) {
-      return getNormalizedWordData(w);
+      try {
+        await getNormalizedWordData(w);
+      } catch (err) {
+        // ignore prefetch errors silently
+      }
+      // Polite throttling to prevent connection drops or rate limits
+      await new Promise(resolve => setTimeout(resolve, 150));
     }
-    return Promise.resolve();
-  }));
+  }
 }

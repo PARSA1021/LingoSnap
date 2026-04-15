@@ -3598,5 +3598,581 @@
     "exampleTranslation": "한 가지 좋은 이유를 말해봐.",
     "level": "beginner",
     "category": "daily"
+  },
+  {
+    "word": "abroad",
+    "meaning": "해외에, 해외로",
+    "example": "I want to study abroad next year.",
+    "exampleTranslation": "내년에는 해외에서 공부하고 싶어.",
+    "level": "beginner",
+    "category": "travel",
+    "id": "v401"
+  },
+  {
+    "word": "ambitious",
+    "meaning": "야심 있는",
+    "example": "He is very ambitious about his career.",
+    "exampleTranslation": "그는 커리어에 대해 매우 야심적이다.",
+    "level": "intermediate",
+    "category": "business",
+    "id": "v402"
+  },
+  {
+    "word": "beverage",
+    "meaning": "음료",
+    "example": "Would you like a hot beverage?",
+    "exampleTranslation": "따뜻한 음료 드시겠어요?",
+    "level": "beginner",
+    "category": "daily",
+    "id": "v403"
+  },
+  {
+    "word": "breathtaking",
+    "meaning": "숨이 막히는, 깜짝 놀랄만한",
+    "example": "The view from the top is breathtaking.",
+    "exampleTranslation": "정상에서의 경치는 숨이 막힐 정도로 멋져.",
+    "level": "intermediate",
+    "category": "travel",
+    "id": "v404"
+  },
+  {
+    "word": "clarify",
+    "meaning": "명확하게 하다",
+    "example": "Could you clarify that point please?",
+    "exampleTranslation": "그 부분을 명확히 해주시겠어요?",
+    "level": "intermediate",
+    "category": "business",
+    "id": "v405"
+  },
+  {
+    "word": "coincidence",
+    "meaning": "우연의 일치",
+    "example": "What a coincidence meeting you here!",
+    "exampleTranslation": "여기서 널 만나다니 정말 우연이네!",
+    "level": "intermediate",
+    "category": "daily",
+    "id": "v406"
+  },
+  {
+    "word": "consequence",
+    "meaning": "결과",
+    "example": "You must accept the consequences of your actions.",
+    "exampleTranslation": "당신은 행동에 대한 결과를 받아들여야 합니다.",
+    "level": "advanced",
+    "category": "daily",
+    "id": "v407"
+  },
+  {
+    "word": "dedicate",
+    "meaning": "헌신하다, 바치다",
+    "example": "She dedicated her life to helping others.",
+    "exampleTranslation": "그녀는 다른 사람들을 돕는 데 평생을 바쳤어.",
+    "level": "intermediate",
+    "category": "emotion",
+    "id": "v408"
+  },
+  {
+    "word": "deliberately",
+    "meaning": "의도적으로, 고의로",
+    "example": "I didn't break it deliberately.",
+    "exampleTranslation": "일부러 그것을 깨트린 건 아니야.",
+    "level": "advanced",
+    "category": "daily",
+    "id": "v409"
+  },
+  {
+    "word": "deserve",
+    "meaning": "~을 받을 만하다",
+    "example": "You deserve a long vacation.",
+    "exampleTranslation": "너는 긴 휴가를 받을 자격이 있어.",
+    "level": "beginner",
+    "category": "emotion",
+    "id": "v410"
+  },
+  {
+    "word": "dilemma",
+    "meaning": "진퇴양난, 딜레마",
+    "example": "I'm in a terrible dilemma.",
+    "exampleTranslation": "나는 끔찍한 딜레마에 빠졌어.",
+    "level": "intermediate",
+    "category": "daily",
+    "id": "v411"
+  },
+  {
+    "word": "eager",
+    "meaning": "간절히 바라는, 열렬한",
+    "example": "She is eager to learn new languages.",
+    "exampleTranslation": "그녀는 새로운 언어를 배우기를 열망한다.",
+    "level": "intermediate",
+    "category": "emotion",
+    "id": "v412"
+  },
+  {
+    "word": "effortless",
+    "meaning": "노력이 필요 없는, 쉬운",
+    "example": "He makes playing the piano look effortless.",
+    "exampleTranslation": "그는 피아노 치는 것을 아주 쉬워 보이게 해.",
+    "level": "advanced",
+    "category": "daily",
+    "id": "v413"
+  },
+  {
+    "word": "embrace",
+    "meaning": "받아들이다, 포옹하다",
+    "example": "We should embrace new technology.",
+    "exampleTranslation": "우리는 새로운 기술을 받아들여야 해.",
+    "level": "intermediate",
+    "category": "business",
+    "id": "v414"
+  },
+  {
+    "word": "essential",
+    "meaning": "필수적인",
+    "example": "Water is essential for life.",
+    "exampleTranslation": "물은 생명에 필수적이다.",
+    "level": "beginner",
+    "category": "daily",
+    "id": "v415"
+  },
+  {
+    "word": "fascinating",
+    "meaning": "대단히 흥미로운",
+    "example": "That's a fascinating story.",
+    "exampleTranslation": "정말 매력적인 이야기네.",
+    "level": "intermediate",
+    "category": "emotion",
+    "id": "v416"
+  },
+  {
+    "word": "flawless",
+    "meaning": "흠없는, 완벽한",
+    "example": "Her performance was flawless.",
+    "exampleTranslation": "그녀의 연기는 흠잡을 데가 없었어.",
+    "level": "advanced",
+    "category": "daily",
+    "id": "v417"
+  },
+  {
+    "word": "frequent",
+    "meaning": "잦은, 빈번한",
+    "example": "I am a frequent visitor to this cafe.",
+    "exampleTranslation": "나는 이 카페에 자주 오는 손님이야.",
+    "level": "beginner",
+    "category": "daily",
+    "id": "v418"
+  },
+  {
+    "word": "frustrated",
+    "meaning": "좌절감을 느끼는",
+    "example": "I feel so frustrated when things go wrong.",
+    "exampleTranslation": "일이 잘못될 때 정말 안타깝고 답답해.",
+    "level": "intermediate",
+    "category": "emotion",
+    "id": "v419"
+  },
+  {
+    "word": "generous",
+    "meaning": "관대한, 넉넉한",
+    "example": "It was very generous of you to pay for dinner.",
+    "exampleTranslation": "저녁을 사주시다니 정말 관대하시네요.",
+    "level": "beginner",
+    "category": "emotion",
+    "id": "v420"
+  },
+  {
+    "word": "genuine",
+    "meaning": "진짜의, 진실한",
+    "example": "She showed a genuine interest in our work.",
+    "exampleTranslation": "그녀는 우리 일에 진정한 관심을 보였다.",
+    "level": "intermediate",
+    "category": "business",
+    "id": "v421"
+  },
+  {
+    "word": "guarantee",
+    "meaning": "보장하다, 보증",
+    "example": "I guarantee you will love this movie.",
+    "exampleTranslation": "이 영화를 좋아하게 될 거라고 보장해.",
+    "level": "intermediate",
+    "category": "daily",
+    "id": "v422"
+  },
+  {
+    "word": "hesitate",
+    "meaning": "망설이다, 주저하다",
+    "example": "Don't hesitate to contact me if you need help.",
+    "exampleTranslation": "도움이 필요하면 주저하지 말고 연락해.",
+    "level": "beginner",
+    "category": "daily",
+    "id": "v423"
+  },
+  {
+    "word": "hilarious",
+    "meaning": "아주 우스운",
+    "example": "The joke he told was absolutely hilarious.",
+    "exampleTranslation": "그가 한 농담은 정말 엄청나게 웃겼어.",
+    "level": "intermediate",
+    "category": "emotion",
+    "id": "v424"
+  },
+  {
+    "word": "humble",
+    "meaning": "겸손한",
+    "example": "Despite his success, he remains humble.",
+    "exampleTranslation": "성공에도 불구하고 그는 겸손함을 유지한다.",
+    "level": "intermediate",
+    "category": "emotion",
+    "id": "v425"
+  },
+  {
+    "word": "ignore",
+    "meaning": "무시하다",
+    "example": "Try to ignore negative comments.",
+    "exampleTranslation": "부정적인 의견들은 무시하려고 노력해봐.",
+    "level": "beginner",
+    "category": "daily",
+    "id": "v426"
+  },
+  {
+    "word": "impact",
+    "meaning": "영향, 충격",
+    "example": "The pandemic had a huge impact on our lives.",
+    "exampleTranslation": "팬데믹은 우리 삶에 큰 영향을 미쳤어.",
+    "level": "intermediate",
+    "category": "society",
+    "id": "v427"
+  },
+  {
+    "word": "inevitable",
+    "meaning": "불가피한, 필연적인",
+    "example": "Change is inevitable in life.",
+    "exampleTranslation": "인생에서 변화는 피할 수 없다.",
+    "level": "advanced",
+    "category": "society",
+    "id": "v428"
+  },
+  {
+    "word": "inspire",
+    "meaning": "영감을 주다",
+    "example": "Her speech inspired many people.",
+    "exampleTranslation": "그녀의 연설은 많은 사람들에게 영감을 주었다.",
+    "level": "intermediate",
+    "category": "emotion",
+    "id": "v429"
+  },
+  {
+    "word": "jealous",
+    "meaning": "질투하는",
+    "example": "Don't be jealous of his success.",
+    "exampleTranslation": "그의 성공을 질투하지 마.",
+    "level": "beginner",
+    "category": "emotion",
+    "id": "v430"
+  },
+  {
+    "word": "justify",
+    "meaning": "정당화하다",
+    "example": "You cannot justify that kind of behavior.",
+    "exampleTranslation": "그런 종류의 행동은 정당화될 수 없어.",
+    "level": "advanced",
+    "category": "society",
+    "id": "v431"
+  },
+  {
+    "word": "keen",
+    "meaning": "열망하는, 예리한",
+    "example": "I'm not exactly keen to go.",
+    "exampleTranslation": "나는 별로 가고 싶지 않아.",
+    "level": "intermediate",
+    "category": "emotion",
+    "id": "v432"
+  },
+  {
+    "word": "knowledgeable",
+    "meaning": "아는 것이 많은",
+    "example": "He is very knowledgeable about history.",
+    "exampleTranslation": "그는 역사에 대해 아는 것이 아주 많아.",
+    "level": "intermediate",
+    "category": "daily",
+    "id": "v433"
+  },
+  {
+    "word": "luxury",
+    "meaning": "사치, 호화로움",
+    "example": "It was a luxury hotel.",
+    "exampleTranslation": "거긴 초호화 호텔이었어.",
+    "level": "beginner",
+    "category": "travel",
+    "id": "v434"
+  },
+  {
+    "word": "mandatory",
+    "meaning": "의무적인, 필수의",
+    "example": "Wearing a seatbelt is mandatory.",
+    "exampleTranslation": "안전벨트 착용은 필수입니다.",
+    "level": "intermediate",
+    "category": "travel",
+    "id": "v435"
+  },
+  {
+    "word": "marvelous",
+    "meaning": "놀라운, 믿기 어려운",
+    "example": "We had a marvelous time at the party.",
+    "exampleTranslation": "우리는 파티에서 끝내주게 좋은 시간을 보냈어.",
+    "level": "intermediate",
+    "category": "emotion",
+    "id": "v436"
+  },
+  {
+    "word": "mutual",
+    "meaning": "상호간의, 서로의",
+    "example": "We have a lot of mutual friends.",
+    "exampleTranslation": "우리는 공통된 여러 친구들이 있어.",
+    "level": "beginner",
+    "category": "daily",
+    "id": "v437"
+  },
+  {
+    "word": "negotiate",
+    "meaning": "협상하다",
+    "example": "We managed to negotiate a better price.",
+    "exampleTranslation": "우리는 더 나은 가격으로 협상해 냈다.",
+    "level": "intermediate",
+    "category": "business",
+    "id": "v438"
+  },
+  {
+    "word": "opportunity",
+    "meaning": "기회",
+    "example": "This is a great opportunity for you.",
+    "exampleTranslation": "이건 너에게 엄청난 기회야.",
+    "level": "beginner",
+    "category": "business",
+    "id": "v439"
+  },
+  {
+    "word": "overwhelm",
+    "meaning": "압도하다",
+    "example": "I was overwhelmed by all the choices.",
+    "exampleTranslation": "나는 수많은 선택지들에 압도당했다.",
+    "level": "intermediate",
+    "category": "emotion",
+    "id": "v440"
+  },
+  {
+    "word": "passion",
+    "meaning": "열정",
+    "example": "She has a passion for music.",
+    "exampleTranslation": "그녀는 음악에 열정이 있어.",
+    "level": "beginner",
+    "category": "emotion",
+    "id": "v441"
+  },
+  {
+    "word": "perspective",
+    "meaning": "관점, 시각",
+    "example": "Let's look at this from a different perspective.",
+    "exampleTranslation": "다른 관점에서 이 문제를 살펴보자.",
+    "level": "intermediate",
+    "category": "business",
+    "id": "v442"
+  },
+  {
+    "word": "predictable",
+    "meaning": "예측 가능한",
+    "example": "The ending of the movie was too predictable.",
+    "exampleTranslation": "그 영화 결말은 너무 뻔했어.",
+    "level": "intermediate",
+    "category": "daily",
+    "id": "v443"
+  },
+  {
+    "word": "quarantine",
+    "meaning": "격리, 격리하다",
+    "example": "He had to quarantine for 14 days.",
+    "exampleTranslation": "그는 14일 동안 자가 격리해야 했어.",
+    "level": "intermediate",
+    "category": "daily",
+    "id": "v444"
+  },
+  {
+    "word": "quote",
+    "meaning": "인용하다, 견적",
+    "example": "Can I quote you on that?",
+    "exampleTranslation": "그 말을 인용해도 될까요?",
+    "level": "intermediate",
+    "category": "business",
+    "id": "v445"
+  },
+  {
+    "word": "recognize",
+    "meaning": "알아보다, 인정하다",
+    "example": "I didn't recognize you with your new haircut.",
+    "exampleTranslation": "머리를 자르니까 널 못 알아봤어.",
+    "level": "beginner",
+    "category": "daily",
+    "id": "v446"
+  },
+  {
+    "word": "ridiculous",
+    "meaning": "우스꽝스러운, 말도 안 되는",
+    "example": "That is the most ridiculous thing I've ever heard.",
+    "exampleTranslation": "그건 내가 들어본 중 가장 어이없는 일이야.",
+    "level": "intermediate",
+    "category": "emotion",
+    "id": "v447"
+  },
+  {
+    "word": "satisfy",
+    "meaning": "만족시키다",
+    "example": "Are you satisfied with the result?",
+    "exampleTranslation": "그 결과에 만족하세요?",
+    "level": "beginner",
+    "category": "emotion",
+    "id": "v448"
+  },
+  {
+    "word": "significant",
+    "meaning": "중요한, 상당한",
+    "example": "There is a significant difference between the two.",
+    "exampleTranslation": "둘 사이에는 상당한 차이가 있다.",
+    "level": "intermediate",
+    "category": "daily",
+    "id": "v449"
+  },
+  {
+    "word": "struggle",
+    "meaning": "투쟁하다, 고군분투하다",
+    "example": "I struggle to wake up early.",
+    "exampleTranslation": "나는 일찍 일어나는 게 너무 힘들어.",
+    "level": "intermediate",
+    "category": "daily",
+    "id": "v450"
+  },
+  {
+    "word": "stubborn",
+    "meaning": "완고한, 고집스러운",
+    "example": "He is too stubborn to admit he's wrong.",
+    "exampleTranslation": "그는 너무 고집이 세서 자신의 잘못을 인정하지 않아.",
+    "level": "intermediate",
+    "category": "emotion",
+    "id": "v451"
+  },
+  {
+    "word": "temporary",
+    "meaning": "일시적인, 임시의",
+    "example": "This is only a temporary solution.",
+    "exampleTranslation": "이것은 단지 임시방편일 뿐입니다.",
+    "level": "intermediate",
+    "category": "business",
+    "id": "v452"
+  },
+  {
+    "word": "terrific",
+    "meaning": "아주 좋은, 훌륭한",
+    "example": "You look terrific in that dress!",
+    "exampleTranslation": "그 원피스 입으니까 정말 예쁘다!",
+    "level": "beginner",
+    "category": "emotion",
+    "id": "v453"
+  },
+  {
+    "word": "typical",
+    "meaning": "전형적인, 일반적인",
+    "example": "It was a typical rainy day.",
+    "exampleTranslation": "전형적으로 비가 오는 날이었어.",
+    "level": "beginner",
+    "category": "daily",
+    "id": "v454"
+  },
+  {
+    "word": "ultimately",
+    "meaning": "궁극적으로, 결국",
+    "example": "Ultimately, the choice is yours.",
+    "exampleTranslation": "결국 선택은 너의 몫이야.",
+    "level": "advanced",
+    "category": "daily",
+    "id": "v455"
+  },
+  {
+    "word": "unique",
+    "meaning": "독특한, 특별한",
+    "example": "Everyone's voice is unique.",
+    "exampleTranslation": "모든 사람의 목소리는 다 달라서 특별해.",
+    "level": "beginner",
+    "category": "daily",
+    "id": "v456"
+  },
+  {
+    "word": "urgent",
+    "meaning": "긴급한, 시급한",
+    "example": "I need to make an urgent phone call.",
+    "exampleTranslation": "나 지금 너무 급한 전화를 걸어야 해.",
+    "level": "beginner",
+    "category": "daily",
+    "id": "v457"
+  },
+  {
+    "word": "vague",
+    "meaning": "모호한, 애매한",
+    "example": "He gave me a vague answer.",
+    "exampleTranslation": "그가 애매하게 대답했어.",
+    "level": "intermediate",
+    "category": "daily",
+    "id": "v458"
+  },
+  {
+    "word": "versatile",
+    "meaning": "다재다능한, 다용도의",
+    "example": "This tool is extremely versatile.",
+    "exampleTranslation": "이 도구는 정말 활용도가 높아요.",
+    "level": "advanced",
+    "category": "business",
+    "id": "v459"
+  },
+  {
+    "word": "vulnerable",
+    "meaning": "취약한, 연약한",
+    "example": "Old people are particularly vulnerable to the flu.",
+    "exampleTranslation": "노련층은 플루 바이러스에 특히 취약해요.",
+    "level": "advanced",
+    "category": "daily",
+    "id": "v460"
+  },
+  {
+    "word": "wander",
+    "meaning": "거닐다, 돌아다니다",
+    "example": "We wandered around the city all day.",
+    "exampleTranslation": "우리는 하루 종일 শহরের 여기저기를 돌아다녔어.",
+    "level": "intermediate",
+    "category": "travel",
+    "id": "v461"
+  },
+  {
+    "word": "weird",
+    "meaning": "이상한, 기묘한",
+    "example": "That's a weird coincidence.",
+    "exampleTranslation": "그거 참 이상한 우연이네.",
+    "level": "beginner",
+    "category": "daily",
+    "id": "v462"
+  },
+  {
+    "word": "whisper",
+    "meaning": "속삭이다, 귓속말하다",
+    "example": "Stop whispering to each other.",
+    "exampleTranslation": "서로 귓속말 좀 그만해.",
+    "level": "beginner",
+    "category": "daily",
+    "id": "v463"
+  },
+  {
+    "word": "yell",
+    "meaning": "소리치다, 고함치다",
+    "example": "Please don't yell at me.",
+    "exampleTranslation": "저한테 소리지르지 마세요.",
+    "level": "beginner",
+    "category": "emotion",
+    "id": "v464"
   }
 ]
