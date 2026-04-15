@@ -23,8 +23,8 @@ export class SpeechRecognitionService {
       if (SpeechRecognition) {
         this.isSupported = true;
         this.recognition = new SpeechRecognition();
-        this.recognition.continuous = false;
-        this.recognition.interimResults = false;
+        this.recognition.continuous = true;
+        this.recognition.interimResults = true;
       }
     }
   }
@@ -39,8 +39,11 @@ export class SpeechRecognitionService {
     this.recognition.lang = options.lang || 'en-US';
 
     this.recognition.onresult = (event: any) => {
-      const transcript = event.results[event.results.length - 1][0].transcript;
-      options.onResult(transcript);
+      let finalTranscript = '';
+      for (let i = 0; i < event.results.length; ++i) {
+        finalTranscript += event.results[i][0].transcript;
+      }
+      options.onResult(finalTranscript);
     };
 
     this.recognition.onerror = (event: any) => {

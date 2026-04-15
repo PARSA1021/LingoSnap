@@ -56,7 +56,7 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
     
     speechService.start({
       lang: 'en-US',
-      onResult: (text: string) => setTranscript(old => old + ' ' + text),
+      onResult: (text: string) => setTranscript(text),
       onError: (err: string) => {
         console.error(err);
         if (err === 'not-allowed') {
@@ -82,8 +82,8 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
 
   const evaluateSpeech = async () => {
     setStatus('evaluating');
-    const cleanTranscript = transcript.trim().toLowerCase().replace(/[.,!?]/g, '');
-    const cleanExpected = expectedSentence.toLowerCase().replace(/[.,!?]/g, '');
+    const cleanTranscript = transcript.trim().toLowerCase().replace(/[^a-z0-9\s]/gi, '').replace(/\s+/g, ' ');
+    const cleanExpected = expectedSentence.toLowerCase().replace(/[^a-z0-9\s]/gi, '').replace(/\s+/g, ' ');
 
     if (cleanTranscript === cleanExpected || cleanTranscript.includes(cleanExpected)) {
       setStatus('success');
