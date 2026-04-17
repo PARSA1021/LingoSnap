@@ -12,37 +12,36 @@ export function BottomNav() {
   const tabs = [
     { name: '홈', href: '/', icon: <Home className="w-5 h-5 sm:w-6 sm:h-6" /> },
     { name: '일일 학습', href: '/learn', icon: <Lightbulb className="w-5 h-5 sm:w-6 sm:h-6" /> },
-    { name: '단어장', href: '/vocab', icon: <BookA className="w-5 h-5 sm:w-6 sm:h-6" /> },
+    { name: '표현 아카이브', href: '/vocab', icon: <BookA className="w-5 h-5 sm:w-6 sm:h-6" /> },
     { name: '미디어', href: '/contents', icon: <Tv className="w-5 h-5 sm:w-6 sm:h-6" /> },
     { name: '말하기', href: '/speaking', icon: <Mic className="w-5 h-5 sm:w-6 sm:h-6" /> },
   ];
 
   return (
-    <nav 
+    <nav
       aria-label="Main Navigation"
       className="fixed bottom-0 left-0 right-0 z-50 bg-background border-t-[3px] border-border pb-safe pt-2 sm:pt-3"
     >
       <div className="max-w-3xl mx-auto flex justify-between items-end px-6 relative">
         {tabs.map((tab) => {
           const isActive = pathname === tab.href || (tab.href !== '/' && pathname.startsWith(tab.href));
-          
+
           return (
-            <Link 
-              key={tab.name} 
+            <Link
+              key={tab.name}
               href={tab.href}
               aria-label={tab.name}
               aria-current={isActive ? 'page' : undefined}
               className="flex flex-col items-center gap-1 group w-1/5 select-none touch-manipulation pb-2 sm:pb-4"
             >
-              <div 
-                className={`relative px-4 py-2 rounded-2xl transition-all duration-300 ${
-                  isActive 
-                    ? 'text-primary bg-primary/10' 
+              <div
+                className={`relative px-4 py-2 rounded-2xl transition-all duration-300 ${isActive
+                    ? 'text-primary bg-primary/10'
                     : 'text-muted-foreground group-hover:text-foreground group-hover:bg-muted'
-                }`}
+                  }`}
               >
                 {isActive && (
-                  <motion.div 
+                  <motion.div
                     layoutId="bubble"
                     className="absolute inset-0 bg-primary/20 rounded-2xl border-2 border-primary/30"
                     transition={{ type: "spring", bounce: 0.1, duration: 0.4 }}

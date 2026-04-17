@@ -8,7 +8,7 @@ import { BookOpen, Mic, Play, Sparkles } from 'lucide-react';
 export default function HomePage() {
   return (
     <div className="flex-1 w-full max-w-5xl mx-auto px-4 py-8 sm:py-16 flex flex-col items-center dot-pattern">
-      
+
       {/* Hero Header */}
       <div className="w-full text-center space-y-4 mb-16 sm:mb-24">
         <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full font-black text-xs uppercase tracking-widest border border-primary/20">
@@ -38,14 +38,14 @@ export default function HomePage() {
 
       {/* Grid Features */}
       <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl">
-        <FeatureCard 
+        <FeatureCard
           href="/vocab"
           icon={<BookOpen className="w-8 h-8" />}
-          title="단어장 검색"
+          title="표현 검색"
           color="bg-info"
           shadowColor="#1CB0F6"
         />
-        <FeatureCard 
+        <FeatureCard
           href="/speaking"
           icon={<Mic className="w-8 h-8" />}
           title="자유 토킹"
