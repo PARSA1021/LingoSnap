@@ -16,7 +16,7 @@ interface VocabCardProps {
 }
 
 export function VocabCard({ word, onNext, onPrev, showPrev }: VocabCardProps) {
-  const [showMeaning, setShowMeaning] = React.useState(false);
+  const [showMeaning, setShowMeaning] = React.useState(true);
   const [quizMode, setQuizMode] = React.useState(false);
   const [englishDef, setEnglishDef] = React.useState<string | null>(null);
 

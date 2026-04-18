@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/Button';
 import { Loader2, ArrowRight, CheckCircle2, RefreshCw, Sparkles, ChevronRight, Volume2 } from 'lucide-react';
 import Link from 'next/link';
 import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
+import { cn } from '@/lib/utils/cn';
 
 import vocabData from '@/data/vocabulary.json';
 import sentenceData from '@/data/sentences.json';
@@ -31,6 +32,8 @@ const getRandomElements = (arr: any[], count: number) => {
 };
 
 function LearningSwipeCard({ word, onNext, index, total }: { word: any, onNext: () => void, index: number, total: number }) {
+  const [showMeaning, setShowMeaning] = React.useState(false);
+
   const x = useMotionValue(0);
   const rotate = useTransform(x, [-200, 200], [-20, 20]);
   const opacity = useTransform(x, [-200, -150, 0, 150, 200], [0, 1, 1, 1, 0]);
@@ -41,6 +44,7 @@ function LearningSwipeCard({ word, onNext, index, total }: { word: any, onNext: 
   }, [word]);
 
   const handleDragEnd = (_: any, info: any) => {
+    if (!showMeaning) return;
     if (info.offset.x > 100 || info.offset.x < -100) {
       onNext();
     }
@@ -49,53 +53,93 @@ function LearningSwipeCard({ word, onNext, index, total }: { word: any, onNext: 
   return (
     <motion.div
       style={{ x, rotate, opacity }}
-      drag="x"
+      drag={showMeaning ? "x" : false}
       dragConstraints={{ left: 0, right: 0 }}
       onDragEnd={handleDragEnd}
-      className="absolute inset-0 cursor-grab active:cursor-grabbing"
+      className={cn("absolute inset-0", showMeaning ? "cursor-grab active:cursor-grabbing" : "")}
       initial={{ scale: 0.9, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       exit={{ scale: 1.1, opacity: 0 }}
     >
       <div className="h-full w-full bg-white rounded-[2.5rem] shadow-xl border-2 border-border p-8 flex flex-col justify-between items-center text-center card-tactile border-b-primary-shadow">
         <div className="w-full flex justify-between items-center">
-          <span className="px-4 py-1.5 bg-primary/10 text-primary text-xs font-black rounded-full uppercase">
+          <span className="px-4 py-1.5 bg-primary/10 text-primary text-xs font-black rounded-full uppercase tracking-widest">
             Card {index + 1} / {total}
           </span>
           {/* 음성 다시 듣기 버튼: 모바일 터치 최적화 */}
           <button 
             onClick={(e) => { e.stopPropagation(); speak(word.word); }}
-            className="p-3 bg-muted/50 rounded-full hover:bg-primary/20 active:scale-90 transition-all"
+            className="p-3 bg-muted/50 rounded-full hover:bg-primary/20 active:scale-90 transition-all focus:outline-none"
           >
             <Volume2 className="w-5 h-5 text-primary" />
           </button>
         </div>
 
-        <div className="flex-1 flex flex-col justify-center items-center space-y-6">
-          <div className="space-y-2">
-            <h2 className="text-4xl sm:text-5xl font-black text-primary tracking-tighter">{word.word}</h2>
-            <p className="text-xl sm:text-2xl font-bold text-foreground break-keep">{word.meaning}</p>
+        <div className="flex-1 flex flex-col justify-center items-center space-y-6 w-full relative">
+          <div className="space-y-2 relative z-10 w-full mb-4">
+            <h2 className="text-5xl sm:text-6xl font-black text-primary tracking-tighter drop-shadow-sm">{word.word}</h2>
           </div>
           
-          {word.examples && word.examples[0] && (
-            <div 
-              className="mt-4 p-5 bg-muted/30 rounded-3xl w-full cursor-pointer hover:bg-muted/50 transition-colors"
-              onClick={(e) => { e.stopPropagation(); speak(word.examples[0].text); }}
-            >
-              <div className="flex justify-center mb-2">
-                <Volume2 className="w-3 h-3 text-muted-foreground opacity-50" />
-              </div>
-              <p className="text-sm sm:text-base font-medium text-muted-foreground italic leading-snug">"{word.examples[0].text}"</p>
-              <p className="text-xs sm:text-sm font-bold text-muted-foreground/70 mt-2">{word.examples[0].translation}</p>
-            </div>
-          )}
+          <AnimatePresence mode="popLayout">
+            {!showMeaning ? (
+              <motion.div
+                key="hidden-meaning"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                className="w-full mt-8"
+              >
+                <Button 
+                  onClick={() => setShowMeaning(true)} 
+                  className="w-full h-16 rounded-[2rem] text-xl font-black shadow-tactile active:translate-y-1 bg-accent text-accent-foreground hover:bg-accent/90"
+                >
+                  의미 확인하기
+                </Button>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="visible-meaning"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="flex flex-col items-center space-y-6 w-full"
+              >
+                <p className="text-2xl sm:text-3xl font-black text-foreground break-keep">{word.meaning}</p>
+                {word.examples && word.examples[0] && (
+                  <div 
+                    className="w-full p-5 bg-muted/30 rounded-3xl cursor-pointer hover:bg-muted/50 transition-colors border-2 border-border/50 text-left"
+                    onClick={(e) => { e.stopPropagation(); speak(word.examples[0].text); }}
+                  >
+                    <div className="flex justify-between items-start mb-2">
+                      <p className="text-xs font-black text-muted-foreground uppercase tracking-widest pl-1">Example</p>
+                      <Volume2 className="w-4 h-4 text-muted-foreground opacity-50" />
+                    </div>
+                    <p className="text-lg font-bold text-foreground italic leading-snug">"{word.examples[0].text}"</p>
+                    <p className="text-sm font-bold text-muted-foreground mt-2 opacity-80">{word.examples[0].translation}</p>
+                  </div>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
-        <div className="w-full flex flex-col items-center gap-3">
-          <div className="flex items-center gap-2 text-muted-foreground opacity-70">
-            <span className="text-[10px] font-black uppercase tracking-widest">Swipe to Next</span>
-            <ChevronRight className="w-4 h-4" />
-          </div>
+        <div className="w-full flex flex-col items-center gap-3 mt-4 h-[60px] justify-end">
+          <AnimatePresence>
+            {showMeaning && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="w-full flex flex-col items-center gap-2"
+              >
+                <Button onClick={onNext} className="w-full h-14 rounded-[1.5rem] font-black text-lg shadow-tactile active:translate-y-1">
+                  다음으로 <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+                <div className="flex items-center gap-2 text-muted-foreground opacity-50 mt-1">
+                  <span className="text-[10px] font-black uppercase tracking-widest">or Swipe</span>
+                  <ChevronRight className="w-3 h-3" />
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </motion.div>

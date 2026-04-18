@@ -183,8 +183,14 @@ export default function VocabSearchPage() {
                   setApiWord(null);
                 }}
                 onKeyDown={(e) => {
-                  if (e.key === 'Enter' && query && matchedWords.length === 0 && !apiWord) {
-                    handleSearch();
+                  if (e.key === 'Enter') {
+                    if (query && !apiWord) {
+                      // If local match exists, it's already shown in grid, but if user specifically hits enter,
+                      // we can still optionally search API if they force it, but generally if no local match, definitely search.
+                      if (matchedWords.length === 0) {
+                        handleSearch();
+                      }
+                    }
                   }
                 }}
               />
