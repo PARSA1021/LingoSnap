@@ -12,7 +12,7 @@ import { getNormalizedWordData, NormalizedWordData } from '@/lib/dictionary';
 
 interface ContentCardProps {
   content: ContentLine;
-  onWordClick: (word: string) => void;
+  onWordClick?: (word: string) => void;
   isQuizMode?: boolean;
 }
 
@@ -21,8 +21,6 @@ export function ContentCard({ content, onWordClick, isQuizMode = false }: Conten
   const [showKo, setShowKo] = React.useState(false);
   const [showExplanation, setShowExplanation] = React.useState(false);
   const [hiddenWordIndices, setHiddenWordIndices] = React.useState<number[]>([]);
-  const [activeWordData, setActiveWordData] = React.useState<NormalizedWordData | null>(null);
-  const [selectedWordIndex, setSelectedWordIndex] = React.useState<number | null>(null);
 
   const [expressionData, setExpressionData] = React.useState<NormalizedWordData | null>(null);
 
@@ -57,7 +55,7 @@ export function ContentCard({ content, onWordClick, isQuizMode = false }: Conten
     }
   }, [isQuizMode, words]);
 
-  const handleWordClick = async (wordRaw: string, index: number) => {
+  const handleWordClick = (wordRaw: string, index: number) => {
     if (isQuizMode && hiddenWordIndices.includes(index)) {
       setHiddenWordIndices(prev => prev.filter(i => i !== index));
       return; 
@@ -66,150 +64,105 @@ export function ContentCard({ content, onWordClick, isQuizMode = false }: Conten
     const cleanWord = wordRaw.replace(/[^a-zA-Z0-9-']/g, '');
     if (!cleanWord) return;
 
-    if (selectedWordIndex === index) {
-      setSelectedWordIndex(null);
-      setActiveWordData(null);
-      return;
-    }
-
     playTTS(cleanWord);
-    setSelectedWordIndex(index);
-    
-    const cleanExpression = content.expression?.toLowerCase().replace(/[^a-z0-9\s]/g, '');
-    const isPartOfExpression = cleanExpression && cleanWord && cleanExpression.includes(cleanWord.toLowerCase());
-    const contextualMeaning = isPartOfExpression ? content.expression_ko : undefined;
-
-    const data = await getNormalizedWordData(cleanWord, contextualMeaning);
-    setActiveWordData(data);
   };
 
   return (
     <div className="group relative w-full bg-white border-4 sm:border-8 border-black p-4 sm:p-8 flex flex-col gap-4 sm:gap-6 shadow-[6px_6px_0_#000] sm:shadow-[10px_10px_0_#000] transition-all duration-300 wobbly-slow hover:-translate-y-2 hover:-translate-x-2 h-full">
       {/* Enhanced Metadata & Difficulty */}
-      <div className="flex justify-between items-start">
-        <div className="space-y-3">
-          <div className="flex items-center gap-3">
-             <p className="text-xs font-black text-black uppercase tracking-[0.2em] font-cartoon">
-               {content.category} • {content.scene}
-             </p>
-              <div className={cn(
-                "px-3 py-1 rounded-lg text-xs font-black uppercase border-4 border-black shadow-[4px_4px_0_#000]",
+      <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
+        <div className="space-y-2">
+          <div className="flex flex-wrap items-center gap-2">
+             <span className="bg-black text-white px-3 py-1 text-[10px] font-black uppercase tracking-widest border-2 border-black">
+               {content.category}
+             </span>
+             <div className={cn(
+                "px-3 py-1 rounded-lg text-[10px] font-black uppercase border-2 border-black shadow-[2px_2px_0_#000]",
                 difficultyColors[content.difficulty as keyof typeof difficultyColors] || "bg-white text-black"
               )}>
                 {content.difficulty}
               </div>
           </div>
-          <h3 className="text-lg font-black text-black uppercase font-cartoon">{content.title}</h3>
-          
-          <div className="flex flex-wrap gap-2 mt-2">
-            {content.tags.map(tag => (
-              <span key={tag} className="flex items-center gap-1 px-3 py-1 bg-white border-4 border-black text-xs font-black text-black uppercase font-cartoon">
-                <Tag className="w-4 h-4" /> {tag}
-              </span>
-            ))}
-          </div>
+          <h3 className="text-xl sm:text-2xl font-black text-black uppercase font-cartoon leading-none">{content.title}</h3>
         </div>
         
-        <div className="flex gap-3">
+        <div className="flex gap-2 ml-auto sm:ml-0">
           {content.explanation_ko && (
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setShowExplanation(!showExplanation)}
               className={cn(
-                "h-12 w-12 border-4 border-black shadow-[4px_4px_0_#000] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all wobbly",
+                "h-10 w-10 border-4 border-black shadow-[3px_3px_0_#000] active:translate-y-1 active:shadow-none transition-all wobbly",
                 showExplanation ? "bg-secondary text-white" : "bg-white text-black"
               )}
-              aria-label="Teacher's Note"
             >
-              <Info className="w-6 h-6" />
+              <Info className="w-5 h-5" />
             </Button>
           )}
           <Button
             variant="ghost"
             size="sm"
             onClick={() => toggleSavedContent(content.id)}
-            aria-label={isSaved ? "Saved" : "Save content"}
             className={cn(
-              "h-12 w-12 border-4 border-black shadow-[4px_4px_0_#000] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all wobbly-slow",
+              "h-10 w-10 border-4 border-black shadow-[3px_3px_0_#000] active:translate-y-1 active:shadow-none transition-all",
               isSaved ? "bg-primary text-white" : "bg-white text-black"
             )}
           >
-            <Bookmark className={cn("w-6 h-6", isSaved && "fill-current")} />
+            <Bookmark className={cn("w-5 h-5", isSaved && "fill-current")} />
           </Button>
         </div>
       </div>
 
-      {/* Main English Line - Natural Sentence Layout with Highlights */}
-      <div className="flex flex-wrap gap-x-2 gap-y-3 justify-center py-4 sm:py-8">
-        {words.map((word, i) => {
-          const isHidden = hiddenWordIndices.includes(i);
-          const isSelected = selectedWordIndex === i;
-          
-          const cleanExpression = content.expression?.toLowerCase().replace(/[^a-z0-9\s]/g, '');
-          const cleanWord = word.toLowerCase().replace(/[^a-z0-9]/g, '');
-          const isPartOfExpression = cleanExpression && cleanWord && cleanExpression.includes(cleanWord);
-          const isHighlighted = isPartOfExpression && !isQuizMode;
-          
-          return (
-            <button
-              key={`${word}-${i}`}
-              onClick={() => handleWordClick(word, i)}
-              className={cn(
-                "relative text-4xl sm:text-5xl font-bold rounded transition-all px-2 py-1 select-none touch-manipulation font-reading",
-                isHidden 
-                  ? "bg-white text-transparent min-w-[80px] border-8 border-dashed border-black shadow-[8px_8px_0_0_#000]" 
-                  : isSelected
-                    ? "text-primary bg-white border-8 border-primary shadow-[8px_8px_0_0_#000] rotate-3 scale-110"
-                    : isHighlighted
-                      ? "text-black underline decoration-primary decoration-[6px] underline-offset-8 decoration-solid"
-                      : "text-black hover:text-primary active:scale-95"
-              )}
-            >
-              {isHidden ? '?' : word}
-            </button>
-          );
-        })}
+      {/* Main English Line - Vertical Focus */}
+      <div className="py-6 sm:py-10 flex flex-col items-center gap-4">
+        <div className="flex flex-wrap gap-x-2 gap-y-3 justify-center">
+          {words.map((word, i) => {
+            const isHidden = hiddenWordIndices.includes(i);
+            const cleanExpression = content.expression?.toLowerCase().replace(/[^a-z0-9\s]/g, '');
+            const cleanWord = word.toLowerCase().replace(/[^a-z0-9]/g, '');
+            const isHighlighted = cleanExpression && cleanWord && cleanExpression.includes(cleanWord);
+            
+            return (
+              <button
+                key={`${word}-${i}`}
+                onClick={() => handleWordClick(word, i)}
+                className={cn(
+                  "text-3xl sm:text-5xl font-black rounded transition-all px-1.5 py-0.5 select-none font-reading",
+                  isHidden 
+                    ? "bg-black/5 text-transparent border-4 border-dashed border-black/20" 
+                    : isHighlighted && !isQuizMode
+                      ? "text-primary underline decoration-primary decoration-[4px] underline-offset-4"
+                      : "text-black active:scale-95 transition-transform"
+                )}
+              >
+                {isHidden ? '???' : word}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
-      {/* Enhanced Key Expression Section */}
+      {/* Key Expression - More Integrated */}
       {content.expression && (
-        <div className="relative overflow-hidden group/expression px-4 py-6 sm:px-8 sm:py-10 bg-white border-4 sm:border-8 border-primary shadow-[6px_6px_0_0_#000] sm:shadow-[10px_10px_0_0_#000] transition-all hover:-rotate-1 wobbly-slow">
-           <div className="flex justify-between items-start mb-4">
-             <div className="flex items-center gap-3">
-               <div className="p-2 bg-primary text-white border-4 border-black shadow-[2px_2px_0_#000]">
-                 <Star className="w-5 h-5 fill-current" />
-               </div>
-               <span className="text-sm font-black text-black uppercase tracking-widest font-cartoon">오늘의 핵심 표현</span>
-             </div>
+        <div className="bg-primary/5 border-4 border-black p-4 sm:p-6 shadow-[4px_4px_0_#000] relative overflow-hidden group/exp">
+           <div className="flex items-center justify-between mb-2">
+             <div className="bg-primary text-white text-[8px] font-black px-2 py-0.5 border-2 border-black uppercase tracking-widest">KEY POINT</div>
              <Button 
                variant="ghost" 
                size="sm" 
                onClick={() => playTTS(content.expression || '')} 
-               className="h-10 w-10 border-4 border-black shadow-[2px_2px_0_#000] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all"
+               className="h-8 w-8 border-2 border-black bg-white"
              >
-               <Volume2 className="w-5 h-5" />
+               <Volume2 className="w-4 h-4" />
              </Button>
            </div>
-           
-           <div className="space-y-2">
-              <h4 className="text-2xl sm:text-4xl font-black text-black leading-tight uppercase font-lilita">
-                {content.expression}
-              </h4>
-              {(content.expression_ko || expressionData?.meaning) && (
-                <p className="text-xl sm:text-2xl font-black text-primary break-keep mt-2">
-                  {content.expression_ko || expressionData?.meaning}
-                </p>
-              )}
-           </div>
-
-           <div className="absolute -right-8 -bottom-8 opacity-10 rotate-12 pointer-events-none">
-             <Star className="w-32 h-32 text-primary" />
-           </div>
+           <h4 className="text-xl font-black text-black font-lilita italic">{content.expression}</h4>
+           <p className="text-lg font-black text-primary mt-1 line-clamp-1">{content.expression_ko}</p>
         </div>
       )}
 
-      {/* Teacher's Note Section */}
+      {/* Teacher's Note */}
       <AnimatePresence>
         {showExplanation && content.explanation_ko && (
           <motion.div
@@ -218,93 +171,12 @@ export function ContentCard({ content, onWordClick, isQuizMode = false }: Conten
             exit={{ height: 0, opacity: 0 }}
             className="overflow-hidden"
           >
-            <div className="p-8 bg-secondary/10 border-8 border-secondary shadow-[8px_8px_0_#000] space-y-3 wobbly">
-               <div className="flex items-center gap-3 mb-2">
-                 <Info className="w-6 h-6 text-secondary" />
-                 <p className="text-sm font-black text-secondary uppercase tracking-[0.2em] font-cartoon">학습 포인트</p>
-               </div>
-               <p className="text-2xl font-black text-black leading-relaxed">
-                  {content.explanation_ko}
-                </p>
+            <div className="p-4 bg-secondary/10 border-4 border-secondary shadow-[4px_4px_0_#000] mt-2 italic font-bold text-black border-dashed">
+              ↳ {content.explanation_ko}
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-
-      <AnimatePresence>
-        {activeWordData && (
-          <motion.div
-            initial={{ height: 0, opacity: 0, scale: 0.95 }}
-            animate={{ height: 'auto', opacity: 1, scale: 1 }}
-            exit={{ height: 0, opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="overflow-hidden"
-          >
-            <div className="bg-white border-8 border-black p-8 sm:p-10 space-y-6 relative shadow-[12px_12px_0_#000] wobbly mt-4">
-                <div className="absolute top-6 right-6 flex items-center gap-3">
-                  <button 
-                    onClick={() => {
-                        if (activeWordData) {
-                            toggleFavorite({
-                                word: activeWordData.word,
-                                meaning: activeWordData.meaning,
-                                example: activeWordData.example,
-                                phonetic: activeWordData.phonetic,
-                                category: 'daily'
-                            });
-                        }
-                    }}
-                    className={cn(
-                        "p-3 border-4 border-black transition-all",
-                        favorites.some(f => f.word === activeWordData?.word) 
-                            ? "bg-warning text-black" 
-                            : "bg-white text-black hover:bg-warning/20"
-                    )}
-                    aria-label="Save Word"
-                  >
-                    <Star className={cn("w-6 h-6", favorites.some(f => f.word === activeWordData?.word) && "fill-current")} />
-                  </button>
-                  <button 
-                    onClick={() => { setActiveWordData(null); setSelectedWordIndex(null); }}
-                    className="p-3 bg-white border-4 border-black hover:bg-error/20 transition-all"
-                  >
-                    <X className="w-6 h-6" />
-                  </button>
-                </div>
-
-                <div className="flex items-center gap-6">
-                  <div className="h-16 w-16 bg-primary text-white flex items-center justify-center border-4 border-black shadow-[4px_4px_0_#000]">
-                    <Volume2 className="w-8 h-8" />
-                  </div>
-                  <div>
-                    <h4 className="text-4xl font-black text-black uppercase font-cartoon">{activeWordData.word}</h4>
-                    <p className="text-lg font-black text-primary">{activeWordData.phonetic}</p>
-                  </div>
-                </div>
-
-                <div className="space-y-2 border-t-4 border-black pt-4">
-                  <p className="text-3xl font-black text-black leading-snug uppercase font-cartoon">
-                    {activeWordData.meaning}
-                  </p>
-                  {activeWordData.example && (
-                    <p className="text-lg font-black text-black/60 italic">
-                      &quot;{activeWordData.example}&quot;
-                    </p>
-                  )}
-                </div>
-                
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => onWordClick(activeWordData.word)}
-                  className="w-full justify-center h-14 text-lg font-black uppercase text-white bg-black border-4 border-black shadow-[4px_4px_0_#000] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all font-cartoon"
-                >
-                  상세 정보 보기
-                </Button>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
 
       {/* Integrated Translation & Controls */}
       <div className="space-y-8 pt-6 border-t-8 border-black">

@@ -43,34 +43,32 @@ export function VocabCard({ word, onNext, onPrev, showPrev }: VocabCardProps) {
   const isWordHidden = quizMode;
 
   return (
-    <Card className="w-full max-w-lg mx-auto bg-white border-4 sm:border-8 border-black relative overflow-visible mb-8 shadow-[8px_8px_0_#000] sm:shadow-[12px_12px_0_#000]">
-      {/* Top Actions */}
-      <div className="absolute top-4 right-4 z-20 flex gap-2">
-        <motion.button
-          whileTap={{ scale: 0.9 }}
+    <Card className="w-full max-w-lg mx-auto bg-white border-4 border-black relative overflow-visible mb-6 shadow-[6px_6px_0_#000]">
+      {/* Action Tray - Mobile Friendly */}
+      <div className="absolute top-3 right-3 z-20 flex gap-2">
+        <button
           onClick={() => setQuizMode(!quizMode)}
           className={cn(
-            "p-2 sm:p-3 rounded-2xl border-2 sm:border-4 active:translate-y-1 active:translate-x-1 active:shadow-none transition-all shadow-[3px_3px_0_#111] sm:shadow-[4px_4px_0_#111]",
-            quizMode ? 'bg-primary text-white border-border' : 'bg-surface text-foreground border-border'
+            "p-2.5 rounded-xl border-2 transition-all active:translate-y-0.5 shadow-[2px_2px_0_#000]",
+            quizMode ? 'bg-primary text-white border-black' : 'bg-white text-black border-black'
           )}
         >
-          <Lightbulb className={cn("w-5 h-5 sm:w-6 sm:h-6", quizMode && 'fill-current')} />
-        </motion.button>
-        <motion.button
-          whileTap={{ scale: 0.9 }}
+          <Lightbulb className={cn("w-5 h-5", quizMode && 'fill-current')} />
+        </button>
+        <button
           onClick={() => toggleFavorite(word)}
           className={cn(
-            "p-2 sm:p-3 rounded-2xl border-2 sm:border-4 active:translate-y-1 active:translate-x-1 active:shadow-none transition-all shadow-[3px_3px_0_#111] sm:shadow-[4px_4px_0_#111]",
-            isFavorite ? 'bg-warning border-border text-black' : 'bg-surface text-foreground border-border'
+            "p-2.5 rounded-xl border-2 transition-all active:translate-y-0.5 shadow-[2px_2px_0_#000]",
+            isFavorite ? 'bg-warning text-black border-black' : 'bg-white text-black border-black'
           )}
         >
-          <Star className={cn("w-5 h-5 sm:w-6 sm:h-6", isFavorite && 'fill-current')} />
-        </motion.button>
+          <Star className={cn("w-5 h-5", isFavorite && 'fill-current')} />
+        </button>
       </div>
 
-      <CardContent className="p-4 sm:p-12 flex flex-col items-center text-center space-y-6 sm:space-y-8">
-        {/* Word Stage */}
-        <div className="w-full pt-8 min-h-[140px] flex items-center justify-center">
+      <CardContent className="p-6 sm:p-10 flex flex-col items-center text-center space-y-4">
+        {/* Word Stage - High Impact */}
+        <div className="w-full pt-6 min-h-[100px] flex items-center justify-center">
           <AnimatePresence mode="wait">
             {isWordHidden ? (
               <motion.button
@@ -78,72 +76,77 @@ export function VocabCard({ word, onNext, onPrev, showPrev }: VocabCardProps) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 onClick={() => setQuizMode(false)}
-                className="w-full h-24 bg-surface border-4 border-dashed border-border rounded-2xl flex items-center justify-center gap-3 text-foreground font-black text-xl shadow-[4px_4px_0_#111] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all"
+                className="w-full h-16 bg-black/5 border-2 border-dashed border-black/20 rounded-xl flex items-center justify-center gap-2 text-black/40 font-black text-sm uppercase tracking-widest active:bg-black/10 transition-all font-cartoon"
               >
-                <Check className="w-6 h-6" /> 단어 확인하기
+                Reveal Word
               </motion.button>
             ) : (
-              <motion.div key="visible" initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col items-center gap-3">
-                <h2 className="text-3xl sm:text-6xl font-black text-black font-reading leading-tight break-words max-w-full italic">{word.word}</h2>
-                <Button onClick={() => playTTS(word.word)} className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl text-foreground">
-                  <Volume2 className="h-5 w-5 sm:h-6 sm:w-6" />
-                </Button>
+              <motion.div key="visible" initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col items-center gap-2">
+                <h2 className="text-4xl sm:text-5xl font-black text-black font-reading leading-tight italic">{word.word}</h2>
+                <button 
+                  onClick={() => playTTS(word.word)}
+                  className="p-2 text-primary hover:scale-110 active:scale-95 transition-transform"
+                >
+                  <Volume2 className="h-6 w-6" />
+                </button>
               </motion.div>
             )}
           </AnimatePresence>
         </div>
 
-        {/* Meaning & Examples Area */}
-        <div className="w-full min-h-[140px]">
+        {/* Meaning Area */}
+        <div className="w-full min-h-[100px]">
           <AnimatePresence mode="wait">
             {!showMeaning && !quizMode ? (
-              <Button onClick={() => setShowMeaning(true)} className="w-full py-10 bg-accent text-accent-foreground rounded-[2rem] text-2xl font-black">
-                의미 확인하기
-              </Button>
+              <button 
+                onClick={() => setShowMeaning(true)} 
+                className="w-full py-6 bg-primary text-white border-4 border-black font-black text-lg shadow-[4px_4px_0_#000] active:translate-y-1 active:shadow-none transition-all font-cartoon"
+              >
+                CHECK MEANING
+              </button>
             ) : (
-              <motion.div initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} className="text-left space-y-6">
-                <div className="bg-white p-4 sm:p-6 border-4 sm:border-8 border-black shadow-[6px_6px_0_#000] sm:shadow-[8px_8px_0_#000] wobbly-slow">
-                  <p className="text-2xl sm:text-4xl font-black text-primary mb-2 break-keep uppercase font-cartoon">{word.meaning}</p>
-                  {englishDef && <p className="text-sm sm:text-lg font-bold text-black italic border-t-2 sm:border-t-4 border-black pt-4 mt-2 font-reading">&quot;{englishDef}&quot;</p>}
+              <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="text-left space-y-4">
+                <div className="bg-primary/5 p-4 border-2 border-dashed border-primary rounded-xl">
+                  <p className="text-2xl font-black text-primary leading-tight font-cartoon uppercase">{word.meaning}</p>
                 </div>
 
-                {/* 예문 렌더링 로직 (제공해주신 examples: [{text, translation}] 구조 대응) */}
-                <div className="space-y-4">
-                  <p className="text-xs font-black text-muted-foreground uppercase tracking-widest pl-2">Examples</p>
-                  {word.examples && word.examples.length > 0 ? (
-                    word.examples.map((ex: any, idx: number) => (
-                      <div key={idx} className="bg-white p-4 sm:p-6 border-4 sm:border-8 border-black shadow-[6px_6px_0_#000] sm:shadow-[8px_8px_0_#000]">
-                        <p className="font-bold text-lg sm:text-2xl text-black leading-snug font-reading">&quot;{ex.text}&quot;</p>
-                        {ex.translation && (
-                          <p className="text-black font-bold mt-2 text-sm sm:text-lg border-t-2 sm:border-t-4 border-black pt-2 font-reading">
-                            ↳ {ex.translation}
-                          </p>
-                        )}
-                      </div>
-                    ))
-                  ) : (
-                    <div className="p-4 bg-muted/20 rounded-2xl italic text-muted-foreground text-center text-sm">
-                      No examples available
+                {/* Examples */}
+                <div className="space-y-3">
+                  {word.examples && word.examples.slice(0, 2).map((ex: any, idx: number) => (
+                    <div key={idx} className="bg-white p-4 border-2 border-black border-dashed">
+                      <p className="font-bold text-base text-black leading-snug font-reading">&quot;{ex.text}&quot;</p>
+                      {ex.translation && (
+                        <p className="text-black/60 font-bold mt-1 text-xs font-reading">
+                          ↳ {ex.translation}
+                        </p>
+                      )}
                     </div>
-                  )}
+                  ))}
                 </div>
               </motion.div>
             )}
           </AnimatePresence>
         </div>
 
-        {/* Navigation Controls */}
+        {/* Nav Controls */}
         {(onNext || showPrev) && (
-          <div className="w-full flex gap-3 pt-4">
+          <div className="w-full flex gap-2 pt-2">
             {showPrev && (
-              <Button variant="secondary" onClick={onPrev} className="flex-1 h-14 rounded-2xl font-black">
-                <ArrowLeft className="mr-2" /> 이전
-              </Button>
+              <button 
+                onClick={onPrev} 
+                className="flex-1 h-12 bg-white border-2 border-black font-black text-xs uppercase shadow-[2px_2px_0_#000] active:translate-y-0.5 active:shadow-none transition-all font-cartoon flex items-center justify-center gap-2"
+              >
+                <ArrowLeft className="w-4 h-4" /> Back
+              </button>
             )}
             {onNext && (
-              <Button onClick={onNext} disabled={!showMeaning} className="flex-[2] h-14 rounded-2xl font-black text-lg">
-                다음 <ArrowRight className="ml-2" />
-              </Button>
+              <button 
+                onClick={onNext} 
+                disabled={!showMeaning} 
+                className="flex-[2] h-12 bg-black text-white border-2 border-black font-black text-xs uppercase shadow-[4px_4px_0_#000] active:translate-y-0.5 active:shadow-none transition-all font-cartoon flex items-center justify-center gap-2 disabled:opacity-30"
+              >
+                Next <ArrowRight className="w-4 h-4" />
+              </button>
             )}
           </div>
         )}

@@ -129,166 +129,63 @@ export default function VocabSearchPage() {
     <div className="flex-1 w-full min-h-screen bg-background dot-pattern pb-6 sm:pb-24 pt-4 sm:pt-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-10">
 
-        {/* 헤더 */}
-        <header className="sticky top-2 sm:top-6 z-40 space-y-6 bg-white p-6 sm:p-10 border-8 border-black shadow-[12px_12px_0_#000] wobbly-slow">
-          <div className="flex items-center justify-between gap-4">
-            <div className="flex items-center gap-4 min-w-0">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary flex items-center justify-center text-white border-8 border-black shadow-[4px_4px_0_#000] shrink-0 wobbly">
-                <BookOpen className="w-6 h-6 sm:w-10 sm:h-10 fill-white" />
+        {/* Header - Premium Navigation */}
+        <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-md pt-4 pb-2 px-1">
+          <div className="flex items-center justify-between gap-4 mb-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-primary flex items-center justify-center text-white border-4 border-black shadow-[3px_3px_0_#000] rotate-3 shrink-0">
+                <BookOpen className="w-5 h-5 fill-white" />
               </div>
-              <div className="min-w-0">
-                <h1 className="text-xl sm:text-5xl font-black tracking-tighter leading-tight drop-shadow-[4px_4px_0_#000] text-black font-cartoon uppercase truncate">Arcade</h1>
-                <p className="text-[8px] sm:text-xs font-black text-primary uppercase tracking-[0.2em] mt-0.5 sm:mt-1 truncate">
-                  Total {processedCards.length} Cards
-                </p>
-              </div>
+              <h1 className="text-2xl font-black text-black font-cartoon uppercase tracking-tighter">ARCHIVE</h1>
             </div>
+          </div>
 
-            {/* 뷰 모드 토글 - 태블릿 이상에서만 표시 */}
-            {(query || activeCategory) && (
-              <div className="hidden sm:flex items-center gap-2 bg-white rounded-xl p-1 border-2 border-border">
-                <button
-                  onClick={() => setViewMode('grid')}
-                  className={cn(
-                    "p-2 rounded-lg transition-all",
-                    viewMode === 'grid' ? "bg-primary text-white" : "text-muted-foreground hover:text-primary"
-                  )}
-                >
-                  <Grid3x3 className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={() => setViewMode('list')}
-                  className={cn(
-                    "p-2 rounded-lg transition-all",
-                    viewMode === 'list' ? "bg-primary text-white" : "text-muted-foreground hover:text-primary"
-                  )}
-                >
-                  <List className="w-4 h-4" />
-                </button>
-              </div>
+          {/* Search Integration */}
+          <div className="relative mb-4">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-black/40" />
+            <input
+              type="text"
+              placeholder="Search expressions..."
+              className="w-full h-12 pl-10 pr-10 bg-white border-4 border-black text-black font-black outline-none shadow-[4px_4px_0_#000] focus:shadow-none focus:translate-y-1 focus:translate-x-1 transition-all placeholder:text-black/20 font-cartoon text-sm"
+              value={query}
+              onChange={(e) => {
+                setQuery(e.target.value.toUpperCase());
+                setApiWord(null);
+              }}
+            />
+            {query && (
+              <button 
+                onClick={() => { setQuery(''); setApiWord(null); }}
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 bg-black/5 rounded-full"
+              >
+                <X className="w-3 h-3" />
+              </button>
             )}
           </div>
 
-          {/* 검색바 */}
-          <div className="relative group">
-            <div className="relative flex-1">
-              <Search className="absolute left-4 sm:left-5 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground group-focus-within:text-primary transition-colors" />
-              <input
-                type="text"
-                placeholder="Search..."
-                className="w-full h-12 lg:h-20 pl-12 pr-10 bg-white text-black font-black border-4 sm:border-8 border-black outline-none text-base lg:text-2xl focus:border-primary transition-all shadow-[6px_6px_0_#000] sm:shadow-[8px_8px_0_#000] focus:translate-y-1 focus:translate-x-1 focus:shadow-none placeholder:text-black/30 font-cartoon"
-                value={query}
-                onChange={(e) => {
-                  setQuery(e.target.value.toUpperCase());
-                  setApiWord(null);
-                }}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter') {
-                    if (query && !apiWord) {
-                      // If local match exists, it's already shown in grid, but if user specifically hits enter,
-                      // we can still optionally search API if they force it, but generally if no local match, definitely search.
-                      if (matchedWords.length === 0) {
-                        handleSearch();
-                      }
-                    }
-                  }
-                }}
-              />
-              {query && (
-                <button
-                  onClick={() => { setQuery(''); setApiWord(null); }}
-                  className="absolute right-2.5 sm:right-3 top-1/2 -translate-y-1/2 p-2 sm:p-2.5 bg-muted rounded-full text-muted-foreground active:scale-90 transition-transform"
-                >
-                  <X className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                </button>
+          {/* Genre Scroller - Mobile Optimized */}
+          <div className="flex gap-2 overflow-x-auto no-scrollbar py-1 mask-fade-right">
+            <button
+              onClick={() => setActiveCategory(null)}
+              className={cn(
+                "px-4 py-2 border-4 border-black font-black text-[10px] whitespace-nowrap transition-all uppercase font-cartoon",
+                !activeCategory ? "bg-primary text-white shadow-[3px_3px_0_#000]" : "bg-white text-black"
               )}
-            </div>
-          </div>
-
-          {/* 카테고리 필터 - 반응형 */}
-          <div className="space-y-3">
-            {/* 모바일: 필터 버튼 */}
-            <div className="sm:hidden">
+            >
+              # ALL
+            </button>
+            {categories.map((cat) => (
               <button
-                onClick={() => setShowCategoryFilter(!showCategoryFilter)}
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
                 className={cn(
-                  "w-full flex items-center justify-between px-4 py-3 bg-white border-4 border-black shadow-[4px_4px_0_#000] font-black text-xs transition-all",
-                  activeCategory ? "bg-primary text-white" : "text-black/60"
+                  "px-4 py-2 border-4 border-black font-black text-[10px] whitespace-nowrap transition-all uppercase font-cartoon",
+                  activeCategory === cat ? "bg-primary text-white shadow-[3px_3px_0_#000]" : "bg-white text-black shadow-[2px_2px_0_#000]"
                 )}
               >
-                <span className="flex items-center gap-2">
-                  <Filter className="w-4 h-4" />
-                  {activeCategory || 'ALL GENRES'}
-                </span>
+                # {cat}
               </button>
-            </div>
-
-            {/* 모바일: 카테고리 드롭다운 */}
-            <AnimatePresence>
-              {showCategoryFilter && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  className="sm:hidden overflow-hidden"
-                >
-                  <div className="grid grid-cols-2 gap-2 p-2 bg-white border-4 border-black">
-                    <button
-                      onClick={() => {
-                        setActiveCategory(null);
-                        setShowCategoryFilter(false);
-                      }}
-                      className={cn(
-                        "px-3 py-2 border-2 border-black font-black text-[10px] transition-all",
-                        !activeCategory ? "bg-primary text-white" : "bg-white text-black"
-                      )}
-                    >
-                      ALL
-                    </button>
-                    {categories.map((cat) => (
-                      <button
-                        key={cat}
-                        onClick={() => {
-                          setActiveCategory(cat);
-                          setShowCategoryFilter(false);
-                        }}
-                        className={cn(
-                          "px-3 py-2 border-2 border-black font-black text-[10px] transition-all",
-                          activeCategory === cat ? "bg-primary text-white" : "bg-white text-black"
-                        )}
-                      >
-                        {cat}
-                      </button>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            {/* 태블릿 이상: 가로 스크롤 */}
-            <div className="hidden sm:flex gap-2 overflow-x-auto no-scrollbar py-1 -mx-1 px-1">
-              <button
-                onClick={() => setActiveCategory(null)}
-                className={cn(
-                  "px-4 py-2 border-4 border-black font-black text-xs whitespace-nowrap transition-all active:scale-95 shadow-[3px_3px_0_#000]",
-                  !activeCategory ? "bg-primary text-white" : "bg-white text-black"
-                )}
-              >
-                ALL
-              </button>
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setActiveCategory(cat)}
-                  className={cn(
-                    "px-4 py-2 border-4 border-black font-black text-xs whitespace-nowrap transition-all active:scale-95 shadow-[3px_3px_0_#000]",
-                    activeCategory === cat ? "bg-primary text-white" : "bg-white text-black"
-                  )}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
+            ))}
           </div>
         </header>
 
