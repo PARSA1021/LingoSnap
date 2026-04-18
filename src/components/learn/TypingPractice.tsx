@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { Button } from '@/components/ui/Button';
 import { motion, AnimatePresence } from 'framer-motion';
-import { RefreshCw, Volume2, Lightbulb, Sparkles, Delete } from 'lucide-react';
+import { RefreshCw, Volume2, Lightbulb, Sparkles, Delete, ArrowRight } from 'lucide-react';
 import { speak } from '@/lib/tts';
 import { cn } from '@/lib/utils/cn';
 import { useLearningStore } from '@/store/useLearningStore';
@@ -39,6 +39,8 @@ export function TypingPractice({ word, meaning, onSuccess, index, total }: Typin
   const inputRef = React.useRef<HTMLInputElement>(null);
   const addPoints = useLearningStore(state => state.addPoints);
   const incrementLearnedWords = useLearningStore(state => state.incrementLearnedWords);
+  const onSuccessRef = React.useRef(onSuccess);
+  onSuccessRef.current = onSuccess;
 
   // Initialize tiles
   React.useEffect(() => {
@@ -116,7 +118,8 @@ export function TypingPractice({ word, meaning, onSuccess, index, total }: Typin
     
     if (newString.trim() === targetWord.trim()) {
       setStatus('success');
-      setTimeout(onSuccess, 1200);
+      addPoints(50);
+      incrementLearnedWords();
     } else if (newSelected.length === tiles.length) {
       setStatus('error');
       setShake(true);
@@ -137,12 +140,11 @@ export function TypingPractice({ word, meaning, onSuccess, index, total }: Typin
     setTypedValue('');
     setTiles(prev => prev.map(t => ({ ...t, isUsed: false })));
     setStatus('typing');
-    if (isDirectMode) inputRef.current?.focus();
+    if (isDirectMode) setTimeout(() => inputRef.current?.focus(), 50);
   };
 
-  const handleModeToggle = () => {
-    const nextMode = !isDirectMode;
-    setIsDirectMode(nextMode);
+  const handleModeToggle = (mode: boolean) => {
+    setIsDirectMode(mode);
     handleClear();
   };
 
@@ -155,35 +157,75 @@ export function TypingPractice({ word, meaning, onSuccess, index, total }: Typin
       setStatus('success');
       addPoints(50);
       incrementLearnedWords();
-      setTimeout(onSuccess, 1200);
-    } else if (v.length >= targetWord.length) {
-      setStatus('error');
-      setShake(true);
-      setTimeout(() => setShake(false), 500);
+    } else if (v.length >= targetWord.length && v.trim() !== targetWord.trim()) {
+      // Basic check for completion error
+      const isMismatch = v.split('').some((char, i) => targetWord[i] && char !== targetWord[i]);
+      if (isMismatch) {
+        setStatus('error');
+        setShake(true);
+        setTimeout(() => setShake(false), 500);
+      }
     } else {
       setStatus('typing');
     }
   };
 
+
+
   const handleHint = () => {
-    const nextCharIndex = selectedIds.length;
-    if (nextCharIndex < targetWord.length) {
-      const nextChar = targetWord[nextCharIndex];
-      const unusedMatchingTile = tiles.find(t => t.char === nextChar && !t.isUsed);
-      if (unusedMatchingTile) {
-        handleTileClick(unusedMatchingTile.id);
+    if (status === 'success') return;
+    
+    if (isDirectMode) {
+      // Auto-fill next character in input
+      const nextChar = targetWord[typedValue.length];
+      if (nextChar) {
+        handleInputChange(typedValue + nextChar);
       }
+      return;
+    }
+
+    // Find the next letter index in the targetWord that hasn't been filled
+    const currentFilledString = getCurrentString(selectedIds);
+    let nextLetterIndex = 0;
+    
+    // Sync with targetWord to find which actual character is next
+    for (let i = 0; i < targetWord.length; i++) {
+        if (targetWord[i] === ' ') continue;
+        
+        // Count how many non-space characters we've already filled
+        const filledMatchCount = currentFilledString.replace(/\s/g, '').length;
+        const targetMatchCount = targetWord.slice(0, i + 1).replace(/\s/g, '').length;
+        
+        if (targetMatchCount > filledMatchCount) {
+            nextLetterIndex = i;
+            break;
+        }
+    }
+
+    const nextChar = targetWord[nextLetterIndex];
+    const unusedMatchingTile = tiles.find(t => t.char === nextChar && !t.isUsed);
+    
+    if (unusedMatchingTile) {
+      handleTileClick(unusedMatchingTile.id);
     }
   };
 
-  // Keyboard support for Bubble Mode
+  // Keyboard support
   React.useEffect(() => {
-    if (isDirectMode) return;
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (status === 'success') return;
+      if (status === 'success') {
+        if (e.key === 'Enter') onSuccessRef.current();
+        return;
+      }
+      
+      if (isDirectMode) return;
+
       if (e.key === 'Backspace') {
         if (selectedIds.length > 0) handleRemove(selectedIds.length - 1);
-      } else if (e.key.length === 1) {
+        return;
+      }
+
+      if (e.key.length === 1) {
         const char = e.key.toLowerCase();
         const availableTile = tiles.find(t => t.char === char && !t.isUsed);
         if (availableTile) handleTileClick(availableTile.id);
@@ -191,7 +233,7 @@ export function TypingPractice({ word, meaning, onSuccess, index, total }: Typin
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [tiles, selectedIds, status, isDirectMode]);
+  }, [tiles, selectedIds, status, isDirectMode]); 
 
   return (
     <div className="w-full flex flex-col items-center space-y-8 py-6 max-w-2xl mx-auto px-4">
@@ -204,22 +246,40 @@ export function TypingPractice({ word, meaning, onSuccess, index, total }: Typin
                Word Puzzle {index + 1}/{total}
              </span>
           </div>
-          <div className="flex gap-4">
-             <button 
-               onClick={handleModeToggle}
-               className={cn(
-                 "px-4 py-1.5 border-4 border-black text-xs font-black uppercase tracking-widest font-cartoon transition-all",
-                 isDirectMode ? "bg-black text-white" : "bg-white text-black"
-               )}
-             >
-               {isDirectMode ? 'Direct Keyboard ' : 'Bubble Mode'}
-             </button>
-          </div>
           <h2 className="text-4xl sm:text-5xl font-black text-primary font-cartoon uppercase drop-shadow-[3px_3px_0_#000] leading-tight break-keep">
             {meaning}
           </h2>
-          <p className="text-sm font-bold text-black/40 uppercase tracking-widest font-reading">
-            {isDirectMode ? 'Type the word directly' : 'Click tiles to spell the word'}
+          
+          {/* Enhanced Mode Selector */}
+          <div className="grid grid-cols-2 gap-4 w-full max-w-sm mx-auto mt-6">
+             <button 
+               onClick={() => handleModeToggle(false)}
+               className={cn(
+                 "flex flex-col items-center gap-2 p-4 border-4 border-black transition-all rotate-1",
+                 !isDirectMode 
+                   ? "bg-black text-white shadow-none translate-y-1" 
+                   : "bg-white text-black shadow-[4px_4px_0_#000] hover:-translate-y-1"
+               )}
+             >
+               <Sparkles className={cn("w-6 h-6", !isDirectMode ? "fill-amber-400" : "text-black")} />
+               <span className="text-xs font-black uppercase font-cartoon">Bubble Mode</span>
+             </button>
+             <button 
+               onClick={() => handleModeToggle(true)}
+               className={cn(
+                 "flex flex-col items-center gap-2 p-4 border-4 border-black transition-all -rotate-1",
+                 isDirectMode 
+                   ? "bg-black text-white shadow-none translate-y-1" 
+                   : "bg-white text-black shadow-[4px_4px_0_#000] hover:-translate-y-1"
+               )}
+             >
+               <RefreshCw className={cn("w-6 h-6", isDirectMode ? "animate-spin-slow" : "")} />
+               <span className="text-xs font-black uppercase font-cartoon">Keyboard Mode</span>
+             </button>
+          </div>
+
+          <p className="text-[10px] font-black text-black/40 uppercase tracking-[0.2em] font-reading mt-4">
+            {isDirectMode ? "Press 'Enter' to confirm when finished" : "Click the bubbles in the correct order"}
           </p>
         </div>
       </div>
@@ -231,13 +291,14 @@ export function TypingPractice({ word, meaning, onSuccess, index, total }: Typin
         status === 'success' && "border-success bg-success/5"
       )}>
         {isDirectMode ? (
-          <div className="w-full relative px-4">
+          <div className="w-full relative px-4 py-4">
             <input
               ref={inputRef}
               autoFocus
               type="text"
               value={typedValue}
               onChange={(e) => handleInputChange(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && handleInputChange(typedValue)} // Manual trigger
               className="w-full bg-transparent text-center text-4xl sm:text-6xl font-black font-reading uppercase outline-none placeholder:text-black/5"
               placeholder={targetWord.replace(/[a-zA-Z0-9]/g, '_')}
               spellCheck={false}
@@ -309,7 +370,7 @@ export function TypingPractice({ word, meaning, onSuccess, index, total }: Typin
         </Button>
       </div>
 
-      {/* Tiles Pool - Hidden in Direct Mode */}
+      {/* Tiles Pool */}
       {!isDirectMode && (
         <div className="w-full flex flex-wrap justify-center gap-4 py-8">
           <AnimatePresence>
@@ -333,19 +394,41 @@ export function TypingPractice({ word, meaning, onSuccess, index, total }: Typin
           </AnimatePresence>
         </div>
       )}
-
       {/* Feedback & Success Overlay */}
       <AnimatePresence>
         {status === 'success' && (
           <motion.div 
-            initial={{ scale: 0, rotate: -30, opacity: 0 }}
-            animate={{ scale: 1, rotate: 0, opacity: 1 }}
-            className="fixed inset-0 pointer-events-none z-50 flex items-center justify-center bg-black/5"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/60 backdrop-blur-sm p-6"
           >
-            <div className="bg-success text-white px-10 py-6 border-8 border-black shadow-[20px_20px_0_#000] text-5xl sm:text-7xl font-black font-cartoon uppercase -rotate-2 flex items-center gap-6">
-              <Sparkles className="w-12 h-12 sm:w-16 sm:h-16 fill-current text-white" />
-              BINGO!
-            </div>
+            <motion.div
+              initial={{ scale: 0, rotate: -10 }}
+              animate={{ scale: 1, rotate: 0 }}
+              className="bg-white border-8 border-black p-10 sm:p-14 shadow-[20px_20px_0_#000] text-center space-y-8 wobbly"
+            >
+              <div className="flex items-center justify-center gap-6">
+                <Sparkles className="w-12 h-12 sm:w-20 sm:h-20 fill-success text-success" />
+                <h2 className="text-6xl sm:text-8xl font-black text-black font-cartoon uppercase">BINGO!</h2>
+                <Sparkles className="w-12 h-12 sm:w-20 sm:h-20 fill-success text-success" />
+              </div>
+              
+              <div className="flex flex-col items-center gap-4">
+                <p className="text-2xl font-black text-black/60 uppercase tracking-widest font-cartoon">Wonderful Performance!</p>
+                <div className="bg-success/10 px-6 py-2 border-4 border-dashed border-success">
+                  <span className="text-xl font-black text-success uppercase font-cartoon">+50 Talkie Points</span>
+                </div>
+              </div>
+
+              <div className="pt-6">
+                <Button 
+                  onClick={onSuccess}
+                  className="w-full h-20 text-3xl border-8 border-black bg-primary text-white shadow-[10px_10px_0_#000] active:translate-y-2 active:translate-x-2 active:shadow-none transition-all uppercase font-cartoon flex items-center justify-center gap-4"
+                >
+                  Next Step <ArrowRight className="w-8 h-8" />
+                </Button>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

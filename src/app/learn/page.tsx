@@ -120,15 +120,19 @@ function LearningSwipeCard({ word, onNext, onPrev, index, total }: { word: any, 
             variant="secondary" 
             onClick={onPrev} 
             disabled={index === 0}
-            className="h-14 border-4 border-black shadow-[4px_4px_0_#000] font-black uppercase font-cartoon"
+            className="h-16 border-4 border-black shadow-[6px_6px_0_#000] font-black uppercase font-cartoon text-lg active:translate-y-1 active:shadow-none transition-all"
           >
-            Prev
+            Back
           </Button>
           <Button 
             onClick={onNext} 
-            className="h-14 border-4 border-black shadow-[4px_4px_0_#000] font-black uppercase font-cartoon"
+            disabled={!showMeaning}
+            className={cn(
+               "h-16 border-4 border-black shadow-[6px_6px_0_#000] font-black uppercase font-cartoon text-lg active:translate-y-1 active:shadow-none transition-all",
+               !showMeaning ? "opacity-50 cursor-not-allowed" : "bg-primary text-white"
+            )}
           >
-            {index === total - 1 ? 'Finish' : 'Next'}
+            {index === total - 1 ? 'Start Mission' : 'Next Word'}
           </Button>
         </div>
       </div>
@@ -215,6 +219,27 @@ export default function LearnFlowPage() {
                <Volume2 className="w-4 h-4" />
              </Button>
            </div>
+           
+           {/* Stage Intro - Thematic Instructions */}
+           <motion.div 
+             key={stage}
+             initial={{ opacity: 0, scale: 0.9 }}
+             animate={{ opacity: 1, scale: 1 }}
+             className="px-4 text-center space-y-1"
+           >
+             <h3 className="text-xl font-black text-black uppercase tracking-tight font-cartoon">
+               {stage === 'vocab' && "Stage 1: Reel Discovery"}
+               {stage === 'typing' && "Stage 2: Word Assembly"}
+               {stage === 'completion' && "Stage 3: Context Script"}
+               {stage === 'speaking' && "Final Stage: Sound Check"}
+             </h3>
+             <p className="text-[10px] font-black text-primary uppercase tracking-[0.2em] opacity-80">
+               {stage === 'vocab' && "Swipe and memorize the golden lines"}
+               {stage === 'typing' && "Build the expressions block by block"}
+               {stage === 'completion' && "Fill the missing words in the script"}
+               {stage === 'speaking' && "Record your voice to master the scene"}
+             </p>
+           </motion.div>
         </div>
       )}
 

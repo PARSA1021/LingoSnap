@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { Button } from '@/components/ui/Button';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Volume2, Sparkles, MousePointer2 } from 'lucide-react';
+import { Volume2, Sparkles, MousePointer2, ArrowRight } from 'lucide-react';
 import { speak } from '@/lib/tts';
 import { cn } from '@/lib/utils/cn';
 
@@ -43,8 +43,6 @@ export function SentenceCompletion({ sentence, translation, targetWord, onSucces
     setOptions([targetWord, ...randomDistractors].sort(() => 0.5 - Math.random()));
     setSelectedWord(null);
     setStatus('idle');
-    // Auto-play the target word as a starting hint
-    speak(targetWord);
   }, [targetWord]);
 
   const handleOptionClick = (word: string) => {
@@ -55,8 +53,6 @@ export function SentenceCompletion({ sentence, translation, targetWord, onSucces
       setStatus('success');
       addPoints(100); // More points for context challenge
       incrementLearnedWords();
-      speak(sentence); // Play full sentence on success
-      setTimeout(onSuccess, 1500);
     } else {
       setStatus('error');
       setShake(true);
@@ -75,8 +71,9 @@ export function SentenceCompletion({ sentence, translation, targetWord, onSucces
           <Sparkles className="w-4 h-4" />
           <span className="text-xs font-black uppercase tracking-widest font-cartoon">Context Challenge {index + 1}/{total}</span>
         </div>
-        <h2 className="text-3xl sm:text-4xl font-black text-black font-cartoon uppercase">Fill in the blank!</h2>
+        <h2 className="text-3xl sm:text-4xl font-black text-black font-cartoon uppercase">Script Completion</h2>
         <p className="text-lg font-black text-primary font-reading italic">"{translation}"</p>
+        <p className="text-xs font-black text-black/40 uppercase tracking-[0.2em]">Drag or click the correct block to fill the gap</p>
       </div>
 
       <div className={cn(
@@ -146,13 +143,37 @@ export function SentenceCompletion({ sentence, translation, targetWord, onSucces
       <AnimatePresence>
         {status === 'success' && (
           <motion.div 
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            className="fixed inset-0 pointer-events-none z-50 flex items-center justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/60 backdrop-blur-sm p-6"
           >
-            <div className="bg-success text-white px-10 py-6 border-8 border-black shadow-[15px_15px_0_#000] text-5xl font-black font-cartoon uppercase -rotate-3">
-              WELL DONE!
-            </div>
+            <motion.div
+              initial={{ scale: 0, rotate: 10 }}
+              animate={{ scale: 1, rotate: 0 }}
+              className="bg-white border-8 border-black p-10 sm:p-14 shadow-[20px_20px_0_#000] text-center space-y-8 wobbly"
+            >
+              <div className="flex items-center justify-center gap-6">
+                <Sparkles className="w-12 h-12 sm:w-20 sm:h-20 fill-info text-info" />
+                <h2 className="text-6xl sm:text-8xl font-black text-black font-cartoon uppercase">PERFECT!</h2>
+                <Sparkles className="w-12 h-12 sm:w-20 sm:h-20 fill-info text-info" />
+              </div>
+
+              <div className="flex flex-col items-center gap-4">
+                <p className="text-2xl font-black text-black/60 uppercase tracking-widest font-cartoon">Context Mastered!</p>
+                <div className="bg-info/10 px-6 py-2 border-4 border-dashed border-info">
+                  <span className="text-xl font-black text-info uppercase font-cartoon">+100 Talkie Points</span>
+                </div>
+              </div>
+
+              <div className="pt-6">
+                 <Button 
+                   onClick={onSuccess}
+                   className="w-full h-20 text-3xl border-8 border-black bg-info text-white shadow-[10px_10px_0_#000] active:translate-y-2 active:translate-x-2 active:shadow-none transition-all uppercase font-cartoon flex items-center justify-center gap-4"
+                 >
+                   Continue <ArrowRight className="w-8 h-8" />
+                 </Button>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
