@@ -11,6 +11,8 @@ import { useLearningStore } from '@/store/useLearningStore';
 interface TypingPracticeProps {
   word: string;
   meaning: string;
+  example?: string;
+  exampleTranslation?: string;
   onSuccess: () => void;
   index: number;
   total: number;
@@ -26,7 +28,7 @@ const shuffle = (array: any[]) => {
   return newArr;
 };
 
-export function TypingPractice({ word, meaning, onSuccess, index, total }: TypingPracticeProps) {
+export function TypingPractice({ word, meaning, example, exampleTranslation, onSuccess, index, total }: TypingPracticeProps) {
   const targetWord = word.trim().toLowerCase();
   // Array of objects to handle duplicate letters as unique tiles
   const [tiles, setTiles] = React.useState<{ id: number, char: string, isUsed: boolean }[]>([]);
@@ -41,6 +43,9 @@ export function TypingPractice({ word, meaning, onSuccess, index, total }: Typin
   const incrementLearnedWords = useLearningStore(state => state.incrementLearnedWords);
   const onSuccessRef = React.useRef(onSuccess);
   onSuccessRef.current = onSuccess;
+
+  const isLong = targetWord.length > 12;
+  const isVeryLong = targetWord.length > 18;
 
   // Initialize tiles
   React.useEffect(() => {
@@ -235,50 +240,86 @@ export function TypingPractice({ word, meaning, onSuccess, index, total }: Typin
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [tiles, selectedIds, status, isDirectMode]); 
 
+  // Split sentence to find the blank if example exists
+  const sentenceParts = React.useMemo(() => {
+    if (!example) return null;
+    const escaped = targetWord.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp(`(${escaped})`, 'gi');
+    return example.split(regex);
+  }, [example, targetWord]);
+
   return (
-    <div className="w-full flex flex-col items-center space-y-8 py-6 max-w-2xl mx-auto px-4">
+    <div className="w-full flex flex-col items-center space-y-6 py-6 max-w-2xl mx-auto px-4">
       {/* Header Area */}
       <div className="text-center space-y-4 w-full">
         <div className="flex flex-col items-center gap-3">
           <div className="flex items-center gap-3 bg-black text-white px-6 py-2 border-4 border-black shadow-[4px_4px_0_#000] rotate-1">
              <Sparkles className="w-5 h-5 text-amber-400" />
              <span className="text-sm font-black uppercase tracking-[0.2em] font-cartoon">
-               Word Puzzle {index + 1}/{total}
+               Scene Construction {index + 1}/{total}
              </span>
           </div>
-          <h2 className="text-4xl sm:text-5xl font-black text-primary font-cartoon uppercase drop-shadow-[3px_3px_0_#000] leading-tight break-keep">
-            {meaning}
-          </h2>
+          
+          {example ? (
+            <div className="space-y-4 w-full px-4 pt-2">
+               <div className={cn(
+                 "flex flex-wrap justify-center items-center gap-x-2 gap-y-2 font-black font-reading bg-white/50 p-6 rounded-3xl border-4 border-dashed border-black/10",
+                 example.length > 60 ? "text-lg sm:text-xl" :
+                 example.length > 40 ? "text-xl sm:text-2xl" :
+                 "text-2xl sm:text-3xl"
+               )}>
+                 {sentenceParts?.map((part, i) => (
+                   part.toLowerCase() === targetWord.toLowerCase() ? (
+                     <span key={i} className="text-primary underline decoration-4 underline-offset-8 decoration-black/20">
+                       {status === 'success' ? part : '____'}
+                     </span>
+                   ) : (
+                     <span key={i} className="text-black/80">{part}</span>
+                   )
+                 ))}
+               </div>
+               <p className={cn(
+                 "font-black text-primary font-reading italic drop-shadow-sm transition-all",
+                 isVeryLong ? "text-base" : "text-lg"
+               )}>
+                 "{exampleTranslation}"
+               </p>
+            </div>
+          ) : (
+            <h2 className="text-4xl sm:text-5xl font-black text-primary font-cartoon uppercase drop-shadow-[3px_3px_0_#000] leading-tight break-keep">
+              {meaning}
+            </h2>
+          )}
           
           {/* Enhanced Mode Selector */}
-          <div className="grid grid-cols-2 gap-4 w-full max-w-sm mx-auto mt-6">
+          <div className="grid grid-cols-2 gap-4 w-full max-w-xs mx-auto mt-4">
              <button 
                onClick={() => handleModeToggle(false)}
                className={cn(
-                 "flex flex-col items-center gap-2 p-4 border-4 border-black transition-all rotate-1",
+                 "flex flex-col items-center gap-1.5 p-3 border-4 border-black transition-all rotate-1",
                  !isDirectMode 
                    ? "bg-black text-white shadow-none translate-y-1" 
                    : "bg-white text-black shadow-[4px_4px_0_#000] hover:-translate-y-1"
                )}
              >
-               <Sparkles className={cn("w-6 h-6", !isDirectMode ? "fill-amber-400" : "text-black")} />
-               <span className="text-xs font-black uppercase font-cartoon">Bubble Mode</span>
+               <Sparkles className={cn("w-5 h-5", !isDirectMode ? "fill-amber-400" : "text-black")} />
+               <span className="text-[10px] font-black uppercase font-cartoon">Bubble Mode</span>
              </button>
              <button 
                onClick={() => handleModeToggle(true)}
                className={cn(
-                 "flex flex-col items-center gap-2 p-4 border-4 border-black transition-all -rotate-1",
+                 "flex flex-col items-center gap-1.5 p-3 border-4 border-black transition-all -rotate-1",
                  isDirectMode 
                    ? "bg-black text-white shadow-none translate-y-1" 
                    : "bg-white text-black shadow-[4px_4px_0_#000] hover:-translate-y-1"
                )}
              >
-               <RefreshCw className={cn("w-6 h-6", isDirectMode ? "animate-spin-slow" : "")} />
-               <span className="text-xs font-black uppercase font-cartoon">Keyboard Mode</span>
+               <RefreshCw className={cn("w-5 h-5", isDirectMode ? "animate-spin-slow" : "")} />
+               <span className="text-[10px] font-black uppercase font-cartoon">Keyboard Mode</span>
              </button>
           </div>
 
-          <p className="text-[10px] font-black text-black/40 uppercase tracking-[0.2em] font-reading mt-4">
+          <p className="text-[10px] font-black text-black/40 uppercase tracking-[0.2em] font-reading mt-2">
             {isDirectMode ? "Press 'Enter' to confirm when finished" : "Click the bubbles in the correct order"}
           </p>
         </div>
@@ -299,7 +340,12 @@ export function TypingPractice({ word, meaning, onSuccess, index, total }: Typin
               value={typedValue}
               onChange={(e) => handleInputChange(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleInputChange(typedValue)} // Manual trigger
-              className="w-full bg-transparent text-center text-4xl sm:text-6xl font-black font-reading uppercase outline-none placeholder:text-black/5"
+              className={cn(
+                "w-full bg-transparent text-center font-black font-reading uppercase outline-none placeholder:text-black/5",
+                isVeryLong ? "text-2xl sm:text-4xl" :
+                isLong ? "text-3xl sm:text-5xl" :
+                "text-4xl sm:text-6xl"
+              )}
               placeholder={targetWord.replace(/[a-zA-Z0-9]/g, '_')}
               spellCheck={false}
               autoComplete="off"
@@ -324,7 +370,10 @@ export function TypingPractice({ word, meaning, onSuccess, index, total }: Typin
                     layout
                     onClick={() => tile && handleRemove(nonSpaceBefore)}
                     className={cn(
-                      "w-10 h-14 sm:w-16 sm:h-20 border-b-8 border-black flex items-center justify-center text-3xl sm:text-4xl font-black font-reading uppercase transition-all",
+                      "border-b-8 border-black flex items-center justify-center font-black font-reading uppercase transition-all",
+                      isVeryLong ? "w-7 h-10 sm:w-11 sm:h-14 text-xl sm:text-2xl" :
+                      isLong ? "w-8 h-12 sm:w-13 sm:h-16 text-2xl sm:text-3xl" :
+                      "w-10 h-14 sm:w-16 sm:h-20 text-3xl sm:text-4xl",
                       tile ? "bg-white border-4 shadow-[4px_4px_0_#000] cursor-pointer hover:bg-muted" : "border-black/10 cursor-default"
                     )}
                     initial={false}
@@ -385,7 +434,12 @@ export function TypingPractice({ word, meaning, onSuccess, index, total }: Typin
                   whileHover={{ y: -5, rotate: 2 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleTileClick(tile.id)}
-                  className="w-14 h-14 sm:w-16 sm:h-16 bg-white border-4 border-black shadow-[6px_6px_0_#000] flex items-center justify-center text-2xl sm:text-3xl font-black font-reading uppercase hover:bg-muted transition-colors cursor-pointer"
+                  className={cn(
+                    "bg-white border-4 border-black shadow-[6px_6px_0_#000] flex items-center justify-center font-black font-reading uppercase hover:bg-muted transition-colors cursor-pointer",
+                    isVeryLong ? "w-9 h-9 sm:w-11 sm:h-11 text-lg sm:text-xl" :
+                    isLong ? "w-11 h-11 sm:w-13 sm:h-13 text-xl sm:text-2xl" :
+                    "w-14 h-14 sm:w-16 sm:h-16 text-2xl sm:text-3xl"
+                  )}
                 >
                   {tile.char}
                 </motion.button>

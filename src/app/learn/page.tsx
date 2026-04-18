@@ -75,7 +75,14 @@ function LearningSwipeCard({ word, onNext, onPrev, index, total }: { word: any, 
 
         <div className="flex-1 flex flex-col justify-center items-center space-y-6 w-full relative">
           <div className="space-y-2 relative z-10 w-full mb-4">
-            <h2 className="text-5xl sm:text-6xl font-black text-black font-reading leading-tight tracking-tight">{word.word}</h2>
+            <h2 className={cn(
+              "font-black text-black font-reading leading-tight tracking-tight break-keep",
+              word.word.length > 20 ? "text-3xl sm:text-4xl" :
+              word.word.length > 15 ? "text-4xl sm:text-5xl" :
+              "text-5xl sm:text-6xl"
+            )}>
+              {word.word}
+            </h2>
           </div>
           
           <AnimatePresence mode="popLayout">
@@ -283,6 +290,8 @@ export default function LearnFlowPage() {
                <TypingPractice 
                  word={currentWord.word}
                  meaning={currentWord.meaning}
+                 example={currentWord.example}
+                 exampleTranslation={currentWord.exampleTranslation}
                  index={currentWordIndex}
                  total={words.length}
                  onSuccess={() => {

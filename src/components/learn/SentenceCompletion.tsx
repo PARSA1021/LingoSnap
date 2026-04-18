@@ -81,13 +81,18 @@ export function SentenceCompletion({ sentence, translation, targetWord, onSucces
         shake && "animate-shake border-error",
         status === 'success' && "border-success scale-105"
       )}>
-        <div className="flex flex-wrap justify-center items-center gap-x-2 gap-y-4 text-3xl sm:text-4xl font-black font-reading">
+        <div className={cn(
+          "flex flex-wrap justify-center items-center gap-x-2 gap-y-4 font-black font-reading",
+          sentence.length > 60 ? "text-xl sm:text-2xl" :
+          sentence.length > 40 ? "text-2xl sm:text-3xl" :
+          "text-3xl sm:text-4xl"
+        )}>
           {parts.map((part, i) => (
             part.toLowerCase() === targetWord.toLowerCase() ? (
               <motion.div
                 key={i}
                 className={cn(
-                  "min-w-[120px] h-14 sm:h-16 border-b-8 border-black flex items-center justify-center transition-all px-4",
+                  "min-w-[80px] sm:min-w-[120px] h-14 sm:h-16 border-b-8 border-black flex items-center justify-center transition-all px-4",
                   selectedWord ? "text-primary scale-110" : "text-black/10"
                 )}
                 animate={selectedWord ? { y: [0, -5, 0] } : {}}
