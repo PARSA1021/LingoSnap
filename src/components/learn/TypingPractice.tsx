@@ -58,6 +58,7 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
     
     setTiles(shuffle(chars));
     setSelectedIds([]);
+    setTypedValue('');
     setStatus('typing');
     // Removed auto-play speak(word) to respect user focus
   }, [word]);

@@ -17,6 +17,7 @@ interface SentenceCompletionProps {
 }
 
 import { useLearningStore } from '@/store/useLearningStore';
+import vocabData from '@/data/vocabulary.json';
 
 export function SentenceCompletion({ sentence, translation, targetWord, onSuccess, index, total }: SentenceCompletionProps) {
   const [selectedWord, setSelectedWord] = React.useState<string | null>(null);
@@ -37,10 +38,27 @@ export function SentenceCompletion({ sentence, translation, targetWord, onSucces
   const [options, setOptions] = React.useState<string[]>([]);
 
   React.useEffect(() => {
-    // Generate distractors - simple variations or common words
-    const distractors = ['something', 'often', 'always', 'people', 'never'].filter(d => d.toLowerCase() !== targetWord.toLowerCase());
-    const randomDistractors = distractors.sort(() => 0.5 - Math.random()).slice(0, 2);
-    setOptions([targetWord, ...randomDistractors].sort(() => 0.5 - Math.random()));
+    // Find words from same category or length to confuse the user
+    const currentWordData = (vocabData as any[]).find(v => v.word.toLowerCase() === targetWord.toLowerCase());
+    const distractors = (vocabData as any[])
+      .filter(v => v.word.toLowerCase() !== targetWord.toLowerCase())
+      .map(v => {
+        let score = 0;
+        // Same category is very confusing
+        if (currentWordData && v.category === currentWordData.category) score += 5;
+        // Similar length
+        if (Math.abs(v.word.length - targetWord.length) <= 2) score += 3;
+        // Same first letter
+        if (v.word[0].toLowerCase() === targetWord[0].toLowerCase()) score += 2;
+        return { word: v.word, score };
+      })
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 15) // Top candidates
+      .sort(() => 0.5 - Math.random())
+      .slice(0, 2) // Pick 2
+      .map(v => v.word);
+
+    setOptions([targetWord, ...distractors].sort(() => 0.5 - Math.random()));
     setSelectedWord(null);
     setStatus('idle');
   }, [targetWord]);

@@ -192,11 +192,11 @@ export default function LearnFlowPage() {
 
   const { stage, currentWordIndex, words } = store;
   const currentWord = words[currentWordIndex];
-  const totalSteps = words.length * 3 + 1; // vocab cards + typing cards + completion cards + 1 speaking
+  const totalSteps = words.length * 3 + 1; // vocab cards + completion cards + typing cards + 1 speaking
   let currentStep = 0;
   if (stage === 'vocab') currentStep = currentWordIndex;
-  else if (stage === 'typing') currentStep = words.length + currentWordIndex;
-  else if (stage === 'completion') currentStep = words.length * 2 + currentWordIndex;
+  else if (stage === 'completion') currentStep = words.length + currentWordIndex;
+  else if (stage === 'typing') currentStep = words.length * 2 + currentWordIndex;
   else if (stage === 'speaking') currentStep = words.length * 3;
   else currentStep = totalSteps;
 
@@ -240,16 +240,16 @@ export default function LearnFlowPage() {
              className="px-4 text-center space-y-1"
            >
              <h3 className="text-xl font-black text-black uppercase tracking-tight font-cartoon">
-               {stage === 'vocab' && "Stage 1: Reel Discovery"}
-               {stage === 'typing' && "Stage 2: Word Assembly"}
-               {stage === 'completion' && "Stage 3: Context Script"}
-               {stage === 'speaking' && "Final Stage: Sound Check"}
+                {stage === 'vocab' && "Stage 1: Reel Discovery"}
+                {stage === 'completion' && "Stage 2: Context Script"}
+                {stage === 'typing' && "Stage 3: Word Assembly"}
+                {stage === 'speaking' && "Final Stage: Sound Check"}
              </h3>
              <p className="text-[10px] font-black text-primary uppercase tracking-[0.2em] opacity-80">
-               {stage === 'vocab' && "Swipe and memorize the golden lines"}
-               {stage === 'typing' && "Build the expressions block by block"}
-               {stage === 'completion' && "Fill the missing words in the script"}
-               {stage === 'speaking' && "Record your voice to master the scene"}
+                {stage === 'vocab' && "Swipe and memorize the golden lines"}
+                {stage === 'completion' && "Fill the missing words in the script"}
+                {stage === 'typing' && "Build the expressions block by block"}
+                {stage === 'speaking' && "Record your voice to master the scene"}
              </p>
            </motion.div>
         </div>
@@ -276,7 +276,7 @@ export default function LearnFlowPage() {
                         store.nextWord();
                       } else {
                         store.resetSession();
-                        store.setStage('typing');
+                        store.setStage('completion');
                       }
                     }}
                   />
@@ -298,7 +298,7 @@ export default function LearnFlowPage() {
                     if (currentWordIndex < words.length - 1) {
                         store.nextWord();
                     } else {
-                        store.setStage('completion');
+                        store.setStage('speaking');
                     }
                  }}
                />
@@ -317,7 +317,7 @@ export default function LearnFlowPage() {
                     if (currentWordIndex < words.length - 1) {
                         store.nextWord();
                     } else {
-                        store.setStage('speaking');
+                        store.setStage('typing');
                     }
                  }}
                />
