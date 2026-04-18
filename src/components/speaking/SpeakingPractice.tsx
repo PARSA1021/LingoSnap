@@ -95,7 +95,7 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
   };
 
   return (
-    <Card className="w-full max-w-lg mx-auto bg-white border-8 border-black relative overflow-visible shadow-[12px_12px_0_#000]">
+    <Card className="w-full max-w-lg mx-auto bg-white border-4 sm:border-8 border-black relative overflow-visible shadow-[8px_8px_0_#000] sm:shadow-[12px_12px_0_#000]">
       <div className="absolute top-4 right-4 z-20">
         <motion.button
           whileTap={{ scale: 0.9 }}
@@ -111,12 +111,12 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
         </motion.button>
       </div>
 
-      <CardContent className="p-8 sm:p-12 flex flex-col items-center text-center space-y-10 select-none">
+      <CardContent className="p-4 sm:p-12 flex flex-col items-center text-center space-y-6 sm:space-y-10 select-none">
         
         <div className="space-y-6 w-full pt-4">
            <p className="text-sm font-black text-white uppercase tracking-[0.2em] bg-black px-6 py-2 border-4 border-black shadow-[4px_4px_0_#000] w-auto mx-auto wobbly-slow font-cartoon">Speak the Lines!</p>
-          <div className="bg-white p-10 border-8 border-black shadow-[10px_10px_0_#000] wobbly-slow">
-            <h2 className="text-4xl sm:text-6xl font-black text-black leading-tight break-keep flex flex-wrap justify-center gap-x-6 gap-y-6 font-lilita">
+          <div className="bg-white p-6 sm:p-10 border-4 sm:border-8 border-black shadow-[6px_6px_0_#000] sm:shadow-[10px_10px_0_#000] wobbly-slow">
+            <h2 className="text-2xl sm:text-6xl font-black text-black leading-tight break-keep flex flex-wrap justify-center gap-x-4 sm:gap-x-6 gap-y-4 sm:gap-y-6 font-lilita">
               {words.map((word, i) => {
                 const isHidden = hiddenWordIndices.includes(i);
                 return (
@@ -150,7 +150,7 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
           <Button
             aria-label={isRecording ? "Stop recording" : "Microphone"}
             className={cn(
-              "w-40 h-40 rounded-full relative transition-all border-8 border-black shadow-[10px_10px_0_#000] active:translate-y-2 active:translate-x-2 active:shadow-none wobbly",
+              "w-28 h-28 sm:w-40 sm:h-40 rounded-full relative transition-all border-4 sm:border-8 border-black shadow-[6px_6px_0_#000] sm:shadow-[10px_10px_0_#000] active:translate-y-2 active:translate-x-2 active:shadow-none wobbly",
               isRecording 
                 ? 'bg-error text-white' 
                 : 'bg-primary text-white'

@@ -32,17 +32,17 @@ export function BottomNav() {
               href={tab.href}
               aria-label={tab.name}
               aria-current={isActive ? 'page' : undefined}
-              className="flex flex-col items-center gap-1 group w-1/5 select-none touch-manipulation pb-2 sm:pb-4"
+              className="flex flex-col items-center gap-0.5 sm:gap-1 group w-1/5 select-none touch-manipulation pb-1 sm:pb-4"
             >
               <div
-                className={`relative px-4 py-2 transition-all duration-300 border-4 border-black shadow-[6px_6px_0_#000] ${isActive
-                    ? 'bg-primary text-white wobbly -translate-y-2 shadow-[8px_8px_0_#000]'
+                className={`relative px-3 sm:px-4 py-1.5 sm:py-2 transition-all duration-300 border-2 sm:border-4 border-black shadow-[4px_4px_0_#000] sm:shadow-[6px_6px_0_#000] ${isActive
+                    ? 'bg-primary text-white wobbly -translate-y-1 sm:-translate-y-2 shadow-[6px_6px_0_#000] sm:shadow-[8px_8px_0_#000]'
                     : 'text-black bg-white group-hover:bg-muted'
                   }`}
               >
-                <div className="relative z-10 font-black">{tab.icon}</div>
+                <div className="relative z-10 font-black scale-90 sm:scale-100">{tab.icon}</div>
               </div>
-              <span className={`text-[10px] sm:text-xs font-black tracking-widest uppercase font-cartoon mt-1 ${isActive ? 'text-primary' : 'text-black/60'}`}>
+              <span className={`text-[8px] sm:text-xs font-black tracking-tight sm:tracking-widest uppercase font-cartoon mt-0.5 sm:mt-1 ${isActive ? 'text-primary' : 'text-black/60'} whitespace-nowrap`}>
                 {tab.name}
               </span>
             </Link>

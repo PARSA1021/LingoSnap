@@ -189,16 +189,16 @@ export default function LearnFlowPage() {
   return (
     <div className="flex-1 p-4 sm:p-8 flex flex-col w-full min-h-screen bg-background dot-pattern overflow-hidden">
       {stage !== 'result' && (
-        <div className="max-w-xl mx-auto w-full mb-8 space-y-4">
-           <div className="flex justify-between items-center px-2">
-             <Link href="/" className="p-2 bg-surface rounded-full font-black text-xl border-2 border-border">✕</Link>
-             <div className="flex items-center gap-2 bg-surface px-3 py-1 rounded-full border-2 border-border">
-               <Sparkles className="w-4 h-4 text-amber-500" />
-               <span className="text-[10px] font-black text-foreground uppercase tracking-widest">Learning Mode</span>
+        <div className="max-w-xl mx-auto w-full mb-6 sm:mb-8 space-y-4">
+           <div className="flex justify-between items-center px-4">
+             <Link href="/" className="p-1.5 bg-surface rounded-full font-black text-lg border-2 border-border shadow-[2px_2px_0_#000]">✕</Link>
+             <div className="flex items-center gap-2 bg-surface px-3 py-1 rounded-full border-2 border-border shadow-[2px_2px_0_#000]">
+               <Sparkles className="w-3 h-3 text-amber-500" />
+               <span className="text-[10px] font-black text-foreground uppercase tracking-widest">Live Show</span>
              </div>
-             <div className="w-10" />
+             <div className="w-8" />
            </div>
-           <div className="flex gap-4 items-center">
+           <div className="flex gap-3 items-center px-4">
              <div className="bg-surface rounded-full h-3 flex-1 overflow-hidden border-2 border-border shadow-inner">
                <motion.div 
                  className="bg-primary h-full rounded-full"
@@ -209,8 +209,8 @@ export default function LearnFlowPage() {
              </div>
              <Button 
                onClick={() => speak('System Check')}
-               variant="ghost" 
-               className="h-10 w-10 p-0 rounded-full border-2 border-black bg-white shadow-[2px_2px_0_#000]"
+               variant="outline" 
+               className="h-10 w-10 p-0 rounded-full border-2 border-black bg-white shadow-[2px_2px_0_#000] active:translate-y-0.5 active:shadow-none transition-all"
              >
                <Volume2 className="w-4 h-4" />
              </Button>

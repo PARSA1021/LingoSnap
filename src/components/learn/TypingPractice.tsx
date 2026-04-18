@@ -35,18 +35,46 @@ export function TypingPractice({ word, meaning, onSuccess, index, total }: Typin
 
   // Initialize tiles
   React.useEffect(() => {
+    // Only create tiles for non-space characters
     const chars = targetWord.split('').map((char, i) => ({
       id: i,
       char,
       isUsed: false
-    }));
+    })).filter(t => t.char !== ' ');
+    
     setTiles(shuffle(chars));
     setSelectedIds([]);
     setStatus('typing');
     speak(word);
   }, [word]);
 
-  const currentString = selectedIds.map(id => tiles.find(t => t.id === id)?.char).join('');
+  // Updated string calculation to account for auto-inserted spaces
+  const getCurrentString = (ids: number[]) => {
+    let result = '';
+    let usedIdsCount = 0;
+    
+    for (let i = 0; i < targetWord.length; i++) {
+      if (targetWord[i] === ' ') {
+        if (usedIdsCount < ids.length || (i > 0 && targetWord[i-1] === ' ')) {
+          result += ' ';
+        } else {
+          // If we haven't reached this part yet in the input
+          break;
+        }
+      } else {
+        if (usedIdsCount < ids.length) {
+          const tile = tiles.find(t => t.id === ids[usedIdsCount]);
+          result += tile?.char || '';
+          usedIdsCount++;
+        } else {
+          break;
+        }
+      }
+    }
+    return result;
+  };
+
+  const currentString = getCurrentString(selectedIds);
 
   // Handle tile click
   const handleTileClick = (id: number) => {
@@ -59,12 +87,30 @@ export function TypingPractice({ word, meaning, onSuccess, index, total }: Typin
     setSelectedIds(newSelected);
     setTiles(prev => prev.map(t => t.id === id ? { ...t, isUsed: true } : t));
 
-    const newString = newSelected.map(sid => tiles.find(t => t.id === sid)?.char).join('');
+    // The 'full' string including auto-spaces is needed for validation
+    const getFinalString = (ids: number[]) => {
+      let result = '';
+      let usedCount = 0;
+      for (let i = 0; i < targetWord.length; i++) {
+        if (targetWord[i] === ' ') {
+          result += ' ';
+        } else {
+          if (usedCount < ids.length) {
+            const tile = tiles.find(t => t.id === ids[usedCount]);
+            result += tile?.char || '';
+            usedCount++;
+          }
+        }
+      }
+      return result;
+    };
+
+    const newString = getFinalString(newSelected);
     
-    if (newString === targetWord) {
+    if (newString.trim() === targetWord.trim()) {
       setStatus('success');
       setTimeout(onSuccess, 1200);
-    } else if (newString.length === targetWord.length) {
+    } else if (newSelected.length === tiles.length) {
       setStatus('error');
       setShake(true);
       setTimeout(() => setShake(false), 500);
@@ -132,30 +178,47 @@ export function TypingPractice({ word, meaning, onSuccess, index, total }: Typin
 
       {/* Slots Area */}
       <div className={cn(
-        "w-full bg-white border-8 border-black p-6 sm:p-10 shadow-[12px_12px_0_#000] min-h-[140px] flex flex-wrap justify-center items-center gap-3 transition-all",
+        "w-full bg-white border-8 border-black p-6 sm:p-10 shadow-[12px_12px_0_#000] min-h-[140px] flex flex-wrap justify-center items-center gap-x-3 gap-y-6 transition-all",
         shake && "animate-shake border-error",
         status === 'success' && "border-success bg-success/5"
       )}>
-        {targetWord.split('').map((char, i) => {
-          const selectedId = selectedIds[i];
-          const tile = selectedId !== undefined ? tiles.find(t => t.id === selectedId) : null;
-          
-          return (
-            <motion.button
-              key={i}
-              layout
-              onClick={() => tile && handleRemove(i)}
-              className={cn(
-                "w-12 h-16 sm:w-16 sm:h-20 border-b-8 border-black flex items-center justify-center text-3xl sm:text-4xl font-black font-reading uppercase transition-all",
-                tile ? "bg-white border-4 shadow-[4px_4px_0_#000] cursor-pointer hover:bg-muted" : "border-black/10 cursor-default"
-              )}
-              initial={false}
-              animate={tile ? { scale: 1, y: 0 } : { scale: 0.95, y: 2 }}
-            >
-              {tile?.char}
-            </motion.button>
-          );
-        })}
+        {/* Render words with gaps for spaces */}
+        {targetWord.split(' ').map((wordPart, wordIdx) => (
+          <div key={wordIdx} className="flex gap-2 items-center">
+            {wordPart.split('').map((char, charIdx) => {
+              // Calculate the global index of this character
+              const previousWordsLength = targetWord.split(' ').slice(0, wordIdx).join(' ').length;
+              const globalIdx = (wordIdx === 0 ? 0 : previousWordsLength + 1) + charIdx;
+              
+              // Find which selectedId corresponds to this non-space character
+              // We count how many non-space characters come before globalIdx
+              const nonSpaceBefore = targetWord.slice(0, globalIdx).replace(/\s/g, '').length;
+              const selectedId = selectedIds[nonSpaceBefore];
+              const tile = selectedId !== undefined ? tiles.find(t => t.id === selectedId) : null;
+
+              return (
+                <motion.button
+                  key={`${wordIdx}-${charIdx}`}
+                  layout
+                  onClick={() => tile && handleRemove(nonSpaceBefore)}
+                  className={cn(
+                    "w-10 h-14 sm:w-16 sm:h-20 border-b-8 border-black flex items-center justify-center text-3xl sm:text-4xl font-black font-reading uppercase transition-all",
+                    tile ? "bg-white border-4 shadow-[4px_4px_0_#000] cursor-pointer hover:bg-muted" : "border-black/10 cursor-default"
+                  )}
+                  initial={false}
+                  animate={tile ? { scale: 1, y: 0 } : { scale: 0.95, y: 2 }}
+                >
+                  {tile?.char}
+                </motion.button>
+              );
+            })}
+            {wordIdx < targetWord.split(' ').length - 1 && (
+              <div className="w-4 h-12 flex items-center justify-center opacity-20">
+                <div className="w-[4px] h-[30px] bg-black rotate-12" />
+              </div>
+            )}
+          </div>
+        ))}
       </div>
 
       {/* Interaction Controls */}

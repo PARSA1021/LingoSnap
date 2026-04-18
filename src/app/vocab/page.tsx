@@ -137,8 +137,8 @@ export default function VocabSearchPage() {
                 <BookOpen className="w-6 h-6 sm:w-10 sm:h-10 fill-white" />
               </div>
               <div className="min-w-0">
-                <h1 className="text-3xl sm:text-5xl font-black tracking-tighter leading-tight drop-shadow-[4px_4px_0_#000] text-black font-cartoon uppercase">표현 수집함</h1>
-                <p className="text-xs font-black text-primary uppercase tracking-[0.2em] mt-1">
+                <h1 className="text-2xl sm:text-5xl font-black tracking-tighter leading-tight drop-shadow-[4px_4px_0_#000] text-black font-cartoon uppercase truncate">표현 수집함</h1>
+                <p className="text-[10px] sm:text-xs font-black text-primary uppercase tracking-[0.2em] mt-0.5 sm:mt-1 truncate">
                   Total {processedCards.length} expressions
                 </p>
               </div>
