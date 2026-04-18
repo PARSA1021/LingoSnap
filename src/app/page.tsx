@@ -10,19 +10,6 @@ import { speak } from '@/lib/tts';
 import { useLearningStore } from '@/store/useLearningStore';
 
 export default function HomePage() {
-  const points = useLearningStore(state => state.points);
-  
-  // Calculate Rank based on points
-  const getRank = (pts: number) => {
-    if (pts >= 10000) return 'Hollywood Legend';
-    if (pts >= 5000) return 'Leading Actor';
-    if (pts >= 2000) return 'Supporting Role';
-    if (pts >= 500) return 'Rising Star';
-    if (pts >= 100) return 'Extra';
-    return 'Audience';
-  };
-
-  const rank = getRank(points);
   return (
     <div className="flex-1 w-full max-w-5xl mx-auto px-4 py-8 sm:py-12 flex flex-col items-center">
 
@@ -37,20 +24,8 @@ export default function HomePage() {
         <p className="text-sm sm:text-lg font-black text-black uppercase tracking-[0.2em] mt-2 opacity-80">Don't Deal with the Boredom!</p>
       </div>
 
-      {/* Quick Stats / Status - Thematic Dashboard */}
-      <div className="w-full max-w-2xl grid grid-cols-2 gap-4 mb-10">
-        <div className="bg-white border-4 border-black p-4 shadow-[4px_4px_0_#000] rotate-1 flex flex-col items-center">
-           <span className="text-[10px] font-black text-black/40 uppercase tracking-widest">Stage Rank</span>
-           <span className="text-2xl font-black text-primary">{rank}</span>
-        </div>
-        <div className="bg-white border-4 border-black p-4 shadow-[4px_4px_0_#000] -rotate-1 flex flex-col items-center">
-           <span className="text-[10px] font-black text-black/40 uppercase tracking-widest">Talkie Points</span>
-           <span className="text-2xl font-black text-info">{points.toLocaleString()}</span>
-        </div>
-      </div>
-
       {/* Main Action Path - Compacted */}
-      <div className="w-full max-w-sm sm:max-w-xl mb-12 flex flex-col items-center gap-6">
+      <div className="w-full max-w-sm sm:max-w-xl mb-12 mt-8 flex flex-col items-center gap-6">
         <Link href="/learn" className="block w-full group">
           <div className="relative bg-white border-4 sm:border-8 border-black p-6 sm:p-8 shadow-[8px_8px_0_#000] sm:shadow-[10px_10px_0_#000] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all wobbly-slow cursor-pointer">
             <div className="flex flex-row items-center gap-4 sm:gap-6 justify-center">
