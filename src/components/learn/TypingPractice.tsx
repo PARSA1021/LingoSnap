@@ -254,7 +254,7 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
       {/* Header Area */}
       <div className="text-center space-y-4 w-full">
         <div className="flex flex-col items-center gap-3">
-          <div className="flex items-center gap-3 bg-black text-white px-6 py-2 border-4 border-black shadow-[4px_4px_0_#000] rotate-1">
+          <div className="flex items-center gap-3 bg-foreground text-background px-6 py-2 border-4 border-border shadow-[4px_4px_0_var(--border)] rotate-1">
              <Sparkles className="w-5 h-5 text-amber-400" />
              <span className="text-sm font-black uppercase tracking-[0.2em] font-cartoon">
                Scene Construction {index + 1}/{total}
@@ -264,18 +264,18 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
           {example ? (
             <div className="space-y-4 w-full px-4 pt-2">
                <div className={cn(
-                 "flex flex-wrap justify-center items-center gap-x-2 gap-y-2 font-black font-reading bg-white/50 p-6 rounded-3xl border-4 border-dashed border-black/10",
+                 "flex flex-wrap justify-center items-center gap-x-2 gap-y-2 font-black font-reading bg-surface/50 p-6 rounded-3xl border-4 border-dashed border-border/10",
                  example.length > 60 ? "text-lg sm:text-xl" :
                  example.length > 40 ? "text-xl sm:text-2xl" :
                  "text-2xl sm:text-3xl"
                )}>
                  {sentenceParts?.map((part, i) => (
                    part.toLowerCase() === targetWord.toLowerCase() ? (
-                     <span key={i} className="text-primary underline decoration-4 underline-offset-8 decoration-black/20">
+                     <span key={i} className="text-primary underline decoration-4 underline-offset-8 decoration-border/20">
                        {status === 'success' ? part : '____'}
                      </span>
                    ) : (
-                     <span key={i} className="text-black/80">{part}</span>
+                     <span key={i} className="text-foreground/80">{part}</span>
                    )
                  ))}
                </div>
@@ -287,7 +287,7 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
                </p>
             </div>
           ) : (
-            <h2 className="text-4xl sm:text-5xl font-black text-primary font-cartoon uppercase drop-shadow-[3px_3px_0_#000] leading-tight break-keep">
+            <h2 className="text-4xl sm:text-5xl font-black text-primary font-cartoon uppercase drop-shadow-[3px_3px_0_var(--border)] leading-tight break-keep">
               {meaning}
             </h2>
           )}
@@ -297,22 +297,22 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
              <button 
                onClick={() => handleModeToggle(false)}
                className={cn(
-                 "flex flex-col items-center gap-1.5 p-3 border-4 border-black transition-all rotate-1",
+                 "flex flex-col items-center gap-1.5 p-3 border-4 border-border transition-all rotate-1",
                  !isDirectMode 
-                   ? "bg-black text-white shadow-none translate-y-1" 
-                   : "bg-white text-black shadow-[4px_4px_0_#000] hover:-translate-y-1"
+                   ? "bg-foreground text-background shadow-none translate-y-1" 
+                   : "bg-surface text-foreground shadow-[4px_4px_0_var(--border)] hover:-translate-y-1"
                )}
              >
-               <Sparkles className={cn("w-5 h-5", !isDirectMode ? "fill-amber-400" : "text-black")} />
+               <Sparkles className={cn("w-5 h-5", !isDirectMode ? "fill-amber-400" : "text-foreground")} />
                <span className="text-[10px] font-black uppercase font-cartoon">Bubble Mode</span>
              </button>
              <button 
                onClick={() => handleModeToggle(true)}
                className={cn(
-                 "flex flex-col items-center gap-1.5 p-3 border-4 border-black transition-all -rotate-1",
+                 "flex flex-col items-center gap-1.5 p-3 border-4 border-border transition-all -rotate-1",
                  isDirectMode 
-                   ? "bg-black text-white shadow-none translate-y-1" 
-                   : "bg-white text-black shadow-[4px_4px_0_#000] hover:-translate-y-1"
+                   ? "bg-foreground text-background shadow-none translate-y-1" 
+                   : "bg-surface text-foreground shadow-[4px_4px_0_var(--border)] hover:-translate-y-1"
                )}
              >
                <RefreshCw className={cn("w-5 h-5", isDirectMode ? "animate-spin-slow" : "")} />
@@ -320,7 +320,7 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
              </button>
           </div>
 
-          <p className="text-[10px] font-black text-black/40 uppercase tracking-[0.2em] font-reading mt-2">
+          <p className="text-[10px] font-black text-foreground/40 uppercase tracking-[0.2em] font-reading mt-2">
             {isDirectMode ? "Press 'Enter' to confirm when finished" : "Click the bubbles in the correct order"}
           </p>
         </div>
@@ -328,7 +328,7 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
 
       {/* Input / Slots Area */}
       <div className={cn(
-        "w-full bg-white border-8 border-black p-6 sm:p-10 shadow-[12px_12px_0_#000] min-h-[140px] flex flex-wrap justify-center items-center gap-x-3 gap-y-6 transition-all",
+        "w-full bg-surface border-8 border-border p-6 sm:p-10 shadow-[12px_12px_0_var(--border)] min-h-[140px] flex flex-wrap justify-center items-center gap-x-3 gap-y-6 transition-all",
         shake && "animate-shake border-error",
         status === 'success' && "border-success bg-success/5"
       )}>
@@ -351,7 +351,7 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
               spellCheck={false}
               autoComplete="off"
             />
-            <div className="absolute bottom-0 left-0 right-0 h-2 bg-black/10 mx-10" />
+            <div className="absolute bottom-0 left-0 right-0 h-2 bg-foreground/10 mx-10" />
             <div className="absolute bottom-0 left-0 h-2 bg-primary transition-all duration-300 mx-10" style={{ width: `${Math.min(100, (typedValue.length / targetWord.length) * 100)}%` }} />
           </div>
         ) : (
@@ -371,11 +371,11 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
                     layout
                     onClick={() => tile && handleRemove(nonSpaceBefore)}
                     className={cn(
-                      "border-b-8 border-black flex items-center justify-center font-black font-reading uppercase transition-all",
+                      "border-b-8 border-border flex items-center justify-center font-black font-reading uppercase transition-all",
                       isVeryLong ? "w-7 h-10 sm:w-11 sm:h-14 text-xl sm:text-2xl" :
                       isLong ? "w-8 h-12 sm:w-13 sm:h-16 text-2xl sm:text-3xl" :
                       "w-10 h-14 sm:w-16 sm:h-20 text-3xl sm:text-4xl",
-                      tile ? "bg-white border-4 shadow-[4px_4px_0_#000] cursor-pointer hover:bg-muted" : "border-black/10 cursor-default"
+                      tile ? "bg-surface border-4 shadow-[4px_4px_0_var(--border)] cursor-pointer hover:bg-muted" : "border-border/10 cursor-default"
                     )}
                     initial={false}
                     animate={tile ? { scale: 1, y: 0 } : { scale: 0.95, y: 2 }}
@@ -386,7 +386,7 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
               })}
               {wordIdx < targetWord.split(' ').length - 1 && (
                 <div className="w-4 h-12 flex items-center justify-center opacity-20">
-                  <div className="w-[4px] h-[30px] bg-black rotate-12" />
+                  <div className="w-[4px] h-[30px] bg-foreground rotate-12" />
                 </div>
               )}
             </div>
@@ -399,7 +399,7 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
         <Button 
           variant="secondary" 
           onClick={() => speak(word)} 
-          className="h-16 w-16 rounded-full border-4 border-black shadow-[4px_4px_0_#000] bg-white text-black active:translate-y-1 active:shadow-none transition-all"
+          className="h-16 w-16 rounded-full border-4 border-border shadow-[4px_4px_0_var(--border)] bg-surface text-foreground active:translate-y-1 active:shadow-none transition-all"
         >
           <Volume2 className="w-8 h-8" />
         </Button>
@@ -407,14 +407,14 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
           variant="secondary" 
           onClick={handleHint}
           disabled={status === 'success' || selectedIds.length === targetWord.length}
-          className="h-16 w-16 rounded-full border-4 border-black shadow-[4px_4px_0_#000] bg-white text-amber-500 active:translate-y-1 active:shadow-none transition-all disabled:opacity-50"
+          className="h-16 w-16 rounded-full border-4 border-border shadow-[4px_4px_0_var(--border)] bg-surface text-amber-500 active:translate-y-1 active:shadow-none transition-all disabled:opacity-50"
         >
           <Lightbulb className="w-8 h-8 fill-current" />
         </Button>
         <Button 
           variant="ghost" 
           onClick={handleClear} 
-          className="h-16 w-16 rounded-full border-4 border-black shadow-[4px_4px_0_#000] bg-white text-black active:translate-y-1 active:shadow-none transition-all"
+          className="h-16 w-16 rounded-full border-4 border-border shadow-[4px_4px_0_var(--border)] bg-surface text-foreground active:translate-y-1 active:shadow-none transition-all"
         >
           <RefreshCw className="w-8 h-8" />
         </Button>
@@ -436,7 +436,7 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleTileClick(tile.id)}
                   className={cn(
-                    "bg-white border-4 border-black shadow-[6px_6px_0_#000] flex items-center justify-center font-black font-reading uppercase hover:bg-muted transition-colors cursor-pointer",
+                    "bg-surface border-4 border-border shadow-[6px_6px_0_var(--border)] flex items-center justify-center font-black font-reading uppercase hover:bg-muted transition-colors cursor-pointer",
                     isVeryLong ? "w-9 h-9 sm:w-11 sm:h-11 text-lg sm:text-xl" :
                     isLong ? "w-11 h-11 sm:w-13 sm:h-13 text-xl sm:text-2xl" :
                     "w-14 h-14 sm:w-16 sm:h-16 text-2xl sm:text-3xl"
@@ -460,16 +460,16 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
             <motion.div
               initial={{ scale: 0, rotate: -10 }}
               animate={{ scale: 1, rotate: 0 }}
-              className="bg-white border-8 border-black p-10 sm:p-14 shadow-[20px_20px_0_#000] text-center space-y-8 wobbly"
+              className="bg-surface border-8 border-border p-10 sm:p-14 shadow-[20px_20px_0_var(--border)] text-center space-y-8 wobbly"
             >
               <div className="flex items-center justify-center gap-6">
                 <Sparkles className="w-12 h-12 sm:w-20 sm:h-20 fill-success text-success" />
-                <h2 className="text-6xl sm:text-8xl font-black text-black font-cartoon uppercase">BINGO!</h2>
+                <h2 className="text-6xl sm:text-8xl font-black text-foreground font-cartoon uppercase">BINGO!</h2>
                 <Sparkles className="w-12 h-12 sm:w-20 sm:h-20 fill-success text-success" />
               </div>
               
               <div className="flex flex-col items-center gap-4">
-                <p className="text-2xl font-black text-black/60 uppercase tracking-widest font-cartoon">Wonderful Performance!</p>
+                <p className="text-2xl font-black text-foreground/60 uppercase tracking-widest font-cartoon">Wonderful Performance!</p>
                 <div className="bg-success/10 px-6 py-2 border-4 border-dashed border-success">
                   <span className="text-xl font-black text-success uppercase font-cartoon">+50 Talkie Points</span>
                 </div>
@@ -478,7 +478,7 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
               <div className="pt-6">
                 <Button 
                   onClick={onSuccess}
-                  className="w-full h-20 text-3xl border-8 border-black bg-primary text-white shadow-[10px_10px_0_#000] active:translate-y-2 active:translate-x-2 active:shadow-none transition-all uppercase font-cartoon flex items-center justify-center gap-4"
+                  className="w-full h-20 text-3xl border-8 border-border bg-primary text-white shadow-[10px_10px_0_var(--border)] active:translate-y-2 active:translate-x-2 active:shadow-none transition-all uppercase font-cartoon flex items-center justify-center gap-4"
                 >
                   Next Step <ArrowRight className="w-8 h-8" />
                 </Button>

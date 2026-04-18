@@ -21,7 +21,7 @@ export function BottomNav() {
   return (
     <nav
       aria-label="Main Navigation"
-      className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t-4 sm:border-t-8 border-black pb-safe pt-1 sm:pt-3 shadow-[0_-4px_0_#000] sm:shadow-[0_-8px_0_#000]"
+      className="fixed bottom-0 left-0 right-0 z-50 bg-surface border-t-4 sm:border-t-8 border-border pb-safe pt-1 sm:pt-3 shadow-[0_-4px_0_var(--border)] sm:shadow-[0_-8px_0_var(--border)]"
     >
       <div className="max-w-4xl mx-auto flex justify-between items-center px-4 sm:px-10 relative">
         {tabs.map((tab) => {
@@ -37,17 +37,17 @@ export function BottomNav() {
             >
               <div
                 className={cn(
-                  "relative px-4 py-2 transition-all duration-300 border-2 sm:border-4 border-black shadow-[3px_3px_0_#000] sm:shadow-[6px_6px_0_#000]",
+                  "relative px-4 py-2 transition-all duration-300 border-2 sm:border-4 border-border shadow-[3px_3px_0_var(--border)] sm:shadow-[6px_6px_0_var(--border)]",
                   isActive
-                    ? 'bg-primary text-white wobbly -translate-y-1 sm:-translate-y-2 shadow-[5px_5px_0_#000] sm:shadow-[8px_8px_0_#000] scale-110'
-                    : 'text-black bg-white group-hover:bg-muted active:scale-95'
+                    ? 'bg-primary text-white wobbly -translate-y-1 sm:-translate-y-2 shadow-[5px_5px_0_var(--border)] sm:shadow-[8px_8px_0_var(--border)] scale-110'
+                    : 'text-foreground bg-surface group-hover:bg-muted active:scale-95'
                 )}
               >
                 <div className="relative z-10 font-black">{tab.icon}</div>
               </div>
               <span className={cn(
                 "text-[7px] sm:text-[10px] font-black tracking-tight sm:tracking-widest uppercase font-cartoon mt-1 whitespace-nowrap transition-colors",
-                isActive ? 'text-primary' : 'text-black/40'
+                isActive ? 'text-primary' : 'text-foreground/40'
               )}>
                 {tab.name}
               </span>

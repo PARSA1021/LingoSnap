@@ -17,7 +17,7 @@ export const ThemeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-xl bg-surface border-4 border-border shadow-[2px_2px_0_#111] hover:bg-muted text-foreground transition-all relative h-10 w-10 flex items-center justify-center overflow-hidden active:translate-y-1 active:translate-x-1 active:shadow-none wobbly"
+      className="p-2 rounded-xl bg-surface border-4 border-border shadow-[2px_2px_0_var(--border)] hover:bg-muted text-foreground transition-all relative h-10 w-10 flex items-center justify-center overflow-hidden active:translate-y-1 active:translate-x-1 active:shadow-none wobbly"
       aria-label="Toggle theme"
     >
       <AnimatePresence mode="wait" initial={false}>

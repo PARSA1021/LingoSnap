@@ -95,7 +95,7 @@ export function SentenceCompletion({ sentence, translation, targetWord, onSucces
       </div>
 
       <div className={cn(
-        "w-full bg-white border-8 border-black p-8 sm:p-12 shadow-[12px_12px_0_#000] transition-all relative overflow-hidden",
+        "w-full bg-surface border-8 border-border p-8 sm:p-12 shadow-[12px_12px_0_var(--border)] transition-all relative overflow-hidden",
         shake && "animate-shake border-error",
         status === 'success' && "border-success scale-105"
       )}>
@@ -110,15 +110,15 @@ export function SentenceCompletion({ sentence, translation, targetWord, onSucces
               <motion.div
                 key={i}
                 className={cn(
-                  "min-w-[80px] sm:min-w-[120px] h-14 sm:h-16 border-b-8 border-black flex items-center justify-center transition-all px-4",
-                  selectedWord ? "text-primary scale-110" : "text-black/10"
+                  "min-w-[80px] sm:min-w-[120px] h-14 sm:h-16 border-b-8 border-border flex items-center justify-center transition-all px-4",
+                  selectedWord ? "text-primary scale-110" : "text-foreground/10"
                 )}
                 animate={selectedWord ? { y: [0, -5, 0] } : {}}
               >
                 {selectedWord || '____'}
               </motion.div>
             ) : (
-              <span key={i} className="text-black">{part}</span>
+              <span key={i} className="text-foreground">{part}</span>
             )
           ))}
         </div>
@@ -127,7 +127,7 @@ export function SentenceCompletion({ sentence, translation, targetWord, onSucces
           <Button 
             variant="ghost" 
             onClick={() => speak(targetWord)} 
-            className="flex items-center gap-3 border-4 border-black bg-white shadow-[4px_4px_0_#000] active:translate-y-1 font-cartoon text-sm uppercase"
+            className="flex items-center gap-3 border-4 border-border bg-surface shadow-[4px_4px_0_var(--border)] active:translate-y-1 font-cartoon text-sm uppercase text-foreground"
           >
             <Volume2 className="w-5 h-5 text-primary" /> Listen to missing word
           </Button>
@@ -141,7 +141,7 @@ export function SentenceCompletion({ sentence, translation, targetWord, onSucces
       </div>
 
       <div className="w-full space-y-4 pt-4">
-        <p className="text-center text-xs font-black text-black/40 uppercase tracking-widest flex items-center justify-center gap-2">
+        <p className="text-center text-xs font-black text-foreground/40 uppercase tracking-widest flex items-center justify-center gap-2">
            Pick the right block
         </p>
         <div className="flex flex-wrap justify-center gap-4">
@@ -152,7 +152,7 @@ export function SentenceCompletion({ sentence, translation, targetWord, onSucces
               whileTap={{ scale: 0.95 }}
               onClick={() => handleOptionClick(opt)}
               className={cn(
-                "px-8 py-4 bg-white border-4 border-black shadow-[6px_6px_0_#000] text-xl sm:text-2xl font-black font-reading uppercase hover:bg-muted transition-all",
+                "px-8 py-4 bg-surface border-4 border-border shadow-[6px_6px_0_var(--border)] text-xl sm:text-2xl font-black font-reading uppercase hover:bg-muted transition-all text-foreground",
                 selectedWord === opt && status === 'success' && "bg-success text-white border-success",
                 selectedWord === opt && status === 'error' && "bg-error text-white border-error"
               )}
@@ -173,16 +173,16 @@ export function SentenceCompletion({ sentence, translation, targetWord, onSucces
             <motion.div
               initial={{ scale: 0, rotate: 10 }}
               animate={{ scale: 1, rotate: 0 }}
-              className="bg-white border-8 border-black p-10 sm:p-14 shadow-[20px_20px_0_#000] text-center space-y-8 wobbly"
+              className="bg-surface border-8 border-border p-10 sm:p-14 shadow-[20px_20px_0_var(--border)] text-center space-y-8 wobbly"
             >
               <div className="flex items-center justify-center gap-6">
                 <Sparkles className="w-12 h-12 sm:w-20 sm:h-20 fill-info text-info" />
-                <h2 className="text-6xl sm:text-8xl font-black text-black font-cartoon uppercase">PERFECT!</h2>
+                <h2 className="text-6xl sm:text-8xl font-black text-foreground font-cartoon uppercase">PERFECT!</h2>
                 <Sparkles className="w-12 h-12 sm:w-20 sm:h-20 fill-info text-info" />
               </div>
 
               <div className="flex flex-col items-center gap-4">
-                <p className="text-2xl font-black text-black/60 uppercase tracking-widest font-cartoon">Context Mastered!</p>
+                <p className="text-2xl font-black text-foreground/60 uppercase tracking-widest font-cartoon">Context Mastered!</p>
                 <div className="bg-info/10 px-6 py-2 border-4 border-dashed border-info">
                   <span className="text-xl font-black text-info uppercase font-cartoon">+100 Talkie Points</span>
                 </div>
@@ -191,7 +191,7 @@ export function SentenceCompletion({ sentence, translation, targetWord, onSucces
               <div className="pt-6">
                  <Button 
                    onClick={onSuccess}
-                   className="w-full h-20 text-3xl border-8 border-black bg-info text-white shadow-[10px_10px_0_#000] active:translate-y-2 active:translate-x-2 active:shadow-none transition-all uppercase font-cartoon flex items-center justify-center gap-4"
+                   className="w-full h-20 text-3xl border-8 border-border bg-info text-white shadow-[10px_10px_0_var(--border)] active:translate-y-2 active:translate-x-2 active:shadow-none transition-all uppercase font-cartoon flex items-center justify-center gap-4"
                  >
                    Continue <ArrowRight className="w-8 h-8" />
                  </Button>

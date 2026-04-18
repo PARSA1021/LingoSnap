@@ -15,25 +15,25 @@ export default function HomePage() {
 
       {/* Hero Header - Compact & Polished */}
       <div className="w-full text-center space-y-4 mb-12 sm:mb-16 relative">
-        <div className="inline-flex items-center gap-2 bg-white text-black px-4 py-1.5 rounded-xl font-black text-xs uppercase tracking-[0.2em] border-4 border-black shadow-[4px_4px_0_#000] wobbly-slow mb-4 -rotate-1">
+        <div className="inline-flex items-center gap-2 bg-surface text-foreground px-4 py-1.5 rounded-xl font-black text-xs uppercase tracking-[0.2em] border-4 border-border shadow-[4px_4px_0_var(--border)] wobbly-slow mb-4 -rotate-1">
           <Sparkles className="w-4 h-4 fill-primary" /> Daily English Adventure
         </div>
-        <h1 className="text-5xl xs:text-6xl sm:text-7xl md:text-8xl font-black text-white tracking-tighter leading-none break-keep drop-shadow-[5px_5px_0_#000] sm:drop-shadow-[8px_8px_0_#000] uppercase -rotate-1 px-4">
+        <h1 className="text-5xl xs:text-6xl sm:text-7xl md:text-8xl font-black text-foreground tracking-tighter leading-none break-keep drop-shadow-[5px_5px_0_var(--border)] sm:drop-shadow-[8px_8px_0_var(--border)] uppercase -rotate-1 px-4">
           Talkie <br /> <span className="text-info italic">Talkie!</span>
         </h1>
-        <p className="text-sm sm:text-lg font-black text-black uppercase tracking-[0.2em] mt-2 opacity-80">Don't Deal with the Boredom!</p>
+        <p className="text-sm sm:text-lg font-black text-foreground uppercase tracking-[0.2em] mt-2 opacity-80">Don't Deal with the Boredom!</p>
       </div>
 
       {/* Main Action Path - Compacted */}
       <div className="w-full max-w-sm sm:max-w-xl mb-12 mt-8 flex flex-col items-center gap-6">
         <Link href="/learn" className="block w-full group">
-          <div className="relative bg-white border-4 sm:border-8 border-black p-6 sm:p-8 shadow-[8px_8px_0_#000] sm:shadow-[10px_10px_0_#000] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all wobbly-slow cursor-pointer">
+          <div className="relative bg-surface border-4 sm:border-8 border-border p-6 sm:p-8 shadow-[8px_8px_0_var(--border)] sm:shadow-[10px_10px_0_var(--border)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all wobbly-slow cursor-pointer">
             <div className="flex flex-row items-center gap-4 sm:gap-6 justify-center">
-              <div className="w-14 h-14 sm:w-20 sm:h-20 bg-primary rounded-full flex items-center justify-center border-4 border-black shadow-[4px_4px_0_#000] group-hover:scale-110 transition-transform wobbly">
+              <div className="w-14 h-14 sm:w-20 sm:h-20 bg-primary rounded-full flex items-center justify-center border-4 border-border shadow-[4px_4px_0_var(--border)] group-hover:scale-110 transition-transform wobbly">
                 <Play className="w-6 h-6 sm:w-10 sm:h-10 fill-white text-white translate-x-1" />
               </div>
               <div className="text-left">
-                <h2 className="text-2xl sm:text-4xl font-black text-black mb-0">학습 시작</h2>
+                <h2 className="text-2xl sm:text-4xl font-black text-foreground mb-0">학습 시작</h2>
                 <p className="font-black text-[10px] sm:text-sm text-primary uppercase tracking-widest">Go to the Stage!</p>
               </div>
             </div>
@@ -45,7 +45,7 @@ export default function HomePage() {
           onClick={() => {
             speak('The show is about to begin! Sound is now enabled.');
           }}
-          className="h-12 px-6 bg-white text-black border-4 border-black shadow-[4px_4px_0_#000] font-black uppercase text-sm active:translate-y-1 active:shadow-none transition-all flex items-center gap-2 wobbly shrink-0"
+          className="h-12 px-6 bg-surface text-foreground border-4 border-border shadow-[4px_4px_0_var(--border)] font-black uppercase text-sm active:translate-y-1 active:shadow-none transition-all flex items-center gap-2 wobbly shrink-0"
         >
           <Volume2 className="w-4 h-4" /> Sound OK?
         </Button>

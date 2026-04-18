@@ -22,10 +22,10 @@ export function TopNav() {
       className="sticky top-0 z-50 w-full bg-surface h-16 sm:h-20 flex items-center px-4 sm:px-8 border-b-4 border-border"
     >
       <div className="max-w-5xl mx-auto w-full flex justify-between items-center">
-        <Link href="/" className="group flex items-center gap-3 active:scale-95 transition-transform" aria-label="LingoSnap Home">
-          <div className="flex flex-col -rotate-3 group-hover:rotate-0 transition-transform">
-            <span className="text-3xl sm:text-5xl font-black text-white tracking-widest drop-shadow-[4px_4px_0_#000] -mb-2">LINGO</span>
-            <span className="text-2xl sm:text-4xl font-black text-primary tracking-widest drop-shadow-[4px_4px_0_#000] ml-4">SNAP</span>
+        <Link href="/" className="group flex items-center gap-3 active:scale-95 transition-transform" aria-label="Talkie Talkie! Home">
+          <div className="flex flex-col items-center -rotate-2 group-hover:rotate-0 transition-transform">
+            <span className="text-2xl sm:text-4xl font-black text-foreground tracking-tight drop-shadow-[3px_3px_0_var(--border)] leading-none">TALKIE</span>
+            <span className="text-xl sm:text-3xl font-black text-info italic tracking-tight drop-shadow-[3px_3px_0_var(--border)] leading-none ml-2">TALKIE!</span>
           </div>
         </Link>
 

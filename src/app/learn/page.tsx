@@ -11,6 +11,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
 import { cn } from '@/lib/utils/cn';
 import { speak } from '@/lib/tts';
+import { ThemeToggle } from '@/components/layout/ThemeToggle';
 
 import vocabData from '@/data/vocabulary.json';
 import sentenceData from '@/data/sentences.json';
@@ -59,7 +60,7 @@ function LearningSwipeCard({ word, onNext, onPrev, index, total }: { word: any, 
       animate={{ scale: 1, opacity: 1 }}
       exit={{ scale: 1.1, opacity: 0 }}
     >
-      <div className="h-full w-full bg-white border-8 border-black p-8 sm:p-12 flex flex-col justify-between items-center text-center shadow-[12px_12px_0_#000]">
+      <div className="h-full w-full bg-surface border-8 border-border p-8 sm:p-12 flex flex-col justify-between items-center text-center shadow-[12px_12px_0_var(--border)]">
         <div className="w-full flex justify-between items-center">
           <span className="px-4 py-1.5 bg-surface border-2 border-border text-foreground text-xs font-black rounded-full uppercase tracking-widest shadow-[2px_2px_0_#111] wobbly-slow">
             Card {index + 1} / {total}
@@ -76,7 +77,7 @@ function LearningSwipeCard({ word, onNext, onPrev, index, total }: { word: any, 
         <div className="flex-1 flex flex-col justify-center items-center space-y-6 w-full relative">
           <div className="space-y-2 relative z-10 w-full mb-4">
             <h2 className={cn(
-              "font-black text-black font-reading leading-tight tracking-tight break-keep",
+              "font-black text-foreground font-reading leading-tight tracking-tight break-keep",
               word.word.length > 20 ? "text-3xl sm:text-4xl" :
               word.word.length > 15 ? "text-4xl sm:text-5xl" :
               "text-5xl sm:text-6xl"
@@ -108,10 +109,10 @@ function LearningSwipeCard({ word, onNext, onPrev, index, total }: { word: any, 
                 animate={{ opacity: 1, y: 0 }}
                 className="flex flex-col items-center space-y-6 w-full"
               >
-                <p className="text-2xl sm:text-3xl font-black text-primary drop-shadow-[1px_1px_0_#111] break-keep">{word.meaning}</p>
+                <p className="text-2xl sm:text-3xl font-black text-primary drop-shadow-[1px_1px_0_var(--border)] break-keep">{word.meaning}</p>
                 {word.examples && word.examples[0] && (
                   <div 
-                    className="w-full p-6 bg-white border-8 border-black shadow-[8px_8px_0_#000] text-left wobbly-slow"
+                    className="w-full p-6 bg-surface border-8 border-border shadow-[8px_8px_0_var(--border)] text-left wobbly-slow"
                     onClick={(e) => { e.stopPropagation(); speak(word.examples[0].text); }}
                   >
                     <div className="flex justify-between items-start mb-2">
@@ -132,7 +133,7 @@ function LearningSwipeCard({ word, onNext, onPrev, index, total }: { word: any, 
             variant="secondary" 
             onClick={onPrev} 
             disabled={index === 0}
-            className="h-16 border-4 border-black shadow-[6px_6px_0_#000] font-black uppercase font-cartoon text-lg active:translate-y-1 active:shadow-none transition-all"
+            className="h-16 border-4 border-border shadow-[6px_6px_0_var(--border)] font-black uppercase font-cartoon text-lg active:translate-y-1 active:shadow-none transition-all text-foreground bg-surface"
           >
             Back
           </Button>
@@ -140,7 +141,7 @@ function LearningSwipeCard({ word, onNext, onPrev, index, total }: { word: any, 
             onClick={onNext} 
             disabled={!showMeaning}
             className={cn(
-               "h-16 border-4 border-black shadow-[6px_6px_0_#000] font-black uppercase font-cartoon text-lg active:translate-y-1 active:shadow-none transition-all",
+               "h-16 border-4 border-border shadow-[6px_6px_0_var(--border)] font-black uppercase font-cartoon text-lg active:translate-y-1 active:shadow-none transition-all",
                !showMeaning ? "opacity-50 cursor-not-allowed" : "bg-primary text-white"
             )}
           >
@@ -207,12 +208,12 @@ export default function LearnFlowPage() {
       {stage !== 'result' && (
         <div className="max-w-xl mx-auto w-full mb-6 sm:mb-8 space-y-4">
            <div className="flex justify-between items-center px-4">
-             <Link href="/" className="p-1.5 bg-surface rounded-full font-black text-lg border-2 border-border shadow-[2px_2px_0_#000]">✕</Link>
-             <div className="flex items-center gap-2 bg-surface px-3 py-1 rounded-full border-2 border-border shadow-[2px_2px_0_#000]">
+             <Link href="/" className="p-1.5 bg-surface rounded-full font-black text-lg border-2 border-border shadow-[2px_2px_0_var(--border)] text-foreground">✕</Link>
+             <div className="flex items-center gap-2 bg-surface px-3 py-1 rounded-full border-2 border-border shadow-[2px_2px_0_var(--border)]">
                <Sparkles className="w-3 h-3 text-amber-500" />
                <span className="text-[10px] font-black text-foreground uppercase tracking-widest">Live Show</span>
              </div>
-             <div className="w-8" />
+             <ThemeToggle />
            </div>
            <div className="flex gap-3 items-center px-4">
              <div className="bg-surface rounded-full h-3 flex-1 overflow-hidden border-2 border-border shadow-inner">
@@ -226,7 +227,7 @@ export default function LearnFlowPage() {
              <Button 
                onClick={() => speak('System Check')}
                variant="outline" 
-               className="h-10 w-10 p-0 rounded-full border-2 border-black bg-white shadow-[2px_2px_0_#000] active:translate-y-0.5 active:shadow-none transition-all"
+               className="h-10 w-10 p-0 rounded-full border-2 border-border bg-surface text-foreground shadow-[2px_2px_0_var(--border)] active:translate-y-0.5 active:shadow-none transition-all"
              >
                <Volume2 className="w-4 h-4" />
              </Button>
@@ -239,7 +240,7 @@ export default function LearnFlowPage() {
              animate={{ opacity: 1, scale: 1 }}
              className="px-4 text-center space-y-1"
            >
-             <h3 className="text-xl font-black text-black uppercase tracking-tight font-cartoon">
+             <h3 className="text-xl font-black text-foreground uppercase tracking-tight font-cartoon">
                 {stage === 'vocab' && "Stage 1: Reel Discovery"}
                 {stage === 'completion' && "Stage 2: Context Script"}
                 {stage === 'typing' && "Stage 3: Word Assembly"}
@@ -338,22 +339,22 @@ export default function LearnFlowPage() {
           )}
 
           {stage === 'result' && (
-            <motion.div key="result" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="w-full max-w-md mx-auto flex flex-col items-center justify-center space-y-12 text-center py-16 px-10 bg-white border-8 border-black shadow-[15px_15px_0_#000] wobbly-slow">
-              <div className="h-40 w-40 bg-secondary text-white border-8 border-black flex items-center justify-center shadow-[8px_8px_0_#000] rotate-3">
+            <motion.div key="result" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="w-full max-w-md mx-auto flex flex-col items-center justify-center space-y-12 text-center py-16 px-10 bg-surface border-8 border-border shadow-[15px_15px_0_var(--border)] wobbly-slow text-foreground">
+              <div className="h-40 w-40 bg-secondary text-white border-8 border-border flex items-center justify-center shadow-[8px_8px_0_var(--border)] rotate-3">
                 <CheckCircle2 className="h-24 w-24" />
               </div>
               <div className="space-y-4">
-                <h1 className="text-6xl font-black tracking-tight drop-shadow-[4px_4px_0_#000] uppercase font-cartoon -rotate-2">Knockout!</h1>
-                <p className="text-black text-2xl font-black leading-relaxed break-keep uppercase font-cartoon">
+                <h1 className="text-6xl font-black tracking-tight drop-shadow-[4px_4px_0_var(--border)] uppercase font-cartoon -rotate-2">Knockout!</h1>
+                <p className="text-foreground text-2xl font-black leading-relaxed break-keep uppercase font-cartoon">
                   You Mastered <br /><span className="text-primary text-5xl">{words.length}</span> <br/> Expressions!
                 </p>
               </div>
               <div className="flex flex-col gap-6 w-full">
-                <Button variant="secondary" onClick={() => { store.resetSession(); window.location.reload(); }} className="h-20 w-full border-8 border-black bg-secondary text-white shadow-[8px_8px_0_#000] text-xl font-black uppercase font-cartoon">
+                <Button variant="secondary" onClick={() => { store.resetSession(); window.location.reload(); }} className="h-20 w-full border-8 border-border bg-secondary text-white shadow-[8px_8px_0_var(--border)] text-xl font-black uppercase font-cartoon">
                   <RefreshCw className="mr-3 h-6 w-6" /> Play Again
                 </Button>
                 <Link href="/" className="w-full">
-                  <Button className="h-24 w-full text-3xl border-8 border-black bg-primary text-white shadow-[10px_10px_0_#000] active:translate-y-2 active:translate-x-2 active:shadow-none transition-all uppercase font-cartoon">
+                  <Button className="h-24 w-full text-3xl border-8 border-border bg-primary text-white shadow-[10px_10px_0_var(--border)] active:translate-y-2 active:translate-x-2 active:shadow-none transition-all uppercase font-cartoon">
                     Victory!
                   </Button>
                 </Link>

@@ -19,6 +19,28 @@ const initializeEngine = () => {
   console.log('TTS Engine Primed');
 };
 
+const getNaturalVoice = () => {
+  if (typeof window === 'undefined' || !window.speechSynthesis) return null;
+  const voices = window.speechSynthesis.getVoices();
+  
+  // Preferred voices in order of quality/naturalness
+  const preferred = [
+    'Google US English', 
+    'Samantha',
+    'Karen',
+    'Daniel',
+    'Microsoft David'
+  ];
+  
+  for (const name of preferred) {
+    const voice = voices.find(v => v.name.includes(name) && v.lang.startsWith('en'));
+    if (voice) return voice;
+  }
+  
+  // Fallback to any en-US voice
+  return voices.find(v => v.lang.startsWith('en-US')) || voices.find(v => v.lang.startsWith('en'));
+};
+
 export const speak = (text: string) => {
   if (typeof window === 'undefined' || !window.speechSynthesis) return;
 
@@ -30,7 +52,16 @@ export const speak = (text: string) => {
 
   // Create new utterance
   const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = 'en-US';
+  
+  // Select best voice
+  const voice = getNaturalVoice();
+  if (voice) {
+    utterance.voice = voice;
+    utterance.lang = voice.lang;
+  } else {
+    utterance.lang = 'en-US';
+  }
+
   utterance.rate = 1.0;
   utterance.pitch = 1.0;
   utterance.volume = 1.0;

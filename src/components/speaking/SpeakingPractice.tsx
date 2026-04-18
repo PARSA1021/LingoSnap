@@ -95,28 +95,29 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
   };
 
   return (
-    <Card className="w-full max-w-lg mx-auto bg-white border-4 sm:border-8 border-black relative overflow-visible shadow-[8px_8px_0_#000] sm:shadow-[12px_12px_0_#000]">
+    <Card className="w-full max-w-lg mx-auto bg-surface border-4 sm:border-8 border-border relative overflow-visible shadow-[8px_8px_0_var(--border)] sm:shadow-[12px_12px_0_var(--border)]">
       <div className="absolute top-4 right-4 z-20">
         <motion.button
           whileTap={{ scale: 0.9 }}
           onClick={() => setQuizMode(!quizMode)}
           aria-label="Toggle Quiz Mode"
-          className={`p-3 border-8 border-black shadow-[6px_6px_0_#000] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all ${
+          className={cn(
+            "p-3 border-4 sm:border-8 border-border shadow-[4px_4px_0_var(--border)] sm:shadow-[6px_6px_0_var(--border)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all",
             quizMode 
               ? 'bg-secondary text-white' 
-              : 'bg-white text-black'
-          }`}
+              : 'bg-surface text-foreground'
+          )}
         >
-          <Lightbulb className={`w-6 h-6 ${quizMode ? 'fill-current' : ''}`} />
+          <Lightbulb className={cn("w-6 h-6", quizMode ? 'fill-current' : '')} />
         </motion.button>
       </div>
 
       <CardContent className="p-4 sm:p-12 flex flex-col items-center text-center space-y-6 sm:space-y-10 select-none">
         
         <div className="space-y-6 w-full pt-4">
-           <p className="text-sm font-black text-white uppercase tracking-[0.2em] bg-black px-6 py-2 border-4 border-black shadow-[4px_4px_0_#000] w-auto mx-auto wobbly-slow font-cartoon">Speak the Lines!</p>
-          <div className="bg-white p-6 sm:p-10 border-4 sm:border-8 border-black shadow-[6px_6px_0_#000] sm:shadow-[10px_10px_0_#000] wobbly-slow">
-            <h2 className="text-2xl sm:text-6xl font-black text-black leading-tight break-keep flex flex-wrap justify-center gap-x-4 sm:gap-x-6 gap-y-4 sm:gap-y-6 font-lilita">
+           <p className="text-sm font-black text-background uppercase tracking-[0.2em] bg-foreground px-6 py-2 border-4 border-border shadow-[4px_4px_0_var(--border)] w-auto mx-auto wobbly-slow font-cartoon">Speak the Lines!</p>
+          <div className="bg-surface p-6 sm:p-10 border-4 sm:border-8 border-border shadow-[6px_6px_0_var(--border)] sm:shadow-[10px_10px_0_var(--border)] wobbly-slow">
+            <h2 className="text-2xl sm:text-6xl font-black text-foreground leading-tight break-keep flex flex-wrap justify-center gap-x-4 sm:gap-x-6 gap-y-4 sm:gap-y-6 font-lilita">
               {words.map((word, i) => {
                 const isHidden = hiddenWordIndices.includes(i);
                 return (
@@ -124,8 +125,8 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
                     key={`${word}-${i}`}
                     onClick={() => handleWordClick(i)}
                     className={cn(
-                      "transition-all drop-shadow-[2px_2px_0_#fff]",
-                      isHidden && "bg-white text-transparent min-w-[80px] border-8 border-dashed border-black cursor-pointer shadow-[6px_6px_0_#000]"
+                      "transition-all drop-shadow-[2px_2px_0_var(--background)]",
+                      isHidden && "bg-surface text-transparent min-w-[80px] border-8 border-dashed border-border cursor-pointer shadow-[6px_6px_0_var(--border)]"
                     )}
                   >
                     {isHidden ? '?' : word}
@@ -137,7 +138,7 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
                 <Button
                   onClick={() => playTTS(expectedSentence)}
                   aria-label="Play pronunciation"
-                  className="rounded-2xl px-6 h-12 bg-surface text-foreground border-4 border-border shadow-[4px_4px_0_#111] font-black hover:bg-muted active:translate-y-1 active:translate-x-1 active:shadow-none transition-all wobbly-slow"
+                  className="rounded-2xl px-6 h-12 bg-surface text-foreground border-4 border-border shadow-[4px_4px_0_var(--border)] font-black hover:bg-muted active:translate-y-1 active:translate-x-1 active:shadow-none transition-all wobbly-slow"
                 >
                   <Volume2 className="h-5 w-5 mr-3" /> 발음 듣기
                 </Button>
@@ -150,7 +151,7 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
           <Button
             aria-label={isRecording ? "Stop recording" : "Microphone"}
             className={cn(
-              "w-28 h-28 sm:w-40 sm:h-40 rounded-full relative transition-all border-4 sm:border-8 border-black shadow-[6px_6px_0_#000] sm:shadow-[10px_10px_0_#000] active:translate-y-2 active:translate-x-2 active:shadow-none wobbly",
+              "w-28 h-28 sm:w-40 sm:h-40 rounded-full relative transition-all border-4 sm:border-8 border-border shadow-[6px_6px_0_var(--border)] sm:shadow-[10px_10px_0_var(--border)] active:translate-y-2 active:translate-x-2 active:shadow-none wobbly",
               isRecording 
                 ? 'bg-error text-white' 
                 : 'bg-primary text-white'
@@ -169,7 +170,7 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
         <AnimatePresence mode="wait">
           {transcript && (
             <motion.div initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} className="w-full space-y-6">
-               <div className="bg-surface p-6 rounded-2xl border-4 border-border shadow-[4px_4px_0_#111] text-left">
+               <div className="bg-surface p-6 rounded-2xl border-4 border-border shadow-[4px_4px_0_var(--border)] text-left">
                   <p className="text-[10px] font-black text-muted-foreground uppercase mb-2">당신이 말한 내용</p>
                   <p className="text-xl font-bold text-foreground italic leading-snug">&quot;{transcript.trim()}&quot;</p>
                </div>
@@ -184,7 +185,7 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
                )}
 
                {status === 'failed' && (
-                 <div className="bg-surface p-6 rounded-2xl border-4 border-border shadow-[4px_4px_0_#111]">
+                 <div className="bg-surface p-6 rounded-2xl border-4 border-border shadow-[4px_4px_0_var(--border)]">
                     <div className="flex items-center gap-3 text-error mb-4 justify-center">
                        <XCircle className="w-8 h-8" />
                        <p className="text-xl font-black text-foreground">조금 더 노력이 필요해요</p>
