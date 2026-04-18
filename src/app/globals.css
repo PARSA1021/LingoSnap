@@ -15,7 +15,11 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
 
-  /* Playful Duo/Cake Palette */
+  --font-luckiest: var(--font-luckiest-guy);
+  --font-lilita: var(--font-lilita-one);
+  --font-reading: var(--font-inter);
+
+  /* Playful Duo/Cake Palette turned Vintage */
   --color-success: var(--success);
   --color-success-foreground: var(--success-foreground);
   --color-success-shadow: var(--success-shadow);
@@ -30,195 +34,222 @@
   --color-primary-shadow: var(--primary-shadow);
   --color-secondary-shadow: var(--secondary-shadow);
 
-  /* Radius & Shadows - App Style */
-  --radius-sm: 0.5rem;
-  --radius-md: 0.75rem;
-  --radius-lg: 1rem;
-  --radius-xl: 1.25rem;
-  --radius-2xl: 1.5rem;
-  --radius-3xl: 2rem;
+  /* Radius & Shadows - Vintage/Ink Style */
+  --radius-sm: 0rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.5rem;
+  --radius-2xl: 0.75rem;
+  --radius-3xl: 1rem;
   --radius-full: 9999px;
   
-  --shadow-tactile: 0 4px 0 0 rgba(0, 0, 0, 0.1);
+  --shadow-tactile: 4px 4px 0 0 var(--border);
   --shadow-tactile-active: 0 0 0 0 transparent;
   
-  /* Blurs & Glass Layers */
-  --blur-glass: 16px;
+  /* Blurs & Glass Layers REMOVED */
+  --blur-glass: 0px;
 }
 
 :root {
-  /* LIGHT THEME VARIABLES */
+  /* CUPHEAD THEME VARIABLES */
+  --background: #FFCC00; /* Vibrant Yellow */
+  --bg-gradient: #FFCC00;
+  --foreground: #000000; 
   
-  /* Use a stunning gradient background instead of solid white */
-  --background: #F7FBFF; 
-  --bg-gradient: linear-gradient(135deg, #F0F8FF 0%, #E0F2FE 40%, #DDF4FF 100%);
-  --foreground: #1E293B; /* Slightly deeper slate for excellent contrast */
-  
-  --primary: #1CB0F6; /* Sky Blue */
+  --primary: #E53B2F; /* Cuphead Red */
   --primary-foreground: #FFFFFF;
-  --primary-shadow: #1899D6;
+  --primary-shadow: #000000;
   
-  --secondary: #E5E5E5;
-  --secondary-foreground: #64748B;
-  --secondary-shadow: #CBD5E1;
+  --secondary: #549EBD; /* Mugman Blue */
+  --secondary-foreground: #FFFFFF;
+  --secondary-shadow: #000000;
   
-  /* Surface with Glass Effect Base */
-  --surface: rgba(255, 255, 255, 0.85);
-  --surface-foreground: #1E293B;
+  --surface: #FFFFFF; /* White Paper */
+  --surface-foreground: #000000;
   
-  --border: rgba(203, 213, 225, 0.4);
+  --border: #000000; /* Thick Ink */
   
-  --muted: rgba(241, 245, 249, 0.7);
-  --muted-foreground: #94A3B8;
+  --muted: #FFD633; /* Lighter Yellow */
+  --muted-foreground: #333333;
 
-  --accent: #E0F2FE;
-  --accent-foreground: #0284C7;
+  --accent: #549EBD;
+  --accent-foreground: #FFFFFF;
 
-  --success: #58CC02;
-  --success-shadow: #45A302;
-  --error: #FF4B4B;
-  --error-shadow: #D32F2F;
-  --warning: #FF9600;
-  --warning-shadow: #E17500;
-  --info: #38BDF8;
-  --info-shadow: #0284C7;
+  --success: #67AC5B; 
+  --success-shadow: #000000;
+  --error: #E53B2F;
+  --error-shadow: #000000;
+  --warning: #F3BC2E; 
+  --warning-shadow: #000000;
+  --info: #549EBD; 
+  --info-shadow: #000000;
 
-  --tactile-shadow-opacity: 0.15;
+  --tactile-shadow-opacity: 1;
 }
 
 .dark {
-  /* DARK THEME VARIABLES */
+  /* DARK THEME VARIABLES - 1920s Dark Sepia */
+  --background: #231F1C;
+  --bg-gradient: #231F1C;
+  --foreground: #DCCFB8;
   
-  /* Modern deep dark background with sleek purple/blue tint */
-  --background: #0B1121;
-  --bg-gradient: linear-gradient(135deg, #0B1121 0%, #111827 50%, #0F172A 100%);
-  --foreground: #F8FAFC;
+  --primary: #A12222;
+  --primary-foreground: #DCCFB8;
+  --primary-shadow: #0A0908;
   
-  --primary: #1CB0F6;
-  --primary-foreground: #FFFFFF;
-  --primary-shadow: #0284C7;
+  --secondary: #3D332B;
+  --secondary-foreground: #DCCFB8; 
+  --secondary-shadow: #0A0908;
   
-  --secondary: rgba(30, 41, 59, 0.8);
-  --secondary-foreground: #F8FAFC; 
-  --secondary-shadow: rgba(0, 0, 0, 0.4);
+  --surface: #2C2621; 
+  --surface-foreground: #DCCFB8;
   
-  /* Deeper glass look for cards */
-  --surface: rgba(15, 23, 42, 0.75); 
-  --surface-foreground: #F8FAFC;
+  --border: #0A0908; /* Super dark ink */
   
-  --border: rgba(51, 65, 85, 0.5);
-  
-  --muted: rgba(30, 41, 59, 0.6);
-  --muted-foreground: #94A3B8;
+  --muted: #3D332B;
+  --muted-foreground: #9A8A74;
 
-  --accent: rgba(14, 165, 233, 0.1);
-  --accent-foreground: #38BDF8;
+  --accent: #3D332B;
+  --accent-foreground: #DCCFB8;
 
-  --success: #58CC02;
-  --success-shadow: #45A302;
-  --error: #FF4B4B;
-  --error-shadow: #B91C1C;
-  --warning: #F59E0B;
-  --warning-shadow: #D97706;
-  --info: #38BDF8;
-  --info-shadow: #0284C7;
+  --success: #4C6A40;
+  --success-shadow: #0A0908;
+  --error: #A12222;
+  --error-shadow: #0A0908;
+  --warning: #A67325;
+  --warning-shadow: #0A0908;
+  --info: #335C74;
+  --info-shadow: #0A0908;
 
-  --tactile-shadow-opacity: 0.35;
+  --tactile-shadow-opacity: 1;
 }
 
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
+/* 1920s Animations */
+@keyframes wobbly {
+  0% { transform: rotate(-1deg) translate(0px, 1px); }
+  25% { transform: rotate(0deg) translate(1px, -1px); }
+  50% { transform: rotate(1deg) translate(-1px, 0px); }
+  75% { transform: rotate(0deg) translate(1px, 1px); }
+  100% { transform: rotate(-1deg) translate(0px, 1px); }
 }
 
-@keyframes floatBackground {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+@keyframes wobbly-slow {
+  0% { transform: rotate(-0.5deg) translate(0px, 0.5px); }
+  25% { transform: rotate(0deg) translate(0.5px, -0.5px); }
+  50% { transform: rotate(0.5deg) translate(-0.5px, 0px); }
+  75% { transform: rotate(0deg) translate(0.5px, 0.5px); }
+  100% { transform: rotate(-0.5deg) translate(0px, 0.5px); }
 }
 
 html, body {
-  background: var(--bg-gradient);
-  background-size: 200% 200%;
-  animation: floatBackground 18s ease-in-out infinite;
+  background: var(--background);
   color: var(--foreground);
-  font-family: inherit;
+  font-family: var(--font-lilita), system-ui, sans-serif;
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
+  line-height: 1.5;
 }
 
-/* Duolingo/Cake Tactile Utilities */
+h1, h2, h3, .font-cartoon {
+  font-family: var(--font-luckiest), var(--font-lilita), cursive;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
+
+.font-reading {
+  font-family: var(--font-reading), system-ui, sans-serif;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  text-transform: none;
+}
+
+/* Paper Texture overlay via pseudo-element */
+/* Paper Texture removed as it causes visual blurriness */
+body::before {
+  display: none;
+}
+
+/* The wobbly class to apply to interactive elements */
+.wobbly {
+  animation: wobbly 0.5s ease-in-out;
+  transform: rotate(0deg);
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.wobbly:hover {
+  animation: wobbly 0.3s ease-in-out infinite;
+}
+
+/* A slower wobble for larger elements */
+.wobbly-slow {
+  animation: wobbly-slow 4s ease-in-out;
+  transform: rotate(0deg);
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.wobbly-slow:hover {
+  animation: wobbly-slow 3s ease-in-out infinite;
+}
+
+/* Rubber Hose Tactile Utilities */
 .btn-tactile {
-  border-bottom-width: 4px;
-  border-bottom-color: rgba(0, 0, 0, var(--tactile-shadow-opacity));
-  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 4px solid var(--border);
+  box-shadow: 6px 6px 0px 0px var(--color-primary-shadow, var(--border));
+  transition: transform 0.1s steps(2, end), box-shadow 0.1s steps(2, end);
   position: relative;
   overflow: hidden;
+  border-radius: 0;
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
-/* Soft inner gleam effect */
-.btn-tactile::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 100%);
-  pointer-events: none;
-}
-
+/* Active pressed state */
 .btn-tactile:active {
-  border-bottom-width: 0;
-  transform: translateY(4px);
+  transform: translate(6px, 6px) !important;
+  box-shadow: 0 0 0 0 transparent !important;
 }
 
+/* Card Tactile - Vintage style */
 .card-tactile {
-  border: 1px solid var(--border);
-  border-bottom-width: 6px;
-  border-bottom-color: rgba(0,0,0,var(--tactile-shadow-opacity)); 
-  border-radius: 1.5rem;
+  border: 8px solid var(--border);
+  border-radius: 0;
   background-color: var(--surface);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
-  animation: fadeIn 0.4s ease-out backwards;
+  box-shadow: 12px 12px 0px 0px var(--border);
+  animation: none; /* remove fade in for more raw feel */
 }
 
-.dark .card-tactile {
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.25);
-}
-
+/* Removes glass effect */
 .glass {
   background-color: var(--surface);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 2px solid var(--border);
+  border-bottom: 4px solid var(--border);
 }
 
-/* Elevated hover effects for interactive cards */
 .hover-float {
-  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
+  transition: transform 0.1s steps(2, end), box-shadow 0.1s steps(2, end);
 }
 
 .hover-float:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px -16px rgba(28, 176, 246, 0.4);
+  transform: translate(-2px, -2px) rotate(-1deg);
+  box-shadow: 8px 8px 0px 0px var(--border) !important;
 }
 
 /* Simplified Layout Backgrounds */
 .bg-soft {
   background-color: var(--muted);
-  backdrop-filter: blur(8px);
 }
 
+/* Dot pattern turned to halftone dots or noise */
+/* Clean dot pattern for halftone look without noise */
 .dot-pattern {
-  background-image: radial-gradient(var(--border) 1.5px, transparent 1.5px);
-  background-size: 28px 28px;
+  background-image: radial-gradient(rgba(0,0,0,0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
-/* Selection Highlight - Cleaner */
 .selection-highlight {
-  background-color: var(--accent);
-  color: var(--accent-foreground);
+  background-color: var(--border);
+  color: var(--background);
 }
-

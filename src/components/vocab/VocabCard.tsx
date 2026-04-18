@@ -42,13 +42,13 @@ export function VocabCard({ word, onNext, onPrev, showPrev }: VocabCardProps) {
   const isWordHidden = quizMode;
 
   return (
-    <Card className="w-full max-w-lg mx-auto bg-surface card-tactile relative overflow-visible mb-6">
+    <Card className="w-full max-w-lg mx-auto bg-white border-8 border-black relative overflow-visible mb-8 shadow-[12px_12px_0_#000]">
       {/* Top Actions */}
       <div className="absolute top-4 right-4 z-20 flex gap-2">
         <motion.button
           whileTap={{ scale: 0.9 }}
           onClick={() => setQuizMode(!quizMode)}
-          className={`p-3 rounded-2xl border-b-4 active:border-b-0 active:translate-y-1 transition-all ${quizMode ? 'bg-primary text-white border-primary-shadow' : 'bg-muted text-muted-foreground border-border'
+          className={`p-3 rounded-2xl border-4 active:translate-y-1 active:translate-x-1 active:shadow-none transition-all shadow-[4px_4px_0_#111] ${quizMode ? 'bg-primary text-white border-border' : 'bg-surface text-foreground border-border'
             }`}
         >
           <Lightbulb className={`w-6 h-6 ${quizMode ? 'fill-current' : ''}`} />
@@ -56,7 +56,7 @@ export function VocabCard({ word, onNext, onPrev, showPrev }: VocabCardProps) {
         <motion.button
           whileTap={{ scale: 0.9 }}
           onClick={() => toggleFavorite(word)}
-          className={`p-3 rounded-2xl border-b-4 active:border-b-0 active:translate-y-1 transition-all ${isFavorite ? 'bg-warning text-white border-warning-shadow' : 'bg-muted text-muted-foreground border-border'
+          className={`p-3 rounded-2xl border-4 active:translate-y-1 active:translate-x-1 active:shadow-none transition-all shadow-[4px_4px_0_#111] ${isFavorite ? 'bg-warning border-border text-black' : 'bg-surface text-foreground border-border'
             }`}
         >
           <Star className={`w-6 h-6 ${isFavorite ? 'fill-current' : ''}`} />
@@ -73,14 +73,14 @@ export function VocabCard({ word, onNext, onPrev, showPrev }: VocabCardProps) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 onClick={() => setQuizMode(false)}
-                className="w-full h-24 bg-muted/30 border-2 border-dashed border-border rounded-3xl flex items-center justify-center gap-3 text-muted-foreground font-black text-xl"
+                className="w-full h-24 bg-surface border-4 border-dashed border-border rounded-2xl flex items-center justify-center gap-3 text-foreground font-black text-xl shadow-[4px_4px_0_#111] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all"
               >
                 <Check className="w-6 h-6" /> 단어 확인하기
               </motion.button>
             ) : (
               <motion.div key="visible" initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col items-center gap-4">
-                <h2 className="text-5xl sm:text-6xl font-black text-foreground tracking-tighter">{word.word}</h2>
-                <Button onClick={() => playTTS(word.word)} className="w-12 h-12 rounded-xl">
+                <h2 className="text-5xl sm:text-6xl font-black text-black font-reading leading-tight">{word.word}</h2>
+                <Button onClick={() => playTTS(word.word)} className="w-12 h-12 rounded-xl text-foreground">
                   <Volume2 className="h-6 w-6" />
                 </Button>
               </motion.div>
@@ -97,9 +97,9 @@ export function VocabCard({ word, onNext, onPrev, showPrev }: VocabCardProps) {
               </Button>
             ) : (
               <motion.div initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} className="text-left space-y-6">
-                <div className="bg-muted/50 p-6 rounded-3xl border-2 border-border/50">
-                  <p className="text-3xl font-black text-foreground mb-2 break-keep">{word.meaning}</p>
-                  {englishDef && <p className="text-base font-bold text-muted-foreground italic">&quot;{englishDef}&quot;</p>}
+                <div className="bg-white p-6 border-8 border-black shadow-[8px_8px_0_#000] wobbly-slow">
+                  <p className="text-4xl font-black text-primary mb-2 break-keep uppercase font-cartoon">{word.meaning}</p>
+                  {englishDef && <p className="text-lg font-bold text-black italic border-t-4 border-black pt-4 mt-2 font-reading">&quot;{englishDef}&quot;</p>}
                 </div>
 
                 {/* 예문 렌더링 로직 (제공해주신 examples: [{text, translation}] 구조 대응) */}
@@ -107,10 +107,10 @@ export function VocabCard({ word, onNext, onPrev, showPrev }: VocabCardProps) {
                   <p className="text-xs font-black text-muted-foreground uppercase tracking-widest pl-2">Examples</p>
                   {word.examples && word.examples.length > 0 ? (
                     word.examples.map((ex: any, idx: number) => (
-                      <div key={idx} className="bg-primary/5 p-5 rounded-2xl border-l-4 border-primary shadow-sm">
-                        <p className="font-bold text-lg text-foreground leading-snug">&quot;{ex.text}&quot;</p>
+                      <div key={idx} className="bg-white p-6 border-8 border-black shadow-[8px_8px_0_#000]">
+                        <p className="font-bold text-2xl text-black leading-snug font-reading">&quot;{ex.text}&quot;</p>
                         {ex.translation && (
-                          <p className="text-muted-foreground font-bold mt-2 text-sm">
+                          <p className="text-black font-bold mt-2 text-lg border-t-4 border-black pt-2 font-reading">
                             ↳ {ex.translation}
                           </p>
                         )}

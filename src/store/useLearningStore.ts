@@ -2,6 +2,8 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { Word } from '../types';
 
+export type LearningStage = 'idle' | 'vocab' | 'typing' | 'completion' | 'sentences' | 'speaking' | 'result';
+
 interface LearningState {
   // Data
   words: Word[];
@@ -14,15 +16,16 @@ interface LearningState {
   // Progress
   currentWordIndex: number;
   currentSentenceIndex: number;
-  stage: 'idle' | 'vocab' | 'sentences' | 'speaking' | 'result';
+  stage: LearningStage;
   contentFilter: 'all' | 'movie' | 'drama';
   difficultyFilter: 'all' | 'easy' | 'medium' | 'hard';
   
   // Actions
   setWords: (words: Word[]) => void;
   nextWord: () => void;
+  prevWord: () => void;
   nextSentence: () => void;
-  setStage: (stage: 'idle' | 'vocab' | 'sentences' | 'speaking' | 'result') => void;
+  setStage: (stage: LearningStage) => void;
   resetSession: () => void;
   
   // Vocab Enhancement Actions
@@ -52,9 +55,19 @@ export const useLearningStore = create<LearningState>()(
       
       nextWord: () => set((state) => ({ currentWordIndex: state.currentWordIndex + 1 })),
       
+      prevWord: () => set((state) => ({ 
+        currentWordIndex: Math.max(0, state.currentWordIndex - 1) 
+      })),
+      
       nextSentence: () => set((state) => ({ currentSentenceIndex: state.currentSentenceIndex + 1 })),
       
-      setStage: (stage) => set({ stage }),
+      setStage: (stage) => {
+    if (stage === 'typing' || stage === 'vocab' || stage === 'completion') {
+      set({ stage, currentWordIndex: 0 });
+    } else {
+      set({ stage });
+    }
+  },
       
       resetSession: () => set({
         currentWordIndex: 0,

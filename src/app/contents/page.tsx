@@ -11,6 +11,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Loader2, Lightbulb } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils/cn';
+import { speak } from '@/lib/tts';
 
 export default function ContentsPage() {
   const { contentFilter, setContentFilter, difficultyFilter, setDifficultyFilter } = useLearningStore();
@@ -73,35 +74,33 @@ export default function ContentsPage() {
       <div className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-8 pt-8">
         
         {/* Study Control Bar */}
-        <div className="flex flex-col gap-6 mb-16 sticky top-20 z-20 bg-surface/80 backdrop-blur-md rounded-3xl border-2 border-border p-6 shadow-tactile border-b-secondary-shadow">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex flex-col gap-4 w-full sm:w-auto">
-              <div className="flex gap-2 overflow-x-auto scrollbar-none pb-1">
-                <FilterChip label="전체" isActive={contentFilter === 'all'} onClick={() => setContentFilter('all')} />
-                <FilterChip label="영화 🎬" isActive={contentFilter === 'movie'} onClick={() => setContentFilter('movie')} />
-                <FilterChip label="드라마 📺" isActive={contentFilter === 'drama'} onClick={() => setContentFilter('drama')} />
-              </div>
-              <div className="flex gap-2 overflow-x-auto scrollbar-none pt-1 border-t border-border/40">
-                <FilterChip label="모든 난이도" isActive={difficultyFilter === 'all'} onClick={() => setDifficultyFilter('all')} />
-                <FilterChip label="Easy" isActive={difficultyFilter === 'easy'} onClick={() => setDifficultyFilter('easy')} activeColor="bg-success" />
-                <FilterChip label="Medium" isActive={difficultyFilter === 'medium'} onClick={() => setDifficultyFilter('medium')} activeColor="bg-warning" />
-                <FilterChip label="Hard" isActive={difficultyFilter === 'hard'} onClick={() => setDifficultyFilter('hard')} activeColor="bg-error" />
+        <div className="flex flex-col gap-6 mb-12 sticky top-20 z-20 bg-white border-8 border-black p-6 shadow-[10px_10px_0_#000] wobbly-slow">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
+            <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+              {/* Simplified Filters Table/Compact */}
+              <div className="flex gap-2 p-1 bg-black/5 border-4 border-black overflow-x-auto no-scrollbar">
+                <FilterButton label="ALL" isActive={contentFilter === 'all'} onClick={() => setContentFilter('all')} />
+                <FilterButton label="CINEMA" isActive={contentFilter === 'movie'} onClick={() => setContentFilter('movie')} />
+                <FilterButton label="SERIES" isActive={contentFilter === 'drama'} onClick={() => setContentFilter('drama')} />
+                <div className="w-[2px] bg-black/20 mx-1" />
+                <FilterButton label="EASY" isActive={difficultyFilter === 'easy'} onClick={() => setDifficultyFilter('easy')} activeColor="bg-success" />
+                <FilterButton label="HARD" isActive={difficultyFilter === 'hard'} onClick={() => setDifficultyFilter('hard')} activeColor="bg-error" />
               </div>
             </div>
 
             <Button
               variant={isQuizMode ? 'primary' : 'secondary'}
               onClick={() => setIsQuizMode(!isQuizMode)}
-              className="w-full sm:w-auto px-8 h-12 rounded-2xl font-black text-sm"
+              className="w-full lg:w-auto px-8 h-14 border-8 border-black shadow-[6px_6px_0_#000] font-black font-cartoon text-lg"
             >
-              <Lightbulb className={cn("w-5 h-5 mr-2", isQuizMode && "fill-current animate-pulse")} />
-              퀴즈 모드 {isQuizMode ? 'ON' : 'OFF'}
+              <Lightbulb className={cn("w-6 h-6 mr-3", isQuizMode && "fill-current")} />
+              {isQuizMode ? 'QUIZ OFF' : 'QUIZ ON'}
             </Button>
           </div>
         </div>
 
-        {/* Study Feed Layout */}
-        <div className="max-w-2xl mx-auto flex flex-col space-y-12 pb-32">
+        {/* Study Feed Layout - Responsive Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-32">
           <AnimatePresence mode="popLayout">
             {filteredContents.map((content) => (
               <motion.div
@@ -111,6 +110,7 @@ export default function ContentsPage() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.98 }}
                 transition={{ duration: 0.3 }}
+                className="flex"
               >
                 <ContentCard 
                   content={content} 
@@ -136,22 +136,22 @@ export default function ContentsPage() {
             </div>
           ) : wordData ? (
             <motion.div initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }} className="flex flex-col gap-6">
-              <div className="bg-muted rounded-3xl p-8 border-2 border-border shadow-inner">
-                 <h4 className="font-black text-primary text-xs mb-2 uppercase tracking-widest">한국어 의미</h4>
-                 <p className="text-3xl font-black text-foreground break-keep">{wordData.meaning}</p>
+              <div className="bg-surface rounded-2xl p-8 border-4 border-border shadow-[6px_6px_0_#111]">
+                 <h4 className="font-black text-foreground text-xs mb-2 uppercase tracking-widest border-b-2 border-border w-fit">한국어 의미</h4>
+                 <p className="text-3xl font-black text-primary drop-shadow-[1px_1px_0_#111] break-keep">{wordData.meaning}</p>
                  {wordData.level && (
-                   <span className="inline-block mt-4 px-4 py-1.5 bg-white rounded-xl text-xs font-black text-primary border-2 border-primary-shadow/10">
+                   <span className="inline-block mt-4 px-4 py-1.5 bg-surface rounded-lg text-xs font-black text-foreground border-4 border-border shadow-[2px_2px_0_#111]">
                      LV: {wordData.level.toUpperCase()}
                    </span>
                  )}
               </div>
               
               {wordData.example && (
-                <div className="bg-white rounded-3xl p-8 border-2 border-border shadow-sm">
-                  <h4 className="font-black text-muted-foreground text-xs mb-2 uppercase tracking-widest">실전 예문</h4>
-                  <p className="text-xl font-bold text-foreground italic leading-snug">"{wordData.example}"</p>
+                <div className="bg-surface rounded-2xl p-8 border-4 border-border shadow-[6px_6px_0_#111]">
+                  <h4 className="font-black text-foreground/60 text-xs mb-2 uppercase tracking-widest border-b-2 border-border/40 w-fit">실전 예문</h4>
+                  <p className="text-xl font-bold text-foreground italic leading-snug">&quot;{wordData.example}&quot;</p>
                   {wordData.exampleTranslation && (
-                    <p className="text-muted-foreground font-bold text-lg mt-4 pt-4 border-t-2 border-dashed border-border">{wordData.exampleTranslation}</p>
+                    <p className="text-foreground/80 font-bold text-lg mt-4 pt-4 border-t-4 border-dashed border-border">{wordData.exampleTranslation}</p>
                   )}
                 </div>
               )}
@@ -163,15 +163,15 @@ export default function ContentsPage() {
   );
 }
 
-function FilterChip({ label, isActive, onClick, activeColor }: { label: string, isActive: boolean, onClick: () => void, activeColor?: string }) {
+function FilterButton({ label, isActive, onClick, activeColor }: { label: string, isActive: boolean, onClick: () => void, activeColor?: string }) {
   return (
     <button
       onClick={onClick}
       className={cn(
-        "px-6 py-2.5 rounded-full font-black text-sm transition-all whitespace-nowrap shrink-0 border-b-4 active:border-b-0 active:translate-y-1",
+        "px-4 py-2 font-black text-sm transition-all whitespace-nowrap shrink-0 uppercase font-cartoon",
         isActive 
-          ? cn(activeColor || 'bg-accent', activeColor ? 'text-white' : 'text-accent-foreground', 'border-black/20') 
-          : 'bg-white dark:bg-muted text-muted-foreground border-border hover:bg-muted'
+          ? cn(activeColor || 'bg-primary', 'text-white border-2 border-black shadow-[2px_2px_0_0_#000] -translate-y-1') 
+          : 'text-black/60 hover:text-black'
       )}
     >
       {label}

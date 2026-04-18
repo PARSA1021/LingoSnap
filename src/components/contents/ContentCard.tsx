@@ -32,16 +32,15 @@ export function ContentCard({ content, onWordClick, isQuizMode = false }: Conten
   // Fetch expression data for more detail
   React.useEffect(() => {
     if (content.expression) {
-      // Prioritize our hand-crafted natural meaning (expression_ko)
       getNormalizedWordData(content.expression, content.expression_ko).then(setExpressionData);
     }
   }, [content.expression, content.expression_ko]);
 
   // Difficulty styling
   const difficultyColors = {
-    easy: "bg-success text-white border-success-shadow",
-    medium: "bg-warning text-white border-warning-shadow",
-    hard: "bg-error text-white border-error-shadow"
+    easy: "bg-success text-white border-black",
+    medium: "bg-warning text-black border-black",
+    hard: "bg-primary text-white border-black"
   };
 
   React.useEffect(() => {
@@ -73,65 +72,57 @@ export function ContentCard({ content, onWordClick, isQuizMode = false }: Conten
       return;
     }
 
-    playTTS(cleanWord, 'en-US');
+    playTTS(cleanWord);
     setSelectedWordIndex(index);
     
-    // Check if word is part of the key expression for contextual meaning
     const cleanExpression = content.expression?.toLowerCase().replace(/[^a-z0-9\s]/g, '');
     const isPartOfExpression = cleanExpression && cleanWord && cleanExpression.includes(cleanWord.toLowerCase());
     const contextualMeaning = isPartOfExpression ? content.expression_ko : undefined;
 
-    // Inline Dictionary Lookup with contextual fallback
     const data = await getNormalizedWordData(cleanWord, contextualMeaning);
     setActiveWordData(data);
   };
 
-  // Helper to check if a word is part of the key expression
-  const isKeyExpression = (word: string) => {
-    return content.expression && word.toLowerCase().includes(content.expression.toLowerCase().split(' ')[0]);
-  };
-
   return (
-    <div className="group relative w-full bg-surface card-tactile p-8 sm:p-10 flex flex-col gap-6 transition-all duration-300">
+    <div className="group relative w-full bg-white border-8 border-black p-6 sm:p-8 flex flex-col gap-6 shadow-[10px_10px_0_#000] transition-all duration-300 wobbly-slow hover:-translate-y-2 hover:-translate-x-2 h-full">
       {/* Enhanced Metadata & Difficulty */}
       <div className="flex justify-between items-start">
-        <div className="space-y-2">
-          <div className="flex items-center gap-2">
-             <p className="text-[10px] font-black text-primary/60 uppercase tracking-[0.2em]">
+        <div className="space-y-3">
+          <div className="flex items-center gap-3">
+             <p className="text-xs font-black text-black uppercase tracking-[0.2em] font-cartoon">
                {content.category} • {content.scene}
              </p>
-             <div className={cn(
-               "px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-tighter border-b-2",
-               difficultyColors[content.difficulty as keyof typeof difficultyColors] || "bg-muted text-muted-foreground"
-             )}>
-               {content.difficulty}
-             </div>
+              <div className={cn(
+                "px-3 py-1 rounded-lg text-xs font-black uppercase border-4 border-black shadow-[4px_4px_0_#000]",
+                difficultyColors[content.difficulty as keyof typeof difficultyColors] || "bg-white text-black"
+              )}>
+                {content.difficulty}
+              </div>
           </div>
-          <h3 className="text-sm font-bold text-muted-foreground/80">{content.title}</h3>
+          <h3 className="text-lg font-black text-black uppercase font-cartoon">{content.title}</h3>
           
-          {/* Tags */}
-          <div className="flex flex-wrap gap-1 mt-2">
+          <div className="flex flex-wrap gap-2 mt-2">
             {content.tags.map(tag => (
-              <span key={tag} className="flex items-center gap-1 px-2 py-0.5 bg-muted rounded-lg text-[10px] font-bold text-muted-foreground">
-                <Tag className="w-3 h-3" /> {tag}
+              <span key={tag} className="flex items-center gap-1 px-3 py-1 bg-white border-4 border-black text-xs font-black text-black uppercase font-cartoon">
+                <Tag className="w-4 h-4" /> {tag}
               </span>
             ))}
           </div>
         </div>
         
-        <div className="flex gap-2">
+        <div className="flex gap-3">
           {content.explanation_ko && (
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setShowExplanation(!showExplanation)}
               className={cn(
-                "p-2 h-auto rounded-xl",
-                showExplanation ? "text-primary bg-primary/10" : "text-muted-foreground/40"
+                "h-12 w-12 border-4 border-black shadow-[4px_4px_0_#000] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all wobbly",
+                showExplanation ? "bg-secondary text-white" : "bg-white text-black"
               )}
               aria-label="Teacher's Note"
             >
-              <Info className="w-5 h-5" />
+              <Info className="w-6 h-6" />
             </Button>
           )}
           <Button
@@ -140,22 +131,21 @@ export function ContentCard({ content, onWordClick, isQuizMode = false }: Conten
             onClick={() => toggleSavedContent(content.id)}
             aria-label={isSaved ? "Saved" : "Save content"}
             className={cn(
-              "p-2 h-auto rounded-xl",
-              isSaved ? "text-error" : "text-muted-foreground/40"
+              "h-12 w-12 border-4 border-black shadow-[4px_4px_0_#000] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all wobbly-slow",
+              isSaved ? "bg-primary text-white" : "bg-white text-black"
             )}
           >
-            <Bookmark className={cn("w-5 h-5", isSaved && "fill-current")} />
+            <Bookmark className={cn("w-6 h-6", isSaved && "fill-current")} />
           </Button>
         </div>
       </div>
 
       {/* Main English Line - Natural Sentence Layout with Highlights */}
-      <div className="flex flex-wrap gap-x-1 gap-y-2 justify-center py-6">
+      <div className="flex flex-wrap gap-x-2 gap-y-4 justify-center py-8">
         {words.map((word, i) => {
           const isHidden = hiddenWordIndices.includes(i);
           const isSelected = selectedWordIndex === i;
           
-          // Check if word is part of the key expression
           const cleanExpression = content.expression?.toLowerCase().replace(/[^a-z0-9\s]/g, '');
           const cleanWord = word.toLowerCase().replace(/[^a-z0-9]/g, '');
           const isPartOfExpression = cleanExpression && cleanWord && cleanExpression.includes(cleanWord);
@@ -166,23 +156,17 @@ export function ContentCard({ content, onWordClick, isQuizMode = false }: Conten
               key={`${word}-${i}`}
               onClick={() => handleWordClick(word, i)}
               className={cn(
-                "relative text-2xl sm:text-4xl font-black rounded transition-all px-0.5 select-none touch-manipulation",
+                "relative text-4xl sm:text-5xl font-bold rounded transition-all px-2 py-1 select-none touch-manipulation font-reading",
                 isHidden 
-                  ? "bg-muted text-transparent min-w-[60px] border-2 border-dashed border-border" 
+                  ? "bg-white text-transparent min-w-[80px] border-8 border-dashed border-black shadow-[8px_8px_0_0_#000]" 
                   : isSelected
-                    ? "text-primary bg-primary/10 shadow-[0_2px_0_0_rgba(var(--primary-shadow),0.2)]"
+                    ? "text-primary bg-white border-8 border-primary shadow-[8px_8px_0_0_#000] rotate-3 scale-110"
                     : isHighlighted
-                      ? "text-foreground underline decoration-primary/30 decoration-4 underline-offset-8"
-                      : "text-foreground hover:text-primary active:scale-95"
+                      ? "text-black underline decoration-primary decoration-[6px] underline-offset-8 decoration-solid"
+                      : "text-black hover:text-primary active:scale-95"
               )}
             >
-              {isHidden ? '' : word}
-              {isSelected && !isHidden && (
-                <motion.div 
-                  layoutId="active-indicator"
-                  className="absolute -bottom-1 left-0 right-0 h-1 bg-primary rounded-full"
-                />
-              )}
+              {isHidden ? '?' : word}
             </button>
           );
         })}
@@ -190,43 +174,42 @@ export function ContentCard({ content, onWordClick, isQuizMode = false }: Conten
 
       {/* Enhanced Key Expression Section */}
       {content.expression && (
-        <div className="relative overflow-hidden group/expression px-6 py-6 bg-primary/5 rounded-[2.5rem] border-2 border-primary/20 transition-all hover:bg-primary/10">
-           <div className="flex justify-between items-start mb-2">
-             <div className="flex items-center gap-2">
-               <div className="p-1.5 bg-primary text-white rounded-lg shadow-sm">
-                 <Star className="w-3 h-3 fill-current" />
+        <div className="relative overflow-hidden group/expression px-8 py-10 bg-white border-8 border-primary shadow-[10px_10px_0_0_#000] transition-all hover:-rotate-1 wobbly-slow">
+           <div className="flex justify-between items-start mb-4">
+             <div className="flex items-center gap-3">
+               <div className="p-2 bg-primary text-white border-4 border-black shadow-[2px_2px_0_#000]">
+                 <Star className="w-5 h-5 fill-current" />
                </div>
-               <span className="text-[10px] font-black text-primary uppercase tracking-[0.1em]">오늘의 핵심 표현</span>
+               <span className="text-sm font-black text-black uppercase tracking-widest font-cartoon">오늘의 핵심 표현</span>
              </div>
              <Button 
                variant="ghost" 
                size="sm" 
-               onClick={() => playTTS(content.expression || '', 'en-US')} 
-               className="h-8 w-8 p-0 rounded-full text-primary hover:bg-primary/20"
+               onClick={() => playTTS(content.expression || '')} 
+               className="h-10 w-10 border-4 border-black shadow-[2px_2px_0_#000] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all"
              >
-               <Volume2 className="w-4 h-4" />
+               <Volume2 className="w-5 h-5" />
              </Button>
            </div>
            
-           <div className="space-y-1">
-             <h4 className="text-xl font-black text-foreground leading-tight">
-               {content.expression}
-             </h4>
-             {(content.expression_ko || expressionData?.meaning) && (
-               <p className="text-base font-bold text-primary/80 break-keep">
-                 {content.expression_ko || expressionData?.meaning}
-               </p>
-             )}
+           <div className="space-y-2">
+              <h4 className="text-4xl font-black text-black leading-tight uppercase font-lilita">
+                {content.expression}
+              </h4>
+              {(content.expression_ko || expressionData?.meaning) && (
+                <p className="text-2xl font-black text-primary break-keep mt-2">
+                  {content.expression_ko || expressionData?.meaning}
+                </p>
+              )}
            </div>
 
-           {/* Decorative background element */}
-           <div className="absolute -right-4 -bottom-4 opacity-[0.03] rotate-12 pointer-events-none">
-             <Star className="w-24 h-24 text-primary" />
+           <div className="absolute -right-8 -bottom-8 opacity-10 rotate-12 pointer-events-none">
+             <Star className="w-32 h-32 text-primary" />
            </div>
         </div>
       )}
 
-      {/* Teacher's Note Section - Integrated closer to expression */}
+      {/* Teacher's Note Section */}
       <AnimatePresence>
         {showExplanation && content.explanation_ko && (
           <motion.div
@@ -235,14 +218,14 @@ export function ContentCard({ content, onWordClick, isQuizMode = false }: Conten
             exit={{ height: 0, opacity: 0 }}
             className="overflow-hidden"
           >
-            <div className="p-6 bg-info/5 rounded-3xl border-l-[6px] border-info/40 space-y-2">
-               <div className="flex items-center gap-2 mb-1">
-                 <Info className="w-4 h-4 text-info/60" />
-                 <p className="text-[10px] font-black text-info/60 uppercase tracking-widest">학습 포인트</p>
+            <div className="p-8 bg-secondary/10 border-8 border-secondary shadow-[8px_8px_0_#000] space-y-3 wobbly">
+               <div className="flex items-center gap-3 mb-2">
+                 <Info className="w-6 h-6 text-secondary" />
+                 <p className="text-sm font-black text-secondary uppercase tracking-[0.2em] font-cartoon">학습 포인트</p>
                </div>
-               <p className="text-base font-bold text-foreground leading-relaxed">
-                 {content.explanation_ko}
-               </p>
+               <p className="text-2xl font-black text-black leading-relaxed">
+                  {content.explanation_ko}
+                </p>
             </div>
           </motion.div>
         )}
@@ -251,14 +234,14 @@ export function ContentCard({ content, onWordClick, isQuizMode = false }: Conten
       <AnimatePresence>
         {activeWordData && (
           <motion.div
-            initial={{ height: 0, opacity: 0, scale: 0.98 }}
+            initial={{ height: 0, opacity: 0, scale: 0.95 }}
             animate={{ height: 'auto', opacity: 1, scale: 1 }}
-            exit={{ height: 0, opacity: 0, scale: 0.98 }}
-            transition={{ duration: 0.15, ease: "easeOut" }}
+            exit={{ height: 0, opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
             className="overflow-hidden"
           >
-              <div className="bg-muted/30 rounded-3xl border-2 border-primary/20 p-6 space-y-4 relative">
-                <div className="absolute top-4 right-4 flex items-center gap-2">
+            <div className="bg-white border-8 border-black p-8 sm:p-10 space-y-6 relative shadow-[12px_12px_0_#000] wobbly mt-4">
+                <div className="absolute top-6 right-6 flex items-center gap-3">
                   <button 
                     onClick={() => {
                         if (activeWordData) {
@@ -272,39 +255,39 @@ export function ContentCard({ content, onWordClick, isQuizMode = false }: Conten
                         }
                     }}
                     className={cn(
-                        "p-2 rounded-xl transition-all",
+                        "p-3 border-4 border-black transition-all",
                         favorites.some(f => f.word === activeWordData?.word) 
-                            ? "bg-warning/20 text-warning" 
-                            : "text-muted-foreground/30 hover:text-warning"
+                            ? "bg-warning text-black" 
+                            : "bg-white text-black hover:bg-warning/20"
                     )}
                     aria-label="Save Word"
                   >
-                    <Star className={cn("w-5 h-5", favorites.some(f => f.word === activeWordData?.word) && "fill-current")} />
+                    <Star className={cn("w-6 h-6", favorites.some(f => f.word === activeWordData?.word) && "fill-current")} />
                   </button>
                   <button 
                     onClick={() => { setActiveWordData(null); setSelectedWordIndex(null); }}
-                    className="p-2 text-muted-foreground/30 hover:text-error transition-colors"
+                    className="p-3 bg-white border-4 border-black hover:bg-error/20 transition-all"
                   >
-                    <X className="w-5 h-5" />
+                    <X className="w-6 h-6" />
                   </button>
                 </div>
 
-                <div className="flex items-center gap-4">
-                  <div className="h-12 w-12 rounded-2xl bg-primary text-white flex items-center justify-center shadow-tactile border-b-primary-shadow">
-                    <Volume2 className="w-6 h-6" />
+                <div className="flex items-center gap-6">
+                  <div className="h-16 w-16 bg-primary text-white flex items-center justify-center border-4 border-black shadow-[4px_4px_0_#000]">
+                    <Volume2 className="w-8 h-8" />
                   </div>
                   <div>
-                    <h4 className="text-2xl font-black text-foreground capitalize">{activeWordData.word}</h4>
-                    <p className="text-sm font-bold text-primary">{activeWordData.phonetic}</p>
+                    <h4 className="text-4xl font-black text-black uppercase font-cartoon">{activeWordData.word}</h4>
+                    <p className="text-lg font-black text-primary">{activeWordData.phonetic}</p>
                   </div>
                 </div>
 
-                <div className="space-y-1">
-                  <p className="text-xl font-black text-foreground leading-tight">
+                <div className="space-y-2 border-t-4 border-black pt-4">
+                  <p className="text-3xl font-black text-black leading-snug uppercase font-cartoon">
                     {activeWordData.meaning}
                   </p>
                   {activeWordData.example && (
-                    <p className="text-sm font-bold text-muted-foreground italic">
+                    <p className="text-lg font-black text-black/60 italic">
                       &quot;{activeWordData.example}&quot;
                     </p>
                   )}
@@ -314,7 +297,7 @@ export function ContentCard({ content, onWordClick, isQuizMode = false }: Conten
                   variant="ghost"
                   size="sm"
                   onClick={() => onWordClick(activeWordData.word)}
-                  className="w-full justify-center h-10 text-xs font-black uppercase text-primary tracking-widest hover:bg-primary/5"
+                  className="w-full justify-center h-14 text-lg font-black uppercase text-white bg-black border-4 border-black shadow-[4px_4px_0_#000] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all font-cartoon"
                 >
                   상세 정보 보기
                 </Button>
@@ -324,15 +307,15 @@ export function ContentCard({ content, onWordClick, isQuizMode = false }: Conten
         </AnimatePresence>
 
       {/* Integrated Translation & Controls */}
-      <div className="space-y-6 pt-4 border-t border-border/50">
+      <div className="space-y-8 pt-6 border-t-8 border-black">
         <AnimatePresence mode="wait">
           {showKo ? (
             <motion.div
               key="ko-text"
-              initial={{ opacity: 0, y: 5 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
-              className="p-5 bg-muted/50 rounded-2xl border-2 border-border/50 text-xl font-bold text-foreground text-center break-keep"
+              className="p-10 bg-black text-white text-4xl font-black text-center break-keep border-8 border-primary shadow-[10px_10px_0_#000] font-cartoon -rotate-1"
             >
               {content.line_ko}
             </motion.div>
@@ -341,34 +324,34 @@ export function ContentCard({ content, onWordClick, isQuizMode = false }: Conten
               key="placeholder"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="h-14 flex items-center justify-center"
+              className="h-16 flex items-center justify-center"
             >
               <button 
                 onClick={() => setShowKo(true)}
-                className="text-xs font-black text-muted-foreground uppercase tracking-widest hover:text-primary transition-colors flex items-center gap-2"
+                className="text-lg font-black text-black uppercase tracking-widest hover:text-primary transition-colors flex items-center gap-4 border-b-8 border-black font-cartoon"
               >
-                <Languages className="w-4 h-4" /> Reveal Translation
+                <Languages className="w-6 h-6 text-primary" /> Reveal Translation
               </button>
             </motion.div>
           )}
         </AnimatePresence>
 
-        <div className="flex justify-between items-center gap-4">
+        <div className="flex justify-between items-center gap-6">
           <Button
             variant="secondary"
             size="lg"
-            onClick={() => playTTS(content.line_en, 'en-US')}
-            className="flex-1 h-16 rounded-2xl text-lg font-black"
+            onClick={() => playTTS(content.line_en)}
+            className="flex-1 h-20 border-8 border-black text-2xl font-black bg-secondary text-white shadow-[8px_8px_0_#000] active:translate-y-2 active:translate-x-2 active:shadow-none transition-all uppercase font-cartoon"
             aria-label="Listen to full sentence"
           >
-            <Play className="mr-3 h-6 w-6 fill-current" /> 문장 전체 듣기
+            <Play className="mr-4 h-8 w-8 fill-current" /> 문장 듣기
           </Button>
           
           {showKo && (
             <Button
               variant="ghost"
               onClick={() => setShowKo(false)}
-              className="h-16 px-6 rounded-2xl font-black text-muted-foreground"
+              className="h-20 px-8 border-8 border-black font-black text-black bg-white shadow-[8px_8px_0_#000] active:translate-y-2 active:translate-x-2 active:shadow-none transition-all uppercase font-cartoon"
             >
               숨기기
             </Button>

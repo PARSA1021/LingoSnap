@@ -1,17 +1,24 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Luckiest_Guy, Lilita_One, Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { TopNav } from "@/components/layout/TopNav";
 import { BottomNav } from "@/components/layout/BottomNav";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const luckiestGuy = Luckiest_Guy({
+  weight: '400',
+  variable: "--font-luckiest-guy",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const lilitaOne = Lilita_One({
+  weight: '400',
+  variable: "--font-lilita-one",
+  subsets: ["latin"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 export const metadata: Metadata = {
@@ -28,7 +35,7 @@ export default function RootLayout({
     <html
       lang="ko"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${luckiestGuy.variable} ${lilitaOne.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col pb-[100px]">
         <ThemeProvider>

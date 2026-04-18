@@ -20,9 +20,9 @@ const getRandomElements = (arr: any[], count: number) => {
 // 헬퍼 컴포넌트: 데이터가 없는 상태 표시
 function EmptyState({ icon, text }: { icon: React.ReactNode; text: string }) {
   return (
-    <div className="p-8 bg-muted/20 rounded-[2rem] border-2 border-dashed border-border/50 w-full flex flex-col items-center justify-center text-center">
-      <div className="mb-3 opacity-50">{icon}</div>
-      <p className="text-sm font-bold text-muted-foreground">{text}</p>
+    <div className="p-12 bg-white border-8 border-black shadow-[12px_12px_0_#000] w-full flex flex-col items-center justify-center text-center wobbly-slow">
+      <div className="mb-4 text-black">{icon}</div>
+      <p className="text-xl font-black text-black uppercase tracking-[0.2em] font-cartoon">{text}</p>
     </div>
   );
 }
@@ -130,15 +130,15 @@ export default function VocabSearchPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-10">
 
         {/* 헤더 */}
-        <header className="sticky top-2 sm:top-6 z-40 space-y-4 sm:space-y-6 bg-surface/90 p-4 sm:p-5 lg:p-8 rounded-2xl sm:rounded-[2.5rem] card-tactile border-b-border shadow-xl backdrop-blur-xl transition-all">
+        <header className="sticky top-2 sm:top-6 z-40 space-y-6 bg-white p-6 sm:p-10 border-8 border-black shadow-[12px_12px_0_#000] wobbly-slow">
           <div className="flex items-center justify-between gap-4">
-            <div className="flex items-center gap-3 sm:gap-4 min-w-0">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-primary rounded-xl sm:rounded-[1.25rem] flex items-center justify-center text-white shadow-lg shrink-0">
-                <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8" />
+            <div className="flex items-center gap-4 min-w-0">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary flex items-center justify-center text-white border-8 border-black shadow-[4px_4px_0_#000] shrink-0 wobbly">
+                <BookOpen className="w-6 h-6 sm:w-10 sm:h-10 fill-white" />
               </div>
               <div className="min-w-0">
-                <h1 className="text-lg sm:text-2xl lg:text-3xl font-black tracking-tighter leading-tight truncate">표현 수집함</h1>
-                <p className="text-[10px] sm:text-xs font-bold text-muted-foreground uppercase tracking-widest mt-0.5 sm:mt-1 opacity-70">
+                <h1 className="text-3xl sm:text-5xl font-black tracking-tighter leading-tight drop-shadow-[4px_4px_0_#000] text-black font-cartoon uppercase">표현 수집함</h1>
+                <p className="text-xs font-black text-primary uppercase tracking-[0.2em] mt-1">
                   Total {processedCards.length} expressions
                 </p>
               </div>
@@ -176,10 +176,10 @@ export default function VocabSearchPage() {
               <input
                 type="text"
                 placeholder="표현이나 뜻 검색..."
-                className="w-full h-12 sm:h-14 lg:h-16 pl-11 sm:pl-14 pr-11 sm:pr-12 bg-white/50 border-2 border-border rounded-xl sm:rounded-2xl outline-none font-bold text-sm sm:text-base lg:text-lg focus:border-primary transition-all shadow-sm focus:shadow-none"
+                className="w-full h-14 lg:h-20 pl-14 pr-12 bg-white text-black font-black border-8 border-black outline-none text-lg lg:text-2xl focus:border-primary transition-all shadow-[8px_8px_0_#000] focus:translate-y-2 focus:translate-x-2 focus:shadow-none placeholder:text-black/30 font-cartoon"
                 value={query}
                 onChange={(e) => {
-                  setQuery(e.target.value);
+                  setQuery(e.target.value.toUpperCase());
                   setApiWord(null);
                 }}
                 onKeyDown={(e) => {
@@ -281,8 +281,8 @@ export default function VocabSearchPage() {
                 className={cn(
                   "px-4 lg:px-5 py-2.5 lg:py-3 rounded-xl font-black text-sm whitespace-nowrap transition-all active:scale-95 border-2",
                   !activeCategory 
-                    ? "bg-primary text-white border-primary shadow-md" 
-                    : "bg-white text-muted-foreground border-border hover:border-primary/50"
+                    ? "bg-surface border-4 border-border text-foreground shadow-[2px_2px_0_#111]" 
+                    : "bg-surface text-muted-foreground border-4 border-border/50 hover:border-border"
                 )}
               >
                 전체 ({processedCards.length})
@@ -294,8 +294,8 @@ export default function VocabSearchPage() {
                   className={cn(
                     "px-4 lg:px-5 py-2.5 lg:py-3 rounded-xl font-black text-sm whitespace-nowrap transition-all active:scale-95 border-2",
                     activeCategory === cat 
-                      ? "bg-primary text-white border-primary shadow-md" 
-                      : "bg-white text-muted-foreground border-border hover:border-primary/50"
+                      ? "bg-surface border-4 border-border text-foreground shadow-[2px_2px_0_#111]" 
+                      : "bg-surface text-muted-foreground border-4 border-border/50 hover:border-border"
                   )}
                 >
                   {cat} ({categoryStats[cat]})

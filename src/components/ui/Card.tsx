@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { cn } from '@/lib/utils/cn';
 
@@ -6,7 +8,7 @@ export const Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDi
     <div
       ref={ref}
       className={cn(
-        "rounded-3xl border-2 border-border bg-surface text-foreground shadow-soft",
+        "card-tactile text-foreground",
         className
       )}
       {...props}
@@ -31,7 +33,7 @@ export const CardTitle = React.forwardRef<HTMLParagraphElement, React.HTMLAttrib
     <h3
       ref={ref}
       className={cn(
-        "text-2xl font-bold leading-none tracking-tight text-foreground",
+        "text-4xl font-black leading-none tracking-tighter text-black uppercase border-b-8 border-black pb-4 mb-4 inline-block font-cartoon drop-shadow-[2px_2px_0_#fff]",
         className
       )}
       {...props}

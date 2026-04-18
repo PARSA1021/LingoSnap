@@ -3,45 +3,38 @@
 import * as React from 'react';
 import { useLearningStore } from '@/store/useLearningStore';
 import { SpeakingPractice } from '@/components/speaking/SpeakingPractice';
+import { TypingPractice } from '@/components/learn/TypingPractice';
+import { SentenceCompletion } from '@/components/learn/SentenceCompletion';
 import { Button } from '@/components/ui/Button';
 import { Loader2, ArrowRight, CheckCircle2, RefreshCw, Sparkles, ChevronRight, Volume2 } from 'lucide-react';
 import Link from 'next/link';
 import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
 import { cn } from '@/lib/utils/cn';
+import { speak } from '@/lib/tts';
 
 import vocabData from '@/data/vocabulary.json';
 import sentenceData from '@/data/sentences.json';
 
 const SESSION_WORD_COUNT = 5;
 
-// --- TTS(음성 출력) 유틸리티 함수 ---
-const speak = (text: string) => {
-  if (typeof window !== 'undefined' && window.speechSynthesis) {
-    // 이전 음성 중단
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'en-US'; // 영어 발음 설정
-    utterance.rate = 0.9;     // 속도를 살짝 느리게 하여 학습 효과 증대
-    window.speechSynthesis.speak(utterance);
-  }
-};
+
 
 const getRandomElements = (arr: any[], count: number) => {
   const shuffled = [...arr].sort(() => 0.5 - Math.random());
   return shuffled.slice(0, count);
 };
 
-function LearningSwipeCard({ word, onNext, index, total }: { word: any, onNext: () => void, index: number, total: number }) {
+function LearningSwipeCard({ word, onNext, onPrev, index, total }: { word: any, onNext: () => void, onPrev: () => void, index: number, total: number }) {
   const [showMeaning, setShowMeaning] = React.useState(false);
 
   const x = useMotionValue(0);
   const rotate = useTransform(x, [-200, 200], [-20, 20]);
   const opacity = useTransform(x, [-200, -150, 0, 150, 200], [0, 1, 1, 1, 0]);
 
-  // 카드가 처음 나타날 때 자동으로 단어 읽어주기
-  React.useEffect(() => {
+  // Removed autoplay useEffect to prevent browser block
+  /* React.useEffect(() => {
     speak(word.word);
-  }, [word]);
+  }, [word]); */
 
   const handleDragEnd = (_: any, info: any) => {
     if (!showMeaning) return;
@@ -61,23 +54,23 @@ function LearningSwipeCard({ word, onNext, index, total }: { word: any, onNext: 
       animate={{ scale: 1, opacity: 1 }}
       exit={{ scale: 1.1, opacity: 0 }}
     >
-      <div className="h-full w-full bg-white rounded-[2.5rem] shadow-xl border-2 border-border p-8 flex flex-col justify-between items-center text-center card-tactile border-b-primary-shadow">
+      <div className="h-full w-full bg-white border-8 border-black p-8 sm:p-12 flex flex-col justify-between items-center text-center shadow-[12px_12px_0_#000]">
         <div className="w-full flex justify-between items-center">
-          <span className="px-4 py-1.5 bg-primary/10 text-primary text-xs font-black rounded-full uppercase tracking-widest">
+          <span className="px-4 py-1.5 bg-surface border-2 border-border text-foreground text-xs font-black rounded-full uppercase tracking-widest shadow-[2px_2px_0_#111] wobbly-slow">
             Card {index + 1} / {total}
           </span>
           {/* 음성 다시 듣기 버튼: 모바일 터치 최적화 */}
           <button 
             onClick={(e) => { e.stopPropagation(); speak(word.word); }}
-            className="p-3 bg-muted/50 rounded-full hover:bg-primary/20 active:scale-90 transition-all focus:outline-none"
+            className="p-3 bg-surface border-2 border-border rounded-full hover:bg-muted active:scale-90 transition-all shadow-[2px_2px_0_#111]"
           >
-            <Volume2 className="w-5 h-5 text-primary" />
+            <Volume2 className="w-5 h-5 text-foreground" />
           </button>
         </div>
 
         <div className="flex-1 flex flex-col justify-center items-center space-y-6 w-full relative">
           <div className="space-y-2 relative z-10 w-full mb-4">
-            <h2 className="text-5xl sm:text-6xl font-black text-primary tracking-tighter drop-shadow-sm">{word.word}</h2>
+            <h2 className="text-5xl sm:text-6xl font-black text-black font-reading leading-tight tracking-tight">{word.word}</h2>
           </div>
           
           <AnimatePresence mode="popLayout">
@@ -103,10 +96,10 @@ function LearningSwipeCard({ word, onNext, index, total }: { word: any, onNext: 
                 animate={{ opacity: 1, y: 0 }}
                 className="flex flex-col items-center space-y-6 w-full"
               >
-                <p className="text-2xl sm:text-3xl font-black text-foreground break-keep">{word.meaning}</p>
+                <p className="text-2xl sm:text-3xl font-black text-primary drop-shadow-[1px_1px_0_#111] break-keep">{word.meaning}</p>
                 {word.examples && word.examples[0] && (
                   <div 
-                    className="w-full p-5 bg-muted/30 rounded-3xl cursor-pointer hover:bg-muted/50 transition-colors border-2 border-border/50 text-left"
+                    className="w-full p-6 bg-white border-8 border-black shadow-[8px_8px_0_#000] text-left wobbly-slow"
                     onClick={(e) => { e.stopPropagation(); speak(word.examples[0].text); }}
                   >
                     <div className="flex justify-between items-start mb-2">
@@ -122,24 +115,21 @@ function LearningSwipeCard({ word, onNext, index, total }: { word: any, onNext: 
           </AnimatePresence>
         </div>
 
-        <div className="w-full flex flex-col items-center gap-3 mt-4 h-[60px] justify-end">
-          <AnimatePresence>
-            {showMeaning && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="w-full flex flex-col items-center gap-2"
-              >
-                <Button onClick={onNext} className="w-full h-14 rounded-[1.5rem] font-black text-lg shadow-tactile active:translate-y-1">
-                  다음으로 <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-                <div className="flex items-center gap-2 text-muted-foreground opacity-50 mt-1">
-                  <span className="text-[10px] font-black uppercase tracking-widest">or Swipe</span>
-                  <ChevronRight className="w-3 h-3" />
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+        <div className="w-full grid grid-cols-2 gap-4 mt-4">
+          <Button 
+            variant="secondary" 
+            onClick={onPrev} 
+            disabled={index === 0}
+            className="h-14 border-4 border-black shadow-[4px_4px_0_#000] font-black uppercase font-cartoon"
+          >
+            Prev
+          </Button>
+          <Button 
+            onClick={onNext} 
+            className="h-14 border-4 border-black shadow-[4px_4px_0_#000] font-black uppercase font-cartoon"
+          >
+            {index === total - 1 ? 'Finish' : 'Next'}
+          </Button>
         </div>
       </div>
     </motion.div>
@@ -186,8 +176,14 @@ export default function LearnFlowPage() {
 
   const { stage, currentWordIndex, words } = store;
   const currentWord = words[currentWordIndex];
-  const totalSteps = words.length + 1;
-  let currentStep = stage === 'vocab' ? currentWordIndex : stage === 'speaking' ? words.length : totalSteps;
+  const totalSteps = words.length * 3 + 1; // vocab cards + typing cards + completion cards + 1 speaking
+  let currentStep = 0;
+  if (stage === 'vocab') currentStep = currentWordIndex;
+  else if (stage === 'typing') currentStep = words.length + currentWordIndex;
+  else if (stage === 'completion') currentStep = words.length * 2 + currentWordIndex;
+  else if (stage === 'speaking') currentStep = words.length * 3;
+  else currentStep = totalSteps;
+
   const progressPercent = Math.round((currentStep / totalSteps) * 100);
 
   return (
@@ -195,21 +191,30 @@ export default function LearnFlowPage() {
       {stage !== 'result' && (
         <div className="max-w-xl mx-auto w-full mb-8 space-y-4">
            <div className="flex justify-between items-center px-2">
-             <Link href="/" className="p-2 bg-white/50 rounded-full font-black text-xl">✕</Link>
-             <div className="flex items-center gap-2 bg-white/50 px-3 py-1 rounded-full border border-border">
+             <Link href="/" className="p-2 bg-surface rounded-full font-black text-xl border-2 border-border">✕</Link>
+             <div className="flex items-center gap-2 bg-surface px-3 py-1 rounded-full border-2 border-border">
                <Sparkles className="w-4 h-4 text-amber-500" />
                <span className="text-[10px] font-black text-foreground uppercase tracking-widest">Learning Mode</span>
              </div>
              <div className="w-10" />
            </div>
-           <div className="bg-muted rounded-full h-3 overflow-hidden border-2 border-border shadow-inner">
-            <motion.div 
-              className="bg-primary h-full rounded-full"
-              initial={{ width: 0 }}
-              animate={{ width: `${progressPercent}%` }}
-              transition={{ type: "spring", stiffness: 40 }}
-            />
-          </div>
+           <div className="flex gap-4 items-center">
+             <div className="bg-surface rounded-full h-3 flex-1 overflow-hidden border-2 border-border shadow-inner">
+               <motion.div 
+                 className="bg-primary h-full rounded-full"
+                 initial={{ width: 0 }}
+                 animate={{ width: `${progressPercent}%` }}
+                 transition={{ type: "spring", stiffness: 40 }}
+               />
+             </div>
+             <Button 
+               onClick={() => speak('System Check')}
+               variant="ghost" 
+               className="h-10 w-10 p-0 rounded-full border-2 border-black bg-white shadow-[2px_2px_0_#000]"
+             >
+               <Volume2 className="w-4 h-4" />
+             </Button>
+           </div>
         </div>
       )}
 
@@ -217,18 +222,24 @@ export default function LearnFlowPage() {
         <AnimatePresence mode="wait">
           {stage === 'vocab' && (
             <motion.div key="vocab-container" className="w-full h-[520px] sm:h-[580px] relative">
-              <AnimatePresence>
+              <AnimatePresence mode="wait">
                 {currentWord && (
                   <LearningSwipeCard 
                     key={currentWord.word}
                     word={currentWord}
                     index={currentWordIndex}
                     total={words.length}
+                    onPrev={() => {
+                      if (currentWordIndex > 0) {
+                        store.prevWord();
+                      }
+                    }}
                     onNext={() => {
                       if (currentWordIndex < words.length - 1) {
                         store.nextWord();
                       } else {
-                        store.setStage('speaking');
+                        store.resetSession();
+                        store.setStage('typing');
                       }
                     }}
                   />
@@ -237,11 +248,48 @@ export default function LearnFlowPage() {
             </motion.div>
           )}
 
+          {stage === 'typing' && (
+            <motion.div key="typing-container" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="w-full">
+               <TypingPractice 
+                 word={currentWord.word}
+                 meaning={currentWord.meaning}
+                 index={currentWordIndex}
+                 total={words.length}
+                 onSuccess={() => {
+                    if (currentWordIndex < words.length - 1) {
+                        store.nextWord();
+                    } else {
+                        store.setStage('completion');
+                    }
+                 }}
+               />
+            </motion.div>
+          )}
+
+          {stage === 'completion' && (
+            <motion.div key="completion-container" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="w-full">
+               <SentenceCompletion 
+                 sentence={currentWord.example || ''}
+                 translation={currentWord.exampleTranslation || ''}
+                 targetWord={currentWord.word}
+                 index={currentWordIndex}
+                 total={words.length}
+                 onSuccess={() => {
+                    if (currentWordIndex < words.length - 1) {
+                        store.nextWord();
+                    } else {
+                        store.setStage('speaking');
+                    }
+                 }}
+               />
+            </motion.div>
+          )}
+
           {stage === 'speaking' && (
             <motion.div key="speaking" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full flex-1">
                <div className="mb-10 text-center space-y-2">
                  <h1 className="text-3xl font-black text-foreground tracking-tighter">문장 쉐도잉</h1>
-                 <p className="text-success font-black text-xs uppercase tracking-widest bg-success/10 py-1 px-3 rounded-full inline-block">Final Mission</p>
+                 <p className="text-primary font-black text-xs uppercase tracking-widest bg-surface py-1 px-3 rounded-full border-2 border-border inline-block">Final Mission</p>
                </div>
               <SpeakingPractice 
                 expectedSentence={dailySentence}
@@ -251,23 +299,23 @@ export default function LearnFlowPage() {
           )}
 
           {stage === 'result' && (
-            <motion.div key="result" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="w-full max-w-md mx-auto flex flex-col items-center justify-center space-y-10 text-center py-12 px-8 bg-surface card-tactile border-b-success-shadow rounded-[3.5rem]">
-              <div className="h-32 w-32 bg-success text-white rounded-full flex items-center justify-center shadow-lg border-4 border-white animate-bounce">
-                <CheckCircle2 className="h-16 w-16" />
+            <motion.div key="result" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="w-full max-w-md mx-auto flex flex-col items-center justify-center space-y-12 text-center py-16 px-10 bg-white border-8 border-black shadow-[15px_15px_0_#000] wobbly-slow">
+              <div className="h-40 w-40 bg-secondary text-white border-8 border-black flex items-center justify-center shadow-[8px_8px_0_#000] rotate-3">
+                <CheckCircle2 className="h-24 w-24" />
               </div>
-              <div className="space-y-3">
-                <h1 className="text-4xl font-black text-foreground tracking-tighter">오늘의 수집 완료!</h1>
-                <p className="text-muted-foreground text-lg font-bold leading-relaxed break-keep">
-                  귀로 듣고 입으로 말하며<br/><span className="text-primary font-black underline underline-offset-4">{words.length}개</span>의 표현을 완벽히 익혔어요.
+              <div className="space-y-4">
+                <h1 className="text-6xl font-black tracking-tight drop-shadow-[4px_4px_0_#000] uppercase font-cartoon -rotate-2">Knockout!</h1>
+                <p className="text-black text-2xl font-black leading-relaxed break-keep uppercase font-cartoon">
+                  You Mastered <br /><span className="text-primary text-5xl">{words.length}</span> <br/> Expressions!
                 </p>
               </div>
-              <div className="flex flex-col gap-3 w-full">
-                <Button variant="secondary" onClick={() => { store.resetSession(); window.location.reload(); }} className="h-14 w-full rounded-2xl font-black">
-                  <RefreshCw className="mr-2 h-4 w-4" /> 한 번 더 하기
+              <div className="flex flex-col gap-6 w-full">
+                <Button variant="secondary" onClick={() => { store.resetSession(); window.location.reload(); }} className="h-20 w-full border-8 border-black bg-secondary text-white shadow-[8px_8px_0_#000] text-xl font-black uppercase font-cartoon">
+                  <RefreshCw className="mr-3 h-6 w-6" /> Play Again
                 </Button>
                 <Link href="/" className="w-full">
-                  <Button size="lg" className="h-16 w-full text-xl rounded-2xl font-black shadow-tactile active:translate-y-1">
-                    메인으로 돌아가기
+                  <Button className="h-24 w-full text-3xl border-8 border-black bg-primary text-white shadow-[10px_10px_0_#000] active:translate-y-2 active:translate-x-2 active:shadow-none transition-all uppercase font-cartoon">
+                    Victory!
                   </Button>
                 </Link>
               </div>

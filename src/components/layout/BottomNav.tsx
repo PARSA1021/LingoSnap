@@ -20,7 +20,7 @@ export function BottomNav() {
   return (
     <nav
       aria-label="Main Navigation"
-      className="fixed bottom-0 left-0 right-0 z-50 bg-background border-t-[3px] border-border pb-safe pt-2 sm:pt-3"
+      className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t-8 border-black pb-safe pt-2 sm:pt-3 shadow-[0_-8px_0_#000]"
     >
       <div className="max-w-3xl mx-auto flex justify-between items-end px-6 relative">
         {tabs.map((tab) => {
@@ -35,21 +35,14 @@ export function BottomNav() {
               className="flex flex-col items-center gap-1 group w-1/5 select-none touch-manipulation pb-2 sm:pb-4"
             >
               <div
-                className={`relative px-4 py-2 rounded-2xl transition-all duration-300 ${isActive
-                    ? 'text-primary bg-primary/10'
-                    : 'text-muted-foreground group-hover:text-foreground group-hover:bg-muted'
+                className={`relative px-4 py-2 transition-all duration-300 border-4 border-black shadow-[6px_6px_0_#000] ${isActive
+                    ? 'bg-primary text-white wobbly -translate-y-2 shadow-[8px_8px_0_#000]'
+                    : 'text-black bg-white group-hover:bg-muted'
                   }`}
               >
-                {isActive && (
-                  <motion.div
-                    layoutId="bubble"
-                    className="absolute inset-0 bg-primary/20 rounded-2xl border-2 border-primary/30"
-                    transition={{ type: "spring", bounce: 0.1, duration: 0.4 }}
-                  />
-                )}
-                <div className="relative z-10">{tab.icon}</div>
+                <div className="relative z-10 font-black">{tab.icon}</div>
               </div>
-              <span className={`text-[11px] sm:text-xs font-black tracking-wide ${isActive ? 'text-primary' : 'text-muted-foreground'}`}>
+              <span className={`text-[10px] sm:text-xs font-black tracking-widest uppercase font-cartoon mt-1 ${isActive ? 'text-primary' : 'text-black/60'}`}>
                 {tab.name}
               </span>
             </Link>

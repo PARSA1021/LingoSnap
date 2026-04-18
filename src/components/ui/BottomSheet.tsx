@@ -32,24 +32,24 @@ export function BottomSheet({ isOpen, onClose, children, title }: BottomSheetPro
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 z-[60] bg-background/40 backdrop-blur-sm"
+            className="fixed inset-0 z-[60] bg-foreground/20"
           />
           <motion.div
             initial={{ y: '100%' }}
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed bottom-0 left-0 right-0 z-[70] bg-surface rounded-t-3xl shadow-elevated p-6 pb-[calc(env(safe-area-inset-bottom)+1.5rem)] max-h-[85vh] flex flex-col border-t border-border"
+            className="fixed bottom-0 left-0 right-0 z-[70] bg-white p-8 pb-[calc(env(safe-area-inset-bottom)+2rem)] max-h-[85vh] flex flex-col border-t-8 border-black shadow-[0_-12px_0_0_#000]"
           >
-            <div className="w-12 h-1.5 bg-muted rounded-full mx-auto mb-6 shrink-0" />
+            <div className="w-16 h-2 bg-border rounded-full mx-auto mb-6 shrink-0" />
             
             <div className="flex justify-between items-center mb-6 shrink-0">
-              {title ? <h3 className="font-extrabold text-2xl text-foreground">{title}</h3> : <div />}
+              {title ? <h3 className="font-black text-4xl text-black font-cartoon uppercase tracking-tighter drop-shadow-[2px_2px_0_#fff]">{title}</h3> : <div />}
               <button
                 onClick={onClose}
-                className="p-2 bg-muted rounded-full text-muted-foreground hover:bg-border active:scale-95 transition-all outline-none touch-manipulation"
+                className="p-3 bg-surface border-4 border-border rounded-xl text-foreground shadow-[2px_2px_0_#111] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all"
               >
-                <X className="w-5 h-5" />
+                <X className="w-6 h-6" />
               </button>
             </div>
             

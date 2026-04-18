@@ -95,16 +95,16 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
   };
 
   return (
-    <Card className="w-full max-w-lg mx-auto bg-surface card-tactile relative overflow-visible">
+    <Card className="w-full max-w-lg mx-auto bg-white border-8 border-black relative overflow-visible shadow-[12px_12px_0_#000]">
       <div className="absolute top-4 right-4 z-20">
         <motion.button
           whileTap={{ scale: 0.9 }}
           onClick={() => setQuizMode(!quizMode)}
           aria-label="Toggle Quiz Mode"
-          className={`p-3 rounded-2xl transition-all border-b-4 active:border-b-0 active:translate-y-1 ${
+          className={`p-3 border-8 border-black shadow-[6px_6px_0_#000] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all ${
             quizMode 
-              ? 'bg-primary text-white border-primary-shadow' 
-              : 'bg-muted text-muted-foreground border-border'
+              ? 'bg-secondary text-white' 
+              : 'bg-white text-black'
           }`}
         >
           <Lightbulb className={`w-6 h-6 ${quizMode ? 'fill-current' : ''}`} />
@@ -114,9 +114,9 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
       <CardContent className="p-8 sm:p-12 flex flex-col items-center text-center space-y-10 select-none">
         
         <div className="space-y-6 w-full pt-4">
-           <p className="text-xs font-black text-primary uppercase tracking-[0.2em] bg-accent px-4 py-1.5 rounded-full w-fit mx-auto border-2 border-primary/20">소리 내어 읽어보세요</p>
-          <div className="bg-muted rounded-[2rem] p-8 border-2 border-border shadow-inner">
-            <h2 className="text-2xl sm:text-4xl font-black text-foreground leading-snug break-keep flex flex-wrap justify-center gap-2">
+           <p className="text-sm font-black text-white uppercase tracking-[0.2em] bg-black px-6 py-2 border-4 border-black shadow-[4px_4px_0_#000] w-auto mx-auto wobbly-slow font-cartoon">Speak the Lines!</p>
+          <div className="bg-white p-10 border-8 border-black shadow-[10px_10px_0_#000] wobbly-slow">
+            <h2 className="text-4xl sm:text-6xl font-black text-black leading-tight break-keep flex flex-wrap justify-center gap-x-6 gap-y-6 font-lilita">
               {words.map((word, i) => {
                 const isHidden = hiddenWordIndices.includes(i);
                 return (
@@ -124,7 +124,8 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
                     key={`${word}-${i}`}
                     onClick={() => handleWordClick(i)}
                     className={cn(
-                      isHidden && "bg-muted text-transparent w-20 rounded-xl border-2 border-dashed border-border cursor-pointer transition-all"
+                      "transition-all drop-shadow-[2px_2px_0_#fff]",
+                      isHidden && "bg-white text-transparent min-w-[80px] border-8 border-dashed border-black cursor-pointer shadow-[6px_6px_0_#000]"
                     )}
                   >
                     {isHidden ? '?' : word}
@@ -136,7 +137,7 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
                 <Button
                   onClick={() => playTTS(expectedSentence)}
                   aria-label="Play pronunciation"
-                  className="rounded-2xl px-6 h-12 bg-surface text-primary border-2 border-primary/10 shadow-sm font-black hover:bg-muted"
+                  className="rounded-2xl px-6 h-12 bg-surface text-foreground border-4 border-border shadow-[4px_4px_0_#111] font-black hover:bg-muted active:translate-y-1 active:translate-x-1 active:shadow-none transition-all wobbly-slow"
                 >
                   <Volume2 className="h-5 w-5 mr-3" /> 발음 듣기
                 </Button>
@@ -149,14 +150,14 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
           <Button
             aria-label={isRecording ? "Stop recording" : "Microphone"}
             className={cn(
-              "w-32 h-32 rounded-full relative transition-all duration-300 border-b-8 active:border-b-0 active:translate-y-2",
+              "w-40 h-40 rounded-full relative transition-all border-8 border-black shadow-[10px_10px_0_#000] active:translate-y-2 active:translate-x-2 active:shadow-none wobbly",
               isRecording 
-                ? 'bg-error text-white border-error-shadow shadow-none' 
-                : 'bg-primary text-white border-primary-shadow shadow-none'
+                ? 'bg-error text-white' 
+                : 'bg-primary text-white'
             )}
             onClick={isRecording ? handleStopRecording : handleStartRecording}
           >
-            {isRecording ? <Square className="w-12 h-12" /> : <Mic className="w-12 h-12" />}
+            {isRecording ? <Square className="w-16 h-16" /> : <Mic className="w-16 h-16" />}
           </Button>
           <p className={`mt-10 font-black tracking-tight uppercase text-sm ${isRecording ? 'text-error animate-pulse' : 'text-muted-foreground'}`}>
             {isRecording ? '듣는 중... 완료하려면 버튼 클릭' : '마이크를 눌러 시작'}
@@ -168,7 +169,7 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
         <AnimatePresence mode="wait">
           {transcript && (
             <motion.div initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} className="w-full space-y-6">
-               <div className="bg-muted/50 p-6 rounded-3xl border-2 border-border/50 shadow-sm text-left">
+               <div className="bg-surface p-6 rounded-2xl border-4 border-border shadow-[4px_4px_0_#111] text-left">
                   <p className="text-[10px] font-black text-muted-foreground uppercase mb-2">당신이 말한 내용</p>
                   <p className="text-xl font-bold text-foreground italic leading-snug">&quot;{transcript.trim()}&quot;</p>
                </div>
@@ -183,7 +184,7 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
                )}
 
                {status === 'failed' && (
-                 <div className="bg-error/5 p-6 rounded-3xl border-2 border-error/20">
+                 <div className="bg-surface p-6 rounded-2xl border-4 border-border shadow-[4px_4px_0_#111]">
                     <div className="flex items-center gap-3 text-error mb-4 justify-center">
                        <XCircle className="w-8 h-8" />
                        <p className="text-xl font-black text-foreground">조금 더 노력이 필요해요</p>
