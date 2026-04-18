@@ -137,16 +137,16 @@ export default function VocabSearchPage() {
                 <BookOpen className="w-6 h-6 sm:w-10 sm:h-10 fill-white" />
               </div>
               <div className="min-w-0">
-                <h1 className="text-2xl sm:text-5xl font-black tracking-tighter leading-tight drop-shadow-[4px_4px_0_#000] text-black font-cartoon uppercase truncate">표현 수집함</h1>
-                <p className="text-[10px] sm:text-xs font-black text-primary uppercase tracking-[0.2em] mt-0.5 sm:mt-1 truncate">
-                  Total {processedCards.length} expressions
+                <h1 className="text-xl sm:text-5xl font-black tracking-tighter leading-tight drop-shadow-[4px_4px_0_#000] text-black font-cartoon uppercase truncate">Arcade</h1>
+                <p className="text-[8px] sm:text-xs font-black text-primary uppercase tracking-[0.2em] mt-0.5 sm:mt-1 truncate">
+                  Total {processedCards.length} Cards
                 </p>
               </div>
             </div>
 
             {/* 뷰 모드 토글 - 태블릿 이상에서만 표시 */}
             {(query || activeCategory) && (
-              <div className="hidden md:flex items-center gap-2 bg-white rounded-xl p-1 border-2 border-border">
+              <div className="hidden sm:flex items-center gap-2 bg-white rounded-xl p-1 border-2 border-border">
                 <button
                   onClick={() => setViewMode('grid')}
                   className={cn(
@@ -175,8 +175,8 @@ export default function VocabSearchPage() {
               <Search className="absolute left-4 sm:left-5 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground group-focus-within:text-primary transition-colors" />
               <input
                 type="text"
-                placeholder="표현이나 뜻 검색..."
-                className="w-full h-14 lg:h-20 pl-14 pr-12 bg-white text-black font-black border-8 border-black outline-none text-lg lg:text-2xl focus:border-primary transition-all shadow-[8px_8px_0_#000] focus:translate-y-2 focus:translate-x-2 focus:shadow-none placeholder:text-black/30 font-cartoon"
+                placeholder="Search..."
+                className="w-full h-12 lg:h-20 pl-12 pr-10 bg-white text-black font-black border-4 sm:border-8 border-black outline-none text-base lg:text-2xl focus:border-primary transition-all shadow-[6px_6px_0_#000] sm:shadow-[8px_8px_0_#000] focus:translate-y-1 focus:translate-x-1 focus:shadow-none placeholder:text-black/30 font-cartoon"
                 value={query}
                 onChange={(e) => {
                   setQuery(e.target.value.toUpperCase());
@@ -208,22 +208,17 @@ export default function VocabSearchPage() {
           {/* 카테고리 필터 - 반응형 */}
           <div className="space-y-3">
             {/* 모바일: 필터 버튼 */}
-            <div className="md:hidden">
+            <div className="sm:hidden">
               <button
                 onClick={() => setShowCategoryFilter(!showCategoryFilter)}
                 className={cn(
-                  "w-full flex items-center justify-between px-4 py-3 rounded-xl font-bold text-sm transition-all border-2",
-                  activeCategory 
-                    ? "bg-primary text-white border-primary" 
-                    : "bg-white text-muted-foreground border-border"
+                  "w-full flex items-center justify-between px-4 py-3 bg-white border-4 border-black shadow-[4px_4px_0_#000] font-black text-xs transition-all",
+                  activeCategory ? "bg-primary text-white" : "text-black/60"
                 )}
               >
                 <span className="flex items-center gap-2">
                   <Filter className="w-4 h-4" />
-                  {activeCategory || '전체 카테고리'}
-                </span>
-                <span className="text-xs opacity-70">
-                  ({activeCategory ? categoryStats[activeCategory] : processedCards.length})
+                  {activeCategory || 'ALL GENRES'}
                 </span>
               </button>
             </div>
@@ -235,22 +230,20 @@ export default function VocabSearchPage() {
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: 'auto', opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
-                  className="md:hidden overflow-hidden"
+                  className="sm:hidden overflow-hidden"
                 >
-                  <div className="grid grid-cols-2 gap-2 p-3 bg-white rounded-xl border-2 border-border">
+                  <div className="grid grid-cols-2 gap-2 p-2 bg-white border-4 border-black">
                     <button
                       onClick={() => {
                         setActiveCategory(null);
                         setShowCategoryFilter(false);
                       }}
                       className={cn(
-                        "px-3 py-2.5 rounded-lg font-bold text-xs transition-all border",
-                        !activeCategory 
-                          ? "bg-primary text-white border-primary" 
-                          : "bg-muted text-muted-foreground border-border"
+                        "px-3 py-2 border-2 border-black font-black text-[10px] transition-all",
+                        !activeCategory ? "bg-primary text-white" : "bg-white text-black"
                       )}
                     >
-                      전체 ({processedCards.length})
+                      ALL
                     </button>
                     {categories.map((cat) => (
                       <button
@@ -260,13 +253,11 @@ export default function VocabSearchPage() {
                           setShowCategoryFilter(false);
                         }}
                         className={cn(
-                          "px-3 py-2.5 rounded-lg font-bold text-xs transition-all border",
-                          activeCategory === cat 
-                            ? "bg-primary text-white border-primary" 
-                            : "bg-muted text-muted-foreground border-border"
+                          "px-3 py-2 border-2 border-black font-black text-[10px] transition-all",
+                          activeCategory === cat ? "bg-primary text-white" : "bg-white text-black"
                         )}
                       >
-                        {cat} ({categoryStats[cat]})
+                        {cat}
                       </button>
                     ))}
                   </div>
@@ -275,30 +266,26 @@ export default function VocabSearchPage() {
             </AnimatePresence>
 
             {/* 태블릿 이상: 가로 스크롤 */}
-            <div className="hidden md:flex gap-2 overflow-x-auto no-scrollbar py-1 -mx-1 px-1">
+            <div className="hidden sm:flex gap-2 overflow-x-auto no-scrollbar py-1 -mx-1 px-1">
               <button
                 onClick={() => setActiveCategory(null)}
                 className={cn(
-                  "px-4 lg:px-5 py-2.5 lg:py-3 rounded-xl font-black text-sm whitespace-nowrap transition-all active:scale-95 border-2",
-                  !activeCategory 
-                    ? "bg-surface border-4 border-border text-foreground shadow-[2px_2px_0_#111]" 
-                    : "bg-surface text-muted-foreground border-4 border-border/50 hover:border-border"
+                  "px-4 py-2 border-4 border-black font-black text-xs whitespace-nowrap transition-all active:scale-95 shadow-[3px_3px_0_#000]",
+                  !activeCategory ? "bg-primary text-white" : "bg-white text-black"
                 )}
               >
-                전체 ({processedCards.length})
+                ALL
               </button>
               {categories.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
                   className={cn(
-                    "px-4 lg:px-5 py-2.5 lg:py-3 rounded-xl font-black text-sm whitespace-nowrap transition-all active:scale-95 border-2",
-                    activeCategory === cat 
-                      ? "bg-surface border-4 border-border text-foreground shadow-[2px_2px_0_#111]" 
-                      : "bg-surface text-muted-foreground border-4 border-border/50 hover:border-border"
+                    "px-4 py-2 border-4 border-black font-black text-xs whitespace-nowrap transition-all active:scale-95 shadow-[3px_3px_0_#000]",
+                    activeCategory === cat ? "bg-primary text-white" : "bg-white text-black"
                   )}
                 >
-                  {cat} ({categoryStats[cat]})
+                  {cat}
                 </button>
               ))}
             </div>

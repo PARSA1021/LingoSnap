@@ -20,6 +20,10 @@ interface LearningState {
   contentFilter: 'all' | 'movie' | 'drama';
   difficultyFilter: 'all' | 'easy' | 'medium' | 'hard';
   
+  // Gamification
+  points: number;
+  totalLearnedWords: number;
+  
   // Actions
   setWords: (words: Word[]) => void;
   nextWord: () => void;
@@ -35,6 +39,10 @@ interface LearningState {
   setContentFilter: (filter: 'all' | 'movie' | 'drama') => void;
   setDifficultyFilter: (filter: 'all' | 'easy' | 'medium' | 'hard') => void;
   toggleSavedContent: (id: string) => void;
+  
+  // Gamification Actions
+  addPoints: (amount: number) => void;
+  incrementLearnedWords: () => void;
 }
 
 export const useLearningStore = create<LearningState>()(
@@ -50,6 +58,9 @@ export const useLearningStore = create<LearningState>()(
       stage: 'idle',
       contentFilter: 'all',
       difficultyFilter: 'all',
+      
+      points: 0,
+      totalLearnedWords: 0,
       
       setWords: (words) => set({ words }),
       
@@ -104,7 +115,10 @@ export const useLearningStore = create<LearningState>()(
         } else {
           return { savedContents: [id, ...state.savedContents] };
         }
-      })
+      }),
+
+      addPoints: (amount) => set((state) => ({ points: state.points + amount })),
+      incrementLearnedWords: () => set((state) => ({ totalLearnedWords: state.totalLearnedWords + 1 }))
     }),
     {
       name: 'learning-storage',
@@ -113,7 +127,9 @@ export const useLearningStore = create<LearningState>()(
         favorites: state.favorites,
         contentFilter: state.contentFilter,
         difficultyFilter: state.difficultyFilter,
-        savedContents: state.savedContents
+        savedContents: state.savedContents,
+        points: state.points,
+        totalLearnedWords: state.totalLearnedWords
       })
     }
   )

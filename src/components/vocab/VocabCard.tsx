@@ -7,6 +7,7 @@ import { Volume2, ArrowRight, ArrowLeft, Star, Lightbulb, Check } from 'lucide-r
 import { playTTS } from '@/lib/tts';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLearningStore } from '@/store/useLearningStore';
+import { cn } from '@/lib/utils/cn';
 
 interface VocabCardProps {
   word: any; // examples 배열이 포함된 객체 대응
@@ -42,28 +43,32 @@ export function VocabCard({ word, onNext, onPrev, showPrev }: VocabCardProps) {
   const isWordHidden = quizMode;
 
   return (
-    <Card className="w-full max-w-lg mx-auto bg-white border-8 border-black relative overflow-visible mb-8 shadow-[12px_12px_0_#000]">
+    <Card className="w-full max-w-lg mx-auto bg-white border-4 sm:border-8 border-black relative overflow-visible mb-8 shadow-[8px_8px_0_#000] sm:shadow-[12px_12px_0_#000]">
       {/* Top Actions */}
       <div className="absolute top-4 right-4 z-20 flex gap-2">
         <motion.button
           whileTap={{ scale: 0.9 }}
           onClick={() => setQuizMode(!quizMode)}
-          className={`p-3 rounded-2xl border-4 active:translate-y-1 active:translate-x-1 active:shadow-none transition-all shadow-[4px_4px_0_#111] ${quizMode ? 'bg-primary text-white border-border' : 'bg-surface text-foreground border-border'
-            }`}
+          className={cn(
+            "p-2 sm:p-3 rounded-2xl border-2 sm:border-4 active:translate-y-1 active:translate-x-1 active:shadow-none transition-all shadow-[3px_3px_0_#111] sm:shadow-[4px_4px_0_#111]",
+            quizMode ? 'bg-primary text-white border-border' : 'bg-surface text-foreground border-border'
+          )}
         >
-          <Lightbulb className={`w-6 h-6 ${quizMode ? 'fill-current' : ''}`} />
+          <Lightbulb className={cn("w-5 h-5 sm:w-6 sm:h-6", quizMode && 'fill-current')} />
         </motion.button>
         <motion.button
           whileTap={{ scale: 0.9 }}
           onClick={() => toggleFavorite(word)}
-          className={`p-3 rounded-2xl border-4 active:translate-y-1 active:translate-x-1 active:shadow-none transition-all shadow-[4px_4px_0_#111] ${isFavorite ? 'bg-warning border-border text-black' : 'bg-surface text-foreground border-border'
-            }`}
+          className={cn(
+            "p-2 sm:p-3 rounded-2xl border-2 sm:border-4 active:translate-y-1 active:translate-x-1 active:shadow-none transition-all shadow-[3px_3px_0_#111] sm:shadow-[4px_4px_0_#111]",
+            isFavorite ? 'bg-warning border-border text-black' : 'bg-surface text-foreground border-border'
+          )}
         >
-          <Star className={`w-6 h-6 ${isFavorite ? 'fill-current' : ''}`} />
+          <Star className={cn("w-5 h-5 sm:w-6 sm:h-6", isFavorite && 'fill-current')} />
         </motion.button>
       </div>
 
-      <CardContent className="p-8 sm:p-12 flex flex-col items-center text-center space-y-8">
+      <CardContent className="p-4 sm:p-12 flex flex-col items-center text-center space-y-6 sm:space-y-8">
         {/* Word Stage */}
         <div className="w-full pt-8 min-h-[140px] flex items-center justify-center">
           <AnimatePresence mode="wait">
@@ -78,10 +83,10 @@ export function VocabCard({ word, onNext, onPrev, showPrev }: VocabCardProps) {
                 <Check className="w-6 h-6" /> 단어 확인하기
               </motion.button>
             ) : (
-              <motion.div key="visible" initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col items-center gap-4">
-                <h2 className="text-5xl sm:text-6xl font-black text-black font-reading leading-tight">{word.word}</h2>
-                <Button onClick={() => playTTS(word.word)} className="w-12 h-12 rounded-xl text-foreground">
-                  <Volume2 className="h-6 w-6" />
+              <motion.div key="visible" initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col items-center gap-3">
+                <h2 className="text-3xl sm:text-6xl font-black text-black font-reading leading-tight break-words max-w-full italic">{word.word}</h2>
+                <Button onClick={() => playTTS(word.word)} className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl text-foreground">
+                  <Volume2 className="h-5 w-5 sm:h-6 sm:w-6" />
                 </Button>
               </motion.div>
             )}
@@ -97,9 +102,9 @@ export function VocabCard({ word, onNext, onPrev, showPrev }: VocabCardProps) {
               </Button>
             ) : (
               <motion.div initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} className="text-left space-y-6">
-                <div className="bg-white p-6 border-8 border-black shadow-[8px_8px_0_#000] wobbly-slow">
-                  <p className="text-4xl font-black text-primary mb-2 break-keep uppercase font-cartoon">{word.meaning}</p>
-                  {englishDef && <p className="text-lg font-bold text-black italic border-t-4 border-black pt-4 mt-2 font-reading">&quot;{englishDef}&quot;</p>}
+                <div className="bg-white p-4 sm:p-6 border-4 sm:border-8 border-black shadow-[6px_6px_0_#000] sm:shadow-[8px_8px_0_#000] wobbly-slow">
+                  <p className="text-2xl sm:text-4xl font-black text-primary mb-2 break-keep uppercase font-cartoon">{word.meaning}</p>
+                  {englishDef && <p className="text-sm sm:text-lg font-bold text-black italic border-t-2 sm:border-t-4 border-black pt-4 mt-2 font-reading">&quot;{englishDef}&quot;</p>}
                 </div>
 
                 {/* 예문 렌더링 로직 (제공해주신 examples: [{text, translation}] 구조 대응) */}
@@ -107,10 +112,10 @@ export function VocabCard({ word, onNext, onPrev, showPrev }: VocabCardProps) {
                   <p className="text-xs font-black text-muted-foreground uppercase tracking-widest pl-2">Examples</p>
                   {word.examples && word.examples.length > 0 ? (
                     word.examples.map((ex: any, idx: number) => (
-                      <div key={idx} className="bg-white p-6 border-8 border-black shadow-[8px_8px_0_#000]">
-                        <p className="font-bold text-2xl text-black leading-snug font-reading">&quot;{ex.text}&quot;</p>
+                      <div key={idx} className="bg-white p-4 sm:p-6 border-4 sm:border-8 border-black shadow-[6px_6px_0_#000] sm:shadow-[8px_8px_0_#000]">
+                        <p className="font-bold text-lg sm:text-2xl text-black leading-snug font-reading">&quot;{ex.text}&quot;</p>
                         {ex.translation && (
-                          <p className="text-black font-bold mt-2 text-lg border-t-4 border-black pt-2 font-reading">
+                          <p className="text-black font-bold mt-2 text-sm sm:text-lg border-t-2 sm:border-t-4 border-black pt-2 font-reading">
                             ↳ {ex.translation}
                           </p>
                         )}

@@ -219,7 +219,7 @@ export default function LearnFlowPage() {
       )}
 
       <div className="flex-1 flex w-full max-w-2xl mx-auto items-center justify-center relative pb-10">
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait" initial={false}>
           {stage === 'vocab' && (
             <motion.div key="vocab-container" className="w-full h-[520px] sm:h-[580px] relative">
               <AnimatePresence mode="wait">

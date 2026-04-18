@@ -84,7 +84,7 @@ export function ContentCard({ content, onWordClick, isQuizMode = false }: Conten
   };
 
   return (
-    <div className="group relative w-full bg-white border-8 border-black p-6 sm:p-8 flex flex-col gap-6 shadow-[10px_10px_0_#000] transition-all duration-300 wobbly-slow hover:-translate-y-2 hover:-translate-x-2 h-full">
+    <div className="group relative w-full bg-white border-4 sm:border-8 border-black p-4 sm:p-8 flex flex-col gap-4 sm:gap-6 shadow-[6px_6px_0_#000] sm:shadow-[10px_10px_0_#000] transition-all duration-300 wobbly-slow hover:-translate-y-2 hover:-translate-x-2 h-full">
       {/* Enhanced Metadata & Difficulty */}
       <div className="flex justify-between items-start">
         <div className="space-y-3">
@@ -141,7 +141,7 @@ export function ContentCard({ content, onWordClick, isQuizMode = false }: Conten
       </div>
 
       {/* Main English Line - Natural Sentence Layout with Highlights */}
-      <div className="flex flex-wrap gap-x-2 gap-y-4 justify-center py-8">
+      <div className="flex flex-wrap gap-x-2 gap-y-3 justify-center py-4 sm:py-8">
         {words.map((word, i) => {
           const isHidden = hiddenWordIndices.includes(i);
           const isSelected = selectedWordIndex === i;
@@ -174,7 +174,7 @@ export function ContentCard({ content, onWordClick, isQuizMode = false }: Conten
 
       {/* Enhanced Key Expression Section */}
       {content.expression && (
-        <div className="relative overflow-hidden group/expression px-8 py-10 bg-white border-8 border-primary shadow-[10px_10px_0_0_#000] transition-all hover:-rotate-1 wobbly-slow">
+        <div className="relative overflow-hidden group/expression px-4 py-6 sm:px-8 sm:py-10 bg-white border-4 sm:border-8 border-primary shadow-[6px_6px_0_0_#000] sm:shadow-[10px_10px_0_0_#000] transition-all hover:-rotate-1 wobbly-slow">
            <div className="flex justify-between items-start mb-4">
              <div className="flex items-center gap-3">
                <div className="p-2 bg-primary text-white border-4 border-black shadow-[2px_2px_0_#000]">
@@ -193,11 +193,11 @@ export function ContentCard({ content, onWordClick, isQuizMode = false }: Conten
            </div>
            
            <div className="space-y-2">
-              <h4 className="text-4xl font-black text-black leading-tight uppercase font-lilita">
+              <h4 className="text-2xl sm:text-4xl font-black text-black leading-tight uppercase font-lilita">
                 {content.expression}
               </h4>
               {(content.expression_ko || expressionData?.meaning) && (
-                <p className="text-2xl font-black text-primary break-keep mt-2">
+                <p className="text-xl sm:text-2xl font-black text-primary break-keep mt-2">
                   {content.expression_ko || expressionData?.meaning}
                 </p>
               )}
@@ -315,7 +315,7 @@ export function ContentCard({ content, onWordClick, isQuizMode = false }: Conten
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
-              className="p-10 bg-black text-white text-4xl font-black text-center break-keep border-8 border-primary shadow-[10px_10px_0_#000] font-cartoon -rotate-1"
+              className="p-6 sm:p-10 bg-black text-white text-xl sm:text-4xl font-black text-center break-keep border-4 sm:border-8 border-primary shadow-[6px_6px_0_#000] sm:shadow-[10px_10px_0_#000] font-cartoon -rotate-1"
             >
               {content.line_ko}
             </motion.div>

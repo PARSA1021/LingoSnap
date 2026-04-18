@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { RefreshCw, Volume2, Lightbulb, Sparkles, Delete } from 'lucide-react';
 import { speak } from '@/lib/tts';
 import { cn } from '@/lib/utils/cn';
+import { useLearningStore } from '@/store/useLearningStore';
 
 interface TypingPracticeProps {
   word: string;
@@ -32,6 +33,12 @@ export function TypingPractice({ word, meaning, onSuccess, index, total }: Typin
   const [selectedIds, setSelectedIds] = React.useState<number[]>([]);
   const [status, setStatus] = React.useState<'typing' | 'success' | 'error'>('typing');
   const [shake, setShake] = React.useState(false);
+  const [isDirectMode, setIsDirectMode] = React.useState(false);
+  const [typedValue, setTypedValue] = React.useState('');
+  
+  const inputRef = React.useRef<HTMLInputElement>(null);
+  const addPoints = useLearningStore(state => state.addPoints);
+  const incrementLearnedWords = useLearningStore(state => state.incrementLearnedWords);
 
   // Initialize tiles
   React.useEffect(() => {
@@ -45,7 +52,7 @@ export function TypingPractice({ word, meaning, onSuccess, index, total }: Typin
     setTiles(shuffle(chars));
     setSelectedIds([]);
     setStatus('typing');
-    speak(word);
+    // Removed auto-play speak(word) to respect user focus
   }, [word]);
 
   // Updated string calculation to account for auto-inserted spaces
@@ -127,8 +134,35 @@ export function TypingPractice({ word, meaning, onSuccess, index, total }: Typin
 
   const handleClear = () => {
     setSelectedIds([]);
+    setTypedValue('');
     setTiles(prev => prev.map(t => ({ ...t, isUsed: false })));
     setStatus('typing');
+    if (isDirectMode) inputRef.current?.focus();
+  };
+
+  const handleModeToggle = () => {
+    const nextMode = !isDirectMode;
+    setIsDirectMode(nextMode);
+    handleClear();
+  };
+
+  // Direct Typing Handler
+  const handleInputChange = (val: string) => {
+    const v = val.toLowerCase();
+    setTypedValue(v);
+    
+    if (v.trim() === targetWord.trim()) {
+      setStatus('success');
+      addPoints(50);
+      incrementLearnedWords();
+      setTimeout(onSuccess, 1200);
+    } else if (v.length >= targetWord.length) {
+      setStatus('error');
+      setShake(true);
+      setTimeout(() => setShake(false), 500);
+    } else {
+      setStatus('typing');
+    }
   };
 
   const handleHint = () => {
@@ -142,8 +176,9 @@ export function TypingPractice({ word, meaning, onSuccess, index, total }: Typin
     }
   };
 
-  // Keyboard support
+  // Keyboard support for Bubble Mode
   React.useEffect(() => {
+    if (isDirectMode) return;
     const handleKeyDown = (e: KeyboardEvent) => {
       if (status === 'success') return;
       if (e.key === 'Backspace') {
@@ -156,7 +191,7 @@ export function TypingPractice({ word, meaning, onSuccess, index, total }: Typin
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [tiles, selectedIds, status]);
+  }, [tiles, selectedIds, status, isDirectMode]);
 
   return (
     <div className="w-full flex flex-col items-center space-y-8 py-6 max-w-2xl mx-auto px-4">
@@ -169,56 +204,83 @@ export function TypingPractice({ word, meaning, onSuccess, index, total }: Typin
                Word Puzzle {index + 1}/{total}
              </span>
           </div>
+          <div className="flex gap-4">
+             <button 
+               onClick={handleModeToggle}
+               className={cn(
+                 "px-4 py-1.5 border-4 border-black text-xs font-black uppercase tracking-widest font-cartoon transition-all",
+                 isDirectMode ? "bg-black text-white" : "bg-white text-black"
+               )}
+             >
+               {isDirectMode ? 'Direct Keyboard ' : 'Bubble Mode'}
+             </button>
+          </div>
           <h2 className="text-4xl sm:text-5xl font-black text-primary font-cartoon uppercase drop-shadow-[3px_3px_0_#000] leading-tight break-keep">
             {meaning}
           </h2>
-          <p className="text-sm font-bold text-black/40 uppercase tracking-widest font-reading">Click tiles to spell the word</p>
+          <p className="text-sm font-bold text-black/40 uppercase tracking-widest font-reading">
+            {isDirectMode ? 'Type the word directly' : 'Click tiles to spell the word'}
+          </p>
         </div>
       </div>
 
-      {/* Slots Area */}
+      {/* Input / Slots Area */}
       <div className={cn(
         "w-full bg-white border-8 border-black p-6 sm:p-10 shadow-[12px_12px_0_#000] min-h-[140px] flex flex-wrap justify-center items-center gap-x-3 gap-y-6 transition-all",
         shake && "animate-shake border-error",
         status === 'success' && "border-success bg-success/5"
       )}>
-        {/* Render words with gaps for spaces */}
-        {targetWord.split(' ').map((wordPart, wordIdx) => (
-          <div key={wordIdx} className="flex gap-2 items-center">
-            {wordPart.split('').map((char, charIdx) => {
-              // Calculate the global index of this character
-              const previousWordsLength = targetWord.split(' ').slice(0, wordIdx).join(' ').length;
-              const globalIdx = (wordIdx === 0 ? 0 : previousWordsLength + 1) + charIdx;
-              
-              // Find which selectedId corresponds to this non-space character
-              // We count how many non-space characters come before globalIdx
-              const nonSpaceBefore = targetWord.slice(0, globalIdx).replace(/\s/g, '').length;
-              const selectedId = selectedIds[nonSpaceBefore];
-              const tile = selectedId !== undefined ? tiles.find(t => t.id === selectedId) : null;
-
-              return (
-                <motion.button
-                  key={`${wordIdx}-${charIdx}`}
-                  layout
-                  onClick={() => tile && handleRemove(nonSpaceBefore)}
-                  className={cn(
-                    "w-10 h-14 sm:w-16 sm:h-20 border-b-8 border-black flex items-center justify-center text-3xl sm:text-4xl font-black font-reading uppercase transition-all",
-                    tile ? "bg-white border-4 shadow-[4px_4px_0_#000] cursor-pointer hover:bg-muted" : "border-black/10 cursor-default"
-                  )}
-                  initial={false}
-                  animate={tile ? { scale: 1, y: 0 } : { scale: 0.95, y: 2 }}
-                >
-                  {tile?.char}
-                </motion.button>
-              );
-            })}
-            {wordIdx < targetWord.split(' ').length - 1 && (
-              <div className="w-4 h-12 flex items-center justify-center opacity-20">
-                <div className="w-[4px] h-[30px] bg-black rotate-12" />
-              </div>
-            )}
+        {isDirectMode ? (
+          <div className="w-full relative px-4">
+            <input
+              ref={inputRef}
+              autoFocus
+              type="text"
+              value={typedValue}
+              onChange={(e) => handleInputChange(e.target.value)}
+              className="w-full bg-transparent text-center text-4xl sm:text-6xl font-black font-reading uppercase outline-none placeholder:text-black/5"
+              placeholder={targetWord.replace(/[a-zA-Z0-9]/g, '_')}
+              spellCheck={false}
+              autoComplete="off"
+            />
+            <div className="absolute bottom-0 left-0 right-0 h-2 bg-black/10 mx-10" />
+            <div className="absolute bottom-0 left-0 h-2 bg-primary transition-all duration-300 mx-10" style={{ width: `${Math.min(100, (typedValue.length / targetWord.length) * 100)}%` }} />
           </div>
-        ))}
+        ) : (
+          /* Render words with gaps for spaces */
+          targetWord.split(' ').map((wordPart, wordIdx) => (
+            <div key={wordIdx} className="flex gap-2 items-center">
+              {wordPart.split('').map((char, charIdx) => {
+                const previousWordsLength = targetWord.split(' ').slice(0, wordIdx).join(' ').length;
+                const globalIdx = (wordIdx === 0 ? 0 : previousWordsLength + 1) + charIdx;
+                const nonSpaceBefore = targetWord.slice(0, globalIdx).replace(/\s/g, '').length;
+                const selectedId = selectedIds[nonSpaceBefore];
+                const tile = selectedId !== undefined ? tiles.find(t => t.id === selectedId) : null;
+
+                return (
+                  <motion.button
+                    key={`${wordIdx}-${charIdx}`}
+                    layout
+                    onClick={() => tile && handleRemove(nonSpaceBefore)}
+                    className={cn(
+                      "w-10 h-14 sm:w-16 sm:h-20 border-b-8 border-black flex items-center justify-center text-3xl sm:text-4xl font-black font-reading uppercase transition-all",
+                      tile ? "bg-white border-4 shadow-[4px_4px_0_#000] cursor-pointer hover:bg-muted" : "border-black/10 cursor-default"
+                    )}
+                    initial={false}
+                    animate={tile ? { scale: 1, y: 0 } : { scale: 0.95, y: 2 }}
+                  >
+                    {tile?.char}
+                  </motion.button>
+                );
+              })}
+              {wordIdx < targetWord.split(' ').length - 1 && (
+                <div className="w-4 h-12 flex items-center justify-center opacity-20">
+                  <div className="w-[4px] h-[30px] bg-black rotate-12" />
+                </div>
+              )}
+            </div>
+          )))
+        }
       </div>
 
       {/* Interaction Controls */}
@@ -247,28 +309,30 @@ export function TypingPractice({ word, meaning, onSuccess, index, total }: Typin
         </Button>
       </div>
 
-      {/* Tiles Pool */}
-      <div className="w-full flex flex-wrap justify-center gap-4 py-8">
-        <AnimatePresence>
-          {tiles.map((tile) => (
-            !tile.isUsed && (
-              <motion.button
-                key={tile.id}
-                layout
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0, opacity: 0 }}
-                whileHover={{ y: -5, rotate: 2 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => handleTileClick(tile.id)}
-                className="w-14 h-14 sm:w-16 sm:h-16 bg-white border-4 border-black shadow-[6px_6px_0_#000] flex items-center justify-center text-2xl sm:text-3xl font-black font-reading uppercase hover:bg-muted transition-colors cursor-pointer"
-              >
-                {tile.char}
-              </motion.button>
-            )
-          ))}
-        </AnimatePresence>
-      </div>
+      {/* Tiles Pool - Hidden in Direct Mode */}
+      {!isDirectMode && (
+        <div className="w-full flex flex-wrap justify-center gap-4 py-8">
+          <AnimatePresence>
+            {tiles.map((tile) => (
+              !tile.isUsed && (
+                <motion.button
+                  key={tile.id}
+                  layout
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0, opacity: 0 }}
+                  whileHover={{ y: -5, rotate: 2 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => handleTileClick(tile.id)}
+                  className="w-14 h-14 sm:w-16 sm:h-16 bg-white border-4 border-black shadow-[6px_6px_0_#000] flex items-center justify-center text-2xl sm:text-3xl font-black font-reading uppercase hover:bg-muted transition-colors cursor-pointer"
+                >
+                  {tile.char}
+                </motion.button>
+              )
+            ))}
+          </AnimatePresence>
+        </div>
+      )}
 
       {/* Feedback & Success Overlay */}
       <AnimatePresence>

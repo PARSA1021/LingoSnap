@@ -22,8 +22,8 @@ const inter = Inter({
   subsets: ["latin"],
 });
 export const metadata: Metadata = {
-  title: "English Learning",
-  description: "Product Level English Learning App",
+  title: "Talkie Talkie!",
+  description: "Vintage-Style English Conversation Adventure",
 };
 
 export default function RootLayout({
@@ -39,7 +39,6 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col pb-[100px]">
         <ThemeProvider>
-          <TopNav />
           <main className="flex-1">
             {children}
           </main>

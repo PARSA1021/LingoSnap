@@ -73,10 +73,10 @@ export default function ContentsPage() {
     <main className="min-h-screen flex flex-col bg-background pb-20 dot-pattern">
       <div className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-8 pt-6 sm:pt-8">
         
-        {/* Study Control Bar */}
-        <div className="flex flex-col gap-4 mb-8 sticky top-16 sm:top-20 z-20 bg-white border-4 sm:border-8 border-black p-4 sm:p-6 shadow-[6px_6px_0_#000] sm:shadow-[10px_10px_0_#000] wobbly-slow">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
-            <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto overflow-hidden">
+        {/* Study Control Bar - Compact */}
+        <div className="flex flex-col gap-3 mb-6 sticky top-2 sm:top-6 z-20 bg-white border-2 sm:border-8 border-black p-3 sm:p-6 shadow-[4px_4px_0_#000] sm:shadow-[10px_10px_0_#000] wobbly-slow">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div className="flex flex-row gap-2 w-full sm:w-auto overflow-hidden">
               {/* Simplified Filters Table/Compact */}
               <div className="flex gap-2 p-1 bg-black/5 border-2 sm:border-4 border-black overflow-x-auto no-scrollbar pb-2 sm:pb-1 mask-fade-right">
                 <FilterButton label="ALL" isActive={contentFilter === 'all'} onClick={() => setContentFilter('all')} />
@@ -91,9 +91,9 @@ export default function ContentsPage() {
             <Button
               variant={isQuizMode ? 'primary' : 'secondary'}
               onClick={() => setIsQuizMode(!isQuizMode)}
-              className="w-full lg:w-auto px-8 h-12 sm:h-14 border-4 sm:border-8 border-black shadow-[4px_4px_0_#000] sm:shadow-[6px_6px_0_#000] font-black font-cartoon text-base sm:text-lg"
+              className="w-full sm:w-auto px-6 h-10 sm:h-14 border-4 sm:border-8 border-black shadow-[3px_3px_0_#000] sm:shadow-[6px_6px_0_#000] font-black font-cartoon text-sm sm:text-lg"
             >
-              <Lightbulb className={cn("w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3", isQuizMode && "fill-current")} />
+              <Lightbulb className={cn("w-4 h-4 sm:w-6 sm:h-6 mr-2", isQuizMode && "fill-current")} />
               {isQuizMode ? 'QUIZ OFF' : 'QUIZ ON'}
             </Button>
           </div>

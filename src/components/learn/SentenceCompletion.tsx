@@ -16,10 +16,14 @@ interface SentenceCompletionProps {
   total: number;
 }
 
+import { useLearningStore } from '@/store/useLearningStore';
+
 export function SentenceCompletion({ sentence, translation, targetWord, onSuccess, index, total }: SentenceCompletionProps) {
   const [selectedWord, setSelectedWord] = React.useState<string | null>(null);
   const [status, setStatus] = React.useState<'idle' | 'success' | 'error'>('idle');
   const [shake, setShake] = React.useState(false);
+  const addPoints = useLearningStore(state => state.addPoints);
+  const incrementLearnedWords = useLearningStore(state => state.incrementLearnedWords);
 
   // Split sentence to find the blank
   // We assume the targetWord or a variation is in the sentence
@@ -49,6 +53,8 @@ export function SentenceCompletion({ sentence, translation, targetWord, onSucces
     setSelectedWord(word);
     if (word.toLowerCase() === targetWord.toLowerCase()) {
       setStatus('success');
+      addPoints(100); // More points for context challenge
+      incrementLearnedWords();
       speak(sentence); // Play full sentence on success
       setTimeout(onSuccess, 1500);
     } else {
