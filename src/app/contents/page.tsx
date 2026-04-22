@@ -1,15 +1,12 @@
 'use client';
 
 import * as React from 'react';
-import { TopNav } from '@/components/layout/TopNav';
 import { mediaContents } from '@/data/contents';
 import { ContentCard } from '@/components/contents/ContentCard';
 import { useLearningStore } from '@/store/useLearningStore';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Lightbulb } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils/cn';
-import { speak } from '@/lib/tts';
 
 export default function ContentsPage() {
   const { contentFilter, setContentFilter, difficultyFilter, setDifficultyFilter } = useLearningStore();

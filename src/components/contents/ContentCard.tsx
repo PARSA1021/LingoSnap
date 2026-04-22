@@ -3,12 +3,11 @@
 import * as React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ContentLine } from '@/data/contents';
-import { Play, Languages, Bookmark, Volume2, X, Info, Tag, Star } from 'lucide-react';
+import { Play, Languages, Bookmark, Volume2, Info } from 'lucide-react';
 import { playTTS } from '@/lib/tts';
 import { useLearningStore } from '@/store/useLearningStore';
 import { cn } from '@/lib/utils/cn';
 import { Button } from '@/components/ui/Button';
-import { getNormalizedWordData, NormalizedWordData } from '@/lib/dictionary';
 
 interface ContentCardProps {
   content: ContentLine;
@@ -17,22 +16,13 @@ interface ContentCardProps {
 }
 
 export function ContentCard({ content, onWordClick, isQuizMode = false }: ContentCardProps) {
-  const { savedContents, toggleSavedContent, favorites, toggleFavorite } = useLearningStore();
+  const { savedContents, toggleSavedContent } = useLearningStore();
   const [showKo, setShowKo] = React.useState(false);
   const [showExplanation, setShowExplanation] = React.useState(false);
   const [hiddenWordIndices, setHiddenWordIndices] = React.useState<number[]>([]);
 
-  const [expressionData, setExpressionData] = React.useState<NormalizedWordData | null>(null);
-
   const words = React.useMemo(() => content.line_en.split(/\s+/), [content.line_en]);
   const isSaved = savedContents.includes(content.id);
-
-  // Fetch expression data for more detail
-  React.useEffect(() => {
-    if (content.expression) {
-      getNormalizedWordData(content.expression, content.expression_ko).then(setExpressionData);
-    }
-  }, [content.expression, content.expression_ko]);
 
   // Difficulty styling
   const difficultyColors = {

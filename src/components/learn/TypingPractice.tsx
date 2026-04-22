@@ -19,7 +19,7 @@ interface TypingPracticeProps {
 }
 
 // Helper to shuffle array
-const shuffle = (array: any[]) => {
+const shuffle = <T,>(array: readonly T[]): T[] => {
   const newArr = [...array];
   for (let i = newArr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -283,7 +283,7 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
                  "font-black text-primary font-reading italic drop-shadow-sm transition-all",
                  isVeryLong ? "text-base" : "text-lg"
                )}>
-                 "{exampleTranslation}"
+                &quot;{exampleTranslation}&quot;
                </p>
             </div>
           ) : (

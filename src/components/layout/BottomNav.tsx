@@ -3,8 +3,7 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Lightbulb, BookA, Mic, Tv } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Home, Lightbulb, BookA, Mic, Tv, RotateCcw } from 'lucide-react';
 import { cn } from '@/lib/utils/cn';
 
 export function BottomNav() {
@@ -12,9 +11,10 @@ export function BottomNav() {
 
   const tabs = [
     { name: '홈', href: '/', icon: <Home className="w-5 h-5 sm:w-6 sm:h-6" /> },
-    { name: '일일 학습', href: '/learn', icon: <Lightbulb className="w-5 h-5 sm:w-6 sm:h-6" /> },
-    { name: '표현 아카이브', href: '/vocab', icon: <BookA className="w-5 h-5 sm:w-6 sm:h-6" /> },
-    { name: '미디어', href: '/contents', icon: <Tv className="w-5 h-5 sm:w-6 sm:h-6" /> },
+    { name: '레슨', href: '/learn', icon: <Lightbulb className="w-5 h-5 sm:w-6 sm:h-6" /> },
+    { name: '복습', href: '/review', icon: <RotateCcw className="w-5 h-5 sm:w-6 sm:h-6" /> },
+    { name: '단어장', href: '/vocab', icon: <BookA className="w-5 h-5 sm:w-6 sm:h-6" /> },
+    { name: '콘텐츠', href: '/contents', icon: <Tv className="w-5 h-5 sm:w-6 sm:h-6" /> },
     { name: '말하기', href: '/speaking', icon: <Mic className="w-5 h-5 sm:w-6 sm:h-6" /> },
   ];
 
@@ -37,10 +37,10 @@ export function BottomNav() {
             >
               <div
                 className={cn(
-                  "relative px-4 py-2 transition-all duration-300 border-2 sm:border-4 border-border shadow-[3px_3px_0_var(--border)] sm:shadow-[6px_6px_0_var(--border)]",
+                  "relative px-4 py-2 transition-colors border-2 sm:border-4 border-border shadow-[3px_3px_0_var(--border)] sm:shadow-[6px_6px_0_var(--border)]",
                   isActive
-                    ? 'bg-primary text-white wobbly -translate-y-1 sm:-translate-y-2 shadow-[5px_5px_0_var(--border)] sm:shadow-[8px_8px_0_var(--border)] scale-110'
-                    : 'text-foreground bg-surface group-hover:bg-muted active:scale-95'
+                    ? 'bg-primary text-white'
+                    : 'text-foreground bg-surface hover:bg-muted'
                 )}
               >
                 <div className="relative z-10 font-black">{tab.icon}</div>

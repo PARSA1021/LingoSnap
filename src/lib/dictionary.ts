@@ -1,12 +1,13 @@
 export async function fetchWordDefinition(word: string) {
   try {
-    const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word)}`);
+    const res = await fetch(`/api/dictionary?word=${encodeURIComponent(word)}`);
     if (!res.ok) {
-      if (res.status === 404) return null;
       throw new Error('Failed to fetch dictionary API');
     }
-    const data = await res.json();
-    return data;
+    const data: unknown = await res.json();
+    const payload = data as { notFound?: boolean; data?: unknown };
+    if (payload.notFound) return null;
+    return payload.data ?? null;
   } catch (err) {
     console.warn('Dictionary API Warning:', err);
     return null;
@@ -15,15 +16,11 @@ export async function fetchWordDefinition(word: string) {
 
 export async function fetchKoreanTranslation(text: string) {
   try {
-    const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|ko`);
-    const data = await res.json();
-    if (data && data.responseData && data.responseData.translatedText) {
-      if (!data.responseData.translatedText.includes('MYMEMORY') && !data.responseData.translatedText.includes('MEMORY')) {
-         return data.responseData.translatedText;
-      }
-    }
-    return null;
-  } catch (err) {
+    const res = await fetch(`/api/translate?q=${encodeURIComponent(text)}&source=en&target=ko`);
+    const data: unknown = await res.json();
+    const payload = data as { translatedText?: string | null };
+    return payload.translatedText ?? null;
+  } catch {
     return null;
   }
 }
@@ -48,6 +45,14 @@ export interface NormalizedWordData {
  */
 const dictionaryCache = new Map<string, NormalizedWordData>();
 
+type DictionaryPhonetic = { text?: string; audio?: string };
+type DictionaryMeaning = { definitions?: Array<{ definition?: string; example?: string }> };
+type DictionaryEntry = {
+  phonetic?: string;
+  phonetics?: DictionaryPhonetic[];
+  meanings?: DictionaryMeaning[];
+};
+
 export async function getNormalizedWordData(
   wordText: string, 
   defaultMeaning: string = '', 
@@ -67,17 +72,18 @@ export async function getNormalizedWordData(
   let meaning = defaultMeaning;
   let example = defaultExample;
 
-  if (definition && definition.length > 0) {
-    const entry = definition[0];
+  if (Array.isArray(definition) && definition.length > 0) {
+    const entry = definition[0] as DictionaryEntry;
     
     // Extract phonetic text
     if (entry.phonetics && entry.phonetics.length > 0) {
-      const phoneticEntry = entry.phonetics.find((p: any) => p.text) || entry.phonetics[0];
+      const phoneticEntry = entry.phonetics.find((p) => p.text) || entry.phonetics[0];
       if (phoneticEntry && phoneticEntry.text) {
         phonetic = phoneticEntry.text;
       }
       
-      const audioEntry = entry.phonetics.find((p: any) => p.audio && p.audio.length > 0) || entry.phonetics[0];
+      const audioEntry =
+        entry.phonetics.find((p) => p.audio && p.audio.length > 0) || entry.phonetics[0];
       if (audioEntry && audioEntry.audio) {
         audioUrl = audioEntry.audio;
       }
@@ -144,7 +150,7 @@ export async function prefetchWords(words: string[]) {
     if (!dictionaryCache.has(w)) {
       try {
         await getNormalizedWordData(w);
-      } catch (err) {
+      } catch {
         // ignore prefetch errors silently
       }
       // Polite throttling to prevent connection drops or rate limits

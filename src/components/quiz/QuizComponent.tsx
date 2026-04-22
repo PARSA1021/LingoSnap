@@ -36,7 +36,7 @@ export function QuizComponent({ word, options, onAnswer }: QuizComponentProps) {
           </p>
           <div className="bg-muted rounded-[2rem] p-8 sm:p-10 border-2 border-border shadow-inner">
             <h3 className="text-3xl sm:text-4xl text-foreground font-black leading-tight tracking-tight break-keep">
-              "{word.meaning}"
+              &quot;{word.meaning}&quot;
             </h3>
           </div>
         </div>

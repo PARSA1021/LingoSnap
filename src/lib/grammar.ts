@@ -16,13 +16,24 @@ export async function checkGrammar(text: string) {
       throw new Error('Failed to fetch Grammar API');
     }
 
-    const data = await res.json();
-    
-    // We can map the result to a simpler format for our app
-    const errors = data.matches.map((match: any) => ({
+    const data: unknown = await res.json();
+
+    type LTReplacement = { value: string };
+    type LTMatch = {
+      message: string;
+      shortMessage?: string;
+      replacements: LTReplacement[];
+      offset: number;
+      length: number;
+    };
+    type LTResponse = { matches?: LTMatch[] };
+
+    const matches = (data as LTResponse)?.matches ?? [];
+
+    const errors = matches.map((match) => ({
       message: match.message,
       shortMessage: match.shortMessage,
-      replacements: match.replacements.map((r: any) => r.value),
+      replacements: (match.replacements || []).map((r) => r.value),
       offset: match.offset,
       length: match.length,
     }));

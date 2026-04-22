@@ -3,51 +3,43 @@
 import * as React from 'react';
 import { Card, CardContent } from '../ui/Card';
 import { Button } from '../ui/Button';
-import { Mic, Square, Volume2, CheckCircle2, XCircle, RotateCcw, ArrowRight, Loader2, Lightbulb } from 'lucide-react';
+import { Mic, Square, Volume2, CheckCircle2, XCircle, RotateCcw, ArrowRight, Loader2 } from 'lucide-react';
 import { speechService } from '@/lib/speech';
 import { playTTS } from '@/lib/tts';
 import { checkGrammar } from '@/lib/grammar';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils/cn';
+import { Input } from '@/components/ui/Input';
 
 interface SpeakingPracticeProps {
   expectedSentence: string;
   onContinue: (passed: boolean) => void;
 }
 
+type GrammarError = {
+  message: string;
+  shortMessage?: string;
+  replacements?: string[];
+  offset?: number;
+  length?: number;
+};
+
 export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPracticeProps) {
   const [isRecording, setIsRecording] = React.useState(false);
   const [transcript, setTranscript] = React.useState('');
   const [status, setStatus] = React.useState<'idle' | 'evaluating' | 'success' | 'failed'>('idle');
-  const [grammarErrors, setGrammarErrors] = React.useState<any[]>([]);
+  const [grammarErrors, setGrammarErrors] = React.useState<GrammarError[]>([]);
   const [errorMsg, setErrorMsg] = React.useState<string | null>(null);
-
-  const [quizMode, setQuizMode] = React.useState(false);
-  const [hiddenWordIndices, setHiddenWordIndices] = React.useState<number[]>([]);
+  const [manualText, setManualText] = React.useState('');
 
   const words = React.useMemo(() => expectedSentence.split(' '), [expectedSentence]);
 
-  React.useEffect(() => {
-    if (quizMode) {
-      const numToHide = words.length >= 6 ? 2 : (words.length > 2 ? 1 : 0);
-      const indices: number[] = [];
-      while (indices.length < numToHide) {
-        const r = Math.floor(Math.random() * words.length);
-        if (!indices.includes(r)) indices.push(r);
-      }
-      setHiddenWordIndices(indices);
-    } else {
-      setHiddenWordIndices([]);
-    }
-  }, [quizMode, words]);
-
-  const handleWordClick = (index: number) => {
-    if (quizMode && hiddenWordIndices.includes(index)) {
-      setHiddenWordIndices(prev => prev.filter(i => i !== index));
-    }
-  };
-
   const handleStartRecording = () => {
+    if (!speechService || !speechService.supported()) {
+      setErrorMsg('이 브라우저는 음성 인식을 지원하지 않아요. 아래에 직접 입력으로 진행할 수 있어요.');
+      return;
+    }
+
     setIsRecording(true);
     setTranscript('');
     setStatus('idle');
@@ -71,68 +63,53 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
 
   const handleStopRecording = () => {
     setIsRecording(false);
-    speechService.stop();
+    speechService?.stop();
   };
+
+  const evaluateSpeech = React.useCallback(async () => {
+    setStatus('evaluating');
+    const sourceText = transcript || manualText;
+    const cleanTranscript = sourceText.trim().toLowerCase().replace(/[^a-z0-9\s]/gi, '').replace(/\s+/g, ' ');
+    const cleanExpected = expectedSentence.toLowerCase().replace(/[^a-z0-9\s]/gi, '').replace(/\s+/g, ' ');
+
+    if (cleanTranscript === cleanExpected || cleanTranscript.includes(cleanExpected)) {
+      setStatus('success');
+      return;
+    }
+
+    const result = await checkGrammar(sourceText);
+    setGrammarErrors(result.errors as GrammarError[]);
+    setStatus('failed');
+  }, [expectedSentence, manualText, transcript]);
 
   React.useEffect(() => {
     if (!isRecording && transcript) {
       evaluateSpeech();
     }
-  }, [isRecording, transcript]);
+  }, [evaluateSpeech, isRecording, transcript]);
 
-  const evaluateSpeech = async () => {
-    setStatus('evaluating');
-    const cleanTranscript = transcript.trim().toLowerCase().replace(/[^a-z0-9\s]/gi, '').replace(/\s+/g, ' ');
-    const cleanExpected = expectedSentence.toLowerCase().replace(/[^a-z0-9\s]/gi, '').replace(/\s+/g, ' ');
-
-    if (cleanTranscript === cleanExpected || cleanTranscript.includes(cleanExpected)) {
-      setStatus('success');
-    } else {
-      const result = await checkGrammar(transcript);
-      setGrammarErrors(result.errors);
-      setStatus('failed');
-    }
-  };
+  React.useEffect(() => {
+    return () => {
+      speechService?.stop();
+    };
+  }, []);
 
   return (
     <Card className="w-full max-w-lg mx-auto bg-surface border-4 sm:border-8 border-border relative overflow-visible shadow-[8px_8px_0_var(--border)] sm:shadow-[12px_12px_0_var(--border)]">
-      <div className="absolute top-4 right-4 z-20">
-        <motion.button
-          whileTap={{ scale: 0.9 }}
-          onClick={() => setQuizMode(!quizMode)}
-          aria-label="Toggle Quiz Mode"
-          className={cn(
-            "p-3 border-4 sm:border-8 border-border shadow-[4px_4px_0_var(--border)] sm:shadow-[6px_6px_0_var(--border)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all",
-            quizMode 
-              ? 'bg-secondary text-white' 
-              : 'bg-surface text-foreground'
-          )}
-        >
-          <Lightbulb className={cn("w-6 h-6", quizMode ? 'fill-current' : '')} />
-        </motion.button>
-      </div>
-
       <CardContent className="p-4 sm:p-12 flex flex-col items-center text-center space-y-6 sm:space-y-10 select-none">
         
         <div className="space-y-6 w-full pt-4">
            <p className="text-sm font-black text-background uppercase tracking-[0.2em] bg-foreground px-6 py-2 border-4 border-border shadow-[4px_4px_0_var(--border)] w-auto mx-auto wobbly-slow font-cartoon">Speak the Lines!</p>
           <div className="bg-surface p-6 sm:p-10 border-4 sm:border-8 border-border shadow-[6px_6px_0_var(--border)] sm:shadow-[10px_10px_0_var(--border)] wobbly-slow">
             <h2 className="text-2xl sm:text-6xl font-black text-foreground leading-tight break-keep flex flex-wrap justify-center gap-x-4 sm:gap-x-6 gap-y-4 sm:gap-y-6 font-lilita">
-              {words.map((word, i) => {
-                const isHidden = hiddenWordIndices.includes(i);
-                return (
-                  <span
-                    key={`${word}-${i}`}
-                    onClick={() => handleWordClick(i)}
-                    className={cn(
-                      "transition-all drop-shadow-[2px_2px_0_var(--background)]",
-                      isHidden && "bg-surface text-transparent min-w-[80px] border-8 border-dashed border-border cursor-pointer shadow-[6px_6px_0_var(--border)]"
-                    )}
-                  >
-                    {isHidden ? '?' : word}
-                  </span>
-                );
-              })}
+              {words.map((word, i) => (
+                <span
+                  key={`${word}-${i}`}
+                  className="drop-shadow-[2px_2px_0_var(--background)]"
+                >
+                  {word}
+                </span>
+              ))}
             </h2>
             <div className="mt-8">
                 <Button
@@ -148,18 +125,40 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
 
         {/* Mic Control */}
         <div className="relative flex flex-col items-center pt-4">
-          <Button
-            aria-label={isRecording ? "Stop recording" : "Microphone"}
-            className={cn(
-              "w-28 h-28 sm:w-40 sm:h-40 rounded-full relative transition-all border-4 sm:border-8 border-border shadow-[6px_6px_0_var(--border)] sm:shadow-[10px_10px_0_var(--border)] active:translate-y-2 active:translate-x-2 active:shadow-none wobbly",
-              isRecording 
-                ? 'bg-error text-white' 
-                : 'bg-primary text-white'
-            )}
-            onClick={isRecording ? handleStopRecording : handleStartRecording}
-          >
-            {isRecording ? <Square className="w-16 h-16" /> : <Mic className="w-16 h-16" />}
-          </Button>
+          {speechService?.supported() ? (
+            <Button
+              aria-label={isRecording ? "Stop recording" : "Microphone"}
+              className={cn(
+                "w-28 h-28 sm:w-40 sm:h-40 rounded-full relative transition-all border-4 sm:border-8 border-border shadow-[6px_6px_0_var(--border)] sm:shadow-[10px_10px_0_var(--border)] active:translate-y-2 active:translate-x-2 active:shadow-none wobbly",
+                isRecording 
+                  ? 'bg-error text-white' 
+                  : 'bg-primary text-white'
+              )}
+              onClick={isRecording ? handleStopRecording : handleStartRecording}
+            >
+              {isRecording ? <Square className="w-16 h-16" /> : <Mic className="w-16 h-16" />}
+            </Button>
+          ) : (
+            <div className="w-full max-w-lg space-y-3">
+              <p className="text-sm font-black text-muted-foreground">
+                이 브라우저는 음성 인식을 지원하지 않아, 텍스트로 대신할 수 있어요.
+              </p>
+              <Input
+                value={manualText}
+                onChange={(e) => setManualText(e.target.value)}
+                placeholder="방금 말한 문장을 입력하세요"
+              />
+              <Button
+                onClick={() => {
+                  if (!manualText.trim()) return;
+                  evaluateSpeech();
+                }}
+                className="h-12 font-black w-full"
+              >
+                제출
+              </Button>
+            </div>
+          )}
           <p className={`mt-10 font-black tracking-tight uppercase text-sm ${isRecording ? 'text-error animate-pulse' : 'text-muted-foreground'}`}>
             {isRecording ? '듣는 중... 완료하려면 버튼 클릭' : '마이크를 눌러 시작'}
           </p>

@@ -2,15 +2,18 @@
 
 import * as React from 'react';
 import { Card, CardContent } from '../ui/Card';
-import { Button } from '../ui/Button';
-import { Volume2, ArrowRight, ArrowLeft, Star, Lightbulb, Check } from 'lucide-react';
+import { Volume2, ArrowRight, ArrowLeft, Star } from 'lucide-react';
 import { playTTS } from '@/lib/tts';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLearningStore } from '@/store/useLearningStore';
 import { cn } from '@/lib/utils/cn';
+import type { Word } from '@/types';
+
+type Example = { text: string; translation?: string };
+type WordWithExamples = Word & { examples?: Example[] };
 
 interface VocabCardProps {
-  word: any; // examples 배열이 포함된 객체 대응
+  word: WordWithExamples;
   onNext?: () => void;
   onPrev?: () => void;
   showPrev?: boolean;
@@ -18,43 +21,20 @@ interface VocabCardProps {
 
 export function VocabCard({ word, onNext, onPrev, showPrev }: VocabCardProps) {
   const [showMeaning, setShowMeaning] = React.useState(true);
-  const [quizMode, setQuizMode] = React.useState(false);
-  const [englishDef, setEnglishDef] = React.useState<string | null>(null);
 
   const toggleFavorite = useLearningStore(state => state.toggleFavorite);
   const favorites = useLearningStore(state => state.favorites);
 
   React.useEffect(() => {
-    if (quizMode) setShowMeaning(true);
-  }, [word.word, quizMode]);
-
-  React.useEffect(() => {
-    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word.word}`)
-      .then(r => r.json())
-      .then(d => {
-        if (d && d[0] && d[0].meanings[0]?.definitions[0]?.definition) {
-          setEnglishDef(d[0].meanings[0].definitions[0].definition);
-        }
-      })
-      .catch(() => { });
+    setShowMeaning(true);
   }, [word.word]);
 
   const isFavorite = favorites.some(w => w.word === word.word);
-  const isWordHidden = quizMode;
 
   return (
     <Card className="w-full max-w-lg mx-auto bg-white border-4 border-black relative overflow-visible mb-6 shadow-[6px_6px_0_#000]">
       {/* Action Tray - Mobile Friendly */}
       <div className="absolute top-3 right-3 z-20 flex gap-2">
-        <button
-          onClick={() => setQuizMode(!quizMode)}
-          className={cn(
-            "p-2.5 rounded-xl border-2 transition-all active:translate-y-0.5 shadow-[2px_2px_0_#000]",
-            quizMode ? 'bg-primary text-white border-black' : 'bg-white text-black border-black'
-          )}
-        >
-          <Lightbulb className={cn("w-5 h-5", quizMode && 'fill-current')} />
-        </button>
         <button
           onClick={() => toggleFavorite(word)}
           className={cn(
@@ -70,34 +50,22 @@ export function VocabCard({ word, onNext, onPrev, showPrev }: VocabCardProps) {
         {/* Word Stage - High Impact */}
         <div className="w-full pt-6 min-h-[100px] flex items-center justify-center">
           <AnimatePresence mode="wait">
-            {isWordHidden ? (
-              <motion.button
-                key="hidden"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                onClick={() => setQuizMode(false)}
-                className="w-full h-16 bg-black/5 border-2 border-dashed border-black/20 rounded-xl flex items-center justify-center gap-2 text-black/40 font-black text-sm uppercase tracking-widest active:bg-black/10 transition-all font-cartoon"
+            <motion.div key="visible" initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col items-center gap-2">
+              <h2 className="text-4xl sm:text-5xl font-black text-black font-reading leading-tight italic">{word.word}</h2>
+              <button 
+                onClick={() => playTTS(word.word)}
+                className="p-2 text-primary hover:scale-110 active:scale-95 transition-transform"
               >
-                Reveal Word
-              </motion.button>
-            ) : (
-              <motion.div key="visible" initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col items-center gap-2">
-                <h2 className="text-4xl sm:text-5xl font-black text-black font-reading leading-tight italic">{word.word}</h2>
-                <button 
-                  onClick={() => playTTS(word.word)}
-                  className="p-2 text-primary hover:scale-110 active:scale-95 transition-transform"
-                >
-                  <Volume2 className="h-6 w-6" />
-                </button>
-              </motion.div>
-            )}
+                <Volume2 className="h-6 w-6" />
+              </button>
+            </motion.div>
           </AnimatePresence>
         </div>
 
         {/* Meaning Area */}
         <div className="w-full min-h-[100px]">
           <AnimatePresence mode="wait">
-            {!showMeaning && !quizMode ? (
+            {!showMeaning ? (
               <button 
                 onClick={() => setShowMeaning(true)} 
                 className="w-full py-6 bg-primary text-white border-4 border-black font-black text-lg shadow-[4px_4px_0_#000] active:translate-y-1 active:shadow-none transition-all font-cartoon"
@@ -112,7 +80,7 @@ export function VocabCard({ word, onNext, onPrev, showPrev }: VocabCardProps) {
 
                 {/* Examples */}
                 <div className="space-y-3">
-                  {word.examples && word.examples.slice(0, 2).map((ex: any, idx: number) => (
+                  {word.examples && word.examples.slice(0, 2).map((ex, idx) => (
                     <div key={idx} className="bg-white p-4 border-2 border-black border-dashed">
                       <p className="font-bold text-base text-black leading-snug font-reading">&quot;{ex.text}&quot;</p>
                       {ex.translation && (

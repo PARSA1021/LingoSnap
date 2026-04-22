@@ -10,12 +10,12 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: "bg-primary text-primary-foreground wobbly",
-        secondary: "bg-secondary text-secondary-foreground wobbly-slow hover:bg-secondary/90",
+        primary: "bg-primary text-primary-foreground hover:bg-primary/90",
+        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/90",
         outline: "bg-surface text-black hover:bg-muted",
         ghost: "bg-transparent text-black border-transparent shadow-none translate-y-0 hover:bg-muted",
-        danger: "bg-error text-error-foreground wobbly",
-        success: "bg-success text-success-foreground wobbly",
+        danger: "bg-error text-error-foreground hover:bg-error/90",
+        success: "bg-success text-success-foreground hover:bg-success/90",
       },
       size: {
         default: "h-14 px-6 py-2",
@@ -43,7 +43,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <motion.button
         ref={ref}
         className={cn(buttonVariants({ variant, size, className }))}
-        whileTap={{ scale: 0.97 }}
+        whileTap={{ scale: 0.99 }}
         {...props}
       >
         {children}

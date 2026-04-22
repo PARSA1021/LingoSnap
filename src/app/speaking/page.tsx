@@ -6,15 +6,16 @@ import { Button } from '@/components/ui/Button';
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import sentencesData from '@/data/sentences.json';
+import type { Sentence } from '@/types';
 
 export default function SpeakingPage() {
   const [index, setIndex] = React.useState(0);
   
   // Create a randomized array of sentences on mount to ensure fresh sessions
-  const [shuffledSentences, setShuffledSentences] = React.useState<any[]>([]);
+  const [shuffledSentences, setShuffledSentences] = React.useState<Sentence[]>([]);
 
   React.useEffect(() => {
-    setShuffledSentences([...sentencesData].sort(() => 0.5 - Math.random()));
+    setShuffledSentences([...(sentencesData as unknown as Sentence[])].sort(() => 0.5 - Math.random()));
   }, []);
 
   const handleContinue = () => {

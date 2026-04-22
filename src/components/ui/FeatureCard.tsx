@@ -2,8 +2,6 @@
 
 import * as React from 'react';
 import Link from 'next/link';
-import { Card, CardContent } from './Card';
-import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils/cn';
 
 interface FeatureCardProps {
@@ -11,11 +9,9 @@ interface FeatureCardProps {
   icon: React.ReactNode;
   title: string;
   color: string;
-  shadowColor?: string;
-  className?: string;
 }
 
-export function FeatureCard({ href, icon, title, color, shadowColor, className }: FeatureCardProps) {
+export function FeatureCard({ href, icon, title, color }: FeatureCardProps) {
   return (
     <Link href={href} className="block group h-full">
       <div className={cn(

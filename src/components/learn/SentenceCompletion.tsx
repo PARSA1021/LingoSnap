@@ -39,8 +39,11 @@ export function SentenceCompletion({ sentence, translation, targetWord, onSucces
 
   React.useEffect(() => {
     // Find words from same category or length to confuse the user
-    const currentWordData = (vocabData as any[]).find(v => v.word.toLowerCase() === targetWord.toLowerCase());
-    const distractors = (vocabData as any[])
+    type VocabItem = { word: string; category?: string };
+    const vocabItems = vocabData as unknown as VocabItem[];
+
+    const currentWordData = vocabItems.find(v => v.word.toLowerCase() === targetWord.toLowerCase());
+    const distractors = vocabItems
       .filter(v => v.word.toLowerCase() !== targetWord.toLowerCase())
       .map(v => {
         let score = 0;
@@ -90,7 +93,7 @@ export function SentenceCompletion({ sentence, translation, targetWord, onSucces
           <span className="text-xs font-black uppercase tracking-widest font-cartoon">Context Challenge {index + 1}/{total}</span>
         </div>
         <h2 className="text-3xl sm:text-4xl font-black text-black font-cartoon uppercase">Script Completion</h2>
-        <p className="text-lg font-black text-primary font-reading italic">"{translation}"</p>
+        <p className="text-lg font-black text-primary font-reading italic">&quot;{translation}&quot;</p>
         <p className="text-xs font-black text-black/40 uppercase tracking-[0.2em]">Drag or click the correct block to fill the gap</p>
       </div>
 

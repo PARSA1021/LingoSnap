@@ -3,11 +3,8 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
-import { Card, CardContent } from '@/components/ui/Card';
 import { FeatureCard } from '@/components/ui/FeatureCard';
-import { BookOpen, Mic, Play, Sparkles, Volume2 } from 'lucide-react';
-import { speak } from '@/lib/tts';
-import { useLearningStore } from '@/store/useLearningStore';
+import { BookOpen, Mic, Play, Sparkles, RotateCcw, Tv } from 'lucide-react';
 
 export default function HomePage() {
   return (
@@ -21,7 +18,7 @@ export default function HomePage() {
         <h1 className="text-5xl xs:text-6xl sm:text-7xl md:text-8xl font-black text-foreground tracking-tighter leading-none break-keep drop-shadow-[5px_5px_0_var(--border)] sm:drop-shadow-[8px_8px_0_var(--border)] uppercase -rotate-1 px-4">
           Talkie <br /> <span className="text-info italic">Talkie!</span>
         </h1>
-        <p className="text-sm sm:text-lg font-black text-foreground uppercase tracking-[0.2em] mt-2 opacity-80">Don't Deal with the Boredom!</p>
+        <p className="text-sm sm:text-lg font-black text-foreground uppercase tracking-[0.2em] mt-2 opacity-80">Don&apos;t Deal with the Boredom!</p>
       </div>
 
       {/* Main Action Path - Compacted */}
@@ -40,32 +37,32 @@ export default function HomePage() {
           </div>
         </Link>
 
-        {/* Floating Sound Toggle - Smaller & Smarter */}
-        <Button 
-          onClick={() => {
-            speak('The show is about to begin! Sound is now enabled.');
-          }}
-          className="h-12 px-6 bg-surface text-foreground border-4 border-border shadow-[4px_4px_0_var(--border)] font-black uppercase text-sm active:translate-y-1 active:shadow-none transition-all flex items-center gap-2 wobbly shrink-0"
-        >
-          <Volume2 className="w-4 h-4" /> Sound OK?
-        </Button>
+        <Link href="/review" className="w-full">
+          <Button variant="secondary" className="w-full h-12 font-black flex items-center justify-center gap-2">
+            <RotateCcw className="w-5 h-5" /> 복습(오답)
+          </Button>
+        </Link>
       </div>
 
-      {/* Grid Features */}
+      {/* Quick access */}
       <div className="w-full grid grid-cols-2 gap-4 max-w-xl">
         <FeatureCard
           href="/vocab"
           icon={<BookOpen className="w-6 h-6" />}
-          title="Archive"
+          title="단어장"
           color="bg-info"
-          shadowColor="#1CB0F6"
         />
         <FeatureCard
           href="/speaking"
           icon={<Mic className="w-6 h-6" />}
-          title="Speaking"
+          title="말하기"
           color="bg-success"
-          shadowColor="#58CC02"
+        />
+        <FeatureCard
+          href="/contents"
+          icon={<Tv className="w-6 h-6" />}
+          title="콘텐츠"
+          color="bg-success"
         />
       </div>
 

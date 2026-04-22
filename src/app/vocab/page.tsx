@@ -1,20 +1,24 @@
 'use client';
 
 import * as React from 'react';
-import { Word } from '@/types';
 import { VocabCard } from '@/components/vocab/VocabCard';
 import { Button } from '@/components/ui/Button';
-import { Search, Loader2, Sparkles, Star, History, ArrowRight, BookOpen, X, Filter, Grid3x3, List } from 'lucide-react';
+import { Search, Loader2, Sparkles, Star, History, ArrowRight, BookOpen, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLearningStore } from '@/store/useLearningStore';
 import vocabData from '@/data/vocabulary.json';
-import { getNormalizedWordData } from '@/lib/dictionary';
+import { getNormalizedWordData, type NormalizedWordData } from '@/lib/dictionary';
 import { cn } from '@/lib/utils/cn';
+import { getRandomElements } from '@/lib/utils/random';
 
-// 랜덤 요소 추출 함수
-const getRandomElements = (arr: any[], count: number) => {
-  const shuffled = [...arr].sort(() => 0.5 - Math.random());
-  return shuffled.slice(0, count);
+type Example = { text: string; translation?: string };
+type VocabItem = {
+  word: string;
+  meaning: string;
+  example: string;
+  exampleTranslation?: string;
+  category?: string;
+  examples?: Example[];
 };
 
 // 헬퍼 컴포넌트: 데이터가 없는 상태 표시
@@ -32,11 +36,10 @@ type ViewMode = 'grid' | 'list';
 export default function VocabSearchPage() {
   const [query, setQuery] = React.useState('');
   const [activeCategory, setActiveCategory] = React.useState<string | null>(null);
-  const [apiWord, setApiWord] = React.useState<any | null>(null);
+  const [apiWord, setApiWord] = React.useState<NormalizedWordData | null>(null);
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState('');
-  const [showCategoryFilter, setShowCategoryFilter] = React.useState(false);
-  const [viewMode, setViewMode] = React.useState<ViewMode>('grid');
+  const [viewMode] = React.useState<ViewMode>('grid');
 
   const addRecentSearch = useLearningStore(state => state.addRecentSearch);
   const recentSearches = useLearningStore(state => state.recentSearches);
@@ -44,23 +47,27 @@ export default function VocabSearchPage() {
 
   // 1. 데이터 가공 로직: 중복 제거 및 예시 통합
   const processedCards = React.useMemo(() => {
-    const map = new Map();
-    vocabData.forEach((item: any) => {
+    const map = new Map<string, VocabItem>();
+    (vocabData as unknown as Array<Partial<VocabItem> & { word: string; meaning: string }>).forEach((item) => {
       const key = item.word.toLowerCase().trim();
       const existing = map.get(key);
-      const currentExamples = item.examples || [{ text: item.example, translation: item.exampleTranslation }];
+      const currentExamples: Example[] = (item.examples || [
+        { text: item.example || '', translation: item.exampleTranslation },
+      ]).filter((ex): ex is Example => typeof ex.text === 'string' && ex.text.length > 0);
 
       if (existing) {
-        currentExamples.forEach((ex: any) => {
-          if (ex.text && !existing.examples.some((e: any) => e.text === ex.text)) {
+        currentExamples.forEach((ex) => {
+          if (ex.text && !(existing.examples || []).some((e) => e.text === ex.text)) {
+            existing.examples = existing.examples || [];
             existing.examples.push(ex);
           }
         });
       } else {
         map.set(key, {
           ...item,
+          example: item.example || '',
           category: item.category || '기타',
-          examples: currentExamples.filter((ex: any) => ex.text)
+          examples: currentExamples
         });
       }
     });
@@ -80,7 +87,7 @@ export default function VocabSearchPage() {
   const categories = Object.keys(categoryStats).sort();
 
   // 3. 추천 단어 관리
-  const [recommendedWords, setRecommendedWords] = React.useState<any[]>([]);
+  const [recommendedWords, setRecommendedWords] = React.useState<VocabItem[]>([]);
   React.useEffect(() => {
     setRecommendedWords(getRandomElements(processedCards, 6));
   }, [processedCards]);
@@ -299,7 +306,17 @@ export default function VocabSearchPage() {
                       animate={{ opacity: 1, scale: 1 }}
                       className={viewMode === 'grid' ? "lg:col-span-2" : ""}
                     >
-                      <VocabCard word={apiWord} />
+                      <VocabCard
+                        word={{
+                          id: apiWord.word,
+                          word: apiWord.word,
+                          meaning: apiWord.meaning,
+                          example: apiWord.example,
+                          exampleTranslation: apiWord.exampleTranslation,
+                          phonetic: apiWord.phonetic,
+                          audioUrl: apiWord.audioUrl,
+                        }}
+                      />
                     </motion.div>
                   )}
                   {/* 내부 데이터 검색 결과 */}
@@ -310,7 +327,16 @@ export default function VocabSearchPage() {
                       initial={{ opacity: 0, y: 10 }} 
                       animate={{ opacity: 1, y: 0 }}
                     >
-                      <VocabCard word={w} />
+                      <VocabCard
+                        word={{
+                          id: w.word,
+                          word: w.word,
+                          meaning: w.meaning,
+                          example: w.example,
+                          exampleTranslation: w.exampleTranslation,
+                          ...(w.examples ? { examples: w.examples } : {}),
+                        }}
+                      />
                     </motion.div>
                   ))}
                 </AnimatePresence>

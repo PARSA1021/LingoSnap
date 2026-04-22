@@ -2,12 +2,9 @@
 
 import * as React from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { ThemeToggle } from '@/components/layout/ThemeToggle';
-import { Button } from '@/components/ui/Button';
 
 export function TopNav() {
-  const pathname = usePathname();
   const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
