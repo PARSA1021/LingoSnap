@@ -1456,18 +1456,6 @@
     ]
   },
   {
-    "word": "hang out",
-    "meaning": "놀다, 시간을 보내다",
-    "level": "beginner",
-    "category": "캐주얼",
-    "examples": [
-      {
-        "text": "Do you want to hang out this weekend?",
-        "translation": "이번 주말에 같이 놀래?"
-      }
-    ]
-  },
-  {
     "word": "I'm starving",
     "meaning": "배고파 죽겠어",
     "level": "beginner",
@@ -1828,18 +1816,6 @@
     ]
   },
   {
-    "word": "keep an eye on",
-    "meaning": "주시하다, 지켜보다",
-    "level": "intermediate",
-    "category": "일상",
-    "examples": [
-      {
-        "text": "Can you keep an eye on my luggage?",
-        "translation": "제 짐 좀 봐주실 수 있어요?"
-      }
-    ]
-  },
-  {
     "word": "look forward to",
     "meaning": "기대하다",
     "level": "intermediate",
@@ -1848,18 +1824,6 @@
       {
         "text": "I look forward to working with you.",
         "translation": "당신과 함께 일하기를 기대합니다."
-      }
-    ]
-  },
-  {
-    "word": "no wonder",
-    "meaning": "어쩐지 ~하더라",
-    "level": "intermediate",
-    "category": "일상",
-    "examples": [
-      {
-        "text": "No wonder she's so tired.",
-        "translation": "어쩐지 그녀가 너무 피곤해 보이더라."
       }
     ]
   },
@@ -1984,18 +1948,6 @@
     ]
   },
   {
-    "word": "it's on me",
-    "meaning": "내가 낼게, 내가 살게",
-    "level": "beginner",
-    "category": "캐주얼",
-    "examples": [
-      {
-        "text": "Let's go to that new cafe. It's on me.",
-        "translation": "그 새로 생긴 카페 가자. 내가 살게."
-      }
-    ]
-  },
-  {
     "word": "hit me up",
     "meaning": "연락해, 나중에 연락해",
     "level": "beginner",
@@ -2028,18 +1980,6 @@
       {
         "text": "I can't come because I have too much work. - Fair enough.",
         "translation": "일이 너무 많아서 못 가. - 알겠어, 그럴 수 있지."
-      }
-    ]
-  },
-  {
-    "word": "how's it going?",
-    "meaning": "어떻게 지내?, 요즘 어때?",
-    "level": "beginner",
-    "category": "일상",
-    "examples": [
-      {
-        "text": "Hey Mike, how's it going?",
-        "translation": "안녕 마이크, 어떻게 지내?"
       }
     ]
   },
@@ -2080,30 +2020,6 @@
     ]
   },
   {
-    "word": "get a grip",
-    "meaning": "정신 차려, 상황을 파악해",
-    "level": "intermediate",
-    "category": "캐주얼",
-    "examples": [
-      {
-        "text": "Stop panicking and get a grip!",
-        "translation": "당황하지 말고 정신 좀 차려!"
-      }
-    ]
-  },
-  {
-    "word": "long story short",
-    "meaning": "한마디로 말하자면, 짧게 말해서",
-    "level": "beginner",
-    "category": "일상",
-    "examples": [
-      {
-        "text": "Long story short, I didn't get the job.",
-        "translation": "간단히 말해서, 그 일자리 못 얻었어."
-      }
-    ]
-  },
-  {
     "word": "on the house",
     "meaning": "서비스입니다, 무료입니다",
     "level": "beginner",
@@ -2128,18 +2044,6 @@
     ]
   },
   {
-    "word": "count me in",
-    "meaning": "나도 끼워줘, 나도 할게",
-    "level": "beginner",
-    "category": "캐주얼",
-    "examples": [
-      {
-        "text": "If you're going to the party, count me in.",
-        "translation": "그 파티 갈 거면 나도 끼워줘."
-      }
-    ]
-  },
-  {
     "word": "don't sweat it",
     "meaning": "걱정 마, 신경 쓰지 마",
     "level": "intermediate",
@@ -2148,18 +2052,6 @@
       {
         "text": "Sorry about the mistake. - Don't sweat it.",
         "translation": "실수해서 미안해. - 걱정 마, 신경 쓰지 마."
-      }
-    ]
-  },
-  {
-    "word": "give it a shot",
-    "meaning": "한번 해봐, 시도해봐",
-    "level": "beginner",
-    "category": "일상",
-    "examples": [
-      {
-        "text": "I've never tried surfing before. - Why not give it a shot?",
-        "translation": "서핑 한 번도 안 해봤어. - 한번 시도해보지 그래?"
       }
     ]
   },
@@ -2232,18 +2124,6 @@
       {
         "text": "The bottom line is that we need more sales.",
         "translation": "핵심은 우리가 매출을 더 올려야 한다는 거야."
-      }
-    ]
-  },
-  {
-    "word": "up in the air",
-    "meaning": "아직 결정되지 않은, 불확실한",
-    "level": "intermediate",
-    "category": "일상",
-    "examples": [
-      {
-        "text": "Our travel plans are still up in the air.",
-        "translation": "우리 여행 계획은 아직 결정되지 않았어."
       }
     ]
   },
@@ -2440,18 +2320,6 @@
     ]
   },
   {
-    "word": "make sense",
-    "meaning": "말이 되다, 이해가 되다",
-    "level": "beginner",
-    "category": "일상",
-    "examples": [
-      {
-        "text": "Does that make sense to you?",
-        "translation": "그게 이해가 돼?"
-      }
-    ]
-  },
-  {
     "word": "take it easy",
     "meaning": "진정해, 천천히 해, 잘 가",
     "level": "beginner",
@@ -2484,78 +2352,6 @@
       {
         "text": "You'll get used to the cold weather soon.",
         "translation": "곧 추운 날씨에 익숙해질 거야."
-      }
-    ]
-  },
-  {
-    "word": "by the way",
-    "meaning": "그런데, 그건 그렇고",
-    "level": "beginner",
-    "category": "일상",
-    "examples": [
-      {
-        "text": "By the way, did you hear the news?",
-        "translation": "그런데, 그 뉴스 들었어?"
-      }
-    ]
-  },
-  {
-    "word": "figure out",
-    "meaning": "알아내다, 이해하다, 해결하다",
-    "level": "intermediate",
-    "category": "일상",
-    "examples": [
-      {
-        "text": "I'm trying to figure out how this works.",
-        "translation": "이게 어떻게 작동하는지 알아내려고 노력 중이야."
-      }
-    ]
-  },
-  {
-    "word": "look forward to",
-    "meaning": "~을 고대하다, 기대하다",
-    "level": "intermediate",
-    "category": "일상",
-    "examples": [
-      {
-        "text": "I'm looking forward to meeting you.",
-        "translation": "당신을 만나기를 기대하고 있습니다."
-      }
-    ]
-  },
-  {
-    "word": "point of view",
-    "meaning": "관점, 견해",
-    "level": "intermediate",
-    "category": "일상",
-    "examples": [
-      {
-        "text": "From my point of view, it's a good idea.",
-        "translation": "제 관점에서는 좋은 생각인 것 같아요."
-      }
-    ]
-  },
-  {
-    "word": "run out of",
-    "meaning": "~이 다 떨어지다, 부족하다",
-    "level": "beginner",
-    "category": "일상",
-    "examples": [
-      {
-        "text": "We ran out of milk this morning.",
-        "translation": "오늘 아침에 우유가 다 떨어졌어."
-      }
-    ]
-  },
-  {
-    "word": "take advantage of",
-    "meaning": "~을 이용하다, 활용하다",
-    "level": "advanced",
-    "category": "일상",
-    "examples": [
-      {
-        "text": "You should take advantage of this opportunity.",
-        "translation": "이 기회를 잘 활용해야 해."
       }
     ]
   },
@@ -2652,6 +2448,1126 @@
       {
         "text": "She's very enthusiastic about her new job.",
         "translation": "그녀는 새 직장에 대해 매우 열정적이야."
+      }
+    ]
+  },
+  {
+    "word": "discount",
+    "meaning": "할인",
+    "level": "beginner",
+    "category": "쇼핑",
+    "examples": [
+      {
+        "text": "Is there a discount on this item?",
+        "translation": "이 상품에 할인이 있나요?"
+      },
+      {
+        "text": "I got a 20% discount.",
+        "translation": "20% 할인을 받았어."
+      }
+    ]
+  },
+  {
+    "word": "sale",
+    "meaning": "세일, 판매",
+    "level": "beginner",
+    "category": "쇼핑",
+    "examples": [
+      {
+        "text": "There's a big sale this weekend.",
+        "translation": "이번 주말에 대규모 세일이 있어."
+      },
+      {
+        "text": "Everything is on sale!",
+        "translation": "모든 게 세일 중이야!"
+      }
+    ]
+  },
+  {
+    "word": "receipt",
+    "meaning": "영수증",
+    "level": "beginner",
+    "category": "쇼핑",
+    "examples": [
+      {
+        "text": "Can I have a receipt?",
+        "translation": "영수증 주세요."
+      },
+      {
+        "text": "I lost my receipt.",
+        "translation": "영수증을 잃어버렸어."
+      }
+    ]
+  },
+  {
+    "word": "refund",
+    "meaning": "환불",
+    "level": "intermediate",
+    "category": "쇼핑",
+    "examples": [
+      {
+        "text": "Can I get a refund?",
+        "translation": "환불받을 수 있나요?"
+      },
+      {
+        "text": "The refund takes 3-5 business days.",
+        "translation": "환불은 3-5 영업일이 걸려요."
+      }
+    ]
+  },
+  {
+    "word": "exchange",
+    "meaning": "교환",
+    "level": "intermediate",
+    "category": "쇼핑",
+    "examples": [
+      {
+        "text": "I'd like to exchange this.",
+        "translation": "이거 교환하고 싶어요."
+      },
+      {
+        "text": "Can I exchange it for a different size?",
+        "translation": "다른 사이즈로 교환할 수 있나요?"
+      }
+    ]
+  },
+  {
+    "word": "fitting room",
+    "meaning": "탈의실",
+    "level": "beginner",
+    "category": "쇼핑",
+    "examples": [
+      {
+        "text": "Where's the fitting room?",
+        "translation": "탈의실이 어디 있어요?"
+      },
+      {
+        "text": "Can I try this on in the fitting room?",
+        "translation": "탈의실에서 이거 입어봐도 될까요?"
+      }
+    ]
+  },
+  {
+    "word": "cashier",
+    "meaning": "계산원",
+    "level": "beginner",
+    "category": "쇼핑",
+    "examples": [
+      {
+        "text": "Pay at the cashier.",
+        "translation": "계산대에서 계산하세요."
+      },
+      {
+        "text": "The cashier was very friendly.",
+        "translation": "계산원이 매우 친절했어."
+      }
+    ]
+  },
+  {
+    "word": "cart",
+    "meaning": "카트, 장바구니",
+    "level": "beginner",
+    "category": "쇼핑",
+    "examples": [
+      {
+        "text": "I need a shopping cart.",
+        "translation": "쇼핑 카트가 필요해."
+      },
+      {
+        "text": "My cart is full.",
+        "translation": "내 장바구니가 가득 찼어."
+      }
+    ]
+  },
+  {
+    "word": "aisle",
+    "meaning": "통로",
+    "level": "intermediate",
+    "category": "쇼핑",
+    "examples": [
+      {
+        "text": "It's in aisle 3.",
+        "translation": "3번 통로에 있어요."
+      },
+      {
+        "text": "Which aisle is the milk in?",
+        "translation": "우유는 몇 번 통로에 있어요?"
+      }
+    ]
+  },
+  {
+    "word": "bargain",
+    "meaning": "할인 상품, 흥정하다",
+    "level": "intermediate",
+    "category": "쇼핑",
+    "examples": [
+      {
+        "text": "This is a great bargain!",
+        "translation": "이거 정말 싸게 산 거야!"
+      },
+      {
+        "text": "I got a bargain at the market.",
+        "translation": "시장에서 싸게 샀어."
+      }
+    ]
+  },
+  {
+    "word": "forecast",
+    "meaning": "일기예보",
+    "level": "intermediate",
+    "category": "날씨",
+    "examples": [
+      {
+        "text": "What's the weather forecast?",
+        "translation": "일기예보가 어때?"
+      },
+      {
+        "text": "The forecast says it will rain.",
+        "translation": "예보에서 비가 온다고 해."
+      }
+    ]
+  },
+  {
+    "word": "humid",
+    "meaning": "습한",
+    "level": "intermediate",
+    "category": "날씨",
+    "examples": [
+      {
+        "text": "It's very humid today.",
+        "translation": "오늘 정말 습해."
+      },
+      {
+        "text": "I can't stand humid weather.",
+        "translation": "나 습한 날씨 못 참아."
+      }
+    ]
+  },
+  {
+    "word": "breeze",
+    "meaning": "미풍",
+    "level": "intermediate",
+    "category": "날씨",
+    "examples": [
+      {
+        "text": "There's a nice breeze today.",
+        "translation": "오늘 바람이 기분 좋네."
+      },
+      {
+        "text": "Feel that cool breeze.",
+        "translation": "저 시원한 바람 느껴봐."
+      }
+    ]
+  },
+  {
+    "word": "drizzle",
+    "meaning": "이슬비",
+    "level": "advanced",
+    "category": "날씨",
+    "examples": [
+      {
+        "text": "It's just a light drizzle.",
+        "translation": "그냥 가벼운 이슬비야."
+      },
+      {
+        "text": "The drizzle started this morning.",
+        "translation": "이슬비가 오늘 아침부터 시작됐어."
+      }
+    ]
+  },
+  {
+    "word": "thunderstorm",
+    "meaning": "뇌우",
+    "level": "intermediate",
+    "category": "날씨",
+    "examples": [
+      {
+        "text": "There's a thunderstorm warning.",
+        "translation": "뇌우 경보가 있어."
+      },
+      {
+        "text": "I'm scared of thunderstorms.",
+        "translation": "나 뇌우가 무서워."
+      }
+    ]
+  },
+  {
+    "word": "temperature",
+    "meaning": "온도, 기온",
+    "level": "beginner",
+    "category": "날씨",
+    "examples": [
+      {
+        "text": "What's the temperature today?",
+        "translation": "오늘 기온이 어때?"
+      },
+      {
+        "text": "The temperature dropped suddenly.",
+        "translation": "기온이 갑자기 떨어졌어."
+      }
+    ]
+  },
+  {
+    "word": "sunny",
+    "meaning": "화창한",
+    "level": "beginner",
+    "category": "날씨",
+    "examples": [
+      {
+        "text": "It's a sunny day!",
+        "translation": "화창한 날이야!"
+      },
+      {
+        "text": "I love sunny weather.",
+        "translation": "나 화창한 날씨 좋아해."
+      }
+    ]
+  },
+  {
+    "word": "cloudy",
+    "meaning": "흐린",
+    "level": "beginner",
+    "category": "날씨",
+    "examples": [
+      {
+        "text": "It's cloudy outside.",
+        "translation": "밖이 흐려."
+      },
+      {
+        "text": "The sky is cloudy.",
+        "translation": "하늘이 흐려."
+      }
+    ]
+  },
+  {
+    "word": "windy",
+    "meaning": "바람 부는",
+    "level": "beginner",
+    "category": "날씨",
+    "examples": [
+      {
+        "text": "It's very windy today.",
+        "translation": "오늘 바람이 많이 불어."
+      },
+      {
+        "text": "I don't like windy days.",
+        "translation": "나 바람 부는 날 싫어."
+      }
+    ]
+  },
+  {
+    "word": "freezing",
+    "meaning": "엄청 추운",
+    "level": "beginner",
+    "category": "날씨",
+    "examples": [
+      {
+        "text": "It's freezing outside!",
+        "translation": "밖이 엄청 추워!"
+      },
+      {
+        "text": "I'm freezing cold.",
+        "translation": "나 진짜 추워."
+      }
+    ]
+  },
+  {
+    "word": "colleague",
+    "meaning": "동료",
+    "level": "intermediate",
+    "category": "관계",
+    "examples": [
+      {
+        "text": "She's my colleague.",
+        "translation": "그녀는 내 동료야."
+      },
+      {
+        "text": "I'm meeting my colleagues for lunch.",
+        "translation": "점심에 동료들을 만나."
+      }
+    ]
+  },
+  {
+    "word": "acquaintance",
+    "meaning": "지인",
+    "level": "advanced",
+    "category": "관계",
+    "examples": [
+      {
+        "text": "He's just an acquaintance.",
+        "translation": "그는 그냥 지인이야."
+      },
+      {
+        "text": "I met an old acquaintance today.",
+        "translation": "오늘 옛날 지인을 만났어."
+      }
+    ]
+  },
+  {
+    "word": "relative",
+    "meaning": "친척",
+    "level": "beginner",
+    "category": "관계",
+    "examples": [
+      {
+        "text": "Are you visiting relatives?",
+        "translation": "친척들 방문해?"
+      },
+      {
+        "text": "I have many relatives.",
+        "translation": "나 친척이 많아."
+      }
+    ]
+  },
+  {
+    "word": "sibling",
+    "meaning": "형제자매",
+    "level": "intermediate",
+    "category": "관계",
+    "examples": [
+      {
+        "text": "Do you have any siblings?",
+        "translation": "형제자매 있어?"
+      },
+      {
+        "text": "I have two siblings.",
+        "translation": "나 형제자매가 둘 있어."
+      }
+    ]
+  },
+  {
+    "word": "spouse",
+    "meaning": "배우자",
+    "level": "advanced",
+    "category": "관계",
+    "examples": [
+      {
+        "text": "This is my spouse.",
+        "translation": "이분이 제 배우자예요."
+      },
+      {
+        "text": "How long have you been with your spouse?",
+        "translation": "배우자와 얼마나 됐어요?"
+      }
+    ]
+  },
+  {
+    "word": "fiancé",
+    "meaning": "약혼자 (남성)",
+    "level": "advanced",
+    "category": "관계",
+    "examples": [
+      {
+        "text": "I'd like you to meet my fiancé.",
+        "translation": "내 약혼자를 소개하고 싶어."
+      },
+      {
+        "text": "My fiancé and I are planning the wedding.",
+        "translation": "약혼자와 나는 결혼식을 준비하고 있어."
+      }
+    ]
+  },
+  {
+    "word": "in-laws",
+    "meaning": "인척, 시댁식구",
+    "level": "intermediate",
+    "category": "관계",
+    "examples": [
+      {
+        "text": "I'm visiting my in-laws this weekend.",
+        "translation": "이번 주말에 시댁 방문해."
+      },
+      {
+        "text": "How are your in-laws?",
+        "translation": "시댁은 어때?"
+      }
+    ]
+  },
+  {
+    "word": "ex",
+    "meaning": "전 애인",
+    "level": "beginner",
+    "category": "관계",
+    "examples": [
+      {
+        "text": "I ran into my ex today.",
+        "translation": "오늘 전 애인을 우연히 만났어."
+      },
+      {
+        "text": "She's my ex-girlfriend.",
+        "translation": "그녀는 내 전 여자친구야."
+      }
+    ]
+  },
+  {
+    "word": "bond",
+    "meaning": "유대, 결속",
+    "level": "intermediate",
+    "category": "관계",
+    "examples": [
+      {
+        "text": "We have a strong bond.",
+        "translation": "우린 끈끈한 유대가 있어."
+      },
+      {
+        "text": "They bonded over their love of music.",
+        "translation": "그들은 음악 사랑으로 친해졌어."
+      }
+    ]
+  },
+  {
+    "word": "stranger",
+    "meaning": "낯선 사람",
+    "level": "beginner",
+    "category": "관계",
+    "examples": [
+      {
+        "text": "Don't talk to strangers.",
+        "translation": "낯선 사람과 말하지 마."
+      },
+      {
+        "text": "He's a complete stranger.",
+        "translation": "그는 완전 모르는 사람이야."
+      }
+    ]
+  },
+  {
+    "word": "hobby",
+    "meaning": "취미",
+    "level": "beginner",
+    "category": "취미",
+    "examples": [
+      {
+        "text": "What's your hobby?",
+        "translation": "취미가 뭐야?"
+      },
+      {
+        "text": "Reading is my hobby.",
+        "translation": "독서가 내 취미야."
+      }
+    ]
+  },
+  {
+    "word": "photography",
+    "meaning": "사진 촬영",
+    "level": "intermediate",
+    "category": "취미",
+    "examples": [
+      {
+        "text": "I'm into photography.",
+        "translation": "나 사진 촬영에 빠져 있어."
+      },
+      {
+        "text": "Photography is an expensive hobby.",
+        "translation": "사진 촬영은 비싼 취미야."
+      }
+    ]
+  },
+  {
+    "word": "hiking",
+    "meaning": "하이킹",
+    "level": "beginner",
+    "category": "취미",
+    "examples": [
+      {
+        "text": "Let's go hiking this weekend.",
+        "translation": "이번 주말에 하이킹 가자."
+      },
+      {
+        "text": "I love hiking in the mountains.",
+        "translation": "나 산에서 하이킹하는 거 좋아해."
+      }
+    ]
+  },
+  {
+    "word": "gardening",
+    "meaning": "정원 가꾸기",
+    "level": "intermediate",
+    "category": "취미",
+    "examples": [
+      {
+        "text": "Gardening is relaxing.",
+        "translation": "정원 가꾸기는 마음이 편해져."
+      },
+      {
+        "text": "My mom loves gardening.",
+        "translation": "우리 엄마는 정원 가꾸기를 좋아해."
+      }
+    ]
+  },
+  {
+    "word": "knitting",
+    "meaning": "뜨개질",
+    "level": "intermediate",
+    "category": "취미",
+    "examples": [
+      {
+        "text": "I'm learning knitting.",
+        "translation": "뜨개질을 배우고 있어."
+      },
+      {
+        "text": "She made this scarf by knitting.",
+        "translation": "그녀가 뜨개질로 이 목도리를 만들었어."
+      }
+    ]
+  },
+  {
+    "word": "painting",
+    "meaning": "그림 그리기",
+    "level": "beginner",
+    "category": "취미",
+    "examples": [
+      {
+        "text": "I enjoy painting on weekends.",
+        "translation": "주말에 그림 그리는 걸 즐겨."
+      },
+      {
+        "text": "This painting took me hours.",
+        "translation": "이 그림 그리는 데 몇 시간 걸렸어."
+      }
+    ]
+  },
+  {
+    "word": "collecting",
+    "meaning": "수집하기",
+    "level": "beginner",
+    "category": "취미",
+    "examples": [
+      {
+        "text": "I'm collecting stamps.",
+        "translation": "나 우표 수집해."
+      },
+      {
+        "text": "He enjoys collecting vintage toys.",
+        "translation": "그는 빈티지 장난감 수집을 즐겨."
+      }
+    ]
+  },
+  {
+    "word": "baking",
+    "meaning": "베이킹",
+    "level": "beginner",
+    "category": "취미",
+    "examples": [
+      {
+        "text": "I love baking cookies.",
+        "translation": "나 쿠키 굽는 거 좋아해."
+      },
+      {
+        "text": "Baking is therapeutic for me.",
+        "translation": "베이킹은 나한텐 치유가 돼."
+      }
+    ]
+  },
+  {
+    "word": "fishing",
+    "meaning": "낚시",
+    "level": "beginner",
+    "category": "취미",
+    "examples": [
+      {
+        "text": "My dad goes fishing every Sunday.",
+        "translation": "우리 아빠는 매주 일요일에 낚시 가."
+      },
+      {
+        "text": "Want to go fishing?",
+        "translation": "낚시 가고 싶어?"
+      }
+    ]
+  },
+  {
+    "word": "camping",
+    "meaning": "캠핑",
+    "level": "beginner",
+    "category": "취미",
+    "examples": [
+      {
+        "text": "We're going camping next month.",
+        "translation": "다음 달에 캠핑 가."
+      },
+      {
+        "text": "I need camping gear.",
+        "translation": "캠핑 장비가 필요해."
+      }
+    ]
+  },
+  {
+    "word": "thrilled",
+    "meaning": "매우 흥분한",
+    "level": "advanced",
+    "category": "감정",
+    "examples": [
+      {
+        "text": "I'm thrilled about the news!",
+        "translation": "그 소식에 너무 흥분돼!"
+      },
+      {
+        "text": "She was thrilled to meet her idol.",
+        "translation": "그녀는 우상을 만나서 너무 흥분했어."
+      }
+    ]
+  },
+  {
+    "word": "content",
+    "meaning": "만족스러운",
+    "level": "intermediate",
+    "category": "감정",
+    "examples": [
+      {
+        "text": "I'm content with my life.",
+        "translation": "나 내 삶에 만족해."
+      },
+      {
+        "text": "He seems content.",
+        "translation": "그는 만족스러워 보여."
+      }
+    ]
+  },
+  {
+    "word": "miserable",
+    "meaning": "비참한",
+    "level": "advanced",
+    "category": "감정",
+    "examples": [
+      {
+        "text": "I feel miserable today.",
+        "translation": "오늘 기분이 비참해."
+      },
+      {
+        "text": "The weather is making me miserable.",
+        "translation": "날씨 때문에 기분이 영 별로야."
+      }
+    ]
+  },
+  {
+    "word": "shocked",
+    "meaning": "충격받은",
+    "level": "intermediate",
+    "category": "감정",
+    "examples": [
+      {
+        "text": "I'm shocked by the news.",
+        "translation": "그 뉴스에 충격받았어."
+      },
+      {
+        "text": "Everyone was shocked.",
+        "translation": "모두가 충격을 받았어."
+      }
+    ]
+  },
+  {
+    "word": "delighted",
+    "meaning": "기뻐하는",
+    "level": "advanced",
+    "category": "감정",
+    "examples": [
+      {
+        "text": "I'm delighted to meet you.",
+        "translation": "만나서 반가워요."
+      },
+      {
+        "text": "She was delighted with the gift.",
+        "translation": "그녀는 선물에 매우 기뻐했어."
+      }
+    ]
+  },
+  {
+    "word": "jealous",
+    "meaning": "질투하는",
+    "level": "intermediate",
+    "category": "감정",
+    "examples": [
+      {
+        "text": "I'm a little jealous.",
+        "translation": "나 좀 질투나."
+      },
+      {
+        "text": "Don't be jealous!",
+        "translation": "질투하지 마!"
+      }
+    ]
+  },
+  {
+    "word": "homesick",
+    "meaning": "향수병의",
+    "level": "intermediate",
+    "category": "감정",
+    "examples": [
+      {
+        "text": "I'm feeling homesick.",
+        "translation": "향수병이 느껴져."
+      },
+      {
+        "text": "She got homesick while studying abroad.",
+        "translation": "그녀는 유학 중에 향수병을 느꼈어."
+      }
+    ]
+  },
+  {
+    "word": "terrified",
+    "meaning": "겁에 질린",
+    "level": "advanced",
+    "category": "감정",
+    "examples": [
+      {
+        "text": "I'm terrified of spiders.",
+        "translation": "나 거미가 진짜 무서워."
+      },
+      {
+        "text": "He looked terrified.",
+        "translation": "그는 겁에 질린 것처럼 보였어."
+      }
+    ]
+  },
+  {
+    "word": "ashamed",
+    "meaning": "부끄러운",
+    "level": "advanced",
+    "category": "감정",
+    "examples": [
+      {
+        "text": "I'm ashamed of what I did.",
+        "translation": "내가 한 일이 부끄러워."
+      },
+      {
+        "text": "You should be ashamed!",
+        "translation": "부끄러운 줄 알아야지!"
+      }
+    ]
+  },
+  {
+    "word": "proud",
+    "meaning": "자랑스러운",
+    "level": "beginner",
+    "category": "감정",
+    "examples": [
+      {
+        "text": "I'm so proud of you!",
+        "translation": "너 정말 자랑스러워!"
+      },
+      {
+        "text": "She's proud of her achievements.",
+        "translation": "그녀는 자신의 성취에 자랑스러워해."
+      }
+    ]
+  },
+  {
+    "word": "engineer",
+    "meaning": "엔지니어",
+    "level": "beginner",
+    "category": "직업",
+    "examples": [
+      {
+        "text": "He's a software engineer.",
+        "translation": "그는 소프트웨어 엔지니어야."
+      },
+      {
+        "text": "I want to become an engineer.",
+        "translation": "나 엔지니어가 되고 싶어."
+      }
+    ]
+  },
+  {
+    "word": "lawyer",
+    "meaning": "변호사",
+    "level": "beginner",
+    "category": "직업",
+    "examples": [
+      {
+        "text": "She's a lawyer.",
+        "translation": "그녀는 변호사야."
+      },
+      {
+        "text": "I need to consult a lawyer.",
+        "translation": "변호사와 상담해야 해."
+      }
+    ]
+  },
+  {
+    "word": "accountant",
+    "meaning": "회계사",
+    "level": "intermediate",
+    "category": "직업",
+    "examples": [
+      {
+        "text": "My accountant does my taxes.",
+        "translation": "내 회계사가 세금 처리해줘."
+      },
+      {
+        "text": "She works as an accountant.",
+        "translation": "그녀는 회계사로 일해."
+      }
+    ]
+  },
+  {
+    "word": "architect",
+    "meaning": "건축가",
+    "level": "intermediate",
+    "category": "직업",
+    "examples": [
+      {
+        "text": "He's a famous architect.",
+        "translation": "그는 유명한 건축가야."
+      },
+      {
+        "text": "The architect designed this building.",
+        "translation": "건축가가 이 건물을 설계했어."
+      }
+    ]
+  },
+  {
+    "word": "chef",
+    "meaning": "요리사",
+    "level": "beginner",
+    "category": "직업",
+    "examples": [
+      {
+        "text": "She's a professional chef.",
+        "translation": "그녀는 전문 요리사야."
+      },
+      {
+        "text": "The chef prepared a special meal.",
+        "translation": "요리사가 특별한 식사를 준비했어."
+      }
+    ]
+  },
+  {
+    "word": "nurse",
+    "meaning": "간호사",
+    "level": "beginner",
+    "category": "직업",
+    "examples": [
+      {
+        "text": "My sister is a nurse.",
+        "translation": "내 여동생은 간호사야."
+      },
+      {
+        "text": "The nurse was very kind.",
+        "translation": "간호사가 매우 친절했어."
+      }
+    ]
+  },
+  {
+    "word": "pharmacist",
+    "meaning": "약사",
+    "level": "intermediate",
+    "category": "직업",
+    "examples": [
+      {
+        "text": "Ask the pharmacist for advice.",
+        "translation": "약사에게 조언을 구해."
+      },
+      {
+        "text": "She's studying to be a pharmacist.",
+        "translation": "그녀는 약사가 되기 위해 공부하고 있어."
+      }
+    ]
+  },
+  {
+    "word": "journalist",
+    "meaning": "기자",
+    "level": "intermediate",
+    "category": "직업",
+    "examples": [
+      {
+        "text": "He's a journalist for a major newspaper.",
+        "translation": "그는 주요 신문사의 기자야."
+      },
+      {
+        "text": "Journalists are investigating the story.",
+        "translation": "기자들이 그 사건을 조사하고 있어."
+      }
+    ]
+  },
+  {
+    "word": "entrepreneur",
+    "meaning": "기업가",
+    "level": "advanced",
+    "category": "직업",
+    "examples": [
+      {
+        "text": "She's a successful entrepreneur.",
+        "translation": "그녀는 성공한 기업가야."
+      },
+      {
+        "text": "He became an entrepreneur at 25.",
+        "translation": "그는 25살에 기업가가 됐어."
+      }
+    ]
+  },
+  {
+    "word": "consultant",
+    "meaning": "컨설턴트",
+    "level": "advanced",
+    "category": "직업",
+    "examples": [
+      {
+        "text": "We hired a consultant.",
+        "translation": "우리는 컨설턴트를 고용했어."
+      },
+      {
+        "text": "She works as a business consultant.",
+        "translation": "그녀는 비즈니스 컨설턴트로 일해."
+      }
+    ]
+  },
+  {
+    "word": "outgoing",
+    "meaning": "외향적인",
+    "level": "intermediate",
+    "category": "성격",
+    "examples": [
+      {
+        "text": "She's very outgoing.",
+        "translation": "그녀는 매우 외향적이야."
+      },
+      {
+        "text": "I wish I were more outgoing.",
+        "translation": "나도 더 외향적이면 좋겠어."
+      }
+    ]
+  },
+  {
+    "word": "shy",
+    "meaning": "수줍은",
+    "level": "beginner",
+    "category": "성격",
+    "examples": [
+      {
+        "text": "He's a bit shy.",
+        "translation": "그는 좀 수줍음을 타."
+      },
+      {
+        "text": "Don't be shy!",
+        "translation": "수줍어하지 마!"
+      }
+    ]
+  },
+  {
+    "word": "generous",
+    "meaning": "너그러운, 관대한",
+    "level": "intermediate",
+    "category": "성격",
+    "examples": [
+      {
+        "text": "That's very generous of you.",
+        "translation": "정말 너그러우시네요."
+      },
+      {
+        "text": "She's generous with her time.",
+        "translation": "그녀는 시간을 아낌없이 내줘."
+      }
+    ]
+  },
+  {
+    "word": "stubborn",
+    "meaning": "고집센",
+    "level": "intermediate",
+    "category": "성격",
+    "examples": [
+      {
+        "text": "He can be really stubborn.",
+        "translation": "그는 정말 고집셀 수 있어."
+      },
+      {
+        "text": "Don't be so stubborn!",
+        "translation": "그렇게 고집부리지 마!"
+      }
+    ]
+  },
+  {
+    "word": "ambitious",
+    "meaning": "야심 찬",
+    "level": "advanced",
+    "category": "성격",
+    "examples": [
+      {
+        "text": "She's very ambitious.",
+        "translation": "그녀는 매우 야심 차."
+      },
+      {
+        "text": "He has ambitious goals.",
+        "translation": "그는 야심 찬 목표를 가지고 있어."
+      }
+    ]
+  },
+  {
+    "word": "patient",
+    "meaning": "인내심 있는",
+    "level": "intermediate",
+    "category": "성격",
+    "examples": [
+      {
+        "text": "You need to be patient.",
+        "translation": "인내심을 가져야 해."
+      },
+      {
+        "text": "She's very patient with children.",
+        "translation": "그녀는 아이들에게 매우 인내심이 있어."
+      }
+    ]
+  },
+  {
+    "word": "honest",
+    "meaning": "정직한",
+    "level": "beginner",
+    "category": "성격",
+    "examples": [
+      {
+        "text": "He's very honest.",
+        "translation": "그는 매우 정직해."
+      },
+      {
+        "text": "I appreciate your honesty.",
+        "translation": "당신의 정직함에 감사해요."
+      }
+    ]
+  },
+  {
+    "word": "creative",
+    "meaning": "창의적인",
+    "level": "intermediate",
+    "category": "성격",
+    "examples": [
+      {
+        "text": "You're so creative!",
+        "translation": "너 정말 창의적이야!"
+      },
+      {
+        "text": "We need creative solutions.",
+        "translation": "창의적인 해결책이 필요해."
+      }
+    ]
+  },
+  {
+    "word": "reliable",
+    "meaning": "믿을 수 있는",
+    "level": "intermediate",
+    "category": "성격",
+    "examples": [
+      {
+        "text": "She's very reliable.",
+        "translation": "그녀는 매우 믿을 수 있어."
+      },
+      {
+        "text": "I need a reliable partner.",
+        "translation": "믿을 수 있는 파트너가 필요해."
+      }
+    ]
+  },
+  {
+    "word": "optimistic",
+    "meaning": "낙관적인",
+    "level": "advanced",
+    "category": "성격",
+    "examples": [
+      {
+        "text": "He's always optimistic.",
+        "translation": "그는 항상 낙관적이야."
+      },
+      {
+        "text": "Try to be more optimistic.",
+        "translation": "좀 더 낙관적이려고 노력해봐."
       }
     ]
   }
