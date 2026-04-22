@@ -8,7 +8,7 @@ export const Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDi
     <div
       ref={ref}
       className={cn(
-        "card-tactile text-foreground",
+        "card-tactile",
         className
       )}
       {...props}
@@ -33,7 +33,7 @@ export const CardTitle = React.forwardRef<HTMLParagraphElement, React.HTMLAttrib
     <h3
       ref={ref}
       className={cn(
-        "text-4xl font-black leading-none tracking-tighter text-black uppercase border-b-8 border-black pb-4 mb-4 inline-block font-cartoon drop-shadow-[2px_2px_0_#fff]",
+        "text-4xl font-black leading-none tracking-tighter text-current uppercase border-b-8 border-current pb-4 mb-4 inline-block font-cartoon",
         className
       )}
       {...props}

@@ -6,6 +6,7 @@ export type LessonStepType =
   | "listening_quiz"
   | "choice_quiz"
   | "typing_exact"
+  | "fill_blank"
   | "sentence_build"
   | "speaking"
   | "result";
@@ -16,6 +17,7 @@ export type LessonStep =
   | { type: "listening_quiz"; answer: string; options: string[]; prompt?: string }
   | { type: "choice_quiz"; word: Word; options: string[] }
   | { type: "typing_exact"; word: Word }
+  | { type: "fill_blank"; word: Word; sentence: string; blankedSentence: string }
   | { type: "sentence_build"; word: Word }
   | { type: "speaking"; expectedSentence: string }
   | { type: "result" };

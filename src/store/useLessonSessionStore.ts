@@ -15,6 +15,7 @@ type LessonSessionState = {
   next: () => void;
   restart: () => void;
   pushToReview: (item: ReviewItem) => void;
+  removeFromReview: (item: ReviewItem) => void;
   clearReview: () => void;
 };
 
@@ -47,7 +48,12 @@ export const useLessonSessionStore = create<LessonSessionState>()(
       },
 
       restart: () => {
-        set({ stepIndex: 0, startedAt: Date.now(), completedAt: null });
+        set({
+          steps: [{ type: 'intro' }],
+          stepIndex: 0,
+          startedAt: null,
+          completedAt: null,
+        });
       },
 
       pushToReview: (item) =>
@@ -56,6 +62,12 @@ export const useLessonSessionStore = create<LessonSessionState>()(
           const key = reviewKey(item);
           const nextQueue = [item, ...state.reviewQueue.filter((i) => reviewKey(i) !== key)].slice(0, 50);
           return { reviewQueue: nextQueue };
+        }),
+
+      removeFromReview: (item) =>
+        set((state) => {
+          const key = reviewKey(item);
+          return { reviewQueue: state.reviewQueue.filter((i) => reviewKey(i) !== key) };
         }),
 
       clearReview: () => set({ reviewQueue: [] }),

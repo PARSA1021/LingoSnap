@@ -75,13 +75,17 @@
   --accent: #549EBD;
   --accent-foreground: #FFFFFF;
 
-  --success: #67AC5B; 
+  --success: #2D6A4F; /* Darker green for light mode */
+  --success-foreground: #FFFFFF;
   --success-shadow: #000000;
-  --error: #E53B2F;
+  --error: #C92A2A; /* High contrast red */
+  --error-foreground: #FFFFFF;
   --error-shadow: #000000;
-  --warning: #F3BC2E; 
+  --warning: #E67E22; /* High contrast orange/amber */
+  --warning-foreground: #FFFFFF;
   --warning-shadow: #000000;
-  --info: #549EBD; 
+  --info: #1864AB; /* High contrast blue */
+  --info-foreground: #FFFFFF;
   --info-shadow: #000000;
 
   --tactile-shadow-opacity: 1;
@@ -113,12 +117,16 @@
   --accent-foreground: #DCCFB8;
 
   --success: #4C6A40;
+  --success-foreground: #FFFFFF;
   --success-shadow: #0A0908;
   --error: #A12222;
+  --error-foreground: #FFFFFF;
   --error-shadow: #0A0908;
   --warning: #A67325;
+  --warning-foreground: #000000;
   --warning-shadow: #0A0908;
   --info: #335C74;
+  --info-foreground: #FFFFFF;
   --info-shadow: #0A0908;
 
   --tactile-shadow-opacity: 1;
@@ -217,7 +225,6 @@ body::before {
 .card-tactile {
   border: 8px solid var(--border);
   border-radius: 0;
-  background-color: var(--surface);
   box-shadow: 12px 12px 0px 0px var(--border);
   animation: none; /* remove fade in for more raw feel */
 }

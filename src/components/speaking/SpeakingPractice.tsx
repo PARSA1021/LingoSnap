@@ -30,6 +30,7 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
   const [status, setStatus] = React.useState<'idle' | 'evaluating' | 'success' | 'failed'>('idle');
   const [grammarErrors, setGrammarErrors] = React.useState<GrammarError[]>([]);
   const [errorMsg, setErrorMsg] = React.useState<string | null>(null);
+  const [showManualInput, setShowManualInput] = React.useState(false);
   const [manualText, setManualText] = React.useState('');
 
   const words = React.useMemo(() => expectedSentence.split(' '), [expectedSentence]);
@@ -50,11 +51,14 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
       lang: 'en-US',
       onResult: (text: string) => setTranscript(text),
       onError: (err: string) => {
-        console.error(err);
-        if (err === 'not-allowed') {
-          setErrorMsg('마이크 접근 권한이 없어요.');
+        console.warn('Speech Recognition Error:', err);
+        if (err === 'not-allowed' || err === 'service-not-allowed') {
+          setErrorMsg('마이크 접근 권한이 거부되었거나 지원되지 않습니다.');
+          setShowManualInput(true); // 권한 거부 시 직접 입력 활성화
+        } else if (err === 'network') {
+          setErrorMsg('네트워크 연결을 확인해주세요.');
         } else {
-          setErrorMsg(`오류 발생: ${err}`);
+          setErrorMsg(`음성 인식 오류: ${err}`);
         }
       },
       onEnd: () => setIsRecording(false)
@@ -123,46 +127,85 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
           </div>
         </div>
 
-        {/* Mic Control */}
-        <div className="relative flex flex-col items-center pt-4">
-          {speechService?.supported() ? (
-            <Button
-              aria-label={isRecording ? "Stop recording" : "Microphone"}
-              className={cn(
-                "w-28 h-28 sm:w-40 sm:h-40 rounded-full relative transition-all border-4 sm:border-8 border-border shadow-[6px_6px_0_var(--border)] sm:shadow-[10px_10px_0_var(--border)] active:translate-y-2 active:translate-x-2 active:shadow-none wobbly",
-                isRecording 
-                  ? 'bg-error text-white' 
-                  : 'bg-primary text-white'
-              )}
-              onClick={isRecording ? handleStopRecording : handleStartRecording}
-            >
-              {isRecording ? <Square className="w-16 h-16" /> : <Mic className="w-16 h-16" />}
-            </Button>
-          ) : (
-            <div className="w-full max-w-lg space-y-3">
-              <p className="text-sm font-black text-muted-foreground">
-                이 브라우저는 음성 인식을 지원하지 않아, 텍스트로 대신할 수 있어요.
+        {/* Mic Control or Manual Fallback */}
+        <div className="relative flex flex-col items-center pt-4 w-full">
+          {speechService?.supported() && !showManualInput ? (
+            <>
+              <Button
+                aria-label={isRecording ? "Stop recording" : "Microphone"}
+                className={cn(
+                  "w-28 h-28 sm:w-40 sm:h-40 rounded-full relative transition-all border-4 sm:border-8 border-border shadow-[6px_6px_0_var(--border)] sm:shadow-[10px_10px_0_var(--border)] active:translate-y-2 active:translate-x-2 active:shadow-none wobbly",
+                  isRecording 
+                    ? 'bg-error text-white' 
+                    : 'bg-primary text-white'
+                )}
+                onClick={isRecording ? handleStopRecording : handleStartRecording}
+              >
+                {isRecording ? <Square className="w-16 h-16" /> : <Mic className="w-16 h-16" />}
+              </Button>
+              <p className={`mt-10 font-black tracking-tight uppercase text-sm ${isRecording ? 'text-error animate-pulse' : 'text-muted-foreground'}`}>
+                {isRecording ? '듣는 중... 완료하려면 버튼 클릭' : '마이크를 눌러 시작'}
               </p>
+              
+              <button 
+                onClick={() => setShowManualInput(true)}
+                className="mt-4 text-xs font-black text-muted-foreground underline underline-offset-4 hover:text-foreground transition-colors"
+              >
+                키보드로 직접 입력할래요
+              </button>
+            </>
+          ) : (
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="w-full max-w-lg space-y-4 bg-muted/30 p-6 rounded-3xl border-4 border-dashed border-border"
+            >
+              <div className="flex items-center gap-2 mb-2">
+                <Square className="w-4 h-4 text-primary" />
+                <p className="text-sm font-black text-foreground">
+                  직접 입력하기
+                </p>
+              </div>
               <Input
                 value={manualText}
                 onChange={(e) => setManualText(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && manualText.trim() && evaluateSpeech()}
                 placeholder="방금 말한 문장을 입력하세요"
+                className="h-14 text-lg border-4 border-border rounded-xl font-bold bg-background"
+                autoFocus
               />
-              <Button
-                onClick={() => {
-                  if (!manualText.trim()) return;
-                  evaluateSpeech();
-                }}
-                className="h-12 font-black w-full"
-              >
-                제출
-              </Button>
-            </div>
+              <div className="flex gap-2">
+                <Button
+                  onClick={() => {
+                    if (!manualText.trim()) return;
+                    evaluateSpeech();
+                  }}
+                  className="h-14 font-black flex-1 text-lg shadow-[4px_4px_0_var(--border)] active:translate-y-1 active:shadow-none transition-all"
+                >
+                  확인
+                </Button>
+                {speechService?.supported() && (
+                  <Button
+                    variant="secondary"
+                    onClick={() => {
+                      setShowManualInput(false);
+                      setErrorMsg(null);
+                    }}
+                    className="h-14 px-4 font-black"
+                    title="마이크 다시 시도"
+                  >
+                    <Mic className="w-5 h-5" />
+                  </Button>
+                )}
+              </div>
+              {errorMsg && (
+                <p className="text-[11px] font-bold text-error mt-2">
+                  ℹ️ {errorMsg}
+                </p>
+              )}
+            </motion.div>
           )}
-          <p className={`mt-10 font-black tracking-tight uppercase text-sm ${isRecording ? 'text-error animate-pulse' : 'text-muted-foreground'}`}>
-            {isRecording ? '듣는 중... 완료하려면 버튼 클릭' : '마이크를 눌러 시작'}
-          </p>
-          {errorMsg && <p className="mt-4 text-error font-bold text-sm bg-error/5 px-4 py-2 rounded-xl">{errorMsg}</p>}
+          {errorMsg && !showManualInput && <p className="mt-4 text-error font-bold text-sm bg-error/5 px-4 py-2 rounded-xl">{errorMsg}</p>}
         </div>
 
         {/* Feedback Section */}
