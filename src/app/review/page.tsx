@@ -6,13 +6,15 @@ import { Button } from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
 import { RotateCcw, ArrowRight, Trash2, X, Volume2, BookOpen } from 'lucide-react';
 import { useLessonSessionStore } from '@/store/useLessonSessionStore';
-import { speak } from '@/lib/tts';
+import { useTTS } from '@/hooks/useTTS';
+import { cn } from '@/lib/utils/cn';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function ReviewPage() {
   const reviewQueue = useLessonSessionStore(s => s.reviewQueue);
   const removeFromReview = useLessonSessionStore(s => s.removeFromReview);
   const clearReview = useLessonSessionStore(s => s.clearReview);
+  const { speak, isPlaying } = useTTS();
 
   return (
     <div className="flex-1 w-full max-w-4xl mx-auto px-4 py-10 sm:py-16 space-y-10">
@@ -131,9 +133,12 @@ export default function ReviewPage() {
                       <div className="flex items-center gap-2 shrink-0">
                          <button
                            onClick={() => speak(title)}
-                           className="h-10 w-10 rounded-full border-2 border-border flex items-center justify-center hover:border-primary hover:bg-primary/5 transition-colors"
+                           className={cn(
+                             "h-10 w-10 rounded-full border-2 border-border flex items-center justify-center transition-all",
+                             isPlaying ? "border-primary text-primary bg-primary/5 shadow-none" : "hover:border-primary hover:bg-primary/5"
+                           )}
                          >
-                            <Volume2 className="w-4 h-4" />
+                            <Volume2 className={cn("w-4 h-4", isPlaying && "animate-pulse")} />
                          </button>
                          <button
                            onClick={() => removeFromReview(item)}

@@ -6,7 +6,8 @@ import { Button } from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
 import { SpeakingPractice } from '@/components/speaking/SpeakingPractice';
 import { getRandomElements } from '@/lib/utils/random';
-import { speak } from '@/lib/tts';
+import { useTTS } from '@/hooks/useTTS';
+import { cn } from '@/lib/utils/cn';
 import { useLessonSessionStore } from '@/store/useLessonSessionStore';
 import type { LessonStep, ReviewItem } from '@/types/lesson';
 import type { Word } from '@/types';
@@ -260,9 +261,10 @@ const CATEGORY_COLORS: Record<string, string> = {
 };
 
 function WordRevealStep({ word, onNext }: { word: Word; onNext: () => void }) {
-  const [revealed, setRevealed] = React.useState(false);
+  const { speak, isPlaying } = useTTS();
   const w = word as Word & { category?: string; level?: string };
   const catColor = CATEGORY_COLORS[w.category ?? ''] ?? 'bg-muted text-muted-foreground border-border';
+  const [revealed, setRevealed] = React.useState(false);
 
   const reveal = () => {
     setRevealed(true);
@@ -290,8 +292,8 @@ function WordRevealStep({ word, onNext }: { word: Word; onNext: () => void }) {
             <h2 className="text-5xl sm:text-6xl font-black text-foreground tracking-tight">
               {word.word}
             </h2>
-            <IconButton onClick={() => speak(word.word)} label="발음 듣기" className="h-12 w-12">
-              <Volume2 className="w-6 h-6" />
+            <IconButton onClick={() => speak(word.word)} label="발음 듣기" className={cn("h-12 w-12", isPlaying && "border-primary text-primary bg-primary/5")}>
+              <Volume2 className={cn("w-6 h-6", isPlaying && "animate-pulse")} />
             </IconButton>
           </div>
         </div>
@@ -320,9 +322,12 @@ function WordRevealStep({ word, onNext }: { word: Word; onNext: () => void }) {
                 <IconButton
                   onClick={() => speak(word.example!)}
                   label="예문 듣기"
-                  className="absolute top-4 right-4 opacity-40 group-hover:opacity-100 transition-opacity"
+                  className={cn(
+                    "absolute top-4 right-4 transition-all",
+                    isPlaying ? "opacity-100 border-primary text-primary" : "opacity-40 group-hover:opacity-100"
+                  )}
                 >
-                  <Volume2 className="w-4 h-4" />
+                  <Volume2 className={cn("w-4 h-4", isPlaying && "animate-pulse")} />
                 </IconButton>
                 {word.exampleTranslation && (
                   <p className="text-base text-muted-foreground font-bold border-t border-border/50 pt-2">
@@ -418,10 +423,15 @@ function ListeningQuizStep({
   answer: string; options: string[]; prompt?: string;
   onCorrect: () => void; onWrong: () => void;
 }) {
+  const { speak, isPlaying, isLoading } = useTTS();
   const [selected, setSelected] = React.useState<string | null>(null);
   const [submitted, setSubmitted] = React.useState(false);
 
-  React.useEffect(() => { speak(answer); }, [answer]);
+  React.useEffect(() => { 
+    // Small delay to ensure browser readiness
+    const t = setTimeout(() => speak(answer), 300);
+    return () => clearTimeout(t);
+  }, [answer, speak]);
 
   const handleSelect = (opt: string) => {
     if (submitted) return;
@@ -443,9 +453,14 @@ function ListeningQuizStep({
         <div className="flex justify-center py-6">
           <button
             onClick={() => speak(answer)}
-            className="w-32 h-32 sm:w-40 sm:h-40 rounded-[2.5rem] bg-primary text-primary-foreground border-4 border-border shadow-[8px_8px_0_var(--border)] flex items-center justify-center hover:-translate-y-1 active:translate-y-1 active:shadow-none transition-all wobbly"
+            disabled={isLoading}
+            className={cn(
+              "w-32 h-32 sm:w-40 sm:h-40 rounded-[2.5rem] border-4 border-border shadow-[8px_8px_0_var(--border)] flex items-center justify-center hover:-translate-y-1 active:translate-y-1 active:shadow-none transition-all wobbly",
+              isPlaying ? "bg-secondary text-white" : "bg-primary text-primary-foreground",
+              isLoading && "opacity-50 animate-pulse"
+            )}
           >
-            <Volume2 className="w-16 h-16 sm:w-20 sm:h-20" />
+            <Volume2 className={cn("w-16 h-16 sm:w-20 sm:h-20", isPlaying && "animate-pulse")} />
           </button>
         </div>
 
@@ -487,6 +502,7 @@ function FillBlankStep({
   word: Word; sentence: string; blanked: string;
   onCorrect: () => void; onWrong: () => void;
 }) {
+  const { speak, isPlaying } = useTTS();
   const [value, setValue] = React.useState('');
   const [submitted, setSubmitted] = React.useState(false);
   const inputRef = React.useRef<HTMLInputElement>(null);
@@ -552,9 +568,13 @@ function FillBlankStep({
           <Button 
             variant="secondary" 
             onClick={() => speak(sentence)} 
-            className="h-16 w-16 p-0 rounded-2xl border-4 border-border shadow-none hover:border-primary shrink-0"
+            className={cn(
+              "h-16 w-16 p-0 rounded-2xl border-4 border-border shadow-none transition-all",
+              isPlaying ? "border-primary text-primary bg-primary/5" : "hover:border-primary"
+            )}
+            disabled={submitted}
           >
-            <Volume2 className="w-8 h-8" />
+            <Volume2 className={cn("w-8 h-8", isPlaying && "animate-pulse")} />
           </Button>
         </div>
 
@@ -595,6 +615,7 @@ function SentenceBuildStep({
   word: Word; onCorrect: () => void; onWrong: () => void;
 }) {
   const target = word.word.toLowerCase();
+  const { speak, isPlaying } = useTTS();
   const [value, setValue] = React.useState('');
   const [submitted, setSubmitted] = React.useState(false);
   const [hintLevel, setHintLevel] = React.useState(0); // 0: none, 1: translation, 2: example
@@ -707,8 +728,12 @@ function SentenceBuildStep({
             </p>
             <div className="flex items-center gap-3">
               <span className="text-4xl sm:text-5xl font-black text-foreground">{word.word}</span>
-              <IconButton onClick={() => speak(word.word)} label="발음 듣기" className="h-10 w-10">
-                <Volume2 className="w-5 h-5" />
+              <IconButton 
+                onClick={() => speak(word.word)} 
+                label="발음 듣기" 
+                className={cn("h-10 w-10", isPlaying && "border-primary text-primary bg-primary/5")}
+              >
+                <Volume2 className={cn("w-5 h-5", isPlaying && "animate-pulse")} />
               </IconButton>
             </div>
             <p className="text-lg text-primary font-black">{word.meaning}</p>
@@ -767,10 +792,10 @@ function SentenceBuildStep({
                   </div>
                   {hintLevel >= 2 && word.example && (
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-sm font-bold text-blue-700 bg-blue-50 px-4 py-3 rounded-2xl border-2 border-blue-200 flex items-start gap-3">
-                       <div className="mt-0.5 bg-blue-200 p-1 rounded-lg"><Volume2 className="w-3.5 h-3.5 text-blue-700" /></div>
+                       <div className="mt-0.5 bg-blue-200 p-1 rounded-lg"><Volume2 className={cn("w-3.5 h-3.5 text-blue-700", isPlaying && "animate-pulse")} /></div>
                        <div>
                          <p className="text-xs uppercase font-black opacity-60 mb-0.5">참고 예문</p>
-                         <p className="italic underline cursor-pointer" onClick={() => speak(word.example!)}>&quot;{word.example}&quot;</p>
+                         <p className={cn("italic underline cursor-pointer", isPlaying && "text-primary")} onClick={() => speak(word.example!)}>&quot;{word.example}&quot;</p>
                        </div>
                     </motion.div>
                   )}
@@ -846,8 +871,12 @@ function SentenceBuildStep({
                   <p className="text-[10px] font-black text-muted-foreground uppercase tracking-tighter">링고스냅 추천 표현</p>
                   <p className="font-bold text-foreground italic flex items-center justify-between gap-3">
                     <span>&quot;{word.example}&quot;</span>
-                    <IconButton onClick={() => speak(word.example!)} label="듣기" className="h-8 w-8 shrink-0">
-                       <Volume2 className="w-4 h-4" />
+                    <IconButton 
+                      onClick={() => speak(word.example!)} 
+                      label="듣기" 
+                      className={cn("h-8 w-8 shrink-0", isPlaying && "border-primary text-primary bg-primary/5")}
+                    >
+                       <Volume2 className={cn("w-4 h-4", isPlaying && "animate-pulse")} />
                     </IconButton>
                   </p>
                 </div>
