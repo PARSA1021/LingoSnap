@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Button } from '@/components/ui/Button';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Volume2, Sparkles, MousePointer2, ArrowRight } from 'lucide-react';
-import { speak } from '@/lib/tts';
+import { useTTS } from '@/hooks/useTTS';
 import { cn } from '@/lib/utils/cn';
 
 interface SentenceCompletionProps {
@@ -25,6 +25,7 @@ export function SentenceCompletion({ sentence, translation, targetWord, onSucces
   const [shake, setShake] = React.useState(false);
   const addPoints = useLearningStore(state => state.addPoints);
   const incrementLearnedWords = useLearningStore(state => state.incrementLearnedWords);
+  const { speak, isPlaying } = useTTS();
 
   // Split sentence to find the blank
   // We assume the targetWord or a variation is in the sentence
@@ -130,9 +131,12 @@ export function SentenceCompletion({ sentence, translation, targetWord, onSucces
           <Button 
             variant="ghost" 
             onClick={() => speak(targetWord)} 
-            className="flex items-center gap-3 border-4 border-border bg-surface shadow-[4px_4px_0_var(--border)] active:translate-y-1 font-cartoon text-sm uppercase text-foreground"
+            className={cn(
+              "flex items-center gap-3 border-4 border-border bg-surface shadow-[4px_4px_0_var(--border)] active:translate-y-1 font-cartoon text-sm uppercase transition-all",
+              isPlaying ? "text-primary border-primary shadow-none translate-y-1" : "text-foreground"
+            )}
           >
-            <Volume2 className="w-5 h-5 text-primary" /> Listen to missing word
+            <Volume2 className={cn("w-5 h-5", isPlaying && "text-primary fill-primary/20")} /> Listen to missing word
           </Button>
         </div>
         

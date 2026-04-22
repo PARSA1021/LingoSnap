@@ -5,7 +5,7 @@ import { Card, CardContent } from '../ui/Card';
 import { Button } from '../ui/Button';
 import { Mic, Square, Volume2, CheckCircle2, XCircle, RotateCcw, ArrowRight, Loader2 } from 'lucide-react';
 import { speechService } from '@/lib/speech';
-import { playTTS } from '@/lib/tts';
+import { useTTS } from '@/hooks/useTTS';
 import { checkGrammar } from '@/lib/grammar';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils/cn';
@@ -32,6 +32,7 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
   const [errorMsg, setErrorMsg] = React.useState<string | null>(null);
   const [showManualInput, setShowManualInput] = React.useState(false);
   const [manualText, setManualText] = React.useState('');
+  const { speak, isPlaying } = useTTS();
 
   const words = React.useMemo(() => expectedSentence.split(' '), [expectedSentence]);
 
@@ -117,7 +118,7 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
             </h2>
             <div className="mt-8">
                 <Button
-                  onClick={() => playTTS(expectedSentence)}
+                  onClick={() => speak(expectedSentence)}
                   aria-label="Play pronunciation"
                   className="rounded-2xl px-6 h-12 bg-surface text-foreground border-4 border-border shadow-[4px_4px_0_var(--border)] font-black hover:bg-muted active:translate-y-1 active:translate-x-1 active:shadow-none transition-all wobbly-slow"
                 >

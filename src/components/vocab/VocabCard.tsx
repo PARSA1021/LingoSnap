@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { Card, CardContent } from '../ui/Card';
 import { Volume2, ArrowRight, ArrowLeft, Star } from 'lucide-react';
-import { playTTS } from '@/lib/tts';
+import { useTTS } from '@/hooks/useTTS';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLearningStore } from '@/store/useLearningStore';
 import { cn } from '@/lib/utils/cn';
@@ -21,6 +21,7 @@ interface VocabCardProps {
 
 export function VocabCard({ word, onNext, onPrev, showPrev }: VocabCardProps) {
   const [showMeaning, setShowMeaning] = React.useState(true);
+  const { speak, isPlaying, isLoading } = useTTS();
 
   const toggleFavorite = useLearningStore(state => state.toggleFavorite);
   const favorites = useLearningStore(state => state.favorites);
@@ -53,10 +54,15 @@ export function VocabCard({ word, onNext, onPrev, showPrev }: VocabCardProps) {
             <motion.div key="visible" initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col items-center gap-2">
               <h2 className="text-4xl sm:text-5xl font-black text-black font-reading leading-tight italic">{word.word}</h2>
               <button 
-                onClick={() => playTTS(word.word)}
-                className="p-2 text-primary hover:scale-110 active:scale-95 transition-transform"
+                onClick={() => speak(word.word)}
+                disabled={isLoading}
+                className={cn(
+                  "p-2 transition-all hover:scale-110 active:scale-95",
+                  isPlaying ? "text-primary scale-110" : "text-black/40",
+                  isLoading && "opacity-50 animate-pulse"
+                )}
               >
-                <Volume2 className="h-6 w-6" />
+                <Volume2 className={cn("h-6 w-6", isPlaying && "fill-primary/20")} />
               </button>
             </motion.div>
           </AnimatePresence>

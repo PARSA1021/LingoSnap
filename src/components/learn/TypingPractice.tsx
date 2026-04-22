@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Button } from '@/components/ui/Button';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RefreshCw, Volume2, Lightbulb, Sparkles, Delete, ArrowRight } from 'lucide-react';
-import { speak } from '@/lib/tts';
+import { useTTS } from '@/hooks/useTTS';
 import { cn } from '@/lib/utils/cn';
 import { useLearningStore } from '@/store/useLearningStore';
 
@@ -37,6 +37,7 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
   const [shake, setShake] = React.useState(false);
   const [isDirectMode, setIsDirectMode] = React.useState(false);
   const [typedValue, setTypedValue] = React.useState('');
+  const { speak, isPlaying } = useTTS();
   
   const inputRef = React.useRef<HTMLInputElement>(null);
   const addPoints = useLearningStore(state => state.addPoints);
@@ -399,9 +400,12 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
         <Button 
           variant="secondary" 
           onClick={() => speak(word)} 
-          className="h-16 w-16 rounded-full border-4 border-border shadow-[4px_4px_0_var(--border)] bg-surface text-foreground active:translate-y-1 active:shadow-none transition-all"
+          className={cn(
+            "h-16 w-16 rounded-full border-4 border-border shadow-[4px_4px_0_var(--border)] bg-surface active:translate-y-1 active:shadow-none transition-all",
+            isPlaying ? "text-primary border-primary shadow-none translate-y-1" : "text-foreground"
+          )}
         >
-          <Volume2 className="w-8 h-8" />
+          <Volume2 className={cn("w-8 h-8", isPlaying && "fill-primary/20")} />
         </Button>
         <Button 
           variant="secondary" 

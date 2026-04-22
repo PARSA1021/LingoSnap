@@ -4,7 +4,7 @@ import * as React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ContentLine } from '@/data/contents';
 import { Play, Languages, Bookmark, Volume2, Info } from 'lucide-react';
-import { playTTS } from '@/lib/tts';
+import { useTTS } from '@/hooks/useTTS';
 import { useLearningStore } from '@/store/useLearningStore';
 import { cn } from '@/lib/utils/cn';
 import { Button } from '@/components/ui/Button';
@@ -17,6 +17,7 @@ interface ContentCardProps {
 
 export function ContentCard({ content, onWordClick, isQuizMode = false }: ContentCardProps) {
   const { savedContents, toggleSavedContent } = useLearningStore();
+  const { speak, isPlaying } = useTTS();
   const [showKo, setShowKo] = React.useState(false);
   const [showExplanation, setShowExplanation] = React.useState(false);
   const [hiddenWordIndices, setHiddenWordIndices] = React.useState<number[]>([]);
@@ -54,7 +55,7 @@ export function ContentCard({ content, onWordClick, isQuizMode = false }: Conten
     const cleanWord = wordRaw.replace(/[^a-zA-Z0-9-']/g, '');
     if (!cleanWord) return;
 
-    playTTS(cleanWord);
+    speak(cleanWord);
   };
 
   return (
@@ -141,7 +142,7 @@ export function ContentCard({ content, onWordClick, isQuizMode = false }: Conten
              <Button 
                variant="ghost" 
                size="sm" 
-               onClick={() => playTTS(content.expression || '')} 
+               onClick={() => speak(content.expression || '')} 
                className="h-8 w-8 border-2 border-black bg-white"
              >
                <Volume2 className="w-4 h-4" />
@@ -202,7 +203,7 @@ export function ContentCard({ content, onWordClick, isQuizMode = false }: Conten
           <Button
             variant="secondary"
             size="lg"
-            onClick={() => playTTS(content.line_en)}
+            onClick={() => speak(content.line_en)}
             className="flex-1 h-20 border-8 border-black text-2xl font-black bg-secondary text-white shadow-[8px_8px_0_#000] active:translate-y-2 active:translate-x-2 active:shadow-none transition-all uppercase font-cartoon"
             aria-label="Listen to full sentence"
           >

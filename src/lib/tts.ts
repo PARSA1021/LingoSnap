@@ -1,108 +1,192 @@
 'use client';
 
 /**
- * Master Stability TTS Utility
- * optimized for macOS Safari/Chrome.
+ * Robust Cross-Browser TTS Utility
+ * Handles:
+ * - Async voice loading (Chrome/Android)
+ * - User gesture unlocking
+ * - Chrome 'broken heart' engine freezes (resume loop)
+ * - Samsung Internet quirks
  */
 
-let isInitialized = false;
-let voiceCache: SpeechSynthesisVoice | null = null;
-let voicesReady = false;
-let lastSpokenAt = 0;
+export interface TTSOptions {
+  rate?: number;
+  pitch?: number;
+  volume?: number;
+  onStart?: () => void;
+  onEnd?: () => void;
+  onError?: (error: any) => void;
+}
 
-const initializeEngine = () => {
-  if (isInitialized) return;
-  if (typeof window === 'undefined' || !window.speechSynthesis) return;
+class TTSManager {
+  private static instance: TTSManager;
+  private synth: SpeechSynthesis | null = null;
+  private voices: SpeechSynthesisVoice[] = [];
+  private isInitialized = false;
+  private resumeInterval: any = null;
+  private lastText: string = '';
 
-  // Some browsers load voices asynchronously
-  const loadVoices = () => {
-    const voices = window.speechSynthesis.getVoices();
-    voicesReady = voices.length > 0;
-    if (!voiceCache && voicesReady) {
-      voiceCache = getNaturalVoice() ?? null;
+  private constructor() {
+    if (typeof window !== 'undefined' && window.speechSynthesis) {
+      this.synth = window.speechSynthesis;
+      this.initVoices();
     }
-  };
-
-  loadVoices();
-  window.speechSynthesis.addEventListener?.('voiceschanged', loadVoices);
-
-  // Priming the engine with a silent utterance to 'unlock' it
-  const prime = new SpeechSynthesisUtterance('');
-  prime.volume = 0;
-  window.speechSynthesis.speak(prime);
-  isInitialized = true;
-};
-
-const getNaturalVoice = () => {
-  if (typeof window === 'undefined' || !window.speechSynthesis) return null;
-  const voices = window.speechSynthesis.getVoices();
-  
-  // Preferred voices in order of quality/naturalness
-  const preferred = [
-    'Google US English', 
-    'Samantha',
-    'Karen',
-    'Daniel',
-    'Microsoft David'
-  ];
-  
-  for (const name of preferred) {
-    const voice = voices.find(v => v.name.includes(name) && v.lang.startsWith('en'));
-    if (voice) return voice;
-  }
-  
-  // Fallback to any en-US voice
-  return voices.find(v => v.lang.startsWith('en-US')) || voices.find(v => v.lang.startsWith('en'));
-};
-
-export const canSpeak = () => {
-  return typeof window !== 'undefined' && !!window.speechSynthesis;
-};
-
-export const speak = (text: string) => {
-  if (typeof window === 'undefined' || !window.speechSynthesis) return;
-
-  // Initialize if first run
-  if (!isInitialized) initializeEngine();
-
-  const now = Date.now();
-  if (now - lastSpokenAt < 120) {
-    // Prevent rapid double taps from cancelling itself on mobile
-    return;
-  }
-  lastSpokenAt = now;
-
-  // Cancel previous to cut off current speech
-  window.speechSynthesis.cancel();
-
-  // Create new utterance
-  const utterance = new SpeechSynthesisUtterance(text);
-  
-  // Select best voice
-  if (!voiceCache && voicesReady) {
-    voiceCache = getNaturalVoice() ?? null;
-  }
-  const voice = voiceCache || getNaturalVoice();
-  if (voice) {
-    utterance.voice = voice;
-    utterance.lang = voice.lang;
-  } else {
-    utterance.lang = 'en-US';
   }
 
-  utterance.rate = 1.0;
-  utterance.pitch = 1.0;
-  utterance.volume = 1.0;
+  public static getInstance(): TTSManager {
+    if (!TTSManager.instance) {
+      TTSManager.instance = new TTSManager();
+    }
+    return TTSManager.instance;
+  }
 
-  // Safari/Chrome Fix: Some versions need a tiny delay after cancel() before speak()
-  setTimeout(() => {
-    window.speechSynthesis.speak(utterance);
+  private initVoices() {
+    if (!this.synth) return;
+
+    const loadVoices = () => {
+      this.voices = this.synth!.getVoices();
+    };
+
+    loadVoices();
+    if (window.speechSynthesis) {
+      window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+  }
+
+  /**
+   * Unlocks the audio engine on first user interaction.
+   * Call this in a click handler.
+   */
+  public unlock(): void {
+    if (this.isInitialized || !this.synth) return;
     
-    // Resume in case the engine is stuck (Chrome specific)
-    if (window.speechSynthesis.paused) {
-      window.speechSynthesis.resume();
+    // Silent utterance to 'unlock' browser restriction
+    const utterance = new SpeechSynthesisUtterance('');
+    utterance.volume = 0;
+    this.synth.speak(utterance);
+    this.isInitialized = true;
+    console.log('[TTS] Engine Unlocked');
+  }
+
+  private getBestVoice(lang: string = 'en-US'): SpeechSynthesisVoice | null {
+    const voices = this.synth?.getVoices() || this.voices;
+    if (voices.length === 0) return null;
+
+    // Preference: Google US -> Samantha (iOS) -> Microsoft (PC)
+    const preferred = [
+      'Google US English',
+      'Samantha',
+      'Karen',
+      'Daniel',
+      'Microsoft David'
+    ];
+
+    for (const name of preferred) {
+      const v = voices.find(v => v.name.includes(name) && v.lang.startsWith('en'));
+      if (v) return v;
     }
-  }, 80);
+
+    return voices.find(v => v.lang.startsWith(lang)) || 
+           voices.find(v => v.lang.startsWith('en')) || 
+           voices[0];
+  }
+
+  private startResumeLoop() {
+    if (this.resumeInterval) clearInterval(this.resumeInterval);
+    this.resumeInterval = setInterval(() => {
+      if (this.synth?.speaking && !this.synth?.paused) {
+        this.synth.pause();
+        this.synth.resume();
+      }
+    }, 5000);
+  }
+
+  private stopResumeLoop() {
+    if (this.resumeInterval) {
+      clearInterval(this.resumeInterval);
+      this.resumeInterval = null;
+    }
+  }
+
+  public speak(text: string, options: TTSOptions = {}) {
+    if (!this.synth) {
+      options.onError?.('SpeechSynthesis not supported');
+      return;
+    }
+
+    // Samsung/Chrome optimization: Don't repeat identical text too fast
+    if (this.synth.speaking && text === this.lastText) {
+      return;
+    }
+    this.lastText = text;
+
+    // 1. Cancel current
+    this.synth.cancel();
+
+    // 2. Unlock if not yet (for some browsers that allow it here)
+    if (!this.isInitialized) this.unlock();
+
+    // 3. Safari/Chrome Fix: Small delay after cancel
+    setTimeout(() => {
+      const utterance = new SpeechSynthesisUtterance(text);
+      
+      const voice = this.getBestVoice();
+      if (voice) {
+        utterance.voice = voice;
+        utterance.lang = voice.lang;
+      } else {
+        utterance.lang = 'en-US';
+      }
+
+      utterance.rate = options.rate ?? 1.0;
+      utterance.pitch = options.pitch ?? 1.0;
+      utterance.volume = options.volume ?? 1.0;
+
+      utterance.onstart = () => {
+        this.startResumeLoop();
+        options.onStart?.();
+      };
+
+      utterance.onend = () => {
+        this.stopResumeLoop();
+        options.onEnd?.();
+      };
+
+      utterance.onerror = (event) => {
+        this.stopResumeLoop();
+        console.error('[TTS] Error:', event);
+        options.onError?.(event);
+      };
+
+      this.synth!.speak(utterance);
+      
+      // Chrome Fix: Ensure it's not paused
+      if (this.synth!.paused) {
+        this.synth!.resume();
+      }
+    }, 100);
+  }
+
+  public cancel() {
+    if (this.synth) {
+      this.synth.cancel();
+      this.stopResumeLoop();
+    }
+  }
+
+  public isSpeaking(): boolean {
+    return this.synth?.speaking || false;
+  }
+}
+
+export const ttsManager = typeof window !== 'undefined' ? TTSManager.getInstance() : null;
+
+// Kept for backward compatibility
+export const playTTS = (text: string) => {
+  if (ttsManager) {
+    ttsManager.speak(text);
+  }
 };
 
-export const playTTS = speak;
+export const canSpeak = () => !!ttsManager;
+export const speak = playTTS;
