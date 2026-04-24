@@ -109,8 +109,7 @@ class TTSManager {
   }
 
   public speak(text: string, options: TTSOptions = {}) {
-    if (!this.synth) {
-      options.onError?.('SpeechSynthesis not supported');
+    if (!this.synth || !text || text.trim() === '') {
       return;
     }
 
@@ -121,7 +120,11 @@ class TTSManager {
     this.lastText = text;
 
     // 1. Cancel current
-    this.synth.cancel();
+    try {
+      this.synth.cancel();
+    } catch (e) {
+      console.warn('[TTS] Cancel failed:', e);
+    }
 
     // 2. Unlock if not yet (for some browsers that allow it here)
     if (!this.isInitialized) this.unlock();
@@ -152,19 +155,31 @@ class TTSManager {
         options.onEnd?.();
       };
 
-      utterance.onerror = (event) => {
+      utterance.onerror = (event: any) => {
         this.stopResumeLoop();
-        console.error('[TTS] Error:', event);
+        
+        // Skip logging for normal interruptions
+        if (event.error === 'interrupted' || event.error === 'canceled') {
+          return;
+        }
+        
+        console.error('[TTS] Error Type:', event.error);
+        console.error('[TTS] Full Event:', event);
         options.onError?.(event);
       };
 
-      this.synth!.speak(utterance);
-      
-      // Chrome Fix: Ensure it's not paused
-      if (this.synth!.paused) {
-        this.synth!.resume();
+      try {
+        this.synth!.speak(utterance);
+        
+        // Chrome Fix: Ensure it's not paused
+        if (this.synth!.paused) {
+          this.synth!.resume();
+        }
+      } catch (e) {
+        console.error('[TTS] Speak failed:', e);
+        this.stopResumeLoop();
       }
-    }, 100);
+    }, 150);
   }
 
   public cancel() {

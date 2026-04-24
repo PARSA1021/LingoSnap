@@ -128,6 +128,7 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
       setStatus('success');
       addPoints(50);
       incrementLearnedWords();
+      onSuccess();
     } else if (newSelected.length === tiles.length) {
       setStatus('error');
       setShake(true);
@@ -165,6 +166,7 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
       setStatus('success');
       addPoints(50);
       incrementLearnedWords();
+      onSuccess();
     } else if (v.length >= targetWord.length && v.trim() !== targetWord.trim()) {
       // Basic check for completion error
       const isMismatch = v.split('').some((char, i) => targetWord[i] && char !== targetWord[i]);
@@ -252,28 +254,26 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
   }, [example, targetWord]);
 
   return (
-    <div className="w-full flex flex-col items-center space-y-6 py-6 max-w-2xl mx-auto px-4">
+    <div className="w-full flex flex-col items-center space-y-4 py-2 max-w-2xl mx-auto px-4">
       {/* Header Area */}
-      <div className="text-center space-y-4 w-full">
-        <div className="flex flex-col items-center gap-3">
-          <div className="flex items-center gap-3 bg-foreground text-background px-6 py-2 border-4 border-border shadow-[4px_4px_0_var(--border)] rotate-1">
-             <Sparkles className="w-5 h-5 text-amber-400" />
-             <span className="text-sm font-black tracking-[0.2em] font-cartoon">
-               Scene Construction {index + 1}/{total}
-             </span>
+      <div className="text-center space-y-2 w-full">
+        <div className="flex flex-col items-center gap-2">
+          <div className="flex items-center gap-2 bg-foreground text-background px-4 py-1 border-2 border-border shadow-[2px_2px_0_var(--border)]">
+             <Sparkles className="w-4 h-4 text-amber-400" />
+             <span className="text-[10px] font-black tracking-widest font-cartoon uppercase">단어 완성하기</span>
           </div>
           
            {example ? (
-            <div className="space-y-4 w-full px-4 pt-2">
+            <div className="space-y-2 w-full px-2">
                <div className={cn(
-                 "flex flex-wrap justify-center items-center gap-x-2 gap-y-2 font-black font-reading bg-surface/50 p-6 rounded-3xl border-4 border-dashed border-border/10",
-                 example.length > 60 ? "text-lg sm:text-xl" :
-                 example.length > 40 ? "text-xl sm:text-2xl" :
-                 "text-2xl sm:text-3xl"
+                 "flex flex-wrap justify-center items-center gap-x-1 gap-y-1 font-black font-reading bg-surface/50 p-3 rounded-2xl border-2 border-dashed border-border/10 italic",
+                 example.length > 60 ? "text-base sm:text-lg" :
+                 example.length > 40 ? "text-lg sm:text-xl" :
+                 "text-xl sm:text-2xl"
                )}>
                  {sentenceParts?.map((part, i) => (
                    part.toLowerCase() === targetWord.toLowerCase() ? (
-                     <span key={i} className="text-primary underline decoration-4 underline-offset-8 decoration-border/20">
+                     <span key={i} className="text-primary underline decoration-2 underline-offset-4">
                        {status === 'success' ? part : '____'}
                      </span>
                    ) : (
@@ -281,85 +281,75 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
                    )
                  ))}
                </div>
-               <p className={cn(
-                 "font-black text-primary font-reading italic drop-shadow-sm transition-all",
-                 isVeryLong ? "text-base" : "text-lg"
-               )}>
-                 &quot;{formatSentence(exampleTranslation || '')}&quot;
+               <p className="text-xs font-black text-primary font-reading italic leading-tight">
+                 &quot;{exampleTranslation}&quot;
                </p>
             </div>
           ) : (
-            <h2 className="text-4xl sm:text-5xl font-black text-primary font-cartoon drop-shadow-[3px_3px_0_var(--border)] leading-tight break-keep">
+            <h2 className="text-2xl sm:text-4xl font-black text-primary font-cartoon drop-shadow-sm">
               {formatWord(meaning)}
             </h2>
           )}
           
-          {/* Enhanced Mode Selector */}
-          <div className="grid grid-cols-2 gap-4 w-full max-w-xs mx-auto mt-4">
+          {/* Mode Selector */}
+          <div className="grid grid-cols-2 gap-3 w-full max-w-[200px] mx-auto mt-2">
              <button 
                onClick={() => handleModeToggle(false)}
                className={cn(
-                 "flex flex-col items-center gap-1.5 p-3 border-4 border-border transition-all rotate-1",
+                 "flex items-center justify-center gap-1.5 p-2 border-2 border-border transition-all",
                  !isDirectMode 
-                   ? "bg-foreground text-background shadow-none translate-y-1" 
-                   : "bg-surface text-foreground shadow-[4px_4px_0_var(--border)] hover:-translate-y-1"
+                   ? "bg-foreground text-background" 
+                   : "bg-surface text-foreground"
                )}
              >
-               <Sparkles className={cn("w-5 h-5", !isDirectMode ? "fill-amber-400" : "text-foreground")} />
-               <span className="text-[10px] font-black font-cartoon">Bubble Mode</span>
+               <Sparkles className={cn("w-3 h-3", !isDirectMode ? "fill-amber-400" : "text-foreground")} />
+               <span className="text-[10px] font-black font-cartoon uppercase">버블</span>
              </button>
              <button 
                onClick={() => handleModeToggle(true)}
                className={cn(
-                 "flex flex-col items-center gap-1.5 p-3 border-4 border-border transition-all -rotate-1",
+                 "flex items-center justify-center gap-1.5 p-2 border-2 border-border transition-all",
                  isDirectMode 
-                   ? "bg-foreground text-background shadow-none translate-y-1" 
-                   : "bg-surface text-foreground shadow-[4px_4px_0_var(--border)] hover:-translate-y-1"
+                   ? "bg-foreground text-background" 
+                   : "bg-surface text-foreground"
                )}
              >
-               <RefreshCw className={cn("w-5 h-5", isDirectMode ? "animate-spin-slow" : "")} />
-               <span className="text-[10px] font-black font-cartoon">Keyboard Mode</span>
+               <RefreshCw className={cn("w-3 h-3", isDirectMode ? "animate-spin-slow" : "")} />
+               <span className="text-[10px] font-black font-cartoon uppercase">키보드</span>
              </button>
           </div>
-
-          <p className="text-[10px] font-black text-foreground/40 tracking-[0.2em] font-reading mt-2">
-            {isDirectMode ? "Press 'Enter' to confirm when finished" : "Click the bubbles in the correct order"}
-          </p>
         </div>
       </div>
 
-      {/* Input / Slots Area */}
+      {/* Slots Area */}
       <div className={cn(
-        "w-full bg-surface border-8 border-border p-6 sm:p-10 shadow-[12px_12px_0_var(--border)] min-h-[140px] flex flex-wrap justify-center items-center gap-x-3 gap-y-6 transition-all",
+        "w-full bg-surface border-4 border-border p-4 sm:p-8 shadow-[6px_6px_0_var(--border)] min-h-[100px] flex flex-wrap justify-center items-center gap-x-2 gap-y-4 transition-all",
         shake && "animate-shake border-error",
         status === 'success' && "border-success bg-success/5"
       )}>
         {isDirectMode ? (
-          <div className="w-full relative px-4 py-4">
+          <div className="w-full relative px-4 py-2">
             <input
               ref={inputRef}
               autoFocus
               type="text"
               value={typedValue}
               onChange={(e) => handleInputChange(e.target.value)}
-              onKeyDown={(e) => e.key === 'Enter' && handleInputChange(typedValue)} // Manual trigger
               className={cn(
-                "w-full bg-transparent text-center font-black font-reading outline-none placeholder:text-black/5",
-                isVeryLong ? "text-2xl sm:text-4xl" :
-                isLong ? "text-3xl sm:text-5xl" :
-                "text-4xl sm:text-6xl"
+                "w-full bg-transparent text-center font-black font-reading italic outline-none placeholder:text-black/5",
+                isVeryLong ? "text-xl sm:text-2xl" :
+                isLong ? "text-2xl sm:text-3xl" :
+                "text-3xl sm:text-4xl"
               )}
               placeholder={targetWord.replace(/[a-zA-Z0-9]/g, '_')}
               spellCheck={false}
               autoComplete="off"
             />
-            <div className="absolute bottom-0 left-0 right-0 h-2 bg-foreground/10 mx-10" />
-            <div className="absolute bottom-0 left-0 h-2 bg-primary transition-all duration-300 mx-10" style={{ width: `${Math.min(100, (typedValue.length / targetWord.length) * 100)}%` }} />
+            <div className="absolute bottom-0 left-0 h-1 bg-primary transition-all duration-300 mx-8" style={{ width: `${Math.min(100, (typedValue.length / targetWord.length) * 100)}%` }} />
           </div>
         ) : (
-          /* Render words with gaps for spaces */
           targetWord.split(' ').map((wordPart, wordIdx) => (
-            <div key={wordIdx} className="flex gap-2 items-center">
+            <div key={wordIdx} className="flex gap-1.5 items-center">
               {wordPart.split('').map((char, charIdx) => {
                 const previousWordsLength = targetWord.split(' ').slice(0, wordIdx).join(' ').length;
                 const globalIdx = (wordIdx === 0 ? 0 : previousWordsLength + 1) + charIdx;
@@ -373,78 +363,67 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
                     layout
                     onClick={() => tile && handleRemove(nonSpaceBefore)}
                     className={cn(
-                      "border-b-8 border-border flex items-center justify-center font-black font-reading transition-all",
-                      isVeryLong ? "w-7 h-10 sm:w-11 sm:h-14 text-xl sm:text-2xl" :
-                      isLong ? "w-8 h-12 sm:w-13 sm:h-16 text-2xl sm:text-3xl" :
-                      "w-10 h-14 sm:w-16 sm:h-20 text-3xl sm:text-4xl",
-                      tile ? "bg-surface border-4 shadow-[4px_4px_0_var(--border)] cursor-pointer hover:bg-muted" : "border-border/10 cursor-default"
+                      "border-b-4 border-border flex items-center justify-center font-black font-reading transition-all italic",
+                      isVeryLong ? "w-6 h-8 sm:w-9 sm:h-11 text-lg sm:text-xl" :
+                      isLong ? "w-7 h-10 sm:w-11 sm:h-14 text-xl sm:text-2xl" :
+                      "w-9 h-12 sm:w-14 sm:h-18 text-2xl sm:text-3xl",
+                      tile ? "bg-surface border-2 shadow-[2px_2px_0_var(--border)]" : "border-border/10"
                     )}
-                    initial={false}
-                    animate={tile ? { scale: 1, y: 0 } : { scale: 0.95, y: 2 }}
                   >
                     {tile?.char}
                   </motion.button>
                 );
               })}
-              {wordIdx < targetWord.split(' ').length - 1 && (
-                <div className="w-4 h-12 flex items-center justify-center opacity-20">
-                  <div className="w-[4px] h-[30px] bg-foreground rotate-12" />
-                </div>
-              )}
             </div>
           )))
         }
       </div>
 
-      {/* Interaction Controls */}
-      <div className="flex gap-4">
+      <div className="flex gap-3">
         <Button 
           variant="secondary" 
           onClick={() => speak(word)} 
           className={cn(
-            "h-16 w-16 rounded-full border-4 border-border shadow-[4px_4px_0_var(--border)] bg-surface active:translate-y-1 active:shadow-none transition-all",
-            isPlaying ? "text-primary border-primary shadow-none translate-y-1" : "text-foreground"
+            "h-12 w-12 rounded-full border-2 border-border shadow-[2px_2px_0_var(--border)] bg-surface",
+            isPlaying ? "text-primary border-primary" : "text-foreground"
           )}
         >
-          <Volume2 className={cn("w-8 h-8", isPlaying && "fill-primary/20")} />
+          <Volume2 className={cn("w-6 h-6", isPlaying && "fill-primary/20")} />
         </Button>
         <Button 
           variant="secondary" 
           onClick={handleHint}
           disabled={status === 'success' || selectedIds.length === targetWord.length}
-          className="h-16 w-16 rounded-full border-4 border-border shadow-[4px_4px_0_var(--border)] bg-surface text-amber-500 active:translate-y-1 active:shadow-none transition-all disabled:opacity-50"
+          className="h-12 w-12 rounded-full border-2 border-border shadow-[2px_2px_0_var(--border)] bg-surface text-amber-500 disabled:opacity-50"
         >
-          <Lightbulb className="w-8 h-8 fill-current" />
+          <Lightbulb className="w-6 h-6 fill-current" />
         </Button>
         <Button 
           variant="ghost" 
           onClick={handleClear} 
-          className="h-16 w-16 rounded-full border-4 border-border shadow-[4px_4px_0_var(--border)] bg-surface text-foreground active:translate-y-1 active:shadow-none transition-all"
+          className="h-12 w-12 rounded-full border-2 border-border shadow-[2px_2px_0_var(--border)] bg-surface text-foreground"
         >
-          <RefreshCw className="w-8 h-8" />
+          <RefreshCw className="w-6 h-6" />
         </Button>
       </div>
 
-      {/* Tiles Pool */}
       {!isDirectMode && (
-        <div className="w-full flex flex-wrap justify-center gap-4 py-8">
+        <div className="w-full flex flex-wrap justify-center gap-2 py-2">
           <AnimatePresence>
             {tiles.map((tile) => (
               !tile.isUsed && (
                 <motion.button
                   key={tile.id}
                   layout
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  exit={{ scale: 0, opacity: 0 }}
-                  whileHover={{ y: -5, rotate: 2 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleTileClick(tile.id)}
                   className={cn(
-                    "bg-surface border-4 border-border shadow-[6px_6px_0_var(--border)] flex items-center justify-center font-black font-reading hover:bg-muted transition-colors cursor-pointer",
-                    isVeryLong ? "w-9 h-9 sm:w-11 sm:h-11 text-lg sm:text-xl" :
-                    isLong ? "w-11 h-11 sm:w-13 sm:h-13 text-xl sm:text-2xl" :
-                    "w-14 h-14 sm:w-16 sm:h-16 text-2xl sm:text-3xl"
+                    "bg-surface border-2 border-border shadow-[4px_4px_0_var(--border)] flex items-center justify-center font-black font-reading italic hover:bg-muted transition-colors cursor-pointer",
+                    isVeryLong ? "w-8 h-8 sm:w-10 sm:h-10 text-base sm:text-lg" :
+                    isLong ? "w-10 h-10 sm:w-12 sm:h-12 text-lg sm:text-xl" :
+                    "w-12 h-12 sm:w-15 sm:h-15 text-xl sm:text-2xl"
                   )}
                 >
                   {tile.char}
@@ -454,47 +433,9 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
           </AnimatePresence>
         </div>
       )}
-      {/* Feedback & Success Overlay */}
-      <AnimatePresence>
-        {status === 'success' && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/60 backdrop-blur-sm p-6"
-          >
-            <motion.div
-              initial={{ scale: 0, rotate: -10 }}
-              animate={{ scale: 1, rotate: 0 }}
-              className="bg-surface border-8 border-border p-10 sm:p-14 shadow-[20px_20px_0_var(--border)] text-center space-y-8 wobbly"
-            >
-              <div className="flex items-center justify-center gap-6">
-                <Sparkles className="w-12 h-12 sm:w-20 sm:h-20 fill-success text-success" />
-                <h2 className="text-6xl sm:text-8xl font-black text-foreground font-cartoon">Bingo!</h2>
-                <Sparkles className="w-12 h-12 sm:w-20 sm:h-20 fill-success text-success" />
-              </div>
-              
-              <div className="flex flex-col items-center gap-4">
-                <p className="text-2xl font-black text-foreground/60 tracking-widest font-cartoon">Wonderful Performance!</p>
-                <div className="bg-success/10 px-6 py-2 border-4 border-dashed border-success">
-                  <span className="text-xl font-black text-success font-cartoon">+50 Talkie Points</span>
-                </div>
-              </div>
 
-              <div className="pt-6">
-                <Button 
-                  onClick={onSuccess}
-                  className="w-full h-20 text-3xl border-8 border-border bg-primary text-white shadow-[10px_10px_0_var(--border)] active:translate-y-2 active:translate-x-2 active:shadow-none transition-all font-cartoon flex items-center justify-center gap-4"
-                >
-                  Next Step <ArrowRight className="w-8 h-8" />
-                </Button>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      <div className="h-8">
-        {status === 'error' && <p className="text-error font-black text-sm font-cartoon animate-bounce">Check the sequence!</p>}
+      <div className="h-6">
+        {status === 'error' && <p className="text-error font-black text-[10px] font-cartoon animate-bounce">다시 시도해보세요!</p>}
       </div>
     </div>
   );

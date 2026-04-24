@@ -100,52 +100,52 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
   }, []);
 
   return (
-    <Card className="w-full max-w-lg mx-auto bg-surface border-4 sm:border-8 border-border relative overflow-visible shadow-[8px_8px_0_var(--border)] sm:shadow-[12px_12px_0_var(--border)]">
-      <CardContent className="p-4 sm:p-12 flex flex-col items-center text-center space-y-6 sm:space-y-10 select-none">
+    <Card className="w-full max-w-lg mx-auto bg-surface border-4 border-border relative overflow-visible shadow-[4px_4px_0_var(--border)]">
+      <CardContent className="p-4 sm:p-8 flex flex-col items-center text-center space-y-6 select-none">
         
-        <div className="space-y-6 w-full pt-4">
-           <p className="text-sm font-black text-background uppercase tracking-[0.2em] bg-foreground px-6 py-2 border-4 border-border shadow-[4px_4px_0_var(--border)] w-auto mx-auto wobbly-slow font-cartoon">Speak the Lines!</p>
-          <div className="bg-surface p-6 sm:p-10 border-4 sm:border-8 border-border shadow-[6px_6px_0_var(--border)] sm:shadow-[10px_10px_0_var(--border)] wobbly-slow">
-            <h2 className="text-2xl sm:text-6xl font-black text-foreground leading-tight break-keep flex flex-wrap justify-center gap-x-4 sm:gap-x-6 gap-y-4 sm:gap-y-6 font-lilita">
+        <div className="space-y-4 w-full pt-2">
+           <p className="text-[10px] font-black text-background uppercase tracking-[0.2em] bg-foreground px-4 py-1 border-2 border-border shadow-[2px_2px_0_var(--border)] w-auto mx-auto font-cartoon">문장을 소리내어 읽어보세요!</p>
+          <div className="bg-surface p-4 sm:p-8 border-4 border-border shadow-[4px_4px_0_var(--border)]">
+            <h2 className="text-xl sm:text-4xl font-black text-foreground leading-tight break-keep flex flex-wrap justify-center gap-x-2 sm:gap-x-4 gap-y-2 sm:gap-y-4 font-lilita">
               {words.map((word, i) => (
                 <span
                   key={`${word}-${i}`}
-                  className="drop-shadow-[2px_2px_0_var(--background)]"
+                  className="drop-shadow-[1px_1px_0_var(--background)]"
                 >
                   {word}
                 </span>
               ))}
             </h2>
-            <div className="mt-8">
+            <div className="mt-4">
                 <Button
                   onClick={() => speak(expectedSentence)}
                   aria-label="Play pronunciation"
-                  className="rounded-2xl px-6 h-12 bg-surface text-foreground border-4 border-border shadow-[4px_4px_0_var(--border)] font-black hover:bg-muted active:translate-y-1 active:translate-x-1 active:shadow-none transition-all wobbly-slow"
+                  className="rounded-xl px-4 h-10 bg-surface text-foreground border-2 border-border shadow-[2px_2px_0_var(--border)] font-black hover:bg-muted active:translate-y-0.5 transition-all font-cartoon"
                 >
-                  <Volume2 className="h-5 w-5 mr-3" /> 발음 듣기
+                  <Volume2 className="h-4 w-4 mr-2" /> 발음 듣기
                 </Button>
             </div>
           </div>
         </div>
 
         {/* Mic Control or Manual Fallback */}
-        <div className="relative flex flex-col items-center pt-4 w-full">
+        <div className="relative flex flex-col items-center pt-2 w-full">
           {speechService?.supported() && !showManualInput ? (
             <>
               <Button
                 aria-label={isRecording ? "Stop recording" : "Microphone"}
                 className={cn(
-                  "w-28 h-28 sm:w-40 sm:h-40 rounded-full relative transition-all border-4 sm:border-8 border-border shadow-[6px_6px_0_var(--border)] sm:shadow-[10px_10px_0_var(--border)] active:translate-y-2 active:translate-x-2 active:shadow-none wobbly",
+                  "w-24 h-24 sm:w-32 sm:h-32 rounded-full relative transition-all border-4 border-border shadow-[4px_4px_0_var(--border)] active:translate-y-1 active:shadow-none",
                   isRecording 
                     ? 'bg-error text-white' 
                     : 'bg-primary text-white'
                 )}
                 onClick={isRecording ? handleStopRecording : handleStartRecording}
               >
-                {isRecording ? <Square className="w-16 h-16" /> : <Mic className="w-16 h-16" />}
+                {isRecording ? <Square className="w-10 h-10" /> : <Mic className="w-10 h-10" />}
               </Button>
-              <p className={`mt-10 font-black tracking-tight uppercase text-sm ${isRecording ? 'text-error animate-pulse' : 'text-muted-foreground'}`}>
-                {isRecording ? '듣는 중... 완료하려면 버튼 클릭' : '마이크를 눌러 시작'}
+              <p className={`mt-6 font-black tracking-tight uppercase text-[10px] ${isRecording ? 'text-error animate-pulse' : 'text-muted-foreground'}`}>
+                {isRecording ? '듣는 중... 다시 눌러 완료' : '마이크를 눌러 시작'}
               </p>
               
               <button 

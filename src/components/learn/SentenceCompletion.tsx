@@ -76,6 +76,7 @@ export function SentenceCompletion({ sentence, translation, targetWord, onSucces
       setStatus('success');
       addPoints(100); // More points for context challenge
       incrementLearnedWords();
+      onSuccess();
     } else {
       setStatus('error');
       setShake(true);
@@ -88,37 +89,34 @@ export function SentenceCompletion({ sentence, translation, targetWord, onSucces
   };
 
   return (
-    <div className="w-full flex flex-col items-center space-y-8 py-6 max-w-2xl mx-auto px-4">
-      <div className="text-center space-y-4">
-        <div className="inline-flex items-center gap-2 bg-secondary text-white px-4 py-1.5 border-4 border-black shadow-[4px_4px_0_#000] rotate-1">
+    <div className="w-full flex flex-col items-center space-y-4 py-2 max-w-2xl mx-auto px-4">
+      <div className="text-center space-y-2">
+        <div className="inline-flex items-center gap-2 bg-secondary text-white px-3 py-1 border-2 border-black shadow-[2px_2px_0_#000]">
           <Sparkles className="w-4 h-4" />
-          <span className="text-xs font-black tracking-widest font-cartoon">Context Challenge {index + 1}/{total}</span>
+          <span className="text-[10px] font-black tracking-widest font-cartoon uppercase">문장 완성하기</span>
         </div>
-        <h2 className="text-3xl sm:text-4xl font-black text-black font-cartoon">Script Completion</h2>
-        <p className="text-lg font-black text-primary font-reading italic">&quot;{translation}&quot;</p>
-        <p className="text-xs font-black text-black/40 tracking-[0.2em]">Drag or click the correct block to fill the gap</p>
+        <p className="text-sm font-black text-primary font-reading italic leading-tight">&quot;{translation}&quot;</p>
       </div>
 
       <div className={cn(
-        "w-full bg-surface border-8 border-border p-8 sm:p-12 shadow-[12px_12px_0_var(--border)] transition-all relative overflow-hidden",
+        "w-full bg-surface border-4 border-border p-4 sm:p-8 shadow-[6px_6px_0_var(--border)] transition-all relative overflow-hidden",
         shake && "animate-shake border-error",
-        status === 'success' && "border-success scale-105"
+        status === 'success' && "border-success"
       )}>
         <div className={cn(
-          "flex flex-wrap justify-center items-center gap-x-2 gap-y-4 font-black font-reading",
-          sentence.length > 60 ? "text-xl sm:text-2xl" :
-          sentence.length > 40 ? "text-2xl sm:text-3xl" :
-          "text-3xl sm:text-4xl"
+          "flex flex-wrap justify-center items-center gap-x-1 gap-y-2 font-black font-reading italic",
+          sentence.length > 60 ? "text-lg sm:text-xl" :
+          sentence.length > 40 ? "text-xl sm:text-2xl" :
+          "text-2xl sm:text-3xl"
         )}>
           {parts.map((part, i) => (
             part.toLowerCase() === targetWord.toLowerCase() ? (
               <motion.div
                 key={i}
                 className={cn(
-                  "min-w-[80px] sm:min-w-[120px] h-14 sm:h-16 border-b-8 border-border flex items-center justify-center transition-all px-4",
-                  selectedWord ? "text-primary scale-110" : "text-foreground/10"
+                  "min-w-[60px] sm:min-w-[100px] h-10 sm:h-12 border-b-4 border-border flex items-center justify-center transition-all px-2",
+                  selectedWord ? "text-primary" : "text-foreground/10"
                 )}
-                animate={selectedWord ? { y: [0, -5, 0] } : {}}
               >
                 {selectedWord ? formatWord(selectedWord) : '____'}
               </motion.div>
@@ -128,86 +126,51 @@ export function SentenceCompletion({ sentence, translation, targetWord, onSucces
           ))}
         </div>
 
-        <div className="mt-10 flex justify-center">
+        <div className="mt-4 flex justify-center">
           <Button 
             variant="ghost" 
             onClick={() => speak(targetWord)} 
             className={cn(
-              "flex items-center gap-3 border-4 border-border bg-surface shadow-[4px_4px_0_var(--border)] active:translate-y-1 font-cartoon text-sm transition-all",
-              isPlaying ? "text-primary border-primary shadow-none translate-y-1" : "text-foreground"
+              "flex items-center gap-2 border-2 border-border bg-surface shadow-[2px_2px_0_var(--border)] active:translate-y-0.5 font-cartoon text-[10px] transition-all px-4 py-2",
+              isPlaying ? "text-primary border-primary shadow-none translate-y-0.5" : "text-foreground"
             )}
           >
-            <Volume2 className={cn("w-5 h-5", isPlaying && "text-primary fill-primary/20")} /> Listen to missing word
+            <Volume2 className={cn("w-4 h-4", isPlaying && "text-primary fill-primary/20")} /> 발음 듣기
           </Button>
         </div>
-        
-        {status === 'success' && (
-           <div className="absolute top-4 right-4 text-success animate-bounce">
-             <Sparkles className="w-10 h-10 fill-current" />
-           </div>
-        )}
       </div>
 
-      <div className="w-full space-y-4 pt-4">
-        <p className="text-center text-xs font-black text-foreground/40 tracking-widest flex items-center justify-center gap-2">
-           Pick the right block
-        </p>
-        <div className="flex flex-wrap justify-center gap-4">
+      <div className="w-full space-y-3 pt-2">
+        <div className="flex flex-wrap justify-center gap-3">
           {options.map((opt, i) => (
             <motion.button
               key={i}
-              whileHover={{ y: -5, scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => handleOptionClick(opt)}
+              disabled={status === 'success'}
               className={cn(
-                "px-8 py-4 bg-surface border-4 border-border shadow-[6px_6px_0_var(--border)] text-xl sm:text-2xl font-black font-reading hover:bg-muted transition-all text-foreground",
-                selectedWord === opt && status === 'success' && "bg-success text-white border-success",
-                selectedWord === opt && status === 'error' && "bg-error text-white border-error"
+                "px-5 py-2.5 bg-surface border-2 border-border shadow-[4px_4px_0_var(--border)] text-base sm:text-xl font-black font-reading italic hover:bg-muted transition-all text-foreground",
+                selectedWord === opt && status === 'success' && "bg-success text-white border-success shadow-none translate-y-1",
+                selectedWord === opt && status === 'error' && "bg-error text-white border-error shadow-none translate-y-1"
               )}
             >
               {formatWord(opt)}
             </motion.button>
           ))}
         </div>
-      </div>
-
-      <AnimatePresence>
-        {status === 'success' && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/60 backdrop-blur-sm p-6"
-          >
+        <AnimatePresence>
+          {status === 'success' && (
             <motion.div
-              initial={{ scale: 0, rotate: 10 }}
-              animate={{ scale: 1, rotate: 0 }}
-              className="bg-surface border-8 border-border p-10 sm:p-14 shadow-[20px_20px_0_var(--border)] text-center space-y-8 wobbly"
+              initial={{ opacity: 0, y: 0 }}
+              animate={{ opacity: 1, y: -100 }}
+              exit={{ opacity: 0 }}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl font-black text-success z-50 pointer-events-none font-cartoon drop-shadow-lg"
             >
-              <div className="flex items-center justify-center gap-6">
-                <Sparkles className="w-12 h-12 sm:w-20 sm:h-20 fill-info text-info" />
-                <h2 className="text-6xl sm:text-8xl font-black text-foreground font-cartoon">Perfect!</h2>
-                <Sparkles className="w-12 h-12 sm:w-20 sm:h-20 fill-info text-info" />
-              </div>
-
-              <div className="flex flex-col items-center gap-4">
-                <p className="text-2xl font-black text-foreground/60 tracking-widest font-cartoon">Context Mastered!</p>
-                <div className="bg-info/10 px-6 py-2 border-4 border-dashed border-info">
-                  <span className="text-xl font-black text-info font-cartoon">+100 Talkie Points</span>
-                </div>
-              </div>
-
-              <div className="pt-6">
-                 <Button 
-                   onClick={onSuccess}
-                   className="w-full h-20 text-3xl border-8 border-border bg-info text-white shadow-[10px_10px_0_var(--border)] active:translate-y-2 active:translate-x-2 active:shadow-none transition-all uppercase font-cartoon flex items-center justify-center gap-4"
-                 >
-                   Continue <ArrowRight className="w-8 h-8" />
-                 </Button>
-              </div>
+              +100
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 }
