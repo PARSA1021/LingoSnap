@@ -28,7 +28,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "We're all traveling through time together.",
     line_ko: "우리는 모두 함께 시간을 여행하고 있어요.",
     difficulty: "easy",
-    expression: "travel through time",
+    expression: "Travel Through Time",
     expression_ko: "시간 여행을 하다",
     explanation_ko: "메리와 팀의 로맨틱한 대사로, 하루하루를 소중히 여기자는 교훈을 담고 있습니다.",
     tags: ["life"]
@@ -41,7 +41,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Life is like a box of chocolates.",
     line_ko: "인생은 어떤 맛이 걸릴지 모르는 초콜릿 상자와 같아요.",
     difficulty: "easy",
-    expression: "be like",
+    expression: "Be Like",
     expression_ko: "~와 같다 (비유)",
     explanation_ko: "'be like'는 무엇인가를 비유할 때 가장 많이 쓰이는 표현입니다.",
     tags: ["life"]
@@ -54,7 +54,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Don't ever let somebody tell you you can't do something.",
     line_ko: "누가 너에게 '넌 할 수 없어'라고 말하게 내버려 두지 마.",
     difficulty: "medium",
-    expression: "let somebody do",
+    expression: "Let Somebody Do",
     expression_ko: "누가 ~하게 두다/허락하다",
     explanation_ko: "사역동사 let을 사용하여 상대방의 영향력을 허락하지 말라는 강한 충고입니다.",
     tags: ["motivation"]
@@ -67,7 +67,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "You either die a hero or live long enough to become the villain.",
     line_ko: "영웅으로 죽거나, 악당이 될 때까지 충분히 오래 살거나 둘 중 하나죠.",
     difficulty: "medium",
-    expression: "either A or B",
+    expression: "Either A Or B",
     expression_ko: "A 아니면 B (둘 중 하나)",
     explanation_ko: "Batman 시리즈의 핵심 주제를 관통하는 대사로, 선택의 양면성을 보여줍니다.",
     tags: ["philosophy"]
@@ -80,7 +80,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Carpe diem. Seize the day.",
     line_ko: "카르페 디엠. 오늘 이 순간을 꽉 잡으세요.",
     difficulty: "easy",
-    expression: "seize the day",
+    expression: "Seize The Day",
     expression_ko: "오늘을 즐기다 / 기회를 잡다",
     explanation_ko: "라틴어 Carpe Diem의 영어식 표현으로, 현재의 소중함을 강조합니다.",
     tags: ["life"]
@@ -93,7 +93,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "You have to walk through the door.",
     line_ko: "너 스스로 그 문을 통과해서 걸어가야만 해.",
     difficulty: "medium",
-    expression: "have to",
+    expression: "Have To",
     expression_ko: "~해야만 한다 (의무)",
     explanation_ko: "안내자는 길을 보여줄 뿐, 직접 행동에 옮겨야 한다는 깊은 의미가 담겨 있습니다.",
     tags: ["choice"]
@@ -106,7 +106,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Love transcends time and space.",
     line_ko: "사랑은 시공간을 초월하는 유일한 것이에요.",
     difficulty: "medium",
-    expression: "transcend",
+    expression: "Transcend",
     expression_ko: "초월하다 / 넘어서다",
     explanation_ko: "과학적인 장벽마저 무너뜨리는 사랑의 대단함을 표현한 대사입니다.",
     tags: ["love"]
@@ -119,7 +119,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Dream a little bigger.",
     line_ko: "꿈은 좀 더 크게 가지는 게 어때요?",
     difficulty: "easy",
-    expression: "dream bigger",
+    expression: "Dream Bigger",
     expression_ko: "더 큰 꿈을 꾸다",
     explanation_ko: "상상력의 한계를 깨라는 영화의 핵심 메시지를 담고 있습니다.",
     tags: ["dream"]
@@ -132,7 +132,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Hope is a good thing.",
     line_ko: "희망은 정말 좋은 거예요. 어쩌면 세상에서 가장 좋은 것일지도 몰라요.",
     difficulty: "easy",
-    expression: "hope",
+    expression: "Hope",
     expression_ko: "희망 / 바라다",
     explanation_ko: "절망적인 상황 속에서도 앤디가 놓지 않았던 희망의 가치를 말해줍니다.",
     tags: ["life"]
@@ -145,7 +145,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "I am Iron Man.",
     line_ko: "제가 바로 아이언맨입니다.",
     difficulty: "easy",
-    expression: "I am ~",
+    expression: "I Am ~",
     expression_ko: "나는 ~이다",
     explanation_ko: "토니 스타크의 자신감 넘치는 정체성 선언으로 MCU의 시작을 알린 명대사입니다.",
     tags: ["identity"]
@@ -158,7 +158,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Say yes more.",
     line_ko: "좀 더 자주 '네'라고 말해보세요.",
     difficulty: "easy",
-    expression: "say yes",
+    expression: "Say Yes",
     expression_ko: "긍정적으로 대답하다",
     explanation_ko: "부정적인 태도에서 벗어나 새로운 기회를 받아들이라는 조언입니다.",
     tags: ["life"]
@@ -171,7 +171,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "It's not your fault.",
     line_ko: "전부 네 잘못이 아니야. 정말로.",
     difficulty: "easy",
-    expression: "not your fault",
+    expression: "Not Your Fault",
     expression_ko: "네 잘못이 아니다",
     explanation_ko: "아픈 과거를 가진 윌의 마음을 녹인 숀 교수의 따뜻한 위로입니다.",
     tags: ["emotion"]
@@ -184,7 +184,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "You're never wrong to do the right thing.",
     line_ko: "옳은 일을 하는 건 틀린 게 아니야.",
     difficulty: "medium",
-    expression: "be wrong to",
+    expression: "Be Wrong To",
     expression_ko: "~하는 것이 틀리다",
     explanation_ko: "벤의 인생 철학을 담은 대사로, 도덕적 선택의 중요성을 말합니다.",
     tags: ["life"]
@@ -197,7 +197,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "You have my attention.",
     line_ko: "넌 내 관심을 받고 있어.",
     difficulty: "easy",
-    expression: "have attention",
+    expression: "Have Attention",
     expression_ko: "관심을 받다",
     explanation_ko: "누군가의 주목을 끌었을 때 쓰는 표현입니다.",
     tags: ["social"]
@@ -210,7 +210,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "It is our choices that define us.",
     line_ko: "우리의 선택이 우리를 만든다.",
     difficulty: "medium",
-    expression: "define",
+    expression: "Define",
     expression_ko: "정의하다 / 규정하다",
     explanation_ko: "덤블도어 교수의 명언으로, 능력보다 선택이 중요함을 강조합니다.",
     tags: ["life"]
@@ -226,7 +226,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Here's to the ones who dream.",
     line_ko: "꿈꾸는 사람들을 위하여.",
     difficulty: "easy",
-    expression: "Here's to ~",
+    expression: "Here's To ~",
     expression_ko: "~을 위하여 (건배)",
     explanation_ko: "미아의 오디션 노래 가사로, 꿈을 포기하지 않는 사람들에게 바치는 헌사입니다.",
     tags: ["dream", "motivation"]
@@ -239,7 +239,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "It ain't about how hard you hit.",
     line_ko: "얼마나 세게 때리느냐가 중요한 게 아니야.",
     difficulty: "medium",
-    expression: "ain't about",
+    expression: "Ain't About",
     expression_ko: "~에 관한 것이 아니다",
     explanation_ko: "로키가 아들에게 전하는 인생 조언으로, 맞고도 일어서는 회복력을 강조합니다.",
     tags: ["motivation", "life"]
@@ -252,7 +252,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Let it go.",
     line_ko: "그냥 놓아버려. 더 이상 신경 쓰지 마.",
     difficulty: "easy",
-    expression: "let it go",
+    expression: "Let It Go",
     expression_ko: "놓아주다 / 잊다",
     explanation_ko: "엘사가 자신의 능력을 받아들이며 부르는 노래의 핵심 메시지입니다.",
     tags: ["emotion", "freedom"]
@@ -265,7 +265,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "The past can hurt.",
     line_ko: "과거는 아플 수 있어. 하지만 과거로부터 도망치거나 배울 수 있지.",
     difficulty: "easy",
-    expression: "can hurt",
+    expression: "Can Hurt",
     expression_ko: "아프게 할 수 있다",
     explanation_ko: "라피키가 심바에게 전하는 지혜로, 과거와의 화해를 말합니다.",
     tags: ["life", "wisdom"]
@@ -278,7 +278,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Just keep swimming.",
     line_ko: "그냥 계속 헤엄쳐.",
     difficulty: "easy",
-    expression: "keep ~ing",
+    expression: "Keep ~ing",
     expression_ko: "계속 ~하다",
     explanation_ko: "도리의 낙천적인 태도를 보여주는 대사로, 포기하지 말라는 메시지입니다.",
     tags: ["motivation", "persistence"]
@@ -291,7 +291,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "If you're a bird, I'm a bird.",
     line_ko: "네가 새라면, 나도 새야.",
     difficulty: "easy",
-    expression: "If you're ~, I'm ~",
+    expression: "If You're ~, I'm ~",
     expression_ko: "네가 ~라면, 나도 ~야",
     explanation_ko: "노아가 앨리에게 하는 로맨틱한 고백으로, 어디든 함께하겠다는 의미입니다.",
     tags: ["love", "romance"]
@@ -304,7 +304,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "I'm the king of the world!",
     line_ko: "나는 세상의 왕이야!",
     difficulty: "easy",
-    expression: "king of the world",
+    expression: "King Of The World",
     expression_ko: "세상의 왕",
     explanation_ko: "잭이 타이타닉 배 앞에서 외치는 자유와 희망의 상징적 대사입니다.",
     tags: ["freedom", "joy"]
@@ -317,7 +317,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "That's all.",
     line_ko: "이상이야. (할 말 끝)",
     difficulty: "easy",
-    expression: "That's all",
+    expression: "That's All",
     expression_ko: "이상입니다 / 끝",
     explanation_ko: "미란다가 지시를 끝낼 때 쓰는 차가운 표현으로, 권위를 보여줍니다.",
     tags: ["work", "authority"]
@@ -330,7 +330,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Meet me in Montauk.",
     line_ko: "몬톡에서 만나요.",
     difficulty: "easy",
-    expression: "meet me in",
+    expression: "Meet Me In",
     expression_ko: "~에서 만나요",
     explanation_ko: "조엘과 클레멘타인의 운명적 재회를 암시하는 신비로운 대사입니다.",
     tags: ["love", "memory"]
@@ -343,7 +343,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "I'm gonna make him an offer he can't refuse.",
     line_ko: "거절할 수 없는 제안을 할 거야.",
     difficulty: "medium",
-    expression: "can't refuse",
+    expression: "Can't Refuse",
     expression_ko: "거절할 수 없는",
     explanation_ko: "돈 코를레오네의 강압적인 협상 방식을 보여주는 명대사입니다.",
     tags: ["power", "negotiation"]
@@ -356,7 +356,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "I see you.",
     line_ko: "당신을 봅니다. (나비족 인사)",
     difficulty: "easy",
-    expression: "I see you",
+    expression: "I See You",
     expression_ko: "당신을 봅니다 (깊은 이해)",
     explanation_ko: "나비족의 인사로, 외면이 아닌 내면을 본다는 깊은 의미를 담고 있습니다.",
     tags: ["respect", "understanding"]
@@ -369,7 +369,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "You've got a friend in me.",
     line_ko: "넌 내 안에 친구가 있어.",
     difficulty: "easy",
-    expression: "You've got",
+    expression: "You've Got",
     expression_ko: "너는 ~을 가지고 있어",
     explanation_ko: "우디와 버즈의 우정을 상징하는 따뜻한 노래 가사입니다.",
     tags: ["friendship", "loyalty"]
@@ -382,7 +382,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Adventure is out there!",
     line_ko: "모험은 저 밖에 있어!",
     difficulty: "easy",
-    expression: "out there",
+    expression: "Out There",
     expression_ko: "저 밖에 / 세상 어딘가에",
     explanation_ko: "엘리의 모험 정신을 보여주는 대사로, 삶의 적극성을 강조합니다.",
     tags: ["adventure", "dream"]
@@ -395,7 +395,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "With great power comes great responsibility.",
     line_ko: "큰 힘에는 큰 책임이 따른다.",
     difficulty: "medium",
-    expression: "comes with",
+    expression: "Comes With",
     expression_ko: "~에는 ~이 따르다",
     explanation_ko: "벤 삼촌이 피터에게 남긴 가장 유명한 교훈입니다.",
     tags: ["responsibility", "wisdom"]
@@ -408,7 +408,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "It is written.",
     line_ko: "운명으로 정해진 거야.",
     difficulty: "easy",
-    expression: "it is written",
+    expression: "It Is Written",
     expression_ko: "정해져 있다 / 운명이다",
     explanation_ko: "자말의 여정이 운명적이었음을 암시하는 표현입니다.",
     tags: ["destiny", "fate"]
@@ -421,7 +421,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "I have made fire!",
     line_ko: "내가 불을 만들었어!",
     difficulty: "easy",
-    expression: "have made",
+    expression: "Have Made",
     expression_ko: "~을 만들었다 (완료)",
     explanation_ko: "척이 무인도에서 처음 불을 피우고 외치는 원시적 기쁨의 표현입니다.",
     tags: ["achievement", "survival"]
@@ -434,7 +434,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "We're all pretty bizarre.",
     line_ko: "우리 모두 꽤 이상해. 하지만 괜찮아.",
     difficulty: "easy",
-    expression: "pretty bizarre",
+    expression: "Pretty Bizarre",
     expression_ko: "꽤 이상한",
     explanation_ko: "서로 다른 학생들이 공통점을 발견하며 하는 대사입니다.",
     tags: ["identity", "acceptance"]
@@ -444,10 +444,10 @@ export const mediaContents: ContentLine[] = [
     category: "movie",
     title: "WALL-E",
     scene: "이름",
-    line_en: "E-VA!",
+    line_en: "E-va!",
     line_ko: "이-바!",
     difficulty: "easy",
-    expression: "calling name",
+    expression: "Calling Name",
     expression_ko: "이름 부르기",
     explanation_ko: "월-E가 이브를 부르는 사랑스러운 발음으로, 순수한 감정을 담고 있습니다.",
     tags: ["love", "innocence"]
@@ -460,7 +460,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Not quite my tempo.",
     line_ko: "내 템포가 아니야.",
     difficulty: "medium",
-    expression: "not quite",
+    expression: "Not Quite",
     expression_ko: "완전히 ~은 아닌",
     explanation_ko: "플레처 교수의 완벽주의와 압박을 상징하는 무시무시한 한마디입니다.",
     tags: ["perfection", "pressure"]
@@ -473,7 +473,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "I need to believe that something extraordinary is possible.",
     line_ko: "나는 뭔가 특별한 일이 가능하다고 믿어야 해.",
     difficulty: "medium",
-    expression: "need to believe",
+    expression: "Need To Believe",
     expression_ko: "믿을 필요가 있다",
     explanation_ko: "존 내쉬가 현실과 환상 사이에서 희망을 붙잡으려는 대사입니다.",
     tags: ["hope", "belief"]
@@ -486,7 +486,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Good morning, and in case I don't see you, good afternoon, good evening, and good night.",
     line_ko: "좋은 아침, 그리고 못 보게 되면 좋은 오후, 좋은 저녁, 그리고 안녕히 주무세요.",
     difficulty: "medium",
-    expression: "in case",
+    expression: "In Case",
     expression_ko: "~할 경우를 대비해서",
     explanation_ko: "트루먼의 상징적인 인사로, 반복되는 일상에 대한 암시를 담고 있습니다.",
     tags: ["routine", "greeting"]
@@ -499,7 +499,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "If you had the chance to change your fate, would you?",
     line_ko: "운명을 바꿀 기회가 있다면, 그렇게 하겠어?",
     difficulty: "medium",
-    expression: "had the chance to",
+    expression: "Had The Chance To",
     expression_ko: "~할 기회가 있다면",
     explanation_ko: "메리다가 자신의 운명에 도전하며 던지는 질문입니다.",
     tags: ["choice", "fate"]
@@ -512,7 +512,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "My name is Maximus.",
     line_ko: "내 이름은 막시무스다.",
     difficulty: "easy",
-    expression: "My name is",
+    expression: "My Name Is",
     expression_ko: "내 이름은 ~이다",
     explanation_ko: "막시무스가 자신의 정체를 밝히는 강렬한 복수의 선언입니다.",
     tags: ["identity", "revenge"]
@@ -525,7 +525,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Two little mice fell in a bucket of cream.",
     line_ko: "두 마리 생쥐가 크림 통에 빠졌어.",
     difficulty: "hard",
-    expression: "fell in",
+    expression: "Fell In",
     expression_ko: "~에 빠지다",
     explanation_ko: "프랭크의 아버지가 들려주는 우화로, 끝까지 포기하지 말라는 교훈을 담고 있습니다.",
     tags: ["persistence", "wisdom"]
@@ -538,7 +538,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Times are hard for dreamers.",
     line_ko: "꿈꾸는 사람들에게는 힘든 시기야.",
     difficulty: "medium",
-    expression: "times are hard",
+    expression: "Times Are Hard",
     expression_ko: "시기가 힘들다",
     explanation_ko: "현실의 어려움 속에서도 꿈을 놓지 않는 아멜리의 세계관을 보여줍니다.",
     tags: ["dream", "reality"]
@@ -554,7 +554,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "I am the danger.",
     line_ko: "내가 누구냐고? 내가 바로 그 '위험' 자체야.",
     difficulty: "easy",
-    expression: "I am",
+    expression: "I Am",
     expression_ko: "나는 ~이다",
     explanation_ko: "월터 화이트의 카리스마 넘치는 대사로, 당하고만 있지 않겠다는 경고입니다.",
     tags: ["power"]
@@ -567,7 +567,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "We were on a break!",
     line_ko: "우리 그때 잠깐 헤어진 상태였잖아!",
     difficulty: "easy",
-    expression: "on a break",
+    expression: "On A Break",
     expression_ko: "(연인 사이) 시간을 갖는 중인",
     explanation_ko: "로스의 영원한 변명이자 프렌즈 최고의 유행어 중 하나입니다.",
     tags: ["relationship"]
@@ -580,7 +580,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Winter is coming.",
     line_ko: "겨울이 다가오고 있다.",
     difficulty: "easy",
-    expression: "is coming",
+    expression: "Is Coming",
     expression_ko: "오고 있다 / 다가오고 있다",
     explanation_ko: "스타크 가문의 가언으로, 앞으로 닥칠 시련에 대비하라는 중의적 의미입니다.",
     tags: ["warning"]
@@ -593,7 +593,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "The game is on.",
     line_ko: "자, 이제 본격적인 게임 시작이야.",
     difficulty: "easy",
-    expression: "is on",
+    expression: "Is On",
     expression_ko: "시작되다 / 진행 중이다",
     explanation_ko: "사건이 터졌을 때 흥분한 셜록이 던지는 짜릿한 한마디입니다.",
     tags: ["action"]
@@ -606,7 +606,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Friends don't lie.",
     line_ko: "친구끼리는 거짓말하는 거 아니야.",
     difficulty: "easy",
-    expression: "don't lie",
+    expression: "Don't Lie",
     expression_ko: "거짓말하지 않다",
     explanation_ko: "일레븐과 친구들의 끈끈한 우정을 상징하는 순수한 명대사입니다.",
     tags: ["friendship"]
@@ -619,7 +619,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "I win. That's what I do.",
     line_ko: "난 이겨요. 그게 내가 하는 일이니까.",
     difficulty: "easy",
-    expression: "That's what I do",
+    expression: "That's What I Do",
     expression_ko: "그게 바로 제가 하는 일이에요",
     explanation_ko: "하비 스펙터의 압도적인 자신감과 프로페셔널함을 보여주는 대사입니다.",
     tags: ["confidence"]
@@ -632,7 +632,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "That's what she said.",
     line_ko: "방금 그 말, 좀 야하게 들리는데? (농담)",
     difficulty: "easy",
-    expression: "That's what she said",
+    expression: "That's What She Said",
     expression_ko: "그녀가 그렇게 말했지 (중의적 농담)",
     explanation_ko: "마이클 스콧이 상황을 어색하게 만들 때 던지는 전형적인 아재 개그입니다.",
     tags: ["fun"]
@@ -645,7 +645,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Everybody lies.",
     line_ko: "사람은 누구나 거짓말을 해.",
     difficulty: "easy",
-    expression: "Everybody lies",
+    expression: "Everybody Lies",
     expression_ko: "모두가 거짓말을 한다",
     explanation_ko: "하우스 박사의 냉소적인 인간관을 보여주는 명대사입니다.",
     tags: ["truth"]
@@ -658,7 +658,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "This is the way.",
     line_ko: "이것이 우리의 방식이다.",
     difficulty: "easy",
-    expression: "This is the way",
+    expression: "This Is The Way",
     expression_ko: "이것이 (우리의) 길이다",
     explanation_ko: "만달로리안 종족의 강한 신념과 전통을 나타내는 말입니다.",
     tags: ["belief"]
@@ -671,7 +671,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "I have a plan.",
     line_ko: "계획이 있어.",
     difficulty: "easy",
-    expression: "have a plan",
+    expression: "Have A Plan",
     expression_ko: "계획이 있다",
     explanation_ko: "마이클 스코필드의 치밀한 탈옥 계획을 암시하는 대사입니다.",
     tags: ["strategy"]
@@ -684,7 +684,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "We are too dependent on technology.",
     line_ko: "우리는 기술에 너무 의존해.",
     difficulty: "medium",
-    expression: "dependent on",
+    expression: "Dependent On",
     expression_ko: "~에 의존하는",
     explanation_ko: "블랙 미러 시리즈의 핵심 주제인 기술 의존에 대한 경고입니다.",
     tags: ["technology"]
@@ -697,7 +697,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Family is family.",
     line_ko: "가족은 가족이다.",
     difficulty: "easy",
-    expression: "emphasis",
+    expression: "Emphasis",
     expression_ko: "강조 표현",
     explanation_ko: "같은 단어를 반복하여 '결국은', '어쨌든'의 의미를 강조합니다.",
     tags: ["family"]
@@ -710,7 +710,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "It's a beautiful day to save lives.",
     line_ko: "생명을 구하기 좋은 날이야.",
     difficulty: "medium",
-    expression: "a day to",
+    expression: "A Day To",
     expression_ko: "~하기 좋은 날",
     explanation_ko: "데릭 셰퍼드의 낙관적인 태도를 보여주는 상징적 대사입니다.",
     tags: ["life"]
@@ -723,7 +723,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "You can reinvent yourself.",
     line_ko: "넌 스스로를 바꿀 수 있어.",
     difficulty: "easy",
-    expression: "reinvent",
+    expression: "Reinvent",
     expression_ko: "재창조하다 / 새롭게 바꾸다",
     explanation_ko: "새로운 환경에서 자신을 변화시킬 수 있다는 희망적 메시지입니다.",
     tags: ["growth"]
@@ -736,7 +736,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "I can't make bricks without clay.",
     line_ko: "재료 없이 결과는 없다.",
     difficulty: "medium",
-    expression: "without",
+    expression: "Without",
     expression_ko: "~없이는",
     explanation_ko: "셜록이 증거의 중요성을 강조할 때 쓰는 비유적 표현입니다.",
     tags: ["logic"]
@@ -752,7 +752,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "The crown must win.",
     line_ko: "왕관이 승리해야 해.",
     difficulty: "easy",
-    expression: "must win",
+    expression: "Must Win",
     expression_ko: "반드시 이겨야 한다",
     explanation_ko: "개인의 감정보다 왕실의 의무를 우선시해야 함을 나타내는 대사입니다.",
     tags: ["duty", "sacrifice"]
@@ -765,7 +765,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "By order of the Peaky Blinders.",
     line_ko: "피키 블라인더스의 명령이다.",
     difficulty: "easy",
-    expression: "by order of",
+    expression: "By Order Of",
     expression_ko: "~의 명령으로",
     explanation_ko: "토마스 셸비의 권위를 상징하는 강렬한 선언입니다.",
     tags: ["power", "authority"]
@@ -778,7 +778,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "We are the walking dead.",
     line_ko: "우리가 바로 워킹 데드야.",
     difficulty: "easy",
-    expression: "we are",
+    expression: "We Are",
     expression_ko: "우리는 ~이다",
     explanation_ko: "릭이 깨닫는 충격적 진실 - 살아남은 자들이야말로 진짜 워킹 데드라는 것.",
     tags: ["survival", "reality"]
@@ -791,7 +791,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "If you don't like what's being said, change the conversation.",
     line_ko: "하는 얘기가 마음에 안 들면, 대화 주제를 바꿔.",
     difficulty: "medium",
-    expression: "change the conversation",
+    expression: "Change The Conversation",
     expression_ko: "대화 주제를 바꾸다",
     explanation_ko: "돈 드레이퍼의 설득과 통제 기술을 보여주는 전략적 조언입니다.",
     tags: ["communication", "strategy"]
@@ -804,7 +804,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "It's gonna be legen... wait for it... dary!",
     line_ko: "이건 전... 잠깐만... 설적일 거야!",
     difficulty: "easy",
-    expression: "wait for it",
+    expression: "Wait For It",
     expression_ko: "잠깐만 기다려",
     explanation_ko: "바니 스틴슨의 시그니처 표현으로, 긴장감을 조성하는 유머입니다.",
     tags: ["fun", "catchphrase"]
@@ -817,7 +817,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "You don't save me. I save me.",
     line_ko: "네가 날 구하는 게 아니야. 내가 날 구하는 거지.",
     difficulty: "easy",
-    expression: "save me",
+    expression: "Save Me",
     expression_ko: "나를 구하다",
     explanation_ko: "지미가 자립과 자기 책임을 선언하는 강한 대사입니다.",
     tags: ["independence", "self"]
@@ -830,7 +830,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "These violent delights have violent ends.",
     line_ko: "폭력적인 즐거움은 폭력적인 결말을 맞는다.",
     difficulty: "hard",
-    expression: "have violent ends",
+    expression: "Have Violent Ends",
     expression_ko: "폭력적인 결말을 맞다",
     explanation_ko: "셰익스피어에서 인용한 문구로, 호스트들의 각성을 암시합니다.",
     tags: ["philosophy", "fate"]
@@ -843,7 +843,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Evil is evil. Lesser, greater, middling... it's all the same.",
     line_ko: "악은 악이다. 작든, 크든, 중간이든... 다 똑같아.",
     difficulty: "medium",
-    expression: "it's all the same",
+    expression: "It's All The Same",
     expression_ko: "다 똑같다",
     explanation_ko: "게롤트의 도덕적 딜레마를 보여주는 철학적 대사입니다.",
     tags: ["morality", "philosophy"]
@@ -856,7 +856,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Tonight's the night.",
     line_ko: "오늘 밤이야.",
     difficulty: "easy",
-    expression: "Tonight's the night",
+    expression: "Tonight's The Night",
     expression_ko: "오늘 밤이다 (결정적 순간)",
     explanation_ko: "덱스터가 새로운 사냥을 시작할 때 하는 오프닝 대사입니다.",
     tags: ["action", "ritual"]
@@ -869,7 +869,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "What do we owe to each other?",
     line_ko: "우리는 서로에게 무엇을 빚지고 있을까?",
     difficulty: "medium",
-    expression: "owe to",
+    expression: "Owe To",
     expression_ko: "~에게 빚지다",
     explanation_ko: "시디의 도덕 철학 수업의 핵심 질문으로, 관계의 본질을 묻습니다.",
     tags: ["philosophy", "ethics"]
@@ -882,7 +882,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "I have a horrible feeling that I'm a greedy, perverted, selfish, apathetic, cynical, depraved, morally bankrupt woman.",
     line_ko: "나는 탐욕스럽고, 왜곡되고, 이기적이고, 무감각하고, 냉소적이고, 타락한, 도덕적으로 파산한 여자라는 끔찍한 느낌이 들어.",
     difficulty: "hard",
-    expression: "have a feeling that",
+    expression: "Have A Feeling That",
     expression_ko: "~라는 느낌이 들다",
     explanation_ko: "플리백의 자기 비하와 정직함이 담긴 날것의 독백입니다.",
     tags: ["self", "honesty"]
@@ -895,7 +895,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Cool, cool, cool, cool, cool. No doubt, no doubt.",
     line_ko: "쿨, 쿨, 쿨, 쿨, 쿨. 의심 없어, 의심 없어.",
     difficulty: "easy",
-    expression: "no doubt",
+    expression: "No Doubt",
     expression_ko: "의심 없이 / 확실히",
     explanation_ko: "제이크 페랄타가 긴장할 때 반복하는 귀여운 버릇입니다.",
     tags: ["fun", "anxiety"]
@@ -908,7 +908,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "You're the real heroes.",
     line_ko: "진짜 영웅은 너희들이야.",
     difficulty: "easy",
-    expression: "the real ~",
+    expression: "The Real ~",
     expression_ko: "진짜 ~",
     explanation_ko: "부처가 일반 시민들에게 하는 아이러니한 대사입니다.",
     tags: ["irony", "truth"]
@@ -921,7 +921,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Don't tell me what I can't do!",
     line_ko: "내가 뭘 못한다고 말하지 마!",
     difficulty: "easy",
-    expression: "Don't tell me",
+    expression: "Don't Tell Me",
     expression_ko: "~라고 말하지 마",
     explanation_ko: "존 로크의 저항 정신을 보여주는 반복되는 명대사입니다.",
     tags: ["defiance", "freedom"]
@@ -934,7 +934,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Valhalla awaits.",
     line_ko: "발할라가 기다린다.",
     difficulty: "easy",
-    expression: "awaits",
+    expression: "Awaits",
     expression_ko: "기다리다",
     explanation_ko: "바이킹 전사들이 죽음을 두려워하지 않을 때 하는 말입니다.",
     tags: ["courage", "death"]
@@ -947,7 +947,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "I carried you for nine months. I'll carry you the rest of my life.",
     line_ko: "널 9개월 동안 뱃속에 품었어. 내 평생 동안 품고 살 거야.",
     difficulty: "medium",
-    expression: "carry",
+    expression: "Carry",
     expression_ko: "품다 / 안고 가다",
     explanation_ko: "레베카가 자녀들에게 전하는 무조건적인 사랑의 표현입니다.",
     tags: ["family", "love"]
@@ -960,7 +960,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "We're not negotiating.",
     line_ko: "우리는 협상하는 게 아니야.",
     difficulty: "easy",
-    expression: "not negotiating",
+    expression: "Not Negotiating",
     expression_ko: "협상하지 않다",
     explanation_ko: "마티가 절대적 입장에서 요구할 때 던지는 단호한 말입니다.",
     tags: ["power", "business"]
@@ -973,7 +973,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Believe.",
     line_ko: "믿어라.",
     difficulty: "easy",
-    expression: "believe",
+    expression: "Believe",
     expression_ko: "믿다",
     explanation_ko: "테드의 낙관주의를 상징하는 한 단어로, 팀 정신을 고취시킵니다.",
     tags: ["motivation", "belief"]
@@ -986,7 +986,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "I'm not a good person, but I'm not a bad person.",
     line_ko: "난 좋은 사람은 아니지만, 나쁜 사람도 아니야.",
     difficulty: "easy",
-    expression: "not a ~ person",
+    expression: "Not A ~ Person",
     expression_ko: "~한 사람이 아니다",
     explanation_ko: "로이 가족의 도덕적 회색지대를 보여주는 자기 합리화입니다.",
     tags: ["morality", "self"]
@@ -999,7 +999,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Nolite te bastardes carborundorum.",
     line_ko: "놈들이 널 짓밟지 못하게 해라.",
     difficulty: "hard",
-    expression: "Latin phrase",
+    expression: "Latin Phrase",
     expression_ko: "라틴어 문구",
     explanation_ko: "억압받는 여성들 사이에서 전해지는 저항의 암호입니다.",
     tags: ["resistance", "hope"]
@@ -1012,7 +1012,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Bazinga!",
     line_ko: "바징가! (속았지!)",
     difficulty: "easy",
-    expression: "catchphrase",
+    expression: "Catchphrase",
     expression_ko: "유행어",
     explanation_ko: "셸던이 장난을 칠 때 외치는 시그니처 표현입니다.",
     tags: ["fun", "joke"]
@@ -1025,7 +1025,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "This is a true story.",
     line_ko: "이것은 실화입니다.",
     difficulty: "easy",
-    expression: "true story",
+    expression: "True Story",
     expression_ko: "실화 / 진짜 이야기",
     explanation_ko: "파고 시리즈의 오프닝으로, 실제로는 허구지만 리얼리티를 높입니다.",
     tags: ["irony", "truth"]
@@ -1038,7 +1038,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "What's the point of having 'fuck you' money if you never say 'fuck you'?",
     line_ko: "'좆까' 할 수 있는 돈이 있는데 '좆까'라고 안 하면 무슨 소용이야?",
     difficulty: "medium",
-    expression: "What's the point of",
+    expression: "What's The Point Of",
     expression_ko: "~의 의미가 뭐야",
     explanation_ko: "바비 액셀로드의 돈과 자유에 대한 철학을 담은 대사입니다.",
     tags: ["power", "freedom"]
@@ -1051,7 +1051,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "There are no good guys and bad guys. There's just guys.",
     line_ko: "좋은 놈과 나쁜 놈이 따로 없어. 그냥 놈들이지.",
     difficulty: "medium",
-    expression: "there are no",
+    expression: "There Are No",
     expression_ko: "~는 없다",
     explanation_ko: "스티브 머피의 도덕적 회색지대에 대한 냉소적 통찰입니다.",
     tags: ["morality", "reality"]
@@ -1064,7 +1064,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Endure and survive.",
     line_ko: "견디고 살아남아라.",
     difficulty: "easy",
-    expression: "endure and survive",
+    expression: "Endure And Survive",
     expression_ko: "견디고 살아남다",
     explanation_ko: "조엘과 엘리의 생존 철학을 한마디로 압축한 표현입니다.",
     tags: ["survival", "strength"]
@@ -1080,7 +1080,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Hey! Long time no see! How have you been?",
     line_ko: "야! 오랜만이야! 그동안 어떻게 지냈어?",
     difficulty: "easy",
-    expression: "long time no see",
+    expression: "Long Time No See",
     expression_ko: "오랜만이야",
     explanation_ko: "원래는 문법에 안 맞는 영어지만 굳어져서 인삿말로 자주 씁니다.",
     tags: ["greeting", "casual"]
@@ -1093,7 +1093,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Can I get an iced Americano to go, please?",
     line_ko: "아이스 아메리카노 테이크아웃으로 한 잔 주시겠어요?",
     difficulty: "easy",
-    expression: "to go",
+    expression: "To Go",
     expression_ko: "포장으로 (테이크아웃)",
     explanation_ko: "식당, 카페 등에서 'take out' 대신 가장 많이 쓰는 표현입니다.",
     tags: ["ordering", "travel"]
@@ -1106,7 +1106,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Do you have any special plans for this weekend?",
     line_ko: "이번 주말에 특별한 계획이 있으세요?",
     difficulty: "easy",
-    expression: "any special plans",
+    expression: "Any Special Plans",
     expression_ko: "특별한 계획",
     explanation_ko: "주말을 앞두고 직장이나 친구 사이에서 가장 무난하게 던지는 가벼운 질문입니다.",
     tags: ["small talk", "business"]
@@ -1119,7 +1119,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "I'm so sorry I'm late. The traffic was terrible.",
     line_ko: "늦어서 정말 미안해. 차가 너무 막혔어.",
     difficulty: "easy",
-    expression: "traffic was terrible",
+    expression: "Traffic Was Terrible",
     expression_ko: "차가 엄청 막혔다",
     explanation_ko: "늦었을 때 교통체증을 이유로 댈 수 있는 아주 자연스러운 변명입니다.",
     tags: ["apology", "casual"]
@@ -1132,7 +1132,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Could you do me a huge favor?",
     line_ko: "나 좀 크게 한 번만 도와줄 수 있어?",
     difficulty: "easy",
-    expression: "do me a favor",
+    expression: "Do Me A Favor",
     expression_ko: "부탁을 들어주다",
     explanation_ko: "상대에게 부탁을 하기 전에 양해를 구하는 가장 일반적인 패턴입니다.",
     tags: ["favor", "relationship"]
@@ -1145,7 +1145,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "I'd love to, but I'm tied up with work today.",
     line_ko: "정말 가고 싶지만, 오늘 일이 너무 바빠서 안 될 것 같아.",
     difficulty: "medium",
-    expression: "be tied up with",
+    expression: "Be Tied Up With",
     expression_ko: "~때문에 너무 바쁘다 (꼼짝 못하다)",
     explanation_ko: "원래는 '묶여있다'는 뜻으로, 할 일이 산더미처럼 많아 전혀 움직일 수 없음을 의미합니다.",
     tags: ["rejection", "business"]
@@ -1158,7 +1158,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Correct me if I'm wrong, but didn't we try this before?",
     line_ko: "제 말이 틀렸다면 정정해 주세요, 근데 이거 전에 해보지 않았었나요?",
     difficulty: "medium",
-    expression: "correct me if I'm wrong",
+    expression: "Correct Me If I'm Wrong",
     expression_ko: "틀렸다면 고쳐주세요 (거슬리지 않게 의견 낼 때)",
     explanation_ko: "상대방의 기분을 상하게 하지 않고 조심스럽게 의견이나 반론을 제시할 때 쓰는 세련된 표현입니다.",
     tags: ["opinion", "business"]
@@ -1171,7 +1171,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "I should get going. Keep in touch!",
     line_ko: "나 이제 슬슬 가봐야 해. 계속 연락하자!",
     difficulty: "easy",
-    expression: "get going",
+    expression: "Get Going",
     expression_ko: "나서다 / 출발하다",
     explanation_ko: "모임이나 대화를 끊고 자리를 뜰 때 아주 부드럽게 사용하는 일상 표현입니다.",
     tags: ["goodbye", "casual"]
@@ -1184,7 +1184,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "Wow, I didn't see that coming at all.",
     line_ko: "와우, 저런 일이 일어날 줄은 꿈에도 몰랐네.",
     difficulty: "medium",
-    expression: "didn't see that coming",
+    expression: "Didn't See That Coming",
     expression_ko: "예상조차 못했다",
     explanation_ko: "전혀 예상하지 못했던 일이 발생했을 때 원어민들이 즐겨 쓰는 표현입니다.",
     tags: ["surprise", "emotion"]
@@ -1197,7 +1197,7 @@ export const mediaContents: ContentLine[] = [
     line_en: "You can say that again!",
     line_ko: "정말 네 말이 맞아! (완전 공감해)",
     difficulty: "easy",
-    expression: "you can say that again",
+    expression: "You Can Say That Again",
     expression_ko: "전적으로 동의하다",
     explanation_ko: "진짜 상대의 말이 맞아서 '그거 다시 한 번 말해도 돼'라며 강력히 동의하는 관용어입니다.",
     tags: ["agreement", "casual"]

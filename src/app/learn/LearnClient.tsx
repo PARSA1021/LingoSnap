@@ -16,6 +16,7 @@ import sentenceData from '@/data/sentences.json';
 import { mediaContents } from '@/data/contents';
 import { ArrowRight, CheckCircle2, XCircle, Volume2, RotateCcw, Lightbulb } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { formatWord, formatSentence } from '@/lib/utils/format';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -209,8 +210,8 @@ function IntroCard({
     <Card className="bg-surface border-4 border-border shadow-[6px_6px_0_var(--border)]">
       <CardContent className="p-6 sm:p-10 space-y-6">
         <div className="space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary border-2 border-primary/20 text-[10px] font-black uppercase tracking-widest">
-            {category && category !== 'all' ? `${category} COURSE` : 'GENERAL COURSE'}
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary border-2 border-primary/20 text-[10px] font-black tracking-widest">
+            {category && category !== 'all' ? `${category.toUpperCase()} COURSE` : 'GENERAL COURSE'}
           </div>
           <div className="space-y-2">
             <h1 className="text-3xl sm:text-4xl font-black text-foreground tracking-tight">
@@ -276,7 +277,7 @@ function WordRevealStep({ word, onNext }: { word: Word; onNext: () => void }) {
       <CardContent className="p-6 sm:p-10 space-y-8">
         <div className="space-y-4">
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-xs font-black text-muted-foreground uppercase tracking-widest mr-1">새 단어</span>
+            <span className="text-xs font-black text-muted-foreground tracking-widest mr-1">새 단어</span>
             {w.category && (
               <span className={`text-[10px] font-black px-2 py-0.5 border-2 rounded-full ${catColor}`}>
                 {w.category}
@@ -284,13 +285,13 @@ function WordRevealStep({ word, onNext }: { word: Word; onNext: () => void }) {
             )}
             {w.level && (
               <span className="text-[10px] font-black px-2 py-0.5 border-2 border-border bg-background rounded-full text-muted-foreground">
-                {w.level.toUpperCase()}
+                {w.level.charAt(0).toUpperCase() + w.level.slice(1)}
               </span>
             )}
           </div>
           <div className="flex items-center gap-4">
             <h2 className="text-5xl sm:text-6xl font-black text-foreground tracking-tight">
-              {word.word}
+              {formatWord(word.word)}
             </h2>
             <IconButton onClick={() => speak(word.word)} label="발음 듣기" className={cn("h-12 w-12", isPlaying && "border-primary text-primary bg-primary/5")}>
               <Volume2 className={cn("w-6 h-6", isPlaying && "animate-pulse")} />
@@ -310,14 +311,14 @@ function WordRevealStep({ word, onNext }: { word: Word; onNext: () => void }) {
             className="space-y-6"
           >
             <div className="space-y-2">
-              <p className="text-xs font-black text-muted-foreground uppercase tracking-widest">의미</p>
+              <p className="text-xs font-black text-muted-foreground tracking-widest">의미</p>
               <p className="text-3xl font-black text-primary leading-tight">{word.meaning}</p>
             </div>
 
             {word.example && (
               <div className="rounded-2xl bg-muted/30 border-2 border-border p-5 space-y-3 relative group">
                 <p className="text-lg font-bold text-foreground leading-relaxed pr-8">
-                  "{word.example}"
+                  "{formatSentence(word.example)}"
                 </p>
                 <IconButton
                   onClick={() => speak(word.example!)}
@@ -369,7 +370,7 @@ function ChoiceQuizStep({
     <Card className="bg-surface border-4 border-border shadow-[6px_6px_0_var(--border)]">
       <CardContent className="p-6 sm:p-10 space-y-8">
         <div className="space-y-2">
-          <p className="text-xs font-black text-muted-foreground uppercase tracking-widest">
+          <p className="text-xs font-black text-muted-foreground tracking-widest">
             단어 고르기
           </p>
           <p className="text-3xl sm:text-4xl font-black text-foreground break-keep leading-tight">
@@ -402,7 +403,7 @@ function ChoiceQuizStep({
                   }`}
               >
                 <div className="flex items-center justify-between">
-                  <span>{opt}</span>
+                  <span>{formatWord(opt)}</span>
                   {done && isTarget && <CheckCircle2 className="w-6 h-6" />}
                   {done && isSelected && !isTarget && <XCircle className="w-6 h-6" />}
                 </div>
@@ -444,7 +445,7 @@ function ListeningQuizStep({
     <Card className="bg-surface border-4 border-border shadow-[6px_6px_0_var(--border)] overflow-hidden">
       <CardContent className="p-6 sm:p-10 space-y-10">
         <div className="space-y-2 text-center">
-          <p className="text-xs font-black text-muted-foreground uppercase tracking-widest">
+          <p className="text-xs font-black text-muted-foreground tracking-widest">
             {prompt || '듣고 알맞은 단어를 선택하세요'}
           </p>
           <p className="text-sm font-bold text-muted-foreground">스피커 아이콘을 눌러 다시 들을 수 있습니다.</p>
@@ -484,7 +485,7 @@ function ListeningQuizStep({
                 className={`h-20 sm:h-24 px-4 rounded-3xl border-4 font-black text-xl sm:text-2xl transition-all shadow-[4px_4px_0_var(--border)]
                   ${variantClass} ${!submitted && 'active:translate-y-1 active:shadow-none'}`}
               >
-                {opt}
+                {formatWord(opt)}
               </button>
             );
           })}
@@ -521,7 +522,7 @@ function FillBlankStep({
     <Card className="bg-surface border-4 border-border shadow-[6px_6px_0_var(--border)]">
       <CardContent className="p-6 sm:p-10 space-y-8">
         <div className="space-y-2">
-          <p className="text-xs font-black text-muted-foreground uppercase tracking-widest">
+          <p className="text-xs font-black text-muted-foreground tracking-widest">
             빈칸 채우기
           </p>
           <p className="text-base text-muted-foreground font-bold">문맥에 맞는 단어를 채워보세요.</p>
@@ -591,7 +592,7 @@ function FillBlankStep({
                 {isCorrect ? '참 잘했어요!' : `아쉬워요. 정답은 "${word.word}" 입니다.`}
               </p>
             </div>
-            <p className="text-base text-muted-foreground font-bold italic pl-9">"{sentence}"</p>
+            <p className="text-base text-muted-foreground font-bold italic pl-9">"{formatSentence(sentence)}"</p>
           </motion.div>
         )}
         
@@ -723,11 +724,11 @@ function SentenceBuildStep({
       <CardContent className="p-6 sm:p-10 space-y-8">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="space-y-1">
-            <p className="text-xs font-black text-muted-foreground uppercase tracking-widest">
+            <p className="text-xs font-black text-muted-foreground tracking-widest">
               자유 문장 만들기
             </p>
             <div className="flex items-center gap-3">
-              <span className="text-4xl sm:text-5xl font-black text-foreground">{word.word}</span>
+              <span className="text-4xl sm:text-5xl font-black text-foreground">{formatWord(word.word)}</span>
               <IconButton 
                 onClick={() => speak(word.word)} 
                 label="발음 듣기" 
@@ -740,7 +741,7 @@ function SentenceBuildStep({
           </div>
           
           <div className="bg-muted/30 px-4 py-2 rounded-2xl border-2 border-border text-center sm:text-right">
-             <p className="text-[10px] font-black text-muted-foreground uppercase mb-1">인정되는 형태</p>
+             <p className="text-[10px] font-black text-muted-foreground mb-1">인정되는 형태</p>
              <div className="flex flex-wrap justify-center sm:justify-end gap-1.5">
                 {variations.slice(0, 4).map(v => (
                   <span key={v} className="text-[10px] font-bold px-2 py-0.5 bg-background rounded-md border border-border/50">{v}</span>
@@ -753,7 +754,7 @@ function SentenceBuildStep({
         {!submitted && (
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <p className="text-xs font-black text-muted-foreground uppercase tracking-widest">빠른 입력 & 힌트</p>
+              <p className="text-xs font-black text-muted-foreground tracking-widest">빠른 입력 & 힌트</p>
               {word.example && hintLevel < 2 && (
                 <button 
                   onClick={() => setHintLevel(prev => prev + 1)}
@@ -786,7 +787,7 @@ function SentenceBuildStep({
                   <div className="text-sm font-bold text-amber-700 bg-amber-50 px-4 py-3 rounded-2xl border-2 border-amber-200 flex items-start gap-3">
                     <div className="mt-0.5 bg-amber-200 p-1 rounded-lg"><Lightbulb className="w-3.5 h-3.5 text-amber-700" /></div>
                     <div>
-                      <p className="text-xs uppercase font-black opacity-60 mb-0.5">뜻 풀이</p>
+                      <p className="text-xs font-black opacity-60 mb-0.5">뜻 풀이</p>
                       <p>{word.exampleTranslation || "이 단어를 사용해 문장을 만들어보세요."}</p>
                     </div>
                   </div>
@@ -794,7 +795,7 @@ function SentenceBuildStep({
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-sm font-bold text-blue-700 bg-blue-50 px-4 py-3 rounded-2xl border-2 border-blue-200 flex items-start gap-3">
                        <div className="mt-0.5 bg-blue-200 p-1 rounded-lg"><Volume2 className={cn("w-3.5 h-3.5 text-blue-700", isPlaying && "animate-pulse")} /></div>
                        <div>
-                         <p className="text-xs uppercase font-black opacity-60 mb-0.5">참고 예문</p>
+                         <p className="text-xs font-black opacity-60 mb-0.5">참고 예문</p>
                          <p className={cn("italic underline cursor-pointer", isPlaying && "text-primary")} onClick={() => speak(word.example!)}>&quot;{word.example}&quot;</p>
                        </div>
                     </motion.div>
@@ -815,7 +816,7 @@ function SentenceBuildStep({
             }}
             disabled={submitted}
             rows={3}
-            placeholder={`"${word.word}"를 넣어 문장을 완성해보세요...`}
+            placeholder={`"${formatWord(word.word)}"를 넣어 문장을 완성해보세요...`}
             className={`w-full px-6 py-5 rounded-[2rem] border-4 font-black text-lg bg-background
               text-foreground placeholder:text-muted-foreground/30 resize-none outline-none transition-all
               ${submitted
@@ -827,7 +828,7 @@ function SentenceBuildStep({
             <div className="flex justify-between items-center px-4">
               <div className={`text-xs font-black flex items-center gap-1.5 ${hasWord ? 'text-success' : 'text-muted-foreground'}`}>
                 {hasWord ? <CheckCircle2 className="w-4 h-4" /> : <div className="w-4 h-4 rounded-full border-2 border-muted-foreground/30" />}
-                {hasWord ? `단어 포함됨` : `"${word.word}"를 포함해주세요`}
+                {hasWord ? `단어 포함됨` : `"${formatWord(word.word)}"를 포함해주세요`}
               </div>
               <p className="text-[10px] font-black text-muted-foreground">
                 글자 수: {value.length} / 단어 수: {currentTokens.length}
@@ -868,9 +869,9 @@ function SentenceBuildStep({
             ) : (
               word.example && (
                 <div className="bg-background/50 rounded-2xl p-4 border-2 border-border/50 space-y-2">
-                  <p className="text-[10px] font-black text-muted-foreground uppercase tracking-tighter">링고스냅 추천 표현</p>
+                  <p className="text-[10px] font-black text-muted-foreground tracking-tighter">링고스냅 추천 표현</p>
                   <p className="font-bold text-foreground italic flex items-center justify-between gap-3">
-                    <span>&quot;{word.example}&quot;</span>
+                    <span>&quot;{formatSentence(word.example)}&quot;</span>
                     <IconButton 
                       onClick={() => speak(word.example!)} 
                       label="듣기" 
@@ -899,7 +900,7 @@ function SpeakingStep({
   return (
     <Card className="bg-surface border-4 border-border shadow-[6px_6px_0_var(--border)]">
       <CardContent className="p-6 sm:p-10 space-y-4">
-        <p className="text-xs font-black text-muted-foreground uppercase tracking-widest">말하기</p>
+        <p className="text-xs font-black text-muted-foreground tracking-widest">말하기</p>
         <SpeakingPractice
           expectedSentence={sentence}
           onContinue={passed => { if (passed) onCorrect(); else onWrong(); }}

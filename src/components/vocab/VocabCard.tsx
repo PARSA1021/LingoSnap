@@ -7,6 +7,7 @@ import { useTTS } from '@/hooks/useTTS';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLearningStore } from '@/store/useLearningStore';
 import { cn } from '@/lib/utils/cn';
+import { formatWord, formatSentence } from '@/lib/utils/format';
 import type { Word } from '@/types';
 
 type Example = { text: string; translation?: string };
@@ -52,7 +53,7 @@ export function VocabCard({ word, onNext, onPrev, showPrev }: VocabCardProps) {
         <div className="w-full pt-6 min-h-[100px] flex items-center justify-center">
           <AnimatePresence mode="wait">
             <motion.div key="visible" initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col items-center gap-2">
-              <h2 className="text-4xl sm:text-5xl font-black text-black font-reading leading-tight italic">{word.word}</h2>
+              <h2 className="text-4xl sm:text-5xl font-black text-black font-reading leading-tight italic">{formatWord(word.word)}</h2>
               <button 
                 onClick={() => speak(word.word)}
                 disabled={isLoading}
@@ -76,19 +77,19 @@ export function VocabCard({ word, onNext, onPrev, showPrev }: VocabCardProps) {
                 onClick={() => setShowMeaning(true)} 
                 className="w-full py-6 bg-primary text-white border-4 border-black font-black text-lg shadow-[4px_4px_0_#000] active:translate-y-1 active:shadow-none transition-all font-cartoon"
               >
-                CHECK MEANING
+                Check Meaning
               </button>
             ) : (
               <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="text-left space-y-4">
                 <div className="bg-primary/5 p-4 border-2 border-dashed border-primary rounded-xl">
-                  <p className="text-2xl font-black text-primary leading-tight font-cartoon uppercase">{word.meaning}</p>
+                  <p className="text-2xl font-black text-primary leading-tight font-cartoon">{word.meaning}</p>
                 </div>
 
                 {/* Examples */}
                 <div className="space-y-3">
                   {word.examples && word.examples.slice(0, 2).map((ex, idx) => (
                     <div key={idx} className="bg-white p-4 border-2 border-black border-dashed">
-                      <p className="font-bold text-base text-black leading-snug font-reading">&quot;{ex.text}&quot;</p>
+                      <p className="font-bold text-base text-black leading-snug font-reading">&quot;{formatSentence(ex.text)}&quot;</p>
                       {ex.translation && (
                         <p className="text-black/60 font-bold mt-1 text-xs font-reading">
                           ↳ {ex.translation}
@@ -108,7 +109,7 @@ export function VocabCard({ word, onNext, onPrev, showPrev }: VocabCardProps) {
             {showPrev && (
               <button 
                 onClick={onPrev} 
-                className="flex-1 h-12 bg-white border-2 border-black font-black text-xs uppercase shadow-[2px_2px_0_#000] active:translate-y-0.5 active:shadow-none transition-all font-cartoon flex items-center justify-center gap-2"
+                className="flex-1 h-12 bg-white border-2 border-black font-black text-xs shadow-[2px_2px_0_#000] active:translate-y-0.5 active:shadow-none transition-all font-cartoon flex items-center justify-center gap-2"
               >
                 <ArrowLeft className="w-4 h-4" /> Back
               </button>
@@ -117,7 +118,7 @@ export function VocabCard({ word, onNext, onPrev, showPrev }: VocabCardProps) {
               <button 
                 onClick={onNext} 
                 disabled={!showMeaning} 
-                className="flex-[2] h-12 bg-black text-white border-2 border-black font-black text-xs uppercase shadow-[4px_4px_0_#000] active:translate-y-0.5 active:shadow-none transition-all font-cartoon flex items-center justify-center gap-2 disabled:opacity-30"
+                className="flex-[2] h-12 bg-black text-white border-2 border-black font-black text-xs shadow-[4px_4px_0_#000] active:translate-y-0.5 active:shadow-none transition-all font-cartoon flex items-center justify-center gap-2 disabled:opacity-30"
               >
                 Next <ArrowRight className="w-4 h-4" />
               </button>

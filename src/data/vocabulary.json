@@ -1,6 +1,6 @@
 [
   {
-    "word": "absolutely",
+    "word": "Absolutely",
     "meaning": "절대적으로, 완전히",
     "level": "intermediate",
     "category": "일상",
@@ -16,7 +16,7 @@
     ]
   },
   {
-    "word": "actually",
+    "word": "Actually",
     "meaning": "사실은, 실제로는",
     "level": "beginner",
     "category": "일상",
@@ -32,7 +32,7 @@
     ]
   },
   {
-    "word": "definitely",
+    "word": "Definitely",
     "meaning": "확실히, 틀림없이",
     "level": "beginner",
     "category": "일상",
@@ -48,7 +48,7 @@
     ]
   },
   {
-    "word": "exactly",
+    "word": "Exactly",
     "meaning": "정확히, 바로 그거야",
     "level": "beginner",
     "category": "일상",
@@ -64,7 +64,7 @@
     ]
   },
   {
-    "word": "pretty much",
+    "word": "Pretty Much",
     "meaning": "거의, 대부분",
     "level": "intermediate",
     "category": "캐주얼",
@@ -80,7 +80,7 @@
     ]
   },
   {
-    "word": "quite",
+    "word": "Quite",
     "meaning": "꽤, 상당히",
     "level": "intermediate",
     "category": "일상",
@@ -92,7 +92,7 @@
     ]
   },
   {
-    "word": "by the way",
+    "word": "By The Way",
     "meaning": "그런데, 근데 말이야",
     "level": "beginner",
     "category": "캐주얼",
@@ -108,7 +108,7 @@
     ]
   },
   {
-    "word": "you know",
+    "word": "You Know",
     "meaning": "있잖아, 알다시피",
     "level": "beginner",
     "category": "캐주얼",
@@ -124,7 +124,7 @@
     ]
   },
   {
-    "word": "I guess",
+    "word": "I Guess",
     "meaning": "~인 것 같아, 아마도",
     "level": "beginner",
     "category": "캐주얼",
@@ -136,7 +136,7 @@
     ]
   },
   {
-    "word": "kind of",
+    "word": "Kind Of",
     "meaning": "약간, 어느 정도",
     "level": "beginner",
     "category": "캐주얼",
@@ -148,7 +148,7 @@
     ]
   },
   {
-    "word": "come on",
+    "word": "Come On",
     "meaning": "자, 이리 와, 제발",
     "level": "beginner",
     "category": "캐주얼",
@@ -160,7 +160,7 @@
     ]
   },
   {
-    "word": "hang on",
+    "word": "Hang On",
     "meaning": "잠깐만, 기다려",
     "level": "beginner",
     "category": "일상",
@@ -172,7 +172,7 @@
     ]
   },
   {
-    "word": "right away",
+    "word": "Right Away",
     "meaning": "바로, 즉시",
     "level": "beginner",
     "category": "일상",
@@ -184,7 +184,7 @@
     ]
   },
   {
-    "word": "take your time",
+    "word": "Take Your Time",
     "meaning": "천천히 해, 서두르지 마",
     "level": "beginner",
     "category": "일상",
@@ -196,7 +196,7 @@
     ]
   },
   {
-    "word": "for sure",
+    "word": "For Sure",
     "meaning": "확실히, 물론이지",
     "level": "beginner",
     "category": "캐주얼",
@@ -208,7 +208,7 @@
     ]
   },
   {
-    "word": "of course",
+    "word": "Of Course",
     "meaning": "물론, 당연하지",
     "level": "beginner",
     "category": "일상",
@@ -220,7 +220,7 @@
     ]
   },
   {
-    "word": "sounds good",
+    "word": "Sounds Good",
     "meaning": "좋아, 괜찮네",
     "level": "beginner",
     "category": "캐주얼",
@@ -232,7 +232,7 @@
     ]
   },
   {
-    "word": "make sense",
+    "word": "Make Sense",
     "meaning": "말이 되다, 이해가 되다",
     "level": "intermediate",
     "category": "일상",
@@ -248,7 +248,7 @@
     ]
   },
   {
-    "word": "no way",
+    "word": "No Way",
     "meaning": "말도 안 돼, 절대 안 돼",
     "level": "beginner",
     "category": "캐주얼",
@@ -260,7 +260,7 @@
     ]
   },
   {
-    "word": "what's going on",
+    "word": "What's Going On",
     "meaning": "무슨 일이야, 어떻게 돼가?",
     "level": "beginner",
     "category": "캐주얼",
@@ -272,7 +272,7 @@
     ]
   },
   {
-    "word": "it depends",
+    "word": "It Depends",
     "meaning": "상황에 따라 다르지",
     "level": "intermediate",
     "category": "일상",
@@ -284,7 +284,7 @@
     ]
   },
   {
-    "word": "just in case",
+    "word": "Just In Case",
     "meaning": "혹시 몰라서, 만약을 위해",
     "level": "intermediate",
     "category": "일상",
@@ -296,7 +296,7 @@
     ]
   },
   {
-    "word": "let me know",
+    "word": "Let Me Know",
     "meaning": "알려줘, 말해줘",
     "level": "beginner",
     "category": "일상",
@@ -308,7 +308,7 @@
     ]
   },
   {
-    "word": "up to you",
+    "word": "Up To You",
     "meaning": "네가 정해, 네 마음대로",
     "level": "beginner",
     "category": "캐주얼",
@@ -320,7 +320,7 @@
     ]
   },
   {
-    "word": "give it a try",
+    "word": "Give It A Try",
     "meaning": "한번 시도해봐",
     "level": "beginner",
     "category": "일상",
@@ -332,7 +332,7 @@
     ]
   },
   {
-    "word": "figure out",
+    "word": "Figure Out",
     "meaning": "알아내다, 해결하다",
     "level": "intermediate",
     "category": "일상",
@@ -348,7 +348,7 @@
     ]
   },
   {
-    "word": "check it out",
+    "word": "Check It Out",
     "meaning": "확인해봐, 한번 봐봐",
     "level": "beginner",
     "category": "캐주얼",
@@ -360,7 +360,7 @@
     ]
   },
   {
-    "word": "don't worry",
+    "word": "Don't Worry",
     "meaning": "걱정하지 마",
     "level": "beginner",
     "category": "일상",
@@ -372,7 +372,7 @@
     ]
   },
   {
-    "word": "be honest",
+    "word": "Be Honest",
     "meaning": "솔직히 말해서",
     "level": "intermediate",
     "category": "일상",
@@ -384,7 +384,7 @@
     ]
   },
   {
-    "word": "trust me",
+    "word": "Trust Me",
     "meaning": "날 믿어",
     "level": "beginner",
     "category": "캐주얼",
@@ -396,7 +396,7 @@
     ]
   },
   {
-    "word": "make sure",
+    "word": "Make Sure",
     "meaning": "반드시 ~하다, 확인하다",
     "level": "intermediate",
     "category": "비즈니스",
@@ -408,7 +408,7 @@
     ]
   },
   {
-    "word": "keep in mind",
+    "word": "Keep In Mind",
     "meaning": "명심하다, 잊지 않다",
     "level": "intermediate",
     "category": "비즈니스",
@@ -424,7 +424,7 @@
     ]
   },
   {
-    "word": "go ahead",
+    "word": "Go Ahead",
     "meaning": "계속해, 먼저 해",
     "level": "beginner",
     "category": "일상",
@@ -436,7 +436,7 @@
     ]
   },
   {
-    "word": "no problem",
+    "word": "No Problem",
     "meaning": "문제없어, 괜찮아",
     "level": "beginner",
     "category": "일상",
@@ -448,7 +448,7 @@
     ]
   },
   {
-    "word": "excuse me",
+    "word": "Excuse Me",
     "meaning": "실례합니다, 저기요",
     "level": "beginner",
     "category": "여행",
@@ -460,7 +460,7 @@
     ]
   },
   {
-    "word": "never mind",
+    "word": "Never Mind",
     "meaning": "신경 쓰지 마, 됐어",
     "level": "beginner",
     "category": "캐주얼",
@@ -472,7 +472,7 @@
     ]
   },
   {
-    "word": "on my way",
+    "word": "On My Way",
     "meaning": "가는 중이야",
     "level": "beginner",
     "category": "일상",
@@ -484,7 +484,7 @@
     ]
   },
   {
-    "word": "in a hurry",
+    "word": "In A Hurry",
     "meaning": "서두르는, 급한",
     "level": "beginner",
     "category": "일상",
@@ -496,7 +496,7 @@
     ]
   },
   {
-    "word": "totally",
+    "word": "Totally",
     "meaning": "전적으로, 완전히",
     "level": "beginner",
     "category": "일상",
@@ -508,7 +508,7 @@
     ]
   },
   {
-    "word": "no wonder",
+    "word": "No Wonder",
     "meaning": "어쩐지, ~하는 것도 당연하다",
     "level": "intermediate",
     "category": "캐주얼",
@@ -520,7 +520,7 @@
     ]
   },
   {
-    "word": "make it",
+    "word": "Make It",
     "meaning": "해내다, 참석하다",
     "level": "intermediate",
     "category": "일상",
@@ -532,7 +532,7 @@
     ]
   },
   {
-    "word": "on the tip of my tongue",
+    "word": "On The Tip Of My Tongue",
     "meaning": "입가에서 맴돌다",
     "level": "advanced",
     "category": "숙어",
@@ -544,7 +544,7 @@
     ]
   },
   {
-    "word": "keep an eye on",
+    "word": "Keep An Eye On",
     "meaning": "~을 계속 주시하다",
     "level": "intermediate",
     "category": "일상",
@@ -556,7 +556,7 @@
     ]
   },
   {
-    "word": "get used to",
+    "word": "Get Used To",
     "meaning": "~에 익숙해지다",
     "level": "intermediate",
     "category": "일상",
@@ -572,7 +572,7 @@
     ]
   },
   {
-    "word": "as far as I know",
+    "word": "As Far As I Know",
     "meaning": "내가 알기로는",
     "level": "intermediate",
     "category": "비즈니스",
@@ -584,7 +584,7 @@
     ]
   },
   {
-    "word": "mean to",
+    "word": "Mean To",
     "meaning": "~할 의도이다",
     "level": "beginner",
     "category": "일상",
@@ -596,7 +596,7 @@
     ]
   },
   {
-    "word": "hang out",
+    "word": "Hang Out",
     "meaning": "놀다, 시간을 보내다",
     "level": "beginner",
     "category": "캐주얼",
@@ -608,7 +608,7 @@
     ]
   },
   {
-    "word": "hit the road",
+    "word": "Hit The Road",
     "meaning": "출발하다, 길을 나서다",
     "level": "intermediate",
     "category": "숙어",
@@ -620,7 +620,7 @@
     ]
   },
   {
-    "word": "point of view",
+    "word": "Point Of View",
     "meaning": "관점, 견해",
     "level": "intermediate",
     "category": "비즈니스",
@@ -632,7 +632,7 @@
     ]
   },
   {
-    "word": "run out of",
+    "word": "Run Out Of",
     "meaning": "~이 다 떨어지다",
     "level": "beginner",
     "category": "일상",
@@ -644,7 +644,7 @@
     ]
   },
   {
-    "word": "take advantage of",
+    "word": "Take Advantage Of",
     "meaning": "~을 이용하다/활용하다",
     "level": "advanced",
     "category": "비즈니스",
@@ -656,7 +656,7 @@
     ]
   },
   {
-    "word": "work out",
+    "word": "Work Out",
     "meaning": "운동하다, 일이 잘 풀리다",
     "level": "beginner",
     "category": "일상",
@@ -668,7 +668,7 @@
     ]
   },
   {
-    "word": "no biggie",
+    "word": "No Biggie",
     "meaning": "별거 아니야",
     "level": "beginner",
     "category": "캐주얼",
@@ -680,7 +680,7 @@
     ]
   },
   {
-    "word": "back and forth",
+    "word": "Back And Forth",
     "meaning": "왔다 갔다, 앞뒤로",
     "level": "intermediate",
     "category": "일상",
@@ -692,7 +692,7 @@
     ]
   },
   {
-    "word": "call it a day",
+    "word": "Call It A Day",
     "meaning": "오늘 일을 그만 마치다",
     "level": "intermediate",
     "category": "비즈니스",
@@ -704,7 +704,7 @@
     ]
   },
   {
-    "word": "Keep in touch",
+    "word": "Keep In Touch",
     "meaning": "계속 연락하고 지내다",
     "level": "beginner",
     "category": "일상",
@@ -720,7 +720,7 @@
     ]
   },
   {
-    "word": "Piece of cake",
+    "word": "Piece Of Cake",
     "meaning": "식은 죽 먹기 (아주 쉬운 일)",
     "level": "beginner",
     "category": "숙어",
@@ -732,7 +732,7 @@
     ]
   },
   {
-    "word": "Under the weather",
+    "word": "Under The Weather",
     "meaning": "몸 상태가 좋지 않은",
     "level": "intermediate",
     "category": "일상",
@@ -744,7 +744,7 @@
     ]
   },
   {
-    "word": "Break a leg",
+    "word": "Break A Leg",
     "meaning": "행운을 빌어 (특히 공연 전에)",
     "level": "intermediate",
     "category": "숙어",
@@ -756,7 +756,7 @@
     ]
   },
   {
-    "word": "Beat around the bush",
+    "word": "Beat Around The Bush",
     "meaning": "본론을 피하고 돌려 말하다",
     "level": "advanced",
     "category": "일상",
@@ -768,7 +768,7 @@
     ]
   },
   {
-    "word": "On the same page",
+    "word": "On The Same Page",
     "meaning": "같은 생각이다, 이해하고 있다",
     "level": "intermediate",
     "category": "비즈니스",
@@ -780,7 +780,7 @@
     ]
   },
   {
-    "word": "Cut to the chase",
+    "word": "Cut To The Chase",
     "meaning": "바로 본론으로 들어가다",
     "level": "intermediate",
     "category": "비즈니스",
@@ -792,7 +792,7 @@
     ]
   },
   {
-    "word": "Can't help it",
+    "word": "Can't Help It",
     "meaning": "어쩔 수 없다",
     "level": "beginner",
     "category": "캐주얼",
@@ -804,7 +804,7 @@
     ]
   },
   {
-    "word": "Go with the flow",
+    "word": "Go With The Flow",
     "meaning": "흐름에 맡기다, 대세를 따르다",
     "level": "intermediate",
     "category": "캐주얼",
@@ -816,7 +816,7 @@
     ]
   },
   {
-    "word": "Better late than never",
+    "word": "Better Late Than Never",
     "meaning": "늦더라도 아예 안 하는 것보다 낫다",
     "level": "beginner",
     "category": "숙어",
@@ -828,7 +828,7 @@
     ]
   },
   {
-    "word": "So far so good",
+    "word": "So Far So Good",
     "meaning": "지금까지는 괜찮아",
     "level": "beginner",
     "category": "일상",
@@ -840,7 +840,7 @@
     ]
   },
   {
-    "word": "Make a long story short",
+    "word": "Make A Long Story Short",
     "meaning": "짧게 요약하자면",
     "level": "intermediate",
     "category": "캐주얼",
@@ -852,7 +852,7 @@
     ]
   },
   {
-    "word": "Out of the blue",
+    "word": "Out Of The Blue",
     "meaning": "갑자기, 뜬금없이",
     "level": "intermediate",
     "category": "캐주얼",
@@ -864,7 +864,7 @@
     ]
   },
   {
-    "word": "Think outside the box",
+    "word": "Think Outside The Box",
     "meaning": "고정관념에서 벗어나 생각하다",
     "level": "intermediate",
     "category": "비즈니스",
@@ -876,7 +876,7 @@
     ]
   },
   {
-    "word": "In the long run",
+    "word": "In The Long Run",
     "meaning": "장기적으로 보면",
     "level": "intermediate",
     "category": "비즈니스",
@@ -888,7 +888,7 @@
     ]
   },
   {
-    "word": "Where were we?",
+    "word": "Where Were We?",
     "meaning": "우리 어디까지 얘기했지?",
     "level": "beginner",
     "category": "일상",
@@ -900,7 +900,7 @@
     ]
   },
   {
-    "word": "Give me a hand",
+    "word": "Give Me A Hand",
     "meaning": "좀 도와줘",
     "level": "beginner",
     "category": "일상",
@@ -912,7 +912,7 @@
     ]
   },
   {
-    "word": "How's it going?",
+    "word": "How's It Going?",
     "meaning": "어떻게 지내? (인사)",
     "level": "beginner",
     "category": "캐주얼",
@@ -924,7 +924,7 @@
     ]
   },
   {
-    "word": "It's worth it",
+    "word": "It's Worth It",
     "meaning": "그만한 가치가 있다",
     "level": "intermediate",
     "category": "일상",
@@ -936,7 +936,7 @@
     ]
   },
   {
-    "word": "Look forward to",
+    "word": "Look Forward To",
     "meaning": "~을 고대하다/기대하다",
     "level": "intermediate",
     "category": "비즈니스",
@@ -948,7 +948,7 @@
     ]
   },
   {
-    "word": "Can't wait",
+    "word": "Can't Wait",
     "meaning": "너무 기대돼/빨리 하고 싶어",
     "level": "beginner",
     "category": "캐주얼",
@@ -960,7 +960,7 @@
     ]
   },
   {
-    "word": "Take a rain check",
+    "word": "Take A Rain Check",
     "meaning": "다음 기회로 미루다",
     "level": "advanced",
     "category": "캐주얼",
@@ -972,7 +972,7 @@
     ]
   },
   {
-    "word": "No offense",
+    "word": "No Offense",
     "meaning": "악의는 없어 (기분 나빠하지 마)",
     "level": "intermediate",
     "category": "캐주얼",
@@ -984,19 +984,7 @@
     ]
   },
   {
-    "word": "Never mind",
-    "meaning": "됐어, 신경 쓰지 마",
-    "level": "beginner",
-    "category": "일상",
-    "examples": [
-      {
-        "text": "Never mind, I'll do it myself.",
-        "translation": "됐어, 내가 직접 할게."
-      }
-    ]
-  },
-  {
-    "word": "By any chance",
+    "word": "By Any Chance",
     "meaning": "혹시 말이야",
     "level": "beginner",
     "category": "여행",
@@ -1008,7 +996,7 @@
     ]
   },
   {
-    "word": "Check in",
+    "word": "Check In",
     "meaning": "체크인하다, 상태를 확인하다",
     "level": "beginner",
     "category": "여행",
@@ -1024,7 +1012,7 @@
     ]
   },
   {
-    "word": "Let's grab a coffee",
+    "word": "Let's Grab A Coffee",
     "meaning": "커피 한잔하자",
     "level": "beginner",
     "category": "캐주얼",
@@ -1036,7 +1024,7 @@
     ]
   },
   {
-    "word": "Long story short",
+    "word": "Long Story Short",
     "meaning": "긴 얘기를 짧게 하면",
     "level": "intermediate",
     "category": "일상",
@@ -1048,19 +1036,7 @@
     ]
   },
   {
-    "word": "On my way",
-    "meaning": "가는 중이야",
-    "level": "beginner",
-    "category": "일상",
-    "examples": [
-      {
-        "text": "I'm on my way, see you soon.",
-        "translation": "나 지금 가는 중이야, 곧 봐."
-      }
-    ]
-  },
-  {
-    "word": "Keep me posted",
+    "word": "Keep Me Posted",
     "meaning": "상황을 계속 알려줘",
     "level": "intermediate",
     "category": "비즈니스",
@@ -1072,7 +1048,7 @@
     ]
   },
   {
-    "word": "I'm tied up",
+    "word": "I'm Tied Up",
     "meaning": "매우 바쁘다, 꼼짝 못 하다",
     "level": "intermediate",
     "category": "비즈니스",
@@ -1084,7 +1060,7 @@
     ]
   },
   {
-    "word": "hit the books",
+    "word": "Hit The Books",
     "meaning": "열심히 공부하다",
     "level": "intermediate",
     "category": "숙어",
@@ -1096,7 +1072,7 @@
     ]
   },
   {
-    "word": "count me in",
+    "word": "Count Me In",
     "meaning": "나도 끼워줘",
     "level": "beginner",
     "category": "캐주얼",
@@ -1108,7 +1084,7 @@
     ]
   },
   {
-    "word": "it's on me",
+    "word": "It's On Me",
     "meaning": "내가 낼게 (한턱낼 때)",
     "level": "beginner",
     "category": "일상",
@@ -1120,7 +1096,7 @@
     ]
   },
   {
-    "word": "get a grip",
+    "word": "Get A Grip",
     "meaning": "정신 차려, 평정심을 찾아",
     "level": "intermediate",
     "category": "캐주얼",
@@ -1132,7 +1108,7 @@
     ]
   },
   {
-    "word": "under the radar",
+    "word": "Under The Radar",
     "meaning": "눈에 띄지 않게, 몰래",
     "level": "advanced",
     "category": "비즈니스",
@@ -1144,7 +1120,7 @@
     ]
   },
   {
-    "word": "long time no see",
+    "word": "Long Time No See",
     "meaning": "오랜만이야",
     "level": "beginner",
     "category": "일상",
@@ -1156,7 +1132,7 @@
     ]
   },
   {
-    "word": "make up your mind",
+    "word": "Make Up Your Mind",
     "meaning": "결정해, 결심해",
     "level": "beginner",
     "category": "일상",
@@ -1168,7 +1144,7 @@
     ]
   },
   {
-    "word": "in the middle of",
+    "word": "In The Middle Of",
     "meaning": "~하는 중이다",
     "level": "beginner",
     "category": "일상",
@@ -1180,7 +1156,7 @@
     ]
   },
   {
-    "word": "speak of the devil",
+    "word": "Speak Of The Devil",
     "meaning": "호랑이도 제 말 하면 온다더니",
     "level": "intermediate",
     "category": "숙어",
@@ -1192,7 +1168,7 @@
     ]
   },
   {
-    "word": "keep your chin up",
+    "word": "Keep Your Chin Up",
     "meaning": "기운 내, 낙담하지 마",
     "level": "intermediate",
     "category": "일상",
@@ -1204,7 +1180,7 @@
     ]
   },
   {
-    "word": "better safe than sorry",
+    "word": "Better Safe Than Sorry",
     "meaning": "나중에 후회하는 것보다 조심하는 게 낫다",
     "level": "intermediate",
     "category": "숙어",
@@ -1216,7 +1192,7 @@
     ]
   },
   {
-    "word": "can't complain",
+    "word": "Can't Complain",
     "meaning": "그럭저럭 잘 지내, 불만 없어",
     "level": "beginner",
     "category": "캐주얼",
@@ -1228,7 +1204,7 @@
     ]
   },
   {
-    "word": "call me back",
+    "word": "Call Me Back",
     "meaning": "나중에 전화 줘",
     "level": "beginner",
     "category": "일상",
@@ -1240,7 +1216,7 @@
     ]
   },
   {
-    "word": "get back to you",
+    "word": "Get Back To You",
     "meaning": "(나중에 확인해서) 다시 연락하다",
     "level": "intermediate",
     "category": "비즈니스",
@@ -1252,7 +1228,7 @@
     ]
   },
   {
-    "word": "keep me in the loop",
+    "word": "Keep Me In The Loop",
     "meaning": "어떻게 돼가는지 계속 알려줘",
     "level": "intermediate",
     "category": "비즈니스",
@@ -1264,7 +1240,7 @@
     ]
   },
   {
-    "word": "once in a blue moon",
+    "word": "Once In A Blue Moon",
     "meaning": "아주 드물게, 가뭄에 콩 나듯",
     "level": "advanced",
     "category": "숙어",
@@ -1276,7 +1252,7 @@
     ]
   },
   {
-    "word": "back to square one",
+    "word": "Back To Square One",
     "meaning": "원점으로 돌아가다",
     "level": "intermediate",
     "category": "비즈니스",
@@ -1288,7 +1264,7 @@
     ]
   },
   {
-    "word": "burn the midnight oil",
+    "word": "Burn The Midnight Oil",
     "meaning": "밤늦게까지 열심히 일/공부하다",
     "level": "advanced",
     "category": "숙어",
@@ -1300,7 +1276,7 @@
     ]
   },
   {
-    "word": "around the clock",
+    "word": "Around The Clock",
     "meaning": "24시간 내내, 쉬지 않고",
     "level": "intermediate",
     "category": "일상",
@@ -1312,7 +1288,7 @@
     ]
   },
   {
-    "word": "I'm on it",
+    "word": "I'm On It",
     "meaning": "내가 처리할게, 바로 할게",
     "level": "beginner",
     "category": "비즈니스",
@@ -1324,19 +1300,7 @@
     ]
   },
   {
-    "word": "long story short",
-    "meaning": "결론만 말하자면",
-    "level": "intermediate",
-    "category": "캐주얼",
-    "examples": [
-      {
-        "text": "Long story short, I didn't get the job.",
-        "translation": "결론만 말하자면, 나 그 일자리 못 얻었어."
-      }
-    ]
-  },
-  {
-    "word": "I'll pass",
+    "word": "I'll Pass",
     "meaning": "난 빠질게, 이번엔 안 할래",
     "level": "beginner",
     "category": "캐주얼",
@@ -1348,7 +1312,7 @@
     ]
   },
   {
-    "word": "wrap up",
+    "word": "Wrap Up",
     "meaning": "마무리 짓다",
     "level": "intermediate",
     "category": "비즈니스",
@@ -1360,7 +1324,7 @@
     ]
   },
   {
-    "word": "I can't afford it",
+    "word": "I Can't Afford It",
     "meaning": "그럴 형편이 안 돼 (비싸서)",
     "level": "intermediate",
     "category": "일상",
@@ -1372,7 +1336,7 @@
     ]
   },
   {
-    "word": "keep me updated",
+    "word": "Keep Me Updated",
     "meaning": "계속 상황을 알려줘",
     "level": "intermediate",
     "category": "비즈니스",
@@ -1384,7 +1348,7 @@
     ]
   },
   {
-    "word": "make a living",
+    "word": "Make A Living",
     "meaning": "생계를 꾸리다",
     "level": "intermediate",
     "category": "일상",
@@ -1396,7 +1360,7 @@
     ]
   },
   {
-    "word": "not a chance",
+    "word": "Not A Chance",
     "meaning": "절대 안 돼, 그럴 리 없어",
     "level": "intermediate",
     "category": "캐주얼",
@@ -1408,7 +1372,7 @@
     ]
   },
   {
-    "word": "pull an all-nighter",
+    "word": "Pull An All-nighter",
     "meaning": "밤을 새우다",
     "level": "intermediate",
     "category": "일상",
@@ -1420,7 +1384,7 @@
     ]
   },
   {
-    "word": "be out of order",
+    "word": "Be Out Of Order",
     "meaning": "고장 나다",
     "level": "beginner",
     "category": "여행",
@@ -1432,7 +1396,7 @@
     ]
   },
   {
-    "word": "get to the point",
+    "word": "Get To The Point",
     "meaning": "본론으로 들어가다",
     "level": "intermediate",
     "category": "비즈니스",
@@ -1444,7 +1408,7 @@
     ]
   },
   {
-    "word": "suit yourself",
+    "word": "Suit Yourself",
     "meaning": "마음대로 해 (약간의 냉소)",
     "level": "intermediate",
     "category": "캐주얼",
@@ -1456,7 +1420,7 @@
     ]
   },
   {
-    "word": "I'm starving",
+    "word": "I'm Starving",
     "meaning": "배고파 죽겠어",
     "level": "beginner",
     "category": "일상",
@@ -1468,7 +1432,7 @@
     ]
   },
   {
-    "word": "take a look",
+    "word": "Take A Look",
     "meaning": "한번 봐보다",
     "level": "beginner",
     "category": "일상",
@@ -1480,7 +1444,7 @@
     ]
   },
   {
-    "word": "think twice",
+    "word": "Think Twice",
     "meaning": "심사숙고하다",
     "level": "intermediate",
     "category": "일상",
@@ -1492,7 +1456,7 @@
     ]
   },
   {
-    "word": "be fed up with",
+    "word": "Be Fed Up With",
     "meaning": "~에 질리다, 진저리나다",
     "level": "advanced",
     "category": "캐주얼",
@@ -1504,7 +1468,7 @@
     ]
   },
   {
-    "word": "give it a shot",
+    "word": "Give It A Shot",
     "meaning": "한번 시도해봐",
     "level": "beginner",
     "category": "캐주얼",
@@ -1516,7 +1480,7 @@
     ]
   },
   {
-    "word": "it's on the house",
+    "word": "It's On The House",
     "meaning": "서비스입니다 (가게에서)",
     "level": "intermediate",
     "category": "여행",
@@ -1528,7 +1492,7 @@
     ]
   },
   {
-    "word": "cut it out",
+    "word": "Cut It Out",
     "meaning": "그만둬, 집어치워",
     "level": "beginner",
     "category": "캐주얼",
@@ -1540,7 +1504,7 @@
     ]
   },
   {
-    "word": "get in touch with",
+    "word": "Get In Touch With",
     "meaning": "~와 연락이 닿다",
     "level": "intermediate",
     "category": "비즈니스",
@@ -1552,7 +1516,7 @@
     ]
   },
   {
-    "word": "what a relief",
+    "word": "What A Relief",
     "meaning": "정말 다행이다",
     "level": "beginner",
     "category": "일상",
@@ -1564,7 +1528,7 @@
     ]
   },
   {
-    "word": "behind the schedule",
+    "word": "Behind The Schedule",
     "meaning": "일정보다 뒤처진",
     "level": "intermediate",
     "category": "비즈니스",
@@ -1576,7 +1540,7 @@
     ]
   },
   {
-    "word": "catch my eye",
+    "word": "Catch My Eye",
     "meaning": "눈길을 끌다",
     "level": "intermediate",
     "category": "일상",
@@ -1588,19 +1552,7 @@
     ]
   },
   {
-    "word": "in the long run",
-    "meaning": "결국에는, 장기적으로는",
-    "level": "advanced",
-    "category": "일상",
-    "examples": [
-      {
-        "text": "It will be better for you in the long run.",
-        "translation": "장기적으로 보면 그게 너한테 더 좋을 거야."
-      }
-    ]
-  },
-  {
-    "word": "make up for",
+    "word": "Make Up For",
     "meaning": "보충하다, 보상하다",
     "level": "intermediate",
     "category": "일상",
@@ -1612,7 +1564,7 @@
     ]
   },
   {
-    "word": "out of stock",
+    "word": "Out Of Stock",
     "meaning": "품절된",
     "level": "beginner",
     "category": "여행",
@@ -1624,7 +1576,7 @@
     ]
   },
   {
-    "word": "take it for granted",
+    "word": "Take It For Granted",
     "meaning": "당연하게 여기다",
     "level": "advanced",
     "category": "일상",
@@ -1636,7 +1588,7 @@
     ]
   },
   {
-    "word": "up in the air",
+    "word": "Up In The Air",
     "meaning": "아직 결정되지 않은",
     "level": "advanced",
     "category": "비즈니스",
@@ -1648,7 +1600,7 @@
     ]
   },
   {
-    "word": "could you repeat that?",
+    "word": "Could You Repeat That?",
     "meaning": "다시 말씀해 주실래요?",
     "level": "beginner",
     "category": "여행",
@@ -1660,7 +1612,7 @@
     ]
   },
   {
-    "word": "as soon as possible",
+    "word": "As Soon As Possible",
     "meaning": "가능한 한 빨리",
     "level": "beginner",
     "category": "비즈니스",
@@ -1672,7 +1624,7 @@
     ]
   },
   {
-    "word": "believe it or not",
+    "word": "Believe It Or Not",
     "meaning": "믿기 어렵겠지만",
     "level": "intermediate",
     "category": "캐주얼",
@@ -1684,7 +1636,7 @@
     ]
   },
   {
-    "word": "feel like",
+    "word": "Feel Like",
     "meaning": "~하고 싶다, ~인 것 같다",
     "level": "beginner",
     "category": "일상",
@@ -1696,7 +1648,7 @@
     ]
   },
   {
-    "word": "it's no use",
+    "word": "It's No Use",
     "meaning": "소용없어",
     "level": "intermediate",
     "category": "일상",
@@ -1708,7 +1660,7 @@
     ]
   },
   {
-    "word": "on the way",
+    "word": "On The Way",
     "meaning": "가는 길에",
     "level": "beginner",
     "category": "일상",
@@ -1720,7 +1672,7 @@
     ]
   },
   {
-    "word": "the other day",
+    "word": "The Other Day",
     "meaning": "며칠 전에",
     "level": "beginner",
     "category": "일상",
@@ -1732,7 +1684,7 @@
     ]
   },
   {
-    "word": "turn out",
+    "word": "Turn Out",
     "meaning": "~로 밝혀지다, (결과가) ~가 되다",
     "level": "intermediate",
     "category": "일상",
@@ -1744,7 +1696,7 @@
     ]
   },
   {
-    "word": "would you mind?",
+    "word": "Would You Mind?",
     "meaning": "괜찮으시겠어요? (정중한 부탁)",
     "level": "intermediate",
     "category": "여행",
@@ -1756,7 +1708,7 @@
     ]
   },
   {
-    "word": "be in a good mood",
+    "word": "Be In A Good Mood",
     "meaning": "기분이 좋다",
     "level": "beginner",
     "category": "일상",
@@ -1768,7 +1720,7 @@
     ]
   },
   {
-    "word": "get rid of",
+    "word": "Get Rid Of",
     "meaning": "제거하다, 버리다",
     "level": "intermediate",
     "category": "일상",
@@ -1780,19 +1732,7 @@
     ]
   },
   {
-    "word": "how's it going?",
-    "meaning": "어떻게 지내?",
-    "level": "beginner",
-    "category": "캐주얼",
-    "examples": [
-      {
-        "text": "Hey, how's it going lately?",
-        "translation": "안녕, 요즘 어때?"
-      }
-    ]
-  },
-  {
-    "word": "I'm on your side",
+    "word": "I'm On Your Side",
     "meaning": "난 네 편이야",
     "level": "beginner",
     "category": "일상",
@@ -1804,7 +1744,7 @@
     ]
   },
   {
-    "word": "just a second",
+    "word": "Just A Second",
     "meaning": "잠시만요",
     "level": "beginner",
     "category": "일상",
@@ -1816,19 +1756,7 @@
     ]
   },
   {
-    "word": "look forward to",
-    "meaning": "기대하다",
-    "level": "intermediate",
-    "category": "비즈니스",
-    "examples": [
-      {
-        "text": "I look forward to working with you.",
-        "translation": "당신과 함께 일하기를 기대합니다."
-      }
-    ]
-  },
-  {
-    "word": "on second thought",
+    "word": "On Second Thought",
     "meaning": "다시 생각해 보니",
     "level": "intermediate",
     "category": "캐주얼",
@@ -1840,7 +1768,7 @@
     ]
   },
   {
-    "word": "pros and cons",
+    "word": "Pros And Cons",
     "meaning": "장단점",
     "level": "intermediate",
     "category": "비즈니스",
@@ -1852,7 +1780,7 @@
     ]
   },
   {
-    "word": "so far, so good",
+    "word": "So Far, So Good",
     "meaning": "지금까지는 좋아요",
     "level": "beginner",
     "category": "일상",
@@ -1864,7 +1792,7 @@
     ]
   },
   {
-    "word": "take into account",
+    "word": "Take Into Account",
     "meaning": "고려하다",
     "level": "advanced",
     "category": "비즈니스",
@@ -1876,7 +1804,7 @@
     ]
   },
   {
-    "word": "my bad",
+    "word": "My Bad",
     "meaning": "내 실수야, 미안",
     "level": "beginner",
     "category": "캐주얼",
@@ -1888,7 +1816,7 @@
     ]
   },
   {
-    "word": "I'm down",
+    "word": "I'm Down",
     "meaning": "나도 좋아, 할래, 찬성해",
     "level": "beginner",
     "category": "캐주얼",
@@ -1900,7 +1828,7 @@
     ]
   },
   {
-    "word": "I'm beat",
+    "word": "I'm Beat",
     "meaning": "정말 피곤해, 녹초가 됐어",
     "level": "intermediate",
     "category": "캐주얼",
@@ -1912,7 +1840,7 @@
     ]
   },
   {
-    "word": "chill out",
+    "word": "Chill Out",
     "meaning": "진정해, 편히 쉬다",
     "level": "beginner",
     "category": "캐주얼",
@@ -1924,19 +1852,7 @@
     ]
   },
   {
-    "word": "keep me posted",
-    "meaning": "계속 상황을 알려줘",
-    "level": "intermediate",
-    "category": "비즈니스",
-    "examples": [
-      {
-        "text": "If there are any updates, please keep me posted.",
-        "translation": "업데이트 사항이 있으면 계속 알려주세요."
-      }
-    ]
-  },
-  {
-    "word": "I'm broke",
+    "word": "I'm Broke",
     "meaning": "돈이 하나도 없어, 빈털터리야",
     "level": "beginner",
     "category": "캐주얼",
@@ -1948,7 +1864,7 @@
     ]
   },
   {
-    "word": "hit me up",
+    "word": "Hit Me Up",
     "meaning": "연락해, 나중에 연락해",
     "level": "beginner",
     "category": "캐주얼",
@@ -1960,7 +1876,7 @@
     ]
   },
   {
-    "word": "I'm game",
+    "word": "I'm Game",
     "meaning": "나도 할래, 나도 낄게",
     "level": "beginner",
     "category": "캐주얼",
@@ -1972,7 +1888,7 @@
     ]
   },
   {
-    "word": "fair enough",
+    "word": "Fair Enough",
     "meaning": "말 되네, 알겠어, 그럴 만하네",
     "level": "intermediate",
     "category": "일상",
@@ -1984,7 +1900,7 @@
     ]
   },
   {
-    "word": "couldn't be better",
+    "word": "Couldn't Be Better",
     "meaning": "더할 나위 없이 좋아, 최고야",
     "level": "intermediate",
     "category": "일상",
@@ -1996,7 +1912,7 @@
     ]
   },
   {
-    "word": "fingers crossed",
+    "word": "Fingers Crossed",
     "meaning": "행운을 빌어, 잘되길 빌어",
     "level": "beginner",
     "category": "일상",
@@ -2008,7 +1924,7 @@
     ]
   },
   {
-    "word": "pull yourself together",
+    "word": "Pull Yourself Together",
     "meaning": "정신 차려, 마음을 가다듬어",
     "level": "intermediate",
     "category": "일상",
@@ -2020,7 +1936,7 @@
     ]
   },
   {
-    "word": "on the house",
+    "word": "On The House",
     "meaning": "서비스입니다, 무료입니다",
     "level": "beginner",
     "category": "여행",
@@ -2032,7 +1948,7 @@
     ]
   },
   {
-    "word": "around the corner",
+    "word": "Around The Corner",
     "meaning": "코앞에 닥친, 곧 일어날",
     "level": "beginner",
     "category": "일상",
@@ -2044,7 +1960,7 @@
     ]
   },
   {
-    "word": "don't sweat it",
+    "word": "Don't Sweat It",
     "meaning": "걱정 마, 신경 쓰지 마",
     "level": "intermediate",
     "category": "캐주얼",
@@ -2056,7 +1972,7 @@
     ]
   },
   {
-    "word": "no doubt",
+    "word": "No Doubt",
     "meaning": "확실해, 의심할 여지 없어",
     "level": "intermediate",
     "category": "일상",
@@ -2068,19 +1984,7 @@
     ]
   },
   {
-    "word": "out of the blue",
-    "meaning": "갑자기, 뜬금없이",
-    "level": "intermediate",
-    "category": "일상",
-    "examples": [
-      {
-        "text": "She called me out of the blue yesterday.",
-        "translation": "그녀가 어제 뜬금없이 나한테 전화했어."
-      }
-    ]
-  },
-  {
-    "word": "see eye to eye",
+    "word": "See Eye To Eye",
     "meaning": "의견이 일치하다, 동의하다",
     "level": "intermediate",
     "category": "비즈니스",
@@ -2092,7 +1996,7 @@
     ]
   },
   {
-    "word": "sleep on it",
+    "word": "Sleep On It",
     "meaning": "하룻밤 생각해보자, 심사숙고하다",
     "level": "intermediate",
     "category": "일상",
@@ -2104,7 +2008,7 @@
     ]
   },
   {
-    "word": "tell me about it",
+    "word": "Tell Me About It",
     "meaning": "그러게 말이야, 내 말이 그 말이야",
     "level": "intermediate",
     "category": "캐주얼",
@@ -2116,7 +2020,7 @@
     ]
   },
   {
-    "word": "the bottom line",
+    "word": "The Bottom Line",
     "meaning": "핵심, 가장 중요한 것",
     "level": "advanced",
     "category": "비즈니스",
@@ -2128,7 +2032,7 @@
     ]
   },
   {
-    "word": "you bet",
+    "word": "You Bet",
     "meaning": "당연하지, 물론이지",
     "level": "beginner",
     "category": "캐주얼",
@@ -2140,7 +2044,7 @@
     ]
   },
   {
-    "word": "you can say that again",
+    "word": "You Can Say That Again",
     "meaning": "완전 동감이야, 내 말이 그 말이야",
     "level": "intermediate",
     "category": "일상",
@@ -2152,7 +2056,7 @@
     ]
   },
   {
-    "word": "it's a long shot",
+    "word": "It's A Long Shot",
     "meaning": "거의 승산이 없는 일이야",
     "level": "advanced",
     "category": "비즈니스",
@@ -2164,7 +2068,7 @@
     ]
   },
   {
-    "word": "cut some slack",
+    "word": "Cut Some Slack",
     "meaning": "좀 봐주다, 너무 몰아세우지 않다",
     "level": "intermediate",
     "category": "캐주얼",
@@ -2176,7 +2080,7 @@
     ]
   },
   {
-    "word": "get out of hand",
+    "word": "Get Out Of Hand",
     "meaning": "감당할 수 없게 되다, 걷잡을 수 없다",
     "level": "intermediate",
     "category": "일상",
@@ -2188,7 +2092,7 @@
     ]
   },
   {
-    "word": "hang in there",
+    "word": "Hang In There",
     "meaning": "조금만 버텨, 포기하지 마",
     "level": "beginner",
     "category": "일상",
@@ -2200,7 +2104,7 @@
     ]
   },
   {
-    "word": "hit the sack",
+    "word": "Hit The Sack",
     "meaning": "자러 가다, 잠자리에 들다",
     "level": "intermediate",
     "category": "캐주얼",
@@ -2212,7 +2116,7 @@
     ]
   },
   {
-    "word": "it's not rocket science",
+    "word": "It's Not Rocket Science",
     "meaning": "그렇게 어려운 거 아냐",
     "level": "intermediate",
     "category": "일상",
@@ -2224,7 +2128,7 @@
     ]
   },
   {
-    "word": "let someone off the hook",
+    "word": "Let Someone Off The Hook",
     "meaning": "봐주다, 고비를 넘기게 해주다",
     "level": "advanced",
     "category": "일상",
@@ -2236,7 +2140,7 @@
     ]
   },
   {
-    "word": "miss the boat",
+    "word": "Miss The Boat",
     "meaning": "기회를 놓치다",
     "level": "intermediate",
     "category": "일상",
@@ -2248,7 +2152,7 @@
     ]
   },
   {
-    "word": "no pain, no gain",
+    "word": "No Pain, No Gain",
     "meaning": "고통 없이는 얻는 것도 없다",
     "level": "beginner",
     "category": "일상",
@@ -2260,7 +2164,7 @@
     ]
   },
   {
-    "word": "on the ball",
+    "word": "On The Ball",
     "meaning": "유능하다, 돌아가는 상황을 잘 알다",
     "level": "advanced",
     "category": "비즈니스",
@@ -2272,19 +2176,7 @@
     ]
   },
   {
-    "word": "cut to the chase",
-    "meaning": "본론만 말하다, 바로 핵심으로 들어가다",
-    "level": "intermediate",
-    "category": "비즈니스",
-    "examples": [
-      {
-        "text": "Stop talking about the background and cut to the chase.",
-        "translation": "배경 설명은 그만하고 본론만 말해."
-      }
-    ]
-  },
-  {
-    "word": "lean towards",
+    "word": "Lean Towards",
     "meaning": "~쪽으로 마음이 기울다",
     "level": "intermediate",
     "category": "일상",
@@ -2296,31 +2188,7 @@
     ]
   },
   {
-    "word": "keep in touch",
-    "meaning": "계속 연락하고 지내다",
-    "level": "beginner",
-    "category": "일상",
-    "examples": [
-      {
-        "text": "It was great meeting you. Let's keep in touch!",
-        "translation": "만나서 반가웠어. 계속 연락하고 지내자!"
-      }
-    ]
-  },
-  {
-    "word": "on the same page",
-    "meaning": "같은 생각이다, 이해하고 있다",
-    "level": "intermediate",
-    "category": "비즈니스",
-    "examples": [
-      {
-        "text": "I want to make sure we're all on the same page.",
-        "translation": "우리 모두 같은 생각인지 확인하고 싶어요."
-      }
-    ]
-  },
-  {
-    "word": "take it easy",
+    "word": "Take It Easy",
     "meaning": "진정해, 천천히 해, 잘 가",
     "level": "beginner",
     "category": "일상",
@@ -2332,7 +2200,7 @@
     ]
   },
   {
-    "word": "up to someone",
+    "word": "Up To Someone",
     "meaning": "~에게 달려있다, ~ 마음이다",
     "level": "beginner",
     "category": "일상",
@@ -2344,7 +2212,7 @@
     ]
   },
   {
-    "word": "get use to",
+    "word": "Get Use To",
     "meaning": "~에 익숙해지다",
     "level": "intermediate",
     "category": "일상",
@@ -2356,7 +2224,7 @@
     ]
   },
   {
-    "word": "collaborate",
+    "word": "Collaborate",
     "meaning": "협력하다, 공동으로 작업하다",
     "level": "intermediate",
     "category": "비즈니스",
@@ -2368,7 +2236,7 @@
     ]
   },
   {
-    "word": "itinerary",
+    "word": "Itinerary",
     "meaning": "여행 일정",
     "level": "advanced",
     "category": "여행",
@@ -2380,7 +2248,7 @@
     ]
   },
   {
-    "word": "innovative",
+    "word": "Innovative",
     "meaning": "혁신적인",
     "level": "intermediate",
     "category": "기술",
@@ -2392,7 +2260,7 @@
     ]
   },
   {
-    "word": "frustrated",
+    "word": "Frustrated",
     "meaning": "좌절한, 짜증난",
     "level": "intermediate",
     "category": "감정",
@@ -2404,7 +2272,7 @@
     ]
   },
   {
-    "word": "postpone",
+    "word": "Postpone",
     "meaning": "연기하다, 미루다",
     "level": "intermediate",
     "category": "비즈니스",
@@ -2416,7 +2284,7 @@
     ]
   },
   {
-    "word": "reservation",
+    "word": "Reservation",
     "meaning": "예약",
     "level": "beginner",
     "category": "여행",
@@ -2428,7 +2296,7 @@
     ]
   },
   {
-    "word": "compatible",
+    "word": "Compatible",
     "meaning": "호환되는, 양립할 수 있는",
     "level": "advanced",
     "category": "기술",
@@ -2440,7 +2308,7 @@
     ]
   },
   {
-    "word": "enthusiastic",
+    "word": "Enthusiastic",
     "meaning": "열정적인, 열광적인",
     "level": "intermediate",
     "category": "감정",
@@ -2452,7 +2320,7 @@
     ]
   },
   {
-    "word": "discount",
+    "word": "Discount",
     "meaning": "할인",
     "level": "beginner",
     "category": "쇼핑",
@@ -2468,7 +2336,7 @@
     ]
   },
   {
-    "word": "sale",
+    "word": "Sale",
     "meaning": "세일, 판매",
     "level": "beginner",
     "category": "쇼핑",
@@ -2484,7 +2352,7 @@
     ]
   },
   {
-    "word": "receipt",
+    "word": "Receipt",
     "meaning": "영수증",
     "level": "beginner",
     "category": "쇼핑",
@@ -2500,7 +2368,7 @@
     ]
   },
   {
-    "word": "refund",
+    "word": "Refund",
     "meaning": "환불",
     "level": "intermediate",
     "category": "쇼핑",
@@ -2516,7 +2384,7 @@
     ]
   },
   {
-    "word": "exchange",
+    "word": "Exchange",
     "meaning": "교환",
     "level": "intermediate",
     "category": "쇼핑",
@@ -2532,7 +2400,7 @@
     ]
   },
   {
-    "word": "fitting room",
+    "word": "Fitting Room",
     "meaning": "탈의실",
     "level": "beginner",
     "category": "쇼핑",
@@ -2548,7 +2416,7 @@
     ]
   },
   {
-    "word": "cashier",
+    "word": "Cashier",
     "meaning": "계산원",
     "level": "beginner",
     "category": "쇼핑",
@@ -2564,7 +2432,7 @@
     ]
   },
   {
-    "word": "cart",
+    "word": "Cart",
     "meaning": "카트, 장바구니",
     "level": "beginner",
     "category": "쇼핑",
@@ -2580,7 +2448,7 @@
     ]
   },
   {
-    "word": "aisle",
+    "word": "Aisle",
     "meaning": "통로",
     "level": "intermediate",
     "category": "쇼핑",
@@ -2596,7 +2464,7 @@
     ]
   },
   {
-    "word": "bargain",
+    "word": "Bargain",
     "meaning": "할인 상품, 흥정하다",
     "level": "intermediate",
     "category": "쇼핑",
@@ -2612,7 +2480,7 @@
     ]
   },
   {
-    "word": "forecast",
+    "word": "Forecast",
     "meaning": "일기예보",
     "level": "intermediate",
     "category": "날씨",
@@ -2628,7 +2496,7 @@
     ]
   },
   {
-    "word": "humid",
+    "word": "Humid",
     "meaning": "습한",
     "level": "intermediate",
     "category": "날씨",
@@ -2644,7 +2512,7 @@
     ]
   },
   {
-    "word": "breeze",
+    "word": "Breeze",
     "meaning": "미풍",
     "level": "intermediate",
     "category": "날씨",
@@ -2660,7 +2528,7 @@
     ]
   },
   {
-    "word": "drizzle",
+    "word": "Drizzle",
     "meaning": "이슬비",
     "level": "advanced",
     "category": "날씨",
@@ -2676,7 +2544,7 @@
     ]
   },
   {
-    "word": "thunderstorm",
+    "word": "Thunderstorm",
     "meaning": "뇌우",
     "level": "intermediate",
     "category": "날씨",
@@ -2692,7 +2560,7 @@
     ]
   },
   {
-    "word": "temperature",
+    "word": "Temperature",
     "meaning": "온도, 기온",
     "level": "beginner",
     "category": "날씨",
@@ -2708,7 +2576,7 @@
     ]
   },
   {
-    "word": "sunny",
+    "word": "Sunny",
     "meaning": "화창한",
     "level": "beginner",
     "category": "날씨",
@@ -2724,7 +2592,7 @@
     ]
   },
   {
-    "word": "cloudy",
+    "word": "Cloudy",
     "meaning": "흐린",
     "level": "beginner",
     "category": "날씨",
@@ -2740,7 +2608,7 @@
     ]
   },
   {
-    "word": "windy",
+    "word": "Windy",
     "meaning": "바람 부는",
     "level": "beginner",
     "category": "날씨",
@@ -2756,7 +2624,7 @@
     ]
   },
   {
-    "word": "freezing",
+    "word": "Freezing",
     "meaning": "엄청 추운",
     "level": "beginner",
     "category": "날씨",
@@ -2772,7 +2640,7 @@
     ]
   },
   {
-    "word": "colleague",
+    "word": "Colleague",
     "meaning": "동료",
     "level": "intermediate",
     "category": "관계",
@@ -2788,7 +2656,7 @@
     ]
   },
   {
-    "word": "acquaintance",
+    "word": "Acquaintance",
     "meaning": "지인",
     "level": "advanced",
     "category": "관계",
@@ -2804,7 +2672,7 @@
     ]
   },
   {
-    "word": "relative",
+    "word": "Relative",
     "meaning": "친척",
     "level": "beginner",
     "category": "관계",
@@ -2820,7 +2688,7 @@
     ]
   },
   {
-    "word": "sibling",
+    "word": "Sibling",
     "meaning": "형제자매",
     "level": "intermediate",
     "category": "관계",
@@ -2836,7 +2704,7 @@
     ]
   },
   {
-    "word": "spouse",
+    "word": "Spouse",
     "meaning": "배우자",
     "level": "advanced",
     "category": "관계",
@@ -2852,7 +2720,7 @@
     ]
   },
   {
-    "word": "fiancé",
+    "word": "Fiancé",
     "meaning": "약혼자 (남성)",
     "level": "advanced",
     "category": "관계",
@@ -2868,7 +2736,7 @@
     ]
   },
   {
-    "word": "in-laws",
+    "word": "In-laws",
     "meaning": "인척, 시댁식구",
     "level": "intermediate",
     "category": "관계",
@@ -2884,7 +2752,7 @@
     ]
   },
   {
-    "word": "ex",
+    "word": "Ex",
     "meaning": "전 애인",
     "level": "beginner",
     "category": "관계",
@@ -2900,7 +2768,7 @@
     ]
   },
   {
-    "word": "bond",
+    "word": "Bond",
     "meaning": "유대, 결속",
     "level": "intermediate",
     "category": "관계",
@@ -2916,7 +2784,7 @@
     ]
   },
   {
-    "word": "stranger",
+    "word": "Stranger",
     "meaning": "낯선 사람",
     "level": "beginner",
     "category": "관계",
@@ -2932,7 +2800,7 @@
     ]
   },
   {
-    "word": "hobby",
+    "word": "Hobby",
     "meaning": "취미",
     "level": "beginner",
     "category": "취미",
@@ -2948,7 +2816,7 @@
     ]
   },
   {
-    "word": "photography",
+    "word": "Photography",
     "meaning": "사진 촬영",
     "level": "intermediate",
     "category": "취미",
@@ -2964,7 +2832,7 @@
     ]
   },
   {
-    "word": "hiking",
+    "word": "Hiking",
     "meaning": "하이킹",
     "level": "beginner",
     "category": "취미",
@@ -2980,7 +2848,7 @@
     ]
   },
   {
-    "word": "gardening",
+    "word": "Gardening",
     "meaning": "정원 가꾸기",
     "level": "intermediate",
     "category": "취미",
@@ -2996,7 +2864,7 @@
     ]
   },
   {
-    "word": "knitting",
+    "word": "Knitting",
     "meaning": "뜨개질",
     "level": "intermediate",
     "category": "취미",
@@ -3012,7 +2880,7 @@
     ]
   },
   {
-    "word": "painting",
+    "word": "Painting",
     "meaning": "그림 그리기",
     "level": "beginner",
     "category": "취미",
@@ -3028,7 +2896,7 @@
     ]
   },
   {
-    "word": "collecting",
+    "word": "Collecting",
     "meaning": "수집하기",
     "level": "beginner",
     "category": "취미",
@@ -3044,7 +2912,7 @@
     ]
   },
   {
-    "word": "baking",
+    "word": "Baking",
     "meaning": "베이킹",
     "level": "beginner",
     "category": "취미",
@@ -3060,7 +2928,7 @@
     ]
   },
   {
-    "word": "fishing",
+    "word": "Fishing",
     "meaning": "낚시",
     "level": "beginner",
     "category": "취미",
@@ -3076,7 +2944,7 @@
     ]
   },
   {
-    "word": "camping",
+    "word": "Camping",
     "meaning": "캠핑",
     "level": "beginner",
     "category": "취미",
@@ -3092,7 +2960,7 @@
     ]
   },
   {
-    "word": "thrilled",
+    "word": "Thrilled",
     "meaning": "매우 흥분한",
     "level": "advanced",
     "category": "감정",
@@ -3108,7 +2976,7 @@
     ]
   },
   {
-    "word": "content",
+    "word": "Content",
     "meaning": "만족스러운",
     "level": "intermediate",
     "category": "감정",
@@ -3124,7 +2992,7 @@
     ]
   },
   {
-    "word": "miserable",
+    "word": "Miserable",
     "meaning": "비참한",
     "level": "advanced",
     "category": "감정",
@@ -3140,7 +3008,7 @@
     ]
   },
   {
-    "word": "shocked",
+    "word": "Shocked",
     "meaning": "충격받은",
     "level": "intermediate",
     "category": "감정",
@@ -3156,7 +3024,7 @@
     ]
   },
   {
-    "word": "delighted",
+    "word": "Delighted",
     "meaning": "기뻐하는",
     "level": "advanced",
     "category": "감정",
@@ -3172,7 +3040,7 @@
     ]
   },
   {
-    "word": "jealous",
+    "word": "Jealous",
     "meaning": "질투하는",
     "level": "intermediate",
     "category": "감정",
@@ -3188,7 +3056,7 @@
     ]
   },
   {
-    "word": "homesick",
+    "word": "Homesick",
     "meaning": "향수병의",
     "level": "intermediate",
     "category": "감정",
@@ -3204,7 +3072,7 @@
     ]
   },
   {
-    "word": "terrified",
+    "word": "Terrified",
     "meaning": "겁에 질린",
     "level": "advanced",
     "category": "감정",
@@ -3220,7 +3088,7 @@
     ]
   },
   {
-    "word": "ashamed",
+    "word": "Ashamed",
     "meaning": "부끄러운",
     "level": "advanced",
     "category": "감정",
@@ -3236,7 +3104,7 @@
     ]
   },
   {
-    "word": "proud",
+    "word": "Proud",
     "meaning": "자랑스러운",
     "level": "beginner",
     "category": "감정",
@@ -3252,7 +3120,7 @@
     ]
   },
   {
-    "word": "engineer",
+    "word": "Engineer",
     "meaning": "엔지니어",
     "level": "beginner",
     "category": "직업",
@@ -3268,7 +3136,7 @@
     ]
   },
   {
-    "word": "lawyer",
+    "word": "Lawyer",
     "meaning": "변호사",
     "level": "beginner",
     "category": "직업",
@@ -3284,7 +3152,7 @@
     ]
   },
   {
-    "word": "accountant",
+    "word": "Accountant",
     "meaning": "회계사",
     "level": "intermediate",
     "category": "직업",
@@ -3300,7 +3168,7 @@
     ]
   },
   {
-    "word": "architect",
+    "word": "Architect",
     "meaning": "건축가",
     "level": "intermediate",
     "category": "직업",
@@ -3316,7 +3184,7 @@
     ]
   },
   {
-    "word": "chef",
+    "word": "Chef",
     "meaning": "요리사",
     "level": "beginner",
     "category": "직업",
@@ -3332,7 +3200,7 @@
     ]
   },
   {
-    "word": "nurse",
+    "word": "Nurse",
     "meaning": "간호사",
     "level": "beginner",
     "category": "직업",
@@ -3348,7 +3216,7 @@
     ]
   },
   {
-    "word": "pharmacist",
+    "word": "Pharmacist",
     "meaning": "약사",
     "level": "intermediate",
     "category": "직업",
@@ -3364,7 +3232,7 @@
     ]
   },
   {
-    "word": "journalist",
+    "word": "Journalist",
     "meaning": "기자",
     "level": "intermediate",
     "category": "직업",
@@ -3380,7 +3248,7 @@
     ]
   },
   {
-    "word": "entrepreneur",
+    "word": "Entrepreneur",
     "meaning": "기업가",
     "level": "advanced",
     "category": "직업",
@@ -3396,7 +3264,7 @@
     ]
   },
   {
-    "word": "consultant",
+    "word": "Consultant",
     "meaning": "컨설턴트",
     "level": "advanced",
     "category": "직업",
@@ -3412,7 +3280,7 @@
     ]
   },
   {
-    "word": "outgoing",
+    "word": "Outgoing",
     "meaning": "외향적인",
     "level": "intermediate",
     "category": "성격",
@@ -3428,7 +3296,7 @@
     ]
   },
   {
-    "word": "shy",
+    "word": "Shy",
     "meaning": "수줍은",
     "level": "beginner",
     "category": "성격",
@@ -3444,7 +3312,7 @@
     ]
   },
   {
-    "word": "generous",
+    "word": "Generous",
     "meaning": "너그러운, 관대한",
     "level": "intermediate",
     "category": "성격",
@@ -3460,7 +3328,7 @@
     ]
   },
   {
-    "word": "stubborn",
+    "word": "Stubborn",
     "meaning": "고집센",
     "level": "intermediate",
     "category": "성격",
@@ -3476,7 +3344,7 @@
     ]
   },
   {
-    "word": "ambitious",
+    "word": "Ambitious",
     "meaning": "야심 찬",
     "level": "advanced",
     "category": "성격",
@@ -3492,7 +3360,7 @@
     ]
   },
   {
-    "word": "patient",
+    "word": "Patient",
     "meaning": "인내심 있는",
     "level": "intermediate",
     "category": "성격",
@@ -3508,7 +3376,7 @@
     ]
   },
   {
-    "word": "honest",
+    "word": "Honest",
     "meaning": "정직한",
     "level": "beginner",
     "category": "성격",
@@ -3524,7 +3392,7 @@
     ]
   },
   {
-    "word": "creative",
+    "word": "Creative",
     "meaning": "창의적인",
     "level": "intermediate",
     "category": "성격",
@@ -3540,7 +3408,7 @@
     ]
   },
   {
-    "word": "reliable",
+    "word": "Reliable",
     "meaning": "믿을 수 있는",
     "level": "intermediate",
     "category": "성격",
@@ -3556,7 +3424,7 @@
     ]
   },
   {
-    "word": "optimistic",
+    "word": "Optimistic",
     "meaning": "낙관적인",
     "level": "advanced",
     "category": "성격",

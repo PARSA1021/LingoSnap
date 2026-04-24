@@ -7,6 +7,7 @@ import { RefreshCw, Volume2, Lightbulb, Sparkles, Delete, ArrowRight } from 'luc
 import { useTTS } from '@/hooks/useTTS';
 import { cn } from '@/lib/utils/cn';
 import { useLearningStore } from '@/store/useLearningStore';
+import { formatWord, formatSentence } from '@/lib/utils/format';
 
 interface TypingPracticeProps {
   word: string;
@@ -257,12 +258,12 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
         <div className="flex flex-col items-center gap-3">
           <div className="flex items-center gap-3 bg-foreground text-background px-6 py-2 border-4 border-border shadow-[4px_4px_0_var(--border)] rotate-1">
              <Sparkles className="w-5 h-5 text-amber-400" />
-             <span className="text-sm font-black uppercase tracking-[0.2em] font-cartoon">
+             <span className="text-sm font-black tracking-[0.2em] font-cartoon">
                Scene Construction {index + 1}/{total}
              </span>
           </div>
           
-          {example ? (
+           {example ? (
             <div className="space-y-4 w-full px-4 pt-2">
                <div className={cn(
                  "flex flex-wrap justify-center items-center gap-x-2 gap-y-2 font-black font-reading bg-surface/50 p-6 rounded-3xl border-4 border-dashed border-border/10",
@@ -284,12 +285,12 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
                  "font-black text-primary font-reading italic drop-shadow-sm transition-all",
                  isVeryLong ? "text-base" : "text-lg"
                )}>
-                &quot;{exampleTranslation}&quot;
+                 &quot;{formatSentence(exampleTranslation || '')}&quot;
                </p>
             </div>
           ) : (
-            <h2 className="text-4xl sm:text-5xl font-black text-primary font-cartoon uppercase drop-shadow-[3px_3px_0_var(--border)] leading-tight break-keep">
-              {meaning}
+            <h2 className="text-4xl sm:text-5xl font-black text-primary font-cartoon drop-shadow-[3px_3px_0_var(--border)] leading-tight break-keep">
+              {formatWord(meaning)}
             </h2>
           )}
           
@@ -305,7 +306,7 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
                )}
              >
                <Sparkles className={cn("w-5 h-5", !isDirectMode ? "fill-amber-400" : "text-foreground")} />
-               <span className="text-[10px] font-black uppercase font-cartoon">Bubble Mode</span>
+               <span className="text-[10px] font-black font-cartoon">Bubble Mode</span>
              </button>
              <button 
                onClick={() => handleModeToggle(true)}
@@ -317,11 +318,11 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
                )}
              >
                <RefreshCw className={cn("w-5 h-5", isDirectMode ? "animate-spin-slow" : "")} />
-               <span className="text-[10px] font-black uppercase font-cartoon">Keyboard Mode</span>
+               <span className="text-[10px] font-black font-cartoon">Keyboard Mode</span>
              </button>
           </div>
 
-          <p className="text-[10px] font-black text-foreground/40 uppercase tracking-[0.2em] font-reading mt-2">
+          <p className="text-[10px] font-black text-foreground/40 tracking-[0.2em] font-reading mt-2">
             {isDirectMode ? "Press 'Enter' to confirm when finished" : "Click the bubbles in the correct order"}
           </p>
         </div>
@@ -343,7 +344,7 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
               onChange={(e) => handleInputChange(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleInputChange(typedValue)} // Manual trigger
               className={cn(
-                "w-full bg-transparent text-center font-black font-reading uppercase outline-none placeholder:text-black/5",
+                "w-full bg-transparent text-center font-black font-reading outline-none placeholder:text-black/5",
                 isVeryLong ? "text-2xl sm:text-4xl" :
                 isLong ? "text-3xl sm:text-5xl" :
                 "text-4xl sm:text-6xl"
@@ -372,7 +373,7 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
                     layout
                     onClick={() => tile && handleRemove(nonSpaceBefore)}
                     className={cn(
-                      "border-b-8 border-border flex items-center justify-center font-black font-reading uppercase transition-all",
+                      "border-b-8 border-border flex items-center justify-center font-black font-reading transition-all",
                       isVeryLong ? "w-7 h-10 sm:w-11 sm:h-14 text-xl sm:text-2xl" :
                       isLong ? "w-8 h-12 sm:w-13 sm:h-16 text-2xl sm:text-3xl" :
                       "w-10 h-14 sm:w-16 sm:h-20 text-3xl sm:text-4xl",
@@ -440,7 +441,7 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleTileClick(tile.id)}
                   className={cn(
-                    "bg-surface border-4 border-border shadow-[6px_6px_0_var(--border)] flex items-center justify-center font-black font-reading uppercase hover:bg-muted transition-colors cursor-pointer",
+                    "bg-surface border-4 border-border shadow-[6px_6px_0_var(--border)] flex items-center justify-center font-black font-reading hover:bg-muted transition-colors cursor-pointer",
                     isVeryLong ? "w-9 h-9 sm:w-11 sm:h-11 text-lg sm:text-xl" :
                     isLong ? "w-11 h-11 sm:w-13 sm:h-13 text-xl sm:text-2xl" :
                     "w-14 h-14 sm:w-16 sm:h-16 text-2xl sm:text-3xl"
@@ -468,21 +469,21 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
             >
               <div className="flex items-center justify-center gap-6">
                 <Sparkles className="w-12 h-12 sm:w-20 sm:h-20 fill-success text-success" />
-                <h2 className="text-6xl sm:text-8xl font-black text-foreground font-cartoon uppercase">BINGO!</h2>
+                <h2 className="text-6xl sm:text-8xl font-black text-foreground font-cartoon">Bingo!</h2>
                 <Sparkles className="w-12 h-12 sm:w-20 sm:h-20 fill-success text-success" />
               </div>
               
               <div className="flex flex-col items-center gap-4">
-                <p className="text-2xl font-black text-foreground/60 uppercase tracking-widest font-cartoon">Wonderful Performance!</p>
+                <p className="text-2xl font-black text-foreground/60 tracking-widest font-cartoon">Wonderful Performance!</p>
                 <div className="bg-success/10 px-6 py-2 border-4 border-dashed border-success">
-                  <span className="text-xl font-black text-success uppercase font-cartoon">+50 Talkie Points</span>
+                  <span className="text-xl font-black text-success font-cartoon">+50 Talkie Points</span>
                 </div>
               </div>
 
               <div className="pt-6">
                 <Button 
                   onClick={onSuccess}
-                  className="w-full h-20 text-3xl border-8 border-border bg-primary text-white shadow-[10px_10px_0_var(--border)] active:translate-y-2 active:translate-x-2 active:shadow-none transition-all uppercase font-cartoon flex items-center justify-center gap-4"
+                  className="w-full h-20 text-3xl border-8 border-border bg-primary text-white shadow-[10px_10px_0_var(--border)] active:translate-y-2 active:translate-x-2 active:shadow-none transition-all font-cartoon flex items-center justify-center gap-4"
                 >
                   Next Step <ArrowRight className="w-8 h-8" />
                 </Button>
@@ -493,7 +494,7 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
       </AnimatePresence>
 
       <div className="h-8">
-        {status === 'error' && <p className="text-error font-black uppercase text-sm font-cartoon animate-bounce">Check the sequence!</p>}
+        {status === 'error' && <p className="text-error font-black text-sm font-cartoon animate-bounce">Check the sequence!</p>}
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Volume2, Sparkles, MousePointer2, ArrowRight } from 'lucide-react';
 import { useTTS } from '@/hooks/useTTS';
 import { cn } from '@/lib/utils/cn';
+import { formatWord, formatSentence } from '@/lib/utils/format';
 
 interface SentenceCompletionProps {
   sentence: string;
@@ -91,11 +92,11 @@ export function SentenceCompletion({ sentence, translation, targetWord, onSucces
       <div className="text-center space-y-4">
         <div className="inline-flex items-center gap-2 bg-secondary text-white px-4 py-1.5 border-4 border-black shadow-[4px_4px_0_#000] rotate-1">
           <Sparkles className="w-4 h-4" />
-          <span className="text-xs font-black uppercase tracking-widest font-cartoon">Context Challenge {index + 1}/{total}</span>
+          <span className="text-xs font-black tracking-widest font-cartoon">Context Challenge {index + 1}/{total}</span>
         </div>
-        <h2 className="text-3xl sm:text-4xl font-black text-black font-cartoon uppercase">Script Completion</h2>
+        <h2 className="text-3xl sm:text-4xl font-black text-black font-cartoon">Script Completion</h2>
         <p className="text-lg font-black text-primary font-reading italic">&quot;{translation}&quot;</p>
-        <p className="text-xs font-black text-black/40 uppercase tracking-[0.2em]">Drag or click the correct block to fill the gap</p>
+        <p className="text-xs font-black text-black/40 tracking-[0.2em]">Drag or click the correct block to fill the gap</p>
       </div>
 
       <div className={cn(
@@ -119,7 +120,7 @@ export function SentenceCompletion({ sentence, translation, targetWord, onSucces
                 )}
                 animate={selectedWord ? { y: [0, -5, 0] } : {}}
               >
-                {selectedWord || '____'}
+                {selectedWord ? formatWord(selectedWord) : '____'}
               </motion.div>
             ) : (
               <span key={i} className="text-foreground">{part}</span>
@@ -132,7 +133,7 @@ export function SentenceCompletion({ sentence, translation, targetWord, onSucces
             variant="ghost" 
             onClick={() => speak(targetWord)} 
             className={cn(
-              "flex items-center gap-3 border-4 border-border bg-surface shadow-[4px_4px_0_var(--border)] active:translate-y-1 font-cartoon text-sm uppercase transition-all",
+              "flex items-center gap-3 border-4 border-border bg-surface shadow-[4px_4px_0_var(--border)] active:translate-y-1 font-cartoon text-sm transition-all",
               isPlaying ? "text-primary border-primary shadow-none translate-y-1" : "text-foreground"
             )}
           >
@@ -148,7 +149,7 @@ export function SentenceCompletion({ sentence, translation, targetWord, onSucces
       </div>
 
       <div className="w-full space-y-4 pt-4">
-        <p className="text-center text-xs font-black text-foreground/40 uppercase tracking-widest flex items-center justify-center gap-2">
+        <p className="text-center text-xs font-black text-foreground/40 tracking-widest flex items-center justify-center gap-2">
            Pick the right block
         </p>
         <div className="flex flex-wrap justify-center gap-4">
@@ -159,12 +160,12 @@ export function SentenceCompletion({ sentence, translation, targetWord, onSucces
               whileTap={{ scale: 0.95 }}
               onClick={() => handleOptionClick(opt)}
               className={cn(
-                "px-8 py-4 bg-surface border-4 border-border shadow-[6px_6px_0_var(--border)] text-xl sm:text-2xl font-black font-reading uppercase hover:bg-muted transition-all text-foreground",
+                "px-8 py-4 bg-surface border-4 border-border shadow-[6px_6px_0_var(--border)] text-xl sm:text-2xl font-black font-reading hover:bg-muted transition-all text-foreground",
                 selectedWord === opt && status === 'success' && "bg-success text-white border-success",
                 selectedWord === opt && status === 'error' && "bg-error text-white border-error"
               )}
             >
-              {opt}
+              {formatWord(opt)}
             </motion.button>
           ))}
         </div>
@@ -184,14 +185,14 @@ export function SentenceCompletion({ sentence, translation, targetWord, onSucces
             >
               <div className="flex items-center justify-center gap-6">
                 <Sparkles className="w-12 h-12 sm:w-20 sm:h-20 fill-info text-info" />
-                <h2 className="text-6xl sm:text-8xl font-black text-foreground font-cartoon uppercase">PERFECT!</h2>
+                <h2 className="text-6xl sm:text-8xl font-black text-foreground font-cartoon">Perfect!</h2>
                 <Sparkles className="w-12 h-12 sm:w-20 sm:h-20 fill-info text-info" />
               </div>
 
               <div className="flex flex-col items-center gap-4">
-                <p className="text-2xl font-black text-foreground/60 uppercase tracking-widest font-cartoon">Context Mastered!</p>
+                <p className="text-2xl font-black text-foreground/60 tracking-widest font-cartoon">Context Mastered!</p>
                 <div className="bg-info/10 px-6 py-2 border-4 border-dashed border-info">
-                  <span className="text-xl font-black text-info uppercase font-cartoon">+100 Talkie Points</span>
+                  <span className="text-xl font-black text-info font-cartoon">+100 Talkie Points</span>
                 </div>
               </div>
 

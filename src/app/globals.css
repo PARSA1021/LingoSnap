@@ -161,7 +161,6 @@ html, body {
 
 h1, h2, h3, .font-cartoon {
   font-family: var(--font-luckiest), var(--font-lilita), cursive;
-  text-transform: uppercase;
   letter-spacing: 0.02em;
   line-height: 1.1;
 }
@@ -212,7 +211,6 @@ body::before {
   overflow: hidden;
   border-radius: 0;
   font-weight: 900;
-  text-transform: uppercase;
 }
 
 /* Active pressed state */
