@@ -6,11 +6,13 @@ export type Word = {
   word: string;
   meaning: string;
   example: string;
-  exampleTranslation?: string; // 한국어 예문 해석 (추가됨)
-  level?: Level;
-  category?: Category;
+  exampleTranslation?: string;
+  level?: string;
+  category?: string;
   phonetic?: string;
-  audioUrl?: string; // Dictionary API 캐싱용
+  audioUrl?: string;
+  synonyms?: string[];
+  usageTips?: string;
 };
 
 export type Sentence = {

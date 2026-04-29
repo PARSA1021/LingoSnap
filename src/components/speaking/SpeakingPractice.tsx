@@ -13,7 +13,7 @@ import { Input } from '@/components/ui/Input';
 
 interface SpeakingPracticeProps {
   expectedSentence: string;
-  onContinue: (passed: boolean) => void;
+  onContinue: (passed: boolean, msg?: string) => void;
 }
 
 type GrammarError = {
@@ -246,7 +246,10 @@ export function SpeakingPractice({ expectedSentence, onContinue }: SpeakingPract
                     <Button variant="secondary" onClick={handleStartRecording} className="flex-1 h-14 rounded-2xl font-black">
                        <RotateCcw className="mr-2 h-5 w-5" /> 다시 시도
                     </Button>
-                    <Button onClick={() => onContinue(status === 'success')} className="flex-[1.5] h-14 rounded-2xl font-black text-lg">
+                    <Button onClick={() => {
+                       const msg = grammarErrors.map(e => e.message).join(' ');
+                       onContinue(status === 'success', msg);
+                    }} className="flex-[1.5] h-14 rounded-2xl font-black text-lg">
                        계속하기 <ArrowRight className="ml-2 h-6 w-6" />
                     </Button>
                  </div>

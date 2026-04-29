@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { Button } from '@/components/ui/Button';
 import { ArrowRight, CheckCircle2, XCircle, Sparkles } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface FeedbackBarProps {
   result: { kind: 'correct' | 'wrong'; msg?: string };
@@ -23,6 +23,7 @@ const ERROR_MESSAGES = [
 
 export function FeedbackBar({ result, onNext }: FeedbackBarProps) {
   const ok = result.kind === 'correct';
+  const [showWhy, setShowWhy] = React.useState(false);
   const [msg] = React.useState(() => {
     const list = ok ? SUCCESS_MESSAGES : ERROR_MESSAGES;
     return list[Math.floor(Math.random() * list.length)];
@@ -33,34 +34,63 @@ export function FeedbackBar({ result, onNext }: FeedbackBarProps) {
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       exit={{ y: 100, opacity: 0 }}
-      className="fixed bottom-0 left-0 right-0 z-50 px-2 pb-20 flex justify-center pointer-events-none"
+      className="fixed bottom-0 left-0 right-0 z-50 px-2 pb-6 sm:pb-20 flex flex-col items-center pointer-events-none"
     >
-      <div className={`w-full max-w-xl rounded-2xl border-4 border-border
-        shadow-[0_4px_0_var(--border)] p-3 flex items-center justify-between gap-4 pointer-events-auto
-        ${ok ? 'bg-success text-white' : 'bg-error text-white'}`}
-      >
-        <div className="flex items-center gap-3">
-          <div className="h-10 w-10 rounded-xl bg-white/20 flex items-center justify-center shrink-0 shadow-sm backdrop-blur-sm border-2 border-white/30">
-            {ok
-              ? <CheckCircle2 className="w-6 h-6" />
-              : <XCircle className="w-6 h-6" />
-            }
+      <div className="w-full max-w-xl space-y-2 pointer-events-auto">
+        <AnimatePresence>
+          {showWhy && result.msg && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              className="bg-surface border-4 border-border shadow-[0_-4px_0_var(--border)] rounded-2xl p-4 overflow-hidden"
+            >
+              <h4 className="text-[10px] font-black text-muted-foreground uppercase tracking-widest mb-1 font-cartoon">문법 분석 결과</h4>
+              <p className="text-xs font-bold text-foreground font-reading italic leading-relaxed">
+                {result.msg}
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <div className={`w-full rounded-2xl border-4 border-border
+          shadow-[0_4px_0_var(--border)] p-3 flex items-center justify-between gap-4
+          ${ok ? 'bg-success text-white' : 'bg-error text-white'}`}
+        >
+          <div className="flex items-center gap-3">
+            <div className="h-10 w-10 rounded-xl bg-white/20 flex items-center justify-center shrink-0 shadow-sm backdrop-blur-sm border-2 border-white/30">
+              {ok
+                ? <CheckCircle2 className="w-6 h-6" />
+                : <XCircle className="w-6 h-6" />
+              }
+            </div>
+            <div className="space-y-0.5">
+              <h3 className="font-black text-sm leading-none font-cartoon">
+                {ok ? '정답!' : '오답!'}
+              </h3>
+              <p className="text-[10px] font-bold opacity-90 leading-tight italic">
+                {msg}
+              </p>
+            </div>
           </div>
-          <div className="space-y-0.5">
-            <h3 className="font-black text-sm leading-none font-cartoon">
-              {ok ? '정답!' : '오답!'}
-            </h3>
-            <p className="text-[10px] font-bold opacity-90 leading-tight italic">
-              {msg}
-            </p>
+          <div className="flex items-center gap-2">
+            {!ok && result.msg && (
+              <Button
+                variant="ghost"
+                onClick={() => setShowWhy(!showWhy)}
+                className="h-10 px-3 text-[10px] font-black bg-white/10 hover:bg-white/20 border-2 border-white/30 text-white font-cartoon"
+              >
+                WHY?
+              </Button>
+            )}
+            <Button
+              onClick={onNext}
+              className="h-10 px-6 text-sm font-black shrink-0 bg-white text-foreground hover:bg-white/90 border-2 border-border/10 shadow-[0_2px_0_rgba(0,0,0,0.15)] active:translate-y-0.5 active:shadow-none transition-all flex items-center gap-1.5 font-cartoon"
+            >
+              계속 <ArrowRight className="w-4 h-4" />
+            </Button>
           </div>
         </div>
-        <Button
-          onClick={onNext}
-          className="h-10 px-6 text-sm font-black shrink-0 bg-white text-foreground hover:bg-white/90 border-2 border-border/10 shadow-[0_2px_0_rgba(0,0,0,0.15)] active:translate-y-0.5 active:shadow-none transition-all flex items-center gap-1.5 font-cartoon"
-        >
-          계속 <ArrowRight className="w-4 h-4" />
-        </Button>
       </div>
     </motion.div>
   );

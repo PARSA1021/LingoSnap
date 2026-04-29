@@ -42,6 +42,7 @@ export function LearnClient({ mode = 'lesson', category = 'all' }: { mode?: 'rev
 
   const [result, setResult] = React.useState<StepResult>({ kind: 'none' });
   const [wordCount, setWordCount] = React.useState<5 | 10>(5);
+  const [isTurbo, setIsTurbo] = React.useState(false);
 
   const step = steps[stepIndex] || { type: 'intro' as const };
   const total = Math.max(steps.length - 1, 1);
@@ -53,9 +54,9 @@ export function LearnClient({ mode = 'lesson', category = 'all' }: { mode?: 'rev
     startLesson(
       mode === 'review'
         ? buildReviewSteps(reviewQueue)
-        : buildLessonSteps(wordCount, category)
+        : buildLessonSteps(wordCount, category, isTurbo)
     );
-  }, [mode, reviewQueue, startLesson, wordCount, category]);
+  }, [mode, reviewQueue, startLesson, wordCount, category, isTurbo]);
 
   React.useEffect(() => {
     if (mode === 'review' && steps.length <= 1 && reviewQueue.length > 0) {
@@ -63,9 +64,9 @@ export function LearnClient({ mode = 'lesson', category = 'all' }: { mode?: 'rev
     }
   }, [mode, steps.length, reviewQueue.length, handleStart]);
 
-  const markWrong = React.useCallback((item: ReviewItem) => {
+  const markWrong = React.useCallback((item: ReviewItem, msg?: string) => {
     pushToReview(item);
-    setResult({ kind: 'wrong' });
+    setResult({ kind: 'wrong', msg });
   }, [pushToReview]);
 
   const markCorrect = React.useCallback((item?: ReviewItem) => {
@@ -127,14 +128,27 @@ export function LearnClient({ mode = 'lesson', category = 'all' }: { mode?: 'rev
           </div>
 
           {step.type !== 'intro' && step.type !== 'result' && (
-            <Button
-              variant="secondary"
-              size="sm"
-              onClick={handleNext}
-              className="h-10 px-3 rounded-xl border-2 border-border bg-surface text-[10px] font-black font-cartoon shadow-[2px_2px_0_var(--border)] active:translate-y-0.5 active:shadow-none transition-all shrink-0 hover:bg-muted"
-            >
-              SKIP
-            </Button>
+            <div className="flex items-center gap-2 shrink-0">
+              <button
+                onClick={() => setIsTurbo(!isTurbo)}
+                className={cn(
+                  "h-10 px-3 rounded-xl border-2 font-black text-[9px] transition-all font-cartoon flex items-center gap-1.5",
+                  isTurbo 
+                    ? "bg-amber-400 text-white border-amber-500 shadow-[2px_2px_0_var(--amber-600)]" 
+                    : "bg-surface text-muted-foreground border-border shadow-[2px_2px_0_var(--border)]"
+                )}
+              >
+                🚀 {isTurbo ? 'TURBO ON' : 'TURBO OFF'}
+              </button>
+              <Button
+                variant="secondary"
+                size="sm"
+                onClick={handleNext}
+                className="h-10 px-3 rounded-xl border-2 border-border bg-surface text-[10px] font-black font-cartoon shadow-[2px_2px_0_var(--border)] active:translate-y-0.5 active:shadow-none transition-all hover:bg-muted"
+              >
+                SKIP
+              </Button>
+            </div>
           )}
         </div>
       </header>
@@ -244,7 +258,9 @@ export function LearnClient({ mode = 'lesson', category = 'all' }: { mode?: 'rev
         return (
           <SpeakingPractice
             expectedSentence={step.expectedSentence}
-            onContinue={(passed) => passed ? markCorrect({ kind: 'speaking', expectedSentence: step.expectedSentence }) : markWrong({ kind: 'speaking', expectedSentence: step.expectedSentence })}
+            onContinue={(passed, msg) => passed 
+              ? markCorrect({ kind: 'speaking', expectedSentence: step.expectedSentence }) 
+              : markWrong({ kind: 'speaking', expectedSentence: step.expectedSentence }, msg)}
           />
         );
       case 'result':
@@ -268,7 +284,7 @@ function buildOptions(answer: string, pool: string[]): string[] {
 
 // ─── Step Builders ────────────────────────────────────────────────────────────
 
-function buildLessonSteps(wordCount: 5 | 10, category: string = 'all'): LessonStep[] {
+function buildLessonSteps(wordCount: 5 | 10, category: string = 'all', isTurbo: boolean = false): LessonStep[] {
   type VocabJsonWord = Word & { examples?: Array<{ text: string; translation?: string }> };
 
   let vocabPool = vocabData as unknown as VocabJsonWord[];
@@ -305,19 +321,24 @@ function buildLessonSteps(wordCount: 5 | 10, category: string = 'all'): LessonSt
   for (const w of words) {
     steps.push({ type: 'choice_quiz', word: w, options: buildOptions(w.word, pool) });
 
-    if (w.example) {
-      steps.push({
-        type: 'fill_blank',
-        word: w,
-        sentence: w.example,
-        blankedSentence: makeBlankSentence(w.example, w.word),
-      });
-    } else {
-      steps.push({ type: 'sentence_build', word: w });
+    if (!isTurbo) {
+      if (w.example) {
+        steps.push({
+          type: 'fill_blank',
+          word: w,
+          sentence: w.example,
+          blankedSentence: makeBlankSentence(w.example, w.word),
+        });
+      } else {
+        steps.push({ type: 'sentence_build', word: w });
+      }
     }
   }
 
-  steps.push({ type: 'speaking', expectedSentence: speakingSentence });
+  if (!isTurbo) {
+    steps.push({ type: 'speaking', expectedSentence: speakingSentence });
+  }
+  
   steps.push({ type: 'result' });
 
   return steps;

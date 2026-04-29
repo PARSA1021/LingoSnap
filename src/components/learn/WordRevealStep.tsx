@@ -79,19 +79,53 @@ export function WordRevealStep({ word, onNext }: WordRevealStepProps) {
               animate={{ opacity: 1, y: 0 }}
               className="space-y-4"
             >
-              <div className="bg-primary/5 p-3 border-2 border-dashed border-primary rounded-2xl text-center">
+              <div className="bg-primary/5 p-4 border-2 border-dashed border-primary rounded-2xl text-center">
                 <p className="text-sm font-black text-primary leading-tight font-cartoon">{word.meaning}</p>
               </div>
 
+              {/* Pro Insight for Advanced Learners (Persona: Sarah) */}
+              {(word.synonyms?.length || word.usageTips) && (
+                <div className="bg-surface border-2 border-border p-4 rounded-2xl space-y-3 shadow-[4px_4px_0_var(--border)] relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-20 transition-opacity">
+                    <Sparkles className="w-8 h-8" />
+                  </div>
+                  <h4 className="text-[10px] font-black text-foreground/40 uppercase tracking-widest flex items-center gap-1.5 font-cartoon">
+                    <Sparkles className="w-3 h-3 text-amber-500 fill-amber-500" /> Pro Insight
+                  </h4>
+                  
+                  {word.synonyms?.length && (
+                    <div className="space-y-1">
+                      <p className="text-[9px] font-black text-muted-foreground uppercase">유의어 (Synonyms)</p>
+                      <div className="flex flex-wrap gap-1.5">
+                        {word.synonyms.map((s: string) => (
+                          <span key={s} className="px-2 py-0.5 bg-muted rounded-lg text-[10px] font-bold text-foreground font-reading italic">
+                            {s}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  
+                  {word.usageTips && (
+                    <div className="space-y-1">
+                      <p className="text-[9px] font-black text-muted-foreground uppercase">학습 팁 (Usage Note)</p>
+                      <p className="text-[10px] font-bold text-foreground leading-relaxed font-reading italic">
+                        {word.usageTips}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              )}
+
               {word.example && (
-                <div className="rounded-2xl bg-background border-2 border-border p-3 space-y-2 relative">
+                <div className="rounded-2xl bg-background border-2 border-border p-4 space-y-2 relative">
                   <div className="flex justify-between items-start gap-4">
                     <p className="text-sm font-bold text-foreground leading-relaxed font-reading italic">
                       &quot;{formatSentence(word.example)}&quot;
                     </p>
                     <button
                       onClick={() => speak(word.example!)}
-                      className="p-1.5 bg-muted rounded-lg text-muted-foreground transition-all border border-border shrink-0"
+                      className="p-2 bg-muted rounded-xl text-muted-foreground transition-all border border-border shrink-0 hover:bg-primary/10 hover:text-primary"
                     >
                       <Volume2 className="w-4 h-4" />
                     </button>
