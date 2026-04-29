@@ -59,10 +59,10 @@ export function LearnClient({ mode = 'lesson', category = 'all' }: { mode?: 'rev
   }, [mode, reviewQueue, startLesson, wordCount, category, isTurbo]);
 
   React.useEffect(() => {
-    if (mode === 'review' && steps.length <= 1 && reviewQueue.length > 0) {
+    if (steps.length <= 1) {
       handleStart();
     }
-  }, [mode, steps.length, reviewQueue.length, handleStart]);
+  }, [steps.length, handleStart]);
 
   const markWrong = React.useCallback((item: ReviewItem, msg?: string) => {
     pushToReview(item);
@@ -92,7 +92,7 @@ export function LearnClient({ mode = 'lesson', category = 'all' }: { mode?: 'rev
   }, [result.kind, handleNext]);
 
   return (
-    <div className="h-[100dvh] flex flex-col bg-[radial-gradient(circle_at_top,var(--secondary),transparent)] dark:bg-[radial-gradient(circle_at_top,#1e1b4b,transparent)] overflow-hidden">
+    <div className="h-[100dvh] flex flex-col bg-background overflow-hidden">
       {/* Header */}
       <header className="shrink-0 z-40 w-full px-4 pt-4 pb-2 bg-background/50 backdrop-blur-md border-b-2 border-border/10">
         <div className="max-w-4xl mx-auto flex items-center gap-4">
@@ -106,10 +106,23 @@ export function LearnClient({ mode = 'lesson', category = 'all' }: { mode?: 'rev
             <XCircle className="w-6 h-6 text-error" />
           </Button>
 
-          <div className="flex-1 space-y-1.5">
-            <div className="flex justify-between items-end px-1">
-              <span className="text-[10px] font-black text-foreground/40 font-cartoon tracking-widest uppercase">PROGRESS</span>
-              <span className="text-xs font-black text-primary font-cartoon">{Math.round(progress)}%</span>
+          <div className="flex-1 flex flex-col gap-1 overflow-hidden px-2">
+            <div className="flex justify-between items-center px-1">
+               <div className="flex gap-2">
+                  {[5, 10].map(n => (
+                    <button 
+                      key={n}
+                      onClick={() => setWordCount(n as 5 | 10)}
+                      className={cn(
+                        "text-[9px] font-black font-cartoon px-2 py-0.5 rounded-md border transition-all",
+                        wordCount === n ? "bg-primary text-white border-primary" : "bg-surface text-muted-foreground border-border"
+                      )}
+                    >
+                      {n}개
+                    </button>
+                  ))}
+               </div>
+               <span className="text-[10px] font-black text-primary font-cartoon">{Math.round(progress)}%</span>
             </div>
             <div className="h-3 w-full bg-surface border-2 border-border rounded-full overflow-hidden shadow-[inset_0_2px_4px_rgba(0,0,0,0.1)] relative">
               <motion.div
@@ -187,19 +200,8 @@ export function LearnClient({ mode = 'lesson', category = 'all' }: { mode?: 'rev
     if (!step) return null;
 
     switch (step.type) {
-      case 'intro':
-        return (
-          <IntroCard
-            mode={mode}
-            category={category}
-            wordCount={wordCount}
-            setWordCount={setWordCount}
-            reviewCount={reviewQueue.length}
-            onStart={handleStart}
-          />
-        );
       case 'word_reveal':
-        return <WordRevealStep word={step.word} onNext={next} />;
+        return <WordRevealStep word={step.word} onNext={next} isReview={mode === 'review'} />;
       case 'choice_quiz':
         return (
           <ChoiceQuizStep
@@ -312,7 +314,7 @@ function buildLessonSteps(wordCount: 5 | 10, category: string = 'all', isTurbo: 
       : '') ||
     'Focus on your goals.';
 
-  const steps: LessonStep[] = [{ type: 'intro' }];
+  const steps: LessonStep[] = [];
 
   for (const w of words) {
     steps.push({ type: 'word_reveal', word: w });
@@ -345,10 +347,29 @@ function buildLessonSteps(wordCount: 5 | 10, category: string = 'all', isTurbo: 
 }
 
 function buildReviewSteps(queue: ReviewItem[]): LessonStep[] {
-  const pool = (vocabData as unknown as Word[]).map(w => w.word).filter(Boolean);
-  const steps: LessonStep[] = [{ type: 'intro' }];
+  const allVocab = vocabData as unknown as Word[];
+  const pool = allVocab.map(w => w.word).filter(Boolean);
+  
+  // 1. Take up to 10 items and shuffle them for a fresh experience
+  const items = getRandomElements(queue.slice(0, 15), 10);
+  const steps: LessonStep[] = [];
 
-  for (const item of queue.slice(0, 10)) {
+  for (const item of items) {
+    // Try to get the full word object for better context
+    let fullWord: Word | undefined;
+    if ('word' in item) {
+      fullWord = allVocab.find(w => w.word === item.word.word) || item.word;
+    } else if (item.kind === 'listening_quiz') {
+      fullWord = allVocab.find(w => w.word === item.answer);
+    }
+
+    // Natural Review Loop: Remind -> Re-test
+    if (fullWord) {
+      // Step A: Remind (Reveal) - Shortened version or just the card
+      steps.push({ type: 'word_reveal', word: fullWord });
+    }
+
+    // Step B: Re-test (The failed activity)
     switch (item.kind) {
       case 'speaking':
         steps.push({ type: 'speaking', expectedSentence: item.expectedSentence });
@@ -358,22 +379,23 @@ function buildReviewSteps(queue: ReviewItem[]): LessonStep[] {
           type: 'listening_quiz', 
           answer: item.answer, 
           options: buildOptions(item.answer, pool),
-          prompt: "다시 한번 들어보세요"
+          prompt: "다시 한번 들어볼까요? 정확히 어떤 단어였나요?"
         });
         break;
       case 'choice_quiz':
-        steps.push({ type: 'choice_quiz', word: item.word, options: buildOptions(item.word.word, pool) });
+        steps.push({ type: 'choice_quiz', word: fullWord || item.word, options: buildOptions((fullWord || item.word).word, pool) });
         break;
       case 'typing_exact':
+        const word = fullWord || item.word;
         steps.push({ 
           type: 'fill_blank', 
-          word: item.word, 
-          sentence: item.word.example || `${item.word.word} is an important word.`, 
-          blankedSentence: makeBlankSentence(item.word.example || `${item.word.word} is an important word.`, item.word.word)
+          word: word, 
+          sentence: word.example || `${word.word} is an important word.`, 
+          blankedSentence: makeBlankSentence(word.example || `${word.word} is an important word.`, word.word)
         });
         break;
       case 'sentence_build':
-        steps.push({ type: 'sentence_build', word: item.word });
+        steps.push({ type: 'sentence_build', word: fullWord || item.word });
         break;
     }
   }

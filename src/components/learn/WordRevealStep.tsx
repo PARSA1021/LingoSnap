@@ -12,6 +12,7 @@ import type { Word } from '@/types';
 interface WordRevealStepProps {
   word: Word;
   onNext: () => void;
+  isReview?: boolean;
 }
 
 const CATEGORY_COLORS: Record<string, string> = {
@@ -22,7 +23,7 @@ const CATEGORY_COLORS: Record<string, string> = {
   '숙어': 'bg-rose-500 text-white border-rose-600',
 };
 
-export function WordRevealStep({ word, onNext }: WordRevealStepProps) {
+export function WordRevealStep({ word, onNext, isReview = false }: WordRevealStepProps) {
   const [revealed, setRevealed] = React.useState(false);
   const w = word as Word & { category?: string; level?: string };
   const catColor = CATEGORY_COLORS[w.category ?? ''] ?? 'bg-muted text-muted-foreground border-border';
@@ -38,7 +39,12 @@ export function WordRevealStep({ word, onNext }: WordRevealStepProps) {
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="text-[10px] font-black text-muted-foreground tracking-widest font-cartoon">NEW WORD</span>
+              <span className={cn(
+                "text-[10px] font-black tracking-widest font-cartoon",
+                isReview ? "text-primary" : "text-muted-foreground"
+              )}>
+                {isReview ? 'REVIEW WORD' : 'NEW WORD'}
+              </span>
               {w.category && (
                 <span className={`text-[8px] font-black px-2 py-0.5 border-2 rounded-full font-cartoon ${catColor}`}>
                   {w.category}

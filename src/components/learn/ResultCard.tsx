@@ -37,27 +37,7 @@ export function ResultCard({ onRestart, points = 100 }: ResultCardProps) {
 
   return (
     <div className="relative">
-      {/* Simple Confetti Particles */}
-      {[...Array(12)].map((_, i) => (
-        <motion.div
-          key={i}
-          initial={{ opacity: 1, x: 0, y: 0, scale: 0 }}
-          animate={{ 
-            opacity: 0, 
-            x: (Math.random() - 0.5) * 400, 
-            y: (Math.random() - 0.5) * 400,
-            scale: Math.random() * 1.5,
-            rotate: Math.random() * 360
-          }}
-          transition={{ duration: 1.5, ease: "easeOut", delay: 0.2 }}
-          className="absolute left-1/2 top-1/2 w-3 h-3 rounded-full z-10 pointer-events-none"
-          style={{ 
-            backgroundColor: ['#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4'][i % 5] 
-          }}
-        />
-      ))}
-
-    <Card className="bg-surface border-4 border-border shadow-[4px_4px_0_var(--border)] overflow-hidden max-w-sm mx-auto">
+      <Card className="bg-surface border-4 border-border shadow-[4px_4px_0_var(--border)] overflow-hidden max-w-sm mx-auto">
       <CardContent className="p-6 sm:p-10 space-y-8 text-center">
         <motion.div
           initial={{ scale: 0 }}
