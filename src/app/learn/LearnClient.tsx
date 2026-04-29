@@ -93,48 +93,62 @@ export function LearnClient({ mode = 'lesson', category = 'all' }: { mode?: 'rev
   return (
     <div className="h-[100dvh] flex flex-col bg-[radial-gradient(circle_at_top,var(--secondary),transparent)] dark:bg-[radial-gradient(circle_at_top,#1e1b4b,transparent)] overflow-hidden">
       {/* Header */}
-      <header className="shrink-0 z-40 w-full px-4 pt-4 pb-2">
+      <header className="shrink-0 z-40 w-full px-4 pt-4 pb-2 bg-background/50 backdrop-blur-md border-b-2 border-border/10">
         <div className="max-w-4xl mx-auto flex items-center gap-4">
           <Button
             variant="ghost"
             size="icon"
             onClick={() => window.history.back()}
             className="h-10 w-10 rounded-xl border-2 border-border bg-surface shadow-[2px_2px_0_var(--border)] active:translate-y-0.5 active:shadow-none transition-all shrink-0"
+            title="나가기"
           >
             <XCircle className="w-6 h-6 text-error" />
           </Button>
 
-          <div className="flex-1 space-y-1">
+          <div className="flex-1 space-y-1.5">
             <div className="flex justify-between items-end px-1">
               <span className="text-[10px] font-black text-foreground/40 font-cartoon tracking-widest uppercase">PROGRESS</span>
               <span className="text-xs font-black text-primary font-cartoon">{Math.round(progress)}%</span>
             </div>
-            <div className="h-3 w-full bg-surface border-2 border-border rounded-full overflow-hidden shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)] relative">
+            <div className="h-3 w-full bg-surface border-2 border-border rounded-full overflow-hidden shadow-[inset_0_2px_4px_rgba(0,0,0,0.1)] relative">
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: `${progress}%` }}
+                transition={{ type: "spring", stiffness: 100, damping: 20 }}
                 className="h-full bg-primary relative"
               >
                 <motion.div 
                   animate={{ x: ['-100%', '200%'] }}
                   transition={{ repeat: Infinity, duration: 3, ease: "linear" }}
-                  className="absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"
+                  className="absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12"
                 />
               </motion.div>
             </div>
           </div>
+
+          {step.type !== 'intro' && step.type !== 'result' && (
+            <Button
+              variant="secondary"
+              size="sm"
+              onClick={handleNext}
+              className="h-10 px-3 rounded-xl border-2 border-border bg-surface text-[10px] font-black font-cartoon shadow-[2px_2px_0_var(--border)] active:translate-y-0.5 active:shadow-none transition-all shrink-0 hover:bg-muted"
+            >
+              SKIP
+            </Button>
+          )}
         </div>
       </header>
 
-      <main className="flex-1 overflow-y-auto px-4 py-2 flex flex-col justify-center">
-        <div className="max-w-4xl mx-auto w-full">
+      <main className="flex-1 overflow-y-auto px-4 py-4 flex flex-col items-center custom-scrollbar">
+        <div className="max-w-4xl mx-auto w-full flex-1 flex flex-col justify-center pb-24 sm:pb-32">
           <AnimatePresence mode="wait">
             <motion.div
               key={stepIndex}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
+              initial={{ opacity: 0, scale: 0.98, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 1.02, y: -10 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="w-full"
             >
               {renderStep()}
             </motion.div>

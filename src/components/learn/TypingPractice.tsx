@@ -328,7 +328,7 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
         status === 'success' && "border-success bg-success/5"
       )}>
         {isDirectMode ? (
-          <div className="w-full relative px-4 py-2">
+          <div className="w-full relative px-2 py-4">
             <input
               ref={inputRef}
               autoFocus
@@ -336,16 +336,22 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
               value={typedValue}
               onChange={(e) => handleInputChange(e.target.value)}
               className={cn(
-                "w-full bg-transparent text-center font-black font-reading italic outline-none placeholder:text-black/5",
+                "w-full bg-surface border-4 border-dashed border-border/20 p-6 text-center font-black font-reading italic outline-none rounded-3xl transition-all focus:border-primary/30",
                 isVeryLong ? "text-xl sm:text-2xl" :
                 isLong ? "text-2xl sm:text-3xl" :
-                "text-3xl sm:text-4xl"
+                "text-3xl sm:text-5xl"
               )}
               placeholder={targetWord.replace(/[a-zA-Z0-9]/g, '_')}
               spellCheck={false}
               autoComplete="off"
             />
-            <div className="absolute bottom-0 left-0 h-1 bg-primary transition-all duration-300 mx-8" style={{ width: `${Math.min(100, (typedValue.length / targetWord.length) * 100)}%` }} />
+            <div className="absolute bottom-2 left-4 right-4 h-2 bg-muted rounded-full overflow-hidden">
+               <motion.div 
+                 className="h-full bg-primary" 
+                 initial={{ width: 0 }}
+                 animate={{ width: `${Math.min(100, (typedValue.length / targetWord.length) * 100)}%` }}
+               />
+            </div>
           </div>
         ) : (
           targetWord.split(' ').map((wordPart, wordIdx) => (
@@ -364,10 +370,10 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
                     onClick={() => tile && handleRemove(nonSpaceBefore)}
                     className={cn(
                       "border-b-4 border-border flex items-center justify-center font-black font-reading transition-all italic",
-                      isVeryLong ? "w-6 h-8 sm:w-9 sm:h-11 text-lg sm:text-xl" :
-                      isLong ? "w-7 h-10 sm:w-11 sm:h-14 text-xl sm:text-2xl" :
-                      "w-9 h-12 sm:w-14 sm:h-18 text-2xl sm:text-3xl",
-                      tile ? "bg-surface border-2 shadow-[2px_2px_0_var(--border)]" : "border-border/10"
+                      isVeryLong ? "w-7 h-9 sm:w-10 sm:h-12 text-lg sm:text-xl" :
+                      isLong ? "w-8 h-11 sm:w-12 sm:h-15 text-xl sm:text-2xl" :
+                      "w-10 h-14 sm:w-16 sm:h-20 text-3xl sm:text-4xl",
+                      tile ? "bg-surface border-2 shadow-[3px_3px_0_var(--border)] scale-105" : "border-border/10"
                     )}
                   >
                     {tile?.char}
@@ -420,10 +426,10 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleTileClick(tile.id)}
                   className={cn(
-                    "bg-surface border-2 border-border shadow-[4px_4px_0_var(--border)] flex items-center justify-center font-black font-reading italic hover:bg-muted transition-colors cursor-pointer",
-                    isVeryLong ? "w-8 h-8 sm:w-10 sm:h-10 text-base sm:text-lg" :
-                    isLong ? "w-10 h-10 sm:w-12 sm:h-12 text-lg sm:text-xl" :
-                    "w-12 h-12 sm:w-15 sm:h-15 text-xl sm:text-2xl"
+                    "bg-surface border-2 border-border shadow-[4px_4px_0_var(--border)] flex items-center justify-center font-black font-reading italic hover:bg-muted transition-colors cursor-pointer active:translate-y-0.5 active:shadow-none",
+                    isVeryLong ? "w-9 h-9 sm:w-11 sm:h-11 text-base sm:text-lg" :
+                    isLong ? "w-11 h-11 sm:w-13 sm:h-13 text-xl sm:text-2xl" :
+                    "w-14 h-14 sm:w-18 sm:h-18 text-2xl sm:text-4xl"
                   )}
                 >
                   {tile.char}

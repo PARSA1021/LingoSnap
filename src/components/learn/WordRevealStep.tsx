@@ -58,9 +58,9 @@ export function WordRevealStep({ word, onNext }: WordRevealStepProps) {
             </h2>
             <button 
               onClick={() => speak(word.word)}
-              className="p-3 bg-primary/10 rounded-full text-primary active:scale-95 transition-all border-2 border-transparent hover:border-primary/20"
+              className="p-4 bg-primary/10 rounded-full text-primary active:scale-95 transition-all border-2 border-transparent hover:border-primary/20 shadow-sm"
             >
-              <Volume2 className="h-6 w-6" />
+              <Volume2 className="h-8 w-8" />
             </button>
           </div>
         </div>
@@ -69,9 +69,9 @@ export function WordRevealStep({ word, onNext }: WordRevealStepProps) {
           {!revealed ? (
             <Button 
               onClick={reveal} 
-              className="h-14 w-full text-lg font-black bg-foreground text-background border-4 border-border shadow-[4px_4px_0_var(--border)] active:translate-y-1 active:shadow-none transition-all font-cartoon"
+              className="h-16 w-full text-xl font-black bg-foreground text-background border-4 border-border shadow-[6px_6px_0_var(--border)] active:translate-y-1 active:shadow-none transition-all font-cartoon"
             >
-              뜻 확인하기 <Sparkles className="ml-2 w-5 h-5 text-amber-400" />
+              뜻 확인하기 <Sparkles className="ml-2 w-6 h-6 text-amber-400" />
             </Button>
           ) : (
             <motion.div
@@ -80,7 +80,7 @@ export function WordRevealStep({ word, onNext }: WordRevealStepProps) {
               className="space-y-4"
             >
               <div className="bg-primary/5 p-3 border-2 border-dashed border-primary rounded-2xl text-center">
-                <p className="text-xs font-black text-primary leading-tight font-cartoon">{word.meaning}</p>
+                <p className="text-sm font-black text-primary leading-tight font-cartoon">{word.meaning}</p>
               </div>
 
               {word.example && (
@@ -107,9 +107,9 @@ export function WordRevealStep({ word, onNext }: WordRevealStepProps) {
               <div className="pt-2 flex justify-end">
                 <Button 
                   onClick={onNext} 
-                  className="h-12 px-8 text-base font-black bg-primary text-white border-4 border-border shadow-[4px_4px_0_var(--border)] active:translate-y-1 active:shadow-none transition-all font-cartoon flex items-center gap-2"
+                  className="h-14 px-10 text-lg font-black bg-primary text-white border-4 border-border shadow-[6px_6px_0_var(--border)] active:translate-y-1 active:shadow-none transition-all font-cartoon flex items-center gap-2"
                 >
-                  다음 <ArrowRight className="w-5 h-5" />
+                  다음 <ArrowRight className="w-6 h-6" />
                 </Button>
               </div>
             </motion.div>

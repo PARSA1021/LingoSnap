@@ -53,27 +53,27 @@ export function ChoiceQuizStep({
                 onClick={() => pick(opt)}
                 disabled={done}
                 className={cn(
-                  "group relative h-12 w-full px-6 rounded-xl border-4 font-black text-left text-lg transition-all font-reading italic",
+                  "group relative h-16 w-full px-6 rounded-2xl border-4 font-black text-left text-xl transition-all font-reading italic",
                   !done
-                    ? 'border-border bg-background hover:border-primary shadow-[4px_4px_0_var(--border)] active:translate-y-1 active:shadow-none'
+                    ? 'border-border bg-background hover:border-primary shadow-[6px_6px_0_var(--border)] active:translate-y-1 active:shadow-none'
                     : isTarget
-                      ? 'border-success bg-success text-white'
+                      ? 'border-success bg-success text-white shadow-none'
                       : isSelected
-                        ? 'border-error bg-error text-white'
-                        : 'border-border bg-background opacity-30 grayscale cursor-default'
+                        ? 'border-error bg-error text-white shadow-none'
+                        : 'border-border bg-background opacity-30 grayscale cursor-default shadow-none'
                 )}
               >
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between h-full">
                   <span>{formatWord(opt)}</span>
                   <AnimatePresence>
                     {done && isTarget && (
-                      <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
-                        <CheckCircle2 className="w-5 h-5" />
+                      <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring" }}>
+                        <CheckCircle2 className="w-6 h-6" />
                       </motion.div>
                     )}
                     {done && isSelected && !isTarget && (
-                      <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
-                        <XCircle className="w-5 h-5" />
+                      <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring" }}>
+                        <XCircle className="w-6 h-6" />
                       </motion.div>
                     )}
                   </AnimatePresence>

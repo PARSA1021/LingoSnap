@@ -73,14 +73,14 @@ export function ListeningQuizStep({
                 onClick={() => handlePick(opt)}
                 disabled={done}
                 className={cn(
-                  "h-16 sm:h-20 px-3 rounded-xl border-4 font-black text-lg transition-all font-reading italic",
+                  "h-20 sm:h-24 px-3 rounded-2xl border-4 font-black text-xl transition-all font-reading italic",
                   !done
-                    ? 'border-border bg-background shadow-[4px_4px_0_var(--border)] active:translate-y-1 active:shadow-none'
+                    ? 'border-border bg-background shadow-[6px_6px_0_var(--border)] active:translate-y-1 active:shadow-none'
                     : isCorrect
-                      ? 'border-success bg-success text-white'
+                      ? 'border-success bg-success text-white shadow-none'
                       : isSelected
-                        ? 'border-error bg-error text-white'
-                        : 'border-border bg-background opacity-30 grayscale'
+                        ? 'border-error bg-error text-white shadow-none'
+                        : 'border-border bg-background opacity-30 grayscale shadow-none'
                 )}
               >
                 <div className="flex flex-col items-center justify-center">
