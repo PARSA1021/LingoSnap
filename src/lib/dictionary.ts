@@ -53,6 +53,8 @@ type DictionaryEntry = {
   meanings?: DictionaryMeaning[];
 };
 
+import vocabData from '@/data/vocabulary.json';
+
 export async function getNormalizedWordData(
   wordText: string, 
   defaultMeaning: string = '', 
@@ -60,9 +62,24 @@ export async function getNormalizedWordData(
 ): Promise<NormalizedWordData> {
   const cleanWord = wordText.toLowerCase().trim();
   
-  // Check cache first
+  // 1. Check cache first
   if (dictionaryCache.has(cleanWord)) {
     return dictionaryCache.get(cleanWord)!;
+  }
+
+  // 2. Check local vocabulary.json first (Premium curated data)
+  const localMatch = (vocabData as any[]).find(v => v.word.toLowerCase() === cleanWord);
+  if (localMatch) {
+    const result: NormalizedWordData = {
+      word: localMatch.word,
+      meaning: localMatch.meaning,
+      example: localMatch.examples?.[0]?.text || localMatch.example || '',
+      exampleTranslation: localMatch.examples?.[0]?.translation || localMatch.exampleTranslation || '',
+      phonetic: localMatch.phonetic || '',
+      audioUrl: localMatch.audioUrl || ''
+    };
+    dictionaryCache.set(cleanWord, result);
+    return result;
   }
 
   const definition = await fetchWordDefinition(cleanWord);
@@ -113,7 +130,16 @@ export async function getNormalizedWordData(
   if (!meaning || isEnglish(meaning)) {
     const translated = await fetchKoreanTranslation(cleanWord);
     if (translated && !translated.toLowerCase().includes('mymemory')) {
-      meaning = translated;
+      // If searching for a single word, avoid translations that look like long sentences
+      const isSingleWord = !cleanWord.includes(' ');
+      const transLength = translated.length;
+      
+      if (isSingleWord && transLength > 10 && translated.includes(' ')) {
+        // Likely a phrase or sentence translation (e.g. "사랑은 오래 참는다")
+        // We'll stick to English meaning or fallback to a simpler term if possible
+      } else {
+        meaning = translated;
+      }
     }
   }
 

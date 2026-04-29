@@ -1,5 +1,22 @@
 [
   {
+    "word": "Love",
+    "meaning": "사랑, 사랑하다",
+    "level": "beginner",
+    "category": "감정",
+    "phonetic": "/lʌv/",
+    "examples": [
+      {
+        "text": "I love learning new languages.",
+        "translation": "나는 새로운 언어를 배우는 것을 정말 좋아해."
+      },
+      {
+        "text": "Love is the most powerful emotion.",
+        "translation": "사랑은 가장 강력한 감정입니다."
+      }
+    ]
+  },
+  {
     "word": "Absolutely",
     "meaning": "절대적으로, 완전히",
     "level": "intermediate",

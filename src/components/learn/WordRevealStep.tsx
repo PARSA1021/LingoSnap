@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/Button';
 import { ArrowRight, Volume2, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { speak } from '@/lib/tts';
+import { cn } from '@/lib/utils/cn';
 import { formatWord, formatSentence } from '@/lib/utils/format';
 import type { Word } from '@/types';
 

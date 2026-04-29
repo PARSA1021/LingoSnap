@@ -18,9 +18,10 @@ interface VocabCardProps {
   onNext?: () => void;
   onPrev?: () => void;
   showPrev?: boolean;
+  highlight?: string;
 }
 
-export function VocabCard({ word, onNext, onPrev, showPrev }: VocabCardProps) {
+export function VocabCard({ word, onNext, onPrev, showPrev, highlight }: VocabCardProps) {
   const [showMeaning, setShowMeaning] = React.useState(true);
   const { speak, isPlaying, isLoading } = useTTS();
 
@@ -32,6 +33,20 @@ export function VocabCard({ word, onNext, onPrev, showPrev }: VocabCardProps) {
   }, [word.word]);
 
   const isFavorite = favorites.some(w => w.word === word.word);
+
+  const HighlightText = ({ text, query }: { text: string; query?: string }) => {
+    if (!query) return <>{text}</>;
+    const parts = text.split(new RegExp(`(${query})`, 'gi'));
+    return (
+      <>
+        {parts.map((part, i) => 
+          part.toLowerCase() === query.toLowerCase() 
+            ? <span key={i} className="bg-amber-200 text-black px-0.5 rounded-sm">{part}</span> 
+            : part
+        )}
+      </>
+    );
+  };
 
   return (
     <Card className="w-full max-w-lg mx-auto bg-white border-4 border-black relative overflow-visible mb-6 shadow-[6px_6px_0_#000]">
@@ -53,7 +68,9 @@ export function VocabCard({ word, onNext, onPrev, showPrev }: VocabCardProps) {
         <div className="w-full pt-6 min-h-[100px] flex items-center justify-center">
           <AnimatePresence mode="wait">
             <motion.div key="visible" initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col items-center gap-2">
-              <h2 className="text-4xl sm:text-5xl font-black text-black font-reading leading-tight italic">{formatWord(word.word)}</h2>
+              <h2 className="text-4xl sm:text-5xl font-black text-black font-reading leading-tight italic">
+                <HighlightText text={formatWord(word.word)} query={highlight} />
+              </h2>
               <button 
                 onClick={() => speak(word.word)}
                 disabled={isLoading}
@@ -82,14 +99,18 @@ export function VocabCard({ word, onNext, onPrev, showPrev }: VocabCardProps) {
             ) : (
               <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="text-left space-y-4">
                 <div className="bg-primary/5 p-4 border-2 border-dashed border-primary rounded-xl">
-                  <p className="text-2xl font-black text-primary leading-tight font-cartoon">{word.meaning}</p>
+                  <p className="text-2xl font-black text-primary leading-tight font-cartoon">
+                    <HighlightText text={word.meaning} query={highlight} />
+                  </p>
                 </div>
 
                 {/* Examples */}
                 <div className="space-y-3">
                   {word.examples && word.examples.slice(0, 2).map((ex, idx) => (
                     <div key={idx} className="bg-white p-4 border-2 border-black border-dashed">
-                      <p className="font-bold text-base text-black leading-snug font-reading">&quot;{formatSentence(ex.text)}&quot;</p>
+                      <p className="font-bold text-base text-black leading-snug font-reading">
+                        &quot;<HighlightText text={formatSentence(ex.text)} query={highlight} />&quot;
+                      </p>
                       {ex.translation && (
                         <p className="text-black/60 font-bold mt-1 text-xs font-reading">
                           ↳ {ex.translation}

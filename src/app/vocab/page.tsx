@@ -153,10 +153,10 @@ export default function VocabSearchPage() {
             <input
               type="text"
               placeholder="Search expressions..."
-              className="w-full h-12 pl-10 pr-10 bg-white border-4 border-black text-black font-black outline-none shadow-[4px_4px_0_#000] focus:shadow-none focus:translate-y-1 focus:translate-x-1 transition-all placeholder:text-black/20 font-cartoon text-sm"
+              className="w-full h-14 pl-12 pr-12 bg-white border-4 border-black text-black font-black outline-none shadow-[6px_6px_0_#000] focus:shadow-none focus:translate-y-1.5 focus:translate-x-1.5 transition-all placeholder:text-black/30 font-cartoon text-lg"
               value={query}
               onChange={(e) => {
-                setQuery(e.target.value.toUpperCase());
+                setQuery(e.target.value);
                 setApiWord(null);
               }}
             />
@@ -307,6 +307,7 @@ export default function VocabSearchPage() {
                       className={viewMode === 'grid' ? "lg:col-span-2" : ""}
                     >
                       <VocabCard
+                        highlight={query}
                         word={{
                           id: apiWord.word,
                           word: apiWord.word,
@@ -328,6 +329,7 @@ export default function VocabSearchPage() {
                       animate={{ opacity: 1, y: 0 }}
                     >
                       <VocabCard
+                        highlight={query}
                         word={{
                           id: w.word,
                           word: w.word,
