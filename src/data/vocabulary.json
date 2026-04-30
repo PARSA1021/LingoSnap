@@ -21,7 +21,12 @@
     "meaning": "절대적으로, 완전히",
     "level": "intermediate",
     "category": "일상",
-    "synonyms": ["Totally", "Completely", "Entirely", "Utterly"],
+    "synonyms": [
+      "Totally",
+      "Completely",
+      "Entirely",
+      "Utterly"
+    ],
     "usageTips": "상대방의 의견에 강하게 동의할 때 단독으로도 자주 쓰입니다. 격식 있는 자리와 캐주얼한 자리 모두에서 사용 가능합니다.",
     "examples": [
       {
@@ -3455,6 +3460,2130 @@
       {
         "text": "Try to be more optimistic.",
         "translation": "좀 더 낙관적이려고 노력해봐."
+      }
+    ]
+  },
+  {
+    "word": "At the end of the day",
+    "meaning": "결국에는, 궁극적으로",
+    "level": "intermediate",
+    "category": "비즈니스",
+    "examples": [
+      {
+        "text": "At the end of the day, results matter most.",
+        "translation": "결국에는 결과가 가장 중요해."
+      }
+    ]
+  },
+  {
+    "word": "That being said",
+    "meaning": "그렇긴 하지만",
+    "level": "advanced",
+    "category": "일상",
+    "examples": [
+      {
+        "text": "It's expensive. That being said, it's worth it.",
+        "translation": "비싸긴 해. 그렇긴 하지만 그만한 가치가 있어."
+      }
+    ]
+  },
+  {
+    "word": "In other words",
+    "meaning": "다시 말해서",
+    "level": "beginner",
+    "category": "일상",
+    "examples": [
+      {
+        "text": "In other words, we need more time.",
+        "translation": "다시 말해서 시간이 더 필요해."
+      }
+    ]
+  },
+  {
+    "word": "I'm relieved",
+    "meaning": "안심했어",
+    "level": "intermediate",
+    "category": "감정",
+    "examples": [
+      {
+        "text": "I'm relieved everything worked out.",
+        "translation": "모든 게 잘 돼서 안심이야."
+      }
+    ]
+  },
+  {
+    "word": "I'm overwhelmed",
+    "meaning": "너무 벅차다",
+    "level": "intermediate",
+    "category": "감정",
+    "examples": [
+      {
+        "text": "I've got so much to do, I'm overwhelmed.",
+        "translation": "할 게 너무 많아서 벅차."
+      }
+    ]
+  },
+  {
+    "word": "I'm annoyed",
+    "meaning": "짜증 나",
+    "level": "beginner",
+    "category": "감정",
+    "examples": [
+      {
+        "text": "I'm annoyed by the noise.",
+        "translation": "그 소리 때문에 짜증 나."
+      }
+    ]
+  },
+  {
+    "word": "From my perspective",
+    "meaning": "내 관점에서는",
+    "level": "intermediate",
+    "category": "비즈니스",
+    "examples": [
+      {
+        "text": "From my perspective, this is a risk.",
+        "translation": "내 관점에서는 이건 리스크야."
+      }
+    ]
+  },
+  {
+    "word": "Let's break it down",
+    "meaning": "하나씩 분석해보자",
+    "level": "intermediate",
+    "category": "비즈니스",
+    "examples": [
+      {
+        "text": "Let's break it down step by step.",
+        "translation": "하나씩 단계별로 분석해보자."
+      }
+    ]
+  },
+  {
+    "word": "To sum it up",
+    "meaning": "요약하자면",
+    "level": "intermediate",
+    "category": "비즈니스",
+    "examples": [
+      {
+        "text": "To sum it up, we need a new strategy.",
+        "translation": "요약하자면 새로운 전략이 필요해."
+      }
+    ]
+  },
+  {
+    "word": "Are you serious?",
+    "meaning": "진짜야?",
+    "level": "beginner",
+    "category": "캐주얼",
+    "examples": [
+      {
+        "text": "Are you serious? That's crazy.",
+        "translation": "진짜야? 말도 안 돼."
+      }
+    ]
+  },
+  {
+    "word": "No kidding",
+    "meaning": "그러게 말이야",
+    "level": "intermediate",
+    "category": "캐주얼",
+    "examples": [
+      {
+        "text": "It's so hot today. - No kidding.",
+        "translation": "오늘 너무 덥다. - 그러게 말이야."
+      }
+    ]
+  },
+  {
+    "word": "You’ve got a point",
+    "meaning": "일리 있네",
+    "level": "intermediate",
+    "category": "일상",
+    "examples": [
+      {
+        "text": "You've got a point. I didn't think of that.",
+        "translation": "일리 있네. 그건 생각 못 했어."
+      }
+    ]
+  },
+  {
+    "word": "Seriously?",
+    "meaning": "진짜야?",
+    "level": "beginner",
+    "category": "캐주얼",
+    "examples": [
+      {
+        "text": "Seriously? You did that?",
+        "translation": "진짜야? 네가 그걸 했다고?"
+      }
+    ]
+  },
+  {
+    "word": "No way",
+    "meaning": "말도 안 돼",
+    "level": "beginner",
+    "category": "캐주얼",
+    "examples": [
+      {
+        "text": "No way! That's unbelievable.",
+        "translation": "말도 안 돼! 믿기지가 않아."
+      }
+    ]
+  },
+  {
+    "word": "That makes sense",
+    "meaning": "말이 되네",
+    "level": "beginner",
+    "category": "일상",
+    "examples": [
+      {
+        "text": "That makes sense now.",
+        "translation": "이제 말이 되네."
+      }
+    ]
+  },
+  {
+    "word": "I see",
+    "meaning": "아 그렇구나",
+    "level": "beginner",
+    "category": "일상",
+    "examples": [
+      {
+        "text": "Oh, I see what you mean.",
+        "translation": "아, 무슨 말인지 알겠어."
+      }
+    ]
+  },
+  {
+    "word": "Fair enough",
+    "meaning": "그럴 만하네",
+    "level": "intermediate",
+    "category": "일상",
+    "examples": [
+      {
+        "text": "You were busy? Fair enough.",
+        "translation": "바빴다고? 그럴 수 있지."
+      }
+    ]
+  },
+  {
+    "word": "I get it",
+    "meaning": "이해해",
+    "level": "beginner",
+    "category": "일상",
+    "examples": [
+      {
+        "text": "I get it, it's tough.",
+        "translation": "이해해, 힘들지."
+      }
+    ]
+  },
+  {
+    "word": "You’re right",
+    "meaning": "네 말이 맞아",
+    "level": "beginner",
+    "category": "일상",
+    "examples": [
+      {
+        "text": "You're right, I should try again.",
+        "translation": "네 말이 맞아, 다시 해볼게."
+      }
+    ]
+  },
+  {
+    "word": "I totally agree",
+    "meaning": "완전 동의해",
+    "level": "beginner",
+    "category": "일상",
+    "examples": [
+      {
+        "text": "I totally agree with you.",
+        "translation": "너한테 완전 동의해."
+      }
+    ]
+  },
+  {
+    "word": "I’m not sure",
+    "meaning": "잘 모르겠어",
+    "level": "beginner",
+    "category": "일상",
+    "examples": [
+      {
+        "text": "I'm not sure about that.",
+        "translation": "그건 잘 모르겠어."
+      }
+    ]
+  },
+  {
+    "word": "It depends",
+    "meaning": "상황에 따라 다르지",
+    "level": "beginner",
+    "category": "일상",
+    "examples": [
+      {
+        "text": "Will you go? It depends.",
+        "translation": "갈 거야? 상황에 따라 다르지."
+      }
+    ]
+  },
+  {
+    "word": "Let me think",
+    "meaning": "생각해볼게",
+    "level": "beginner",
+    "category": "일상",
+    "examples": [
+      {
+        "text": "Let me think about it.",
+        "translation": "생각 좀 해볼게."
+      }
+    ]
+  },
+  {
+    "word": "Give me a second",
+    "meaning": "잠깐만",
+    "level": "beginner",
+    "category": "일상",
+    "examples": [
+      {
+        "text": "Give me a second, I'll check.",
+        "translation": "잠깐만, 확인해볼게."
+      }
+    ]
+  },
+  {
+    "word": "Hold on",
+    "meaning": "잠깐만",
+    "level": "beginner",
+    "category": "일상",
+    "examples": [
+      {
+        "text": "Hold on, wait for me.",
+        "translation": "잠깐만, 나 좀 기다려."
+      }
+    ]
+  },
+  {
+    "word": "Wait a minute",
+    "meaning": "잠깐만",
+    "level": "beginner",
+    "category": "일상",
+    "examples": [
+      {
+        "text": "Wait a minute, that’s not right.",
+        "translation": "잠깐만, 그거 이상해."
+      }
+    ]
+  },
+  {
+    "word": "Sounds good",
+    "meaning": "좋아",
+    "level": "beginner",
+    "category": "캐주얼",
+    "examples": [
+      {
+        "text": "Let's meet tomorrow. Sounds good!",
+        "translation": "내일 만나자. 좋아!"
+      }
+    ]
+  },
+  {
+    "word": "Sounds great",
+    "meaning": "좋네",
+    "level": "beginner",
+    "category": "캐주얼",
+    "examples": [
+      {
+        "text": "That plan sounds great.",
+        "translation": "그 계획 좋네."
+      }
+    ]
+  },
+  {
+    "word": "Why not?",
+    "meaning": "왜 안 돼?",
+    "level": "beginner",
+    "category": "캐주얼",
+    "examples": [
+      {
+        "text": "Want to try? Why not?",
+        "translation": "해볼래? 왜 안 돼?"
+      }
+    ]
+  },
+  {
+    "word": "Go for it",
+    "meaning": "해봐",
+    "level": "beginner",
+    "category": "캐주얼",
+    "examples": [
+      {
+        "text": "If you want, go for it.",
+        "translation": "원하면 해봐."
+      }
+    ]
+  },
+  {
+    "word": "Give it a try",
+    "meaning": "한번 해봐",
+    "level": "beginner",
+    "category": "일상",
+    "examples": [
+      {
+        "text": "You should give it a try.",
+        "translation": "한번 해보는 게 좋아."
+      }
+    ]
+  },
+  {
+    "word": "Let’s do it",
+    "meaning": "하자",
+    "level": "beginner",
+    "category": "캐주얼",
+    "examples": [
+      {
+        "text": "Alright, let’s do it.",
+        "translation": "좋아, 하자."
+      }
+    ]
+  },
+  {
+    "word": "I’m in",
+    "meaning": "나도 할래",
+    "level": "beginner",
+    "category": "캐주얼",
+    "examples": [
+      {
+        "text": "Count me in. I'm in!",
+        "translation": "나도 할래!"
+      }
+    ]
+  },
+  {
+    "word": "I’m out",
+    "meaning": "난 빠질게",
+    "level": "beginner",
+    "category": "캐주얼",
+    "examples": [
+      {
+        "text": "I'm tired, I'm out.",
+        "translation": "나 피곤해서 빠질게."
+      }
+    ]
+  },
+  {
+    "word": "I’ll pass",
+    "meaning": "난 안 할게",
+    "level": "beginner",
+    "category": "캐주얼",
+    "examples": [
+      {
+        "text": "Thanks, but I'll pass.",
+        "translation": "고마운데 난 괜찮아."
+      }
+    ]
+  },
+  {
+    "word": "Maybe next time",
+    "meaning": "다음에 하자",
+    "level": "beginner",
+    "category": "캐주얼",
+    "examples": [
+      {
+        "text": "I can't today, maybe next time.",
+        "translation": "오늘은 안 돼, 다음에 하자."
+      }
+    ]
+  },
+  {
+    "word": "That’s interesting",
+    "meaning": "흥미롭네",
+    "level": "beginner",
+    "category": "일상",
+    "examples": [
+      {
+        "text": "That's interesting, tell me more.",
+        "translation": "흥미롭네, 더 말해봐."
+      }
+    ]
+  },
+  {
+    "word": "That’s weird",
+    "meaning": "이상하네",
+    "level": "beginner",
+    "category": "일상",
+    "examples": [
+      {
+        "text": "That's weird, I didn't see it.",
+        "translation": "이상하네, 난 못 봤어."
+      }
+    ]
+  },
+  {
+    "word": "That’s crazy",
+    "meaning": "대박이다",
+    "level": "beginner",
+    "category": "캐주얼",
+    "examples": [
+      {
+        "text": "That's crazy! I can't believe it.",
+        "translation": "대박이다! 믿기지 않아."
+      }
+    ]
+  },
+  {
+    "word": "That’s awesome",
+    "meaning": "대박이다",
+    "level": "beginner",
+    "category": "캐주얼",
+    "examples": [
+      {
+        "text": "That's awesome! Good job.",
+        "translation": "대박이다! 잘했어."
+      }
+    ]
+  },
+  {
+    "word": "That sucks",
+    "meaning": "별로다",
+    "level": "beginner",
+    "category": "캐주얼",
+    "examples": [
+      {
+        "text": "That sucks, I'm sorry.",
+        "translation": "그거 별로다, 미안."
+      }
+    ]
+  },
+  {
+    "word": "Algorithm",
+    "meaning": "알고리즘, 문제 해결 절차",
+    "level": "intermediate",
+    "category": "기술",
+    "examples": [
+      {
+        "text": "The algorithm sorts the data in seconds.",
+        "translation": "알고리즘이 데이터를 몇 초 만에 정렬해."
+      },
+      {
+        "text": "We need a better algorithm for this problem.",
+        "translation": "이 문제엔 더 나은 알고리즘이 필요해."
+      }
+    ]
+  },
+  {
+    "word": "Bug",
+    "meaning": "버그, 오류",
+    "level": "beginner",
+    "category": "기술",
+    "examples": [
+      {
+        "text": "There's a bug in the code.",
+        "translation": "코드에 버그가 있어."
+      },
+      {
+        "text": "We need to fix this bug before launch.",
+        "translation": "출시 전에 이 버그를 고쳐야 해."
+      }
+    ]
+  },
+  {
+    "word": "Update",
+    "meaning": "업데이트하다, 최신화하다",
+    "level": "beginner",
+    "category": "기술",
+    "examples": [
+      {
+        "text": "Please update your app to the latest version.",
+        "translation": "앱을 최신 버전으로 업데이트해주세요."
+      },
+      {
+        "text": "The system update takes about 10 minutes.",
+        "translation": "시스템 업데이트는 약 10분 걸려."
+      }
+    ]
+  },
+  {
+    "word": "Download",
+    "meaning": "다운로드하다",
+    "level": "beginner",
+    "category": "기술",
+    "examples": [
+      {
+        "text": "Download the file and open it.",
+        "translation": "파일을 다운로드해서 열어봐."
+      },
+      {
+        "text": "The download speed is really slow today.",
+        "translation": "오늘 다운로드 속도가 엄청 느리네."
+      }
+    ]
+  },
+  {
+    "word": "Password",
+    "meaning": "비밀번호",
+    "level": "beginner",
+    "category": "기술",
+    "examples": [
+      {
+        "text": "Don't share your password with anyone.",
+        "translation": "비밀번호는 아무에게도 알려주지 마."
+      },
+      {
+        "text": "I forgot my password again.",
+        "translation": "비밀번호를 또 잊어버렸어."
+      }
+    ]
+  },
+  {
+    "word": "Wi-Fi",
+    "meaning": "와이파이, 무선 인터넷",
+    "level": "beginner",
+    "category": "기술",
+    "examples": [
+      {
+        "text": "Is there Wi-Fi here?",
+        "translation": "여기 와이파이 돼?"
+      },
+      {
+        "text": "The Wi-Fi keeps disconnecting.",
+        "translation": "와이파이가 계속 끊겨."
+      }
+    ]
+  },
+  {
+    "word": "Charge",
+    "meaning": "충전하다",
+    "level": "beginner",
+    "category": "기술",
+    "examples": [
+      {
+        "text": "My phone is dead. I need to charge it.",
+        "translation": "폰 배터리 나갔어. 충전해야 해."
+      },
+      {
+        "text": "Charge your laptop before the meeting.",
+        "translation": "회의 전에 노트북 충전해놔."
+      }
+    ]
+  },
+  {
+    "word": "Screenshot",
+    "meaning": "스크린샷, 화면 캡처",
+    "level": "beginner",
+    "category": "기술",
+    "examples": [
+      {
+        "text": "Take a screenshot and send it to me.",
+        "translation": "스크린샷 찍어서 보내줘."
+      },
+      {
+        "text": "I took a screenshot of the error message.",
+        "translation": "오류 메시지 스크린샷 찍어뒀어."
+      }
+    ]
+  },
+  {
+    "word": "Notification",
+    "meaning": "알림",
+    "level": "intermediate",
+    "category": "기술",
+    "examples": [
+      {
+        "text": "I turned off all my notifications.",
+        "translation": "알림을 전부 껐어."
+      },
+      {
+        "text": "You have three new notifications.",
+        "translation": "새 알림이 3개 있어."
+      }
+    ]
+  },
+  {
+    "word": "Backup",
+    "meaning": "백업하다, 백업",
+    "level": "intermediate",
+    "category": "기술",
+    "examples": [
+      {
+        "text": "Always back up your important files.",
+        "translation": "중요한 파일은 항상 백업해둬."
+      },
+      {
+        "text": "I lost everything because I didn't have a backup.",
+        "translation": "백업이 없어서 다 날렸어."
+      }
+    ]
+  },
+  {
+    "word": "Stream",
+    "meaning": "스트리밍하다, 실시간으로 보다",
+    "level": "intermediate",
+    "category": "기술",
+    "examples": [
+      {
+        "text": "I stream movies every weekend.",
+        "translation": "나 매주 주말에 영화 스트리밍해."
+      },
+      {
+        "text": "The live stream had over 10,000 viewers.",
+        "translation": "라이브 스트림 시청자가 만 명이 넘었어."
+      }
+    ]
+  },
+  {
+    "word": "Crash",
+    "meaning": "(앱/컴퓨터가) 충돌나다, 먹통이 되다",
+    "level": "intermediate",
+    "category": "기술",
+    "examples": [
+      {
+        "text": "My computer crashed and I lost my work.",
+        "translation": "컴퓨터가 다운돼서 작업한 게 다 날아갔어."
+      },
+      {
+        "text": "The app keeps crashing on my phone.",
+        "translation": "앱이 폰에서 계속 꺼져."
+      }
+    ]
+  },
+  {
+    "word": "Sync",
+    "meaning": "동기화하다",
+    "level": "intermediate",
+    "category": "기술",
+    "examples": [
+      {
+        "text": "Sync your calendar across all devices.",
+        "translation": "모든 기기에서 캘린더를 동기화해."
+      },
+      {
+        "text": "The files didn't sync properly.",
+        "translation": "파일이 제대로 동기화가 안 됐어."
+      }
+    ]
+  },
+  {
+    "word": "Privacy",
+    "meaning": "개인 정보 보호, 프라이버시",
+    "level": "intermediate",
+    "category": "기술",
+    "examples": [
+      {
+        "text": "Check the app's privacy settings.",
+        "translation": "앱의 개인 정보 설정을 확인해봐."
+      },
+      {
+        "text": "Privacy is a big concern these days.",
+        "translation": "요즘 프라이버시가 큰 이슈야."
+      }
+    ]
+  },
+  {
+    "word": "Glitch",
+    "meaning": "오작동, 결함",
+    "level": "intermediate",
+    "category": "기술",
+    "examples": [
+      {
+        "text": "There was a glitch in the system.",
+        "translation": "시스템에 오작동이 있었어."
+      },
+      {
+        "text": "The game has some minor glitches.",
+        "translation": "게임에 소소한 버그들이 좀 있어."
+      }
+    ]
+  },
+  {
+    "word": "Bandwidth",
+    "meaning": "대역폭, 데이터 처리 속도",
+    "level": "advanced",
+    "category": "기술",
+    "examples": [
+      {
+        "text": "The video call requires a lot of bandwidth.",
+        "translation": "화상통화는 대역폭을 많이 써."
+      },
+      {
+        "text": "We need to increase our bandwidth.",
+        "translation": "대역폭을 늘려야 해."
+      }
+    ]
+  },
+  {
+    "word": "Encryption",
+    "meaning": "암호화",
+    "level": "advanced",
+    "category": "기술",
+    "examples": [
+      {
+        "text": "All messages are protected with encryption.",
+        "translation": "모든 메시지는 암호화로 보호돼."
+      },
+      {
+        "text": "End-to-end encryption keeps your data safe.",
+        "translation": "종단간 암호화가 데이터를 안전하게 지켜줘."
+      }
+    ]
+  },
+  {
+    "word": "Firewall",
+    "meaning": "방화벽",
+    "level": "advanced",
+    "category": "기술",
+    "examples": [
+      {
+        "text": "The firewall blocked the suspicious connection.",
+        "translation": "방화벽이 수상한 연결을 차단했어."
+      },
+      {
+        "text": "Make sure your firewall is up to date.",
+        "translation": "방화벽이 최신 상태인지 확인해."
+      }
+    ]
+  },
+  {
+    "word": "Bite the bullet",
+    "meaning": "이를 악물고 참다, 어쩔 수 없이 받아들이다",
+    "level": "intermediate",
+    "category": "숙어",
+    "examples": [
+      {
+        "text": "Just bite the bullet and apologize.",
+        "translation": "이를 악물고 그냥 사과해."
+      },
+      {
+        "text": "We bit the bullet and paid the extra cost.",
+        "translation": "어쩔 수 없이 추가 비용을 냈어."
+      }
+    ]
+  },
+  {
+    "word": "Hit the nail on the head",
+    "meaning": "핵심을 찌르다, 정확히 맞히다",
+    "level": "intermediate",
+    "category": "숙어",
+    "examples": [
+      {
+        "text": "You hit the nail on the head with that comment.",
+        "translation": "그 말로 핵심을 딱 짚었어."
+      },
+      {
+        "text": "She hit the nail on the head as usual.",
+        "translation": "그녀는 역시나 정확하게 짚었어."
+      }
+    ]
+  },
+  {
+    "word": "On the fence",
+    "meaning": "결정을 못 내리고 있다, 중립",
+    "level": "intermediate",
+    "category": "숙어",
+    "examples": [
+      {
+        "text": "I'm still on the fence about the job offer.",
+        "translation": "아직 그 취업 제안에 대해 결정을 못 내리겠어."
+      },
+      {
+        "text": "He's on the fence about moving abroad.",
+        "translation": "그는 해외 이사를 할지 말지 고민 중이야."
+      }
+    ]
+  },
+  {
+    "word": "Spill the beans",
+    "meaning": "비밀을 폭로하다, 말해버리다",
+    "level": "intermediate",
+    "category": "숙어",
+    "examples": [
+      {
+        "text": "Don't spill the beans about the surprise party.",
+        "translation": "깜짝 파티 비밀 말하지 마."
+      },
+      {
+        "text": "Who spilled the beans?",
+        "translation": "누가 말해버렸어?"
+      }
+    ]
+  },
+  {
+    "word": "Burn bridges",
+    "meaning": "관계를 끊다, 다리를 태우다",
+    "level": "advanced",
+    "category": "숙어",
+    "examples": [
+      {
+        "text": "Don't burn bridges when you quit a job.",
+        "translation": "직장 그만둘 때 관계를 끊지 마."
+      },
+      {
+        "text": "He burned bridges with his whole team.",
+        "translation": "그는 팀 전체와 관계를 끊어버렸어."
+      }
+    ]
+  },
+  {
+    "word": "Cost an arm and a leg",
+    "meaning": "엄청 비싸다",
+    "level": "intermediate",
+    "category": "숙어",
+    "examples": [
+      {
+        "text": "That bag costs an arm and a leg.",
+        "translation": "저 가방 엄청 비싸."
+      },
+      {
+        "text": "Medical bills here cost an arm and a leg.",
+        "translation": "여기 의료비가 엄청 비싸."
+      }
+    ]
+  },
+  {
+    "word": "Jump the gun",
+    "meaning": "너무 성급하게 행동하다",
+    "level": "advanced",
+    "category": "숙어",
+    "examples": [
+      {
+        "text": "Don't jump the gun — wait for confirmation.",
+        "translation": "성급하게 굴지 말고 확인을 기다려."
+      },
+      {
+        "text": "I jumped the gun and ordered too early.",
+        "translation": "내가 너무 성급하게 일찍 주문했어."
+      }
+    ]
+  },
+  {
+    "word": "On sale",
+    "meaning": "세일 중인, 할인 중인",
+    "level": "beginner",
+    "category": "쇼핑",
+    "examples": [
+      {
+        "text": "These shoes are on sale this week.",
+        "translation": "이 신발 이번 주에 세일해."
+      },
+      {
+        "text": "Is this jacket on sale?",
+        "translation": "이 재킷 세일하나요?"
+      }
+    ]
+  },
+  {
+    "word": "Sold out",
+    "meaning": "품절된",
+    "level": "beginner",
+    "category": "쇼핑",
+    "examples": [
+      {
+        "text": "Sorry, that size is sold out.",
+        "translation": "죄송한데 그 사이즈는 품절이에요."
+      },
+      {
+        "text": "The limited edition is already sold out.",
+        "translation": "한정판은 이미 품절됐어."
+      }
+    ]
+  },
+  {
+    "word": "Window shopping",
+    "meaning": "아이쇼핑, 구경만 하기",
+    "level": "beginner",
+    "category": "쇼핑",
+    "examples": [
+      {
+        "text": "I'm just window shopping today.",
+        "translation": "오늘은 그냥 아이쇼핑하는 거야."
+      },
+      {
+        "text": "Window shopping is my favorite hobby.",
+        "translation": "아이쇼핑이 내 취미야."
+      }
+    ]
+  },
+  {
+    "word": "Checkout",
+    "meaning": "계산하다, 결제하다",
+    "level": "beginner",
+    "category": "쇼핑",
+    "examples": [
+      {
+        "text": "I'm ready to check out.",
+        "translation": "계산할게요."
+      },
+      {
+        "text": "The checkout line is really long.",
+        "translation": "계산대 줄이 엄청 길어."
+      }
+    ]
+  },
+  {
+    "word": "Try on",
+    "meaning": "입어보다, 신어보다",
+    "level": "beginner",
+    "category": "쇼핑",
+    "examples": [
+      {
+        "text": "Can I try this on?",
+        "translation": "이거 입어봐도 돼요?"
+      },
+      {
+        "text": "You should try it on before buying.",
+        "translation": "사기 전에 입어봐."
+      }
+    ]
+  },
+  {
+    "word": "Clear up",
+    "meaning": "(날씨가) 개다",
+    "level": "beginner",
+    "category": "날씨",
+    "examples": [
+      {
+        "text": "It should clear up by afternoon.",
+        "translation": "오후쯤 되면 날씨 갤 거야."
+      },
+      {
+        "text": "The rain cleared up really fast.",
+        "translation": "비가 엄청 빨리 갰어."
+      }
+    ]
+  },
+  {
+    "word": "Thunder",
+    "meaning": "천둥",
+    "level": "beginner",
+    "category": "날씨",
+    "examples": [
+      {
+        "text": "I heard thunder — a storm is coming.",
+        "translation": "천둥 소리 났어. 폭풍이 오겠어."
+      },
+      {
+        "text": "My dog is scared of thunder.",
+        "translation": "우리 강아지는 천둥을 무서워해."
+      }
+    ]
+  },
+  {
+    "word": "Below freezing",
+    "meaning": "영하",
+    "level": "intermediate",
+    "category": "날씨",
+    "examples": [
+      {
+        "text": "It's below freezing tonight.",
+        "translation": "오늘 밤 영하야."
+      },
+      {
+        "text": "Bundle up — it's well below freezing out there.",
+        "translation": "단단히 입어. 밖에 완전 영하야."
+      }
+    ]
+  },
+  {
+    "word": "Mild",
+    "meaning": "온화한, 따뜻한",
+    "level": "beginner",
+    "category": "날씨",
+    "examples": [
+      {
+        "text": "The weather is mild today — perfect for a walk.",
+        "translation": "오늘 날씨 온화해서 산책하기 딱이야."
+      },
+      {
+        "text": "Spring here is mild and pleasant.",
+        "translation": "여기 봄은 온화하고 좋아."
+      }
+    ]
+  },
+  {
+    "word": "Heat wave",
+    "meaning": "폭염",
+    "level": "intermediate",
+    "category": "날씨",
+    "examples": [
+      {
+        "text": "We're in the middle of a heat wave.",
+        "translation": "지금 한창 폭염 중이야."
+      },
+      {
+        "text": "The heat wave is expected to last all week.",
+        "translation": "폭염이 이번 주 내내 계속될 것 같아."
+      }
+    ]
+  },
+  {
+    "word": "Slippery",
+    "meaning": "미끄러운",
+    "level": "beginner",
+    "category": "날씨",
+    "examples": [
+      {
+        "text": "Be careful — the roads are slippery.",
+        "translation": "조심해. 도로가 미끄러워."
+      },
+      {
+        "text": "The sidewalk is slippery from the ice.",
+        "translation": "얼음 때문에 인도가 미끄러워."
+      }
+    ]
+  },
+  {
+    "word": "Wind chill",
+    "meaning": "체감 온도 (바람으로 더 춥게 느껴지는)",
+    "level": "advanced",
+    "category": "날씨",
+    "examples": [
+      {
+        "text": "The wind chill makes it feel like -15.",
+        "translation": "체감 온도는 영하 15도야."
+      },
+      {
+        "text": "Watch out for the wind chill factor today.",
+        "translation": "오늘 체감 온도에 주의해."
+      }
+    ]
+  },
+  {
+    "word": "Get along",
+    "meaning": "사이좋게 지내다",
+    "level": "beginner",
+    "category": "관계",
+    "examples": [
+      {
+        "text": "Do you get along with your coworkers?",
+        "translation": "동료들이랑 잘 지내?"
+      },
+      {
+        "text": "We didn't get along at first, but now we're close.",
+        "translation": "처음엔 잘 못 지냈는데 지금은 친해."
+      }
+    ]
+  },
+  {
+    "word": "Drift apart",
+    "meaning": "(관계가) 멀어지다",
+    "level": "intermediate",
+    "category": "관계",
+    "examples": [
+      {
+        "text": "We drifted apart after college.",
+        "translation": "대학 졸업하고 나서 멀어졌어."
+      },
+      {
+        "text": "It's sad when you drift apart from old friends.",
+        "translation": "오래된 친구와 멀어지는 게 슬프더라."
+      }
+    ]
+  },
+  {
+    "word": "Make up",
+    "meaning": "화해하다",
+    "level": "beginner",
+    "category": "관계",
+    "examples": [
+      {
+        "text": "Have you two made up yet?",
+        "translation": "너희 둘 화해했어?"
+      },
+      {
+        "text": "We fought but made up the next day.",
+        "translation": "싸웠다가 다음날 화해했어."
+      }
+    ]
+  },
+  {
+    "word": "Fall out",
+    "meaning": "사이가 틀어지다, 싸우다",
+    "level": "intermediate",
+    "category": "관계",
+    "examples": [
+      {
+        "text": "We fell out over something stupid.",
+        "translation": "별거 아닌 걸로 사이가 틀어졌어."
+      },
+      {
+        "text": "They fell out and haven't spoken since.",
+        "translation": "걔들 사이가 틀어진 뒤로 연락을 안 하더라."
+      }
+    ]
+  },
+  {
+    "word": "Catch up",
+    "meaning": "근황 얘기하다, 회포 풀다",
+    "level": "beginner",
+    "category": "관계",
+    "examples": [
+      {
+        "text": "Let's catch up over coffee sometime.",
+        "translation": "언제 커피 마시면서 근황 얘기하자."
+      },
+      {
+        "text": "It was great catching up with you!",
+        "translation": "오랜만에 얘기해서 너무 좋았어!"
+      }
+    ]
+  },
+  {
+    "word": "Have a falling-out",
+    "meaning": "사이가 나빠지다, 다투다",
+    "level": "advanced",
+    "category": "관계",
+    "examples": [
+      {
+        "text": "They had a falling-out over money.",
+        "translation": "걔들 돈 문제로 사이가 나빠졌어."
+      },
+      {
+        "text": "I had a falling-out with my best friend.",
+        "translation": "절친이랑 다퉜어."
+      }
+    ]
+  },
+  {
+    "word": "Reconnect",
+    "meaning": "다시 연락하다, 관계를 회복하다",
+    "level": "intermediate",
+    "category": "관계",
+    "examples": [
+      {
+        "text": "I reconnected with an old friend on social media.",
+        "translation": "소셜 미디어에서 옛 친구와 다시 연락됐어."
+      },
+      {
+        "text": "It's nice to reconnect with people from the past.",
+        "translation": "과거 사람들과 다시 연결되는 게 좋더라."
+      }
+    ]
+  },
+  {
+    "word": "Toxic",
+    "meaning": "독성 있는, 해로운 (관계)",
+    "level": "intermediate",
+    "category": "관계",
+    "examples": [
+      {
+        "text": "That relationship was really toxic.",
+        "translation": "그 관계는 정말 독성이 있었어."
+      },
+      {
+        "text": "I had to cut off a toxic friend.",
+        "translation": "독성 친구를 끊어내야 했어."
+      }
+    ]
+  },
+  {
+    "word": "Support each other",
+    "meaning": "서로를 지지하다",
+    "level": "beginner",
+    "category": "관계",
+    "examples": [
+      {
+        "text": "Good friends always support each other.",
+        "translation": "좋은 친구는 항상 서로를 지지해."
+      },
+      {
+        "text": "We support each other through hard times.",
+        "translation": "힘든 시간엔 서로를 의지해."
+      }
+    ]
+  },
+  {
+    "word": "Pick up",
+    "meaning": "(악기 등을) 새로 배우다",
+    "level": "beginner",
+    "category": "취미",
+    "examples": [
+      {
+        "text": "I picked up guitar during the pandemic.",
+        "translation": "팬데믹 때 기타를 배우기 시작했어."
+      },
+      {
+        "text": "She picked up painting as a hobby.",
+        "translation": "그녀는 취미로 그림을 배우기 시작했어."
+      }
+    ]
+  },
+  {
+    "word": "Sketch",
+    "meaning": "스케치하다, 밑그림 그리다",
+    "level": "beginner",
+    "category": "취미",
+    "examples": [
+      {
+        "text": "I sketch in my notebook every morning.",
+        "translation": "매일 아침 노트에 스케치해."
+      },
+      {
+        "text": "She's really good at sketching portraits.",
+        "translation": "그녀는 인물 스케치를 정말 잘해."
+      }
+    ]
+  },
+  {
+    "word": "Binge-watch",
+    "meaning": "몰아보다",
+    "level": "beginner",
+    "category": "취미",
+    "examples": [
+      {
+        "text": "I binge-watched the whole series in one day.",
+        "translation": "그 시리즈를 하루 만에 다 몰아봤어."
+      },
+      {
+        "text": "We binge-watched three episodes last night.",
+        "translation": "어젯밤에 에피소드를 세 편 몰아봤어."
+      }
+    ]
+  },
+  {
+    "word": "Hike",
+    "meaning": "등산하다, 하이킹하다",
+    "level": "beginner",
+    "category": "취미",
+    "examples": [
+      {
+        "text": "We hiked up the mountain last weekend.",
+        "translation": "지난 주말에 산에 등산했어."
+      },
+      {
+        "text": "Hiking is great for both body and mind.",
+        "translation": "등산은 몸과 마음 모두에 좋아."
+      }
+    ]
+  },
+  {
+    "word": "Knit",
+    "meaning": "뜨개질하다",
+    "level": "beginner",
+    "category": "취미",
+    "examples": [
+      {
+        "text": "She knits scarves for everyone in winter.",
+        "translation": "그녀는 겨울에 모두에게 목도리를 떠줘."
+      },
+      {
+        "text": "I learned to knit during lockdown.",
+        "translation": "락다운 때 뜨개질을 배웠어."
+      }
+    ]
+  },
+  {
+    "word": "Collect",
+    "meaning": "수집하다",
+    "level": "beginner",
+    "category": "취미",
+    "examples": [
+      {
+        "text": "He collects vintage records.",
+        "translation": "그는 빈티지 레코드를 수집해."
+      },
+      {
+        "text": "I collect stamps from every country I visit.",
+        "translation": "방문한 나라의 우표를 다 모아."
+      }
+    ]
+  },
+  {
+    "word": "Blog",
+    "meaning": "블로그를 운영하다",
+    "level": "intermediate",
+    "category": "취미",
+    "examples": [
+      {
+        "text": "I've been blogging about food for two years.",
+        "translation": "2년째 음식 블로그를 하고 있어."
+      },
+      {
+        "text": "She blogs about her travels.",
+        "translation": "그녀는 여행 블로그를 해."
+      }
+    ]
+  },
+  {
+    "word": "Volunteer",
+    "meaning": "봉사활동하다",
+    "level": "intermediate",
+    "category": "취미",
+    "examples": [
+      {
+        "text": "I volunteer at a local shelter on weekends.",
+        "translation": "주말에 지역 쉼터에서 봉사활동해."
+      },
+      {
+        "text": "Volunteering makes me feel good.",
+        "translation": "봉사활동하면 기분이 좋아."
+      }
+    ]
+  },
+  {
+    "word": "Journal",
+    "meaning": "일기를 쓰다, 기록하다",
+    "level": "beginner",
+    "category": "취미",
+    "examples": [
+      {
+        "text": "I journal every night before bed.",
+        "translation": "나 매일 밤 자기 전에 일기 써."
+      },
+      {
+        "text": "Journaling helps me process my thoughts.",
+        "translation": "일기 쓰면 생각 정리가 돼."
+      }
+    ]
+  },
+  {
+    "word": "Freelancer",
+    "meaning": "프리랜서",
+    "level": "intermediate",
+    "category": "직업",
+    "examples": [
+      {
+        "text": "I work as a freelancer from home.",
+        "translation": "나 재택으로 프리랜서 일해."
+      },
+      {
+        "text": "Being a freelancer means flexible hours.",
+        "translation": "프리랜서는 자유로운 시간이 장점이야."
+      }
+    ]
+  },
+  {
+    "word": "Intern",
+    "meaning": "인턴",
+    "level": "beginner",
+    "category": "직업",
+    "examples": [
+      {
+        "text": "I'm doing an internship at a tech company.",
+        "translation": "나 IT 회사에서 인턴 중이야."
+      },
+      {
+        "text": "The intern did a great job on the project.",
+        "translation": "인턴이 프로젝트를 잘 해냈어."
+      }
+    ]
+  },
+  {
+    "word": "Remote work",
+    "meaning": "재택근무",
+    "level": "intermediate",
+    "category": "직업",
+    "examples": [
+      {
+        "text": "I've been doing remote work for two years.",
+        "translation": "2년째 재택근무하고 있어."
+      },
+      {
+        "text": "Remote work saves so much commute time.",
+        "translation": "재택근무하면 출퇴근 시간이 많이 절약돼."
+      }
+    ]
+  },
+  {
+    "word": "Promotion",
+    "meaning": "승진",
+    "level": "intermediate",
+    "category": "직업",
+    "examples": [
+      {
+        "text": "She got a promotion last month.",
+        "translation": "그녀 지난달에 승진했어."
+      },
+      {
+        "text": "I'm hoping for a promotion this year.",
+        "translation": "올해 승진하길 바라고 있어."
+      }
+    ]
+  },
+  {
+    "word": "Resign",
+    "meaning": "사직하다, 사표 내다",
+    "level": "intermediate",
+    "category": "직업",
+    "examples": [
+      {
+        "text": "He resigned from his position yesterday.",
+        "translation": "그가 어제 사표를 냈어."
+      },
+      {
+        "text": "I'm thinking about resigning.",
+        "translation": "사직할까 생각 중이야."
+      }
+    ]
+  },
+  {
+    "word": "Deadline",
+    "meaning": "마감일",
+    "level": "beginner",
+    "category": "직업",
+    "examples": [
+      {
+        "text": "The deadline is this Friday.",
+        "translation": "마감이 이번 주 금요일이야."
+      },
+      {
+        "text": "I always work better under a deadline.",
+        "translation": "나는 마감이 있을 때 더 잘 돼."
+      }
+    ]
+  },
+  {
+    "word": "Workload",
+    "meaning": "업무량",
+    "level": "intermediate",
+    "category": "직업",
+    "examples": [
+      {
+        "text": "My workload has doubled this month.",
+        "translation": "이번 달에 업무량이 두 배로 늘었어."
+      },
+      {
+        "text": "The workload is manageable for now.",
+        "translation": "지금은 업무량이 감당할 만해."
+      }
+    ]
+  },
+  {
+    "word": "Laid off",
+    "meaning": "해고당하다, 권고사직",
+    "level": "intermediate",
+    "category": "직업",
+    "examples": [
+      {
+        "text": "He was laid off due to budget cuts.",
+        "translation": "예산 삭감으로 그가 권고사직당했어."
+      },
+      {
+        "text": "A lot of people were laid off last quarter.",
+        "translation": "지난 분기에 많은 사람이 해고됐어."
+      }
+    ]
+  },
+  {
+    "word": "Easygoing",
+    "meaning": "느긋한, 편한",
+    "level": "intermediate",
+    "category": "성격",
+    "examples": [
+      {
+        "text": "She's really easygoing — never stressed.",
+        "translation": "그녀는 정말 느긋해. 절대 스트레스 안 받아."
+      },
+      {
+        "text": "I like his easygoing personality.",
+        "translation": "그의 느긋한 성격이 좋아."
+      }
+    ]
+  },
+  {
+    "word": "Witty",
+    "meaning": "재치 있는",
+    "level": "intermediate",
+    "category": "성격",
+    "examples": [
+      {
+        "text": "She always has a witty comeback.",
+        "translation": "그녀는 항상 재치 있는 받아치기를 해."
+      },
+      {
+        "text": "He's witty and fun to be around.",
+        "translation": "그는 재치 있어서 같이 있으면 재미있어."
+      }
+    ]
+  },
+  {
+    "word": "Laid-back",
+    "meaning": "여유로운, 태평한",
+    "level": "intermediate",
+    "category": "성격",
+    "examples": [
+      {
+        "text": "My boss is really laid-back about deadlines.",
+        "translation": "우리 상사는 마감에 꽤 여유로워."
+      },
+      {
+        "text": "I wish I could be more laid-back.",
+        "translation": "나도 좀 더 여유로울 수 있으면 좋겠어."
+      }
+    ]
+  },
+  {
+    "word": "Impulsive",
+    "meaning": "충동적인",
+    "level": "intermediate",
+    "category": "성격",
+    "examples": [
+      {
+        "text": "He made an impulsive decision to quit.",
+        "translation": "그는 충동적으로 그만두는 결정을 했어."
+      },
+      {
+        "text": "I tend to be impulsive when I'm tired.",
+        "translation": "피곤할 때 충동적이 되는 경향이 있어."
+      }
+    ]
+  },
+  {
+    "word": "Competitive",
+    "meaning": "경쟁심이 강한",
+    "level": "intermediate",
+    "category": "성격",
+    "examples": [
+      {
+        "text": "He gets really competitive during games.",
+        "translation": "그는 게임할 때 경쟁심이 엄청 강해져."
+      },
+      {
+        "text": "Being competitive helps her succeed.",
+        "translation": "경쟁심이 강한 게 그녀가 성공하는 데 도움이 돼."
+      }
+    ]
+  },
+  {
+    "word": "Pessimistic",
+    "meaning": "비관적인",
+    "level": "advanced",
+    "category": "성격",
+    "examples": [
+      {
+        "text": "Try not to be so pessimistic about things.",
+        "translation": "일에 대해 너무 비관적으로 생각하지 마."
+      },
+      {
+        "text": "He's pessimistic about the future.",
+        "translation": "그는 미래에 대해 비관적이야."
+      }
+    ]
+  },
+  {
+    "word": "Empathetic",
+    "meaning": "공감 능력이 있는",
+    "level": "advanced",
+    "category": "성격",
+    "examples": [
+      {
+        "text": "She's very empathetic — she really listens.",
+        "translation": "그녀는 공감 능력이 뛰어나. 진심으로 들어줘."
+      },
+      {
+        "text": "Being empathetic makes you a better friend.",
+        "translation": "공감 능력이 있으면 더 좋은 친구가 돼."
+      }
+    ]
+  },
+  {
+    "word": "Indecisive",
+    "meaning": "우유부단한",
+    "level": "intermediate",
+    "category": "성격",
+    "examples": [
+      {
+        "text": "I'm so indecisive when it comes to food.",
+        "translation": "음식 고를 때 너무 우유부단해."
+      },
+      {
+        "text": "Stop being indecisive and just pick one.",
+        "translation": "우유부단하게 굴지 말고 그냥 골라."
+      }
+    ]
+  },
+  {
+    "word": "Overwhelmed",
+    "meaning": "압도당한, 너무 벅찬",
+    "level": "intermediate",
+    "category": "감정",
+    "examples": [
+      {
+        "text": "I feel completely overwhelmed right now.",
+        "translation": "지금 완전히 벅차."
+      },
+      {
+        "text": "She was overwhelmed with joy.",
+        "translation": "그녀는 기쁨에 벅찼어."
+      }
+    ]
+  },
+  {
+    "word": "Relieved",
+    "meaning": "안도한",
+    "level": "intermediate",
+    "category": "감정",
+    "examples": [
+      {
+        "text": "I'm so relieved the exam is over.",
+        "translation": "시험이 끝나서 너무 안도돼."
+      },
+      {
+        "text": "We were relieved to hear the good news.",
+        "translation": "좋은 소식을 듣고 안도했어."
+      }
+    ]
+  },
+  {
+    "word": "Melancholy",
+    "meaning": "우울함, 서글픔",
+    "level": "advanced",
+    "category": "감정",
+    "examples": [
+      {
+        "text": "There's a certain melancholy to autumn.",
+        "translation": "가을엔 왠지 서글픔이 있어."
+      },
+      {
+        "text": "I felt a wave of melancholy out of nowhere.",
+        "translation": "갑자기 우울함이 밀려왔어."
+      }
+    ]
+  },
+  {
+    "word": "Nostalgic",
+    "meaning": "향수를 느끼는",
+    "level": "advanced",
+    "category": "감정",
+    "examples": [
+      {
+        "text": "This song makes me feel nostalgic.",
+        "translation": "이 노래 들으면 향수가 느껴져."
+      },
+      {
+        "text": "I get nostalgic about my school days.",
+        "translation": "학창시절이 그리워져."
+      }
+    ]
+  },
+  {
+    "word": "Warranty",
+    "meaning": "보증서, 보증 기간",
+    "level": "intermediate",
+    "category": "쇼핑",
+    "examples": [
+      {
+        "text": "Does this come with a warranty?",
+        "translation": "이거 보증 기간이 있나요?"
+      },
+      {
+        "text": "The warranty covers repairs for one year.",
+        "translation": "보증 기간 1년 내 수리는 커버돼."
+      }
+    ]
+  },
+  {
+    "word": "Cut corners",
+    "meaning": "대충 하다, 절차를 생략하다",
+    "level": "advanced",
+    "category": "숙어",
+    "examples": [
+      {
+        "text": "Don't cut corners on safety.",
+        "translation": "안전 절차는 대충 하면 안 돼."
+      },
+      {
+        "text": "They cut corners to save money.",
+        "translation": "돈 아끼려고 대충 했어."
+      }
+    ]
+  },
+  {
+    "word": "The ball is in your court",
+    "meaning": "이제 네가 결정할 차례야",
+    "level": "advanced",
+    "category": "숙어",
+    "examples": [
+      {
+        "text": "I made my offer — the ball is in your court.",
+        "translation": "내 제안은 했어. 이제 네가 결정할 차례야."
+      },
+      {
+        "text": "The ball is in your court now.",
+        "translation": "이제 공은 네 쪽에 있어."
+      }
+    ]
+  },
+  {
+    "word": "Pour",
+    "meaning": "비가 억수같이 쏟아지다",
+    "level": "beginner",
+    "category": "날씨",
+    "examples": [
+      {
+        "text": "It's pouring outside — stay in.",
+        "translation": "밖에 비가 억수같이 와. 그냥 있어."
+      },
+      {
+        "text": "I got soaked because it started pouring.",
+        "translation": "갑자기 비가 쏟아져서 흠뻑 젖었어."
+      }
+    ]
+  },
+  {
+    "word": "Overcast",
+    "meaning": "흐린, 구름 낀",
+    "level": "intermediate",
+    "category": "날씨",
+    "examples": [
+      {
+        "text": "It's overcast but not raining.",
+        "translation": "흐린데 비는 안 와."
+      },
+      {
+        "text": "The sky has been overcast all day.",
+        "translation": "하루 종일 하늘이 흐려."
+      }
+    ]
+  },
+  {
+    "word": "Grow apart",
+    "meaning": "점점 멀어지다",
+    "level": "intermediate",
+    "category": "관계",
+    "examples": [
+      {
+        "text": "We grew apart after moving to different cities.",
+        "translation": "다른 도시로 이사하고 점점 멀어졌어."
+      },
+      {
+        "text": "It's natural to grow apart sometimes.",
+        "translation": "때로 멀어지는 건 자연스러운 거야."
+      }
+    ]
+  },
+  {
+    "word": "Unwind",
+    "meaning": "긴장을 풀다, 쉬다",
+    "level": "intermediate",
+    "category": "취미",
+    "examples": [
+      {
+        "text": "I read to unwind after work.",
+        "translation": "퇴근 후 긴장 풀려고 책 읽어."
+      },
+      {
+        "text": "Gaming helps me unwind.",
+        "translation": "게임이 긴장 푸는 데 도움이 돼."
+      }
+    ]
+  },
+  {
+    "word": "Probation",
+    "meaning": "수습 기간",
+    "level": "advanced",
+    "category": "직업",
+    "examples": [
+      {
+        "text": "I'm still in my probation period.",
+        "translation": "아직 수습 기간이야."
+      },
+      {
+        "text": "She passed her probation with great reviews.",
+        "translation": "그녀는 좋은 평가를 받으며 수습 기간을 통과했어."
+      }
+    ]
+  },
+  {
+    "word": "Commute",
+    "meaning": "통근하다, 출퇴근",
+    "level": "beginner",
+    "category": "직업",
+    "examples": [
+      {
+        "text": "My commute takes about an hour.",
+        "translation": "출퇴근에 한 시간 정도 걸려."
+      },
+      {
+        "text": "I commute by subway every day.",
+        "translation": "매일 지하철로 출퇴근해."
+      }
+    ]
+  },
+  {
+    "word": "Bulk buy",
+    "meaning": "대량 구매",
+    "level": "intermediate",
+    "category": "쇼핑",
+    "examples": [
+      {
+        "text": "It's cheaper to bulk buy at Costco.",
+        "translation": "코스트코에서 대량 구매하면 더 싸."
+      },
+      {
+        "text": "I bulk bought snacks for the trip.",
+        "translation": "여행 위해 과자를 대량으로 샀어."
+      }
+    ]
+  },
+  {
+    "word": "Loyalty card",
+    "meaning": "멤버십 카드, 포인트 카드",
+    "level": "intermediate",
+    "category": "쇼핑",
+    "examples": [
+      {
+        "text": "Do you have a loyalty card for points?",
+        "translation": "포인트 적립 멤버십 카드 있으세요?"
+      },
+      {
+        "text": "I collect points on my loyalty card.",
+        "translation": "멤버십 카드로 포인트 적립해."
+      }
+    ]
+  },
+  {
+    "word": "Second-hand",
+    "meaning": "중고의",
+    "level": "beginner",
+    "category": "쇼핑",
+    "examples": [
+      {
+        "text": "I bought this second-hand — it was half price.",
+        "translation": "이거 중고로 샀어. 반값이었어."
+      },
+      {
+        "text": "I love shopping at second-hand stores.",
+        "translation": "중고 가게에서 쇼핑하는 걸 좋아해."
+      }
+    ]
+  },
+  {
+    "word": "Opinionated",
+    "meaning": "자기 주장이 강한",
+    "level": "advanced",
+    "category": "성격",
+    "examples": [
+      {
+        "text": "She's very opinionated about politics.",
+        "translation": "그녀는 정치에 대해 자기 주장이 강해."
+      },
+      {
+        "text": "He's opinionated but usually right.",
+        "translation": "그는 주관이 뚜렷한데 대개 맞아."
+      }
+    ]
+  },
+  {
+    "word": "Sit on the fence",
+    "meaning": "결정을 미루다, 중립을 지키다",
+    "level": "advanced",
+    "category": "숙어",
+    "examples": [
+      {
+        "text": "You can't sit on the fence forever.",
+        "translation": "언제까지 결정을 미룰 순 없잖아."
+      },
+      {
+        "text": "Stop sitting on the fence and decide.",
+        "translation": "미루지 말고 결정해."
+      }
+    ]
+  },
+  {
+    "word": "Foggy",
+    "meaning": "안개 낀",
+    "level": "beginner",
+    "category": "날씨",
+    "examples": [
+      {
+        "text": "Drive carefully — it's really foggy.",
+        "translation": "운전 조심해. 안개가 엄청 끼었어."
+      },
+      {
+        "text": "The bridge is barely visible — it's so foggy.",
+        "translation": "안개가 너무 짙어서 다리가 거의 안 보여."
+      }
+    ]
+  },
+  {
+    "word": "Price tag",
+    "meaning": "가격표",
+    "level": "beginner",
+    "category": "쇼핑",
+    "examples": [
+      {
+        "text": "Check the price tag before you buy.",
+        "translation": "사기 전에 가격표 확인해."
+      },
+      {
+        "text": "The price tag was still on the gift.",
+        "translation": "선물에 가격표가 아직 붙어 있었어."
+      }
+    ]
+  },
+  {
+    "word": "Layover",
+    "meaning": "경유, 환승 대기",
+    "level": "intermediate",
+    "category": "여행",
+    "examples": [
+      {
+        "text": "We have a 3-hour layover in Tokyo.",
+        "translation": "도쿄에서 3시간 경유야."
+      },
+      {
+        "text": "The layover was long but I explored the airport.",
+        "translation": "경유 시간이 길었는데 공항 구경했어."
+      }
+    ]
+  },
+  {
+    "word": "Jet lag",
+    "meaning": "시차 적응 피로",
+    "level": "intermediate",
+    "category": "여행",
+    "examples": [
+      {
+        "text": "I'm still dealing with jet lag.",
+        "translation": "아직 시차 적응 중이야."
+      },
+      {
+        "text": "Jet lag hit me hard this time.",
+        "translation": "이번엔 시차 피로가 심하게 왔어."
+      }
+    ]
+  },
+  {
+    "word": "Carry-on",
+    "meaning": "기내 수하물",
+    "level": "intermediate",
+    "category": "여행",
+    "examples": [
+      {
+        "text": "Make sure your carry-on fits in the overhead bin.",
+        "translation": "기내 수하물이 짐칸에 들어가는지 확인해."
+      },
+      {
+        "text": "I only packed a carry-on for the weekend trip.",
+        "translation": "주말 여행이라 기내 수하물만 챙겼어."
+      }
+    ]
+  },
+  {
+    "word": "Customs",
+    "meaning": "세관",
+    "level": "intermediate",
+    "category": "여행",
+    "examples": [
+      {
+        "text": "The line at customs was really long.",
+        "translation": "세관 줄이 엄청 길었어."
+      },
+      {
+        "text": "Declare everything at customs.",
+        "translation": "세관에서 다 신고해."
+      }
+    ]
+  },
+  {
+    "word": "Local cuisine",
+    "meaning": "현지 음식",
+    "level": "beginner",
+    "category": "여행",
+    "examples": [
+      {
+        "text": "I love trying local cuisine when I travel.",
+        "translation": "여행 가면 현지 음식 먹는 걸 좋아해."
+      },
+      {
+        "text": "The local cuisine here is incredible.",
+        "translation": "이곳 현지 음식 진짜 맛있어."
+      }
+    ]
+  },
+  {
+    "word": "Sightseeing",
+    "meaning": "관광, 명소 구경",
+    "level": "beginner",
+    "category": "여행",
+    "examples": [
+      {
+        "text": "We spent the day sightseeing downtown.",
+        "translation": "시내 관광하면서 하루 보냈어."
+      },
+      {
+        "text": "What's worth sightseeing here?",
+        "translation": "여기 볼 만한 곳이 어디야?"
+      }
+    ]
+  },
+  {
+    "word": "Hostel",
+    "meaning": "호스텔 (저렴한 숙소)",
+    "level": "beginner",
+    "category": "여행",
+    "examples": [
+      {
+        "text": "I stayed at a hostel to save money.",
+        "translation": "돈 아끼려고 호스텔에 묵었어."
+      },
+      {
+        "text": "Hostels are great for meeting travelers.",
+        "translation": "호스텔은 여행자 만나기 좋아."
+      }
+    ]
+  },
+  {
+    "word": "Off the beaten path",
+    "meaning": "관광지가 아닌 잘 알려지지 않은 곳",
+    "level": "advanced",
+    "category": "여행",
+    "examples": [
+      {
+        "text": "I prefer going off the beaten path.",
+        "translation": "나는 잘 알려지지 않은 곳 가는 걸 좋아해."
+      },
+      {
+        "text": "We found a great café off the beaten path.",
+        "translation": "잘 알려지지 않은 멋진 카페를 발견했어."
+      }
+    ]
+  },
+  {
+    "word": "Souvenir",
+    "meaning": "기념품",
+    "level": "beginner",
+    "category": "여행",
+    "examples": [
+      {
+        "text": "I always buy souvenirs for my family.",
+        "translation": "가족들한테 줄 기념품 항상 사."
+      },
+      {
+        "text": "What souvenirs should I get in Jeju?",
+        "translation": "제주에서 기념품 뭐 사면 좋아?"
+      }
+    ]
+  },
+  {
+    "word": "Round trip",
+    "meaning": "왕복",
+    "level": "beginner",
+    "category": "여행",
+    "examples": [
+      {
+        "text": "How much is a round trip ticket to Paris?",
+        "translation": "파리 왕복 항공권 얼마야?"
+      },
+      {
+        "text": "I booked a round trip for next month.",
+        "translation": "다음 달 왕복 예약했어."
+      }
+    ]
+  },
+  {
+    "word": "Adaptable",
+    "meaning": "적응력이 뛰어난, 융통성 있는",
+    "level": "intermediate",
+    "category": "성격",
+    "examples": [
+      {
+        "text": "She's very adaptable — she fits in anywhere.",
+        "translation": "그녀는 적응력이 뛰어나서 어디서든 잘 어울려."
+      },
+      {
+        "text": "Being adaptable is key in a fast-changing world.",
+        "translation": "빠르게 변하는 세상에서 적응력은 핵심이야."
       }
     ]
   }
