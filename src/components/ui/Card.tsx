@@ -33,7 +33,7 @@ export const CardTitle = React.forwardRef<HTMLParagraphElement, React.HTMLAttrib
     <h3
       ref={ref}
       className={cn(
-        "text-4xl font-black leading-none tracking-tighter text-current uppercase border-b-8 border-current pb-4 mb-4 inline-block font-cartoon",
+        "text-2xl font-extrabold leading-tight tracking-tight text-current mb-3",
         className
       )}
       {...props}

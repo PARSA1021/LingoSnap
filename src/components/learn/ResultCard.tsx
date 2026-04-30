@@ -3,17 +3,20 @@
 import * as React from 'react';
 import { Card, CardContent } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
-import { RotateCcw, Sparkles, BookOpen, Trophy, ArrowRight } from 'lucide-react';
+import { RotateCcw, Sparkles, BookOpen, Trophy, ArrowRight, CheckCircle2, Star } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { useLessonSessionStore } from '@/store/useLessonSessionStore';
 
 interface ResultCardProps {
   onRestart: () => void;
+  isReview?: boolean;
   points?: number;
 }
 
-export function ResultCard({ onRestart, points = 100 }: ResultCardProps) {
+export function ResultCard({ onRestart, isReview = false, points = 100 }: ResultCardProps) {
   const [displayPoints, setDisplayPoints] = React.useState(0);
+  const reviewQueue = useLessonSessionStore(s => s.reviewQueue);
 
   React.useEffect(() => {
     const duration = 1000;
@@ -35,6 +38,99 @@ export function ResultCard({ onRestart, points = 100 }: ResultCardProps) {
     return () => clearInterval(timer);
   }, [points]);
 
+  if (isReview) {
+    const remaining = reviewQueue.length;
+    const allDone = remaining === 0;
+
+    return (
+      <div className="relative">
+        <Card className="bg-surface border-4 border-border shadow-[4px_4px_0_var(--border)] overflow-hidden max-w-sm mx-auto">
+          <CardContent className="p-6 sm:p-10 space-y-8 text-center">
+            {/* 아이콘 */}
+            <motion.div
+              initial={{ scale: 0, rotate: -10 }}
+              animate={{ scale: 1, rotate: 0 }}
+              transition={{ type: 'spring', stiffness: 200, damping: 15 }}
+              className="mx-auto w-24 h-24 rounded-[2rem] flex items-center justify-center relative border-4 border-border"
+              style={{ background: allDone ? 'var(--success)' : 'var(--primary)' }}
+            >
+              {allDone
+                ? <CheckCircle2 className="w-12 h-12 text-white" />
+                : <RotateCcw className="w-12 h-12 text-white" />
+              }
+              <motion.div
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ repeat: Infinity, duration: 2 }}
+                className="absolute -top-2 -right-2"
+              >
+                <Star className="w-8 h-8 text-amber-400 fill-amber-400" />
+              </motion.div>
+            </motion.div>
+
+            {/* 메시지 */}
+            <div className="space-y-2">
+              <h2 className="text-3xl sm:text-4xl font-black text-foreground font-cartoon leading-none">
+                {allDone ? '완벽 정복! 🎉' : '복습 완료!'}
+              </h2>
+              <p className="text-sm font-bold text-muted-foreground italic leading-tight">
+                {allDone
+                  ? '오답 노트가 깨끗해졌어요. 대단해요!'
+                  : `${remaining}개의 단어가 아직 남아 있어요. 계속 도전해보세요!`
+                }
+              </p>
+            </div>
+
+            {/* 남은 단어 카운터 */}
+            <div className="bg-muted/40 border-2 border-border rounded-2xl py-4 px-6 flex items-center justify-center gap-4">
+              <div className="text-center">
+                <p className="text-[9px] font-black text-muted-foreground uppercase tracking-widest font-cartoon">남은 오답</p>
+                <p className="text-4xl font-black text-foreground font-cartoon">{remaining}</p>
+              </div>
+              {remaining > 0 && (
+                <>
+                  <div className="h-10 w-px bg-border" />
+                  <div className="text-center">
+                    <p className="text-[9px] font-black text-muted-foreground uppercase tracking-widest font-cartoon">이번 세션</p>
+                    <p className="text-4xl font-black text-success font-cartoon">✓</p>
+                  </div>
+                </>
+              )}
+            </div>
+
+            {/* 버튼 */}
+            <div className="flex flex-col gap-3 pt-2">
+              {remaining > 0 && (
+                <Button
+                  onClick={onRestart}
+                  className="h-14 text-lg font-black border-4 border-border bg-primary text-white shadow-[4px_4px_0_var(--border)] active:translate-y-1 active:shadow-none transition-all font-cartoon flex items-center justify-center gap-2"
+                >
+                  <RotateCcw className="w-5 h-5" /> 한 번 더 복습
+                </Button>
+              )}
+              <Link href="/review" className="w-full">
+                <Button
+                  variant="secondary"
+                  className="h-14 w-full text-lg font-black border-4 border-border bg-surface text-foreground shadow-[4px_4px_0_var(--border)] active:translate-y-1 active:shadow-none transition-all font-cartoon flex items-center justify-center gap-2"
+                >
+                  <BookOpen className="w-5 h-5" /> 복습 센터로
+                </Button>
+              </Link>
+              <Link href="/" className="w-full">
+                <Button
+                  variant="ghost"
+                  className="h-10 w-full text-sm font-black border-2 border-dashed border-border hover:bg-muted font-cartoon"
+                >
+                  홈으로 돌아가기
+                </Button>
+              </Link>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
+  // ─── 기본 레슨 완료 화면 ────────────────────────────────────────
   return (
     <div className="relative">
       <Card className="bg-surface border-4 border-border shadow-[4px_4px_0_var(--border)] overflow-hidden max-w-sm mx-auto">

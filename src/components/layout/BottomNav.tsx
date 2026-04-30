@@ -5,27 +5,32 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Home, Lightbulb, BookA, Mic, Tv, RotateCcw } from 'lucide-react';
 import { cn } from '@/lib/utils/cn';
+import { motion } from 'framer-motion';
+
+const tabs = [
+  { name: '홈',    href: '/',         icon: Home },
+  { name: '레슨',  href: '/learn',    icon: Lightbulb },
+  { name: '복습',  href: '/review',   icon: RotateCcw },
+  { name: '단어장', href: '/vocab',   icon: BookA },
+  { name: '콘텐츠', href: '/contents', icon: Tv },
+  { name: '말하기', href: '/speaking', icon: Mic },
+];
 
 export function BottomNav() {
   const pathname = usePathname();
 
-  const tabs = [
-    { name: '홈', href: '/', icon: <Home className="w-5 h-5 sm:w-6 sm:h-6" /> },
-    { name: '레슨', href: '/learn', icon: <Lightbulb className="w-5 h-5 sm:w-6 sm:h-6" /> },
-    { name: '복습', href: '/review', icon: <RotateCcw className="w-5 h-5 sm:w-6 sm:h-6" /> },
-    { name: '단어장', href: '/vocab', icon: <BookA className="w-5 h-5 sm:w-6 sm:h-6" /> },
-    { name: '콘텐츠', href: '/contents', icon: <Tv className="w-5 h-5 sm:w-6 sm:h-6" /> },
-    { name: '말하기', href: '/speaking', icon: <Mic className="w-5 h-5 sm:w-6 sm:h-6" /> },
-  ];
-
   return (
     <nav
       aria-label="Main Navigation"
-      className="fixed bottom-0 left-0 right-0 z-50 bg-surface border-t-4 sm:border-t-8 border-border pb-safe pt-1 sm:pt-3 shadow-[0_-4px_0_var(--border)] sm:shadow-[0_-8px_0_var(--border)]"
+      className="fixed bottom-0 left-0 right-0 z-50 glass border-t border-white/10"
     >
-      <div className="max-w-4xl mx-auto flex justify-between items-center px-4 sm:px-10 relative">
+      {/* Safe area spacer for iOS home indicator */}
+      <div className="max-w-2xl mx-auto flex justify-around items-center px-2 py-2 pb-[max(env(safe-area-inset-bottom),0.5rem)]">
         {tabs.map((tab) => {
-          const isActive = pathname === tab.href || (tab.href !== '/' && pathname.startsWith(tab.href));
+          const isActive =
+            pathname === tab.href ||
+            (tab.href !== '/' && pathname.startsWith(tab.href));
+          const Icon = tab.icon;
 
           return (
             <Link
@@ -33,21 +38,27 @@ export function BottomNav() {
               href={tab.href}
               aria-label={tab.name}
               aria-current={isActive ? 'page' : undefined}
-              className="flex flex-col items-center gap-0.5 group w-1/5 select-none touch-manipulation pb-1 sm:pb-3"
+              className="relative flex flex-col items-center gap-0.5 w-12 sm:w-16 py-1 select-none touch-manipulation group"
             >
-              <div
-                className={cn(
-                  "relative px-4 py-2 transition-colors border-2 sm:border-4 border-border shadow-[3px_3px_0_var(--border)] sm:shadow-[6px_6px_0_var(--border)]",
-                  isActive
-                    ? 'bg-primary text-white'
-                    : 'text-foreground bg-surface hover:bg-muted'
-                )}
-              >
-                <div className="relative z-10 font-black">{tab.icon}</div>
+              {/* Active pill indicator */}
+              {isActive && (
+                <motion.div
+                  layoutId="nav-pill"
+                  className="absolute inset-0 rounded-xl bg-primary/15"
+                  transition={{ type: 'spring', stiffness: 380, damping: 32 }}
+                />
+              )}
+
+              <div className={cn(
+                'relative z-10 p-1.5 rounded-lg transition-colors duration-150',
+                isActive ? 'text-primary' : 'text-muted-foreground group-hover:text-foreground'
+              )}>
+                <Icon className="w-5 h-5 sm:w-[1.35rem] sm:h-[1.35rem]" />
               </div>
+
               <span className={cn(
-                "text-[7px] sm:text-[10px] font-black tracking-tight sm:tracking-widest uppercase font-cartoon mt-1 whitespace-nowrap transition-colors",
-                isActive ? 'text-primary' : 'text-foreground/40'
+                'relative z-10 text-[9px] sm:text-[10px] font-semibold tracking-tight transition-colors duration-150',
+                isActive ? 'text-primary' : 'text-muted-foreground group-hover:text-foreground'
               )}>
                 {tab.name}
               </span>

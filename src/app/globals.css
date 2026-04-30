@@ -15,11 +15,10 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
 
-  --font-luckiest: var(--font-luckiest-guy);
-  --font-lilita: var(--font-lilita-one);
+  --font-luckiest: var(--font-inter);
+  --font-lilita: var(--font-inter);
   --font-reading: var(--font-inter);
 
-  /* Playful Duo/Cake Palette turned Vintage */
   --color-success: var(--success);
   --color-success-foreground: var(--success-foreground);
   --color-success-shadow: var(--success-shadow);
@@ -34,227 +33,295 @@
   --color-primary-shadow: var(--primary-shadow);
   --color-secondary-shadow: var(--secondary-shadow);
 
-  /* Radius & Shadows - Vintage/Ink Style */
-  --radius-sm: 0rem;
-  --radius-md: 0.25rem;
-  --radius-lg: 0.5rem;
-  --radius-xl: 0.5rem;
-  --radius-2xl: 0.75rem;
-  --radius-3xl: 1rem;
+  /* Modern generous radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
   --radius-full: 9999px;
-  
-  --shadow-tactile: 4px 4px 0 0 var(--border);
-  --shadow-tactile-active: 0 0 0 0 transparent;
-  
-  /* Blurs & Glass Layers REMOVED */
-  --blur-glass: 0px;
+
+  --shadow-tactile: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-tactile-active: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+  /* Glass effect */
+  --blur-glass: 20px;
 }
 
+/* ─── Light Mode ─────────────────────────────────────────────────────────── */
 :root {
-  /* CUPHEAD THEME VARIABLES */
-  --background: #FFCC00; /* Vibrant Yellow */
-  --bg-gradient: #FFCC00;
-  --foreground: #000000; 
-  
-  --primary: #E53B2F; /* Cuphead Red */
-  --primary-foreground: #FFFFFF;
-  --primary-shadow: #000000;
-  
-  --secondary: #549EBD; /* Mugman Blue */
-  --secondary-foreground: #FFFFFF;
-  --secondary-shadow: #000000;
-  
-  --surface: #FFFFFF; /* White Paper */
-  --surface-foreground: #000000;
-  
-  --border: #000000; /* Thick Ink */
-  
-  --muted: #FFD633; /* Lighter Yellow */
-  --muted-foreground: #333333;
+  --background: #F4F4F8;
+  --bg-gradient: linear-gradient(135deg, #f4f4f8 0%, #eef0f8 100%);
+  --foreground: #11111a;
 
-  --accent: #549EBD;
+  --primary: #6366F1;
+  --primary-foreground: #FFFFFF;
+  --primary-shadow: rgba(99, 102, 241, 0.35);
+
+  --secondary: #8B5CF6;
+  --secondary-foreground: #FFFFFF;
+  --secondary-shadow: rgba(139, 92, 246, 0.35);
+
+  --surface: rgba(255, 255, 255, 0.88);
+  --surface-foreground: #11111a;
+
+  --border: rgba(0, 0, 0, 0.15);
+
+  --muted: rgba(0, 0, 0, 0.04);
+  --muted-foreground: #6b7280;
+
+  --accent: #6366F1;
   --accent-foreground: #FFFFFF;
 
-  --success: #2D6A4F; /* Darker green for light mode */
+  --success: #059669;
   --success-foreground: #FFFFFF;
-  --success-shadow: #000000;
-  --error: #C92A2A; /* High contrast red */
+  --success-shadow: rgba(5, 150, 105, 0.3);
+  --error: #EF4444;
   --error-foreground: #FFFFFF;
-  --error-shadow: #000000;
-  --warning: #E67E22; /* High contrast orange/amber */
+  --error-shadow: rgba(239, 68, 68, 0.3);
+  --warning: #F59E0B;
   --warning-foreground: #FFFFFF;
-  --warning-shadow: #000000;
-  --info: #1864AB; /* High contrast blue */
+  --warning-shadow: rgba(245, 158, 11, 0.3);
+  --info: #3B82F6;
   --info-foreground: #FFFFFF;
-  --info-shadow: #000000;
+  --info-shadow: rgba(59, 130, 246, 0.3);
 
   --tactile-shadow-opacity: 1;
+
+  /* Glass layer token */
+  --glass-bg: rgba(255, 255, 255, 0.80);
+  --glass-border: rgba(0, 0, 0, 0.12);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
 }
 
+/* ─── Dark Mode ──────────────────────────────────────────────────────────── */
 .dark {
-  /* DARK THEME VARIABLES - 1920s Dark Sepia */
-  --background: #231F1C;
-  --bg-gradient: #231F1C;
-  --foreground: #DCCFB8;
-  
-  --primary: #A12222;
-  --primary-foreground: #DCCFB8;
-  --primary-shadow: #0A0908;
-  
-  --secondary: #3D332B;
-  --secondary-foreground: #DCCFB8; 
-  --secondary-shadow: #0A0908;
-  
-  --surface: #2C2621; 
-  --surface-foreground: #DCCFB8;
-  
-  --border: #0A0908; /* Super dark ink */
-  
-  --muted: #3D332B;
-  --muted-foreground: #9A8A74;
+  --background: #0C0C18;
+  --bg-gradient: linear-gradient(135deg, #0c0c18 0%, #12122a 60%, #0c0c18 100%);
+  --foreground: #E8E8F4;
 
-  --accent: #3D332B;
-  --accent-foreground: #DCCFB8;
+  --primary: #818CF8;
+  --primary-foreground: #FFFFFF;
+  --primary-shadow: rgba(129, 140, 248, 0.4);
 
-  --success: #4C6A40;
-  --success-foreground: #FFFFFF;
-  --success-shadow: #0A0908;
-  --error: #A12222;
-  --error-foreground: #FFFFFF;
-  --error-shadow: #0A0908;
-  --warning: #A67325;
-  --warning-foreground: #000000;
-  --warning-shadow: #0A0908;
-  --info: #335C74;
-  --info-foreground: #FFFFFF;
-  --info-shadow: #0A0908;
+  --secondary: #A78BFA;
+  --secondary-foreground: #FFFFFF;
+  --secondary-shadow: rgba(167, 139, 250, 0.4);
+
+  --surface: rgba(255, 255, 255, 0.08);
+  --surface-foreground: #E8E8F4;
+
+  --border: rgba(255, 255, 255, 0.14);
+
+  --muted: rgba(255, 255, 255, 0.06);
+  --muted-foreground: #9CA3AF;
+
+  --accent: #818CF8;
+  --accent-foreground: #FFFFFF;
+
+  --success: #34D399;
+  --success-foreground: #022c22;
+  --success-shadow: rgba(52, 211, 153, 0.35);
+  --error: #F87171;
+  --error-foreground: #450a0a;
+  --error-shadow: rgba(248, 113, 113, 0.35);
+  --warning: #FBBF24;
+  --warning-foreground: #451a03;
+  --warning-shadow: rgba(251, 191, 36, 0.35);
+  --info: #60A5FA;
+  --info-foreground: #082f49;
+  --info-shadow: rgba(96, 165, 250, 0.35);
 
   --tactile-shadow-opacity: 1;
+
+  --glass-bg: rgba(255, 255, 255, 0.07);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
 }
 
-/* 1920s Animations */
-@keyframes wobbly {
-  0% { transform: rotate(-1deg) translate(0px, 1px); }
-  25% { transform: rotate(0deg) translate(1px, -1px); }
-  50% { transform: rotate(1deg) translate(-1px, 0px); }
-  75% { transform: rotate(0deg) translate(1px, 1px); }
-  100% { transform: rotate(-1deg) translate(0px, 1px); }
-}
-
-@keyframes wobbly-slow {
-  0% { transform: rotate(-0.5deg) translate(0px, 0.5px); }
-  25% { transform: rotate(0deg) translate(0.5px, -0.5px); }
-  50% { transform: rotate(0.5deg) translate(-0.5px, 0px); }
-  75% { transform: rotate(0deg) translate(0.5px, 0.5px); }
-  100% { transform: rotate(-0.5deg) translate(0px, 0.5px); }
-}
-
+/* ─── Base Styles ─────────────────────────────────────────────────────────── */
 html, body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-lilita), system-ui, sans-serif;
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Inter', var(--font-inter), system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
-  line-height: 1.5;
+  line-height: 1.6;
+  transition: background-color 0.35s ease, color 0.35s ease;
 }
 
-h1, h2, h3, .font-cartoon {
-  font-family: var(--font-luckiest), var(--font-lilita), cursive;
-  letter-spacing: 0.02em;
-  line-height: 1.1;
+/* ─── Background gradient for html ───────────────────────────────────────── */
+body {
+  background: var(--bg-gradient);
+  background-attachment: fixed;
 }
+
+/* ─── Typography — font-cartoon & heading remapped to Inter ──────────────── */
+h1, h2, h3, .font-cartoon {
+  font-family: 'Inter', var(--font-inter), system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.5rem, 3.5vw, 2.5rem); }
 
 .font-reading {
-  font-family: var(--font-reading), system-ui, sans-serif;
+  font-family: 'Inter', var(--font-inter), system-ui, sans-serif;
   letter-spacing: -0.01em;
-  line-height: 1.4;
+  line-height: 1.6;
   text-transform: none;
 }
 
-/* Paper Texture overlay via pseudo-element */
-/* Paper Texture removed as it causes visual blurriness */
-body::before {
-  display: none;
-}
-
-/* The wobbly class to apply to interactive elements */
-.wobbly {
-  animation: wobbly 0.5s ease-in-out;
-  transform: rotate(0deg);
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
-}
-
-.wobbly:hover {
-  animation: wobbly 0.3s ease-in-out infinite;
-}
-
-/* A slower wobble for larger elements */
-.wobbly-slow {
-  animation: wobbly-slow 4s ease-in-out;
-  transform: rotate(0deg);
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
-}
-
-.wobbly-slow:hover {
-  animation: wobbly-slow 3s ease-in-out infinite;
-}
-
-/* Rubber Hose Tactile Utilities */
-.btn-tactile {
-  border: 4px solid var(--border);
-  box-shadow: 6px 6px 0px 0px var(--color-primary-shadow, var(--border));
-  transition: transform 0.1s steps(2, end), box-shadow 0.1s steps(2, end);
-  position: relative;
-  overflow: hidden;
-  border-radius: 0;
-  font-weight: 900;
-}
-
-/* Active pressed state */
-.btn-tactile:active {
-  transform: translate(6px, 6px) !important;
-  box-shadow: 0 0 0 0 transparent !important;
-}
-
-/* Card Tactile - Vintage style */
-.card-tactile {
-  border: 8px solid var(--border);
-  border-radius: 0;
-  box-shadow: 12px 12px 0px 0px var(--border);
-  animation: none; /* remove fade in for more raw feel */
-}
-
-/* Removes glass effect */
+/* ─── Glass Utility ──────────────────────────────────────────────────────── */
 .glass {
-  background-color: var(--surface);
-  border-bottom: 4px solid var(--border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--blur-glass));
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
 }
 
+/* ─── Card Tactile → Modern Card ─────────────────────────────────────────── */
+.card-tactile {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 1.25rem;
+  box-shadow: var(--glass-shadow);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card-tactile:hover {
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.14);
+  transform: translateY(-1px);
+}
+
+/* ─── Button Tactile → Modern Button ─────────────────────────────────────── */
+.btn-tactile {
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+  border-radius: 0.875rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.btn-tactile:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.btn-tactile:active {
+  transform: translateY(0) scale(0.98) !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* ─── Hover Float Utility ────────────────────────────────────────────────── */
 .hover-float {
-  transition: transform 0.1s steps(2, end), box-shadow 0.1s steps(2, end);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .hover-float:hover {
-  transform: translate(-2px, -2px) rotate(-1deg);
-  box-shadow: 8px 8px 0px 0px var(--border) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15) !important;
 }
 
-/* Simplified Layout Backgrounds */
+/* ─── Soft Background ────────────────────────────────────────────────────── */
 .bg-soft {
-  background-color: var(--muted);
+  background: var(--muted);
 }
 
-/* Dot pattern turned to halftone dots or noise */
-/* Clean dot pattern for halftone look without noise */
+/* ─── Ambient orb animation for backgrounds ──────────────────────────────── */
+@keyframes orb-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(30px, -20px) scale(1.05); }
+  66%       { transform: translate(-20px, 15px) scale(0.97); }
+}
+
+.orb {
+  position: fixed;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.25;
+  animation: orb-drift 18s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.orb-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #6366F1, transparent 70%);
+  top: -200px;
+  left: -200px;
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #8B5CF6, transparent 70%);
+  bottom: -150px;
+  right: -150px;
+  animation-delay: -6s;
+}
+
+.orb-3 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #3B82F6, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-delay: -12s;
+}
+
+/* ─── Dot pattern (subtle) ───────────────────────────────────────────────── */
 .dot-pattern {
-  background-image: radial-gradient(rgba(0,0,0,0.06) 1px, transparent 1px);
-  background-size: 32px 32px;
+  background-image: radial-gradient(rgba(99, 102, 241, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
 
+/* ─── Selection highlight ────────────────────────────────────────────────── */
 .selection-highlight {
-  background-color: var(--border);
-  color: var(--background);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+/* ─── Custom scrollbar ───────────────────────────────────────────────────── */
+.custom-scrollbar::-webkit-scrollbar { width: 4px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 9999px;
+}
+
+/* ─── Shimmer animation ──────────────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.06) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2.5s linear infinite;
+}
+
+/* ─── Wobbly kept for backwards compat (no-op) ───────────────────────────── */
+.wobbly, .wobbly-slow { animation: none; }
+
+/* ─── Glow ring for active/focus ─────────────────────────────────────────── */
+.glow-ring {
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.35);
 }

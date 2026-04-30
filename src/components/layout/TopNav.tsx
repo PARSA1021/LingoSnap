@@ -6,27 +6,49 @@ import { ThemeToggle } from '@/components/layout/ThemeToggle';
 
 export function TopNav() {
   const [mounted, setMounted] = React.useState(false);
+  const [scrolled, setScrolled] = React.useState(false);
 
   React.useEffect(() => {
     setMounted(true);
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   if (!mounted) return null;
 
   return (
-    <header 
+    <header
       aria-label="Top Navigation"
-      className="sticky top-0 z-50 w-full bg-surface h-16 sm:h-20 flex items-center px-4 sm:px-8 border-b-4 border-border"
+      className={`sticky top-0 z-50 w-full h-14 sm:h-16 flex items-center px-4 sm:px-8 transition-all duration-300 ${
+        scrolled
+          ? 'glass border-b border-white/10 shadow-lg'
+          : 'bg-transparent border-b border-transparent'
+      }`}
     >
       <div className="max-w-5xl mx-auto w-full flex justify-between items-center">
-        <Link href="/" className="group flex items-center gap-3 active:scale-95 transition-transform" aria-label="Talkie Talkie! Home">
-          <div className="flex flex-col items-center -rotate-2 group-hover:rotate-0 transition-transform">
-            <span className="text-2xl sm:text-4xl font-black text-foreground tracking-tight drop-shadow-[3px_3px_0_var(--border)] leading-none">TALKIE</span>
-            <span className="text-xl sm:text-3xl font-black text-info italic tracking-tight drop-shadow-[3px_3px_0_var(--border)] leading-none ml-2">TALKIE!</span>
+        {/* Logo */}
+        <Link
+          href="/"
+          className="group flex items-center gap-2.5 select-none"
+          aria-label="LingoSnap Home"
+        >
+          {/* Icon mark */}
+          <div className="w-8 h-8 rounded-xl bg-primary flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
+            <span className="text-white font-black text-sm leading-none">LS</span>
+          </div>
+          <div className="flex flex-col leading-none">
+            <span className="text-lg font-extrabold text-foreground tracking-tight leading-none group-hover:text-primary transition-colors">
+              LingoSnap
+            </span>
+            <span className="text-[10px] font-medium text-muted-foreground tracking-wider uppercase leading-none mt-0.5">
+              English Learning
+            </span>
           </div>
         </Link>
 
-        <div className="flex items-center gap-2 sm:gap-4">
+        {/* Right controls */}
+        <div className="flex items-center gap-2 sm:gap-3">
           <ThemeToggle />
         </div>
       </div>

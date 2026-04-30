@@ -30,7 +30,17 @@ type StepResult = { kind: 'none' | 'correct' | 'wrong'; msg?: string };
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
-export function LearnClient({ mode = 'lesson', category = 'all' }: { mode?: 'review' | 'lesson', category?: string }) {
+export function LearnClient({
+  mode = 'lesson',
+  category = 'all',
+  wordCount = 5,
+  isTurbo = false,
+}: {
+  mode?: 'review' | 'lesson';
+  category?: string;
+  wordCount?: 5 | 10;
+  isTurbo?: boolean;
+}) {
   const steps = useLessonSessionStore(s => s.steps);
   const stepIndex = useLessonSessionStore(s => s.stepIndex);
   const startLesson = useLessonSessionStore(s => s.startLesson);
@@ -41,8 +51,6 @@ export function LearnClient({ mode = 'lesson', category = 'all' }: { mode?: 'rev
   const removeFromReview = useLessonSessionStore(s => s.removeFromReview);
 
   const [result, setResult] = React.useState<StepResult>({ kind: 'none' });
-  const [wordCount, setWordCount] = React.useState<5 | 10>(5);
-  const [isTurbo, setIsTurbo] = React.useState(false);
 
   const step = steps[stepIndex] || { type: 'intro' as const };
   const total = Math.max(steps.length - 1, 1);
@@ -50,19 +58,18 @@ export function LearnClient({ mode = 'lesson', category = 'all' }: { mode?: 'rev
 
   React.useEffect(() => { setResult({ kind: 'none' }); }, [stepIndex]);
 
-  const handleStart = React.useCallback(() => {
+  // Start the session exactly once on mount, capturing the initial config values.
+  const hasStarted = React.useRef(false);
+  React.useEffect(() => {
+    if (hasStarted.current) return;
+    hasStarted.current = true;
     startLesson(
       mode === 'review'
         ? buildReviewSteps(reviewQueue)
         : buildLessonSteps(wordCount, category, isTurbo)
     );
-  }, [mode, reviewQueue, startLesson, wordCount, category, isTurbo]);
-
-  React.useEffect(() => {
-    if (steps.length <= 1) {
-      handleStart();
-    }
-  }, [steps.length, handleStart]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const markWrong = React.useCallback((item: ReviewItem, msg?: string) => {
     pushToReview(item);
@@ -81,6 +88,18 @@ export function LearnClient({ mode = 'lesson', category = 'all' }: { mode?: 'rev
     next();
   }, [next]);
 
+  const handleRestart = React.useCallback(() => {
+    restart();
+    hasStarted.current = false;
+    // Re-trigger the start effect by temporarily resetting the ref
+    // Actually just call startLesson directly
+    startLesson(
+      mode === 'review'
+        ? buildReviewSteps(reviewQueue)
+        : buildLessonSteps(wordCount, category, isTurbo)
+    );
+  }, [restart, startLesson, mode, reviewQueue, wordCount, category, isTurbo]);
+
   React.useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Enter' && result.kind !== 'none') {
@@ -94,74 +113,59 @@ export function LearnClient({ mode = 'lesson', category = 'all' }: { mode?: 'rev
   return (
     <div className="h-[100dvh] flex flex-col bg-background overflow-hidden">
       {/* Header */}
-      <header className="shrink-0 z-40 w-full px-4 pt-4 pb-2 bg-background/50 backdrop-blur-md border-b-2 border-border/10">
-        <div className="max-w-4xl mx-auto flex items-center gap-4">
-          <Button
-            variant="ghost"
-            size="icon"
+      <header className="shrink-0 z-40 w-full px-4 pt-3 pb-2 glass border-b border-border/20">
+        <div className="max-w-4xl mx-auto flex items-center gap-3">
+          {/* Back to setup — clearly red exit */}
+          <button
             onClick={() => window.history.back()}
-            className="h-10 w-10 rounded-xl border-2 border-border bg-surface shadow-[2px_2px_0_var(--border)] active:translate-y-0.5 active:shadow-none transition-all shrink-0"
             title="나가기"
+            className="h-9 w-9 rounded-xl border-2 border-error/30 bg-error/10 text-error flex items-center justify-center hover:bg-error/20 transition-colors shrink-0"
           >
-            <XCircle className="w-6 h-6 text-error" />
-          </Button>
+            <XCircle className="w-5 h-5" />
+          </button>
 
-          <div className="flex-1 flex flex-col gap-1 overflow-hidden px-2">
-            <div className="flex justify-between items-center px-1">
-               <div className="flex gap-2">
-                  {[5, 10].map(n => (
-                    <button 
-                      key={n}
-                      onClick={() => setWordCount(n as 5 | 10)}
-                      className={cn(
-                        "text-[9px] font-black font-cartoon px-2 py-0.5 rounded-md border transition-all",
-                        wordCount === n ? "bg-primary text-white border-primary" : "bg-surface text-muted-foreground border-border"
-                      )}
-                    >
-                      {n}개
-                    </button>
-                  ))}
-               </div>
-               <span className="text-[10px] font-black text-primary font-cartoon">{Math.round(progress)}%</span>
+          {/* Progress */}
+          <div className="flex-1 flex flex-col gap-1.5 overflow-hidden">
+            <div className="flex justify-between items-center">
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] font-semibold text-muted-foreground">
+                  {mode === 'review' ? '🔄 복습 세션' : '📖 레슨'}
+                </span>
+                {isTurbo && (
+                  <span className="text-[9px] font-bold bg-amber-400/20 text-amber-600 px-1.5 py-0.5 rounded-full border border-amber-400/30">
+                    ⚡ TURBO
+                  </span>
+                )}
+              </div>
+              <span className="text-[11px] font-bold text-primary">{Math.round(progress)}%</span>
             </div>
-            <div className="h-3 w-full bg-surface border-2 border-border rounded-full overflow-hidden shadow-[inset_0_2px_4px_rgba(0,0,0,0.1)] relative">
+            <div className="h-2 w-full bg-muted/50 rounded-full overflow-hidden">
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: `${progress}%` }}
                 transition={{ type: "spring", stiffness: 100, damping: 20 }}
-                className="h-full bg-primary relative"
+                className="h-full bg-gradient-to-r from-primary to-violet-500 rounded-full relative"
               >
-                <motion.div 
+                <motion.div
                   animate={{ x: ['-100%', '200%'] }}
-                  transition={{ repeat: Infinity, duration: 3, ease: "linear" }}
-                  className="absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12"
+                  transition={{ repeat: Infinity, duration: 2.5, ease: "linear" }}
+                  className="absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-white/30 to-transparent"
                 />
               </motion.div>
             </div>
           </div>
 
-          {step.type !== 'intro' && step.type !== 'result' && (
-            <div className="flex items-center gap-2 shrink-0">
-              <button
-                onClick={() => setIsTurbo(!isTurbo)}
-                className={cn(
-                  "h-10 px-3 rounded-xl border-2 font-black text-[9px] transition-all font-cartoon flex items-center gap-1.5",
-                  isTurbo 
-                    ? "bg-amber-400 text-white border-amber-500 shadow-[2px_2px_0_var(--amber-600)]" 
-                    : "bg-surface text-muted-foreground border-border shadow-[2px_2px_0_var(--border)]"
-                )}
-              >
-                🚀 {isTurbo ? 'TURBO ON' : 'TURBO OFF'}
-              </button>
-              <Button
-                variant="secondary"
-                size="sm"
-                onClick={handleNext}
-                className="h-10 px-3 rounded-xl border-2 border-border bg-surface text-[10px] font-black font-cartoon shadow-[2px_2px_0_var(--border)] active:translate-y-0.5 active:shadow-none transition-all hover:bg-muted"
-              >
-                SKIP
-              </Button>
-            </div>
+          {/* Skip button — clearly outlined */}
+          {step.type !== 'result' && (
+            <button
+              onClick={handleNext}
+              className="h-9 px-4 rounded-xl border-2 border-border/60 bg-surface text-xs font-bold text-muted-foreground hover:border-primary/50 hover:text-primary hover:bg-primary/5 transition-all shrink-0 flex items-center gap-1.5"
+            >
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+              </svg>
+              건너뛰기
+            </button>
           )}
         </div>
       </header>
@@ -266,7 +270,7 @@ export function LearnClient({ mode = 'lesson', category = 'all' }: { mode?: 'rev
           />
         );
       case 'result':
-        return <ResultCard onRestart={restart} />;
+        return <ResultCard onRestart={handleRestart} isReview={mode === 'review'} />;
       default:
         return null;
     }
