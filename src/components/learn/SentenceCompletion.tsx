@@ -129,7 +129,7 @@ export function SentenceCompletion({ sentence, translation, targetWord, onSucces
         <div className="mt-4 flex justify-center">
           <Button 
             variant="ghost" 
-            onClick={() => speak(targetWord)} 
+            onClick={() => speak(sentence)} 
             className={cn(
               "flex items-center gap-2 border-2 border-border bg-surface shadow-[2px_2px_0_var(--border)] active:translate-y-0.5 font-cartoon text-[10px] transition-all px-4 py-2",
               isPlaying ? "text-primary border-primary shadow-none translate-y-0.5" : "text-foreground"

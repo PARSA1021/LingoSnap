@@ -123,8 +123,9 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
     };
 
     const newString = getFinalString(newSelected);
+    const normalize = (s: string) => s.trim().toLowerCase().replace(/[.,!?;:]+$/, "");
     
-    if (newString.trim() === targetWord.trim()) {
+    if (normalize(newString) === normalize(targetWord)) {
       setStatus('success');
       addPoints(50);
       incrementLearnedWords();
@@ -162,14 +163,16 @@ export function TypingPractice({ word, meaning, example, exampleTranslation, onS
     const v = val.toLowerCase();
     setTypedValue(v);
     
-    if (v.trim() === targetWord.trim()) {
+    const normalize = (s: string) => s.trim().toLowerCase().replace(/[.,!?;:]+$/, "");
+    
+    if (normalize(v) === normalize(targetWord)) {
       setStatus('success');
       addPoints(50);
       incrementLearnedWords();
       onSuccess();
-    } else if (v.length >= targetWord.length && v.trim() !== targetWord.trim()) {
+    } else if (v.length >= targetWord.length && normalize(v) !== normalize(targetWord)) {
       // Basic check for completion error
-      const isMismatch = v.split('').some((char, i) => targetWord[i] && char !== targetWord[i]);
+      const isMismatch = v.split('').some((char, i) => targetWord[i] && char.toLowerCase() !== targetWord[i].toLowerCase());
       if (isMismatch) {
         setStatus('error');
         setShake(true);

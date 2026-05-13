@@ -15,7 +15,6 @@ import sentenceData from '@/data/sentences.json';
 import { mediaContents } from '@/data/contents';
 import { XCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { IntroCard } from '@/components/learn/IntroCard';
 import { WordRevealStep } from '@/components/learn/WordRevealStep';
 import { ChoiceQuizStep } from '@/components/learn/ChoiceQuizStep';
 import { ListeningQuizStep } from '@/components/learn/ListeningQuizStep';
@@ -35,11 +34,13 @@ export function LearnClient({
   category = 'all',
   wordCount = 5,
   isTurbo = false,
+  movieId,
 }: {
   mode?: 'review' | 'lesson';
   category?: string;
   wordCount?: 5 | 10;
   isTurbo?: boolean;
+  movieId?: string;
 }) {
   const steps = useLessonSessionStore(s => s.steps);
   const stepIndex = useLessonSessionStore(s => s.stepIndex);
@@ -52,7 +53,7 @@ export function LearnClient({
 
   const [result, setResult] = React.useState<StepResult>({ kind: 'none' });
 
-  const step = steps[stepIndex] || { type: 'intro' as const };
+  const step = steps[stepIndex];
   const total = Math.max(steps.length - 1, 1);
   const progress = steps.length > 1 ? Math.round((stepIndex / total) * 100) : 0;
 
@@ -64,11 +65,13 @@ export function LearnClient({
     if (hasStarted.current) return;
     hasStarted.current = true;
     startLesson(
-      mode === 'review'
-        ? buildReviewSteps(reviewQueue)
-        : buildLessonSteps(wordCount, category, isTurbo)
+      movieId
+        ? buildMovieSteps(movieId)
+        : mode === 'review'
+          ? buildReviewSteps(reviewQueue)
+          : buildLessonSteps(wordCount, category, isTurbo)
     );
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const markWrong = React.useCallback((item: ReviewItem, msg?: string) => {
@@ -91,14 +94,14 @@ export function LearnClient({
   const handleRestart = React.useCallback(() => {
     restart();
     hasStarted.current = false;
-    // Re-trigger the start effect by temporarily resetting the ref
-    // Actually just call startLesson directly
     startLesson(
-      mode === 'review'
-        ? buildReviewSteps(reviewQueue)
-        : buildLessonSteps(wordCount, category, isTurbo)
+      movieId
+        ? buildMovieSteps(movieId)
+        : mode === 'review'
+          ? buildReviewSteps(reviewQueue)
+          : buildLessonSteps(wordCount, category, isTurbo)
     );
-  }, [restart, startLesson, mode, reviewQueue, wordCount, category, isTurbo]);
+  }, [restart, startLesson, mode, reviewQueue, wordCount, category, isTurbo, movieId]);
 
   React.useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -264,8 +267,8 @@ export function LearnClient({
         return (
           <SpeakingPractice
             expectedSentence={step.expectedSentence}
-            onContinue={(passed, msg) => passed 
-              ? markCorrect({ kind: 'speaking', expectedSentence: step.expectedSentence }) 
+            onContinue={(passed, msg) => passed
+              ? markCorrect({ kind: 'speaking', expectedSentence: step.expectedSentence })
               : markWrong({ kind: 'speaking', expectedSentence: step.expectedSentence }, msg)}
           />
         );
@@ -283,8 +286,21 @@ function makeBlankSentence(sentence: string, word: string): string {
   return sentence.replace(new RegExp(`\\b${word}\\b`, 'i'), '______');
 }
 
-function buildOptions(answer: string, pool: string[]): string[] {
-  const distractors = getRandomElements(pool.filter(w => w !== answer), 3);
+function buildOptions(answer: string, pool: string[], manualDistractors?: string[]): string[] {
+  let distractors: string[] = [];
+
+  if (manualDistractors && manualDistractors.length > 0) {
+    // Prioritize manual distractors
+    distractors = getRandomElements(manualDistractors, 3);
+  }
+
+  // If we don't have enough manual distractors, fill with random ones
+  if (distractors.length < 3) {
+    const remainingCount = 3 - distractors.length;
+    const randomPool = pool.filter(w => w !== answer && !distractors.includes(w));
+    distractors = [...distractors, ...getRandomElements(randomPool, remainingCount)];
+  }
+
   return getRandomElements([answer, ...distractors], 4);
 }
 
@@ -325,7 +341,7 @@ function buildLessonSteps(wordCount: 5 | 10, category: string = 'all', isTurbo: 
   }
 
   for (const w of words) {
-    steps.push({ type: 'choice_quiz', word: w, options: buildOptions(w.word, pool) });
+    steps.push({ type: 'choice_quiz', word: w, options: buildOptions(w.word, pool, w.distractors) });
 
     if (!isTurbo) {
       if (w.example) {
@@ -344,7 +360,7 @@ function buildLessonSteps(wordCount: 5 | 10, category: string = 'all', isTurbo: 
   if (!isTurbo) {
     steps.push({ type: 'speaking', expectedSentence: speakingSentence });
   }
-  
+
   steps.push({ type: 'result' });
 
   return steps;
@@ -353,7 +369,7 @@ function buildLessonSteps(wordCount: 5 | 10, category: string = 'all', isTurbo: 
 function buildReviewSteps(queue: ReviewItem[]): LessonStep[] {
   const allVocab = vocabData as unknown as Word[];
   const pool = allVocab.map(w => w.word).filter(Boolean);
-  
+
   // 1. Take up to 10 items and shuffle them for a fresh experience
   const items = getRandomElements(queue.slice(0, 15), 10);
   const steps: LessonStep[] = [];
@@ -379,22 +395,27 @@ function buildReviewSteps(queue: ReviewItem[]): LessonStep[] {
         steps.push({ type: 'speaking', expectedSentence: item.expectedSentence });
         break;
       case 'listening_quiz':
-        steps.push({ 
-          type: 'listening_quiz', 
-          answer: item.answer, 
-          options: buildOptions(item.answer, pool),
+        steps.push({
+          type: 'listening_quiz',
+          answer: item.answer,
+          options: buildOptions(item.answer, pool, fullWord?.distractors),
           prompt: "다시 한번 들어볼까요? 정확히 어떤 단어였나요?"
         });
         break;
       case 'choice_quiz':
-        steps.push({ type: 'choice_quiz', word: fullWord || item.word, options: buildOptions((fullWord || item.word).word, pool) });
+        const quizWord = fullWord || item.word;
+        steps.push({
+          type: 'choice_quiz',
+          word: quizWord,
+          options: buildOptions(quizWord.word, pool, quizWord.distractors)
+        });
         break;
       case 'typing_exact':
         const word = fullWord || item.word;
-        steps.push({ 
-          type: 'fill_blank', 
-          word: word, 
-          sentence: word.example || `${word.word} is an important word.`, 
+        steps.push({
+          type: 'fill_blank',
+          word: word,
+          sentence: word.example || `${word.word} is an important word.`,
           blankedSentence: makeBlankSentence(word.example || `${word.word} is an important word.`, word.word)
         });
         break;
@@ -403,6 +424,30 @@ function buildReviewSteps(queue: ReviewItem[]): LessonStep[] {
         break;
     }
   }
+
+  steps.push({ type: 'result' });
+  return steps;
+}
+
+function buildMovieSteps(movieId: string): LessonStep[] {
+  const content = mediaContents.find(c => c.id === movieId);
+  if (!content) return buildLessonSteps(5);
+
+  const steps: LessonStep[] = [];
+  
+  // 1. Listening Comprehension
+  steps.push({
+    type: 'listening_quiz',
+    answer: content.expression || content.line_en.split(' ')[0],
+    options: buildOptions(content.expression || 'Action', [], ['Wait', 'Run', 'Think']),
+    prompt: `[${content.title}] 이 장면에서 무엇이라고 했나요?`
+  });
+
+  // 2. Speaking Practice
+  steps.push({
+    type: 'speaking',
+    expectedSentence: content.line_en
+  });
 
   steps.push({ type: 'result' });
   return steps;

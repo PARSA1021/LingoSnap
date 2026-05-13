@@ -2,8 +2,6 @@
 
 import * as React from 'react';
 import Link from 'next/link';
-import { Button } from '@/components/ui/Button';
-import { Card, CardContent } from '@/components/ui/Card';
 import {
   BookOpen,
   Mic,

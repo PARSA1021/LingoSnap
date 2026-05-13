@@ -1,5 +1,46 @@
 [
   {
+    "id": "new_s1",
+    "text": "I'm obsessed with this new song! It's such a bop.",
+    "translation": "이 노래에 완전 꽂혔어! 진짜 띵곡이야.",
+    "level": "intermediate",
+    "category": "sns",
+    "subCategory": "meme",
+    "type": "situation"
+  },
+  {
+    "id": "new_s2",
+    "text": "Could you please let me know when the package arrives?",
+    "translation": "택배가 도착하면 알려주시겠어요?",
+    "level": "beginner",
+    "category": "daily",
+    "subCategory": "shopping",
+    "type": "situation"
+  },
+  {
+    "id": "new_s3",
+    "text": "I'd like to check out, please. Is there anything else I need to sign?",
+    "translation": "체크아웃하고 싶습니다. 더 서명해야 할 게 있나요?",
+    "level": "beginner",
+    "category": "travel",
+    "subCategory": "hotel",
+    "type": "situation"
+  },
+  {
+    "id": "new_s4",
+    "text": "I'm going to grab a bite to eat. Do you want anything?",
+    "translation": "뭐 좀 먹으러 갈 건데, 뭐 필요한 거 있어?",
+    "level": "beginner",
+    "category": "daily",
+    "subCategory": "emotion",
+    "type": "reduction",
+    "distractors": [
+      "I am going to grab a bite",
+      "I gonna grab a bite",
+      "I'm wanna grab a bite"
+    ]
+  },
+  {
     "id": "s1",
     "text": "Could you please speak a little slower?",
     "translation": "말씀을 조금만 천천히 해 주시겠어요?",
@@ -453,5 +494,950 @@
     "translation": "혼란을 드려 죄송합니다.",
     "level": "intermediate",
     "category": "business"
+  },
+  {
+    "id": "s66",
+    "text": "I hope we can reach a mutual agreement.",
+    "translation": "우리가 서로 합의에 이를 수 있으면 좋겠습니다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "s67",
+    "text": "Would you mind if I opened the window?",
+    "translation": "창문 좀 열어도 될까요?",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "s68",
+    "text": "I'd like to check in, please.",
+    "translation": "체크인하고 싶습니다.",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "s69",
+    "text": "We need to revisit this issue at a later stage.",
+    "translation": "이 문제는 나중에 다시 검토해야 합니다.",
+    "level": "advanced",
+    "category": "business"
+  },
+  {
+    "id": "s70",
+    "text": "I feel like something is off today.",
+    "translation": "오늘 뭔가 이상한 기분이 들어요.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "s71",
+    "text": "What time does the last train leave?",
+    "translation": "막차는 몇 시에 출발하나요?",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "s72",
+    "text": "Have you had a chance to review the report?",
+    "translation": "보고서를 검토할 기회가 있으셨나요?",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "s73",
+    "text": "I just need a moment to collect my thoughts.",
+    "translation": "잠깐 생각을 정리할 시간이 필요해요.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "s74",
+    "text": "Can I pay by credit card?",
+    "translation": "신용카드로 결제할 수 있나요?",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "s75",
+    "text": "Let me loop you in on the latest update.",
+    "translation": "최신 업데이트 내용을 공유해 드릴게요.",
+    "level": "advanced",
+    "category": "business"
+  },
+  {
+    "id": "s76",
+    "text": "She always knows how to brighten my day.",
+    "translation": "그녀는 항상 내 하루를 환하게 만들어줘.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "s77",
+    "text": "Is the tip included in the bill?",
+    "translation": "팁이 계산서에 포함되어 있나요?",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "s78",
+    "text": "We're running behind schedule.",
+    "translation": "일정보다 뒤처지고 있어요.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "s79",
+    "text": "I've been meaning to call you for ages.",
+    "translation": "오래전부터 전화하려고 했는데.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "s80",
+    "text": "Could you recommend a good hotel nearby?",
+    "translation": "근처에 좋은 호텔 좀 추천해 주시겠어요?",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "s81",
+    "text": "I'm at a loss for words right now.",
+    "translation": "지금 뭐라고 말해야 할지 모르겠어요.",
+    "level": "advanced",
+    "category": "emotion"
+  },
+  {
+    "id": "s82",
+    "text": "We should align our goals before moving forward.",
+    "translation": "앞으로 나아가기 전에 목표를 일치시켜야 합니다.",
+    "level": "advanced",
+    "category": "business"
+  },
+  {
+    "id": "s83",
+    "text": "Let me walk you through the process.",
+    "translation": "제가 과정을 단계별로 설명해 드릴게요.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "s84",
+    "text": "Is there a bus stop near here?",
+    "translation": "이 근처에 버스 정류장이 있나요?",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "s85",
+    "text": "I've been feeling a bit under the weather.",
+    "translation": "요즘 몸이 좀 좋지 않아요.",
+    "level": "advanced",
+    "category": "emotion"
+  },
+  {
+    "id": "s86",
+    "text": "Do you have any rooms available for tonight?",
+    "translation": "오늘 밤 이용 가능한 방이 있나요?",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "s87",
+    "text": "I need to wrap my head around this concept.",
+    "translation": "이 개념을 제대로 이해해야 해요.",
+    "level": "advanced",
+    "category": "daily"
+  },
+  {
+    "id": "s88",
+    "text": "Thank you for fitting me into your schedule.",
+    "translation": "일정을 내 주셔서 감사합니다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "s89",
+    "text": "Could I get a window seat, please?",
+    "translation": "창가 자리로 주시겠어요?",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "s90",
+    "text": "Things have been hectic lately.",
+    "translation": "요즘 정신없이 바빴어요.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "s91",
+    "text": "I'll keep that in mind going forward.",
+    "translation": "앞으로 그 점을 명심하겠습니다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "s92",
+    "text": "Where can I exchange currency around here?",
+    "translation": "이 근처에서 환전을 어디서 할 수 있나요?",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "s93",
+    "text": "I can't shake this feeling of unease.",
+    "translation": "이 불안한 느낌이 떨쳐지지 않아요.",
+    "level": "advanced",
+    "category": "emotion"
+  },
+  {
+    "id": "s94",
+    "text": "Can we take this offline?",
+    "translation": "이 건은 따로 얘기할 수 있을까요?",
+    "level": "advanced",
+    "category": "business"
+  },
+  {
+    "id": "s95",
+    "text": "What are your hours of operation?",
+    "translation": "영업 시간이 어떻게 되나요?",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "s96",
+    "text": "I'm so glad we finally got to catch up.",
+    "translation": "드디어 만나서 이야기할 수 있어서 정말 기쁘네요.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "s97",
+    "text": "Would it be possible to get an extension?",
+    "translation": "기한 연장이 가능할까요?",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "s98",
+    "text": "Can you show me on the map?",
+    "translation": "지도에서 보여 주실 수 있나요?",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "s99",
+    "text": "I really need to clear my head.",
+    "translation": "머리를 식힐 필요가 있어요.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "s100",
+    "text": "Let's put that on the back burner for now.",
+    "translation": "그건 지금 당장은 미뤄두기로 합시다.",
+    "level": "advanced",
+    "category": "business"
+  },
+  {
+    "id": "s101",
+    "text": "What is the Wi-Fi password?",
+    "translation": "와이파이 비밀번호가 뭔가요?",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "s102",
+    "text": "You can always count on me.",
+    "translation": "언제든 나를 믿어도 돼.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "s103",
+    "text": "I'm torn between the two options.",
+    "translation": "두 가지 선택지 사이에서 갈등하고 있어요.",
+    "level": "advanced",
+    "category": "emotion"
+  },
+  {
+    "id": "s104",
+    "text": "We need all hands on deck for this project.",
+    "translation": "이 프로젝트에는 모두의 힘이 필요합니다.",
+    "level": "advanced",
+    "category": "business"
+  },
+  {
+    "id": "s105",
+    "text": "I always feel refreshed after a good walk.",
+    "translation": "산책을 하고 나면 항상 상쾌한 기분이 들어요.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "s106",
+    "text": "My flight got delayed by three hours.",
+    "translation": "비행기가 세 시간 지연됐어요.",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "s107",
+    "text": "I don't want to overstep my boundaries.",
+    "translation": "제 선을 넘고 싶지 않아요.",
+    "level": "advanced",
+    "category": "emotion"
+  },
+  {
+    "id": "s108",
+    "text": "Let's circle back to this after the break.",
+    "translation": "쉬고 나서 이 부분으로 다시 돌아옵시다.",
+    "level": "advanced",
+    "category": "business"
+  },
+  {
+    "id": "s109",
+    "text": "I usually have coffee in the morning.",
+    "translation": "저는 보통 아침에 커피를 마셔요.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "s110",
+    "text": "Could you translate this for me?",
+    "translation": "이것 좀 번역해 주시겠어요?",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "s111",
+    "text": "I'd appreciate your honest feedback on this.",
+    "translation": "이 부분에 대한 솔직한 피드백 부탁드립니다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "s112",
+    "text": "He always manages to make me laugh.",
+    "translation": "그는 항상 나를 웃게 만들어요.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "s113",
+    "text": "I have a prior commitment I can't reschedule.",
+    "translation": "일정 변경이 불가능한 선약이 있어요.",
+    "level": "advanced",
+    "category": "business"
+  },
+  {
+    "id": "s114",
+    "text": "Is breakfast included in the room rate?",
+    "translation": "숙박비에 조식이 포함되어 있나요?",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "s115",
+    "text": "I'm trying to cut back on sugar.",
+    "translation": "설탕 섭취를 줄이려고 노력 중이에요.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "s116",
+    "text": "This is above my pay grade.",
+    "translation": "이건 제 권한 밖의 일이에요.",
+    "level": "advanced",
+    "category": "business"
+  },
+  {
+    "id": "s117",
+    "text": "I felt a huge weight lifted off my shoulders.",
+    "translation": "어깨에서 짐이 내려간 것 같은 해방감이 들었어요.",
+    "level": "advanced",
+    "category": "emotion"
+  },
+  {
+    "id": "s118",
+    "text": "Where should I go for a local experience?",
+    "translation": "현지 경험을 위해 어디에 가면 좋을까요?",
+    "level": "intermediate",
+    "category": "travel"
+  },
+  {
+    "id": "s119",
+    "text": "I'll forward the email to you right away.",
+    "translation": "이메일을 바로 전달해 드릴게요.",
+    "level": "beginner",
+    "category": "business"
+  },
+  {
+    "id": "s120",
+    "text": "I have mixed feelings about this.",
+    "translation": "이 일에 대해 복잡한 심정이에요.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "s121",
+    "text": "Do you validate parking here?",
+    "translation": "여기서 주차 도장을 받을 수 있나요?",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "s122",
+    "text": "Let's not jump to conclusions.",
+    "translation": "섣불리 결론을 내리지 맙시다.",
+    "level": "advanced",
+    "category": "business"
+  },
+  {
+    "id": "s123",
+    "text": "I want to make the most of my time here.",
+    "translation": "여기 있는 시간을 최대한 활용하고 싶어요.",
+    "level": "intermediate",
+    "category": "travel"
+  },
+  {
+    "id": "s124",
+    "text": "It goes without saying that quality matters.",
+    "translation": "품질이 중요하다는 것은 두말할 나위가 없죠.",
+    "level": "advanced",
+    "category": "business"
+  },
+  {
+    "id": "s125",
+    "text": "I've been working on a new hobby recently.",
+    "translation": "최근에 새로운 취미를 시작했어요.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "s126",
+    "text": "I'm overwhelmed with gratitude.",
+    "translation": "감사함으로 마음이 가득 차 있어요.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "s127",
+    "text": "Can I get a refund for this item?",
+    "translation": "이 제품 환불이 가능한가요?",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "s128",
+    "text": "We should get the ball rolling on this.",
+    "translation": "이 일을 슬슬 시작해야 할 것 같아요.",
+    "level": "advanced",
+    "category": "business"
+  },
+  {
+    "id": "s129",
+    "text": "I can't imagine my life without music.",
+    "translation": "음악 없는 내 삶은 상상도 할 수 없어요.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "s130",
+    "text": "I was deeply moved by the performance.",
+    "translation": "그 공연에 깊이 감동받았어요.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "s131",
+    "text": "Which platform does the train to Paris depart from?",
+    "translation": "파리행 기차는 몇 번 플랫폼에서 출발하나요?",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "s132",
+    "text": "Let's find a middle ground we can both agree on.",
+    "translation": "서로 동의할 수 있는 중간 지점을 찾아봅시다.",
+    "level": "advanced",
+    "category": "business"
+  },
+  {
+    "id": "s133",
+    "text": "Do you prefer working from home or the office?",
+    "translation": "재택근무와 사무실 근무 중 어떤 걸 선호하세요?",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "s134",
+    "text": "I feel so accomplished today.",
+    "translation": "오늘 정말 뿌듯한 하루였어요.",
+    "level": "beginner",
+    "category": "emotion"
+  },
+  {
+    "id": "s135",
+    "text": "Can I get directions to the nearest ATM?",
+    "translation": "가장 가까운 ATM까지 가는 길을 알려주시겠어요?",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "s136",
+    "text": "I'd like to propose a different approach.",
+    "translation": "다른 접근 방식을 제안하고 싶습니다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "s137",
+    "text": "I've been binge-watching that show all weekend.",
+    "translation": "주말 내내 그 드라마를 몰아봤어요.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "s138",
+    "text": "The view from the top was absolutely breathtaking.",
+    "translation": "꼭대기에서 내려다보는 전망이 정말 숨막히게 아름다웠어요.",
+    "level": "intermediate",
+    "category": "travel"
+  },
+  {
+    "id": "s139",
+    "text": "I don't think I can handle this on my own.",
+    "translation": "이걸 혼자 감당하기는 힘들 것 같아요.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "s140",
+    "text": "There's no room for error in this situation.",
+    "translation": "이 상황에서는 실수할 여지가 없습니다.",
+    "level": "advanced",
+    "category": "business"
+  },
+  {
+    "id": "s141",
+    "text": "Do you know any good spots for street food?",
+    "translation": "길거리 음식으로 유명한 곳 알고 계세요?",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "s142",
+    "text": "We're fully committed to this partnership.",
+    "translation": "저희는 이 파트너십에 전적으로 헌신하고 있습니다.",
+    "level": "advanced",
+    "category": "business"
+  },
+  {
+    "id": "s143",
+    "text": "I think we need to talk.",
+    "translation": "우리 좀 얘기해야 할 것 같아.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "s144",
+    "text": "I felt completely out of my element.",
+    "translation": "완전히 제 영역 밖에 있는 느낌이었어요.",
+    "level": "advanced",
+    "category": "emotion"
+  },
+  {
+    "id": "s145",
+    "text": "Could you hold this for me for a second?",
+    "translation": "잠깐 이것 좀 들어 주시겠어요?",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "s146",
+    "text": "We're still in the early stages of development.",
+    "translation": "저희는 아직 개발 초기 단계에 있습니다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "s147",
+    "text": "I could use some fresh air.",
+    "translation": "바람 좀 쐬고 싶어요.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "s148",
+    "text": "How long is the waiting list?",
+    "translation": "대기자 명단이 얼마나 긴가요?",
+    "level": "intermediate",
+    "category": "travel"
+  },
+  {
+    "id": "s149",
+    "text": "I'm cautiously optimistic about the outcome.",
+    "translation": "결과에 대해 조심스럽게 낙관하고 있습니다.",
+    "level": "advanced",
+    "category": "business"
+  },
+  {
+    "id": "s150",
+    "text": "He was trying to read between the lines.",
+    "translation": "그는 행간의 의미를 파악하려 했어요.",
+    "level": "advanced",
+    "category": "daily"
+  },
+  {
+    "id": "s151",
+    "text": "I barely slept last night.",
+    "translation": "어젯밤에 거의 못 잤어요.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "s152",
+    "text": "Is this the right gate for my flight?",
+    "translation": "제 항공편 게이트가 맞나요?",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "s153",
+    "text": "I'm going to have to think outside the box on this one.",
+    "translation": "이번엔 창의적으로 생각해야 할 것 같아요.",
+    "level": "advanced",
+    "category": "business"
+  },
+  {
+    "id": "s154",
+    "text": "I've grown so much through this experience.",
+    "translation": "이 경험을 통해 정말 많이 성장했어요.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "s155",
+    "text": "Do you want to grab a bite to eat?",
+    "translation": "뭐 좀 먹으러 갈래요?",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "s156",
+    "text": "What are the must-see attractions here?",
+    "translation": "여기서 꼭 봐야 할 명소가 어디인가요?",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "s157",
+    "text": "The stakeholders have raised some concerns.",
+    "translation": "이해관계자들이 몇 가지 우려를 제기했습니다.",
+    "level": "advanced",
+    "category": "business"
+  },
+  {
+    "id": "s158",
+    "text": "I don't want to hold you up.",
+    "translation": "시간 더 잡아두기가 미안해요.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "s159",
+    "text": "I felt a spark of inspiration.",
+    "translation": "영감의 불꽃이 튀는 느낌이 들었어요.",
+    "level": "advanced",
+    "category": "emotion"
+  },
+  {
+    "id": "s160",
+    "text": "I'm just going to play it by ear.",
+    "translation": "그냥 상황을 보면서 결정할게요.",
+    "level": "advanced",
+    "category": "daily"
+  },
+  {
+    "id": "s161",
+    "text": "Do I need to make a reservation in advance?",
+    "translation": "미리 예약해야 하나요?",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "s162",
+    "text": "I'm just checking in to see how you're doing.",
+    "translation": "잘 지내고 있는지 확인하려고 연락드려요.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "s163",
+    "text": "I'm worried I've bitten off more than I can chew.",
+    "translation": "감당하기 어려운 일을 너무 많이 맡은 것 같아서 걱정돼요.",
+    "level": "advanced",
+    "category": "emotion"
+  },
+  {
+    "id": "s164",
+    "text": "We've already exceeded this quarter's targets.",
+    "translation": "이번 분기 목표를 이미 초과 달성했습니다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "s165",
+    "text": "I'll be out of the office this Friday.",
+    "translation": "이번 금요일에 자리를 비울 예정입니다.",
+    "level": "beginner",
+    "category": "business"
+  },
+  {
+    "id": "s166",
+    "text": "Would you like a map of the city?",
+    "translation": "도시 지도가 필요하신가요?",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "s167",
+    "text": "I can't stop thinking about what happened.",
+    "translation": "일어난 일이 계속 머릿속에 맴돌아요.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "s168",
+    "text": "Let's take a step back and look at the big picture.",
+    "translation": "한 발짝 물러서서 큰 그림을 바라봅시다.",
+    "level": "advanced",
+    "category": "business"
+  },
+  {
+    "id": "s169",
+    "text": "I always forget where I put my keys.",
+    "translation": "항상 열쇠를 어디에 뒀는지 잊어버려요.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "s170",
+    "text": "The hotel is within walking distance from the beach.",
+    "translation": "호텔에서 해변까지 걸어갈 수 있는 거리에 있어요.",
+    "level": "intermediate",
+    "category": "travel"
+  },
+  {
+    "id": "s171",
+    "text": "I need some time to decompress after work.",
+    "translation": "퇴근 후 긴장을 풀 시간이 필요해요.",
+    "level": "advanced",
+    "category": "emotion"
+  },
+  {
+    "id": "s172",
+    "text": "Could you send over the agenda before the meeting?",
+    "translation": "회의 전에 안건을 먼저 보내 주시겠어요?",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "s173",
+    "text": "I've been meaning to read that book for a while.",
+    "translation": "한동안 그 책을 읽으려고 벼르고 있었어요.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "s174",
+    "text": "The museum opens at nine in the morning.",
+    "translation": "박물관은 오전 9시에 문을 열어요.",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "s175",
+    "text": "I'm trying to stay positive through all of this.",
+    "translation": "이 모든 상황에서도 긍정적으로 지내려 하고 있어요.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "s176",
+    "text": "We should leverage this opportunity.",
+    "translation": "이 기회를 최대한 활용해야 합니다.",
+    "level": "advanced",
+    "category": "business"
+  },
+  {
+    "id": "s177",
+    "text": "Could you write that down for me?",
+    "translation": "그것 좀 적어 주시겠어요?",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "s178",
+    "text": "Is there a luggage storage service available?",
+    "translation": "짐 보관 서비스가 있나요?",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "s179",
+    "text": "The team went the extra mile on this one.",
+    "translation": "팀 전체가 이번 건에 특별히 더 노력을 기울였어요.",
+    "level": "advanced",
+    "category": "business"
+  },
+  {
+    "id": "s180",
+    "text": "I'm slowly getting used to the new routine.",
+    "translation": "새로운 루틴에 서서히 적응하고 있어요.",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "s181",
+    "text": "I felt incredibly nostalgic looking at those old photos.",
+    "translation": "그 오래된 사진들을 보며 굉장히 향수에 젖었어요.",
+    "level": "advanced",
+    "category": "emotion"
+  },
+  {
+    "id": "s182",
+    "text": "What's the best way to get to the airport?",
+    "translation": "공항까지 가는 가장 좋은 방법이 뭔가요?",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "s183",
+    "text": "I'd like to table this discussion for now.",
+    "translation": "지금은 이 논의를 미뤄두고 싶습니다.",
+    "level": "advanced",
+    "category": "business"
+  },
+  {
+    "id": "s184",
+    "text": "Don't let anyone dull your sparkle.",
+    "translation": "아무도 당신의 빛을 흐리게 하지 못하게 해요.",
+    "level": "advanced",
+    "category": "emotion"
+  },
+  {
+    "id": "s185",
+    "text": "I haven't decided yet what to have for dinner.",
+    "translation": "저녁에 뭘 먹을지 아직 못 정했어요.",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "s186",
+    "text": "Can you recommend a good tour guide?",
+    "translation": "좋은 여행 가이드 추천해 주실 수 있어요?",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "s187",
+    "text": "We need to be on the same page about this.",
+    "translation": "이 건에 대해서는 서로 같은 이해를 가져야 합니다.",
+    "level": "intermediate",
+    "category": "business"
+  },
+  {
+    "id": "s188",
+    "text": "I've been really stressed about the deadline.",
+    "translation": "마감일 때문에 정말 스트레스를 많이 받았어요.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "s189",
+    "text": "What's your go-to comfort food?",
+    "translation": "당신의 최애 위안 음식은 뭐예요?",
+    "level": "intermediate",
+    "category": "daily"
+  },
+  {
+    "id": "s190",
+    "text": "Can I leave my bags here while I explore?",
+    "translation": "구경하는 동안 여기에 짐을 놔둬도 될까요?",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "s191",
+    "text": "I don't want to rock the boat.",
+    "translation": "괜히 파란을 일으키고 싶지 않아요.",
+    "level": "advanced",
+    "category": "business"
+  },
+  {
+    "id": "s192",
+    "text": "I'm on cloud nine right now.",
+    "translation": "지금 너무너무 기분이 좋아요.",
+    "level": "advanced",
+    "category": "emotion"
+  },
+  {
+    "id": "s193",
+    "text": "Have you eaten yet?",
+    "translation": "밥 먹었어요?",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "s194",
+    "text": "This is off the record, by the way.",
+    "translation": "참고로 이건 비공개 이야기예요.",
+    "level": "advanced",
+    "category": "business"
+  },
+  {
+    "id": "s195",
+    "text": "I got completely lost in the city.",
+    "translation": "도시에서 완전히 길을 잃었어요.",
+    "level": "beginner",
+    "category": "travel"
+  },
+  {
+    "id": "s196",
+    "text": "I just want to vent for a moment.",
+    "translation": "잠깐 하소연 좀 해도 될까요?",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "s197",
+    "text": "Why don't we grab lunch and talk it over?",
+    "translation": "점심 먹으면서 얘기하는 건 어때요?",
+    "level": "beginner",
+    "category": "daily"
+  },
+  {
+    "id": "s198",
+    "text": "I'd like to escalate this to management.",
+    "translation": "이 건을 경영진에 보고하고 싶습니다.",
+    "level": "advanced",
+    "category": "business"
+  },
+  {
+    "id": "s199",
+    "text": "I've never felt more at home than here.",
+    "translation": "여기처럼 편안함을 느낀 곳이 없었어요.",
+    "level": "intermediate",
+    "category": "emotion"
+  },
+  {
+    "id": "s200",
+    "text": "What do you do to unwind after a long day?",
+    "translation": "긴 하루가 끝나면 어떻게 긴장을 푸세요?",
+    "level": "intermediate",
+    "category": "daily"
   }
 ]

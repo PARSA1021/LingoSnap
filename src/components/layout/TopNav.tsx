@@ -20,11 +20,10 @@ export function TopNav() {
   return (
     <header
       aria-label="Top Navigation"
-      className={`sticky top-0 z-50 w-full h-14 sm:h-16 flex items-center px-4 sm:px-8 transition-all duration-300 ${
-        scrolled
+      className={`sticky top-0 z-50 w-full h-14 sm:h-16 flex items-center px-4 sm:px-8 transition-all duration-300 ${scrolled
           ? 'glass border-b border-white/10 shadow-lg'
           : 'bg-transparent border-b border-transparent'
-      }`}
+        }`}
     >
       <div className="max-w-5xl mx-auto w-full flex justify-between items-center">
         {/* Logo */}

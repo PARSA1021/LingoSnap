@@ -8,10 +8,10 @@ import { cn } from '@/lib/utils/cn';
 import { motion } from 'framer-motion';
 
 const tabs = [
-  { name: '홈',    href: '/',         icon: Home },
-  { name: '레슨',  href: '/learn',    icon: Lightbulb },
-  { name: '복습',  href: '/review',   icon: RotateCcw },
-  { name: '단어장', href: '/vocab',   icon: BookA },
+  { name: '홈', href: '/', icon: Home },
+  { name: '레슨', href: '/learn', icon: Lightbulb },
+  { name: '복습', href: '/review', icon: RotateCcw },
+  { name: '단어장', href: '/vocab', icon: BookA },
   { name: '콘텐츠', href: '/contents', icon: Tv },
   { name: '말하기', href: '/speaking', icon: Mic },
 ];

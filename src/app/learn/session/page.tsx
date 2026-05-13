@@ -8,6 +8,7 @@ export default async function LearnSessionPage({
     category?: string;
     wordCount?: string;
     isTurbo?: string;
+    movie?: string;
   }>;
 }) {
   const params = await searchParams;
@@ -15,6 +16,7 @@ export default async function LearnSessionPage({
   const category = params.category || 'all';
   const wordCount = (Number(params.wordCount) === 10 ? 10 : 5) as 5 | 10;
   const isTurbo = params.isTurbo === 'true';
+  const movieId = params.movie;
 
   return (
     <LearnClient
@@ -22,6 +24,7 @@ export default async function LearnSessionPage({
       category={category}
       wordCount={wordCount}
       isTurbo={isTurbo}
+      movieId={movieId}
     />
   );
 }

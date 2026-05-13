@@ -1,5 +1,170 @@
 [
   {
+    "word": "Thesis Statement",
+    "meaning": "주제문, 논지",
+    "level": "advanced",
+    "category": "학술",
+    "subCategory": "essay",
+    "type": "vocabulary",
+    "distractors": [
+      "Title sentence",
+      "Topic word",
+      "Main paragraph"
+    ],
+    "examples": [
+      {
+        "text": "Your thesis statement should be clear and concise.",
+        "translation": "주제문은 명확하고 간결해야 합니다."
+      }
+    ]
+  },
+  {
+    "word": "In conclusion",
+    "meaning": "결론적으로, 마지막으로",
+    "level": "intermediate",
+    "category": "학술",
+    "subCategory": "essay",
+    "type": "pattern",
+    "distractors": [
+      "In the end of",
+      "To finish with",
+      "For closing"
+    ],
+    "examples": [
+      {
+        "text": "In conclusion, the results support our hypothesis.",
+        "translation": "결론적으로, 그 결과는 우리의 가설을 뒷받침합니다."
+      }
+    ]
+  },
+  {
+    "word": "Clout",
+    "meaning": "영향력, 힘 (특히 SNS에서)",
+    "level": "advanced",
+    "category": "sns",
+    "subCategory": "meme",
+    "type": "vocabulary",
+    "distractors": [
+      "Cloud",
+      "Count",
+      "Client"
+    ],
+    "examples": [
+      {
+        "text": "He's just doing it for clout.",
+        "translation": "그는 그냥 유명세를 타려고 그러는 거야."
+      }
+    ]
+  },
+  {
+    "word": "Living rent-free in my head",
+    "meaning": "머릿속에서 떠나지 않다, 계속 생각나다",
+    "level": "advanced",
+    "category": "sns",
+    "subCategory": "meme",
+    "type": "collocation",
+    "distractors": [
+      "Living in my mind",
+      "Always thinking of",
+      "Stuck in my brain"
+    ],
+    "examples": [
+      {
+        "text": "That video is living rent-free in my head.",
+        "translation": "그 영상이 머릿속에서 계속 떠나질 않아."
+      }
+    ]
+  },
+  {
+    "word": "Make a decision",
+    "meaning": "결정을 내리다",
+    "level": "intermediate",
+    "category": "business",
+    "subCategory": "negotiation",
+    "type": "collocation",
+    "distractors": [
+      "Do a decision",
+      "Take a decision",
+      "Get a decision"
+    ],
+    "examples": [
+      {
+        "text": "We need to make a decision by the end of the day.",
+        "translation": "우리는 오늘 안으로 결정을 내려야 합니다."
+      },
+      {
+        "text": "It's hard to make a decision without all the facts.",
+        "translation": "모든 사실을 알지 못하면 결정을 내리기 어렵습니다."
+      }
+    ]
+  },
+  {
+    "word": "I was wondering if",
+    "meaning": "~인지 궁금해요 (정중한 부탁/질문)",
+    "level": "intermediate",
+    "category": "daily",
+    "subCategory": "emotion",
+    "type": "pattern",
+    "distractors": [
+      "I was thinking if",
+      "I was wanting if",
+      "I was asking if"
+    ],
+    "examples": [
+      {
+        "text": "I was wondering if you could help me with this.",
+        "translation": "이것 좀 도와주실 수 있는지 궁금해요."
+      },
+      {
+        "text": "I was wondering if you have any free time today.",
+        "translation": "오늘 좀 시간이 있으신지 궁금해요."
+      }
+    ]
+  },
+  {
+    "word": "Ship vs Sheep",
+    "meaning": "배 (Ship) vs 양 (Sheep)",
+    "level": "beginner",
+    "category": "general",
+    "type": "vocabulary",
+    "subCategory": "minimal_pair",
+    "distractors": [
+      "Shape vs Shop",
+      "Slip vs Sleep",
+      "Chip vs Cheap"
+    ],
+    "usageTips": "Ship은 짧은 /ɪ/ 소리, Sheep은 긴 /iː/ 소리가 납니다.",
+    "examples": [
+      {
+        "text": "The ship sailed across the ocean.",
+        "translation": "그 배는 대양을 가로질러 항해했습니다."
+      },
+      {
+        "text": "The sheep are grazing in the field.",
+        "translation": "양들이 들판에서 풀을 뜯고 있습니다."
+      }
+    ]
+  },
+  {
+    "word": "Conference Call",
+    "meaning": "화상 회의, 전화 회의",
+    "level": "intermediate",
+    "category": "business",
+    "subCategory": "meeting",
+    "type": "vocabulary",
+    "distractors": [
+      "Talking meeting",
+      "Remote calling",
+      "Group speaking"
+    ],
+    "examples": [
+      {
+        "text": "I have a conference call at 10 AM.",
+        "translation": "오전 10시에 화상 회의가 있어요."
+      }
+    ]
+  },
+  {
     "word": "Love",
     "meaning": "사랑, 사랑하다",
     "level": "beginner",
@@ -3620,18 +3785,6 @@
     ]
   },
   {
-    "word": "No way",
-    "meaning": "말도 안 돼",
-    "level": "beginner",
-    "category": "캐주얼",
-    "examples": [
-      {
-        "text": "No way! That's unbelievable.",
-        "translation": "말도 안 돼! 믿기지가 않아."
-      }
-    ]
-  },
-  {
     "word": "That makes sense",
     "meaning": "말이 되네",
     "level": "beginner",
@@ -3652,18 +3805,6 @@
       {
         "text": "Oh, I see what you mean.",
         "translation": "아, 무슨 말인지 알겠어."
-      }
-    ]
-  },
-  {
-    "word": "Fair enough",
-    "meaning": "그럴 만하네",
-    "level": "intermediate",
-    "category": "일상",
-    "examples": [
-      {
-        "text": "You were busy? Fair enough.",
-        "translation": "바빴다고? 그럴 수 있지."
       }
     ]
   },
@@ -3716,18 +3857,6 @@
     ]
   },
   {
-    "word": "It depends",
-    "meaning": "상황에 따라 다르지",
-    "level": "beginner",
-    "category": "일상",
-    "examples": [
-      {
-        "text": "Will you go? It depends.",
-        "translation": "갈 거야? 상황에 따라 다르지."
-      }
-    ]
-  },
-  {
     "word": "Let me think",
     "meaning": "생각해볼게",
     "level": "beginner",
@@ -3776,18 +3905,6 @@
     ]
   },
   {
-    "word": "Sounds good",
-    "meaning": "좋아",
-    "level": "beginner",
-    "category": "캐주얼",
-    "examples": [
-      {
-        "text": "Let's meet tomorrow. Sounds good!",
-        "translation": "내일 만나자. 좋아!"
-      }
-    ]
-  },
-  {
     "word": "Sounds great",
     "meaning": "좋네",
     "level": "beginner",
@@ -3820,18 +3937,6 @@
       {
         "text": "If you want, go for it.",
         "translation": "원하면 해봐."
-      }
-    ]
-  },
-  {
-    "word": "Give it a try",
-    "meaning": "한번 해봐",
-    "level": "beginner",
-    "category": "일상",
-    "examples": [
-      {
-        "text": "You should give it a try.",
-        "translation": "한번 해보는 게 좋아."
       }
     ]
   },

@@ -1,5 +1,5 @@
 export type Level = 'beginner' | 'intermediate' | 'advanced';
-export type Category = 'daily' | 'travel' | 'business' | 'emotion' | 'general';
+export type Category = 'daily' | 'travel' | 'business' | 'emotion' | 'sns' | 'academic' | 'general';
 
 export type Word = {
   id?: string;
@@ -9,18 +9,24 @@ export type Word = {
   exampleTranslation?: string;
   level?: string;
   category?: string;
+  subCategory?: string;
+  type?: 'vocabulary' | 'collocation' | 'pattern' | 'situation';
   phonetic?: string;
   audioUrl?: string;
   synonyms?: string[];
   usageTips?: string;
+  distractors?: string[];
 };
 
 export type Sentence = {
   id: string;
   text: string;
-  translation: string; // 문장 해석 (추가됨)
+  translation: string;
   level?: Level;
-  category?: Category;
+  category?: string;
+  subCategory?: string;
+  type?: 'minimal_pair' | 'intonation' | 'reduction' | 'situation';
+  distractors?: string[];
 };
 
 export type DialogLine = {

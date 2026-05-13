@@ -3,12 +3,13 @@
 import * as React from 'react';
 import { Card, CardContent } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
-import { ArrowRight, Volume2, Sparkles } from 'lucide-react';
+import { ArrowRight, Volume2, Sparkles, Star } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { speak } from '@/lib/tts';
 import { cn } from '@/lib/utils/cn';
 import { formatWord, formatSentence } from '@/lib/utils/format';
 import type { Word } from '@/types';
+import { useLearningStore } from '@/store/useLearningStore';
 
 interface WordRevealStepProps {
   word: Word;
@@ -28,6 +29,10 @@ export function WordRevealStep({ word, onNext, isReview = false }: WordRevealSte
   const [revealed, setRevealed] = React.useState(false);
   const w = word as Word & { category?: string; level?: string };
   const catColor = CATEGORY_COLORS[w.category ?? ''] ?? 'bg-muted text-muted-foreground border-border';
+  
+  const favorites = useLearningStore(state => state.favorites);
+  const toggleFavorite = useLearningStore(state => state.toggleFavorite);
+  const isFavorite = favorites.some(f => f.word === word.word);
 
   const reveal = () => {
     setRevealed(true);
@@ -63,12 +68,26 @@ export function WordRevealStep({ word, onNext, isReview = false }: WordRevealSte
             <h2 className="text-4xl sm:text-6xl font-black text-foreground tracking-tight font-reading italic">
               {formatWord(word.word)}
             </h2>
-            <button 
-              onClick={() => speak(word.word)}
-              className="p-4 bg-primary/10 rounded-full text-primary active:scale-95 transition-all border-2 border-transparent hover:border-primary/20 shadow-sm"
-            >
-              <Volume2 className="h-8 w-8" />
-            </button>
+            <div className="flex items-center gap-3">
+              <button 
+                onClick={() => speak(word.word)}
+                className="p-4 bg-primary/10 rounded-full text-primary active:scale-95 transition-all border-2 border-transparent hover:border-primary/20 shadow-sm"
+              >
+                <Volume2 className="h-8 w-8" />
+              </button>
+              <button 
+                onClick={() => toggleFavorite(word)}
+                className={cn(
+                  "p-4 rounded-full active:scale-95 transition-all border-2 shadow-sm",
+                  isFavorite 
+                    ? "bg-amber-400/20 text-amber-500 border-amber-400/30" 
+                    : "bg-muted/50 text-muted-foreground border-transparent hover:border-muted-foreground/20"
+                )}
+                title={isFavorite ? "저장됨" : "내 단어장에 저장"}
+              >
+                <Star className={cn("h-8 w-8", isFavorite && "fill-current")} />
+              </button>
+            </div>
           </div>
         </div>
 
@@ -130,12 +149,14 @@ export function WordRevealStep({ word, onNext, isReview = false }: WordRevealSte
                     <p className="text-sm font-bold text-foreground leading-relaxed font-reading italic">
                       &quot;{formatSentence(word.example)}&quot;
                     </p>
-                    <button
-                      onClick={() => speak(word.example!)}
-                      className="p-2 bg-muted rounded-xl text-muted-foreground transition-all border border-border shrink-0 hover:bg-primary/10 hover:text-primary"
-                    >
-                      <Volume2 className="w-4 h-4" />
-                    </button>
+                    <div className="flex flex-col gap-2">
+                      <button
+                        onClick={() => speak(word.example!)}
+                        className="p-2 bg-muted rounded-xl text-muted-foreground transition-all border border-border shrink-0 hover:bg-primary/10 hover:text-primary"
+                      >
+                        <Volume2 className="w-4 h-4" />
+                      </button>
+                    </div>
                   </div>
                   {word.exampleTranslation && (
                     <p className="text-xs text-muted-foreground font-bold border-t border-border/10 pt-2 font-reading italic">
