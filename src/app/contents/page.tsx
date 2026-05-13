@@ -32,8 +32,8 @@ export default function ContentsPage() {
   }, [contentFilter, difficultyFilter, searchQuery]);
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-pink-500/5 via-white to-violet-500/10 pb-32 pt-20 md:pt-28 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto flex flex-col gap-8 md:gap-12">
+    <div className="min-h-screen w-full bg-gradient-to-br from-pink-500/5 via-white to-violet-500/10 pb-24 pt-6 md:pt-12 px-3 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto flex flex-col gap-6 md:gap-10">
         
         {/* ─── Playful Header ───────────────────────────────────────── */}
         <motion.header 
@@ -45,11 +45,11 @@ export default function ContentsPage() {
             <Sparkles className="w-4 h-4 text-warning fill-warning" />
             <span className="font-black text-xs md:text-sm uppercase tracking-wide">Video Library</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-black uppercase leading-none tracking-tight">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-black uppercase leading-none tracking-tight">
             영상 학습<br className="sm:hidden" /> 라이브러리
           </h1>
-          <p className="text-sm md:text-lg font-bold text-black/60 max-w-xl">
-            명작 영화와 드라마의 생생한 표현들을 게임처럼 재밌게 배워보세요!
+          <p className="text-xs sm:text-sm md:text-lg font-bold text-black/60 max-w-xl px-4">
+            명작 영화의 생생한 표현들을 게임처럼 재밌게 배워보세요!
           </p>
         </motion.header>
 
@@ -58,24 +58,25 @@ export default function ContentsPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="bg-white rounded-3xl border-4 border-black p-4 sm:p-6 shadow-[8px_8px_0_#000] flex flex-col xl:flex-row gap-6 sticky top-20 z-40"
+          className="bg-white rounded-[2rem] border-4 border-black p-4 sm:p-5 md:p-6 shadow-[6px_6px_0_#000] sm:shadow-[8px_8px_0_#000] flex flex-col lg:flex-row gap-5 md:gap-6 sticky top-4 sm:top-20 z-40"
         >
-          <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-6 w-full">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-5 w-full">
             
             {/* Category / Filters */}
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-2 w-full sm:w-auto">
               <span className="text-[10px] font-black text-black/40 uppercase tracking-widest pl-2">분류</span>
-              <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+              <div className="flex flex-wrap items-center gap-2">
                  <FilterPill label="전체" isActive={contentFilter === 'all'} onClick={() => setContentFilter('all')} icon={<Clapperboard className="w-4 h-4" />} color="bg-primary" />
                  <FilterPill label="영화" isActive={contentFilter === 'movie'} onClick={() => setContentFilter('movie')} icon={<Film className="w-4 h-4" />} color="bg-info" />
               </div>
             </div>
 
-            <div className="hidden xl:block w-1 h-12 bg-black/10 rounded-full mx-4" />
+            <div className="hidden lg:block w-1 h-12 bg-black/10 rounded-full mx-2" />
+            <div className="lg:hidden w-full h-1 bg-black/5 rounded-full" />
 
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-2 w-full sm:w-auto">
               <span className="text-[10px] font-black text-black/40 uppercase tracking-widest pl-2">난이도</span>
-              <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+              <div className="flex flex-wrap items-center gap-2">
                  <FilterPill label="ALL" isActive={difficultyFilter === 'all'} onClick={() => setDifficultyFilter('all')} color="bg-black text-white" />
                  <FilterPill label="EASY" isActive={difficultyFilter === 'easy'} onClick={() => setDifficultyFilter('easy')} color="bg-success" />
                  <FilterPill label="MEDIUM" isActive={difficultyFilter === 'medium'} onClick={() => setDifficultyFilter('medium')} color="bg-warning" />
@@ -84,27 +85,27 @@ export default function ContentsPage() {
             </div>
 
             {/* Actions */}
-            <div className="flex-1 flex gap-3 sm:ml-auto">
-              <div className="relative flex-1">
-                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-black/40" />
+            <div className="w-full lg:w-auto flex flex-row gap-3 lg:ml-auto">
+              <div className="relative flex-1 min-w-0">
+                 <Search className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-black/40" />
                  <input 
                    type="text" 
                    placeholder="검색..." 
                    value={searchQuery}
                    onChange={(e) => setSearchQuery(e.target.value)}
-                   className="w-full h-12 bg-gray-100 border-2 border-black rounded-xl pl-12 pr-4 font-bold focus:bg-white focus:shadow-[4px_4px_0_#000] focus:outline-none transition-all"
+                   className="w-full h-10 md:h-12 bg-gray-100 border-2 border-black rounded-xl pl-9 md:pl-12 pr-4 text-sm md:text-base font-bold focus:bg-white focus:shadow-[4px_4px_0_#000] focus:outline-none transition-all"
                  />
               </div>
               <button
                 onClick={() => setIsQuizMode(!isQuizMode)}
                 className={cn(
-                  "h-12 px-4 rounded-xl border-2 border-black font-black text-xs sm:text-sm uppercase transition-all flex items-center justify-center gap-2 whitespace-nowrap",
+                  "h-10 md:h-12 px-3 md:px-4 rounded-xl border-2 border-black font-black text-[10px] md:text-xs sm:text-sm uppercase transition-all flex items-center justify-center gap-1.5 md:gap-2 whitespace-nowrap shrink-0",
                   isQuizMode 
                     ? "bg-warning text-black shadow-none translate-y-[2px]" 
                     : "bg-white text-black shadow-[4px_4px_0_#000] hover:translate-y-[-2px] hover:shadow-[6px_6px_0_#000]"
                 )}
               >
-                <Lightbulb className={cn("w-5 h-5", isQuizMode && "fill-current")} />
+                <Lightbulb className={cn("w-4 h-4 md:w-5 md:h-5", isQuizMode && "fill-current")} />
                 <span className="hidden sm:inline">퀴즈 모드</span>
               </button>
             </div>
@@ -120,7 +121,7 @@ export default function ContentsPage() {
         </div>
 
         {/* ─── Grid ─────────────────────────────────────────────────── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
           <AnimatePresence mode="popLayout">
             {filteredContents.map((content) => (
               <motion.div
