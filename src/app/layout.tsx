@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Luckiest_Guy, Lilita_One, Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
@@ -30,6 +30,10 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "LingoSnap — 스마트 영어 학습",
   description: "Modern, AI-powered English learning experience",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#09090b",
 };
 
 export default function RootLayout({
