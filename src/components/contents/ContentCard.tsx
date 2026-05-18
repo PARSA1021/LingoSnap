@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ContentLine } from '@/data/contents';
-import { Play, Languages, Bookmark, Volume2, Info } from 'lucide-react';
+import { Play, Languages, Bookmark, Volume2, Info, Music } from 'lucide-react';
 import { useTTS } from '@/hooks/useTTS';
 import { useLearningStore } from '@/store/useLearningStore';
 import { cn } from '@/lib/utils/cn';
@@ -80,9 +80,13 @@ export function ContentCard({ content, onWordClick, isQuizMode = false }: Conten
         
         {/* Title Overlay */}
         <div className="absolute bottom-3 left-4 right-4">
-           <div className="flex items-center gap-2 mb-1.5">
+           <div className="flex items-center gap-2 mb-1.5 font-cartoon">
              <span className="bg-primary text-white text-[9px] font-black px-2 py-0.5 border-2 border-black rounded-full uppercase tracking-widest shadow-[2px_2px_0_#000]">
                {content.difficulty}
+             </span>
+             <span className="flex items-center gap-1 bg-black text-white text-[9px] font-black px-2 py-0.5 border-2 border-black rounded-full uppercase tracking-widest shadow-[2px_2px_0_#000]">
+               {content.category === 'song' && <Music className="w-2.5 h-2.5" />}
+               {content.category}
              </span>
            </div>
            <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-white uppercase font-cartoon leading-none drop-shadow-[2px_2px_0_#000]">

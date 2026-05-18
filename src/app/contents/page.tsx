@@ -11,7 +11,8 @@ import {
   Tv, 
   Sparkles,
   Clapperboard,
-  Film
+  Film,
+  Music
 } from 'lucide-react';
 import { cn } from '@/lib/utils/cn';
 
@@ -68,6 +69,7 @@ export default function ContentsPage() {
               <div className="flex flex-wrap items-center gap-2">
                  <FilterPill label="전체" isActive={contentFilter === 'all'} onClick={() => setContentFilter('all')} icon={<Clapperboard className="w-4 h-4" />} color="bg-primary" />
                  <FilterPill label="영화" isActive={contentFilter === 'movie'} onClick={() => setContentFilter('movie')} icon={<Film className="w-4 h-4" />} color="bg-info" />
+                 <FilterPill label="노래" isActive={contentFilter === 'song'} onClick={() => setContentFilter('song')} icon={<Music className="w-4 h-4" />} color="bg-warning" />
               </div>
             </div>
 

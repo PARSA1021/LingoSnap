@@ -17,7 +17,7 @@ interface LearningState {
   currentWordIndex: number;
   currentSentenceIndex: number;
   stage: LearningStage;
-  contentFilter: 'all' | 'movie' | 'drama';
+  contentFilter: 'all' | 'movie' | 'song';
   difficultyFilter: 'all' | 'easy' | 'medium' | 'hard';
   
   // Gamification
@@ -36,7 +36,7 @@ interface LearningState {
   addRecentSearch: (query: string) => void;
   toggleFavorite: (word: Word) => void;
   removeRecentSearch: (query: string) => void;
-  setContentFilter: (filter: 'all' | 'movie' | 'drama') => void;
+  setContentFilter: (filter: 'all' | 'movie' | 'song') => void;
   setDifficultyFilter: (filter: 'all' | 'easy' | 'medium' | 'hard') => void;
   toggleSavedContent: (id: string) => void;
   

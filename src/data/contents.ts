@@ -2,7 +2,7 @@ export type Difficulty = "easy" | "medium" | "hard";
 
 export type ContentLine = {
   id: string;
-  category: "movie";
+  category: "movie" | "song";
   title: string;
   scene: string;
 
@@ -236,6 +236,7 @@ export const mediaContents: ContentLine[] = [
   },
 
   // ========== ANIMATION ==========
+
   {
     id: "m16",
     category: "movie",
@@ -1517,5 +1518,203 @@ export const mediaContents: ContentLine[] = [
     explanation_ko: "'fade'는 서서히 사라지거나 흐려지는 것. 극한의 집중 상태를 시적으로 표현한 대사입니다.",
     tags: ["sports", "biography", "action"],
     thumbnailUrl: "/posters/fordvferrari.jpg"
+  },
+
+  // ==================== SONGS ====================
+
+  {
+    id: "s1",
+    category: "song",
+    title: "Shape of You",
+    scene: "Ed Sheeran",
+    line_en: "The club isn't the best place to find a lover.",
+    line_ko: "클럽은 연인을 찾기에 가장 좋은 장소는 아니에요.",
+    difficulty: "easy",
+    expression: "best place to find",
+    expression_ko: "~찾기에 가장 좋은 장소",
+    explanation_ko: "일상적인 공간에 대한 선호도를 표현할 때 유용합니다.",
+    tags: ["romance", "pop"]
+  },
+  {
+    id: "s2",
+    category: "song",
+    title: "A Whole New World",
+    scene: "Aladdin OST",
+    line_en: "I can show you the world.",
+    line_ko: "당신에게 세상을 보여줄 수 있어요.",
+    difficulty: "easy",
+    expression: "show somebody something",
+    expression_ko: "누구에게 ~을 보여주다",
+    explanation_ko: "수여동사 show의 전형적인 활용 패턴입니다.",
+    tags: ["dream", "classic"]
+  },
+  {
+    id: "s3",
+    category: "song",
+    title: "Someone Like You",
+    scene: "Adele",
+    line_en: "Never mind, I'll find someone like you.",
+    line_ko: "걱정 마세요, 당신 같은 사람을 찾을게요.",
+    difficulty: "medium",
+    expression: "never mind",
+    expression_ko: "걱정 마 / 괜찮아 / 신경 쓰지 마",
+    explanation_ko: "상대방을 안심시키거나 상황을 넘길 때 자주 쓰이는 구어체 표현입니다.",
+    tags: ["emotion", "soul"]
+  },
+  {
+    id: "s4",
+    category: "song",
+    title: "Let It Be",
+    scene: "The Beatles",
+    line_en: "There will be an answer, let it be.",
+    line_ko: "답이 있을 거예요, 그냥 순리에 맡기세요.",
+    difficulty: "easy",
+    expression: "let it be",
+    expression_ko: "그대로 두다 / 순리에 맡기다",
+    explanation_ko: "명상적이고 위로가 되는 고전적인 표현입니다.",
+    tags: ["wisdom", "classic"]
+  },
+  {
+    id: "s5",
+    category: "song",
+    title: "Thinking Out Loud",
+    scene: "Ed Sheeran",
+    line_en: "People fall in love in mysterious ways.",
+    line_ko: "사람들은 신비로운 방식으로 사랑에 빠지곤 하죠.",
+    difficulty: "medium",
+    expression: "fall in love",
+    expression_ko: "사랑에 빠지다",
+    explanation_ko: "감정 상태의 변화를 나타내는 'fall'의 활용입니다.",
+    tags: ["love", "pop"]
+  },
+  {
+    id: "s6",
+    category: "song",
+    title: "Stay With Me",
+    scene: "Sam Smith",
+    line_en: "Won't you stay with me?",
+    line_ko: "나와 함께 있어주지 않을래요?",
+    difficulty: "easy",
+    expression: "stay with me",
+    expression_ko: "함께 있다 / 머무르다",
+    explanation_ko: "상대방에게 머물기를 간절히 요청할 때 쓰는 표현입니다.",
+    tags: ["emotion", "pop"]
+  },
+  {
+    id: "s7",
+    category: "song",
+    title: "Just the Way You Are",
+    scene: "Bruno Mars",
+    line_en: "You're amazing just the way you are.",
+    line_ko: "있는 그대로의 당신 모습이 놀라워요.",
+    difficulty: "easy",
+    expression: "just the way you are",
+    expression_ko: "있는 그대로의 모습",
+    explanation_ko: "상대방의 현재 모습을 칭찬할 때 가장 많이 쓰이는 관용구입니다.",
+    tags: ["confidence", "pop"]
+  },
+  {
+    id: "s8",
+    category: "song",
+    title: "Count on Me",
+    scene: "Bruno Mars",
+    line_en: "You can count on me like one two three.",
+    line_ko: "하나 둘 셋 하는 것처럼 나를 의지해도 돼요.",
+    difficulty: "easy",
+    expression: "count on somebody",
+    expression_ko: "누구를 의지하다 / 믿다",
+    explanation_ko: "신뢰를 표현할 때 'count on'은 필수적인 숙어입니다.",
+    tags: ["friendship", "pop"]
+  },
+  {
+    id: "s9",
+    category: "song",
+    title: "All of Me",
+    scene: "John Legend",
+    line_en: "All of me loves all of you.",
+    line_ko: "내 모든 것이 당신의 모든 것을 사랑해요.",
+    difficulty: "easy",
+    expression: "all of me/you",
+    expression_ko: "나/너의 모든 것",
+    explanation_ko: "전부라는 의미를 강조할 때 쓰는 로맨틱한 표현입니다.",
+    tags: ["love", "soul"]
+  },
+  {
+    id: "s10",
+    category: "song",
+    title: "Perfect",
+    scene: "Ed Sheeran",
+    line_en: "I found a love for me.",
+    line_ko: "내게 맞는 사랑을 찾았어요.",
+    difficulty: "easy",
+    expression: "found a love",
+    expression_ko: "사랑을 찾다",
+    explanation_ko: "일생의 인연을 만났을 때 쓰는 감격스러운 표현입니다.",
+    tags: ["love", "pop"]
+  },
+  {
+    id: "s11",
+    category: "song",
+    title: "Billie Jean",
+    scene: "Michael Jackson",
+    line_en: "The kid is not my son.",
+    line_ko: "그 아이는 내 아들이 아니에요.",
+    difficulty: "medium",
+    expression: "not my son",
+    expression_ko: "~가 아니다 / 부정의 표현",
+    explanation_ko: "강력한 부정의 표현으로, 소유격과 명사의 결합을 보여줍니다.",
+    tags: ["legend", "pop", "dance"]
+  },
+  {
+    id: "s12",
+    category: "song",
+    title: "Man in the Mirror",
+    scene: "Michael Jackson",
+    line_en: "I'm starting with the man in the mirror.",
+    line_ko: "거울 속의 그 사람부터 시작하려고 해요.",
+    difficulty: "medium",
+    expression: "start with",
+    expression_ko: "~부터 시작하다",
+    explanation_ko: "변화의 시작점이나 순서를 말할 때 아주 유용한 표현입니다.",
+    tags: ["message", "soul", "pop"]
+  },
+  {
+    id: "s13",
+    category: "song",
+    title: "Heal the World",
+    scene: "Michael Jackson",
+    line_en: "Make a better place for you and for me.",
+    line_ko: "당신과 나를 위해 더 나은 세상을 만들어요.",
+    difficulty: "easy",
+    expression: "make a better place",
+    expression_ko: "더 나은 세상을 만들다",
+    explanation_ko: "환경이나 상황을 개선하고자 할 때 쓰는 희망찬 표현입니다.",
+    tags: ["hope", "peace"]
+  },
+  {
+    id: "s14",
+    category: "song",
+    title: "Beat It",
+    scene: "Michael Jackson",
+    line_en: "No one wants to be defeated.",
+    line_ko: "그 누구도 패배하고 싶어하지 않아요.",
+    difficulty: "medium",
+    expression: "want to be defeated",
+    expression_ko: "패배하고 싶어하다",
+    explanation_ko: "수동태 'be defeated'(패배당하다)의 명확한 활용 예시입니다.",
+    tags: ["energy", "rock", "pop"]
+  },
+  {
+    id: "s15",
+    category: "song",
+    title: "Thriller",
+    scene: "Michael Jackson",
+    line_en: "You're fighting for your life.",
+    line_ko: "당신은 목숨을 걸고 싸우고 있어요.",
+    difficulty: "medium",
+    expression: "fight for one's life",
+    expression_ko: "필사적으로 싸우다 / 목숨을 걸다",
+    explanation_ko: "극한의 노력이 필요한 상황을 생생하게 묘사하는 표현입니다.",
+    tags: ["legend", "horror", "pop"]
   }
 ];
