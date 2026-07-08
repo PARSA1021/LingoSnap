@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { ContentLine } from '@/data/contents';
 import { Play, Bookmark, Info, CheckCircle2 } from 'lucide-react';
 import { useTTS } from '@/hooks/useTTS';
@@ -98,13 +97,8 @@ export function ContentCard({ content, onWordClick, isQuizMode = false }: Conten
  )}
 
  {/* Quiz Mode */}
- <AnimatePresence>
  {isQuizMode && content.practiceQuestions && content.practiceQuestions.length > 0 && (
- <motion.div
- initial={{ opacity: 0, height: 0 }}
- animate={{ opacity: 1, height: 'auto' }}
- className="overflow-hidden"
- >
+ <div className="overflow-hidden">
  <div className="bg-[var(--color-primary)]/5 rounded-2xl p-4 border border-[var(--color-primary)]/20">
  <p className="text-[10px] font-bold text-[var(--color-primary)] uppercase tracking-widest mb-3">
  연습 문제
@@ -151,30 +145,19 @@ export function ContentCard({ content, onWordClick, isQuizMode = false }: Conten
  ))}
  </div>
  {showQuizResult && (
- <motion.div
- initial={{ opacity: 0, y: 10 }}
- animate={{ opacity: 1, y: 0 }}
- className="mt-4 p-3 bg-[var(--color-surface)] rounded-xl border border-[var(--color-border)]"
- >
+ <div className="mt-4 p-3 bg-[var(--color-surface)] rounded-xl border border-[var(--color-border)]">
  <p className="text-xs text-[var(--color-muted-foreground)]">
  {content.practiceQuestions[0].explanation}
  </p>
- </motion.div>
+ </div>
  )}
  </div>
- </motion.div>
+ </div>
  )}
- </AnimatePresence>
 
  {/* Show Details Toggle */}
- <AnimatePresence>
  {showDetails && (
- <motion.div
- initial={{ opacity: 0, height: 0 }}
- animate={{ opacity: 1, height: 'auto' }}
- exit={{ opacity: 0, height: 0 }}
- className="overflow-hidden space-y-4"
- >
+ <div className="overflow-hidden space-y-4">
  {/* Common Mistakes */}
  {content.commonMistakes && content.commonMistakes.length > 0 && (
  <div className="bg-[var(--color-error)]/5 rounded-2xl p-4 border border-[var(--color-error)]/20">
@@ -198,9 +181,8 @@ export function ContentCard({ content, onWordClick, isQuizMode = false }: Conten
  </div>
  </div>
  )}
- </motion.div>
+ </div>
  )}
- </AnimatePresence>
 
  {/* Action Buttons */}
  <div className="mt-auto pt-4 flex flex-col gap-3">

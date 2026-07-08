@@ -4,7 +4,6 @@ import * as React from 'react';
 import { grammarContents } from '@/data/contents';
 import { ContentCard } from '@/components/contents/ContentCard';
 import { useLearningStore } from '@/store/useLearningStore';
-import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Lightbulb, 
   Search, 
@@ -37,12 +36,8 @@ export default function ContentsPage() {
     <div className="min-h-screen w-full bg-[var(--color-background)] pb-24 pt-6 md:pt-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto flex flex-col gap-6 md:gap-10">
         
-        {/* ─── Header ───────────────────────────────────────────────── */}
-        <motion.header 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="flex flex-col items-center text-center gap-4"
-        >
+        {/* Header */}
+        <header className="flex flex-col items-center text-center gap-4">
           <div className="inline-flex items-center gap-2 bg-[var(--color-surface)] border border-[var(--color-border)] px-4 py-1.5 rounded-full shadow-sm">
             <Sparkles className="w-4 h-4 text-[var(--color-primary)] fill-[var(--color-primary)]" />
             <span className="font-bold text-xs md:text-sm uppercase tracking-wide text-[var(--color-muted-foreground)]">
@@ -55,15 +50,10 @@ export default function ContentsPage() {
           <p className="text-sm md:text-base text-[var(--color-muted-foreground)] max-w-xl px-4 font-medium">
             복잡한 문법도 쉽게, 핵심만 쏙쏙 뽑아 마스터해보세요!
           </p>
-        </motion.header>
+        </header>
 
-        {/* ─── Control Board ────────────────────────────────────────── */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="bg-[var(--color-surface)] rounded-[32px] border border-[var(--color-border)] p-4 sm:p-5 md:p-6 shadow-sm flex flex-col lg:flex-row gap-5 md:gap-6 sticky top-4 sm:top-20 z-40"
-        >
+        {/* Control Board */}
+        <div className="bg-[var(--color-surface)] rounded-3xl border border-[var(--color-border)] p-4 sm:p-5 md:p-6 shadow-sm flex flex-col lg:flex-row gap-5 md:gap-6">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-5 w-full">
             
             {/* Category / Filters */}
@@ -118,35 +108,25 @@ export default function ContentsPage() {
             </div>
 
           </div>
-        </motion.div>
+        </div>
 
-        {/* ─── Results Info ─────────────────────────────────────────── */}
+        {/* Results Info */}
         <div className="flex items-end justify-between px-2">
           <p className="font-medium text-[var(--color-muted-foreground)] text-base">
             총 <span className="text-[var(--color-primary)] font-bold text-xl">{filteredContents.length}</span> 개의 학습 컨텐츠
           </p>
         </div>
 
-        {/* ─── Grid ─────────────────────────────────────────────────── */}
+        {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
-          <AnimatePresence mode="popLayout">
-            {filteredContents.map((content) => (
-              <motion.div
-                key={content.id}
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-                className="h-full"
-              >
-                <ContentCard 
-                  content={content} 
-                  isQuizMode={isQuizMode}
-                />
-              </motion.div>
-            ))}
-          </AnimatePresence>
+          {filteredContents.map((content) => (
+            <div key={content.id} className="h-full">
+              <ContentCard 
+                content={content} 
+                isQuizMode={isQuizMode}
+              />
+            </div>
+          ))}
           
           {filteredContents.length === 0 && (
             <div className="col-span-full py-20 flex flex-col items-center justify-center text-center">

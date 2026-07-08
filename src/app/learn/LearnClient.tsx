@@ -14,7 +14,6 @@ import vocabData from '@/data/vocabulary.json';
 import sentenceData from '@/data/sentences.json';
 import { grammarContents } from '@/data/contents';
 import { XCircle } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { WordRevealStep } from '@/components/learn/WordRevealStep';
 import { ChoiceQuizStep } from '@/components/learn/ChoiceQuizStep';
 import { ListeningQuizStep } from '@/components/learn/ListeningQuizStep';
@@ -142,18 +141,10 @@ export function LearnClient({
  </div>
  </div>
  <div className="h-3.5 w-full bg-[var(--color-muted)] rounded-full overflow-hidden border border-[var(--color-border)]">
- <motion.div
- initial={{ width: 0 }}
- animate={{ width: `${progress}%` }}
- transition={{ type: "spring", stiffness: 100, damping: 20 }}
- className="h-full bg-[var(--color-secondary)] rounded-full relative"
- >
- <motion.div
- animate={{ x: ['-100%', '200%'] }}
- transition={{ repeat: Infinity, duration: 2.5, ease: "linear" }}
- className="absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-white/40 to-transparent"
+ <div
+ className="h-full bg-[var(--color-secondary)] rounded-full relative transition-all duration-300 ease-out"
+ style={{ width: `${progress}%` }}
  />
- </motion.div>
  </div>
  </div>
 
@@ -171,30 +162,19 @@ export function LearnClient({
 
  <main className="flex-1 overflow-y-auto px-4 py-6 flex flex-col items-center custom-scrollbar">
  <div className="max-w-4xl mx-auto w-full flex-1 flex flex-col justify-center pb-24 sm:pb-32">
- <AnimatePresence mode="wait">
- <motion.div
- key={stepIndex}
- initial={{ opacity: 0, scale: 0.98, y: 10 }}
- animate={{ opacity: 1, scale: 1, y: 0 }}
- exit={{ opacity: 0, scale: 1.02, y: -10 }}
- transition={{ duration: 0.25, ease: "easeOut" }}
- className="w-full"
- >
+ <div key={stepIndex} className="w-full">
  {renderStep()}
- </motion.div>
- </AnimatePresence>
+ </div>
  </div>
  </main>
 
  <div className="h-24 shrink-0">
- <AnimatePresence>
  {result.kind !== 'none' && (
  <FeedbackBar
  result={{ kind: result.kind as 'correct' | 'wrong' }}
  onNext={handleNext}
  />
  )}
- </AnimatePresence>
  </div>
  </div>
  );

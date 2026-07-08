@@ -4,7 +4,6 @@ import * as React from 'react';
 import { Card, CardContent } from '../ui/Card';
 import { Volume2, ArrowRight, ArrowLeft, Star } from 'lucide-react';
 import { useTTS } from '@/hooks/useTTS';
-import { motion, AnimatePresence } from 'framer-motion';
 import { useLearningStore } from '@/store/useLearningStore';
 import { cn } from '@/lib/utils/cn';
 import { formatWord, formatSentence } from '@/lib/utils/format';
@@ -49,7 +48,7 @@ export function VocabCard({ word, onNext, onPrev, showPrev, highlight }: VocabCa
  const isFavorite = favorites.some(w => w.word === word.word);
 
  return (
- <Card className="w-full max-w-lg mx-auto mb-6 bg-[var(--color-surface)] border-none shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+ <Card className="w-full max-w-lg mx-auto mb-6 bg-[var(--color-surface)] border-none shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:shadow-lg transition-shadow duration-300">
  {/* Action Tray */}
  <div className="absolute top-4 right-4 z-20 flex gap-2">
  <button
@@ -68,8 +67,7 @@ export function VocabCard({ word, onNext, onPrev, showPrev, highlight }: VocabCa
  <CardContent className="p-6 sm:p-10 flex flex-col items-center text-center space-y-6">
  {/* Word Stage */}
  <div className="w-full pt-8 min-h-[100px] flex items-center justify-center">
- <AnimatePresence mode="wait">
- <motion.div key="visible" initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col items-center gap-3">
+ <div className="flex flex-col items-center gap-3">
  <h2 className="text-4xl sm:text-5xl font-black text-[var(--color-foreground)] tracking-tight">
  <HighlightText text={formatWord(word.word)} query={highlight} />
  </h2>
@@ -84,13 +82,11 @@ export function VocabCard({ word, onNext, onPrev, showPrev, highlight }: VocabCa
  >
  <Volume2 className={cn("h-6 w-6", isPlaying && "fill-current")} />
  </button>
- </motion.div>
- </AnimatePresence>
+ </div>
  </div>
 
  {/* Meaning Area */}
  <div className="w-full min-h-[100px]">
- <AnimatePresence mode="wait">
  {!showMeaning ? (
  <button 
  onClick={() => setShowMeaning(true)} 
@@ -99,7 +95,7 @@ export function VocabCard({ word, onNext, onPrev, showPrev, highlight }: VocabCa
  뜻 확인하기
  </button>
  ) : (
- <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="text-left space-y-4">
+ <div className="text-left space-y-4">
  <div className="bg-[var(--color-primary)]/5 p-4 rounded-2xl flex justify-center text-center">
  <p className="text-2xl font-bold text-[var(--color-primary)] tracking-tight">
  <HighlightText text={word.meaning} query={highlight} />
@@ -121,9 +117,8 @@ export function VocabCard({ word, onNext, onPrev, showPrev, highlight }: VocabCa
  </div>
  ))}
  </div>
- </motion.div>
+ </div>
  )}
- </AnimatePresence>
  </div>
 
  {/* Nav Controls */}

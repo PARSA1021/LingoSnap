@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Home, Lightbulb, BookA, Mic, RotateCcw, BookOpen } from 'lucide-react';
 import { cn } from '@/lib/utils/cn';
-import { motion } from 'framer-motion';
 
 const tabs = [
  { name: '홈', href: '/', icon: Home },
@@ -46,7 +45,7 @@ export function BottomNav() {
  ? 'text-[var(--color-primary)] scale-110' 
  : 'text-[var(--color-muted-foreground)] group-hover:text-[var(--color-foreground)]'
  )}>
- <Icon className={cn("w-6 h-6 transition-transform duration-300", isActive && "stroke-[2.5px]")} />
+ <Icon className={cn("w-6 h-6", isActive && "stroke-[2.5px]")} />
  </div>
 
  <span className={cn(
