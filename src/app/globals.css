@@ -1,327 +1,123 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-surface: var(--surface);
-  --color-surface-foreground: var(--surface-foreground);
-  --color-border: var(--border);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
+  --color-primary: #FF385C; /* Airbnb-like energetic pink/red */
+  --color-primary-light: #FF5A79;
+  --color-primary-dark: #D90B38;
+  --color-secondary: #00A699; /* Refreshing teal */
+  --color-accent: #FFB400; /* Warm yellow */
+  
+  --color-background: #F7F7F9; /* Very soft gray background for light mode */
+  --color-surface: #FFFFFF;
+  --color-surface-hover: #F1F1F1;
+  --color-border: #EBEBEB;
+  --color-muted: #F7F7F9;
+  --color-muted-foreground: #717171; /* Soft text color */
+  --color-foreground: #222222; /* Dark, almost black for primary text */
 
-  --font-luckiest: var(--font-inter);
-  --font-lilita: var(--font-inter);
-  --font-reading: var(--font-inter);
+  --color-success: #00A699;
+  --color-warning: #FFB400;
+  --color-error: #E21C3D;
+  --color-info: #3182CE;
 
-  --color-success: var(--success);
-  --color-success-foreground: var(--success-foreground);
-  --color-success-shadow: var(--success-shadow);
-  --color-error: var(--error);
-  --color-error-foreground: var(--error-foreground);
-  --color-error-shadow: var(--error-shadow);
-  --color-warning: var(--warning);
-  --color-warning-shadow: var(--warning-shadow);
-  --color-info: var(--info);
-  --color-info-shadow: var(--info-shadow);
-
-  --color-primary-shadow: var(--primary-shadow);
-  --color-secondary-shadow: var(--secondary-shadow);
-
-  /* Modern generous radius */
-  --radius-sm: 0.5rem;
-  --radius-md: 0.75rem;
+  --radius-xl: 1.5rem;
   --radius-lg: 1rem;
-  --radius-xl: 1.25rem;
-  --radius-2xl: 1.5rem;
-  --radius-3xl: 2rem;
+  --radius-md: 0.75rem;
+  --radius-sm: 0.5rem;
   --radius-full: 9999px;
 
-  --shadow-tactile: 0 4px 16px rgba(0, 0, 0, 0.12);
-  --shadow-tactile-active: 0 2px 8px rgba(0, 0, 0, 0.08);
-
-  /* Glass effect */
-  --blur-glass: 20px;
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.04);
+  --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.08);
+  --shadow-glow: 0 0 0 4px rgba(255, 56, 92, 0.15);
 }
 
-/* ─── Light Mode ─────────────────────────────────────────────────────────── */
 :root {
-  --background: #F4F4F8;
-  --bg-gradient: linear-gradient(135deg, #f4f4f8 0%, #eef0f8 100%);
-  --foreground: #11111a;
-
-  --primary: #6366F1;
-  --primary-foreground: #FFFFFF;
-  --primary-shadow: rgba(99, 102, 241, 0.35);
-
-  --secondary: #8B5CF6;
-  --secondary-foreground: #FFFFFF;
-  --secondary-shadow: rgba(139, 92, 246, 0.35);
-
-  --surface: rgba(255, 255, 255, 0.88);
-  --surface-foreground: #11111a;
-
-  --border: rgba(0, 0, 0, 0.15);
-
-  --muted: rgba(0, 0, 0, 0.04);
-  --muted-foreground: #6b7280;
-
-  --accent: #6366F1;
-  --accent-foreground: #FFFFFF;
-
-  --success: #059669;
-  --success-foreground: #FFFFFF;
-  --success-shadow: rgba(5, 150, 105, 0.3);
-  --error: #EF4444;
-  --error-foreground: #FFFFFF;
-  --error-shadow: rgba(239, 68, 68, 0.3);
-  --warning: #F59E0B;
-  --warning-foreground: #FFFFFF;
-  --warning-shadow: rgba(245, 158, 11, 0.3);
-  --info: #3B82F6;
-  --info-foreground: #FFFFFF;
-  --info-shadow: rgba(59, 130, 246, 0.3);
-
-  --tactile-shadow-opacity: 1;
-
-  /* Glass layer token */
-  --glass-bg: rgba(255, 255, 255, 0.80);
-  --glass-border: rgba(0, 0, 0, 0.12);
-  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
+  --bg-gradient: linear-gradient(to bottom, #F7F7F9, #FFFFFF);
+  --primary-gradient: linear-gradient(135deg, #FF385C 0%, #D90B38 100%);
 }
 
-/* ─── Dark Mode ──────────────────────────────────────────────────────────── */
 .dark {
-  --background: #0C0C18;
-  --bg-gradient: linear-gradient(135deg, #0c0c18 0%, #12122a 60%, #0c0c18 100%);
-  --foreground: #E8E8F4;
+  --color-background: #111111; /* Very dark background for depth */
+  --color-surface: #1E1E1E;
+  --color-surface-hover: #2A2A2A;
+  --color-border: #333333;
+  --color-muted: #222222;
+  --color-muted-foreground: #A0A0A0;
+  --color-foreground: #F7F7F9;
 
-  --primary: #818CF8;
-  --primary-foreground: #FFFFFF;
-  --primary-shadow: rgba(129, 140, 248, 0.4);
-
-  --secondary: #A78BFA;
-  --secondary-foreground: #FFFFFF;
-  --secondary-shadow: rgba(167, 139, 250, 0.4);
-
-  --surface: rgba(255, 255, 255, 0.08);
-  --surface-foreground: #E8E8F4;
-
-  --border: rgba(255, 255, 255, 0.14);
-
-  --muted: rgba(255, 255, 255, 0.06);
-  --muted-foreground: #9CA3AF;
-
-  --accent: #818CF8;
-  --accent-foreground: #FFFFFF;
-
-  --success: #34D399;
-  --success-foreground: #022c22;
-  --success-shadow: rgba(52, 211, 153, 0.35);
-  --error: #F87171;
-  --error-foreground: #450a0a;
-  --error-shadow: rgba(248, 113, 113, 0.35);
-  --warning: #FBBF24;
-  --warning-foreground: #451a03;
-  --warning-shadow: rgba(251, 191, 36, 0.35);
-  --info: #60A5FA;
-  --info-foreground: #082f49;
-  --info-shadow: rgba(96, 165, 250, 0.35);
-
-  --tactile-shadow-opacity: 1;
-
-  --glass-bg: rgba(255, 255, 255, 0.07);
-  --glass-border: rgba(255, 255, 255, 0.14);
-  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+  --bg-gradient: linear-gradient(to bottom, #111111, #1A1A1A);
+  --primary-gradient: linear-gradient(135deg, #FF5A79 0%, #FF385C 100%);
 }
 
-/* ─── Base Styles ─────────────────────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+}
+
 html, body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: 'Inter', var(--font-inter), system-ui, -apple-system, sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: var(--color-background);
+  color: var(--color-foreground);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  min-height: 100vh;
-  line-height: 1.6;
-  transition: background-color 0.35s ease, color 0.35s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* ─── Background gradient for html ───────────────────────────────────────── */
-body {
-  background: var(--bg-gradient);
-  background-attachment: fixed;
-}
-
-/* ─── Typography — font-cartoon & heading remapped to Inter ──────────────── */
-h1, h2, h3, .font-cartoon {
-  font-family: 'Inter', var(--font-inter), system-ui, sans-serif;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.15;
-}
-
-h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
-h2 { font-size: clamp(1.5rem, 3.5vw, 2.5rem); }
-
-.font-reading {
-  font-family: 'Inter', var(--font-inter), system-ui, sans-serif;
-  letter-spacing: -0.01em;
-  line-height: 1.6;
-  text-transform: none;
-}
-
-/* ─── Glass Utility ──────────────────────────────────────────────────────── */
-.glass {
-  background: var(--glass-bg);
-  backdrop-filter: blur(var(--blur-glass));
-  -webkit-backdrop-filter: blur(var(--blur-glass));
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-shadow);
-}
-
-/* ─── Card Tactile → Modern Card ─────────────────────────────────────────── */
-.card-tactile {
-  background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border);
-  border-radius: 1.25rem;
-  box-shadow: var(--glass-shadow);
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-.card-tactile:hover {
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.14);
-  transform: translateY(-1px);
-}
-
-/* ─── Button Tactile → Modern Button ─────────────────────────────────────── */
-.btn-tactile {
-  border: 1px solid var(--glass-border);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
-  border-radius: 0.875rem;
+/* Typography styles */
+h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 
-.btn-tactile:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  transform: translateY(-1px);
+/* Custom scrollbar for a polished look */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
-
-.btn-tactile:active {
-  transform: translateY(0) scale(0.98) !important;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
 }
-
-/* ─── Hover Float Utility ────────────────────────────────────────────────── */
-.hover-float {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.hover-float:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15) !important;
-}
-
-/* ─── Soft Background ────────────────────────────────────────────────────── */
-.bg-soft {
-  background: var(--muted);
-}
-
-/* ─── Ambient orb animation for backgrounds ──────────────────────────────── */
-@keyframes orb-drift {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33%       { transform: translate(30px, -20px) scale(1.05); }
-  66%       { transform: translate(-20px, 15px) scale(0.97); }
-}
-
-.orb {
-  position: fixed;
-  border-radius: 9999px;
-  filter: blur(80px);
-  opacity: 0.25;
-  animation: orb-drift 18s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.orb-1 {
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, #6366F1, transparent 70%);
-  top: -200px;
-  left: -200px;
-  animation-delay: 0s;
-}
-
-.orb-2 {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, #8B5CF6, transparent 70%);
-  bottom: -150px;
-  right: -150px;
-  animation-delay: -6s;
-}
-
-.orb-3 {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, #3B82F6, transparent 70%);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation-delay: -12s;
-}
-
-/* ─── Dot pattern (subtle) ───────────────────────────────────────────────── */
-.dot-pattern {
-  background-image: radial-gradient(rgba(99, 102, 241, 0.08) 1px, transparent 1px);
-  background-size: 28px 28px;
-}
-
-/* ─── Selection highlight ────────────────────────────────────────────────── */
-.selection-highlight {
-  background-color: var(--primary);
-  color: var(--primary-foreground);
-}
-
-/* ─── Custom scrollbar ───────────────────────────────────────────────────── */
-.custom-scrollbar::-webkit-scrollbar { width: 4px; }
-.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: var(--border);
+  background: var(--color-border);
   border-radius: 9999px;
 }
-
-/* ─── Shimmer animation ──────────────────────────────────────────────────── */
-@keyframes shimmer {
-  0%   { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted-foreground);
 }
 
-.shimmer {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.06) 50%,
-    transparent 100%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 2.5s linear infinite;
+/* Text Gradient */
+.text-gradient {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-/* ─── Wobbly kept for backwards compat (no-op) ───────────────────────────── */
-.wobbly, .wobbly-slow { animation: none; }
+/* Glass effect for navigation elements */
+.glass-cake {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+.dark .glass-cake {
+  background: rgba(30, 30, 30, 0.85);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
 
-/* ─── Glow ring for active/focus ─────────────────────────────────────────── */
-.glow-ring {
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.35);
+/* Smooth page transition utility */
+.fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

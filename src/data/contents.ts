@@ -1,1720 +1,875 @@
 export type Difficulty = "easy" | "medium" | "hard";
 
-export type ContentLine = {
-  id: string;
-  category: "movie" | "song";
-  title: string;
-  scene: string;
-
-  line_en: string;
-  line_ko: string;
-
-  difficulty: Difficulty;
-  expression: string;
-  tags: string[];
-
-  explanation_ko?: string;
-  expression_ko?: string;
-  thumbnailUrl?: string;
+export type Example = {
+ en: string;
+ ko: string;
 };
 
-export const mediaContents: ContentLine[] = [
-  // ========== CLASSIC HITS ==========
+export type CommonMistake = {
+ wrong: string;
+ correct: string;
+ explanation: string;
+};
+
+export type PracticeQuestion = {
+ question: string;
+ options: string[];
+ correctAnswer: number;
+ explanation: string;
+};
+
+export type ContentLine = {
+ id: string;
+ category: string;
+ title: string;
+ difficulty: Difficulty;
+ explanation: string;
+ examples: Example[];
+ commonMistakes: CommonMistake[];
+ practiceQuestions: PracticeQuestion[];
+ tags: string[];
+};
+
+export const grammarContents: ContentLine[] = [
+ // ========== 기초 문법 ==========
+ {
+ id: "g1",
+ category: "Tenses",
+ title: "Present Simple (현재 단순형)",
+ difficulty: "easy",
+ explanation: "습관, 반복적인 행동, 일반적인 진실을 표현할 때 사용합니다. I/you/we/they 뒤에는 동사 원형을, he/she/it 뒤에는 동사에 -s/-es를 붙입니다.",
+ examples: [
+ { en: "I drink coffee every morning.", ko: "나는 매일 아침 커피를 마신다." },
+ { en: "She works in an office.", ko: "그녀는 사무실에서 일한다." },
+ { en: "The sun rises in the east.", ko: "태양은 동쪽에서 뜬다." },
+ { en: "They play football on weekends.", ko: "그들은 주말에 축구를 한다." }
+ ],
+ commonMistakes: [
+ { wrong: "He go to school.", correct: "He goes to school.", explanation: "3인칭 단수 주어 뒤에는 동사에 -s/-es를 붙여야 합니다." },
+ { wrong: "She don't like pizza.", correct: "She doesn't like pizza.", explanation: "3인칭 단수일 때 don't 대신 doesn't를 사용합니다." }
+ ],
+ practiceQuestions: [
+ {
+ question: "She ____ (study) English every day.",
+ options: ["study", "studies", "studying", "studied"],
+ correctAnswer: 1,
+ explanation: "3인칭 단수 주어 'she' 뒤에는 동사에 -s를 붙여 studies로 사용합니다."
+ },
+ {
+ question: "I ____ (not like) spicy food.",
+ options: ["don't like", "doesn't like", "not like", "am not like"],
+ correctAnswer: 0,
+ explanation: "1인칭 주어 'I' 뒤에는 don't를 사용합니다."
+ }
+ ],
+ tags: ["기초", "시제", "현재"]
+ },
+ {
+ id: "g2",
+ category: "Tenses",
+ title: "Present Continuous (현재 진행형)",
+ difficulty: "easy",
+ explanation: "지금 이 순간 일어나고 있는 행동을 표현할 때 사용합니다. am/is/are + 동사-ing 형태로 사용합니다.",
+ examples: [
+ { en: "I am eating dinner now.", ko: "나는 지금 저녁을 먹고 있다." },
+ { en: "They are watching TV.", ko: "그들은 TV를 보고 있다." },
+ { en: "Is she working today?", ko: "그녀는 오늘 일하고 있나요?" },
+ { en: "We aren't going to the party.", ko: "우리는 파티에 안 간다." }
+ ],
+ commonMistakes: [
+ { wrong: "I eating now.", correct: "I am eating now.", explanation: "주어 뒤에 be동사(am/is/are)를 반드시 넣어야 합니다." },
+ { wrong: "He is eat.", correct: "He is eating.", explanation: "be동사 뒤에는 동사에 -ing를 붙여야 합니다." }
+ ],
+ practiceQuestions: [
+ {
+ question: "Look! The cat ____ (chase) the mouse.",
+ options: ["chases", "is chasing", "chasing", "chase"],
+ correctAnswer: 1,
+ explanation: "지금 일어나는 행동이므로 현재 진행형을 사용합니다."
+ },
+ {
+ question: "What ____ you ____ (do) right now?",
+ options: ["do / do", "are / doing", "is / doing", "did / do"],
+ correctAnswer: 1,
+ explanation: "you와 함께 쓰이는 be동사는 are이고, 뒤에는 doing이 옵니다."
+ }
+ ],
+ tags: ["기초", "시제", "현재", "진행형"]
+ },
+ {
+ id: "g3",
+ category: "Articles",
+ title: "A / An (부정관사)",
+ difficulty: "easy",
+ explanation: "단수 가산 명사 앞에 사용하며, '하나의'라는 의미를 가집니다. 모음 소리로 시작하는 단어 앞에는 an, 자음 소리로 시작하는 단어 앞에는 a를 사용합니다.",
+ examples: [
+ { en: "I have a book.", ko: "나는 책이 하나 있다." },
+ { en: "She is an engineer.", ko: "그녀는 엔지니어다." },
+ { en: "A dog is barking.", ko: "개 한 마리가 짖고 있다." },
+ { en: "He ate an apple.", ko: "그는 사과를 하나 먹었다." }
+ ],
+ commonMistakes: [
+ { wrong: "an university", correct: "a university", explanation: "university는 'y' 소리로 시작하므로 a를 사용합니다." },
+ { wrong: "a hour", correct: "an hour", explanation: "hour는 'h'가 묵음이므로 모음 소리로 시작해 an을 사용합니다." }
+ ],
+ practiceQuestions: [
+ {
+ question: "I need ____ umbrella.",
+ options: ["a", "an", "the", "X"],
+ correctAnswer: 1,
+ explanation: "umbrella는 모음 소리로 시작하므로 an을 사용합니다."
+ },
+ {
+ question: "She bought ____ new car.",
+ options: ["a", "an", "the", "X"],
+ correctAnswer: 0,
+ explanation: "new는 자음 소리로 시작하므로 a를 사용합니다."
+ }
+ ],
+ tags: ["기초", "관사"]
+ },
+ {
+ id: "g4",
+ category: "Articles",
+ title: "The (정관사)",
+ difficulty: "easy",
+ explanation: "특정한 것을 가리킬 때 사용합니다. 이미 언급된 것, 유일한 것, 특정한 것 등에 사용합니다.",
+ examples: [
+ { en: "The sky is blue.", ko: "하늘은 파랗다." },
+ { en: "I saw a cat. The cat was black.", ko: "나는 고양이를 보았다. 그 고양이는 검았다." },
+ { en: "The sun is shining.", ko: "태양이 빛나고 있다." },
+ { en: "She is in the kitchen.", ko: "그녀는 부엌에 있다." }
+ ],
+ commonMistakes: [
+ { wrong: "I go to the school every day.", correct: "I go to school every day.", explanation: "학교에 '공부하러' 가는 경우 the를 붙이지 않습니다." },
+ { wrong: "The my book is on the table.", correct: "My book is on the table.", explanation: "소유격(my, your 등)과 the는 함께 쓰지 않습니다." }
+ ],
+ practiceQuestions: [
+ {
+ question: "____ moon is beautiful tonight.",
+ options: ["A", "An", "The", "X"],
+ correctAnswer: 2,
+ explanation: "달은 유일한 것이므로 the를 사용합니다."
+ },
+ {
+ question: "Can you pass ____ salt?",
+ options: ["a", "an", "the", "X"],
+ correctAnswer: 2,
+ explanation: "특정한 소금(테이블에 있는 소금)을 가리키므로 the를 사용합니다."
+ }
+ ],
+ tags: ["기초", "관사"]
+ },
+ {
+ id: "g5",
+ category: "Prepositions",
+ title: "Prepositions of Time (시간 전치사: in/on/at)",
+ difficulty: "easy",
+ explanation: "시간을 나타낼 때 사용하는 전치사입니다. in은 연도/월/계절, on은 날짜/요일, at은 구체적인 시간에 사용합니다.",
+ examples: [
+ { en: "I was born in 1990.", ko: "나는 1990년에 태어났다." },
+ { en: "We have a meeting on Monday.", ko: "우리는 월요일에 회의가 있다." },
+ { en: "The movie starts at 7 PM.", ko: "영화는 저녁 7시에 시작한다." },
+ { en: "It snows in winter.", ko: "겨울에는 눈이 온다." }
+ ],
+ commonMistakes: [
+ { wrong: "See you in Friday.", correct: "See you on Friday.", explanation: "요일 앞에는 on을 사용합니다." },
+ { wrong: "I wake up at 7.", correct: "I wake up at 7.", explanation: "구체적인 시간 앞에는 at이 맞습니다!" }
+ ],
+ practiceQuestions: [
+ {
+ question: "My birthday is ____ May 5th.",
+ options: ["in", "on", "at", "for"],
+ correctAnswer: 1,
+ explanation: "구체적인 날짜 앞에는 on을 사용합니다."
+ },
+ {
+ question: "We usually eat lunch ____ noon.",
+ options: ["in", "on", "at", "to"],
+ correctAnswer: 2,
+ explanation: "noon(정오)과 같은 구체적인 시간 앞에는 at을 사용합니다."
+ }
+ ],
+ tags: ["기초", "전치사", "시간"]
+ },
+
+ // ========== 중급 문법 ==========
+ {
+ id: "g6",
+ category: "Tenses",
+ title: "Present Perfect (현재 완료형)",
+ difficulty: "medium",
+ explanation: "과거에 시작된 행동이 현재와 관련이 있을 때 사용합니다. have/has + 과거분사 형태로 사용하며, 경험, 완료, 지속 등의 의미를 가집니다.",
+ examples: [
+ { en: "I have visited Paris twice.", ko: "나는 파리를 두 번 방문한 적이 있다." },
+ { en: "She has finished her homework.", ko: "그녀는 숙제를 끝냈다." },
+ { en: "We have lived here for 5 years.", ko: "우리는 여기 5년 동안 살고 있다." },
+ { en: "Have you ever eaten sushi?", ko: "스시를 먹어본 적이 있나요?" }
+ ],
+ commonMistakes: [
+ { wrong: "I have seen him yesterday.", correct: "I saw him yesterday.", explanation: "구체적인 과거 시간(yesterday)이 나오면 현재 완료가 아니라 과거 시제를 사용합니다." },
+ { wrong: "She has go to the store.", correct: "She has gone to the store.", explanation: "have/has 뒤에는 과거분사(gone)를 사용해야 합니다." }
+ ],
+ practiceQuestions: [
+ {
+ question: "I ____ (never / be) to Japan.",
+ options: ["never was", "have never been", "am never", "never be"],
+ correctAnswer: 1,
+ explanation: "경험을 물을 때는 현재 완료형을 사용합니다."
+ },
+ {
+ question: "How long ____ you ____ (study) English?",
+ options: ["did / study", "do / study", "have / studied", "are / studying"],
+ correctAnswer: 2,
+ explanation: "기간을 물을 때는 현재 완료형을 사용합니다."
+ }
+ ],
+ tags: ["중급", "시제", "완료형"]
+ },
+ {
+ id: "g7",
+ category: "Conditionals",
+ title: "First Conditional (1차 조건문)",
+ difficulty: "medium",
+ explanation: "미래에 일어날 가능성이 있는 상황과 그 결과를 표현합니다. If + 현재 시제, 주절 + will/shall/can/may + 동사원형 구조입니다.",
+ examples: [
+ { en: "If it rains tomorrow, we will stay home.", ko: "만약 내일 비가 오면, 우리는 집에 있을 것이다." },
+ { en: "If you study hard, you will pass the exam.", ko: "만약 열심히 공부하면, 시험에 합격할 것이다." },
+ { en: "She will be late if she doesn't hurry.", ko: "만약 그녀가 서두르지 않으면, 늦을 것이다." },
+ { en: "What will you do if you have free time?", ko: "만약 시간이 나면 무엇을 할 건가요?" }
+ ],
+ commonMistakes: [
+ { wrong: "If it will rain, I will stay.", correct: "If it rains, I will stay.", explanation: "If절에는 현재 시제를 사용하고 미래 시제(will)를 사용하지 않습니다." },
+ { wrong: "If you will study, you pass.", correct: "If you study, you will pass.", explanation: "주절에는 will을 사용해야 합니다." }
+ ],
+ practiceQuestions: [
+ {
+ question: "If I ____ (have) enough money, I ____ (buy) a new phone.",
+ options: ["have / buy", "will have / will buy", "have / will buy", "will have / buy"],
+ correctAnswer: 2,
+ explanation: "If절은 현재 시제, 주절은 미래 시제를 사용합니다."
+ },
+ {
+ question: "What ____ (happen) if we ____ (miss) the train?",
+ options: ["happens / miss", "will happen / miss", "will happen / will miss", "happens / will miss"],
+ correctAnswer: 1,
+ explanation: "의문문에서도 If절은 현재 시제, 주절은 미래 시제입니다."
+ }
+ ],
+ tags: ["중급", "조건문"]
+ },
+ {
+ id: "g8",
+ category: "Modal Verbs",
+ title: "Should / Must / Have to",
+ difficulty: "medium",
+ explanation: "의무, 권유, 강제를 표현하는 조동사입니다. should는 권유(해야 한다), must는 강한 의무(반드시 해야 한다), have to는 외적인 의무(해야만 한다)를 나타냅니다.",
+ examples: [
+ { en: "You should eat more vegetables.", ko: "채소를 더 많이 먹어야 해요." },
+ { en: "I must finish this report today.", ko: "오늘 이 보고서를 끝내야만 해요." },
+ { en: "She has to work on Saturday.", ko: "그녀는 토요일에 일해야 해요." },
+ { en: "Should I call him?", ko: "그에게 전화해야 할까요?" }
+ ],
+ commonMistakes: [
+ { wrong: "You should to go now.", correct: "You should go now.", explanation: "조동사 뒤에는 to 없이 동사 원형을 사용합니다." },
+ { wrong: "She musts study.", correct: "She must study.", explanation: "must는 인칭이나 수에 따라 변하지 않습니다." }
+ ],
+ practiceQuestions: [
+ {
+ question: "You ____ (should / stop) smoking. It's bad for you.",
+ options: ["should stop", "should to stop", "stops", "stopping"],
+ correctAnswer: 0,
+ explanation: "should 뒤에는 동사 원형이 옵니다."
+ },
+ {
+ question: "We ____ (have to / leave) early tomorrow.",
+ options: ["have leave", "have to leave", "has to leave", "having to leave"],
+ correctAnswer: 1,
+ explanation: "have to 뒤에는 동사 원형이 옵니다."
+ }
+ ],
+ tags: ["중급", "조동사", "의무"]
+ },
+ {
+ id: "g9",
+ category: "Pronouns",
+ title: "Reflexive Pronouns (재귀대명사)",
+ difficulty: "medium",
+ explanation: "myself, yourself, himself, herself, itself, ourselves, yourselves, themselves로 주어가 행위의 대상이 될 때 사용합니다.",
+ examples: [
+ { en: "I taught myself to play the guitar.", ko: "나는 스스로 기타 치는 법을 배웠다." },
+ { en: "She looked at herself in the mirror.", ko: "그녀는 거울에 비친 자신을 보았다." },
+ { en: "We should be proud of ourselves.", ko: "우리는 스스로 자랑스러워해야 한다." },
+ { en: "Help yourself to some coffee.", ko: "커피 마음껏 드세요." }
+ ],
+ commonMistakes: [
+ { wrong: "I did it by me.", correct: "I did it by myself.", explanation: "혼자 했다는 의미로 by myself를 사용합니다." },
+ { wrong: "He enjoyed him.", correct: "He enjoyed himself.", explanation: "즐거웠다는 의미로 enjoy oneself를 사용합니다." }
+ ],
+ practiceQuestions: [
+ {
+ question: "She cooked dinner by ____.",
+ options: ["her", "hers", "herself", "she"],
+ correctAnswer: 2,
+ explanation: "혼자 요리했다는 의미로 by herself를 사용합니다."
+ },
+ {
+ question: "Don't worry about us. We can take care of ____.",
+ options: ["us", "our", "ours", "ourselves"],
+ correctAnswer: 3,
+ explanation: "우리 스스로 돌볼 수 있다는 의미로 ourselves를 사용합니다."
+ }
+ ],
+ tags: ["중급", "대명사"]
+ },
+ {
+ id: "g10",
+ category: "Adjectives/Adverbs",
+ title: "Comparatives and Superlatives (비교급과 최상급)",
+ difficulty: "medium",
+ explanation: "둘 이상을 비교할 때 비교급(-er, more), 셋 이상에서 가장~을 나타낼 때 최상급(-est, most)을 사용합니다.",
+ examples: [
+ { en: "My house is bigger than yours.", ko: "내 집이 네 집보다 크다." },
+ { en: "She is more intelligent than her brother.", ko: "그녀는 오빠보다 더 똑똑하다." },
+ { en: "This is the best book I've ever read.", ko: "이것은 내가 읽은 책 중 가장 좋은 책이다." },
+ { en: "It was the most exciting movie ever.", ko: "그것은 역대 가장 흥미진진한 영화였다." }
+ ],
+ commonMistakes: [
+ { wrong: "He is more tall than me.", correct: "He is taller than me.", explanation: "짧은 단어는 -er를 붙입니다." },
+ { wrong: "She is beautifuler.", correct: "She is more beautiful.", explanation: "긴 단어는 more를 앞에 붙입니다." }
+ ],
+ practiceQuestions: [
+ {
+ question: "This test is ____ (difficult) than the last one.",
+ options: ["difficult", "difficulter", "more difficult", "most difficult"],
+ correctAnswer: 2,
+ explanation: "3음절 이상의 형용사는 more를 사용해 비교급을 만듭니다."
+ },
+ {
+ question: "That was the ____ (bad) movie I've ever seen.",
+ options: ["bad", "worse", "worst", "baddest"],
+ correctAnswer: 2,
+ explanation: "bad의 최상급은 worst입니다."
+ }
+ ],
+ tags: ["중급", "형용사", "부사", "비교"]
+ },
+
+ // ========== 고급 문법 ==========
+ {
+ id: "g11",
+ category: "Conditionals",
+ title: "Second Conditional (2차 조건문)",
+ difficulty: "hard",
+ explanation: "현재와는 다른 가상의 상황과 그 결과를 표현합니다. If + 과거 시제, 주절 + would/could/might + 동사원형 구조입니다. be동사는 were를 사용합니다.",
+ examples: [
+ { en: "If I won the lottery, I would buy a big house.", ko: "만약 복권에 당첨된다면, 큰 집을 살 것이다." },
+ { en: "If I were you, I would apologize.", ko: "만약 내가 너라면, 사과할 것이다." },
+ { en: "She could travel if she had more money.", ko: "만약 돈이 더 많다면, 여행할 수 있을 것이다." },
+ { en: "What would you do if you could fly?", ko: "만약 날 수 있다면 무엇을 할 건가요?" }
+ ],
+ commonMistakes: [
+ { wrong: "If I was you, I would go.", correct: "If I were you, I would go.", explanation: "가정법에서 be동사는 인칭에 관계없이 were를 사용합니다." },
+ { wrong: "If I have money, I would buy.", correct: "If I had money, I would buy.", explanation: "If절은 과거 시제를 사용해야 합니다." }
+ ],
+ practiceQuestions: [
+ {
+ question: "If I ____ (be) younger, I ____ (travel) more.",
+ options: ["am / will travel", "were / would travel", "was / will travel", "were / travel"],
+ correctAnswer: 1,
+ explanation: "가정법 2차에서 be동사는 were, 주절은 would + 동사원형을 사용합니다."
+ },
+ {
+ question: "What ____ you ____ (do) if you ____ (find) a wallet?",
+ options: ["would / do / found", "will / do / find", "do / do / find", "did / do / found"],
+ correctAnswer: 0,
+ explanation: "가상의 상황이므로 2차 조건문을 사용합니다."
+ }
+ ],
+ tags: ["고급", "조건문", "가정법"]
+ },
+ {
+ id: "g12",
+ category: "Tenses",
+ title: "Past Perfect (과거 완료형)",
+ difficulty: "hard",
+ explanation: "과거의 어떤 시점보다 더 이전에 일어난 행동을 표현합니다. had + 과거분사 형태로 사용하며, '과거의 과거'를 나타냅니다.",
+ examples: [
+ { en: "I had already eaten when he arrived.", ko: "그가 도착했을 때 나는 이미 먹었었다." },
+ { en: "She had lived in Paris for 10 years before moving to London.", ko: "런던으로 이사하기 전에 그녀는 파리에서 10년 동안 살았었다." },
+ { en: "Had you finished your work before the meeting?", ko: "회의 전에 작업을 끝냈었나요?" },
+ { en: "They didn't get the job because they hadn't prepared.", ko: "준비하지 않았었기 때문에 그들은 직업을 얻지 못했다." }
+ ],
+ commonMistakes: [
+ { wrong: "I finished when he arrived.", correct: "I had finished when he arrived.", explanation: "두 과거 행동 중 먼저 일어난 것에 과거 완료를 사용합니다." },
+ { wrong: "I had eat before.", correct: "I had eaten before.", explanation: "had 뒤에는 과거분사(eaten)를 사용해야 합니다." }
+ ],
+ practiceQuestions: [
+ {
+ question: "The movie ____ (already / start) when we ____ (get) to the theater.",
+ options: ["already started / got", "had already started / got", "already starts / get", "had already start / got"],
+ correctAnswer: 1,
+ explanation: "영화가 시작된 것이 더 먼저 일어났으므로 과거 완료를 사용합니다."
+ },
+ {
+ question: "She ____ (not / see) him before they ____ (meet) at the party.",
+ options: ["didn't see / met", "hadn't seen / met", "didn't see / meet", "hadn't saw / met"],
+ correctAnswer: 1,
+ explanation: "파티에서 만나기 전까지 못 봤었으므로 과거 완료를 사용합니다."
+ }
+ ],
+ tags: ["고급", "시제", "완료형"]
+ },
+ {
+ id: "g13",
+ category: "Clauses",
+ title: "Relative Clauses (관계대명사절)",
+ difficulty: "hard",
+ explanation: "명사를 수식하는 절로, who(사람), which(사물), that(사람/사물), whose(소유), where(장소), when(시간) 등을 사용합니다.",
+ examples: [
+ { en: "The woman who is standing there is my teacher.", ko: "거기 서 있는 여자는 내 선생님이다." },
+ { en: "The book which I bought yesterday is very interesting.", ko: "어제 산 책이 매우 재미있다." },
+ { en: "That's the house where I grew up.", ko: "그곳이 내가 자란 집이다." },
+ { en: "Do you know the boy whose bike was stolen?", ko: "자전거를 도난당한 그 소년을 아나요?" }
+ ],
+ commonMistakes: [
+ { wrong: "The man which called you is here.", correct: "The man who called you is here.", explanation: "사람은 who를, 사물은 which를 사용합니다." },
+ { wrong: "I know a girl where lives in Seoul.", correct: "I know a girl who lives in Seoul.", explanation: "사람은 who, 장소는 where를 사용합니다." }
+ ],
+ practiceQuestions: [
+ {
+ question: "The café ____ we met last time is closed now.",
+ options: ["who", "which", "where", "when"],
+ correctAnswer: 2,
+ explanation: "장소를 나타내므로 where를 사용합니다."
+ },
+ {
+ question: "Is this the book ____ you recommended?",
+ options: ["who", "which", "where", "whose"],
+ correctAnswer: 1,
+ explanation: "사물(책)을 나타내므로 which를 사용합니다."
+ }
+ ],
+ tags: ["고급", "절", "관계대명사"]
+ },
+ {
+ id: "g14",
+ category: "Modal Verbs",
+ title: "Modal Perfects (완료형 조동사)",
+ difficulty: "hard",
+ explanation: "과거에 대해 추측, 후회, 비판 등을 표현할 때 사용합니다. should have(했어야 했다), could have(할 수 있었을 텐데), must have(틀림없이 했을 것이다), might have(아마 했을지도) 등이 있습니다.",
+ examples: [
+ { en: "You should have called me yesterday.", ko: "어제 나에게 전화했어야 했어요." },
+ { en: "She must have forgotten about the meeting.", ko: "그녀는 회의에 대해 잊었음에 틀림없다." },
+ { en: "We could have won the game if we had tried harder.", ko: "더 열심히 노력했다면 경기에 이길 수 있었을 것이다." },
+ { en: "They might have missed the bus.", ko: "그들은 버스를 놓쳤을지도 모른다." }
+ ],
+ commonMistakes: [
+ { wrong: "You should called me.", correct: "You should have called me.", explanation: "완료형 조동사는 must/should/could 등 + have + 과거분사로 사용합니다." },
+ { wrong: "She must be forgot.", correct: "She must have forgotten.", explanation: "have 뒤에는 과거분사를 사용해야 합니다." }
+ ],
+ practiceQuestions: [
+ {
+ question: "I ____ (should / study) more for the exam.",
+ options: ["should study", "should have studied", "should studied", "should be study"],
+ correctAnswer: 1,
+ explanation: "과거에 했어야 했는데 안 한 것을 후회할 때 should have + 과거분사를 사용합니다."
+ },
+ {
+ question: "The ground is wet. It ____ (must / rain) last night.",
+ options: ["must rain", "must be rain", "must have rained", "must rained"],
+ correctAnswer: 2,
+ explanation: "과거에 대한 강한 추측은 must have + 과거분사를 사용합니다."
+ }
+ ],
+ tags: ["고급", "조동사", "완료형"]
+ },
+ {
+ id: "g15",
+ category: "Inversion",
+ title: "Inversion (도치 구문)",
+ difficulty: "hard",
+ explanation: "부사나 부사구가 문장 앞에 오면 주어와 동사의 위치를 바꾸는 구문입니다. 강조, 부정어 시작 문장, only로 시작하는 문장 등에서 사용합니다.",
+ examples: [
+ { en: "Never have I seen such a beautiful sunset.", ko: "이렇게 아름다운 석양을 본 적이 없다." },
+ { en: "Only then did I understand what he meant.", ko: "그때서야 그가 무슨 뜻인지 이해했다." },
+ { en: "Rarely do we get this opportunity.", ko: "우리는 이런 기회를 거의 얻지 못한다." },
+ { en: "Not only did he forget his keys, but he also missed the bus.", ko: "그는 열쇠를 잊었을 뿐만 아니라 버스도 놓쳤다." }
+ ],
+ commonMistakes: [
+ { wrong: "Never I have seen that.", correct: "Never have I seen that.", explanation: "부정어로 시작하면 주어와 조동사를 도치시켜야 합니다." },
+ { wrong: "Only then I understood.", correct: "Only then did I understand.", explanation: "only로 시작하면 도치가 필요하며, 일반동사는 do/does/did를 앞에 놓습니다." }
+ ],
+ practiceQuestions: [
+ {
+ question: "Hardly ever ____ (she / go) to the movies.",
+ options: ["she goes", "does she go", "she does go", "goes she"],
+ correctAnswer: 1,
+ explanation: "Hardly ever로 시작하므로 도치 구문을 사용합니다."
+ },
+ {
+ question: "Not until midnight ____ (they / arrive).",
+ options: ["they arrived", "did they arrive", "they did arrive", "arrived they"],
+ correctAnswer: 1,
+ explanation: "Not until로 시작하므로 도치 구문을 사용합니다."
+ }
+ ],
+ tags: ["고급", "도치", "강조"]
+ }
+  ,
+  // ========== 실전 회화 (Daily Life) ==========
   {
-    id: "m1",
-    category: "movie",
-    title: "The Godfather",
-    scene: "Don Corleone's offer",
-    line_en: "I'm gonna make him an offer he can't refuse.",
-    line_ko: "그가 거절할 수 없는 제안을 하겠소.",
+    id: "g16",
+    category: "Daily Life",
+    title: "카페/식당 필수 표현 (Ordering)",
+    difficulty: "easy",
+    explanation: "식당이나 카페에서 가장 많이 쓰이는 실전 표현들입니다. 'I would like~' 또는 'Can I get~' 패턴을 사용하면 아주 자연스럽습니다.",
+    examples: [
+      { en: "Can I get an iced Americano?", ko: "아이스 아메리카노 한 잔 주시겠어요?" },
+      { en: "For here or to go?", ko: "드시고 가시나요, 포장이신가요?" },
+      { en: "Could we get the bill, please?", ko: "계산서 좀 주시겠어요?" },
+      { en: "I would like the steak, medium rare.", ko: "스테이크 미디엄 레어로 부탁드립니다." }
+    ],
+    commonMistakes: [
+      { wrong: "I want a coffee.", correct: "Can I get a coffee?", explanation: "I want는 다소 무례하게 들릴 수 있습니다. Can I get 또는 I'd like를 사용하세요." },
+      { wrong: "Give me the bill.", correct: "Could we get the bill?", explanation: "명령문보다 Could we get~ 패턴이 정중하고 자연스럽습니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "카페에서 주문할 때 가장 자연스러운 표현은? ____ an iced latte?",
+        options: ["Can I get", "I want", "Give me", "Make me"],
+        correctAnswer: 0,
+        explanation: "주문할 때는 'Can I get~' 이나 'I would like~' 를 주로 사용합니다."
+      },
+      {
+        question: "식사를 마치고 계산서를 요청할 때 쓰는 표현은? Could we get the ____, please?",
+        options: ["paper", "bill", "money", "receipt"],
+        correctAnswer: 1,
+        explanation: "식당 계산서는 bill 또는 check라고 합니다."
+      }
+    ],
+    tags: ["실전", "카페", "주문"]
+  },
+  {
+    id: "g17",
+    category: "Daily Life",
+    title: "여행 필수 표현 (Travel)",
+    difficulty: "easy",
+    explanation: "공항, 호텔, 길 찾기 등 여행지에서 당황하지 않고 쓸 수 있는 핵심 문장들입니다.",
+    examples: [
+      { en: "I'd like to check out, please.", ko: "체크아웃 하고 싶습니다." },
+      { en: "Can you keep my luggage?", ko: "제 짐 좀 맡아주실 수 있나요?" },
+      { en: "Do you have any recommendations?", ko: "추천해주실 만한 게 있나요?" },
+      { en: "How do I get to the train station?", ko: "기차역에는 어떻게 가나요?" }
+    ],
+    commonMistakes: [
+      { wrong: "Where is the station?", correct: "How do I get to the station?", explanation: "어디냐고 묻기보다 가는 방법을 묻는 How do I get to~ 패턴이 더 유용합니다." },
+      { wrong: "Take my bag.", correct: "Can you keep my luggage?", explanation: "짐을 잠시 보관해달라고 할 때는 keep이나 hold my luggage라고 합니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "호텔에서 짐을 맡기고 싶을 때 쓰는 표현은? Can you ____ my luggage?",
+        options: ["save", "keep", "take", "put"],
+        correctAnswer: 1,
+        explanation: "수하물을 보관하다 라고 할 때는 keep을 사용합니다."
+      },
+      {
+        question: "식당 종업원에게 메뉴를 추천받고 싶을 때? Do you have any ____?",
+        options: ["thinks", "recommendations", "good foods", "choices"],
+        correctAnswer: 1,
+        explanation: "추천은 recommendations 입니다."
+      }
+    ],
+    tags: ["실전", "여행", "호텔"]
+  },
+  {
+    id: "g18",
+    category: "Daily Life",
+    title: "쇼핑 필수 표현 (Shopping)",
+    difficulty: "easy",
+    explanation: "마트, 옷가게, 면세점 등에서 실제로 가장 많이 쓰이는 표현들입니다. 사이즈 확인, 가격 물어보기, 교환/환불 요청까지 다룹니다.",
+    examples: [
+      { en: "Do you have this in a smaller size?", ko: "이거 더 작은 사이즈 있나요?" },
+      { en: "How much is this?", ko: "이거 얼마예요?" },
+      { en: "Can I try this on?", ko: "이거 입어봐도 되나요?" },
+      { en: "I'd like to return this.", ko: "이거 반품하고 싶습니다." }
+    ],
+    commonMistakes: [
+      { wrong: "How much does it cost?", correct: "How much is this?", explanation: "일상 쇼핑에서는 간결한 How much is this?가 더 자연스럽습니다." },
+      { wrong: "I want to change this.", correct: "I'd like to exchange this.", explanation: "교환은 change가 아니라 exchange를 사용합니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "옷을 입어보고 싶을 때? Can I ____ this on?",
+        options: ["put", "try", "wear", "take"],
+        correctAnswer: 1,
+        explanation: "옷을 입어보다는 try on이라고 합니다."
+      },
+      {
+        question: "이 물건의 가격을 물어볼 때? How ____ is this?",
+        options: ["many", "much", "price", "cost"],
+        correctAnswer: 1,
+        explanation: "가격을 물을 때는 How much를 사용합니다."
+      }
+    ],
+    tags: ["실전", "쇼핑", "일상"]
+  },
+  {
+    id: "g19",
+    category: "Daily Life",
+    title: "공항 필수 표현 (Airport)",
     difficulty: "medium",
-    expression: "Can't Refuse",
-    expression_ko: "거절할 수 없는",
-    explanation_ko: "상대방을 압박할 때 쓰는 전설적인 대사입니다.",
-    tags: ["classic", "power"],
-    thumbnailUrl: "/posters/godfather.jpg"
+    explanation: "체크인부터 입국심사, 수하물 찾기까지 공항에서 꼭 필요한 표현들입니다. 긴장되는 입국심사도 이 표현만 알면 자신 있게 통과할 수 있습니다.",
+    examples: [
+      { en: "I'd like a window seat, please.", ko: "창가 좌석으로 부탁드립니다." },
+      { en: "What's the purpose of your visit?", ko: "방문 목적이 무엇인가요?" },
+      { en: "I'm here on vacation.", ko: "휴가 차 왔습니다." },
+      { en: "Where can I pick up my luggage?", ko: "짐은 어디서 찾을 수 있나요?" }
+    ],
+    commonMistakes: [
+      { wrong: "I come for tour.", correct: "I'm here on vacation.", explanation: "방문 목적을 말할 때는 I'm here for/on~ 패턴을 사용합니다." },
+      { wrong: "Where is my bag?", correct: "Where can I pick up my luggage?", explanation: "수하물 찾는 곳을 물을 때는 pick up my luggage라고 합니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "입국심사에서 관광 목적을 말할 때? I'm here on ____.",
+        options: ["tour", "vacation", "play", "travel"],
+        correctAnswer: 1,
+        explanation: "관광 목적은 I'm here on vacation 또는 sightseeing이라고 합니다."
+      },
+      {
+        question: "비행기 좌석을 요청할 때? I'd like a ____ seat, please.",
+        options: ["side", "window", "glass", "wall"],
+        correctAnswer: 1,
+        explanation: "창가석은 window seat, 통로석은 aisle seat입니다."
+      }
+    ],
+    tags: ["실전", "공항", "여행"]
   },
   {
-    id: "m2",
-    category: "movie",
-    title: "Star Wars: Empire Strikes Back",
-    scene: "Darth Vader's reveal",
-    line_en: "No, I am your father.",
-    line_ko: "아니, 내가 네 아버지다.",
-    difficulty: "easy",
-    expression: "I Am Your",
-    expression_ko: "내가 너의 ~다",
-    explanation_ko: "영화 역사상 가장 충격적인 반전 대사 중 하나입니다.",
-    tags: ["classic", "twist"],
-    thumbnailUrl: "/posters/starwars.jpg"
-  },
-  {
-    id: "m3",
-    category: "movie",
-    title: "The Terminator",
-    scene: "Leaving the station",
-    line_en: "I'll be back.",
-    line_ko: "다시 돌아오겠다.",
-    difficulty: "easy",
-    expression: "I'll Be Back",
-    expression_ko: "돌아올게 / 다시 오겠다",
-    explanation_ko: "아놀드 슈워제네거의 시그니처 대사로, 재방문을 예고할 때 농담처럼 쓰입니다.",
-    tags: ["action", "sci-fi"],
-    thumbnailUrl: "/posters/terminator.jpg"
-  },
-  {
-    id: "m4",
-    category: "movie",
-    title: "Forrest Gump",
-    scene: "Life's lesson",
-    line_en: "Life is like a box of chocolates. You never know what you're gonna get.",
-    line_ko: "인생은 초콜릿 상자 같은 거야. 어떤 걸 고르게 될지 아무도 모르거든.",
+    id: "g20",
+    category: "Daily Life",
+    title: "병원/약국 표현 (Medical)",
     difficulty: "medium",
-    expression: "Like A Box Of",
-    expression_ko: "~ 상자 같은",
-    explanation_ko: "인생의 불확실성과 아름다움을 비유한 명대사입니다.",
-    tags: ["drama", "life"],
-    thumbnailUrl: "/posters/forrest_gump.jpg"
+    explanation: "해외에서 아플 때 증상을 설명하고 도움을 요청하는 필수 표현들입니다. 몸이 아프면 영어가 더 안 나오기 때문에 미리 익혀두는 것이 중요합니다.",
+    examples: [
+      { en: "I have a headache.", ko: "두통이 있어요." },
+      { en: "I think I have a fever.", ko: "열이 있는 것 같아요." },
+      { en: "Do I need a prescription for this?", ko: "이거 처방전이 필요한가요?" },
+      { en: "I'm allergic to penicillin.", ko: "저는 페니실린 알레르기가 있어요." }
+    ],
+    commonMistakes: [
+      { wrong: "My head is pain.", correct: "I have a headache.", explanation: "두통은 pain이 아니라 headache라는 하나의 단어로 표현합니다." },
+      { wrong: "I am allergy.", correct: "I'm allergic to~", explanation: "알레르기가 있다는 I'm allergic to + 물질명 으로 표현합니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "두통이 있다고 말할 때? I have a ____.",
+        options: ["head pain", "headache", "head hurt", "head sick"],
+        correctAnswer: 1,
+        explanation: "두통은 headache라는 한 단어로 표현합니다."
+      },
+      {
+        question: "알레르기가 있다고 말할 때? I'm ____ to peanuts.",
+        options: ["allergy", "allergic", "allergen", "allergies"],
+        correctAnswer: 1,
+        explanation: "~에 알레르기가 있다는 I'm allergic to~로 표현합니다."
+      }
+    ],
+    tags: ["실전", "병원", "건강"]
   },
   {
-    id: "m5",
-    category: "movie",
-    title: "Titanic",
-    scene: "The bow of the ship",
-    line_en: "I'm the king of the world!",
-    line_ko: "난 세상의 왕이다!",
+    id: "g21",
+    category: "Daily Life",
+    title: "스몰토크 마스터 (Small Talk)",
     difficulty: "easy",
-    expression: "King Of The World",
-    expression_ko: "세상의 왕",
-    explanation_ko: "최고의 기분을 만끽할 때 외치는 표현입니다.",
-    tags: ["romance", "adventure"],
-    thumbnailUrl: "/posters/titanic.jpg"
+    explanation: "외국인과의 첫 만남, 파티, 엘리베이터에서 나누는 가벼운 대화법입니다. 어색한 침묵을 깨는 마법의 표현들을 익혀보세요.",
+    examples: [
+      { en: "Nice weather today, isn't it?", ko: "오늘 날씨 좋네요, 그죠?" },
+      { en: "What do you do for a living?", ko: "직업이 무엇인가요?" },
+      { en: "Have you been here before?", ko: "여기 와보신 적 있으세요?" },
+      { en: "It was nice meeting you.", ko: "만나서 반가웠어요." }
+    ],
+    commonMistakes: [
+      { wrong: "What is your job?", correct: "What do you do for a living?", explanation: "직업을 묻는 자연스러운 표현은 What do you do (for a living)?입니다." },
+      { wrong: "Nice to meet you. (헤어질 때)", correct: "It was nice meeting you.", explanation: "헤어질 때는 과거형을 써서 It was nice meeting you.라고 합니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "처음 만난 사람에게 직업을 물어볼 때? What do you do ____?",
+        options: ["at work", "for a living", "your job", "in life"],
+        correctAnswer: 1,
+        explanation: "직업을 물을 때는 What do you do for a living?이 자연스럽습니다."
+      },
+      {
+        question: "헤어질 때 인사는? It was nice ____ you.",
+        options: ["meet", "to meet", "meeting", "met"],
+        correctAnswer: 2,
+        explanation: "헤어질 때는 It was nice meeting you.를 사용합니다."
+      }
+    ],
+    tags: ["실전", "대화", "인사"]
+  },
+  {
+    id: "g22",
+    category: "Daily Life",
+    title: "전화/영상통화 표현 (Phone Calls)",
+    difficulty: "medium",
+    explanation: "전화를 걸고 받을 때, 목적을 밝히고 메시지를 남기는 등의 비즈니스/일상 전화 표현입니다.",
+    examples: [
+      { en: "May I speak to Mr. Kim, please?", ko: "김 씨와 통화할 수 있을까요?" },
+      { en: "I'm calling about the reservation.", ko: "예약 건으로 전화했습니다." },
+      { en: "Could you hold on a moment?", ko: "잠시만 기다려주시겠어요?" },
+      { en: "Can I leave a message?", ko: "메시지를 남겨도 될까요?" }
+    ],
+    commonMistakes: [
+      { wrong: "I am calling to Mr. Kim.", correct: "May I speak to Mr. Kim?", explanation: "전화에서 누군가와 통화하고 싶을 때는 May I speak to~를 사용합니다." },
+      { wrong: "Wait a moment.", correct: "Could you hold on a moment?", explanation: "전화에서 기다려달라고 할 때는 hold on이 더 자연스럽습니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "전화에서 누군가를 바꿔달라고 할 때? May I ____ to Jane?",
+        options: ["talk", "speak", "call", "say"],
+        correctAnswer: 1,
+        explanation: "전화에서는 May I speak to~가 정중한 표현입니다."
+      },
+      {
+        question: "잠시 기다려 달라고 할 때? Could you ____ on a moment?",
+        options: ["wait", "hold", "stay", "keep"],
+        correctAnswer: 1,
+        explanation: "전화에서 기다리다는 hold on을 사용합니다."
+      }
+    ],
+    tags: ["실전", "전화", "비즈니스"]
+  },
+  {
+    id: "g23",
+    category: "Daily Life",
+    title: "불만/요청 표현 (Complaints & Requests)",
+    difficulty: "medium",
+    explanation: "제품 불량, 서비스 불만, 정중한 요청 등 실생활에서 내 권리를 지키면서도 예의 바르게 말하는 법을 배웁니다.",
+    examples: [
+      { en: "I'm afraid there's a problem with my order.", ko: "죄송한데 주문에 문제가 있는 것 같아요." },
+      { en: "Would you mind turning down the music?", ko: "음악 소리를 좀 줄여주시겠어요?" },
+      { en: "I'd appreciate it if you could fix this.", ko: "이걸 고쳐주시면 감사하겠습니다." },
+      { en: "Is there anything you can do about this?", ko: "이 문제에 대해 해결할 수 있는 방법이 있나요?" }
+    ],
+    commonMistakes: [
+      { wrong: "My order is wrong! Fix it!", correct: "I'm afraid there's a problem with my order.", explanation: "불만을 표현할 때 I'm afraid~ 를 앞에 붙이면 정중하면서도 확실하게 전달됩니다." },
+      { wrong: "Turn down the music.", correct: "Would you mind turning down the music?", explanation: "명령문보다 Would you mind ~ing? 패턴이 훨씬 정중합니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "정중하게 불만을 전달할 때 쓰는 앞말은? ____ there's a problem with my room.",
+        options: ["I think", "I'm afraid", "I know", "I feel"],
+        correctAnswer: 1,
+        explanation: "I'm afraid는 안 좋은 소식이나 불만을 정중하게 전할 때 사용합니다."
+      },
+      {
+        question: "정중하게 요청할 때? Would you ____ helping me?",
+        options: ["like", "want", "mind", "please"],
+        correctAnswer: 2,
+        explanation: "Would you mind ~ing?는 매우 정중한 요청 표현입니다."
+      }
+    ],
+    tags: ["실전", "불만", "요청"]
   },
 
-  // ========== MODERN MASTERPIECES ==========
+  // ========== 추가 문법 ==========
   {
-    id: "m6",
-    category: "movie",
-    title: "Parasite",
-    scene: "Ki-taek's plan",
-    line_en: "You know what kind of plan never fails? No plan at all.",
-    line_ko: "절대 실패하지 않는 계획이 뭔지 알아? 무계획이야.",
-    difficulty: "medium",
-    expression: "Never Fails",
-    expression_ko: "절대 실패하지 않다",
-    explanation_ko: "계획대로 되지 않는 씁쓸한 현실을 담은 명대사입니다.",
-    tags: ["drama", "k-movie"],
-    thumbnailUrl: "/posters/parasite.jpg"
-  },
-  {
-    id: "m7",
-    category: "movie",
-    title: "Spider-Man: No Way Home",
-    scene: "Uncle Ben's legacy",
-    line_en: "With great power, there must also come great responsibility.",
-    line_ko: "큰 힘에는 큰 책임이 따른다.",
-    difficulty: "medium",
-    expression: "With Great Power",
-    expression_ko: "큰 힘에는",
-    explanation_ko: "스파이더맨 시리즈를 관통하는 핵심 교훈입니다.",
-    tags: ["action", "hero"],
-    thumbnailUrl: "/posters/spiderman.jpg"
-  },
-  {
-    id: "m8",
-    category: "movie",
-    title: "The Dark Knight",
-    scene: "The Joker's interrogation",
-    line_en: "Why so serious?",
-    line_ko: "왜 그렇게 진지해?",
+    id: "g24",
+    category: "Tenses",
+    title: "Future Tenses (미래 시제: will vs be going to)",
     difficulty: "easy",
-    expression: "Why So Serious",
-    expression_ko: "왜 그렇게 진지해? / 정색해?",
-    explanation_ko: "조커의 광기를 보여주는 짧고 강렬한 질문입니다.",
-    tags: ["action", "thriller"],
-    thumbnailUrl: "/posters/dark_knight.jpg"
+    explanation: "미래를 표현하는 두 가지 방법을 배웁니다. will은 즉흥적 결정/예측에, be going to는 이미 계획된 일에 사용합니다.",
+    examples: [
+      { en: "I'll help you with that.", ko: "내가 도와줄게. (즉석 결정)" },
+      { en: "I'm going to study abroad next year.", ko: "나는 내년에 유학 갈 거야. (계획)" },
+      { en: "It will rain tomorrow.", ko: "내일 비가 올 거야. (예측)" },
+      { en: "We're going to have a meeting at 3.", ko: "우리 3시에 회의할 거야. (예정)" }
+    ],
+    commonMistakes: [
+      { wrong: "I will go to the dentist tomorrow. (예약된 일)", correct: "I'm going to go to the dentist tomorrow.", explanation: "이미 예약/계획된 일에는 be going to가 더 적절합니다." },
+      { wrong: "I'm going to answer the phone. (전화가 울릴 때)", correct: "I'll answer the phone.", explanation: "즉흥적으로 결정한 행동에는 will이 더 자연스럽습니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "전화벨이 울리고 있다. I ____ answer the phone.",
+        options: ["am going to", "'ll", "going", "do"],
+        correctAnswer: 1,
+        explanation: "즉흥적 결정에는 will(I'll)을 사용합니다."
+      },
+      {
+        question: "내년 여름에 이미 계획된 여행을 말할 때? We ____ visit Japan next summer.",
+        options: ["will", "are going to", "shall", "do"],
+        correctAnswer: 1,
+        explanation: "이미 계획된 미래 행동에는 be going to를 사용합니다."
+      }
+    ],
+    tags: ["기초", "시제", "미래"]
   },
   {
-    id: "m9",
-    category: "movie",
-    title: "Inception",
-    scene: "Idea planting",
-    line_en: "What is the most resilient parasite? An idea.",
-    line_ko: "가장 끈질긴 기생충이 뭔지 아나? 바로 생각이지.",
+    id: "g25",
+    category: "Phrasal Verbs",
+    title: "필수 구동사 (Essential Phrasal Verbs)",
+    difficulty: "medium",
+    explanation: "구동사(Phrasal Verbs)는 영어 회화의 핵심입니다. 동사 + 전치사/부사 조합으로 전혀 다른 의미가 되며, 원어민들이 일상에서 가장 많이 사용합니다.",
+    examples: [
+      { en: "I need to figure out this problem.", ko: "이 문제를 해결해야 해." },
+      { en: "Can you pick me up at 7?", ko: "7시에 데리러 와줄 수 있어?" },
+      { en: "We ran out of milk.", ko: "우유가 다 떨어졌어." },
+      { en: "I look forward to hearing from you.", ko: "답변 기다리겠습니다." }
+    ],
+    commonMistakes: [
+      { wrong: "I need to solve out.", correct: "I need to figure out.", explanation: "'알아내다/해결하다'는 figure out입니다. solve out은 틀린 표현입니다." },
+      { wrong: "The milk finished.", correct: "We ran out of milk.", explanation: "'다 떨어지다'는 run out of를 사용합니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "누군가를 차로 데리러 갈 때? I'll ____ you up at the airport.",
+        options: ["take", "bring", "pick", "get"],
+        correctAnswer: 2,
+        explanation: "데리러 가다는 pick up입니다."
+      },
+      {
+        question: "무언가가 다 떨어졌을 때? We ____ out of coffee.",
+        options: ["ran", "went", "got", "came"],
+        correctAnswer: 0,
+        explanation: "다 떨어지다는 run out of (과거: ran out of)입니다."
+      }
+    ],
+    tags: ["중급", "구동사", "회화"]
+  },
+  {
+    id: "g26",
+    category: "Passive Voice",
+    title: "수동태 (Passive Voice)",
     difficulty: "hard",
-    expression: "Resilient",
-    expression_ko: "회복력 있는 / 끈질긴",
-    explanation_ko: "머릿속에 박힌 생각이 얼마나 강력한지 설명하는 대사입니다.",
-    tags: ["sci-fi", "thriller"],
-    thumbnailUrl: "/posters/inception.jpg"
-  },
-  {
-    id: "m10",
-    category: "movie",
-    title: "Interstellar",
-    scene: "Brand's realization",
-    line_en: "Love is the one thing that transcends time and space.",
-    line_ko: "사랑은 시공간을 초월하는 유일한 것이에요.",
-    difficulty: "hard",
-    expression: "Transcends",
-    expression_ko: "초월하다",
-    explanation_ko: "과학적 논리 너머에 있는 사랑의 힘을 강조합니다.",
-    tags: ["sci-fi", "emotional"],
-    thumbnailUrl: "/posters/interstellar.jpg"
-  },
-
-  // ========== RECENT HITS ==========
-  {
-    id: "m11",
-    category: "movie",
-    title: "Dune: Part Two",
-    scene: "Paul's path",
-    line_en: "I must not fear. Fear is the mind-killer.",
-    line_ko: "두려워해서는 안 된다. 두려움은 정신을 죽이는 존재다.",
-    difficulty: "hard",
-    expression: "Mind-killer",
-    expression_ko: "정신을 죽이는 것",
-    explanation_ko: "공포를 극복하기 위한 기도의 문구입니다.",
-    tags: ["sci-fi", "epic"],
-    thumbnailUrl: "/posters/dune2.jpg"
-  },
-  {
-    id: "m12",
-    category: "movie",
-    title: "Everything Everywhere All At Once",
-    scene: "Waymond's kindness",
-    line_en: "Be kind. Especially when we don't know what's going on.",
-    line_ko: "다정해지자. 특히 무슨 일이 일어나고 있는지 모를 때일수록.",
-    difficulty: "medium",
-    expression: "Be Kind",
-    expression_ko: "다정하게 대해라",
-    explanation_ko: "혼란 속에서 가장 필요한 가치가 무엇인지 알려줍니다.",
-    tags: ["fantasy", "life"],
-    thumbnailUrl: "/posters/eeao.jpg"
-  },
-  {
-    id: "m13",
-    category: "movie",
-    title: "Top Gun: Maverick",
-    scene: "Maverick's advice",
-    line_en: "Don't think, just do.",
-    line_ko: "생각하지 말고, 그냥 해.",
-    difficulty: "easy",
-    expression: "Just Do",
-    expression_ko: "그냥 해라",
-    explanation_ko: "복잡하게 생각하기보다 몸이 먼저 움직여야 할 때 쓰는 말입니다.",
-    tags: ["action", "bravery"],
-    thumbnailUrl: "/posters/topgun.jpg"
-  },
-  {
-    id: "m14",
-    category: "movie",
-    title: "Oppenheimer",
-    scene: "The test",
-    line_en: "Now I am become Death, the destroyer of worlds.",
-    line_ko: "이제 나는 죽음이요, 세상의 파괴자가 되었다.",
-    difficulty: "hard",
-    expression: "Destroyer Of Worlds",
-    expression_ko: "세상의 파괴자",
-    explanation_ko: "오펜하이머가 원폭 실험 성공 후 느낀 고뇌를 담은 인용구입니다.",
-    tags: ["biography", "intense"],
-    thumbnailUrl: "/posters/oppenheimer.jpg"
-  },
-  {
-    id: "m15",
-    category: "movie",
-    title: "Barbie",
-    scene: "Ken's realization",
-    line_en: "I'm Kenough.",
-    line_ko: "난 나로 충분해 (Kenough).",
-    difficulty: "easy",
-    expression: "Kenough",
-    expression_ko: "Ken + Enough (나만으로 충분하다)",
-    explanation_ko: "자신의 가치를 깨달은 켄의 재치 있는 언어유희입니다.",
-    tags: ["comedy", "identity"],
-    thumbnailUrl: "/posters/barbie.jpg"
-  },
-
-  // ========== ANIMATION ==========
-
-  {
-    id: "m16",
-    category: "movie",
-    title: "The Lion King",
-    scene: "Mufasa's wisdom",
-    line_en: "Remember who you are.",
-    line_ko: "네가 누구인지 잊지 말거라.",
-    difficulty: "easy",
-    expression: "Who You Are",
-    expression_ko: "너의 정체성 / 네가 누구인지",
-    explanation_ko: "심바에게 자존감을 심어주는 무파사의 명대사입니다.",
-    tags: ["animation", "classic"],
-    thumbnailUrl: "/posters/lionking.jpg"
-  },
-  {
-    id: "m17",
-    category: "movie",
-    title: "Toy Story",
-    scene: "Buzz's flying",
-    line_en: "To infinity and beyond!",
-    line_ko: "무한한 공간 저 너머로!",
-    difficulty: "easy",
-    expression: "Infinity And Beyond",
-    expression_ko: "무한함과 그 너머",
-    explanation_ko: "버즈 라이트이어의 상징과도 같은 대사입니다.",
-    tags: ["animation", "adventure"],
-    thumbnailUrl: "/posters/toystory.jpg"
-  },
-  {
-    id: "m18",
-    category: "movie",
-    title: "Ratatouille",
-    scene: "Gusteau's motto",
-    line_en: "Anyone can cook.",
-    line_ko: "누구나 요리할 수 있다.",
-    difficulty: "easy",
-    expression: "Anyone Can",
-    expression_ko: "누구나 ~할 수 있다",
-    explanation_ko: "재능은 어디에서나 나타날 수 있다는 희망적인 메시지입니다.",
-    tags: ["animation", "hope"],
-    thumbnailUrl: "/posters/ratatouille.jpg"
-  },
-  {
-    id: "m19",
-    category: "movie",
-    title: "Inside Out",
-    scene: "Joy's perspective",
-    line_en: "Do you ever look at someone and wonder, 'What is going on inside their head?'",
-    line_ko: "누군가를 보며 '머릿속에 뭐가 들어있을까?' 궁금했던 적 있나요?",
-    difficulty: "medium",
-    expression: "What Is Going On",
-    expression_ko: "무슨 일이 일어나고 있는지",
-    explanation_ko: "사람의 감정에 대한 호기심을 유발하는 오프닝 대사입니다.",
-    tags: ["animation", "emotion"],
-    thumbnailUrl: "/posters/insideout.jpg"
-  },
-  {
-    id: "m20",
-    category: "movie",
-    title: "Spider-Man: Into the Spider-Verse",
-    scene: "Leap of faith",
-    line_en: "That's all it is, Miles. A leap of faith.",
-    line_ko: "그게 전부야, 마일즈. 믿고 뛰어드는 것.",
-    difficulty: "medium",
-    expression: "Leap Of Faith",
-    expression_ko: "믿음의 도약 / 결과가 불확실하지만 믿고 하는 행동",
-    explanation_ko: "두려움을 극복하고 첫발을 내디뎌야 할 때 필요한 용기를 말합니다.",
-    tags: ["animation", "hero"],
-    thumbnailUrl: "/posters/spiderverse.jpg"
-  },
-
-  // ========== NEW ADDITIONS ==========
-  {
-    id: "m21",
-    category: "movie",
-    title: "The Matrix",
-    scene: "Morpheus offers the pills",
-    line_en: "I can only show you the door. You're the one that has to walk through it.",
-    line_ko: "난 문만 보여줄 뿐이야. 그 문을 통과하는 건 네 몫이지.",
-    difficulty: "medium",
-    expression: "Walk Through It",
-    expression_ko: "그것을 통과하다",
-    explanation_ko: "결국 선택과 행동은 본인에게 달려있다는 것을 강조하는 명대사입니다.",
-    tags: ["sci-fi", "action"],
-    thumbnailUrl: "/posters/matrix.jpg"
-  },
-  {
-    id: "m22",
-    category: "movie",
-    title: "Dead Poet's Society",
-    scene: "Carpe Diem",
-    line_en: "Carpe diem. Seize the day, boys. Make your lives extraordinary.",
-    line_ko: "카르페 디엠. 현재를 즐겨라. 너희의 삶을 특별하게 만들어라.",
-    difficulty: "medium",
-    expression: "Seize The Day",
-    expression_ko: "오늘을 잡아라 / 현재를 즐겨라",
-    explanation_ko: "시간의 소중함과 현재에 충실하라는 교훈을 줍니다.",
-    tags: ["classic", "drama"],
-    thumbnailUrl: "/posters/dead_poets.jpg"
-  },
-  {
-    id: "m23",
-    category: "movie",
-    title: "Avengers: Endgame",
-    scene: "Iron Man's sacrifice",
-    line_en: "And I... am... Iron Man.",
-    line_ko: "그리고 나는... 아이언맨이다.",
-    difficulty: "easy",
-    expression: "I am",
-    expression_ko: "나는 ~이다",
-    explanation_ko: "마블 시네마틱 유니버스의 시작과 끝을 장식한 전설적인 대사입니다.",
-    tags: ["action", "hero"],
-    thumbnailUrl: "/posters/endgame.jpg"
-  },
-  {
-    id: "m24",
-    category: "movie",
-    title: "The Truman Show",
-    scene: "Truman's greeting",
-    line_en: "In case I don't see ya, good afternoon, good evening, and good night!",
-    line_ko: "다시 못 볼지도 모르니, 좋은 오후, 좋은 저녁, 좋은 밤 보내세요!",
-    difficulty: "easy",
-    expression: "In Case",
-    expression_ko: "~할 경우를 대비해서",
-    explanation_ko: "트루먼의 유쾌하면서도 슬픈 진심이 담긴 인삿말입니다.",
-    tags: ["comedy", "drama"],
-    thumbnailUrl: "/posters/truman_show.jpg"
-  },
-  {
-    id: "m25",
-    category: "movie",
-    title: "Rocky Balboa",
-    scene: "Advice to his son",
-    line_en: "It ain't about how hard you hit. It's about how hard you can get hit and keep moving forward.",
-    line_ko: "얼마나 세게 치는지가 중요한 게 아니야. 얼마나 세게 맞고도 계속 앞으로 나아갈 수 있는지가 중요한 거지.",
-    difficulty: "hard",
-    expression: "Keep Moving Forward",
-    expression_ko: "계속 앞으로 나아가다",
-    explanation_ko: "시련을 이겨내는 끈기에 대한 강력한 명언입니다.",
-    tags: ["sports", "motivation"],
-    thumbnailUrl: "/posters/rocky.jpg"
-  },
-  {
-    id: "m26",
-    category: "movie",
-    title: "A Few Good Men",
-    scene: "Courtroom intensity",
-    line_en: "You can't handle the truth!",
-    line_ko: "넌 진실을 감당할 수 없어!",
-    difficulty: "easy",
-    expression: "Handle The Truth",
-    expression_ko: "진실을 감당하다",
-    explanation_ko: "상대방이 진실을 직면할 용기가 없음을 일갈할 때 씁니다.",
-    tags: ["drama", "thriller"],
-    thumbnailUrl: "/posters/few_good_men.jpg"
-  },
-  {
-    id: "m27",
-    category: "movie",
-    title: "Finding Nemo",
-    scene: "Dory's advice",
-    line_en: "When life gets you down, do you wanna know what you've gotta do? Just keep swimming.",
-    line_ko: "인생이 널 힘들게 할 때 어떻게 해야 하는지 알아? 그냥 계속 헤엄쳐.",
-    difficulty: "medium",
-    expression: "Just Keep",
-    expression_ko: "그냥 계속 ~해라",
-    explanation_ko: "포기하지 말고 하던 일을 계속하라는 긍정적인 메시지입니다.",
-    tags: ["animation", "family"],
-    thumbnailUrl: "/posters/finding_nemo.jpg"
-  },
-  {
-    id: "m28",
-    category: "movie",
-    title: "The Silence of the Lambs",
-    scene: "Hannibal's greeting",
-    line_en: "A census taker once tried to test me. I ate his liver with some fava beans and a nice Chianti.",
-    line_ko: "인구 조사원이 날 시험하려 한 적이 있지. 난 그의 간을 잠두콩과 좋은 키안티 와인을 곁들여 먹었어.",
-    difficulty: "hard",
-    expression: "Tried to test me",
-    expression_ko: "나를 시험하려 했다",
-    explanation_ko: "한니발 렉터의 소름 끼치고도 지적인 면모를 보여주는 대사입니다.",
-    tags: ["thriller", "classic"],
-    thumbnailUrl: "/posters/silence_lambs.jpg"
-  },
-  {
-    id: "m29",
-    category: "movie",
-    title: "The Lord of the Rings: The Fellowship of the Ring",
-    scene: "Gandalf's wisdom",
-    line_en: "All we have to decide is what to do with the time that is given us.",
-    line_ko: "우리가 결정해야 할 것은 우리에게 주어진 시간 동안 무엇을 할 것인가뿐이다.",
-    difficulty: "medium",
-    expression: "Given us",
-    expression_ko: "우리에게 주어진",
-    explanation_ko: "힘든 상황 속에서도 자신이 할 수 있는 일에 집중하라는 간달프의 조언입니다.",
-    tags: ["fantasy", "adventure"],
-    thumbnailUrl: "/posters/lotr.jpg"
-  },
-  {
-    id: "m30",
-    category: "movie",
-    title: "Gladiator",
-    scene: "Maximus reveals himself",
-    line_en: "My name is Maximus Decimus Meridius... and I will have my vengeance, in this life or the next.",
-    line_ko: "내 이름은 막시무스 데시무스 메리디우스다... 살아서든 죽어서든 반드시 복수하고야 말겠다.",
-    difficulty: "hard",
-    expression: "Have my vengeance",
-    expression_ko: "복수를 할 것이다",
-    explanation_ko: "주인공의 결연한 의지와 분노가 담긴 영화 최고의 명장면 중 하나입니다.",
-    tags: ["action", "drama"],
-    thumbnailUrl: "/posters/gladiator.jpg"
-  },
-  {
-    id: "m31",
-    category: "movie",
-    title: "Back to the Future",
-    scene: "Doc's warning",
-    line_en: "Roads? Where we're going, we don't need roads.",
-    line_ko: "길? 우리가 가는 곳엔 길 따윈 필요 없어.",
-    difficulty: "easy",
-    expression: "Where we're going",
-    expression_ko: "우리가 가는 곳엔",
-    explanation_ko: "새로운 기술이나 미래에 대한 강한 확신을 보여주는 대사입니다.",
-    tags: ["sci-fi", "classic"],
-    thumbnailUrl: "/posters/bttf.jpg"
-  },
-  {
-    id: "m32",
-    category: "movie",
-    title: "The Shawshank Redemption",
-    scene: "Andy's letter",
-    line_en: "Hope is a good thing, maybe the best of things, and no good thing ever dies.",
-    line_ko: "희망은 좋은 거예요, 아마도 가장 좋은 것일지도 몰라요. 그리고 좋은 것은 절대 사라지지 않아요.",
-    difficulty: "medium",
-    expression: "No good thing ever dies",
-    expression_ko: "좋은 것은 절대 사라지지 않는다",
-    explanation_ko: "절망적인 상황에서도 희망을 잃지 말라는 메시지를 전합니다.",
-    tags: ["drama", "classic"],
-    thumbnailUrl: "/posters/shawshank.jpg"
-  },
-  {
-    id: "m33",
-    category: "movie",
-    title: "Apollo 13",
-    scene: "Houston, we have a problem",
-    line_en: "Houston, we have a problem.",
-    line_ko: "휴스턴, 문제가 발생했다.",
-    difficulty: "easy",
-    expression: "We have a problem",
-    expression_ko: "문제가 생겼다",
-    explanation_ko: "예상치 못한 위기나 난관에 부딪혔을 때 관용구처럼 쓰입니다.",
-    tags: ["history", "drama"],
-    thumbnailUrl: "/posters/apollo13.jpg"
-  },
-  {
-    id: "m34",
-    category: "movie",
-    title: "Fight Club",
-    scene: "Tyler's philosophy",
-    line_en: "The things you own end up owning you.",
-    line_ko: "네가 소유하고 있는 것들이 결국 널 소유하게 될 거다.",
-    difficulty: "medium",
-    expression: "End up",
-    expression_ko: "결국 ~하게 되다",
-    explanation_ko: "물질만능주의에 대한 날카로운 비판을 담고 있습니다.",
-    tags: ["drama", "thriller"],
-    thumbnailUrl: "/posters/fight_club.jpg"
-  },
-  {
-    id: "m35",
-    category: "movie",
-    title: "Joker",
-    scene: "Arthur's reflection",
-    line_en: "I used to think that my life was a tragedy, but now I realize, it's a comedy.",
-    line_ko: "내 인생이 비극인 줄 알았는데, 이제 보니 코미디였어.",
-    difficulty: "medium",
-    expression: "Used to think",
-    expression_ko: "~라고 생각했었다",
-    explanation_ko: "주인공이 자신의 혼란스러운 정체성을 완전히 받아들이는 순간입니다.",
-    tags: ["drama", "thriller"],
-    thumbnailUrl: "/posters/joker_movie.jpg"
-  },
-  {
-    id: "m36",
-    category: "movie",
-    title: "The Shawshank Redemption",
-    scene: "Red's narration",
-    line_en: "Hope is a good thing, maybe the best of things, and no good thing ever dies.",
-    line_ko: "희망은 좋은 것이야, 아마도 최고로 좋은 것. 그리고 좋은 것은 절대 죽지 않아.",
-    difficulty: "medium",
-    expression: "No Good Thing Ever Dies",
-    expression_ko: "좋은 것은 절대 사라지지 않는다",
-    explanation_ko: "절망적인 상황에서도 희망을 놓지 말라는 영화 역사상 가장 감동적인 대사 중 하나입니다.",
-    tags: ["drama", "hope", "classic"],
-    thumbnailUrl: "/posters/shawshank.jpg"
-  },
-  {
-    id: "m37",
-    category: "movie",
-    title: "Pulp Fiction",
-    scene: "Jules' monologue",
-    line_en: "The path of the righteous man is beset on all sides by the iniquities of the selfish.",
-    line_ko: "의로운 자의 길은 사방에서 이기적인 자들의 불의함에 에워싸여 있다.",
-    difficulty: "hard",
-    expression: "Beset On All Sides",
-    expression_ko: "사방에서 에워싸이다",
-    explanation_ko: "'beset'은 '포위당하다'는 뜻의 고급 어휘. 도전이나 어려움에 둘러싸인 상황을 묘사할 때 씁니다.",
-    tags: ["crime", "classic", "thriller"],
-    thumbnailUrl: "/posters/pulpfiction.jpg"
-  },
-  {
-    id: "m38",
-    category: "movie",
-    title: "The Silence of the Lambs",
-    scene: "Hannibal's greeting",
-    line_en: "A census taker once tried to test me. I ate his liver with some fava beans and a nice Chianti.",
-    line_ko: "한 번은 인구조사원이 나를 시험하려 했지. 나는 그의 간을 파바콩과 고급 키안티 와인과 함께 먹었어.",
-    difficulty: "hard",
-    expression: "Once Tried To",
-    expression_ko: "한번은 ~하려 했다",
-    explanation_ko: "한니발 렉터의 섬뜩함을 극적으로 드러내는 명대사. 'once tried to'는 과거의 시도를 이야기할 때 쓰입니다.",
-    tags: ["thriller", "horror", "classic"],
-    thumbnailUrl: "/posters/silenceofthelambs.jpg"
-  },
-  {
-    id: "m39",
-    category: "movie",
-    title: "Schindler's List",
-    scene: "Schindler's breakdown",
-    line_en: "Whoever saves one life, saves the world entire.",
-    line_ko: "한 생명을 구하는 자는 세상 전체를 구하는 것이다.",
-    difficulty: "hard",
-    expression: "Saves The World Entire",
-    expression_ko: "세상 전체를 구하다",
-    explanation_ko: "유대 탈무드에서 인용한 구절로, 한 명 한 명의 생명이 얼마나 소중한지를 강조합니다.",
-    tags: ["drama", "war", "classic"],
-    thumbnailUrl: "/posters/schindlerslist.jpg"
-  },
-  {
-    id: "m40",
-    category: "movie",
-    title: "Good Will Hunting",
-    scene: "Sean's breakthrough",
-    line_en: "It's not your fault.",
-    line_ko: "네 잘못이 아니야.",
-    difficulty: "easy",
-    expression: "It's Not Your Fault",
-    expression_ko: "네 잘못이 아니야",
-    explanation_ko: "Sean이 Will에게 반복해서 건네는 이 대사는 트라우마를 치유하는 가장 강력한 말 중 하나입니다.",
-    tags: ["drama", "emotional"],
-    thumbnailUrl: "/posters/goodwillhunting.jpg"
-  },
-  {
-    id: "m41",
-    category: "movie",
-    title: "Braveheart",
-    scene: "Wallace's speech",
-    line_en: "They may take our lives, but they'll never take our freedom!",
-    line_ko: "그들이 우리의 목숨을 빼앗을 수는 있어도, 우리의 자유는 절대 빼앗을 수 없다!",
-    difficulty: "easy",
-    expression: "They'll Never Take",
-    expression_ko: "절대 빼앗지 못한다",
-    explanation_ko: "자유와 저항의 상징이 된 대사. 'they'll never take'는 강한 부정적 미래를 표현합니다.",
-    tags: ["action", "epic", "classic"],
-    thumbnailUrl: "/posters/braveheart.jpg"
-  },
-  {
-    id: "m42",
-    category: "movie",
-    title: "Leon: The Professional",
-    scene: "Mathilda's question",
-    line_en: "Is life always this hard, or is it just when you're a kid?",
-    line_ko: "인생은 항상 이렇게 힘든 건가요, 아니면 어릴 때만 그런 건가요?",
-    difficulty: "medium",
-    expression: "Is It Just When",
-    expression_ko: "~일 때만 그런 건가요?",
-    explanation_ko: "어린 마틸다의 순수한 질문으로, 'is it just when'은 특정 조건에 한정되는지 묻는 표현입니다.",
-    tags: ["drama", "action", "classic"],
-    thumbnailUrl: "/posters/leon.jpg"
-  },
-  {
-    id: "m43",
-    category: "movie",
-    title: "Se7en",
-    scene: "Mills' rage",
-    line_en: "What's in the box?",
-    line_ko: "상자 안에 뭐가 있어?",
-    difficulty: "easy",
-    expression: "What's In The Box",
-    expression_ko: "상자 안에 뭐가 있어?",
-    explanation_ko: "영화 역사상 가장 유명한 클라이맥스 대사. 'What's in the ~?'는 내용을 궁금해하는 자연스러운 표현입니다.",
-    tags: ["crime", "thriller"],
-    thumbnailUrl: "/posters/seven.jpg"
-  },
-  {
-    id: "m44",
-    category: "movie",
-    title: "The Usual Suspects",
-    scene: "Verbal's reveal",
-    line_en: "The greatest trick the devil ever pulled was convincing the world he didn't exist.",
-    line_ko: "악마가 부린 가장 위대한 속임수는 세상에 자신이 존재하지 않는다고 믿게 만든 것이다.",
-    difficulty: "hard",
-    expression: "The Greatest Trick",
-    expression_ko: "가장 위대한 속임수",
-    explanation_ko: "반전의 상징. '~ever pulled'는 역사상 가장 ~한 것을 표현합니다.",
-    tags: ["crime", "thriller", "classic"],
-    thumbnailUrl: "/posters/usualsuspectes.jpg"
-  },
-  {
-    id: "m45",
-    category: "movie",
-    title: "Fight Club",
-    scene: "Tyler's manifesto",
-    line_en: "You are not your job, you're not how much money you have in the bank.",
-    line_ko: "당신은 당신의 직업이 아니고, 은행 잔고가 아니에요.",
-    difficulty: "medium",
-    expression: "You Are Not Your",
-    expression_ko: "당신은 ~이 아니다",
-    explanation_ko: "정체성과 소비주의를 비판하는 대사. 'You are not your ~'는 어떤 것이 자신의 전부가 아님을 강조합니다.",
-    tags: ["drama", "thriller"],
-    thumbnailUrl: "/posters/fightclub.jpg"
-  },
-  {
-    id: "m46",
-    category: "movie",
-    title: "American Beauty",
-    scene: "Lester's narration",
-    line_en: "It's a great thing when you realize you still have the ability to surprise yourself.",
-    line_ko: "자신을 여전히 놀라게 할 수 있다는 걸 깨달을 때, 그건 정말 대단한 일이야.",
-    difficulty: "medium",
-    expression: "Surprise Yourself",
-    expression_ko: "자기 자신을 놀라게 하다",
-    explanation_ko: "자기 발견의 기쁨을 표현하는 대사. 'you still have the ability to'는 가능성을 강조합니다.",
-    tags: ["drama", "life"],
-    thumbnailUrl: "/posters/americanbeauty.jpg"
-  },
-
-  // ========== 2000s FILMS ==========
-  {
-    id: "m47",
-    category: "movie",
-    title: "Gladiator",
-    scene: "Maximus reveals himself",
-    line_en: "My name is Maximus Decimus Meridius, and I will have my vengeance, in this life or the next.",
-    line_ko: "내 이름은 막시무스 데키무스 메리디우스. 이승에서든 저승에서든 반드시 복수하겠다.",
-    difficulty: "medium",
-    expression: "In This Life Or The Next",
-    expression_ko: "이승에서든 저승에서든",
-    explanation_ko: "강한 결의를 표현하는 명대사로, 'in this life or the next'는 절대 포기하지 않겠다는 의지를 뜻합니다.",
-    tags: ["action", "epic", "drama"],
-    thumbnailUrl: "/posters/gladiator.jpg"
-  },
-  {
-    id: "m48",
-    category: "movie",
-    title: "Memento",
-    scene: "Leonard's journal",
-    line_en: "Memory can change the shape of a room; it can change the color of a car.",
-    line_ko: "기억은 방의 형태를 바꿀 수 있고, 차의 색을 바꿀 수 있어.",
-    difficulty: "hard",
-    expression: "Change The Shape Of",
-    expression_ko: "~의 형태를 바꾸다",
-    explanation_ko: "기억의 주관성과 불완전함을 시적으로 표현한 대사입니다. 'change the shape of'는 본질적인 변화를 설명할 때 씁니다.",
-    tags: ["thriller", "sci-fi"],
-    thumbnailUrl: "/posters/memento.jpg"
-  },
-  {
-    id: "m49",
-    category: "movie",
-    title: "Cast Away",
-    scene: "Chuck's resolve",
-    line_en: "I know what I have to do now. I gotta keep breathing.",
-    line_ko: "이제 내가 뭘 해야 하는지 알아. 계속 숨을 쉬어야 해.",
-    difficulty: "medium",
-    expression: "Gotta Keep",
-    expression_ko: "계속 ~해야 한다",
-    explanation_ko: "'Gotta'는 'have got to'의 구어 줄임말로 일상에서 매우 자주 쓰입니다. 절박한 결심을 표현합니다.",
-    tags: ["drama", "survival"],
-    thumbnailUrl: "/posters/castaway.jpg"
-  },
-  {
-    id: "m50",
-    category: "movie",
-    title: "The Pursuit of Happyness",
-    scene: "Chris's speech to his son",
-    line_en: "Don't ever let somebody tell you you can't do something. Not even me.",
-    line_ko: "절대 누군가가 네가 뭔가를 못 한다고 말하게 두지 마. 나조차도.",
-    difficulty: "medium",
-    expression: "Don't Ever Let",
-    expression_ko: "절대 ~하게 두지 마",
-    explanation_ko: "'Don't ever let someone [동사원형]'은 매우 실용적인 경고·당부 표현입니다.",
-    tags: ["drama", "life", "motivation"],
-    thumbnailUrl: "/posters/pursuitofhappyness.jpg"
-  },
-  {
-    id: "m51",
-    category: "movie",
-    title: "No Country for Old Men",
-    scene: "Anton's coin toss",
-    line_en: "You don't have to do this.",
-    line_ko: "이럴 필요 없잖아요.",
-    difficulty: "easy",
-    expression: "You Don't Have To",
-    expression_ko: "~할 필요 없어",
-    explanation_ko: "'You don't have to'는 부담 없이 선택권을 주는 표현. 이 영화에서는 긴장을 극대화합니다.",
-    tags: ["crime", "thriller"],
-    thumbnailUrl: "/posters/nocountry.jpg"
-  },
-  {
-    id: "m52",
-    category: "movie",
-    title: "A Beautiful Mind",
-    scene: "Nash's Nobel speech",
-    line_en: "It is only in the mysterious equations of love that any logic or reason can be found.",
-    line_ko: "논리와 이성은 오직 사랑이라는 신비로운 방정식 안에서만 찾을 수 있습니다.",
-    difficulty: "hard",
-    expression: "Mysterious Equations",
-    expression_ko: "신비로운 방정식",
-    explanation_ko: "이성적인 언어로 사랑을 표현하는 역설적 대사. 'It is only in ~ that'은 강조 구문입니다.",
-    tags: ["drama", "romance", "inspiration"],
-    thumbnailUrl: "/posters/abeautifulmind.jpg"
-  },
-  {
-    id: "m53",
-    category: "movie",
-    title: "Catch Me If You Can",
-    scene: "Frank's con",
-    line_en: "Two little mice fell in a bucket of cream. The first mouse quickly gave up and drowned.",
-    line_ko: "두 마리의 작은 쥐가 크림 통에 빠졌어. 첫 번째 쥐는 빠르게 포기하고 익사했지.",
-    difficulty: "medium",
-    expression: "Quickly Gave Up",
-    expression_ko: "빠르게 포기했다",
-    explanation_ko: "포기하지 말라는 교훈을 담은 우화식 대사. 'gave up'은 영어에서 가장 많이 쓰이는 포기 표현입니다.",
-    tags: ["drama", "crime", "motivation"],
-    thumbnailUrl: "/posters/catchmeifyoucan.jpg"
-  },
-  {
-    id: "m54",
-    category: "movie",
-    title: "Million Dollar Baby",
-    scene: "Frankie's training",
-    line_en: "If there's magic in boxing, it's the magic of fighting battles beyond endurance.",
-    line_ko: "복싱에 마법이 있다면, 그건 인내의 한계를 넘어서는 싸움의 마법이야.",
-    difficulty: "hard",
-    expression: "Beyond Endurance",
-    expression_ko: "인내의 한계를 넘어서",
-    explanation_ko: "'beyond endurance'는 한계를 초월한 상태를 뜻하는 관용구입니다.",
-    tags: ["drama", "sports", "inspiration"],
-    thumbnailUrl: "/posters/milliondollarbaby.jpg"
-  },
-  {
-    id: "m55",
-    category: "movie",
-    title: "Eternal Sunshine of the Spotless Mind",
-    scene: "Joel's last words",
-    line_en: "Meet me in Montauk.",
-    line_ko: "몬탁에서 만나.",
-    difficulty: "easy",
-    expression: "Meet Me In",
-    expression_ko: "~에서 만나",
-    explanation_ko: "짧지만 강렬한 감정의 여운을 남기는 대사. 'Meet me in'은 특정 장소에서의 만남을 요청할 때 쓰입니다.",
-    tags: ["romance", "sci-fi", "emotional"],
-    thumbnailUrl: "/posters/eternalsunshing.jpg"
-  },
-  {
-    id: "m56",
-    category: "movie",
-    title: "The Departed",
-    scene: "Costello's lesson",
-    line_en: "I don't want to be a product of my environment. I want my environment to be a product of me.",
-    line_ko: "나는 내 환경의 산물이 되고 싶지 않아. 내 환경이 나의 산물이 되길 원해.",
-    difficulty: "hard",
-    expression: "Product Of My Environment",
-    expression_ko: "환경의 산물",
-    explanation_ko: "'a product of'는 어떤 것이 만들어낸 결과물을 뜻합니다. 능동적 삶의 태도를 역설적으로 표현합니다.",
-    tags: ["crime", "drama", "thriller"],
-    thumbnailUrl: "/posters/thedeparted.jpg"
-  },
-
-  // ========== ROMANCE ==========
-  {
-    id: "m57",
-    category: "movie",
-    title: "Notting Hill",
-    scene: "William's confession",
-    line_en: "I'm just a girl, standing in front of a boy, asking him to love her.",
-    line_ko: "나는 그냥 한 소녀야, 한 소년 앞에 서서 사랑해 달라고 부탁하는.",
-    difficulty: "medium",
-    expression: "Standing In Front Of",
-    expression_ko: "~ 앞에 서다",
-    explanation_ko: "단순하지만 감동적인 고백 대사. 'standing in front of'는 물리적·감정적 대면을 모두 표현합니다.",
-    tags: ["romance", "classic"],
-    thumbnailUrl: "/posters/nottinghill.jpg"
-  },
-  {
-    id: "m58",
-    category: "movie",
-    title: "La La Land",
-    scene: "Mia and Sebastian's last look",
-    line_en: "Here's to the ones who dream, foolish as they may seem.",
-    line_ko: "꿈꾸는 이들을 위해. 아무리 바보같아 보여도.",
-    difficulty: "hard",
-    expression: "Here's To",
-    expression_ko: "~를 위해 (건배·찬사)",
-    explanation_ko: "'Here's to'는 무언가를 기리거나 건배할 때 쓰는 표현. 'foolish as they may seem'은 양보절입니다.",
-    tags: ["romance", "musical", "dream"],
-    thumbnailUrl: "/posters/lalaland.jpg"
-  },
-  {
-    id: "m59",
-    category: "movie",
-    title: "Before Sunrise",
-    scene: "Jesse and Céline on the train",
-    line_en: "If there's any kind of magic in this world, it must be in the attempt of understanding someone.",
-    line_ko: "이 세상에 어떤 마법이 있다면, 그건 누군가를 이해하려는 노력 안에 있을 거야.",
-    difficulty: "hard",
-    expression: "The Attempt Of",
-    expression_ko: "~하려는 시도/노력",
-    explanation_ko: "'the attempt of ~ing'는 과정과 노력에 가치를 두는 표현입니다.",
-    tags: ["romance", "philosophical"],
-    thumbnailUrl: "/posters/beforesunrise.jpg"
-  },
-  {
-    id: "m60",
-    category: "movie",
-    title: "Pride & Prejudice",
-    scene: "Darcy's confession",
-    line_en: "You have bewitched me, body and soul.",
-    line_ko: "당신은 내 몸과 영혼을 완전히 사로잡았어요.",
-    difficulty: "medium",
-    expression: "Body And Soul",
-    expression_ko: "몸과 영혼으로 / 온몸으로",
-    explanation_ko: "'body and soul'은 완전히, 전적으로라는 뜻의 관용구입니다. 'bewitch'는 매혹시키다는 의미입니다.",
-    tags: ["romance", "drama", "classic"],
-    thumbnailUrl: "/posters/prideprejudice.jpg"
-  },
-  {
-    id: "m61",
-    category: "movie",
-    title: "The Notebook",
-    scene: "Noah's rain scene",
-    line_en: "So it's not gonna be easy. It's going to be really hard. We're gonna have to work at this every day.",
-    line_ko: "쉽지 않을 거야. 정말 힘들 거야. 매일 노력해야 할 거야.",
-    difficulty: "medium",
-    expression: "Work At This",
-    expression_ko: "이것을 위해 노력하다",
-    explanation_ko: "'work at'는 무언가를 위해 꾸준히 노력한다는 의미. 사랑도 노력이 필요하다는 메시지입니다.",
-    tags: ["romance", "drama"],
-    thumbnailUrl: "/posters/thenotebook.jpg"
-  },
-  {
-    id: "m62",
-    category: "movie",
-    title: "Her",
-    scene: "Theodore's letter",
-    line_en: "The past is just a story we tell ourselves.",
-    line_ko: "과거는 우리가 스스로에게 들려주는 이야기일 뿐이야.",
-    difficulty: "medium",
-    expression: "A Story We Tell Ourselves",
-    expression_ko: "우리가 스스로에게 들려주는 이야기",
-    explanation_ko: "과거의 의미를 재정의하는 철학적 대사. 'tell ourselves'는 자기 자신에게 설명하거나 납득시키는 행위입니다.",
-    tags: ["romance", "sci-fi", "philosophical"],
-    thumbnailUrl: "/posters/her.jpg"
-  },
-  {
-    id: "m63",
-    category: "movie",
-    title: "500 Days of Summer",
-    scene: "Tom's realization",
-    line_en: "I need to know that you're not gonna wake up in the morning and feel differently.",
-    line_ko: "당신이 내일 아침에 일어났을 때 마음이 변해 있지 않을 거라는 걸 알고 싶어.",
-    difficulty: "medium",
-    expression: "Feel Differently",
-    expression_ko: "다르게 느끼다 / 마음이 바뀌다",
-    explanation_ko: "'feel differently'는 감정이나 생각이 달라졌음을 표현합니다. 불안한 사랑을 담은 현실적 대사입니다.",
-    tags: ["romance", "drama"],
-    thumbnailUrl: "/posters/500daysofsummer.jpg"
-  },
-
-  // ========== ACTION / ADVENTURE ==========
-  {
-    id: "m64",
-    category: "movie",
-    title: "Die Hard",
-    scene: "McClane's radio",
-    line_en: "Yippee-ki-yay, motherf***er.",
-    line_ko: "이야호, 이 나쁜 놈들아.",
-    difficulty: "easy",
-    expression: "Yippee-ki-yay",
-    expression_ko: "이야호 (신나는 감탄사)",
-    explanation_ko: "맥클레인의 시그니처 대사. 구어 욕설 표현은 실제 영어권 문화에서 매우 자주 등장합니다.",
-    tags: ["action", "classic"],
-    thumbnailUrl: "/posters/diehard.jpg"
-  },
-  {
-    id: "m65",
-    category: "movie",
-    title: "The Matrix",
-    scene: "Morpheus's offer",
-    line_en: "You take the red pill, you stay in Wonderland, and I show you how deep the rabbit hole goes.",
-    line_ko: "빨간 약을 먹으면, 이상한 나라에 머물게 되고, 토끼굴이 얼마나 깊은지 보여주지.",
-    difficulty: "medium",
-    expression: "How Deep The Rabbit Hole Goes",
-    expression_ko: "토끼굴이 얼마나 깊은지 (진실이 얼마나 깊은지)",
-    explanation_ko: "'how deep the rabbit hole goes'는 진실이나 문제의 깊이를 알게 된다는 관용구로 자리잡았습니다.",
-    tags: ["sci-fi", "action", "classic"],
-    thumbnailUrl: "/posters/thematrix.jpg"
-  },
-  {
-    id: "m66",
-    category: "movie",
-    title: "Pirates of the Caribbean",
-    scene: "Jack Sparrow's introduction",
-    line_en: "Me? I'm dishonest, and a dishonest man you can always trust to be dishonest.",
-    line_ko: "나? 나는 정직하지 않아. 그리고 정직하지 않은 사람은 언제나 정직하지 않을 거라고 믿을 수 있지.",
-    difficulty: "hard",
-    expression: "Always Trust To Be",
-    expression_ko: "언제나 ~할 거라고 믿을 수 있다",
-    explanation_ko: "역설적인 논리로 신뢰를 설명하는 잭 스패로우의 재치 있는 대사입니다.",
-    tags: ["action", "adventure", "comedy"],
-    thumbnailUrl: "/posters/piratesofcaribbean.jpg"
-  },
-  {
-    id: "m67",
-    category: "movie",
-    title: "Mad Max: Fury Road",
-    scene: "Furiosa's vow",
-    line_en: "We are not things.",
-    line_ko: "우리는 사물이 아니에요.",
-    difficulty: "easy",
-    expression: "We Are Not",
-    expression_ko: "우리는 ~이 아니다",
-    explanation_ko: "강렬하고 짧은 저항의 선언. 'We are not'은 정체성을 부정하거나 재정의할 때 쓰는 강력한 표현입니다.",
-    tags: ["action", "sci-fi", "epic"],
-    thumbnailUrl: "/posters/madmax.jpg"
-  },
-  {
-    id: "m68",
-    category: "movie",
-    title: "John Wick",
-    scene: "Viggo's warning",
-    line_en: "He's not the Boogeyman. He's the one you send to kill the f***ing Boogeyman.",
-    line_ko: "그는 도깨비가 아니야. 그는 당신이 그 도깨비를 죽이러 보내는 사람이야.",
-    difficulty: "medium",
-    expression: "The One You Send To",
-    expression_ko: "~하러 보내는 사람",
-    explanation_ko: "'the one you send to [동사]'는 특정 역할을 맡은 사람을 소개하는 구조입니다.",
-    tags: ["action", "thriller"],
-    thumbnailUrl: "/posters/johnwick.jpg"
-  },
-  {
-    id: "m69",
-    category: "movie",
-    title: "The Avengers",
-    scene: "Nick Fury's speech",
-    line_en: "There was an idea called the Avengers Initiative. The idea was to bring together a group of remarkable people.",
-    line_ko: "어벤져스 이니셔티브라는 아이디어가 있었어요. 주목할 만한 사람들을 한데 모으자는 생각이었죠.",
-    difficulty: "medium",
-    expression: "Remarkable People",
-    expression_ko: "주목할 만한 사람들",
-    explanation_ko: "'remarkable'은 '뛰어난, 주목할 만한'이라는 뜻. 'bring together'는 한데 모은다는 의미입니다.",
-    tags: ["action", "hero"],
-    thumbnailUrl: "/posters/avengers.jpg"
-  },
-
-  // ========== DRAMA / PHILOSOPHICAL ==========
-  {
-    id: "m70",
-    category: "movie",
-    title: "Dead Poets Society",
-    scene: "Keating's first class",
-    line_en: "Carpe diem. Seize the day, boys. Make your lives extraordinary.",
-    line_ko: "카르페 디엠. 오늘을 잡아라, 얘들아. 너희 삶을 특별하게 만들어.",
-    difficulty: "easy",
-    expression: "Carpe Diem",
-    expression_ko: "현재를 즐겨라 / 오늘을 잡아라",
-    explanation_ko: "라틴어 격언으로 영어권에서도 널리 쓰입니다. 'seize'는 '붙잡다, 포착하다'는 뜻입니다.",
-    tags: ["drama", "inspiration", "life"],
-    thumbnailUrl: "/posters/deadpoetssociety.jpg"
-  },
-  {
-    id: "m71",
-    category: "movie",
-    title: "Whiplash",
-    scene: "Fletcher's philosophy",
-    line_en: "There are no two words in the English language more harmful than 'good job.'",
-    line_ko: "영어에서 가장 해로운 두 단어는 '잘했어'입니다.",
-    difficulty: "hard",
-    expression: "More Harmful Than",
-    expression_ko: "~보다 더 해로운",
-    explanation_ko: "완벽주의 교사의 철학을 담은 도발적 대사. 비교급 'more ~ than'의 강력한 활용 예입니다.",
-    tags: ["drama", "music", "intensity"],
-    thumbnailUrl: "/posters/whiplash.jpg"
-  },
-  {
-    id: "m72",
-    category: "movie",
-    title: "Arrival",
-    scene: "Louise's choice",
-    line_en: "Despite knowing the journey and where it leads, I embrace it and I welcome every moment of it.",
-    line_ko: "그 여정이 어디로 향하는지 알면서도, 나는 그것을 받아들이고 모든 순간을 환영해.",
-    difficulty: "hard",
-    expression: "Despite Knowing",
-    expression_ko: "알면서도 / ~임에도 불구하고",
-    explanation_ko: "'despite ~ing'는 역접을 나타내는 고급 표현. 결과를 알면서도 선택하는 깊은 주제를 담고 있습니다.",
-    tags: ["sci-fi", "emotional", "philosophical"],
-    thumbnailUrl: "/posters/arrival.jpg"
-  },
-  {
-    id: "m73",
-    category: "movie",
-    title: "The Truman Show",
-    scene: "Truman's farewell",
-    line_en: "In case I don't see ya: good afternoon, good evening, and good night.",
-    line_ko: "혹시 못 볼 수도 있으니까요. 좋은 오후, 좋은 저녁, 그리고 좋은 밤 되세요.",
-    difficulty: "easy",
-    expression: "In Case I Don't See Ya",
-    expression_ko: "혹시 못 볼 수도 있으니까",
-    explanation_ko: "'In case I don't see you'의 구어 표현. 'ya'는 'you'의 비격식 형태입니다.",
-    tags: ["drama", "sci-fi"],
-    thumbnailUrl: "/posters/trumanshow.jpg"
-  },
-  {
-    id: "m74",
-    category: "movie",
-    title: "About Schmidt",
-    scene: "Schmidt's letter",
-    line_en: "I am weak and I am a fool. But you know what? I don't think it matters.",
-    line_ko: "나는 나약하고 바보야. 그런데 있잖아? 그게 중요한 게 아닌 것 같아.",
-    difficulty: "medium",
-    expression: "I Don't Think It Matters",
-    expression_ko: "그게 중요한 게 아닌 것 같아",
-    explanation_ko: "'I don't think it matters'는 어떤 것이 별로 중요하지 않다고 부드럽게 표현하는 방식입니다.",
-    tags: ["drama", "life"],
-    thumbnailUrl: "/posters/aboutschmidt.jpg"
-  },
-  {
-    id: "m75",
-    category: "movie",
-    title: "The Social Network",
-    scene: "Zuckerberg's deposition",
-    line_en: "You're going to go through life thinking that people don't like you because you're a nerd.",
-    line_ko: "당신은 사람들이 당신을 싫어하는 이유가 너드여서라고 생각하며 살아갈 거예요.",
-    difficulty: "hard",
-    expression: "Go Through Life Thinking",
-    expression_ko: "~라고 생각하며 살다",
-    explanation_ko: "'go through life ~ing'는 삶 전체를 그 상태로 보낸다는 의미입니다.",
-    tags: ["drama", "biography"],
-    thumbnailUrl: "/posters/thesocialnetwork.jpg"
-  },
-  {
-    id: "m76",
-    category: "movie",
-    title: "Into the Wild",
-    scene: "Chris's journal",
-    line_en: "Happiness is only real when shared.",
-    line_ko: "행복은 나눌 때만 진짜가 돼.",
-    difficulty: "easy",
-    expression: "Only Real When Shared",
-    expression_ko: "나눌 때만 진짜인",
-    explanation_ko: "고독한 여정 끝에 깨닫는 진리. 'only real when'은 조건부 진실을 강조하는 표현입니다.",
-    tags: ["drama", "life", "adventure"],
-    thumbnailUrl: "/posters/intothewild.jpg"
-  },
-
-  // ========== HORROR / SUSPENSE ==========
-  {
-    id: "m77",
-    category: "movie",
-    title: "Get Out",
-    scene: "Rose's true face",
-    line_en: "Do they know what it's like to have to smile at people who hate you?",
-    line_ko: "당신을 싫어하는 사람들에게 미소 지어야 하는 게 어떤 건지 그들이 알까?",
-    difficulty: "hard",
-    expression: "What It's Like To Have To",
-    expression_ko: "~해야만 하는 것이 어떤 건지",
-    explanation_ko: "'What it's like to'는 경험이 어떤지 묻거나 설명할 때 쓰는 핵심 표현입니다.",
-    tags: ["horror", "thriller", "drama"],
-    thumbnailUrl: "/posters/getout.jpg"
-  },
-  {
-    id: "m78",
-    category: "movie",
-    title: "Hereditary",
-    scene: "Annie's breakdown",
-    line_en: "I never wanted to be your mother.",
-    line_ko: "나는 당신의 엄마가 되고 싶었던 적이 없어.",
-    difficulty: "easy",
-    expression: "Never Wanted To Be",
-    expression_ko: "~이 되고 싶었던 적이 없다",
-    explanation_ko: "충격적인 고백 대사. 'never wanted to be'는 과거부터 현재까지의 욕구 부재를 표현합니다.",
-    tags: ["horror", "drama", "emotional"],
-    thumbnailUrl: "/posters/hereditary.jpg"
-  },
-  {
-    id: "m79",
-    category: "movie",
-    title: "Midsommar",
-    scene: "Dani's cry",
-    line_en: "I feel like I'm always apologizing for being sad.",
-    line_ko: "난 항상 슬픔에 대해 사과하는 것 같아.",
-    difficulty: "medium",
-    expression: "Apologizing For Being",
-    expression_ko: "~인 것에 대해 사과하다",
-    explanation_ko: "'apologize for being'은 자신의 상태를 미안해하는 표현. 감정 억압의 현실을 담은 대사입니다.",
-    tags: ["horror", "drama", "emotional"],
-    thumbnailUrl: "/posters/midsommar.jpg"
-  },
-  {
-    id: "m80",
-    category: "movie",
-    title: "A Quiet Place",
-    scene: "Lee's sacrifice",
-    line_en: "I have always loved you.",
-    line_ko: "항상 사랑했어.",
-    difficulty: "easy",
-    expression: "I Have Always Loved",
-    expression_ko: "항상 사랑해왔다",
-    explanation_ko: "'I have always loved'는 현재완료로 과거부터 지금까지 계속된 감정을 나타냅니다.",
-    tags: ["horror", "drama", "emotional"],
-    thumbnailUrl: "/posters/aquietplace.jpg"
-  },
-
-  // ========== K-MOVIES ==========
-  {
-    id: "m81",
-    category: "movie",
-    title: "Oldboy",
-    scene: "Dae-su's question",
-    line_en: "Laugh and the world laughs with you. Weep and you weep alone.",
-    line_ko: "웃으면 세상이 함께 웃는다. 울면 혼자 운다.",
-    difficulty: "medium",
-    expression: "And The World",
-    expression_ko: "그러면 세상도 (함께)",
-    explanation_ko: "Ella Wheeler Wilcox의 시 Solitude에서 인용. 고립과 고독의 주제를 담고 있습니다.",
-    tags: ["k-movie", "drama", "thriller"],
-    thumbnailUrl: "/posters/oldboy.jpg"
-  },
-  {
-    id: "m82",
-    category: "movie",
-    title: "Train to Busan",
-    scene: "Seok-woo's realization",
-    line_en: "There are only two kinds of people in this world — those who protect others and those who protect themselves.",
-    line_ko: "이 세상에는 두 종류의 사람이 있어. 남을 지키는 사람과 자기 자신만 지키는 사람.",
-    difficulty: "medium",
-    expression: "Two Kinds Of People",
-    expression_ko: "두 종류의 사람",
-    explanation_ko: "'There are two kinds of people'은 세상을 이분법적으로 나눌 때 자주 쓰는 구조입니다.",
-    tags: ["k-movie", "action", "drama"],
-    thumbnailUrl: "/posters/traintobuson.jpg"
-  },
-  {
-    id: "m83",
-    category: "movie",
-    title: "Burning",
-    scene: "Jong-su's confusion",
-    line_en: "There are too many Gatsbys in Korea.",
-    line_ko: "한국에는 개츠비가 너무 많아.",
-    difficulty: "hard",
-    expression: "Too Many",
-    expression_ko: "너무 많은",
-    explanation_ko: "Great Gatsby를 인용해 한국 사회를 비판하는 대사. 'too many'는 과잉 상태를 표현합니다.",
-    tags: ["k-movie", "drama", "philosophical"],
-    thumbnailUrl: "/posters/burning.jpg"
-  },
-  {
-    id: "m84",
-    category: "movie",
-    title: "The Wailing",
-    scene: "The stranger's warning",
-    line_en: "Don't be afraid. All this has a reason.",
-    line_ko: "두려워하지 마. 이 모든 것에는 이유가 있어.",
-    difficulty: "easy",
-    expression: "Has A Reason",
-    expression_ko: "이유가 있다",
-    explanation_ko: "'has a reason'은 모든 일에 이유나 원인이 있다고 말할 때 쓰는 표현입니다.",
-    tags: ["k-movie", "horror", "thriller"],
-    thumbnailUrl: "/posters/thewailing.jpg"
-  },
-  {
-    id: "m85",
-    category: "movie",
-    title: "A Taxi Driver",
-    scene: "Kim Man-seop's decision",
-    line_en: "Even if no one remembers, I want to do the right thing.",
-    line_ko: "아무도 기억하지 않더라도, 나는 옳은 일을 하고 싶어.",
-    difficulty: "medium",
-    expression: "Even If No One Remembers",
-    expression_ko: "아무도 기억하지 않더라도",
-    explanation_ko: "'even if'는 가정의 양보절을 만드는 표현. 결과와 상관없이 옳은 일을 하겠다는 의지를 담습니다.",
-    tags: ["k-movie", "drama", "history"],
-    thumbnailUrl: "/posters/taxidriver.jpg"
-  },
-
-  // ========== COMEDY / FEEL-GOOD ==========
-  {
-    id: "m86",
-    category: "movie",
-    title: "Home Alone",
-    scene: "Kevin's mirror moment",
-    line_en: "This is my house. I have to defend it.",
-    line_ko: "이건 내 집이야. 내가 지켜야 해.",
-    difficulty: "easy",
-    expression: "I Have To Defend",
-    expression_ko: "나는 ~을 지켜야 해",
-    explanation_ko: "'I have to defend'는 무언가를 보호해야 한다는 강한 책임감을 표현합니다.",
-    tags: ["comedy", "classic"],
-    thumbnailUrl: "/posters/homealone.jpg"
-  },
-  {
-    id: "m87",
-    category: "movie",
-    title: "The Grand Budapest Hotel",
-    scene: "Gustave's credo",
-    line_en: "You see, there are still faint glimmers of civilization left in this barbaric slaughterhouse that was once known as humanity.",
-    line_ko: "보다시피, 한때 인류라고 알려졌던 이 야만적인 도살장에는 아직도 문명의 희미한 빛이 남아 있어.",
-    difficulty: "hard",
-    expression: "Faint Glimmers Of",
-    expression_ko: "희미한 빛 / 작은 흔적",
-    explanation_ko: "'faint glimmers'는 거의 사라질 뻔한 것이 아직 남아있는 상태. 낭만과 냉소가 뒤섞인 표현입니다.",
-    tags: ["comedy", "drama"],
-    thumbnailUrl: "/posters/grandbudapesthotel.jpg"
-  },
-  {
-    id: "m88",
-    category: "movie",
-    title: "Amélie",
-    scene: "Narrator's intro",
-    line_en: "Without you, today's emotions would be the scurf of yesterday's.",
-    line_ko: "당신이 없다면, 오늘의 감정들은 어제의 찌꺼기에 불과할 거야.",
-    difficulty: "hard",
-    expression: "Would Be The Scurf Of",
-    expression_ko: "~의 찌꺼기가 될 것이다",
-    explanation_ko: "시적이고 독창적인 비유. 'scurf'는 잘 쓰이지 않지만 '때, 찌꺼기'라는 의미로 유니크한 어휘입니다.",
-    tags: ["romance", "comedy", "french"],
-    thumbnailUrl: "/posters/amelie.jpg"
-  },
-  {
-    id: "m89",
-    category: "movie",
-    title: "Groundhog Day",
-    scene: "Phil's realization",
-    line_en: "What would you do if you were stuck in one place and every day was exactly the same?",
-    line_ko: "한 장소에 갇혀서 매일이 똑같다면 어떻게 할 거야?",
-    difficulty: "medium",
-    expression: "Stuck In One Place",
-    expression_ko: "한 곳에 갇히다",
-    explanation_ko: "'stuck in'은 장소나 상황에 갇혀있는 것을 표현. 일상의 반복에 지쳐있을 때 공감되는 대사입니다.",
-    tags: ["comedy", "drama", "life"],
-    thumbnailUrl: "/posters/groundhogday.jpg"
-  },
-  {
-    id: "m90",
-    category: "movie",
-    title: "Billy Elliot",
-    scene: "Billy's audition",
-    line_en: "When I'm dancing, I sort of disappear. I feel a change in my whole body.",
-    line_ko: "춤을 출 때 나는 사라지는 것 같아. 온몸에 변화가 느껴져.",
-    difficulty: "medium",
-    expression: "Sort Of Disappear",
-    expression_ko: "어딘가 사라지는 것 같다",
-    explanation_ko: "'sort of'는 '어딘가, 약간, 일종의'라는 뜻의 구어 표현으로 매우 빈번하게 쓰입니다.",
-    tags: ["drama", "dance", "life"],
-    thumbnailUrl: "/posters/billyelliott.jpg"
-  },
-
-  // ========== SCI-FI / MIND-BENDING ==========
-  {
-    id: "m91",
-    category: "movie",
-    title: "2001: A Space Odyssey",
-    scene: "HAL's refusal",
-    line_en: "I'm sorry, Dave. I'm afraid I can't do that.",
-    line_ko: "미안해요, 데이브. 그건 할 수 없을 것 같아요.",
-    difficulty: "easy",
-    expression: "I'm Afraid I Can't",
-    expression_ko: "유감이지만 ~할 수 없어",
-    explanation_ko: "'I'm afraid I can't'는 정중하게 거절할 때 쓰는 표현. 냉정한 AI의 입에서 나와 더 섬뜩합니다.",
-    tags: ["sci-fi", "classic"],
-    thumbnailUrl: "/posters/2001spaceodyssey.jpg"
-  },
-  {
-    id: "m92",
-    category: "movie",
-    title: "Blade Runner 2049",
-    scene: "K's final moment",
-    line_en: "You've been living someone else's life.",
-    line_ko: "당신은 다른 누군가의 삶을 살아왔어요.",
-    difficulty: "medium",
-    expression: "Living Someone Else's",
-    expression_ko: "다른 누군가의 ~을 살다",
-    explanation_ko: "'living someone else's life'는 자신의 삶이 아닌 타인의 것을 살아간다는 정체성의 위기를 담습니다.",
-    tags: ["sci-fi", "philosophical"],
-    thumbnailUrl: "/posters/bladerunner2049.jpg"
-  },
-  {
-    id: "m93",
-    category: "movie",
-    title: "Ex Machina",
-    scene: "Nathan's test",
-    line_en: "The challenge is not to act automatically. It's to find an action that is not automatic.",
-    line_ko: "도전은 자동적으로 행동하지 않는 게 아니에요. 자동적이지 않은 행동을 찾는 거예요.",
-    difficulty: "hard",
-    expression: "Not Automatic",
-    expression_ko: "자동적이지 않은",
-    explanation_ko: "인공지능과 의식의 본질에 관한 철학적 대사. 'automatic'은 무의식적·반사적 행동을 뜻합니다.",
-    tags: ["sci-fi", "thriller", "philosophical"],
-    thumbnailUrl: "/posters/exmachina.jpg"
-  },
-  {
-    id: "m94",
-    category: "movie",
-    title: "Moon",
-    scene: "Sam's discovery",
-    line_en: "I just want to go home.",
-    line_ko: "그냥 집에 가고 싶어.",
-    difficulty: "easy",
-    expression: "I Just Want To Go",
-    expression_ko: "그냥 ~에 가고 싶어",
-    explanation_ko: "'I just want to'는 소망의 순수함을 강조하는 표현. 상황이 복잡할수록 이 단순한 대사가 더 무겁게 느껴집니다.",
-    tags: ["sci-fi", "drama", "emotional"],
-    thumbnailUrl: "/posters/moon.jpg"
-  },
-  {
-    id: "m95",
-    category: "movie",
-    title: "Contact",
-    scene: "Ellie's first contact",
-    line_en: "If it's just us, it seems like an awful waste of space.",
-    line_ko: "우리만 있다면, 엄청난 공간의 낭비인 것 같아요.",
-    difficulty: "medium",
-    expression: "An Awful Waste Of",
-    expression_ko: "엄청난 낭비",
-    explanation_ko: "'an awful waste of'는 매우 아깝거나 낭비적인 상황을 표현합니다. 'awful'이 부정 명사 앞에서 '엄청난'의 의미로 쓰입니다.",
-    tags: ["sci-fi", "philosophical"],
-    thumbnailUrl: "/posters/contact.jpg"
-  },
-
-  // ========== WAR / HISTORY ==========
-  {
-    id: "m96",
-    category: "movie",
-    title: "Full Metal Jacket",
-    scene: "Joker's reflection",
-    line_en: "I am in a world of sh*t. Yes. But I am alive. And I am not afraid.",
-    line_ko: "나는 최악의 상황에 있어. 그래. 하지만 살아있고, 두렵지 않아.",
-    difficulty: "medium",
-    expression: "I Am Alive And",
-    expression_ko: "살아있고 ~하다",
-    explanation_ko: "'I am alive'를 단독 선언처럼 쓰는 것은 강한 존재감을 표현합니다.",
-    tags: ["war", "drama"],
-    thumbnailUrl: "/posters/fullmetaljacket.jpg"
-  },
-  {
-    id: "m97",
-    category: "movie",
-    title: "Apocalypse Now",
-    scene: "Kurtz's last words",
-    line_en: "The horror. The horror.",
-    line_ko: "공포. 공포.",
-    difficulty: "easy",
-    expression: "The Horror",
-    expression_ko: "공포 / 끔찍함",
-    explanation_ko: "극한의 감정을 단 두 단어로 표현. 반복 강조는 영어에서 강렬한 감정을 드러내는 방식입니다.",
-    tags: ["war", "drama", "classic"],
-    thumbnailUrl: "/posters/apocalypsenow.jpg"
-  },
-  {
-    id: "m98",
-    category: "movie",
-    title: "Saving Private Ryan",
-    scene: "Captain Miller's last words",
-    line_en: "Earn this.",
-    line_ko: "이걸 얻어내.",
-    difficulty: "easy",
-    expression: "Earn This",
-    expression_ko: "이것을 얻어내라 / 자격을 갖춰라",
-    explanation_ko: "단 두 단어지만 삶의 무게를 고스란히 담은 대사. 'earn'은 노력으로 얻어낸다는 의미입니다.",
-    tags: ["war", "drama", "emotional"],
-    thumbnailUrl: "/posters/savingprivateryan.jpg"
-  },
-  {
-    id: "m99",
-    category: "movie",
-    title: "Dunkirk",
-    scene: "Mr. Dawson's resolve",
-    line_en: "Men my age dictate this war. Why should we be allowed to send our children to fight it?",
-    line_ko: "내 나이 남자들이 이 전쟁을 지시해. 왜 우리 아이들을 싸우게 보내는 게 허용돼야 하지?",
-    difficulty: "hard",
-    expression: "Be Allowed To",
-    expression_ko: "~하는 것이 허용되다",
-    explanation_ko: "'be allowed to'는 허가와 허용을 나타내는 수동 표현. 도덕적 책임을 묻는 강력한 질문입니다.",
-    tags: ["war", "drama", "history"],
-    thumbnailUrl: "/posters/dunkirk.jpg"
-  },
-  {
-    id: "m100",
-    category: "movie",
-    title: "1917",
-    scene: "Schofield's mission",
-    line_en: "We have to go through no-man's land.",
-    line_ko: "우리는 무인 지대를 통과해야 해.",
-    difficulty: "medium",
-    expression: "Go Through",
-    expression_ko: "~을 통과하다 / 헤쳐나가다",
-    explanation_ko: "'go through'는 공간 통과뿐 아니라 어려운 상황을 헤쳐나간다는 뜻으로도 폭넓게 쓰입니다.",
-    tags: ["war", "action", "drama"],
-    thumbnailUrl: "/posters/1917.jpg"
-  },
-
-  // ========== BIOGRAPHY / SPORTS ==========
-  {
-    id: "m101",
-    category: "movie",
-    title: "Moneyball",
-    scene: "Billy's pitch",
-    line_en: "Adapt or die.",
-    line_ko: "적응하거나 죽거나.",
-    difficulty: "easy",
-    expression: "Adapt Or Die",
-    expression_ko: "적응하거나 죽거나",
-    explanation_ko: "진화론에서 유래한 표현. 변화에 적응하지 못하면 도태된다는 현실적 메시지입니다.",
-    tags: ["sports", "biography", "drama"],
-    thumbnailUrl: "/posters/moneyball.jpg"
-  },
-  {
-    id: "m102",
-    category: "movie",
-    title: "Rocky",
-    scene: "Rocky's speech",
-    line_en: "It ain't about how hard you hit. It's about how hard you can get hit and keep moving forward.",
-    line_ko: "얼마나 세게 치느냐가 아니야. 얼마나 세게 맞고도 계속 앞으로 나아갈 수 있느냐야.",
-    difficulty: "medium",
-    expression: "Keep Moving Forward",
-    expression_ko: "계속 앞으로 나아가다",
-    explanation_ko: "역경을 이겨내는 정신을 담은 명대사. 'ain't'는 'is not/are not'의 구어 표현입니다.",
-    tags: ["sports", "drama", "inspiration"],
-    thumbnailUrl: "/posters/rocky.jpg"
-  },
-  {
-    id: "m103",
-    category: "movie",
-    title: "Coach Carter",
-    scene: "Carter's resignation threat",
-    line_en: "Our deepest fear is not that we are inadequate. Our deepest fear is that we are powerful beyond measure.",
-    line_ko: "우리의 가장 깊은 두려움은 우리가 부족하다는 게 아니야. 우리가 측량할 수 없을 만큼 강하다는 거야.",
-    difficulty: "hard",
-    expression: "Powerful Beyond Measure",
-    expression_ko: "측량할 수 없을 만큼 강한",
-    explanation_ko: "Marianne Williamson의 글에서 인용. 'beyond measure'는 측정 불가능할 만큼 크다는 표현입니다.",
-    tags: ["sports", "inspiration", "drama"],
-    thumbnailUrl: "/posters/coachcarter.jpg"
-  },
-  {
-    id: "m104",
-    category: "movie",
-    title: "Rush",
-    scene: "Lauda's philosophy",
-    line_en: "The closer you are to death, the more alive you feel.",
-    line_ko: "죽음에 가까울수록 더 살아있는 느낌이 들어.",
-    difficulty: "medium",
-    expression: "The Closer You Are To",
-    expression_ko: "~에 가까울수록",
-    explanation_ko: "'The closer ~ the more ~'는 비례 관계를 나타내는 비교 구문입니다.",
-    tags: ["sports", "biography", "action"],
-    thumbnailUrl: "/posters/rush.jpg"
-  },
-  {
-    id: "m105",
-    category: "movie",
-    title: "Ford v Ferrari",
-    scene: "Shelby's confession",
-    line_en: "There's a point at 7,000 RPM where everything fades. The machine becomes weightless.",
-    line_ko: "7,000RPM에서 모든 것이 사라지는 순간이 있어. 기계가 무중력 상태가 되는 거야.",
-    difficulty: "hard",
-    expression: "Everything Fades",
-    expression_ko: "모든 것이 사라지다",
-    explanation_ko: "'fade'는 서서히 사라지거나 흐려지는 것. 극한의 집중 상태를 시적으로 표현한 대사입니다.",
-    tags: ["sports", "biography", "action"],
-    thumbnailUrl: "/posters/fordvferrari.jpg"
-  },
-
-  // ==================== SONGS ====================
-
-  {
-    id: "s1",
-    category: "song",
-    title: "Shape of You",
-    scene: "Ed Sheeran",
-    line_en: "The club isn't the best place to find a lover.",
-    line_ko: "클럽은 연인을 찾기에 가장 좋은 장소는 아니에요.",
-    difficulty: "easy",
-    expression: "best place to find",
-    expression_ko: "~찾기에 가장 좋은 장소",
-    explanation_ko: "일상적인 공간에 대한 선호도를 표현할 때 유용합니다.",
-    tags: ["romance", "pop"]
-  },
-  {
-    id: "s2",
-    category: "song",
-    title: "A Whole New World",
-    scene: "Aladdin OST",
-    line_en: "I can show you the world.",
-    line_ko: "당신에게 세상을 보여줄 수 있어요.",
-    difficulty: "easy",
-    expression: "show somebody something",
-    expression_ko: "누구에게 ~을 보여주다",
-    explanation_ko: "수여동사 show의 전형적인 활용 패턴입니다.",
-    tags: ["dream", "classic"]
-  },
-  {
-    id: "s3",
-    category: "song",
-    title: "Someone Like You",
-    scene: "Adele",
-    line_en: "Never mind, I'll find someone like you.",
-    line_ko: "걱정 마세요, 당신 같은 사람을 찾을게요.",
-    difficulty: "medium",
-    expression: "never mind",
-    expression_ko: "걱정 마 / 괜찮아 / 신경 쓰지 마",
-    explanation_ko: "상대방을 안심시키거나 상황을 넘길 때 자주 쓰이는 구어체 표현입니다.",
-    tags: ["emotion", "soul"]
-  },
-  {
-    id: "s4",
-    category: "song",
-    title: "Let It Be",
-    scene: "The Beatles",
-    line_en: "There will be an answer, let it be.",
-    line_ko: "답이 있을 거예요, 그냥 순리에 맡기세요.",
-    difficulty: "easy",
-    expression: "let it be",
-    expression_ko: "그대로 두다 / 순리에 맡기다",
-    explanation_ko: "명상적이고 위로가 되는 고전적인 표현입니다.",
-    tags: ["wisdom", "classic"]
-  },
-  {
-    id: "s5",
-    category: "song",
-    title: "Thinking Out Loud",
-    scene: "Ed Sheeran",
-    line_en: "People fall in love in mysterious ways.",
-    line_ko: "사람들은 신비로운 방식으로 사랑에 빠지곤 하죠.",
-    difficulty: "medium",
-    expression: "fall in love",
-    expression_ko: "사랑에 빠지다",
-    explanation_ko: "감정 상태의 변화를 나타내는 'fall'의 활용입니다.",
-    tags: ["love", "pop"]
-  },
-  {
-    id: "s6",
-    category: "song",
-    title: "Stay With Me",
-    scene: "Sam Smith",
-    line_en: "Won't you stay with me?",
-    line_ko: "나와 함께 있어주지 않을래요?",
-    difficulty: "easy",
-    expression: "stay with me",
-    expression_ko: "함께 있다 / 머무르다",
-    explanation_ko: "상대방에게 머물기를 간절히 요청할 때 쓰는 표현입니다.",
-    tags: ["emotion", "pop"]
-  },
-  {
-    id: "s7",
-    category: "song",
-    title: "Just the Way You Are",
-    scene: "Bruno Mars",
-    line_en: "You're amazing just the way you are.",
-    line_ko: "있는 그대로의 당신 모습이 놀라워요.",
-    difficulty: "easy",
-    expression: "just the way you are",
-    expression_ko: "있는 그대로의 모습",
-    explanation_ko: "상대방의 현재 모습을 칭찬할 때 가장 많이 쓰이는 관용구입니다.",
-    tags: ["confidence", "pop"]
-  },
-  {
-    id: "s8",
-    category: "song",
-    title: "Count on Me",
-    scene: "Bruno Mars",
-    line_en: "You can count on me like one two three.",
-    line_ko: "하나 둘 셋 하는 것처럼 나를 의지해도 돼요.",
-    difficulty: "easy",
-    expression: "count on somebody",
-    expression_ko: "누구를 의지하다 / 믿다",
-    explanation_ko: "신뢰를 표현할 때 'count on'은 필수적인 숙어입니다.",
-    tags: ["friendship", "pop"]
-  },
-  {
-    id: "s9",
-    category: "song",
-    title: "All of Me",
-    scene: "John Legend",
-    line_en: "All of me loves all of you.",
-    line_ko: "내 모든 것이 당신의 모든 것을 사랑해요.",
-    difficulty: "easy",
-    expression: "all of me/you",
-    expression_ko: "나/너의 모든 것",
-    explanation_ko: "전부라는 의미를 강조할 때 쓰는 로맨틱한 표현입니다.",
-    tags: ["love", "soul"]
-  },
-  {
-    id: "s10",
-    category: "song",
-    title: "Perfect",
-    scene: "Ed Sheeran",
-    line_en: "I found a love for me.",
-    line_ko: "내게 맞는 사랑을 찾았어요.",
-    difficulty: "easy",
-    expression: "found a love",
-    expression_ko: "사랑을 찾다",
-    explanation_ko: "일생의 인연을 만났을 때 쓰는 감격스러운 표현입니다.",
-    tags: ["love", "pop"]
-  },
-  {
-    id: "s11",
-    category: "song",
-    title: "Billie Jean",
-    scene: "Michael Jackson",
-    line_en: "The kid is not my son.",
-    line_ko: "그 아이는 내 아들이 아니에요.",
-    difficulty: "medium",
-    expression: "not my son",
-    expression_ko: "~가 아니다 / 부정의 표현",
-    explanation_ko: "강력한 부정의 표현으로, 소유격과 명사의 결합을 보여줍니다.",
-    tags: ["legend", "pop", "dance"]
-  },
-  {
-    id: "s12",
-    category: "song",
-    title: "Man in the Mirror",
-    scene: "Michael Jackson",
-    line_en: "I'm starting with the man in the mirror.",
-    line_ko: "거울 속의 그 사람부터 시작하려고 해요.",
-    difficulty: "medium",
-    expression: "start with",
-    expression_ko: "~부터 시작하다",
-    explanation_ko: "변화의 시작점이나 순서를 말할 때 아주 유용한 표현입니다.",
-    tags: ["message", "soul", "pop"]
-  },
-  {
-    id: "s13",
-    category: "song",
-    title: "Heal the World",
-    scene: "Michael Jackson",
-    line_en: "Make a better place for you and for me.",
-    line_ko: "당신과 나를 위해 더 나은 세상을 만들어요.",
-    difficulty: "easy",
-    expression: "make a better place",
-    expression_ko: "더 나은 세상을 만들다",
-    explanation_ko: "환경이나 상황을 개선하고자 할 때 쓰는 희망찬 표현입니다.",
-    tags: ["hope", "peace"]
-  },
-  {
-    id: "s14",
-    category: "song",
-    title: "Beat It",
-    scene: "Michael Jackson",
-    line_en: "No one wants to be defeated.",
-    line_ko: "그 누구도 패배하고 싶어하지 않아요.",
-    difficulty: "medium",
-    expression: "want to be defeated",
-    expression_ko: "패배하고 싶어하다",
-    explanation_ko: "수동태 'be defeated'(패배당하다)의 명확한 활용 예시입니다.",
-    tags: ["energy", "rock", "pop"]
-  },
-  {
-    id: "s15",
-    category: "song",
-    title: "Thriller",
-    scene: "Michael Jackson",
-    line_en: "You're fighting for your life.",
-    line_ko: "당신은 목숨을 걸고 싸우고 있어요.",
-    difficulty: "medium",
-    expression: "fight for one's life",
-    expression_ko: "필사적으로 싸우다 / 목숨을 걸다",
-    explanation_ko: "극한의 노력이 필요한 상황을 생생하게 묘사하는 표현입니다.",
-    tags: ["legend", "horror", "pop"]
+    explanation: "행위를 받는 대상을 주어로 강조할 때 수동태를 사용합니다. be동사 + 과거분사(p.p.) 형태이며, 뉴스, 공식 문서, 학술 글에서 자주 사용됩니다.",
+    examples: [
+      { en: "The report was written by Sarah.", ko: "그 보고서는 사라가 작성했다." },
+      { en: "English is spoken all over the world.", ko: "영어는 전 세계에서 사용된다." },
+      { en: "The meeting has been postponed.", ko: "회의가 연기되었습니다." },
+      { en: "A new bridge is being built downtown.", ko: "시내에 새 다리가 건설되고 있다." }
+    ],
+    commonMistakes: [
+      { wrong: "The book was wrote by him.", correct: "The book was written by him.", explanation: "수동태에서 write의 과거분사는 written입니다." },
+      { wrong: "English is speak everywhere.", correct: "English is spoken everywhere.", explanation: "be동사 뒤에는 반드시 과거분사 형태를 사용해야 합니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "수동태: The cake ____ (make) by my mom.",
+        options: ["made", "was made", "is make", "has make"],
+        correctAnswer: 1,
+        explanation: "수동태는 be동사 + 과거분사입니다. was made가 맞습니다."
+      },
+      {
+        question: "진행형 수동태: A new hospital ____ (build) right now.",
+        options: ["is building", "is being built", "is built", "being built"],
+        correctAnswer: 1,
+        explanation: "진행형 수동태는 be being + 과거분사입니다."
+      }
+    ],
+    tags: ["고급", "수동태", "문법"]
   }
 ];
