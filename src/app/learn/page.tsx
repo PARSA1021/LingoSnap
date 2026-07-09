@@ -2,8 +2,8 @@
 
 import * as React from 'react';
 import { useRouter } from 'next/navigation';
-import { 
-  Zap, 
+import {
+  Zap,
   RotateCcw,
   ChevronRight,
   BookOpen,
@@ -13,12 +13,13 @@ import {
   Sparkles,
   UtensilsCrossed,
   Heart,
-  MessageSquare
+  MessageSquare,
+  type LucideIcon
 } from 'lucide-react';
 import { cn } from '@/lib/utils/cn';
-import { categories, vocabulary } from '@/data/contents';
+import { categories, getCategoryWords } from '@/data/contents';
 
-const iconMap: Record<string, React.ComponentType<any>> = {
+const iconMap: Record<string, LucideIcon> = {
   Coffee,
   Plane,
   Briefcase,
@@ -29,10 +30,12 @@ const iconMap: Record<string, React.ComponentType<any>> = {
   MessageSquare,
 };
 
+type WordCount = 5 | 10 | 15;
+
 export default function LearnPage() {
   const router = useRouter();
   const [searchParams, setSearchParams] = React.useState<URLSearchParams | null>(null);
-  
+
   // 클라이언트에서만 searchParams 처리
   React.useEffect(() => {
     setSearchParams(new URLSearchParams(window.location.search));
@@ -40,12 +43,12 @@ export default function LearnPage() {
 
   // Setup state
   const [selectedCategory, setSelectedCategory] = React.useState<string>('all');
-  const [selectedCount, setSelectedCount] = React.useState<5 | 10 | 15>(10);
+  const [selectedCount, setSelectedCount] = React.useState<WordCount>(10);
 
   // URL 파라미터에서 초기값 설정
   React.useEffect(() => {
     if (!searchParams) return;
-    
+
     const categoryParam = searchParams.get('category');
     if (categoryParam && (categoryParam === 'all' || categories.some(c => c.id === categoryParam))) {
       setSelectedCategory(categoryParam);
@@ -56,10 +59,15 @@ export default function LearnPage() {
     router.push(`/learn/session?category=${selectedCategory}&wordCount=${selectedCount}`);
   };
 
+  const previewWords = React.useMemo(() => {
+    const words = getCategoryWords(selectedCategory);
+    return words.slice(0, 6); // Show up to 6 words
+  }, [selectedCategory]);
+
   return (
     <div className="min-h-screen w-full bg-[var(--color-background)] pb-32 pt-6 sm:pt-8 md:pt-10 lg:pt-12 px-3 sm:px-4 md:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto flex flex-col gap-6 sm:gap-7 md:gap-8 lg:gap-10">
-        
+      <div className="max-w-6xl mx-auto flex flex-col gap-6 sm:gap-7 md:gap-8 lg:gap-10">
+
         {/* Header */}
         <header className="flex flex-col gap-3 sm:gap-4">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-[var(--color-foreground)]">
@@ -117,10 +125,10 @@ export default function LearnPage() {
             학습할 개수
           </h2>
           <div className="flex gap-2.5 sm:gap-3 md:gap-3.5">
-            {[5, 10, 15].map((num) => (
+            {([5, 10, 15] as const).map((num) => (
               <button
                 key={num}
-                onClick={() => setSelectedCount(num as any)}
+                onClick={() => setSelectedCount(num)}
                 className={cn(
                   "flex-1 h-14 sm:h-16 md:h-18 rounded-xl sm:rounded-2xl border flex items-center justify-center font-bold text-lg sm:text-xl md:text-2xl transition-all",
                   selectedCount === num
@@ -134,11 +142,39 @@ export default function LearnPage() {
           </div>
         </div>
 
+        {/* Word Preview */}
+        <div className="space-y-3 sm:space-y-4">
+          <h2 className="text-sm sm:text-base md:text-lg font-bold text-[var(--color-foreground)] flex items-center gap-2">
+            <BookOpen className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-[var(--color-primary)]" />
+            학습할 단어 미리보기
+          </h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3">
+            {previewWords.map((word) => (
+              <div
+                key={word.id}
+                className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl sm:rounded-2xl p-4 sm:p-5 transition-all duration-200 hover:border-[var(--color-primary)]/30 hover:shadow-md"
+              >
+                <div className="font-bold text-lg sm:text-xl text-[var(--color-foreground)] mb-1">
+                  {word.word}
+                </div>
+                <div className="text-sm text-[var(--color-muted-foreground)]">
+                  {word.meaning}
+                </div>
+              </div>
+            ))}
+          </div>
+          {previewWords.length === 0 && (
+            <div className="text-center py-8 text-[var(--color-muted-foreground)] text-sm">
+              선택한 카테고리에 단어가 없습니다!
+            </div>
+          )}
+        </div>
+
         {/* Quick Start Buttons */}
         <div className="space-y-3 sm:space-y-4 pt-2 sm:pt-3">
           <button
             onClick={startLearning}
-            className="w-full bg-[var(--color-primary)] text-white py-4 sm:py-5 md:py-6 rounded-2xl sm:rounded-3xl font-bold text-lg sm:text-xl md:text-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all flex items-center justify-center gap-2 sm:gap-3"
+            className="w-full bg-[var(--color-primary)] text-white py-4 sm:py-5 md:py-6 rounded-2xl sm:rounded-3xl font-bold text-lg sm:text-xl md:text-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3"
           >
             학습 시작하기
             <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -152,18 +188,6 @@ export default function LearnPage() {
             복습 모드
           </button>
         </div>
-
-        {/* Preview Info */}
-        <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl sm:rounded-3xl p-4 sm:p-5 md:p-6 mt-2 sm:mt-3">
-          <h3 className="text-sm sm:text-base md:text-lg font-bold text-[var(--color-foreground)] mb-3 sm:mb-4">
-            미리보기
-          </h3>
-          <p className="text-xs sm:text-sm md:text-base text-[var(--color-muted-foreground)]">
-            선택하신 카테고리에서 <span className="font-bold text-[var(--color-primary)]">{selectedCount}</span>개의 단어를 무작위로 학습합니다.
-            각 단어를 보고 한국어 뜻을 맞춰보세요!
-          </p>
-        </div>
-
       </div>
     </div>
   );

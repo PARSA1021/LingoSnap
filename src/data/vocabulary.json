@@ -5843,5 +5843,2004 @@
         "translation": "실례합니다, 물 좀 더 주시겠어요?"
       }
     ]
+  },
+  {
+    "word": "I would like to",
+    "meaning": "~하고 싶습니다 (정중한 표현)",
+    "level": "beginner",
+    "category": "daily",
+    "subCategory": "request",
+    "type": "pattern",
+    "distractors": [
+      "I want to",
+      "I will to",
+      "I like to"
+    ],
+    "examples": [
+      {
+        "text": "I would like to make a reservation for two.",
+        "translation": "두 명 예약을 하고 싶습니다."
+      },
+      {
+        "text": "I would like to ask you a question.",
+        "translation": "질문 하나 드리고 싶습니다."
+      }
+    ]
+  },
+  {
+    "word": "Would you mind if I",
+    "meaning": "제가 ~해도 될까요? (정중한 허락 요청)",
+    "level": "intermediate",
+    "category": "daily",
+    "subCategory": "request",
+    "type": "pattern",
+    "distractors": [
+      "Do you mind I",
+      "Would you like if I",
+      "Can you mind if I"
+    ],
+    "examples": [
+      {
+        "text": "Would you mind if I opened the window?",
+        "translation": "제가 창문을 열어도 될까요?"
+      }
+    ]
+  },
+  {
+    "word": "Let me know if",
+    "meaning": "~라면 알려주세요",
+    "level": "beginner",
+    "category": "daily",
+    "subCategory": "request",
+    "type": "pattern",
+    "distractors": [
+      "Tell me if",
+      "Let know me if",
+      "Say me if"
+    ],
+    "examples": [
+      {
+        "text": "Let me know if you need any help.",
+        "translation": "도움이 필요하면 알려주세요."
+      },
+      {
+        "text": "Let me know if the time doesn't work for you.",
+        "translation": "시간이 안 맞으면 알려주세요."
+      }
+    ]
+  },
+  {
+    "word": "I appreciate it if",
+    "meaning": "~해 주시면 감사하겠습니다",
+    "level": "advanced",
+    "category": "daily",
+    "subCategory": "request",
+    "type": "pattern",
+    "distractors": [
+      "I like it if",
+      "I thank it if",
+      "I glad it if"
+    ],
+    "examples": [
+      {
+        "text": "I'd appreciate it if you could reply soon.",
+        "translation": "빨리 답장해 주시면 감사하겠습니다."
+      }
+    ]
+  },
+  {
+    "word": "It would be great if",
+    "meaning": "~하면 좋을 것 같아요",
+    "level": "intermediate",
+    "category": "daily",
+    "subCategory": "opinion",
+    "type": "pattern",
+    "distractors": [
+      "It will great if",
+      "It would nice that",
+      "It is great when"
+    ],
+    "examples": [
+      {
+        "text": "It would be great if you could join us.",
+        "translation": "함께해 주시면 좋을 것 같아요."
+      }
+    ]
+  },
+  {
+    "word": "I was thinking about",
+    "meaning": "~에 대해 생각하고 있었어요",
+    "level": "intermediate",
+    "category": "daily",
+    "subCategory": "opinion",
+    "type": "pattern",
+    "distractors": [
+      "I was think about",
+      "I am thought about",
+      "I was thinking for"
+    ],
+    "examples": [
+      {
+        "text": "I was thinking about going for a walk.",
+        "translation": "산책하러 갈까 생각하고 있었어요."
+      }
+    ]
+  },
+  {
+    "word": "I'm not sure if",
+    "meaning": "~인지 잘 모르겠어요",
+    "level": "beginner",
+    "category": "daily",
+    "subCategory": "opinion",
+    "type": "pattern",
+    "distractors": [
+      "I not sure that",
+      "I don't know that",
+      "I'm not sure that if"
+    ],
+    "examples": [
+      {
+        "text": "I'm not sure if this is the right way.",
+        "translation": "이게 맞는 방법인지 잘 모르겠어요."
+      }
+    ]
+  },
+  {
+    "word": "It looks like",
+    "meaning": "~인 것 같아요, ~처럼 보여요",
+    "level": "beginner",
+    "category": "daily",
+    "subCategory": "opinion",
+    "type": "pattern",
+    "distractors": [
+      "It looks that",
+      "It looks as",
+      "It seems like that"
+    ],
+    "examples": [
+      {
+        "text": "It looks like it's going to rain.",
+        "translation": "비가 올 것 같아요."
+      }
+    ]
+  },
+  {
+    "word": "I guess I could",
+    "meaning": "~할 수도 있을 것 같아요",
+    "level": "intermediate",
+    "category": "daily",
+    "subCategory": "opinion",
+    "type": "pattern",
+    "distractors": [
+      "I guess I can to",
+      "I think I could to",
+      "I guess could I"
+    ],
+    "examples": [
+      {
+        "text": "I guess I could stay a little longer.",
+        "translation": "조금 더 있을 수도 있을 것 같아요."
+      }
+    ]
+  },
+  {
+    "word": "Do you mind waiting a bit?",
+    "meaning": "잠시만 기다려 주시겠어요?",
+    "level": "beginner",
+    "category": "daily",
+    "subCategory": "request",
+    "type": "pattern",
+    "distractors": [
+      "Do you wait a bit?",
+      "Can you mind wait?",
+      "Please waiting a bit."
+    ],
+    "examples": [
+      {
+        "text": "Do you mind waiting a bit? I'm almost done.",
+        "translation": "잠시만 기다려 주시겠어요? 거의 다 됐어요."
+      }
+    ]
+  },
+  {
+    "word": "I'll take care of it",
+    "meaning": "제가 처리할게요",
+    "level": "intermediate",
+    "category": "daily",
+    "subCategory": "reassurance",
+    "type": "pattern",
+    "distractors": [
+      "I take care that",
+      "I'll care it",
+      "I will taking care"
+    ],
+    "examples": [
+      {
+        "text": "Don't worry, I'll take care of it.",
+        "translation": "걱정 마세요, 제가 처리할게요."
+      }
+    ]
+  },
+  {
+    "word": "That reminds me",
+    "meaning": "그러고 보니, 그거 생각나네요",
+    "level": "intermediate",
+    "category": "daily",
+    "subCategory": "conversation",
+    "type": "pattern",
+    "distractors": [
+      "That remembers me",
+      "That remind of me",
+      "That reminded to me"
+    ],
+    "examples": [
+      {
+        "text": "That reminds me, I need to call my mom.",
+        "translation": "그러고 보니, 엄마한테 전화해야 돼요."
+      }
+    ]
+  },
+  {
+    "word": "Never mind",
+    "meaning": "신경 쓰지 마세요, 괜찮아요",
+    "level": "beginner",
+    "category": "daily",
+    "subCategory": "reassurance",
+    "type": "pattern",
+    "distractors": [
+      "Not mind",
+      "Never minds",
+      "Don't mind that"
+    ],
+    "examples": [
+      {
+        "text": "Never mind, it's not a big deal.",
+        "translation": "신경 쓰지 마세요, 별일 아니에요."
+      }
+    ]
+  },
+  {
+    "word": "I couldn't agree more",
+    "meaning": "전적으로 동의해요",
+    "level": "advanced",
+    "category": "daily",
+    "subCategory": "opinion",
+    "type": "pattern",
+    "distractors": [
+      "I could agree more",
+      "I couldn't agree less",
+      "I can't agree much"
+    ],
+    "examples": [
+      {
+        "text": "I couldn't agree more with your plan.",
+        "translation": "당신의 계획에 전적으로 동의해요."
+      }
+    ]
+  },
+  {
+    "word": "Take your time",
+    "meaning": "천천히 하세요, 서두르지 마세요",
+    "level": "beginner",
+    "category": "daily",
+    "subCategory": "reassurance",
+    "type": "pattern",
+    "distractors": [
+      "Take you time",
+      "Take your times",
+      "Have your time"
+    ],
+    "examples": [
+      {
+        "text": "There's no rush, take your time.",
+        "translation": "급할 것 없으니 천천히 하세요."
+      }
+    ]
+  },
+  {
+    "word": "It slipped my mind",
+    "meaning": "깜빡했어요",
+    "level": "advanced",
+    "category": "daily",
+    "subCategory": "conversation",
+    "type": "pattern",
+    "distractors": [
+      "It slipped my brain",
+      "It slipped from mind",
+      "It fell my mind"
+    ],
+    "examples": [
+      {
+        "text": "Sorry, it completely slipped my mind.",
+        "translation": "미안해요, 완전히 깜빡했어요."
+      }
+    ]
+  },
+  {
+    "word": "I'll get back to you",
+    "meaning": "다시 연락드릴게요",
+    "level": "intermediate",
+    "category": "daily",
+    "subCategory": "reassurance",
+    "type": "pattern",
+    "distractors": [
+      "I'll get you back",
+      "I'll back to you",
+      "I get back you"
+    ],
+    "examples": [
+      {
+        "text": "Let me check and I'll get back to you.",
+        "translation": "확인하고 다시 연락드릴게요."
+      }
+    ]
+  },
+  {
+    "word": "Sounds good to me",
+    "meaning": "저는 좋아요, 괜찮은 것 같아요",
+    "level": "beginner",
+    "category": "daily",
+    "subCategory": "opinion",
+    "type": "pattern",
+    "distractors": [
+      "Sound good for me",
+      "Sounds well to me",
+      "It sounds good me"
+    ],
+    "examples": [
+      {
+        "text": "Meet at 6? Sounds good to me.",
+        "translation": "6시에 만날까요? 저는 좋아요."
+      }
+    ]
+  },
+  {
+    "word": "I'll keep that in mind",
+    "meaning": "그 점 명심할게요",
+    "level": "intermediate",
+    "category": "daily",
+    "subCategory": "reassurance",
+    "type": "pattern",
+    "distractors": [
+      "I'll keep that in my",
+      "I keep that mind",
+      "I'll hold that in mind"
+    ],
+    "examples": [
+      {
+        "text": "Thanks for the advice, I'll keep that in mind.",
+        "translation": "조언 감사해요, 명심할게요."
+      }
+    ]
+  },
+  {
+    "word": "Right vs Light",
+    "meaning": "오른쪽/맞는 (Right) vs 빛/가벼운 (Light)",
+    "level": "beginner",
+    "category": "general",
+    "type": "vocabulary",
+    "subCategory": "minimal_pair",
+    "distractors": [],
+    "usageTips": "r/l 발음 구분: Right는 혀를 뒤로 마는 /r/, Light는 혀끝을 윗잇몸에 대는 /l/ 소리입니다.",
+    "examples": [
+      {
+        "text": "Turn right at the corner.",
+        "translation": "모퉁이에서 오른쪽으로 도세요."
+      },
+      {
+        "text": "The room is very light.",
+        "translation": "그 방은 아주 밝아요."
+      }
+    ]
+  },
+  {
+    "word": "Rice vs Lice",
+    "meaning": "쌀 (Rice) vs 이 (Lice)",
+    "level": "beginner",
+    "category": "general",
+    "type": "vocabulary",
+    "subCategory": "minimal_pair",
+    "distractors": [],
+    "usageTips": "r/l 발음 구분: 한국인 학습자가 자주 헷갈리는 대표적인 쌍입니다.",
+    "examples": [
+      {
+        "text": "We eat rice every day.",
+        "translation": "우리는 매일 쌀밥을 먹어요."
+      }
+    ]
+  },
+  {
+    "word": "Berry vs Very",
+    "meaning": "베리, 열매 (Berry) vs 매우 (Very)",
+    "level": "beginner",
+    "category": "general",
+    "type": "vocabulary",
+    "subCategory": "minimal_pair",
+    "distractors": [],
+    "usageTips": "b/v 발음 구분: Berry는 윗니와 아랫입술이 닿지 않고, Very는 윗니가 아랫입술에 닿습니다.",
+    "examples": [
+      {
+        "text": "I love blueberries.",
+        "translation": "나는 블루베리를 좋아해요."
+      },
+      {
+        "text": "That's very good.",
+        "translation": "그거 아주 좋네요."
+      }
+    ]
+  },
+  {
+    "word": "Best vs Vest",
+    "meaning": "최고의 (Best) vs 조끼 (Vest)",
+    "level": "beginner",
+    "category": "general",
+    "type": "vocabulary",
+    "subCategory": "minimal_pair",
+    "distractors": [],
+    "usageTips": "b/v 발음 구분: Best는 입술을 붙였다 떼고, Vest는 윗니로 아랫입술을 살짝 뭅니다.",
+    "examples": [
+      {
+        "text": "This is the best day ever.",
+        "translation": "오늘이 최고의 날이에요."
+      },
+      {
+        "text": "He's wearing a blue vest.",
+        "translation": "그는 파란 조끼를 입고 있어요."
+      }
+    ]
+  },
+  {
+    "word": "Play vs Pray",
+    "meaning": "놀다 (Play) vs 기도하다 (Pray)",
+    "level": "beginner",
+    "category": "general",
+    "type": "vocabulary",
+    "subCategory": "minimal_pair",
+    "distractors": [],
+    "usageTips": "l/r 발음 구분입니다.",
+    "examples": [
+      {
+        "text": "Kids love to play outside.",
+        "translation": "아이들은 밖에서 노는 걸 좋아해요."
+      },
+      {
+        "text": "They pray every morning.",
+        "translation": "그들은 매일 아침 기도해요."
+      }
+    ]
+  },
+  {
+    "word": "Coat vs Goat",
+    "meaning": "코트 (Coat) vs 염소 (Goat)",
+    "level": "beginner",
+    "category": "general",
+    "type": "vocabulary",
+    "subCategory": "minimal_pair",
+    "distractors": [],
+    "usageTips": "무성음 k와 유성음 g 구분입니다.",
+    "examples": [
+      {
+        "text": "Put on your coat, it's cold.",
+        "translation": "추우니까 코트 입어."
+      },
+      {
+        "text": "The goat is eating grass.",
+        "translation": "염소가 풀을 먹고 있어요."
+      }
+    ]
+  },
+  {
+    "word": "Fan vs Pan",
+    "meaning": "선풍기 (Fan) vs 프라이팬 (Pan)",
+    "level": "beginner",
+    "category": "general",
+    "type": "vocabulary",
+    "subCategory": "minimal_pair",
+    "distractors": [],
+    "usageTips": "f/p 발음 구분: Fan은 윗니가 아랫입술에 닿고, Pan은 입술이 완전히 붙었다 터집니다.",
+    "examples": [
+      {
+        "text": "Turn on the fan, it's hot.",
+        "translation": "더우니까 선풍기 켜줘."
+      },
+      {
+        "text": "Heat the pan first.",
+        "translation": "먼저 팬을 달구세요."
+      }
+    ]
+  },
+  {
+    "word": "Thin vs Fin",
+    "meaning": "얇은 (Thin) vs 지느러미 (Fin)",
+    "level": "beginner",
+    "category": "general",
+    "type": "vocabulary",
+    "subCategory": "minimal_pair",
+    "distractors": [],
+    "usageTips": "th /θ/와 f 발음 구분입니다.",
+    "examples": [
+      {
+        "text": "The paper is very thin.",
+        "translation": "그 종이는 아주 얇아요."
+      },
+      {
+        "text": "The shark's fin appeared.",
+        "translation": "상어 지느러미가 나타났어요."
+      }
+    ]
+  },
+  {
+    "word": "Think vs Sink",
+    "meaning": "생각하다 (Think) vs 싱크대 (Sink)",
+    "level": "beginner",
+    "category": "general",
+    "type": "vocabulary",
+    "subCategory": "minimal_pair",
+    "distractors": [],
+    "usageTips": "th /θ/와 s 발음 구분입니다.",
+    "examples": [
+      {
+        "text": "I think you're right.",
+        "translation": "네가 맞는 것 같아."
+      },
+      {
+        "text": "Put the dishes in the sink.",
+        "translation": "설거지거리를 싱크대에 넣어줘."
+      }
+    ]
+  },
+  {
+    "word": "Free vs Three",
+    "meaning": "무료의 (Free) vs 셋 (Three)",
+    "level": "beginner",
+    "category": "general",
+    "type": "vocabulary",
+    "subCategory": "minimal_pair",
+    "distractors": [],
+    "usageTips": "fr와 thr 발음 구분입니다.",
+    "examples": [
+      {
+        "text": "This app is free.",
+        "translation": "이 앱은 무료예요."
+      },
+      {
+        "text": "I have three siblings.",
+        "translation": "저는 형제자매가 셋이에요."
+      }
+    ]
+  },
+  {
+    "word": "Grass vs Glass",
+    "meaning": "잔디 (Grass) vs 유리, 잔 (Glass)",
+    "level": "beginner",
+    "category": "general",
+    "type": "vocabulary",
+    "subCategory": "minimal_pair",
+    "distractors": [],
+    "usageTips": "r/l 발음 구분입니다.",
+    "examples": [
+      {
+        "text": "The grass is green.",
+        "translation": "잔디가 초록색이에요."
+      },
+      {
+        "text": "Be careful, it's made of glass.",
+        "translation": "조심해, 유리로 만들어졌어."
+      }
+    ]
+  },
+  {
+    "word": "Wine vs Vine",
+    "meaning": "와인 (Wine) vs 덩굴 (Vine)",
+    "level": "beginner",
+    "category": "general",
+    "type": "vocabulary",
+    "subCategory": "minimal_pair",
+    "distractors": [],
+    "usageTips": "w와 v 발음 구분: Wine은 입술을 둥글게 모으고, Vine은 윗니가 아랫입술에 닿습니다.",
+    "examples": [
+      {
+        "text": "She ordered a glass of wine.",
+        "translation": "그녀는 와인 한 잔을 주문했어요."
+      },
+      {
+        "text": "Grapes grow on a vine.",
+        "translation": "포도는 덩굴에서 자라요."
+      }
+    ]
+  },
+  {
+    "word": "Worm vs Warm",
+    "meaning": "벌레 (Worm) vs 따뜻한 (Warm)",
+    "level": "beginner",
+    "category": "general",
+    "type": "vocabulary",
+    "subCategory": "minimal_pair",
+    "distractors": [],
+    "usageTips": "or과 ar 모음 구분입니다.",
+    "examples": [
+      {
+        "text": "The bird caught a worm.",
+        "translation": "새가 벌레를 잡았어요."
+      },
+      {
+        "text": "It's warm today.",
+        "translation": "오늘은 따뜻해요."
+      }
+    ]
+  },
+  {
+    "word": "Bat vs Bad",
+    "meaning": "박쥐, 방망이 (Bat) vs 나쁜 (Bad)",
+    "level": "beginner",
+    "category": "general",
+    "type": "vocabulary",
+    "subCategory": "minimal_pair",
+    "distractors": [],
+    "usageTips": "받침 t와 d의 무성/유성 구분입니다.",
+    "examples": [
+      {
+        "text": "He hit the ball with a bat.",
+        "translation": "그는 방망이로 공을 쳤어요."
+      },
+      {
+        "text": "That's a bad idea.",
+        "translation": "그건 나쁜 생각이야."
+      }
+    ]
+  },
+  {
+    "word": "Cat vs Cut",
+    "meaning": "고양이 (Cat) vs 자르다 (Cut)",
+    "level": "beginner",
+    "category": "general",
+    "type": "vocabulary",
+    "subCategory": "minimal_pair",
+    "distractors": [],
+    "usageTips": "짧은 모음 /æ/와 /ʌ/ 구분입니다.",
+    "examples": [
+      {
+        "text": "The cat is sleeping.",
+        "translation": "고양이가 자고 있어요."
+      },
+      {
+        "text": "Cut the paper here.",
+        "translation": "여기서 종이를 잘라주세요."
+      }
+    ]
+  },
+  {
+    "word": "Full vs Fool",
+    "meaning": "가득 찬 (Full) vs 바보 (Fool)",
+    "level": "beginner",
+    "category": "general",
+    "type": "vocabulary",
+    "subCategory": "minimal_pair",
+    "distractors": [],
+    "usageTips": "짧은 /ʊ/와 긴 /uː/ 모음 구분입니다.",
+    "examples": [
+      {
+        "text": "My stomach is full.",
+        "translation": "배가 불러요."
+      },
+      {
+        "text": "Don't be a fool.",
+        "translation": "바보처럼 굴지 마."
+      }
+    ]
+  },
+  {
+    "word": "Live vs Leave",
+    "meaning": "살다 (Live) vs 떠나다 (Leave)",
+    "level": "beginner",
+    "category": "general",
+    "type": "vocabulary",
+    "subCategory": "minimal_pair",
+    "distractors": [],
+    "usageTips": "짧은 /ɪ/와 긴 /iː/ 모음 구분입니다.",
+    "examples": [
+      {
+        "text": "I live in Seoul.",
+        "translation": "저는 서울에 살아요."
+      },
+      {
+        "text": "The train will leave soon.",
+        "translation": "기차가 곧 떠나요."
+      }
+    ]
+  },
+  {
+    "word": "Sit vs Seat",
+    "meaning": "앉다 (Sit) vs 좌석 (Seat)",
+    "level": "beginner",
+    "category": "general",
+    "type": "vocabulary",
+    "subCategory": "minimal_pair",
+    "distractors": [],
+    "usageTips": "짧은 /ɪ/와 긴 /iː/ 모음 구분입니다.",
+    "examples": [
+      {
+        "text": "Please sit down.",
+        "translation": "앉아 주세요."
+      },
+      {
+        "text": "Is this seat taken?",
+        "translation": "이 자리 사람 있나요?"
+      }
+    ]
+  },
+  {
+    "word": "Hit vs Heat",
+    "meaning": "치다 (Hit) vs 열, 더위 (Heat)",
+    "level": "beginner",
+    "category": "general",
+    "type": "vocabulary",
+    "subCategory": "minimal_pair",
+    "distractors": [],
+    "usageTips": "짧은 /ɪ/와 긴 /iː/ 모음 구분입니다.",
+    "examples": [
+      {
+        "text": "Don't hit your brother.",
+        "translation": "동생을 때리지 마."
+      },
+      {
+        "text": "Turn down the heat.",
+        "translation": "화력을 낮춰주세요."
+      }
+    ]
+  },
+  {
+    "word": "Furthermore",
+    "meaning": "게다가, 더욱이",
+    "level": "intermediate",
+    "category": "학술",
+    "subCategory": "essay",
+    "type": "pattern",
+    "distractors": [
+      "Further more",
+      "Moreover that",
+      "Also more"
+    ],
+    "examples": [
+      {
+        "text": "Furthermore, the data supports this claim.",
+        "translation": "게다가, 그 데이터는 이 주장을 뒷받침합니다."
+      }
+    ]
+  },
+  {
+    "word": "Hypothesis",
+    "meaning": "가설",
+    "level": "advanced",
+    "category": "학술",
+    "subCategory": "essay",
+    "type": "vocabulary",
+    "distractors": [
+      "Prediction rule",
+      "Guess theory",
+      "Question point"
+    ],
+    "examples": [
+      {
+        "text": "The experiment confirmed our hypothesis.",
+        "translation": "그 실험은 우리의 가설을 확인해 주었습니다."
+      }
+    ]
+  },
+  {
+    "word": "Literature review",
+    "meaning": "선행 연구 검토",
+    "level": "advanced",
+    "category": "학술",
+    "subCategory": "essay",
+    "type": "vocabulary",
+    "distractors": [
+      "Book reading list",
+      "Study summary text",
+      "Reading history"
+    ],
+    "examples": [
+      {
+        "text": "The literature review covers ten related studies.",
+        "translation": "선행 연구 검토는 관련 연구 열 편을 다룹니다."
+      }
+    ]
+  },
+  {
+    "word": "Counterargument",
+    "meaning": "반론",
+    "level": "advanced",
+    "category": "학술",
+    "subCategory": "essay",
+    "type": "vocabulary",
+    "distractors": [
+      "Opposite point",
+      "Against talk",
+      "Back argument"
+    ],
+    "examples": [
+      {
+        "text": "A strong essay addresses the counterargument.",
+        "translation": "좋은 에세이는 반론을 다룹니다."
+      }
+    ]
+  },
+  {
+    "word": "It can be argued that",
+    "meaning": "~라고 주장할 수 있다",
+    "level": "advanced",
+    "category": "학술",
+    "subCategory": "essay",
+    "type": "pattern",
+    "distractors": [
+      "It can argue that",
+      "It could argued",
+      "It be argued as"
+    ],
+    "examples": [
+      {
+        "text": "It can be argued that the policy failed.",
+        "translation": "그 정책이 실패했다고 주장할 수 있습니다."
+      }
+    ]
+  },
+  {
+    "word": "Methodology",
+    "meaning": "연구 방법론",
+    "level": "advanced",
+    "category": "학술",
+    "subCategory": "essay",
+    "type": "vocabulary",
+    "distractors": [
+      "Method way",
+      "Study process",
+      "Research style"
+    ],
+    "examples": [
+      {
+        "text": "The methodology section explains how data was collected.",
+        "translation": "방법론 부분은 데이터 수집 방법을 설명합니다."
+      }
+    ]
+  },
+  {
+    "word": "Peer-reviewed",
+    "meaning": "동료 평가를 거친 (학술지)",
+    "level": "advanced",
+    "category": "학술",
+    "subCategory": "essay",
+    "type": "vocabulary",
+    "distractors": [
+      "Friend checked",
+      "Group approved",
+      "Team reviewed"
+    ],
+    "examples": [
+      {
+        "text": "Only cite peer-reviewed journals.",
+        "translation": "동료 평가를 거친 학술지만 인용하세요."
+      }
+    ]
+  },
+  {
+    "word": "Citation",
+    "meaning": "인용, 출처 표기",
+    "level": "intermediate",
+    "category": "학술",
+    "subCategory": "essay",
+    "type": "vocabulary",
+    "distractors": [
+      "Quote mark",
+      "Reference note",
+      "Source line"
+    ],
+    "examples": [
+      {
+        "text": "Don't forget to add a citation.",
+        "translation": "인용 표기를 잊지 마세요."
+      }
+    ]
+  },
+  {
+    "word": "Plagiarism",
+    "meaning": "표절",
+    "level": "advanced",
+    "category": "학술",
+    "subCategory": "essay",
+    "type": "vocabulary",
+    "distractors": [
+      "Copy crime",
+      "Steal writing",
+      "Fake author"
+    ],
+    "examples": [
+      {
+        "text": "Plagiarism can lead to serious academic penalties.",
+        "translation": "표절은 심각한 학사 처벌로 이어질 수 있습니다."
+      }
+    ]
+  },
+  {
+    "word": "Abstract",
+    "meaning": "초록, 요약문",
+    "level": "advanced",
+    "category": "학술",
+    "subCategory": "essay",
+    "type": "vocabulary",
+    "distractors": [
+      "Summary title",
+      "Short intro",
+      "Front page"
+    ],
+    "examples": [
+      {
+        "text": "Read the abstract before the full paper.",
+        "translation": "전문을 읽기 전에 초록을 읽으세요."
+      }
+    ]
+  },
+  {
+    "word": "Supporting evidence",
+    "meaning": "뒷받침하는 근거",
+    "level": "intermediate",
+    "category": "학술",
+    "subCategory": "essay",
+    "type": "collocation",
+    "distractors": [
+      "Support fact",
+      "Helping proof",
+      "Backup data"
+    ],
+    "examples": [
+      {
+        "text": "Use supporting evidence to strengthen your argument.",
+        "translation": "주장을 강화하려면 뒷받침하는 근거를 사용하세요."
+      }
+    ]
+  },
+  {
+    "word": "On the other hand",
+    "meaning": "반면에",
+    "level": "intermediate",
+    "category": "학술",
+    "subCategory": "essay",
+    "type": "pattern",
+    "distractors": [
+      "On other side",
+      "On the another hand",
+      "In other hand"
+    ],
+    "examples": [
+      {
+        "text": "On the other hand, some researchers disagree.",
+        "translation": "반면에, 일부 연구자들은 동의하지 않습니다."
+      }
+    ]
+  },
+  {
+    "word": "To summarize",
+    "meaning": "요약하자면",
+    "level": "intermediate",
+    "category": "학술",
+    "subCategory": "essay",
+    "type": "pattern",
+    "distractors": [
+      "To summary",
+      "For summarize",
+      "To sum up that"
+    ],
+    "examples": [
+      {
+        "text": "To summarize, three factors influenced the outcome.",
+        "translation": "요약하자면, 세 가지 요인이 결과에 영향을 미쳤습니다."
+      }
+    ]
+  },
+  {
+    "word": "Research suggests that",
+    "meaning": "연구에 따르면 ~라고 한다",
+    "level": "advanced",
+    "category": "학술",
+    "subCategory": "essay",
+    "type": "pattern",
+    "distractors": [
+      "Research suggest",
+      "The research say that",
+      "Research is suggest"
+    ],
+    "examples": [
+      {
+        "text": "Research suggests that sleep improves memory.",
+        "translation": "연구에 따르면 수면이 기억력을 향상시킨다고 합니다."
+      }
+    ]
+  },
+  {
+    "word": "Empirical",
+    "meaning": "실증적인, 경험적인",
+    "level": "advanced",
+    "category": "학술",
+    "subCategory": "essay",
+    "type": "vocabulary",
+    "distractors": [
+      "Experiment based",
+      "Fact only",
+      "Practical proof"
+    ],
+    "examples": [
+      {
+        "text": "The study relies on empirical data.",
+        "translation": "그 연구는 실증적 데이터에 기반합니다."
+      }
+    ]
+  },
+  {
+    "word": "Cite a source",
+    "meaning": "출처를 인용하다",
+    "level": "intermediate",
+    "category": "학술",
+    "subCategory": "essay",
+    "type": "collocation",
+    "distractors": [
+      "Say a source",
+      "Take a source",
+      "Show a source"
+    ],
+    "examples": [
+      {
+        "text": "Always cite a source when quoting.",
+        "translation": "인용할 때는 항상 출처를 밝히세요."
+      }
+    ]
+  },
+  {
+    "word": "Draw a conclusion",
+    "meaning": "결론을 도출하다",
+    "level": "intermediate",
+    "category": "학술",
+    "subCategory": "essay",
+    "type": "collocation",
+    "distractors": [
+      "Make a conclusion end",
+      "Draw an end",
+      "Pull a conclusion"
+    ],
+    "examples": [
+      {
+        "text": "It's too early to draw a conclusion.",
+        "translation": "결론을 도출하기엔 아직 이릅니다."
+      }
+    ]
+  },
+  {
+    "word": "Academic integrity",
+    "meaning": "학문적 정직성",
+    "level": "advanced",
+    "category": "학술",
+    "subCategory": "essay",
+    "type": "vocabulary",
+    "distractors": [
+      "School honesty rule",
+      "Study fairness",
+      "Class ethic"
+    ],
+    "examples": [
+      {
+        "text": "Academic integrity is taken seriously at this university.",
+        "translation": "이 대학에서는 학문적 정직성을 중요하게 여깁니다."
+      }
+    ]
+  },
+  {
+    "word": "Go viral",
+    "meaning": "입소문 나다, (온라인에서) 폭발적으로 퍼지다",
+    "level": "intermediate",
+    "category": "sns",
+    "subCategory": "collocation",
+    "type": "vocabulary",
+    "distractors": [
+      "Go online fast",
+      "Become famous quick",
+      "Spread out video"
+    ],
+    "examples": [
+      {
+        "text": "The video went viral overnight.",
+        "translation": "그 영상은 하룻밤 사이에 입소문이 났어요."
+      }
+    ]
+  },
+  {
+    "word": "Cancel culture",
+    "meaning": "캔슬 컬처 (공인의 잘못을 온라인에서 규탄하는 문화)",
+    "level": "advanced",
+    "category": "sns",
+    "subCategory": "vocabulary",
+    "type": "vocabulary",
+    "distractors": [
+      "Stop culture group",
+      "Delete trend",
+      "Boycott online"
+    ],
+    "examples": [
+      {
+        "text": "Cancel culture can end careers overnight.",
+        "translation": "캔슬 컬처는 하룻밤 사이에 커리어를 끝낼 수 있어요."
+      }
+    ]
+  },
+  {
+    "word": "Ghosting",
+    "meaning": "잠수 타기, 갑자기 연락을 끊는 것",
+    "level": "advanced",
+    "category": "sns",
+    "subCategory": "vocabulary",
+    "type": "vocabulary",
+    "distractors": [
+      "Hiding away act",
+      "Silent leaving",
+      "Disappear text"
+    ],
+    "examples": [
+      {
+        "text": "She stopped replying — total ghosting.",
+        "translation": "그녀가 답장을 멈췄어 — 완전 잠수 탄 거지."
+      }
+    ]
+  },
+  {
+    "word": "No cap",
+    "meaning": "진짜야, 거짓말 아니야",
+    "level": "advanced",
+    "category": "sns",
+    "subCategory": "slang",
+    "type": "vocabulary",
+    "distractors": [
+      "No hat",
+      "No lie word",
+      "Not fake talk"
+    ],
+    "examples": [
+      {
+        "text": "That movie was amazing, no cap.",
+        "translation": "그 영화 진짜 대박이었어, 거짓말 아니야."
+      }
+    ]
+  },
+  {
+    "word": "Flex",
+    "meaning": "과시하다, 자랑하다",
+    "level": "intermediate",
+    "category": "sns",
+    "subCategory": "slang",
+    "type": "vocabulary",
+    "distractors": [
+      "Show off body",
+      "Bend proud",
+      "Stretch brag"
+    ],
+    "examples": [
+      {
+        "text": "He's always flexing his new sneakers.",
+        "translation": "걔는 항상 새 신발 자랑해."
+      }
+    ]
+  },
+  {
+    "word": "Cringe",
+    "meaning": "오글거리는, 손발이 오그라드는",
+    "level": "intermediate",
+    "category": "sns",
+    "subCategory": "slang",
+    "type": "vocabulary",
+    "distractors": [
+      "Scared feeling",
+      "Shy shake",
+      "Bend fear"
+    ],
+    "examples": [
+      {
+        "text": "That video was so cringe.",
+        "translation": "그 영상 완전 오글거려."
+      }
+    ]
+  },
+  {
+    "word": "FOMO",
+    "meaning": "소외되는 것에 대한 두려움 (Fear Of Missing Out)",
+    "level": "advanced",
+    "category": "sns",
+    "subCategory": "slang",
+    "type": "vocabulary",
+    "distractors": [
+      "Fear of moving out",
+      "Feeling of missing others",
+      "Fun of missing out"
+    ],
+    "examples": [
+      {
+        "text": "I have serious FOMO seeing their vacation photos.",
+        "translation": "걔네 여행 사진 보니까 완전 FOMO야."
+      }
+    ]
+  },
+  {
+    "word": "Lowkey",
+    "meaning": "은근히, 조금은",
+    "level": "intermediate",
+    "category": "sns",
+    "subCategory": "slang",
+    "type": "vocabulary",
+    "distractors": [
+      "Low key sound",
+      "Quiet key",
+      "Small key"
+    ],
+    "examples": [
+      {
+        "text": "I lowkey love this song.",
+        "translation": "나 이 노래 은근히 좋아해."
+      }
+    ]
+  },
+  {
+    "word": "Main character energy",
+    "meaning": "주인공 같은 태도/기운",
+    "level": "advanced",
+    "category": "sns",
+    "subCategory": "meme",
+    "type": "vocabulary",
+    "distractors": [
+      "Hero power feeling",
+      "Star acting mood",
+      "Lead role vibe"
+    ],
+    "examples": [
+      {
+        "text": "She's giving main character energy today.",
+        "translation": "오늘 걔 완전 주인공 같은 느낌이야."
+      }
+    ]
+  },
+  {
+    "word": "It's giving...",
+    "meaning": "~한 느낌이야, ~같은 분위기야",
+    "level": "advanced",
+    "category": "sns",
+    "subCategory": "meme",
+    "type": "pattern",
+    "distractors": [
+      "It's showing",
+      "It's looking give",
+      "It gives that"
+    ],
+    "examples": [
+      {
+        "text": "This outfit is giving 90s vibes.",
+        "translation": "이 옷 완전 90년대 느낌이야."
+      }
+    ]
+  },
+  {
+    "word": "Touch grass",
+    "meaning": "(SNS 그만하고) 밖에 나가서 놀아",
+    "level": "advanced",
+    "category": "sns",
+    "subCategory": "slang",
+    "type": "vocabulary",
+    "distractors": [
+      "Feel the ground",
+      "Go touch plant",
+      "Walk on grass"
+    ],
+    "examples": [
+      {
+        "text": "You've been online all day, go touch grass.",
+        "translation": "하루 종일 폰만 봤네, 밖에 좀 나가."
+      }
+    ]
+  },
+  {
+    "word": "Ratio",
+    "meaning": "댓글이 원본보다 더 화제가 되는 것 (부정적 반응)",
+    "level": "advanced",
+    "category": "sns",
+    "subCategory": "meme",
+    "type": "vocabulary",
+    "distractors": [
+      "Number rate",
+      "Comment count",
+      "Score match"
+    ],
+    "examples": [
+      {
+        "text": "His tweet got ratio'd hard.",
+        "translation": "걔 트윗 완전 역대급으로 까였어."
+      }
+    ]
+  },
+  {
+    "word": "Stan",
+    "meaning": "열성 팬이다, 열렬히 좋아하다",
+    "level": "intermediate",
+    "category": "sns",
+    "subCategory": "slang",
+    "type": "vocabulary",
+    "distractors": [
+      "Stand fan",
+      "Star person",
+      "Super like"
+    ],
+    "examples": [
+      {
+        "text": "I stan this artist so much.",
+        "translation": "나 이 아티스트 완전 팬이야."
+      }
+    ]
+  },
+  {
+    "word": "Vibe check",
+    "meaning": "분위기 확인, 상태 점검",
+    "level": "intermediate",
+    "category": "sns",
+    "subCategory": "meme",
+    "type": "vocabulary",
+    "distractors": [
+      "Feeling test",
+      "Mood exam",
+      "Energy scan"
+    ],
+    "examples": [
+      {
+        "text": "Just doing a vibe check before the party.",
+        "translation": "파티 전에 분위기 좀 체크하는 중이야."
+      }
+    ]
+  },
+  {
+    "word": "Slay",
+    "meaning": "완전 잘했다, 멋지다",
+    "level": "intermediate",
+    "category": "sns",
+    "subCategory": "slang",
+    "type": "vocabulary",
+    "distractors": [
+      "Kill it well",
+      "Slay away",
+      "Slow down"
+    ],
+    "examples": [
+      {
+        "text": "You slayed that performance!",
+        "translation": "그 공연 완전 대박이었어!"
+      }
+    ]
+  },
+  {
+    "word": "Mid",
+    "meaning": "그저 그런, 평범한",
+    "level": "intermediate",
+    "category": "sns",
+    "subCategory": "slang",
+    "type": "vocabulary",
+    "distractors": [
+      "Middle level",
+      "Half good",
+      "Center okay"
+    ],
+    "examples": [
+      {
+        "text": "Honestly, the movie was kind of mid.",
+        "translation": "솔직히 그 영화 그냥 그랬어."
+      }
+    ]
+  },
+  {
+    "word": "Based",
+    "meaning": "소신 있는, (남 눈치 안 보고) 솔직한",
+    "level": "advanced",
+    "category": "sns",
+    "subCategory": "slang",
+    "type": "vocabulary",
+    "distractors": [
+      "Based on that",
+      "Based ground",
+      "Founded talk"
+    ],
+    "examples": [
+      {
+        "text": "That's such a based opinion.",
+        "translation": "그거 진짜 소신 있는 의견이네."
+      }
+    ]
+  },
+  {
+    "word": "Sus",
+    "meaning": "수상한, 의심스러운 (suspicious의 줄임말)",
+    "level": "beginner",
+    "category": "sns",
+    "subCategory": "slang",
+    "type": "vocabulary",
+    "distractors": [
+      "Suspect word",
+      "Sussy talk",
+      "Sus feeling"
+    ],
+    "examples": [
+      {
+        "text": "That message looks kind of sus.",
+        "translation": "그 메시지 좀 수상해 보여."
+      }
+    ]
+  },
+  {
+    "word": "Touch base",
+    "meaning": "간단히 연락하다, 근황을 확인하다",
+    "level": "intermediate",
+    "category": "business",
+    "subCategory": "meeting",
+    "type": "collocation",
+    "distractors": [
+      "Touch the base",
+      "Reach base point",
+      "Hit base line"
+    ],
+    "examples": [
+      {
+        "text": "Let's touch base next week.",
+        "translation": "다음 주에 간단히 연락합시다."
+      }
+    ]
+  },
+  {
+    "word": "Circle back",
+    "meaning": "나중에 다시 논의하다",
+    "level": "intermediate",
+    "category": "business",
+    "subCategory": "meeting",
+    "type": "collocation",
+    "distractors": [
+      "Circle around",
+      "Come back circle",
+      "Round back to"
+    ],
+    "examples": [
+      {
+        "text": "Let's circle back on this after lunch.",
+        "translation": "점심 후에 이 건 다시 논의합시다."
+      }
+    ]
+  },
+  {
+    "word": "Bottom line",
+    "meaning": "핵심, 요점, 최종 결과",
+    "level": "advanced",
+    "category": "business",
+    "subCategory": "negotiation",
+    "type": "collocation",
+    "distractors": [
+      "Bottom part",
+      "Down line",
+      "Base result"
+    ],
+    "examples": [
+      {
+        "text": "The bottom line is we need more funding.",
+        "translation": "핵심은 더 많은 자금이 필요하다는 겁니다."
+      }
+    ]
+  },
+  {
+    "word": "Turnaround time",
+    "meaning": "처리 소요 시간, 완료까지 걸리는 시간",
+    "level": "beginner",
+    "category": "business",
+    "subCategory": "meeting",
+    "type": "vocabulary",
+    "distractors": [
+      "Turn around time only",
+      "Return time work",
+      "Process time back"
+    ],
+    "examples": [
+      {
+        "text": "The turnaround time for this request is 3 days.",
+        "translation": "이 요청 처리 소요 시간은 3일입니다."
+      }
+    ]
+  },
+  {
+    "word": "Stakeholder",
+    "meaning": "이해관계자",
+    "level": "advanced",
+    "category": "business",
+    "subCategory": "meeting",
+    "type": "vocabulary",
+    "distractors": [
+      "Stake holder card",
+      "Share owner",
+      "Money person"
+    ],
+    "examples": [
+      {
+        "text": "We need buy-in from all stakeholders.",
+        "translation": "모든 이해관계자의 동의가 필요합니다."
+      }
+    ]
+  },
+  {
+    "word": "Follow up",
+    "meaning": "후속 조치를 하다, 다시 연락하다",
+    "level": "intermediate",
+    "category": "business",
+    "subCategory": "meeting",
+    "type": "collocation",
+    "distractors": [
+      "Follow after",
+      "Follow it up on",
+      "Chase up on"
+    ],
+    "examples": [
+      {
+        "text": "I'll follow up with an email tomorrow.",
+        "translation": "내일 이메일로 후속 연락드리겠습니다."
+      }
+    ]
+  },
+  {
+    "word": "Onboarding",
+    "meaning": "신입 직원 적응 교육",
+    "level": "advanced",
+    "category": "business",
+    "subCategory": "meeting",
+    "type": "vocabulary",
+    "distractors": [
+      "On boarding ship",
+      "New start class",
+      "Entry training day"
+    ],
+    "examples": [
+      {
+        "text": "The onboarding process takes about a week.",
+        "translation": "온보딩 과정은 약 일주일 걸립니다."
+      }
+    ]
+  },
+  {
+    "word": "KPI",
+    "meaning": "핵심 성과 지표 (Key Performance Indicator)",
+    "level": "advanced",
+    "category": "business",
+    "subCategory": "meeting",
+    "type": "vocabulary",
+    "distractors": [
+      "Key point item",
+      "Key plan idea",
+      "Kind performance index"
+    ],
+    "examples": [
+      {
+        "text": "We track our KPIs every month.",
+        "translation": "우리는 매달 KPI를 추적합니다."
+      }
+    ]
+  },
+  {
+    "word": "ROI",
+    "meaning": "투자 수익률 (Return on Investment)",
+    "level": "advanced",
+    "category": "business",
+    "subCategory": "negotiation",
+    "type": "vocabulary",
+    "distractors": [
+      "Rate of income",
+      "Return of item",
+      "Rate on interest"
+    ],
+    "examples": [
+      {
+        "text": "This campaign had a strong ROI.",
+        "translation": "이 캠페인은 투자 수익률이 좋았습니다."
+      }
+    ]
+  },
+  {
+    "word": "Synergy",
+    "meaning": "시너지, 상승 효과",
+    "level": "advanced",
+    "category": "business",
+    "subCategory": "meeting",
+    "type": "vocabulary",
+    "distractors": [
+      "Same energy word",
+      "Sync work",
+      "Team power"
+    ],
+    "examples": [
+      {
+        "text": "Combining the two teams created real synergy.",
+        "translation": "두 팀을 합치니 진짜 시너지가 생겼습니다."
+      }
+    ]
+  },
+  {
+    "word": "Deliverable",
+    "meaning": "산출물, 결과물",
+    "level": "advanced",
+    "category": "business",
+    "subCategory": "meeting",
+    "type": "vocabulary",
+    "distractors": [
+      "Deliver item box",
+      "Delivered goods",
+      "Give out result"
+    ],
+    "examples": [
+      {
+        "text": "The final deliverable is due next Monday.",
+        "translation": "최종 산출물은 다음 월요일까지입니다."
+      }
+    ]
+  },
+  {
+    "word": "Action item",
+    "meaning": "실행 항목, 해야 할 일",
+    "level": "intermediate",
+    "category": "business",
+    "subCategory": "meeting",
+    "type": "collocation",
+    "distractors": [
+      "Act item task",
+      "Action task list",
+      "To-do point"
+    ],
+    "examples": [
+      {
+        "text": "Let's list the action items from this meeting.",
+        "translation": "이번 회의의 실행 항목을 정리합시다."
+      }
+    ]
+  },
+  {
+    "word": "Elevator pitch",
+    "meaning": "짧고 강렬한 설명 (엘리베이터를 타는 시간만큼 짧은)",
+    "level": "advanced",
+    "category": "business",
+    "subCategory": "negotiation",
+    "type": "collocation",
+    "distractors": [
+      "Lift speech",
+      "Short sell talk",
+      "Quick presentation box"
+    ],
+    "examples": [
+      {
+        "text": "Give me your elevator pitch in 30 seconds.",
+        "translation": "30초 안에 핵심만 설명해 주세요."
+      }
+    ]
+  },
+  {
+    "word": "Win-win situation",
+    "meaning": "서로에게 이익이 되는 상황",
+    "level": "intermediate",
+    "category": "business",
+    "subCategory": "negotiation",
+    "type": "collocation",
+    "distractors": [
+      "Win win case",
+      "Both win point",
+      "Double win deal"
+    ],
+    "examples": [
+      {
+        "text": "This deal is a win-win situation for both companies.",
+        "translation": "이 거래는 양사 모두에게 이익이 되는 상황입니다."
+      }
+    ]
+  },
+  {
+    "word": "Due diligence",
+    "meaning": "실사, 신중한 사전 검토",
+    "level": "advanced",
+    "category": "business",
+    "subCategory": "negotiation",
+    "type": "collocation",
+    "distractors": [
+      "Due care work",
+      "Diligent check",
+      "Final review word"
+    ],
+    "examples": [
+      {
+        "text": "We did our due diligence before signing.",
+        "translation": "서명하기 전에 신중히 실사를 진행했습니다."
+      }
+    ]
+  },
+  {
+    "word": "Quarterly report",
+    "meaning": "분기 보고서",
+    "level": "intermediate",
+    "category": "business",
+    "subCategory": "meeting",
+    "type": "collocation",
+    "distractors": [
+      "Quarter paper",
+      "Three month note",
+      "Season report card"
+    ],
+    "examples": [
+      {
+        "text": "The quarterly report shows steady growth.",
+        "translation": "분기 보고서는 꾸준한 성장을 보여줍니다."
+      }
+    ]
+  },
+  {
+    "word": "Cash flow",
+    "meaning": "현금 흐름",
+    "level": "intermediate",
+    "category": "business",
+    "subCategory": "negotiation",
+    "type": "collocation",
+    "distractors": [
+      "Cash move",
+      "Money flow line",
+      "Cash river"
+    ],
+    "examples": [
+      {
+        "text": "We need to improve our cash flow.",
+        "translation": "현금 흐름을 개선해야 합니다."
+      }
+    ]
+  },
+  {
+    "word": "Brainstorm",
+    "meaning": "브레인스토밍하다, 아이디어를 짜내다",
+    "level": "beginner",
+    "category": "business",
+    "subCategory": "meeting",
+    "type": "vocabulary",
+    "distractors": [
+      "Brain storm weather",
+      "Think storm out",
+      "Mind rain idea"
+    ],
+    "examples": [
+      {
+        "text": "Let's brainstorm some new ideas.",
+        "translation": "새로운 아이디어를 브레인스토밍해 봅시다."
+      }
+    ]
+  },
+  {
+    "word": "Could you recommend a good restaurant nearby?",
+    "meaning": "근처에 좋은 식당 추천해 주실 수 있나요?",
+    "level": "intermediate",
+    "category": "Daily Life",
+    "subCategory": "Travel",
+    "type": "pattern",
+    "distractors": [
+      "Recommend me restaurant.",
+      "Where good restaurant?",
+      "Give restaurant near."
+    ],
+    "examples": [
+      {
+        "text": "Could you recommend a good restaurant nearby? We're starving.",
+        "translation": "근처에 좋은 식당 추천해 주실 수 있나요? 저희 너무 배고파요."
+      }
+    ]
+  },
+  {
+    "word": "How much does this cost?",
+    "meaning": "이거 얼마예요?",
+    "level": "beginner",
+    "category": "Daily Life",
+    "subCategory": "Shopping",
+    "type": "pattern",
+    "distractors": [
+      "How much this?",
+      "What cost this?",
+      "How price is?"
+    ],
+    "examples": [
+      {
+        "text": "Excuse me, how much does this cost?",
+        "translation": "실례합니다, 이거 얼마예요?"
+      }
+    ]
+  },
+  {
+    "word": "Where is the nearest subway station?",
+    "meaning": "가장 가까운 지하철역이 어디인가요?",
+    "level": "beginner",
+    "category": "Daily Life",
+    "subCategory": "Travel",
+    "type": "pattern",
+    "distractors": [
+      "Where near subway?",
+      "Subway station where near?",
+      "Nearest station is?"
+    ],
+    "examples": [
+      {
+        "text": "Excuse me, where is the nearest subway station?",
+        "translation": "실례합니다, 가장 가까운 지하철역이 어디인가요?"
+      }
+    ]
+  },
+  {
+    "word": "Can I try this on?",
+    "meaning": "이거 입어봐도 될까요?",
+    "level": "beginner",
+    "category": "Daily Life",
+    "subCategory": "Shopping",
+    "type": "pattern",
+    "distractors": [
+      "Can I try wear?",
+      "I try this on can?",
+      "Try on can I?"
+    ],
+    "examples": [
+      {
+        "text": "Can I try this on in a different size?",
+        "translation": "다른 사이즈로 입어봐도 될까요?"
+      }
+    ]
+  },
+  {
+    "word": "Do you accept credit cards?",
+    "meaning": "신용카드 받으시나요?",
+    "level": "beginner",
+    "category": "Daily Life",
+    "subCategory": "Shopping",
+    "type": "pattern",
+    "distractors": [
+      "You take credit card?",
+      "Accept card you do?",
+      "Credit card okay?"
+    ],
+    "examples": [
+      {
+        "text": "Do you accept credit cards here?",
+        "translation": "여기 신용카드 받으시나요?"
+      }
+    ]
+  },
+  {
+    "word": "I'd like to make a reservation.",
+    "meaning": "예약을 하고 싶습니다.",
+    "level": "beginner",
+    "category": "Daily Life",
+    "subCategory": "Restaurant",
+    "type": "pattern",
+    "distractors": [
+      "I make reservation want.",
+      "I like reservation make.",
+      "Reservation I want to."
+    ],
+    "examples": [
+      {
+        "text": "I'd like to make a reservation for tonight.",
+        "translation": "오늘 밤 예약을 하고 싶습니다."
+      }
+    ]
+  },
+  {
+    "word": "Could you call a taxi for me?",
+    "meaning": "택시 좀 불러주시겠어요?",
+    "level": "intermediate",
+    "category": "Daily Life",
+    "subCategory": "Travel",
+    "type": "pattern",
+    "distractors": [
+      "Call taxi for me you?",
+      "You call taxi please?",
+      "Taxi call me please."
+    ],
+    "examples": [
+      {
+        "text": "Could you call a taxi for me to the airport?",
+        "translation": "공항까지 갈 택시 좀 불러주시겠어요?"
+      }
+    ]
+  },
+  {
+    "word": "Is this seat taken?",
+    "meaning": "이 자리 사람 있나요?",
+    "level": "beginner",
+    "category": "Daily Life",
+    "subCategory": "Restaurant",
+    "type": "pattern",
+    "distractors": [
+      "This seat is take?",
+      "Someone here seat?",
+      "Seat taken this?"
+    ],
+    "examples": [
+      {
+        "text": "Excuse me, is this seat taken?",
+        "translation": "실례합니다, 이 자리 사람 있나요?"
+      }
+    ]
+  },
+  {
+    "word": "Can I get a refund?",
+    "meaning": "환불받을 수 있을까요?",
+    "level": "intermediate",
+    "category": "Daily Life",
+    "subCategory": "Shopping",
+    "type": "pattern",
+    "distractors": [
+      "I get refund can?",
+      "Refund can I get money?",
+      "Give refund me."
+    ],
+    "examples": [
+      {
+        "text": "Can I get a refund for this item?",
+        "translation": "이 물건 환불받을 수 있을까요?"
+      }
+    ]
+  },
+  {
+    "word": "What time do you close?",
+    "meaning": "몇 시에 문 닫나요?",
+    "level": "beginner",
+    "category": "Daily Life",
+    "subCategory": "Shopping",
+    "type": "pattern",
+    "distractors": [
+      "What time close you?",
+      "You close what time?",
+      "Close time what?"
+    ],
+    "examples": [
+      {
+        "text": "What time do you close on weekends?",
+        "translation": "주말엔 몇 시에 문 닫나요?"
+      }
+    ]
+  },
+  {
+    "word": "Could you turn up the air conditioning?",
+    "meaning": "에어컨 좀 세게 틀어주시겠어요?",
+    "level": "intermediate",
+    "category": "Daily Life",
+    "subCategory": "Restaurant",
+    "type": "pattern",
+    "distractors": [
+      "Turn up air you?",
+      "Make cold more please.",
+      "Air conditioning up can?"
+    ],
+    "examples": [
+      {
+        "text": "Could you turn up the air conditioning, please? It's warm.",
+        "translation": "덥네요, 에어컨 좀 세게 틀어주시겠어요?"
+      }
+    ]
+  },
+  {
+    "word": "Excuse me, where's the restroom?",
+    "meaning": "실례합니다, 화장실이 어디인가요?",
+    "level": "beginner",
+    "category": "Daily Life",
+    "subCategory": "Cafe",
+    "type": "pattern",
+    "distractors": [
+      "Where restroom excuse?",
+      "Restroom is where?",
+      "Excuse me toilet where?"
+    ],
+    "examples": [
+      {
+        "text": "Excuse me, where's the restroom here?",
+        "translation": "실례합니다, 여기 화장실이 어디인가요?"
+      }
+    ]
   }
 ]

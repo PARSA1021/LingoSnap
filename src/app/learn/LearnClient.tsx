@@ -1,12 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import { Button } from '@/components/ui/Button';
-import { Card, CardContent } from '@/components/ui/Card';
 import { SpeakingPractice } from '@/components/speaking/SpeakingPractice';
 import { getRandomElements } from '@/lib/utils/random';
-import { useTTS } from '@/hooks/useTTS';
-import { cn } from '@/lib/utils/cn';
 import { useLessonSessionStore } from '@/store/useLessonSessionStore';
 import type { LessonStep, ReviewItem } from '@/types/lesson';
 import type { Word } from '@/types';
