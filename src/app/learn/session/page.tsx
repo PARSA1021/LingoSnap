@@ -14,7 +14,8 @@ export default async function LearnSessionPage({
  const params = await searchParams;
  const mode = params.mode === 'review' ? 'review' : 'lesson';
  const category = params.category || 'all';
- const wordCount = (Number(params.wordCount) === 10 ? 10 : 5) as 5 | 10;
+ const wc = Number(params.wordCount);
+ const wordCount = (wc === 5 || wc === 10 || wc === 15 ? wc : 10) as 5 | 10 | 15;
  const isTurbo = params.isTurbo === 'true';
  const movieId = params.movie;
 

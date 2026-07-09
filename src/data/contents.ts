@@ -1,3 +1,6 @@
+import vocabData from './vocabulary.json';
+import type { Word } from '@/types';
+
 export type Difficulty = "easy" | "medium" | "hard";
 
 export type Example = {
@@ -29,6 +32,51 @@ export type ContentLine = {
  practiceQuestions: PracticeQuestion[];
  tags: string[];
 };
+
+export type CategoryItem = {
+ id: string;
+ name: string;
+ icon: string;
+ description: string;
+};
+
+export const categories: CategoryItem[] = [
+  { id: 'daily', name: '일상 생활', icon: 'Coffee', description: '매일 마주치는 일상 상황에서 사용하는 표현들' },
+  { id: 'travel', name: '여행', icon: 'Plane', description: '해외 여행에서 필요한 필수 영어 표현' },
+  { id: 'business', name: '비즈니스', icon: 'Briefcase', description: '직장과 비즈니스 상황에서 사용하는 표현' },
+  { id: 'casual', name: '캐주얼', icon: 'Sparkles', description: '친구들과 편하게 이야기할 때 쓰는 표현' },
+  { id: 'idioms', name: '숙어', icon: 'BookOpen', description: '원어민들이 자주 쓰는 관용 표현과 숙어' },
+  { id: 'academic', name: '학술', icon: 'UtensilsCrossed', description: '학업과 학술적인 상황에서 사용하는 표현' },
+  { id: 'emotion', name: '감정 표현', icon: 'Heart', description: '감정을 정확하게 표현하는 영어 표현' },
+  { id: 'sns', name: 'SNS/온라인', icon: 'MessageSquare', description: '소셜 미디어와 온라인에서 쓰는 표현' },
+];
+
+export const vocabulary: Word[] = vocabData.map((item: any) => ({
+  id: item.word,
+  word: item.word,
+  meaning: item.meaning,
+  example: item.example || '',
+  exampleTranslation: item.exampleTranslation,
+  category: item.category,
+  level: item.level,
+  difficulty: item.level === 'beginner' || item.level === 'easy' ? 'easy' : (item.level === 'intermediate' ? 'medium' : 'hard'),
+  distractors: item.distractors,
+  examples: item.examples,
+}));
+
+export function getCategoryWords(categoryId: string): Word[] {
+  if (categoryId === 'all') return vocabulary;
+  return vocabulary.filter(w => {
+    const cat = w.category?.toLowerCase() || '';
+    const targetId = categoryId.toLowerCase();
+    if (targetId === 'casual') return cat.includes('캐주얼') || cat.includes('casual');
+    if (targetId === 'idioms') return cat.includes('숙어') || cat.includes('idiom');
+    if (targetId === 'academic') return cat.includes('학술') || cat.includes('academic');
+    if (targetId === 'emotion') return cat.includes('감정') || cat.includes('emotion');
+    if (targetId === 'sns') return cat.includes('sns');
+    return cat.includes(targetId);
+  });
+}
 
 export const grammarContents: ContentLine[] = [
  // ========== 기초 문법 ==========

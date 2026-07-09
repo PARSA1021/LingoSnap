@@ -2,256 +2,169 @@
 
 import * as React from 'react';
 import { useRouter } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
-import {
- Zap, BookOpen, Briefcase, Plane, Coffee, Heart, Sparkles,
- RotateCcw, ChevronRight, Flame, Target, Clock
+import { 
+  Zap, 
+  RotateCcw,
+  ChevronRight,
+  BookOpen,
+  Coffee,
+  Plane,
+  Briefcase,
+  Sparkles,
+  UtensilsCrossed,
+  Heart,
+  MessageSquare
 } from 'lucide-react';
-import { useLessonSessionStore } from '@/store/useLessonSessionStore';
 import { cn } from '@/lib/utils/cn';
+import { categories, vocabulary } from '@/data/contents';
 
-// ─── Category config ──────────────────────────────────────────────────────────
-const CATEGORIES = [
- { id: 'all', label: '전체', emoji: '✨', icon: Sparkles, color: 'from-violet-500 to-indigo-500', desc: '모든 카테고리 혼합' },
- { id: '일상', label: '일상', emoji: '☀️', icon: Coffee, color: 'from-amber-400 to-orange-500', desc: '매일 쓰는 표현들' },
- { id: '캐주얼', label: '캐주얼', emoji: '😎', icon: Heart, color: 'from-pink-400 to-rose-500', desc: '친구들과 쓰는 표현' },
- { id: '비즈니스', label: '비즈니스', emoji: '💼', icon: Briefcase, color: 'from-blue-500 to-cyan-500', desc: '직장·업무 표현' },
- { id: '여행', label: '여행', emoji: '✈️', icon: Plane, color: 'from-teal-400 to-emerald-500', desc: '여행할 때 필수 표현' },
- { id: '숙어', label: '숙어', emoji: '📚', icon: BookOpen, color: 'from-purple-500 to-violet-600', desc: '네이티브 관용 표현' },
-];
+const iconMap: Record<string, React.ComponentType<any>> = {
+  Coffee,
+  Plane,
+  Briefcase,
+  Sparkles,
+  BookOpen,
+  UtensilsCrossed,
+  Heart,
+  MessageSquare,
+};
 
-const WORD_COUNTS = [
- { n: 5, label: '5개', sublabel: '5~7분', desc: '가볍게 시작해요' },
- { n: 10, label: '10개', sublabel: '10~15분', desc: '집중 학습 모드' },
-] as const;
+export default function LearnPage() {
+  const router = useRouter();
+  const [searchParams, setSearchParams] = React.useState<URLSearchParams | null>(null);
+  
+  // 클라이언트에서만 searchParams 처리
+  React.useEffect(() => {
+    setSearchParams(new URLSearchParams(window.location.search));
+  }, []);
 
-// ─── Component ────────────────────────────────────────────────────────────────
-export default function LearnSetupPage() {
- const router = useRouter();
- const reviewQueue = useLessonSessionStore(s => s.reviewQueue);
+  // Setup state
+  const [selectedCategory, setSelectedCategory] = React.useState<string>('all');
+  const [selectedCount, setSelectedCount] = React.useState<5 | 10 | 15>(10);
 
- const [category, setCategory] = React.useState('all');
- const [wordCount, setWordCount] = React.useState<5 | 10>(5);
- const [isTurbo, setIsTurbo] = React.useState(false);
+  // URL 파라미터에서 초기값 설정
+  React.useEffect(() => {
+    if (!searchParams) return;
+    
+    const categoryParam = searchParams.get('category');
+    if (categoryParam && (categoryParam === 'all' || categories.some(c => c.id === categoryParam))) {
+      setSelectedCategory(categoryParam);
+    }
+  }, [searchParams]);
 
- const handleStart = () => {
- const params = new URLSearchParams({
- mode: 'lesson',
- category,
- wordCount: String(wordCount),
- isTurbo: String(isTurbo),
- });
- router.push(`/learn/session?${params.toString()}`);
- };
+  const startLearning = () => {
+    router.push(`/learn/session?category=${selectedCategory}&wordCount=${selectedCount}`);
+  };
 
- const handleReviewStart = () => {
- router.push('/learn/session?mode=review');
- };
+  return (
+    <div className="min-h-screen w-full bg-[var(--color-background)] pb-32 pt-6 sm:pt-8 md:pt-10 lg:pt-12 px-3 sm:px-4 md:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto flex flex-col gap-6 sm:gap-7 md:gap-8 lg:gap-10">
+        
+        {/* Header */}
+        <header className="flex flex-col gap-3 sm:gap-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-[var(--color-foreground)]">
+            학습 준비하기
+          </h1>
+          <p className="text-sm md:text-base lg:text-lg text-[var(--color-muted-foreground)] font-medium max-w-md">
+            학습할 카테고리와 개수를 선택하고 학습을 시작해보세요!
+          </p>
+        </header>
 
- return (
- <div className="w-full max-w-2xl mx-auto px-4 py-8 sm:py-12 space-y-8">
+        {/* Category Selection */}
+        <div className="space-y-3 sm:space-y-4">
+          <h2 className="text-sm sm:text-base md:text-lg font-bold text-[var(--color-foreground)] flex items-center gap-2">
+            <BookOpen className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-[var(--color-primary)]" />
+            카테고리
+          </h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-3 md:gap-3.5">
+            <button
+              onClick={() => setSelectedCategory('all')}
+              className={cn(
+                "h-14 sm:h-16 md:h-18 rounded-xl sm:rounded-2xl border flex flex-col items-center justify-center gap-1 transition-all text-center px-2",
+                selectedCategory === 'all'
+                  ? "bg-[var(--color-primary)] border-[var(--color-primary)] text-white shadow-lg"
+                  : "bg-[var(--color-surface)] border-[var(--color-border)] hover:border-[var(--color-primary)]/50"
+              )}
+            >
+              <span className="text-xl sm:text-2xl">🎯</span>
+              <span className="text-[10px] sm:text-xs md:text-sm font-bold">전체</span>
+            </button>
+            {categories.map((cat) => {
+              const Icon = iconMap[cat.icon] || Sparkles;
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => setSelectedCategory(cat.id)}
+                  className={cn(
+                    "h-14 sm:h-16 md:h-18 rounded-xl sm:rounded-2xl border flex flex-col items-center justify-center gap-1 transition-all text-center px-2",
+                    selectedCategory === cat.id
+                      ? "bg-[var(--color-primary)] border-[var(--color-primary)] text-white shadow-lg"
+                      : "bg-[var(--color-surface)] border-[var(--color-border)] hover:border-[var(--color-primary)]/50"
+                  )}
+                >
+                  <Icon className="w-6 h-6" />
+                  <span className="text-[10px] sm:text-xs md:text-sm font-bold truncate w-full">{cat.name}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
 
- {/* ─── Header ─────────────────────────────────────────────── */}
- <motion.div
- initial={{ opacity: 0, y: -12 }}
- animate={{ opacity: 1, y: 0 }}
- className="space-y-2"
- >
- <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)] text-xs font-semibold uppercase tracking-widest border border-primary/20">
- <Target className="w-3 h-3" /> 오늘의 레슨
- </div>
- <h1 className="text-3xl sm:text-4xl font-extrabold text-[var(--color-foreground)] tracking-tight">
- 어떻게 학습할까요?
- </h1>
- <p className="text-[var(--color-muted-foreground)] text-sm sm:text-base">
- 카테고리와 분량을 선택하고 바로 시작하세요 🚀
- </p>
- </motion.div>
+        {/* Count Selection */}
+        <div className="space-y-3 sm:space-y-4">
+          <h2 className="text-sm sm:text-base md:text-lg font-bold text-[var(--color-foreground)] flex items-center gap-2">
+            <Zap className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-[var(--color-primary)]" />
+            학습할 개수
+          </h2>
+          <div className="flex gap-2.5 sm:gap-3 md:gap-3.5">
+            {[5, 10, 15].map((num) => (
+              <button
+                key={num}
+                onClick={() => setSelectedCount(num as any)}
+                className={cn(
+                  "flex-1 h-14 sm:h-16 md:h-18 rounded-xl sm:rounded-2xl border flex items-center justify-center font-bold text-lg sm:text-xl md:text-2xl transition-all",
+                  selectedCount === num
+                    ? "bg-[var(--color-primary)] border-[var(--color-primary)] text-white shadow-lg"
+                    : "bg-[var(--color-surface)] border-[var(--color-border)] hover:border-[var(--color-primary)]/50"
+                )}
+              >
+                {num}개
+              </button>
+            ))}
+          </div>
+        </div>
 
- {/* ─── Review Banner ──────────────────────────────────────── */}
- <AnimatePresence>
- {reviewQueue.length > 0 && (
- <motion.button
- initial={{ opacity: 0, y: 8 }}
- animate={{ opacity: 1, y: 0 }}
- exit={{ opacity: 0, y: -8 }}
- onClick={handleReviewStart}
- className="w-full p-4 rounded-2xl bg-gradient-to-r from-rose-500/15 to-pink-500/15 border border-rose-400/25 backdrop-blur flex items-center justify-between gap-4 hover:from-rose-500/20 hover:to-pink-500/20 transition-all group"
- >
- <div className="flex items-center gap-3">
- <div className="w-10 h-10 rounded-xl bg-rose-500 flex items-center justify-center shadow-md">
- <RotateCcw className="w-5 h-5 text-white" />
- </div>
- <div className="text-left">
- <p className="text-sm font-bold text-[var(--color-foreground)]">
- 오답 복습 <span className="text-rose-500">{reviewQueue.length}개</span> 대기 중
- </p>
- <p className="text-xs text-[var(--color-muted-foreground)]">지금 바로 틀린 단어를 정복해봐요</p>
- </div>
- </div>
- <ChevronRight className="w-5 h-5 text-[var(--color-muted-foreground)] group-hover:translate-x-1 transition-transform" />
- </motion.button>
- )}
- </AnimatePresence>
+        {/* Quick Start Buttons */}
+        <div className="space-y-3 sm:space-y-4 pt-2 sm:pt-3">
+          <button
+            onClick={startLearning}
+            className="w-full bg-[var(--color-primary)] text-white py-4 sm:py-5 md:py-6 rounded-2xl sm:rounded-3xl font-bold text-lg sm:text-xl md:text-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all flex items-center justify-center gap-2 sm:gap-3"
+          >
+            학습 시작하기
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+          </button>
 
- {/* ─── Category Selector ──────────────────────────────────── */}
- <motion.section
- initial={{ opacity: 0, y: 12 }}
- animate={{ opacity: 1, y: 0 }}
- transition={{ delay: 0.1 }}
- className="space-y-3"
- >
- <h2 className="text-sm font-semibold text-[var(--color-muted-foreground)] uppercase tracking-wider">카테고리</h2>
- <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
- {CATEGORIES.map((cat) => {
- const isActive = category === cat.id;
- return (
- <button
- key={cat.id}
- onClick={() => setCategory(cat.id)}
- className={cn(
- 'relative p-4 rounded-2xl border text-left transition-all duration-200 overflow-hidden',
- isActive
- ? 'border-primary/40 bg-[var(--color-primary)]/10 shadow-[0_0_0_2px_var(--primary)]'
- : 'border-[var(--color-border)] bg-[var(--color-surface)]/60 backdrop-blur hover:border-primary/30 hover:bg-[var(--color-primary)]/5'
- )}
- >
- {/* Gradient shimmer when active */}
- {isActive && (
- <motion.div
- layoutId="cat-active-bg"
- className={`absolute inset-0 bg-gradient-to-br ${cat.color} opacity-10 rounded-2xl`}
- />
- )}
- <div className="relative space-y-1.5">
- <span className="text-xl">{cat.emoji}</span>
- <p className="font-bold text-sm text-[var(--color-foreground)]">{cat.label}</p>
- <p className="text-[11px] text-[var(--color-muted-foreground)] leading-tight">{cat.desc}</p>
- </div>
- {isActive && (
- <motion.div
- layoutId="cat-check"
- className="absolute top-3 right-3 w-5 h-5 rounded-full bg-[var(--color-primary)] flex items-center justify-center"
- >
- <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
- <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
- </svg>
- </motion.div>
- )}
- </button>
- );
- })}
- </div>
- </motion.section>
+          <button
+            onClick={() => router.push('/learn/session?mode=review')}
+            className="w-full bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-foreground)] py-3 sm:py-4 rounded-2xl sm:rounded-3xl font-semibold text-xs sm:text-sm md:text-lg flex items-center justify-center gap-2 hover:bg-[var(--color-surface-hover)] transition-all"
+          >
+            <RotateCcw className="w-4.5 h-4.5 sm:w-5 sm:h-5" />
+            복습 모드
+          </button>
+        </div>
 
- {/* ─── Word Count Selector ────────────────────────────────── */}
- <motion.section
- initial={{ opacity: 0, y: 12 }}
- animate={{ opacity: 1, y: 0 }}
- transition={{ delay: 0.15 }}
- className="space-y-3"
- >
- <h2 className="text-sm font-semibold text-[var(--color-muted-foreground)] uppercase tracking-wider">학습 분량</h2>
- <div className="grid grid-cols-2 gap-3">
- {WORD_COUNTS.map(({ n, label, sublabel, desc }) => {
- const isActive = wordCount === n;
- return (
- <button
- key={n}
- onClick={() => setWordCount(n)}
- className={cn(
- 'relative p-5 rounded-2xl border text-left transition-all duration-200',
- isActive
- ? 'border-primary/40 bg-[var(--color-primary)]/10 shadow-[0_0_0_2px_var(--primary)]'
- : 'border-[var(--color-border)] bg-[var(--color-surface)]/60 backdrop-blur hover:border-primary/30 hover:bg-[var(--color-primary)]/5'
- )}
- >
- <div className="flex items-start justify-between mb-2">
- <span className="text-2xl font-extrabold text-[var(--color-foreground)]">{label}</span>
- {isActive && (
- <motion.div
- layoutId="count-check"
- className="w-5 h-5 rounded-full bg-[var(--color-primary)] flex items-center justify-center"
- >
- <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
- <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
- </svg>
- </motion.div>
- )}
- </div>
- <div className="flex items-center gap-1.5 text-xs text-[var(--color-muted-foreground)] mb-1">
- <Clock className="w-3 h-3" /> {sublabel}
- </div>
- <p className="text-xs font-medium text-[var(--color-muted-foreground)]">{desc}</p>
- </button>
- );
- })}
- </div>
- </motion.section>
+        {/* Preview Info */}
+        <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl sm:rounded-3xl p-4 sm:p-5 md:p-6 mt-2 sm:mt-3">
+          <h3 className="text-sm sm:text-base md:text-lg font-bold text-[var(--color-foreground)] mb-3 sm:mb-4">
+            미리보기
+          </h3>
+          <p className="text-xs sm:text-sm md:text-base text-[var(--color-muted-foreground)]">
+            선택하신 카테고리에서 <span className="font-bold text-[var(--color-primary)]">{selectedCount}</span>개의 단어를 무작위로 학습합니다.
+            각 단어를 보고 한국어 뜻을 맞춰보세요!
+          </p>
+        </div>
 
- {/* ─── Turbo Mode ─────────────────────────────────────────── */}
- <motion.section
- initial={{ opacity: 0, y: 12 }}
- animate={{ opacity: 1, y: 0 }}
- transition={{ delay: 0.2 }}
- >
- <button
- onClick={() => setIsTurbo(!isTurbo)}
- className={cn(
- 'w-full flex items-center justify-between p-4 rounded-2xl border transition-all duration-200',
- isTurbo
- ? 'border-amber-400/50 bg-amber-500/10 shadow-[0_0_0_2px_theme(colors.amber.400)]'
- : 'border-[var(--color-border)] bg-[var(--color-surface)]/60 backdrop-blur hover:border-amber-400/30'
- )}
- >
- <div className="flex items-center gap-3">
- <div className={cn(
- 'w-10 h-10 rounded-xl flex items-center justify-center transition-colors',
- isTurbo ? 'bg-amber-400 text-white' : 'bg-[var(--color-muted)] text-[var(--color-muted-foreground)]'
- )}>
- <Zap className="w-5 h-5" />
- </div>
- <div className="text-left">
- <p className="text-sm font-bold text-[var(--color-foreground)]">터보 모드</p>
- <p className="text-xs text-[var(--color-muted-foreground)]">문장·말하기 생략, 퀴즈만 빠르게</p>
- </div>
- </div>
- <div className={cn(
- 'w-11 h-6 rounded-full relative transition-colors duration-200',
- isTurbo ? 'bg-amber-400' : 'bg-[var(--color-muted)]'
- )}>
- <motion.div
- animate={{ x: isTurbo ? 20 : 2 }}
- transition={{ type: 'spring', stiffness: 500, damping: 30 }}
- className="absolute top-1 w-4 h-4 bg-white rounded-full shadow-sm"
- />
- </div>
- </button>
- </motion.section>
-
- {/* ─── Start Button ───────────────────────────────────────── */}
- <motion.div
- initial={{ opacity: 0, y: 12 }}
- animate={{ opacity: 1, y: 0 }}
- transition={{ delay: 0.25 }}
- className="pt-2 pb-4"
- >
- <motion.button
- onClick={handleStart}
- whileTap={{ scale: 0.98 }}
- whileHover={{ scale: 1.01 }}
- className="w-full h-14 sm:h-16 rounded-2xl bg-[var(--color-primary)] text-white font-bold text-lg tracking-tight shadow-lg hover:shadow-primary/30 hover:shadow-xl transition-all flex items-center justify-center gap-3 relative overflow-hidden group"
- >
- {/* Shimmer sweep */}
- <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/15 to-transparent" />
- <Flame className="w-5 h-5" />
- <span>레슨 시작하기</span>
- <ChevronRight className="w-5 h-5" />
- </motion.button>
- <p className="text-center text-xs text-[var(--color-muted-foreground)] mt-3">
- {CATEGORIES.find(c => c.id === category)?.emoji} {CATEGORIES.find(c => c.id === category)?.label} · {wordCount}개 단어 · {isTurbo ? '⚡ 터보' : '일반 모드'}
- </p>
- </motion.div>
- </div>
- );
+      </div>
+    </div>
+  );
 }

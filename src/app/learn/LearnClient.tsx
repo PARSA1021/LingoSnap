@@ -10,9 +10,8 @@ import { cn } from '@/lib/utils/cn';
 import { useLessonSessionStore } from '@/store/useLessonSessionStore';
 import type { LessonStep, ReviewItem } from '@/types/lesson';
 import type { Word } from '@/types';
-import vocabData from '@/data/vocabulary.json';
 import sentenceData from '@/data/sentences.json';
-import { grammarContents } from '@/data/contents';
+import { grammarContents, getCategoryWords, vocabulary } from '@/data/contents';
 import { XCircle } from 'lucide-react';
 import { WordRevealStep } from '@/components/learn/WordRevealStep';
 import { ChoiceQuizStep } from '@/components/learn/ChoiceQuizStep';
@@ -31,13 +30,13 @@ type StepResult = { kind: 'none' | 'correct' | 'wrong'; msg?: string };
 export function LearnClient({
  mode = 'lesson',
  category = 'all',
- wordCount = 5,
+ wordCount = 10,
  isTurbo = false,
  movieId,
 }: {
  mode?: 'review' | 'lesson';
  category?: string;
- wordCount?: 5 | 10;
+ wordCount?: 5 | 10 | 15;
  isTurbo?: boolean;
  movieId?: string;
 }) {
@@ -282,26 +281,17 @@ function buildOptions(answer: string, pool: string[], manualDistractors?: string
 
 // ─── Step Builders ────────────────────────────────────────────────────────────
 
-function buildLessonSteps(wordCount: 5 | 10, category: string = 'all', isTurbo: boolean = false): LessonStep[] {
- type VocabJsonWord = Word & { examples?: Array<{ text: string; translation?: string }> };
+function buildLessonSteps(wordCount: 5 | 10 | 15, category: string = 'all', isTurbo: boolean = false): LessonStep[] {
+  const vocabPool = getCategoryWords(category);
 
- let vocabPool = vocabData as unknown as VocabJsonWord[];
- if (category && category !== 'all') {
- vocabPool = vocabPool.filter(w => w.category === category);
- }
+  const words = getRandomElements(vocabPool, wordCount).map(w => ({
+    ...w,
+    id: w.id ?? w.word,
+    example: w.example || (w.examples && w.examples[0]?.text) || '',
+    exampleTranslation: w.exampleTranslation || (w.examples && w.examples[0]?.translation) || '',
+  }));
 
- if (vocabPool.length < wordCount) {
- vocabPool = vocabData as unknown as VocabJsonWord[];
- }
-
- const words = getRandomElements(vocabPool, wordCount).map(w => ({
- ...w,
- id: w.id ?? w.word,
- example: w.example || w.examples?.[0]?.text || '',
- exampleTranslation: w.exampleTranslation || w.examples?.[0]?.translation || '',
- }));
-
- const pool = (vocabData as unknown as Word[]).map(w => w.word).filter(Boolean);
+  const pool = vocabPool.map(w => w.word).filter(Boolean);
 
  const speakingSentence =
  getRandomElements(grammarContents, 1)[0]?.examples?.[0]?.en ||
@@ -343,7 +333,7 @@ function buildLessonSteps(wordCount: 5 | 10, category: string = 'all', isTurbo: 
 }
 
 function buildReviewSteps(queue: ReviewItem[]): LessonStep[] {
- const allVocab = vocabData as unknown as Word[];
+ const allVocab = vocabulary;
  const pool = allVocab.map(w => w.word).filter(Boolean);
 
  // 1. Take up to 10 items and shuffle them for a fresh experience

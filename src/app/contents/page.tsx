@@ -5,20 +5,19 @@ import { grammarContents } from '@/data/contents';
 import { ContentCard } from '@/components/contents/ContentCard';
 import { useLearningStore } from '@/store/useLearningStore';
 import { 
-  Lightbulb, 
   Search, 
-  Sparkles,
-  BookOpen,
-  GraduationCap,
-  Zap,
-  Coffee,
-  MessageCircle
+  Sparkles, 
+  BookOpen, 
+  GraduationCap, 
+  Zap, 
+  Coffee, 
+  MessageCircle, 
+  Check 
 } from 'lucide-react';
 import { cn } from '@/lib/utils/cn';
 
 export default function ContentsPage() {
   const { contentFilter, setContentFilter, difficultyFilter, setDifficultyFilter } = useLearningStore();
-  const [isQuizMode, setIsQuizMode] = React.useState(false);
   const [searchQuery, setSearchQuery] = React.useState('');
 
   const filteredContents = React.useMemo(() => {
@@ -32,131 +31,150 @@ export default function ContentsPage() {
     });
   }, [contentFilter, difficultyFilter, searchQuery]);
 
+  const categories = [
+    { id: 'all', label: '전체', icon: BookOpen },
+    { id: 'Daily Life', label: '일상', icon: Coffee },
+    { id: 'Tenses', label: '시제', icon: Zap },
+    { id: 'Conditionals', label: '가정법', icon: GraduationCap },
+    { id: 'Phrasal Verbs', label: '구동사', icon: MessageCircle }
+  ];
+
+  const difficulties = [
+    { id: 'all' as const, label: '전체' },
+    { id: 'easy' as const, label: '초급' },
+    { id: 'medium' as const, label: '중급' },
+    { id: 'hard' as const, label: '고급' }
+  ];
+
   return (
-    <div className="min-h-screen w-full bg-[var(--color-background)] pb-24 pt-6 md:pt-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto flex flex-col gap-6 md:gap-10">
+    <div className="min-h-screen w-full bg-[var(--color-background)] pb-32 pt-6 sm:pt-8 md:pt-10 lg:pt-12 px-3 sm:px-4 md:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto flex flex-col gap-6 sm:gap-7 md:gap-8 lg:gap-10">
         
         {/* Header */}
-        <header className="flex flex-col items-center text-center gap-4">
-          <div className="inline-flex items-center gap-2 bg-[var(--color-surface)] border border-[var(--color-border)] px-4 py-1.5 rounded-full shadow-sm">
-            <Sparkles className="w-4 h-4 text-[var(--color-primary)] fill-[var(--color-primary)]" />
-            <span className="font-bold text-xs md:text-sm uppercase tracking-wide text-[var(--color-muted-foreground)]">
+        <header className="flex flex-col items-center text-center gap-3 sm:gap-4">
+          <div className="inline-flex items-center gap-2 bg-[var(--color-surface)] border border-[var(--color-border)] px-3 py-1.5 rounded-full shadow-sm">
+            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[var(--color-primary)] fill-[var(--color-primary)]" />
+            <span className="font-bold text-[10px] sm:text-xs md:text-sm uppercase tracking-wide text-[var(--color-muted-foreground)]">
               Grammar Library
             </span>
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-[var(--color-foreground)]">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-[var(--color-foreground)]">
             핵심 문법 도서관
           </h1>
-          <p className="text-sm md:text-base text-[var(--color-muted-foreground)] max-w-xl px-4 font-medium">
+          <p className="text-sm md:text-base lg:text-lg text-[var(--color-muted-foreground)] max-w-md md:max-w-xl lg:max-w-2xl px-2 font-medium">
             복잡한 문법도 쉽게, 핵심만 쏙쏙 뽑아 마스터해보세요!
           </p>
         </header>
 
-        {/* Control Board */}
-        <div className="bg-[var(--color-surface)] rounded-3xl border border-[var(--color-border)] p-4 sm:p-5 md:p-6 shadow-sm flex flex-col lg:flex-row gap-5 md:gap-6">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-5 w-full">
-            
-            {/* Category / Filters */}
-            <div className="flex flex-col gap-2 w-full sm:w-auto">
-              <span className="text-[10px] font-bold text-[var(--color-muted-foreground)] uppercase tracking-widest pl-2">카테고리</span>
-              <div className="flex flex-wrap items-center gap-2">
-                <FilterPill label="전체" isActive={contentFilter === 'all'} onClick={() => setContentFilter('all')} icon={<BookOpen className="w-4 h-4" />} />
-                <FilterPill label="Daily Life" isActive={contentFilter === 'Daily Life'} onClick={() => setContentFilter('Daily Life')} icon={<Coffee className="w-4 h-4" />} />
-                <FilterPill label="Tenses" isActive={contentFilter === 'Tenses'} onClick={() => setContentFilter('Tenses')} icon={<Zap className="w-4 h-4" />} />
-                <FilterPill label="Conditionals" isActive={contentFilter === 'Conditionals'} onClick={() => setContentFilter('Conditionals')} icon={<GraduationCap className="w-4 h-4" />} />
-                <FilterPill label="Phrasal Verbs" isActive={contentFilter === 'Phrasal Verbs'} onClick={() => setContentFilter('Phrasal Verbs')} icon={<MessageCircle className="w-4 h-4" />} />
-              </div>
+        {/* Search Bar */}
+        <div className="relative max-w-3xl mx-auto w-full">
+          <Search className="absolute left-3 md:left-4 lg:left-5 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 text-[var(--color-muted-foreground)]" />
+          <input 
+            type="text" 
+            placeholder="문법 제목이나 설명으로 검색하세요..." 
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full h-12 sm:h-14 md:h-16 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl sm:rounded-3xl pl-10 sm:pl-12 md:pl-14 lg:pl-16 pr-3 sm:pr-4 md:pr-5 text-sm md:text-base lg:text-lg font-medium focus:border-[var(--color-primary)] focus:shadow-md outline-none transition-all placeholder:text-[var(--color-muted-foreground)]"
+          />
+        </div>
+
+        {/* Filters Section */}
+        <div className="space-y-4">
+          {/* Category Filters */}
+          <div className="space-y-3">
+            <span className="text-[10px] sm:text-xs font-bold text-[var(--color-muted-foreground)] uppercase tracking-widest pl-1">
+              카테고리
+            </span>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5 sm:gap-3 md:gap-3.5">
+              {categories.map((cat) => {
+                const Icon = cat.icon;
+                const isActive = contentFilter === cat.id;
+                return (
+                  <button
+                    key={cat.id}
+                    onClick={() => setContentFilter(cat.id)}
+                    className={cn(
+                      "h-16 sm:h-18 md:h-20 rounded-xl sm:rounded-2xl border transition-all duration-300 flex flex-col items-center justify-center gap-1.5 sm:gap-2 shadow-sm hover:shadow-md",
+                      isActive
+                        ? "bg-[var(--color-primary)] border-[var(--color-primary)] text-white shadow-lg"
+                        : "bg-[var(--color-surface)] border-[var(--color-border)] hover:border-[var(--color-primary)]/50"
+                    )}
+                  >
+                    <Icon className={cn("w-4.5 h-4.5 sm:w-5 sm:h-5 md:w-6 md:h-6", isActive ? "fill-current" : "text-[var(--color-foreground)]")} />
+                    <span className="text-[11px] sm:text-xs md:text-sm font-bold">{cat.label}</span>
+                    {isActive && <Check className="w-2.5 h-2.5 sm:w-3 sm:h-3" />}
+                  </button>
+                );
+              })}
             </div>
+          </div>
 
-            <div className="hidden lg:block w-px h-12 bg-[var(--color-border)] mx-2" />
-            <div className="lg:hidden w-full h-px bg-[var(--color-border)]" />
-
-            <div className="flex flex-col gap-2 w-full sm:w-auto">
-              <span className="text-[10px] font-bold text-[var(--color-muted-foreground)] uppercase tracking-widest pl-2">난이도</span>
-              <div className="flex flex-wrap items-center gap-2">
-                <FilterPill label="ALL" isActive={difficultyFilter === 'all'} onClick={() => setDifficultyFilter('all')} />
-                <FilterPill label="EASY" isActive={difficultyFilter === 'easy'} onClick={() => setDifficultyFilter('easy')} />
-                <FilterPill label="MEDIUM" isActive={difficultyFilter === 'medium'} onClick={() => setDifficultyFilter('medium')} />
-                <FilterPill label="HARD" isActive={difficultyFilter === 'hard'} onClick={() => setDifficultyFilter('hard')} />
-              </div>
+          {/* Difficulty Filters */}
+          <div className="space-y-3">
+            <span className="text-[10px] sm:text-xs font-bold text-[var(--color-muted-foreground)] uppercase tracking-widest pl-1">
+              난이도
+            </span>
+            <div className="flex flex-wrap gap-1.5 sm:gap-2 md:gap-2.5">
+              {difficulties.map((diff) => {
+                const isActive = difficultyFilter === diff.id;
+                return (
+                  <button
+                    key={diff.id}
+                    onClick={() => setDifficultyFilter(diff.id)}
+                    className={cn(
+                      "h-8.5 sm:h-9 md:h-10 px-3.5 sm:px-4 md:px-5 rounded-full border font-bold text-[11px] sm:text-xs md:text-sm transition-all duration-200",
+                      isActive
+                        ? "bg-[var(--color-foreground)] text-[var(--color-background)] border-[var(--color-foreground)]"
+                        : "bg-[var(--color-surface)] border-[var(--color-border)] text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)]"
+                    )}
+                  >
+                    {diff.label}
+                  </button>
+                );
+              })}
             </div>
-
-            {/* Actions */}
-            <div className="w-full lg:w-auto flex flex-row gap-3 lg:ml-auto">
-              <div className="relative flex-1 min-w-0">
-                <Search className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-[var(--color-muted-foreground)]" />
-                <input 
-                  type="text" 
-                  placeholder="검색..." 
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full h-10 md:h-12 bg-[var(--color-background)] border border-[var(--color-border)] rounded-full pl-9 md:pl-12 pr-4 text-sm md:text-base font-medium focus:border-[var(--color-primary)] focus:shadow-sm outline-none transition-all"
-                />
-              </div>
-              <button
-                onClick={() => setIsQuizMode(!isQuizMode)}
-                className={cn(
-                  "h-10 md:h-12 px-4 rounded-full border font-bold text-[10px] md:text-xs sm:text-sm uppercase transition-all flex items-center justify-center gap-1.5 md:gap-2 whitespace-nowrap shrink-0 shadow-sm",
-                  isQuizMode 
-                    ? "bg-[var(--color-primary)] border-[var(--color-primary)] text-white shadow-md" 
-                    : "bg-[var(--color-surface)] border-[var(--color-border)] text-[var(--color-foreground)] hover:bg-[var(--color-muted)]"
-                )}
-              >
-                <Lightbulb className={cn("w-4 h-4 md:w-5 md:h-5", isQuizMode && "fill-current")} />
-                <span className="hidden sm:inline">퀴즈 모드</span>
-              </button>
-            </div>
-
           </div>
         </div>
 
         {/* Results Info */}
-        <div className="flex items-end justify-between px-2">
-          <p className="font-medium text-[var(--color-muted-foreground)] text-base">
-            총 <span className="text-[var(--color-primary)] font-bold text-xl">{filteredContents.length}</span> 개의 학습 컨텐츠
+        <div className="flex items-center justify-between px-1">
+          <p className="text-sm sm:text-base font-medium text-[var(--color-muted-foreground)]">
+            총 <span className="text-[var(--color-primary)] font-bold text-lg sm:text-xl">{filteredContents.length}</span> 개의 문법
           </p>
+          {searchQuery && (
+            <button
+              onClick={() => setSearchQuery('')}
+              className="text-xs sm:text-sm font-bold text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] transition-colors"
+            >
+              검색어 지우기
+            </button>
+          )}
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
           {filteredContents.map((content) => (
             <div key={content.id} className="h-full">
-              <ContentCard 
-                content={content} 
-                isQuizMode={isQuizMode}
-              />
+              <ContentCard content={content} />
             </div>
           ))}
           
           {filteredContents.length === 0 && (
-            <div className="col-span-full py-20 flex flex-col items-center justify-center text-center">
-              <div className="w-24 h-24 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-full shadow-sm flex items-center justify-center mb-6">
-                <Search className="w-10 h-10 text-[var(--color-muted-foreground)]" />
+            <div className="col-span-full py-16 sm:py-20 flex flex-col items-center justify-center text-center px-4">
+              <div className="w-18 h-18 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-full shadow-sm flex items-center justify-center mb-4 sm:mb-5 md:mb-6">
+                <Search className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 text-[var(--color-muted-foreground)]" />
               </div>
-              <h3 className="text-xl font-bold mb-2 text-[var(--color-foreground)]">검색 결과가 없습니다!</h3>
-              <p className="text-sm font-medium text-[var(--color-muted-foreground)]">다른 키워드나 조건으로 검색해보세요.</p>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-1.5 sm:mb-2 text-[var(--color-foreground)]">
+                검색 결과가 없습니다!
+              </h3>
+              <p className="text-xs sm:text-sm md:text-base text-[var(--color-muted-foreground)]">
+                다른 키워드나 조건으로 검색해보세요.
+              </p>
             </div>
           )}
         </div>
 
       </div>
     </div>
-  );
-}
-
-function FilterPill({ label, isActive, onClick, icon }: { label: string, isActive: boolean, onClick: () => void, icon?: React.ReactNode }) {
-  return (
-    <button
-      onClick={onClick}
-      className={cn(
-        "h-9 px-4 rounded-full border border-[var(--color-border)] font-bold text-[11px] md:text-xs transition-all whitespace-nowrap flex items-center gap-1.5 shadow-sm hover:shadow-md",
-        isActive 
-          ? "bg-[var(--color-primary)] text-white border-[var(--color-primary)]" 
-          : "bg-[var(--color-surface)] text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] hover:bg-[var(--color-muted)]"
-      )}
-    >
-      {icon}
-      {label}
-    </button>
   );
 }

@@ -16,6 +16,8 @@ export type Word = {
  synonyms?: string[];
  usageTips?: string;
  distractors?: string[];
+ examples?: Array<{ text: string; translation?: string }>;
+ difficulty?: 'easy' | 'medium' | 'hard';
 };
 
 export type Sentence = {
