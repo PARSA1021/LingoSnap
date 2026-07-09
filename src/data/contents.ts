@@ -4,40 +4,40 @@ import type { Word } from '@/types';
 export type Difficulty = "easy" | "medium" | "hard";
 
 export type Example = {
- en: string;
- ko: string;
+  en: string;
+  ko: string;
 };
 
 export type CommonMistake = {
- wrong: string;
- correct: string;
- explanation: string;
+  wrong: string;
+  correct: string;
+  explanation: string;
 };
 
 export type PracticeQuestion = {
- question: string;
- options: string[];
- correctAnswer: number;
- explanation: string;
+  question: string;
+  options: string[];
+  correctAnswer: number;
+  explanation: string;
 };
 
 export type ContentLine = {
- id: string;
- category: string;
- title: string;
- difficulty: Difficulty;
- explanation: string;
- examples: Example[];
- commonMistakes: CommonMistake[];
- practiceQuestions: PracticeQuestion[];
- tags: string[];
+  id: string;
+  category: string;
+  title: string;
+  difficulty: Difficulty;
+  explanation: string;
+  examples: Example[];
+  commonMistakes: CommonMistake[];
+  practiceQuestions: PracticeQuestion[];
+  tags: string[];
 };
 
 export type CategoryItem = {
- id: string;
- name: string;
- icon: string;
- description: string;
+  id: string;
+  name: string;
+  icon: string;
+  description: string;
 };
 
 export const categories: CategoryItem[] = [
@@ -79,491 +79,491 @@ export function getCategoryWords(categoryId: string): Word[] {
 }
 
 export const grammarContents: ContentLine[] = [
- // ========== 기초 문법 ==========
- {
- id: "g1",
- category: "Tenses",
- title: "Present Simple (현재 단순형)",
- difficulty: "easy",
- explanation: "습관, 반복적인 행동, 일반적인 진실을 표현할 때 사용합니다. I/you/we/they 뒤에는 동사 원형을, he/she/it 뒤에는 동사에 -s/-es를 붙입니다.",
- examples: [
- { en: "I drink coffee every morning.", ko: "나는 매일 아침 커피를 마신다." },
- { en: "She works in an office.", ko: "그녀는 사무실에서 일한다." },
- { en: "The sun rises in the east.", ko: "태양은 동쪽에서 뜬다." },
- { en: "They play football on weekends.", ko: "그들은 주말에 축구를 한다." }
- ],
- commonMistakes: [
- { wrong: "He go to school.", correct: "He goes to school.", explanation: "3인칭 단수 주어 뒤에는 동사에 -s/-es를 붙여야 합니다." },
- { wrong: "She don't like pizza.", correct: "She doesn't like pizza.", explanation: "3인칭 단수일 때 don't 대신 doesn't를 사용합니다." }
- ],
- practiceQuestions: [
- {
- question: "She ____ (study) English every day.",
- options: ["study", "studies", "studying", "studied"],
- correctAnswer: 1,
- explanation: "3인칭 단수 주어 'she' 뒤에는 동사에 -s를 붙여 studies로 사용합니다."
- },
- {
- question: "I ____ (not like) spicy food.",
- options: ["don't like", "doesn't like", "not like", "am not like"],
- correctAnswer: 0,
- explanation: "1인칭 주어 'I' 뒤에는 don't를 사용합니다."
- }
- ],
- tags: ["기초", "시제", "현재"]
- },
- {
- id: "g2",
- category: "Tenses",
- title: "Present Continuous (현재 진행형)",
- difficulty: "easy",
- explanation: "지금 이 순간 일어나고 있는 행동을 표현할 때 사용합니다. am/is/are + 동사-ing 형태로 사용합니다.",
- examples: [
- { en: "I am eating dinner now.", ko: "나는 지금 저녁을 먹고 있다." },
- { en: "They are watching TV.", ko: "그들은 TV를 보고 있다." },
- { en: "Is she working today?", ko: "그녀는 오늘 일하고 있나요?" },
- { en: "We aren't going to the party.", ko: "우리는 파티에 안 간다." }
- ],
- commonMistakes: [
- { wrong: "I eating now.", correct: "I am eating now.", explanation: "주어 뒤에 be동사(am/is/are)를 반드시 넣어야 합니다." },
- { wrong: "He is eat.", correct: "He is eating.", explanation: "be동사 뒤에는 동사에 -ing를 붙여야 합니다." }
- ],
- practiceQuestions: [
- {
- question: "Look! The cat ____ (chase) the mouse.",
- options: ["chases", "is chasing", "chasing", "chase"],
- correctAnswer: 1,
- explanation: "지금 일어나는 행동이므로 현재 진행형을 사용합니다."
- },
- {
- question: "What ____ you ____ (do) right now?",
- options: ["do / do", "are / doing", "is / doing", "did / do"],
- correctAnswer: 1,
- explanation: "you와 함께 쓰이는 be동사는 are이고, 뒤에는 doing이 옵니다."
- }
- ],
- tags: ["기초", "시제", "현재", "진행형"]
- },
- {
- id: "g3",
- category: "Articles",
- title: "A / An (부정관사)",
- difficulty: "easy",
- explanation: "단수 가산 명사 앞에 사용하며, '하나의'라는 의미를 가집니다. 모음 소리로 시작하는 단어 앞에는 an, 자음 소리로 시작하는 단어 앞에는 a를 사용합니다.",
- examples: [
- { en: "I have a book.", ko: "나는 책이 하나 있다." },
- { en: "She is an engineer.", ko: "그녀는 엔지니어다." },
- { en: "A dog is barking.", ko: "개 한 마리가 짖고 있다." },
- { en: "He ate an apple.", ko: "그는 사과를 하나 먹었다." }
- ],
- commonMistakes: [
- { wrong: "an university", correct: "a university", explanation: "university는 'y' 소리로 시작하므로 a를 사용합니다." },
- { wrong: "a hour", correct: "an hour", explanation: "hour는 'h'가 묵음이므로 모음 소리로 시작해 an을 사용합니다." }
- ],
- practiceQuestions: [
- {
- question: "I need ____ umbrella.",
- options: ["a", "an", "the", "X"],
- correctAnswer: 1,
- explanation: "umbrella는 모음 소리로 시작하므로 an을 사용합니다."
- },
- {
- question: "She bought ____ new car.",
- options: ["a", "an", "the", "X"],
- correctAnswer: 0,
- explanation: "new는 자음 소리로 시작하므로 a를 사용합니다."
- }
- ],
- tags: ["기초", "관사"]
- },
- {
- id: "g4",
- category: "Articles",
- title: "The (정관사)",
- difficulty: "easy",
- explanation: "특정한 것을 가리킬 때 사용합니다. 이미 언급된 것, 유일한 것, 특정한 것 등에 사용합니다.",
- examples: [
- { en: "The sky is blue.", ko: "하늘은 파랗다." },
- { en: "I saw a cat. The cat was black.", ko: "나는 고양이를 보았다. 그 고양이는 검았다." },
- { en: "The sun is shining.", ko: "태양이 빛나고 있다." },
- { en: "She is in the kitchen.", ko: "그녀는 부엌에 있다." }
- ],
- commonMistakes: [
- { wrong: "I go to the school every day.", correct: "I go to school every day.", explanation: "학교에 '공부하러' 가는 경우 the를 붙이지 않습니다." },
- { wrong: "The my book is on the table.", correct: "My book is on the table.", explanation: "소유격(my, your 등)과 the는 함께 쓰지 않습니다." }
- ],
- practiceQuestions: [
- {
- question: "____ moon is beautiful tonight.",
- options: ["A", "An", "The", "X"],
- correctAnswer: 2,
- explanation: "달은 유일한 것이므로 the를 사용합니다."
- },
- {
- question: "Can you pass ____ salt?",
- options: ["a", "an", "the", "X"],
- correctAnswer: 2,
- explanation: "특정한 소금(테이블에 있는 소금)을 가리키므로 the를 사용합니다."
- }
- ],
- tags: ["기초", "관사"]
- },
- {
- id: "g5",
- category: "Prepositions",
- title: "Prepositions of Time (시간 전치사: in/on/at)",
- difficulty: "easy",
- explanation: "시간을 나타낼 때 사용하는 전치사입니다. in은 연도/월/계절, on은 날짜/요일, at은 구체적인 시간에 사용합니다.",
- examples: [
- { en: "I was born in 1990.", ko: "나는 1990년에 태어났다." },
- { en: "We have a meeting on Monday.", ko: "우리는 월요일에 회의가 있다." },
- { en: "The movie starts at 7 PM.", ko: "영화는 저녁 7시에 시작한다." },
- { en: "It snows in winter.", ko: "겨울에는 눈이 온다." }
- ],
- commonMistakes: [
- { wrong: "See you in Friday.", correct: "See you on Friday.", explanation: "요일 앞에는 on을 사용합니다." },
- { wrong: "I wake up at 7.", correct: "I wake up at 7.", explanation: "구체적인 시간 앞에는 at이 맞습니다!" }
- ],
- practiceQuestions: [
- {
- question: "My birthday is ____ May 5th.",
- options: ["in", "on", "at", "for"],
- correctAnswer: 1,
- explanation: "구체적인 날짜 앞에는 on을 사용합니다."
- },
- {
- question: "We usually eat lunch ____ noon.",
- options: ["in", "on", "at", "to"],
- correctAnswer: 2,
- explanation: "noon(정오)과 같은 구체적인 시간 앞에는 at을 사용합니다."
- }
- ],
- tags: ["기초", "전치사", "시간"]
- },
+  // ========== 기초 문법 ==========
+  {
+    id: "g1",
+    category: "Tenses",
+    title: "Present Simple (현재 단순형)",
+    difficulty: "easy",
+    explanation: "습관, 반복적인 행동, 일반적인 진실을 표현할 때 사용합니다. I/you/we/they 뒤에는 동사 원형을, he/she/it 뒤에는 동사에 -s/-es를 붙입니다.",
+    examples: [
+      { en: "I drink coffee every morning.", ko: "나는 매일 아침 커피를 마신다." },
+      { en: "She works in an office.", ko: "그녀는 사무실에서 일한다." },
+      { en: "The sun rises in the east.", ko: "태양은 동쪽에서 뜬다." },
+      { en: "They play football on weekends.", ko: "그들은 주말에 축구를 한다." }
+    ],
+    commonMistakes: [
+      { wrong: "He go to school.", correct: "He goes to school.", explanation: "3인칭 단수 주어 뒤에는 동사에 -s/-es를 붙여야 합니다." },
+      { wrong: "She don't like pizza.", correct: "She doesn't like pizza.", explanation: "3인칭 단수일 때 don't 대신 doesn't를 사용합니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "She ____ (study) English every day.",
+        options: ["study", "studies", "studying", "studied"],
+        correctAnswer: 1,
+        explanation: "3인칭 단수 주어 'she' 뒤에는 동사에 -s를 붙여 studies로 사용합니다."
+      },
+      {
+        question: "I ____ (not like) spicy food.",
+        options: ["don't like", "doesn't like", "not like", "am not like"],
+        correctAnswer: 0,
+        explanation: "1인칭 주어 'I' 뒤에는 don't를 사용합니다."
+      }
+    ],
+    tags: ["기초", "시제", "현재"]
+  },
+  {
+    id: "g2",
+    category: "Tenses",
+    title: "Present Continuous (현재 진행형)",
+    difficulty: "easy",
+    explanation: "지금 이 순간 일어나고 있는 행동을 표현할 때 사용합니다. am/is/are + 동사-ing 형태로 사용합니다.",
+    examples: [
+      { en: "I am eating dinner now.", ko: "나는 지금 저녁을 먹고 있다." },
+      { en: "They are watching TV.", ko: "그들은 TV를 보고 있다." },
+      { en: "Is she working today?", ko: "그녀는 오늘 일하고 있나요?" },
+      { en: "We aren't going to the party.", ko: "우리는 파티에 안 간다." }
+    ],
+    commonMistakes: [
+      { wrong: "I eating now.", correct: "I am eating now.", explanation: "주어 뒤에 be동사(am/is/are)를 반드시 넣어야 합니다." },
+      { wrong: "He is eat.", correct: "He is eating.", explanation: "be동사 뒤에는 동사에 -ing를 붙여야 합니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "Look! The cat ____ (chase) the mouse.",
+        options: ["chases", "is chasing", "chasing", "chase"],
+        correctAnswer: 1,
+        explanation: "지금 일어나는 행동이므로 현재 진행형을 사용합니다."
+      },
+      {
+        question: "What ____ you ____ (do) right now?",
+        options: ["do / do", "are / doing", "is / doing", "did / do"],
+        correctAnswer: 1,
+        explanation: "you와 함께 쓰이는 be동사는 are이고, 뒤에는 doing이 옵니다."
+      }
+    ],
+    tags: ["기초", "시제", "현재", "진행형"]
+  },
+  {
+    id: "g3",
+    category: "Articles",
+    title: "A / An (부정관사)",
+    difficulty: "easy",
+    explanation: "단수 가산 명사 앞에 사용하며, '하나의'라는 의미를 가집니다. 모음 소리로 시작하는 단어 앞에는 an, 자음 소리로 시작하는 단어 앞에는 a를 사용합니다.",
+    examples: [
+      { en: "I have a book.", ko: "나는 책이 하나 있다." },
+      { en: "She is an engineer.", ko: "그녀는 엔지니어다." },
+      { en: "A dog is barking.", ko: "개 한 마리가 짖고 있다." },
+      { en: "He ate an apple.", ko: "그는 사과를 하나 먹었다." }
+    ],
+    commonMistakes: [
+      { wrong: "an university", correct: "a university", explanation: "university는 'y' 소리로 시작하므로 a를 사용합니다." },
+      { wrong: "a hour", correct: "an hour", explanation: "hour는 'h'가 묵음이므로 모음 소리로 시작해 an을 사용합니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "I need ____ umbrella.",
+        options: ["a", "an", "the", "X"],
+        correctAnswer: 1,
+        explanation: "umbrella는 모음 소리로 시작하므로 an을 사용합니다."
+      },
+      {
+        question: "She bought ____ new car.",
+        options: ["a", "an", "the", "X"],
+        correctAnswer: 0,
+        explanation: "new는 자음 소리로 시작하므로 a를 사용합니다."
+      }
+    ],
+    tags: ["기초", "관사"]
+  },
+  {
+    id: "g4",
+    category: "Articles",
+    title: "The (정관사)",
+    difficulty: "easy",
+    explanation: "특정한 것을 가리킬 때 사용합니다. 이미 언급된 것, 유일한 것, 특정한 것 등에 사용합니다.",
+    examples: [
+      { en: "The sky is blue.", ko: "하늘은 파랗다." },
+      { en: "I saw a cat. The cat was black.", ko: "나는 고양이를 보았다. 그 고양이는 검았다." },
+      { en: "The sun is shining.", ko: "태양이 빛나고 있다." },
+      { en: "She is in the kitchen.", ko: "그녀는 부엌에 있다." }
+    ],
+    commonMistakes: [
+      { wrong: "I go to the school every day.", correct: "I go to school every day.", explanation: "학교에 '공부하러' 가는 경우 the를 붙이지 않습니다." },
+      { wrong: "The my book is on the table.", correct: "My book is on the table.", explanation: "소유격(my, your 등)과 the는 함께 쓰지 않습니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "____ moon is beautiful tonight.",
+        options: ["A", "An", "The", "X"],
+        correctAnswer: 2,
+        explanation: "달은 유일한 것이므로 the를 사용합니다."
+      },
+      {
+        question: "Can you pass ____ salt?",
+        options: ["a", "an", "the", "X"],
+        correctAnswer: 2,
+        explanation: "특정한 소금(테이블에 있는 소금)을 가리키므로 the를 사용합니다."
+      }
+    ],
+    tags: ["기초", "관사"]
+  },
+  {
+    id: "g5",
+    category: "Prepositions",
+    title: "Prepositions of Time (시간 전치사: in/on/at)",
+    difficulty: "easy",
+    explanation: "시간을 나타낼 때 사용하는 전치사입니다. in은 연도/월/계절, on은 날짜/요일, at은 구체적인 시간에 사용합니다.",
+    examples: [
+      { en: "I was born in 1990.", ko: "나는 1990년에 태어났다." },
+      { en: "We have a meeting on Monday.", ko: "우리는 월요일에 회의가 있다." },
+      { en: "The movie starts at 7 PM.", ko: "영화는 저녁 7시에 시작한다." },
+      { en: "It snows in winter.", ko: "겨울에는 눈이 온다." }
+    ],
+    commonMistakes: [
+      { wrong: "See you in Friday.", correct: "See you on Friday.", explanation: "요일 앞에는 on을 사용합니다." },
+      { wrong: "I wake up at 7.", correct: "I wake up at 7.", explanation: "구체적인 시간 앞에는 at이 맞습니다!" }
+    ],
+    practiceQuestions: [
+      {
+        question: "My birthday is ____ May 5th.",
+        options: ["in", "on", "at", "for"],
+        correctAnswer: 1,
+        explanation: "구체적인 날짜 앞에는 on을 사용합니다."
+      },
+      {
+        question: "We usually eat lunch ____ noon.",
+        options: ["in", "on", "at", "to"],
+        correctAnswer: 2,
+        explanation: "noon(정오)과 같은 구체적인 시간 앞에는 at을 사용합니다."
+      }
+    ],
+    tags: ["기초", "전치사", "시간"]
+  },
 
- // ========== 중급 문법 ==========
- {
- id: "g6",
- category: "Tenses",
- title: "Present Perfect (현재 완료형)",
- difficulty: "medium",
- explanation: "과거에 시작된 행동이 현재와 관련이 있을 때 사용합니다. have/has + 과거분사 형태로 사용하며, 경험, 완료, 지속 등의 의미를 가집니다.",
- examples: [
- { en: "I have visited Paris twice.", ko: "나는 파리를 두 번 방문한 적이 있다." },
- { en: "She has finished her homework.", ko: "그녀는 숙제를 끝냈다." },
- { en: "We have lived here for 5 years.", ko: "우리는 여기 5년 동안 살고 있다." },
- { en: "Have you ever eaten sushi?", ko: "스시를 먹어본 적이 있나요?" }
- ],
- commonMistakes: [
- { wrong: "I have seen him yesterday.", correct: "I saw him yesterday.", explanation: "구체적인 과거 시간(yesterday)이 나오면 현재 완료가 아니라 과거 시제를 사용합니다." },
- { wrong: "She has go to the store.", correct: "She has gone to the store.", explanation: "have/has 뒤에는 과거분사(gone)를 사용해야 합니다." }
- ],
- practiceQuestions: [
- {
- question: "I ____ (never / be) to Japan.",
- options: ["never was", "have never been", "am never", "never be"],
- correctAnswer: 1,
- explanation: "경험을 물을 때는 현재 완료형을 사용합니다."
- },
- {
- question: "How long ____ you ____ (study) English?",
- options: ["did / study", "do / study", "have / studied", "are / studying"],
- correctAnswer: 2,
- explanation: "기간을 물을 때는 현재 완료형을 사용합니다."
- }
- ],
- tags: ["중급", "시제", "완료형"]
- },
- {
- id: "g7",
- category: "Conditionals",
- title: "First Conditional (1차 조건문)",
- difficulty: "medium",
- explanation: "미래에 일어날 가능성이 있는 상황과 그 결과를 표현합니다. If + 현재 시제, 주절 + will/shall/can/may + 동사원형 구조입니다.",
- examples: [
- { en: "If it rains tomorrow, we will stay home.", ko: "만약 내일 비가 오면, 우리는 집에 있을 것이다." },
- { en: "If you study hard, you will pass the exam.", ko: "만약 열심히 공부하면, 시험에 합격할 것이다." },
- { en: "She will be late if she doesn't hurry.", ko: "만약 그녀가 서두르지 않으면, 늦을 것이다." },
- { en: "What will you do if you have free time?", ko: "만약 시간이 나면 무엇을 할 건가요?" }
- ],
- commonMistakes: [
- { wrong: "If it will rain, I will stay.", correct: "If it rains, I will stay.", explanation: "If절에는 현재 시제를 사용하고 미래 시제(will)를 사용하지 않습니다." },
- { wrong: "If you will study, you pass.", correct: "If you study, you will pass.", explanation: "주절에는 will을 사용해야 합니다." }
- ],
- practiceQuestions: [
- {
- question: "If I ____ (have) enough money, I ____ (buy) a new phone.",
- options: ["have / buy", "will have / will buy", "have / will buy", "will have / buy"],
- correctAnswer: 2,
- explanation: "If절은 현재 시제, 주절은 미래 시제를 사용합니다."
- },
- {
- question: "What ____ (happen) if we ____ (miss) the train?",
- options: ["happens / miss", "will happen / miss", "will happen / will miss", "happens / will miss"],
- correctAnswer: 1,
- explanation: "의문문에서도 If절은 현재 시제, 주절은 미래 시제입니다."
- }
- ],
- tags: ["중급", "조건문"]
- },
- {
- id: "g8",
- category: "Modal Verbs",
- title: "Should / Must / Have to",
- difficulty: "medium",
- explanation: "의무, 권유, 강제를 표현하는 조동사입니다. should는 권유(해야 한다), must는 강한 의무(반드시 해야 한다), have to는 외적인 의무(해야만 한다)를 나타냅니다.",
- examples: [
- { en: "You should eat more vegetables.", ko: "채소를 더 많이 먹어야 해요." },
- { en: "I must finish this report today.", ko: "오늘 이 보고서를 끝내야만 해요." },
- { en: "She has to work on Saturday.", ko: "그녀는 토요일에 일해야 해요." },
- { en: "Should I call him?", ko: "그에게 전화해야 할까요?" }
- ],
- commonMistakes: [
- { wrong: "You should to go now.", correct: "You should go now.", explanation: "조동사 뒤에는 to 없이 동사 원형을 사용합니다." },
- { wrong: "She musts study.", correct: "She must study.", explanation: "must는 인칭이나 수에 따라 변하지 않습니다." }
- ],
- practiceQuestions: [
- {
- question: "You ____ (should / stop) smoking. It's bad for you.",
- options: ["should stop", "should to stop", "stops", "stopping"],
- correctAnswer: 0,
- explanation: "should 뒤에는 동사 원형이 옵니다."
- },
- {
- question: "We ____ (have to / leave) early tomorrow.",
- options: ["have leave", "have to leave", "has to leave", "having to leave"],
- correctAnswer: 1,
- explanation: "have to 뒤에는 동사 원형이 옵니다."
- }
- ],
- tags: ["중급", "조동사", "의무"]
- },
- {
- id: "g9",
- category: "Pronouns",
- title: "Reflexive Pronouns (재귀대명사)",
- difficulty: "medium",
- explanation: "myself, yourself, himself, herself, itself, ourselves, yourselves, themselves로 주어가 행위의 대상이 될 때 사용합니다.",
- examples: [
- { en: "I taught myself to play the guitar.", ko: "나는 스스로 기타 치는 법을 배웠다." },
- { en: "She looked at herself in the mirror.", ko: "그녀는 거울에 비친 자신을 보았다." },
- { en: "We should be proud of ourselves.", ko: "우리는 스스로 자랑스러워해야 한다." },
- { en: "Help yourself to some coffee.", ko: "커피 마음껏 드세요." }
- ],
- commonMistakes: [
- { wrong: "I did it by me.", correct: "I did it by myself.", explanation: "혼자 했다는 의미로 by myself를 사용합니다." },
- { wrong: "He enjoyed him.", correct: "He enjoyed himself.", explanation: "즐거웠다는 의미로 enjoy oneself를 사용합니다." }
- ],
- practiceQuestions: [
- {
- question: "She cooked dinner by ____.",
- options: ["her", "hers", "herself", "she"],
- correctAnswer: 2,
- explanation: "혼자 요리했다는 의미로 by herself를 사용합니다."
- },
- {
- question: "Don't worry about us. We can take care of ____.",
- options: ["us", "our", "ours", "ourselves"],
- correctAnswer: 3,
- explanation: "우리 스스로 돌볼 수 있다는 의미로 ourselves를 사용합니다."
- }
- ],
- tags: ["중급", "대명사"]
- },
- {
- id: "g10",
- category: "Adjectives/Adverbs",
- title: "Comparatives and Superlatives (비교급과 최상급)",
- difficulty: "medium",
- explanation: "둘 이상을 비교할 때 비교급(-er, more), 셋 이상에서 가장~을 나타낼 때 최상급(-est, most)을 사용합니다.",
- examples: [
- { en: "My house is bigger than yours.", ko: "내 집이 네 집보다 크다." },
- { en: "She is more intelligent than her brother.", ko: "그녀는 오빠보다 더 똑똑하다." },
- { en: "This is the best book I've ever read.", ko: "이것은 내가 읽은 책 중 가장 좋은 책이다." },
- { en: "It was the most exciting movie ever.", ko: "그것은 역대 가장 흥미진진한 영화였다." }
- ],
- commonMistakes: [
- { wrong: "He is more tall than me.", correct: "He is taller than me.", explanation: "짧은 단어는 -er를 붙입니다." },
- { wrong: "She is beautifuler.", correct: "She is more beautiful.", explanation: "긴 단어는 more를 앞에 붙입니다." }
- ],
- practiceQuestions: [
- {
- question: "This test is ____ (difficult) than the last one.",
- options: ["difficult", "difficulter", "more difficult", "most difficult"],
- correctAnswer: 2,
- explanation: "3음절 이상의 형용사는 more를 사용해 비교급을 만듭니다."
- },
- {
- question: "That was the ____ (bad) movie I've ever seen.",
- options: ["bad", "worse", "worst", "baddest"],
- correctAnswer: 2,
- explanation: "bad의 최상급은 worst입니다."
- }
- ],
- tags: ["중급", "형용사", "부사", "비교"]
- },
+  // ========== 중급 문법 ==========
+  {
+    id: "g6",
+    category: "Tenses",
+    title: "Present Perfect (현재 완료형)",
+    difficulty: "medium",
+    explanation: "과거에 시작된 행동이 현재와 관련이 있을 때 사용합니다. have/has + 과거분사 형태로 사용하며, 경험, 완료, 지속 등의 의미를 가집니다.",
+    examples: [
+      { en: "I have visited Paris twice.", ko: "나는 파리를 두 번 방문한 적이 있다." },
+      { en: "She has finished her homework.", ko: "그녀는 숙제를 끝냈다." },
+      { en: "We have lived here for 5 years.", ko: "우리는 여기 5년 동안 살고 있다." },
+      { en: "Have you ever eaten sushi?", ko: "스시를 먹어본 적이 있나요?" }
+    ],
+    commonMistakes: [
+      { wrong: "I have seen him yesterday.", correct: "I saw him yesterday.", explanation: "구체적인 과거 시간(yesterday)이 나오면 현재 완료가 아니라 과거 시제를 사용합니다." },
+      { wrong: "She has go to the store.", correct: "She has gone to the store.", explanation: "have/has 뒤에는 과거분사(gone)를 사용해야 합니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "I ____ (never / be) to Japan.",
+        options: ["never was", "have never been", "am never", "never be"],
+        correctAnswer: 1,
+        explanation: "경험을 물을 때는 현재 완료형을 사용합니다."
+      },
+      {
+        question: "How long ____ you ____ (study) English?",
+        options: ["did / study", "do / study", "have / studied", "are / studying"],
+        correctAnswer: 2,
+        explanation: "기간을 물을 때는 현재 완료형을 사용합니다."
+      }
+    ],
+    tags: ["중급", "시제", "완료형"]
+  },
+  {
+    id: "g7",
+    category: "Conditionals",
+    title: "First Conditional (1차 조건문)",
+    difficulty: "medium",
+    explanation: "미래에 일어날 가능성이 있는 상황과 그 결과를 표현합니다. If + 현재 시제, 주절 + will/shall/can/may + 동사원형 구조입니다.",
+    examples: [
+      { en: "If it rains tomorrow, we will stay home.", ko: "만약 내일 비가 오면, 우리는 집에 있을 것이다." },
+      { en: "If you study hard, you will pass the exam.", ko: "만약 열심히 공부하면, 시험에 합격할 것이다." },
+      { en: "She will be late if she doesn't hurry.", ko: "만약 그녀가 서두르지 않으면, 늦을 것이다." },
+      { en: "What will you do if you have free time?", ko: "만약 시간이 나면 무엇을 할 건가요?" }
+    ],
+    commonMistakes: [
+      { wrong: "If it will rain, I will stay.", correct: "If it rains, I will stay.", explanation: "If절에는 현재 시제를 사용하고 미래 시제(will)를 사용하지 않습니다." },
+      { wrong: "If you will study, you pass.", correct: "If you study, you will pass.", explanation: "주절에는 will을 사용해야 합니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "If I ____ (have) enough money, I ____ (buy) a new phone.",
+        options: ["have / buy", "will have / will buy", "have / will buy", "will have / buy"],
+        correctAnswer: 2,
+        explanation: "If절은 현재 시제, 주절은 미래 시제를 사용합니다."
+      },
+      {
+        question: "What ____ (happen) if we ____ (miss) the train?",
+        options: ["happens / miss", "will happen / miss", "will happen / will miss", "happens / will miss"],
+        correctAnswer: 1,
+        explanation: "의문문에서도 If절은 현재 시제, 주절은 미래 시제입니다."
+      }
+    ],
+    tags: ["중급", "조건문"]
+  },
+  {
+    id: "g8",
+    category: "Modal Verbs",
+    title: "Should / Must / Have to",
+    difficulty: "medium",
+    explanation: "의무, 권유, 강제를 표현하는 조동사입니다. should는 권유(해야 한다), must는 강한 의무(반드시 해야 한다), have to는 외적인 의무(해야만 한다)를 나타냅니다.",
+    examples: [
+      { en: "You should eat more vegetables.", ko: "채소를 더 많이 먹어야 해요." },
+      { en: "I must finish this report today.", ko: "오늘 이 보고서를 끝내야만 해요." },
+      { en: "She has to work on Saturday.", ko: "그녀는 토요일에 일해야 해요." },
+      { en: "Should I call him?", ko: "그에게 전화해야 할까요?" }
+    ],
+    commonMistakes: [
+      { wrong: "You should to go now.", correct: "You should go now.", explanation: "조동사 뒤에는 to 없이 동사 원형을 사용합니다." },
+      { wrong: "She musts study.", correct: "She must study.", explanation: "must는 인칭이나 수에 따라 변하지 않습니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "You ____ (should / stop) smoking. It's bad for you.",
+        options: ["should stop", "should to stop", "stops", "stopping"],
+        correctAnswer: 0,
+        explanation: "should 뒤에는 동사 원형이 옵니다."
+      },
+      {
+        question: "We ____ (have to / leave) early tomorrow.",
+        options: ["have leave", "have to leave", "has to leave", "having to leave"],
+        correctAnswer: 1,
+        explanation: "have to 뒤에는 동사 원형이 옵니다."
+      }
+    ],
+    tags: ["중급", "조동사", "의무"]
+  },
+  {
+    id: "g9",
+    category: "Pronouns",
+    title: "Reflexive Pronouns (재귀대명사)",
+    difficulty: "medium",
+    explanation: "myself, yourself, himself, herself, itself, ourselves, yourselves, themselves로 주어가 행위의 대상이 될 때 사용합니다.",
+    examples: [
+      { en: "I taught myself to play the guitar.", ko: "나는 스스로 기타 치는 법을 배웠다." },
+      { en: "She looked at herself in the mirror.", ko: "그녀는 거울에 비친 자신을 보았다." },
+      { en: "We should be proud of ourselves.", ko: "우리는 스스로 자랑스러워해야 한다." },
+      { en: "Help yourself to some coffee.", ko: "커피 마음껏 드세요." }
+    ],
+    commonMistakes: [
+      { wrong: "I did it by me.", correct: "I did it by myself.", explanation: "혼자 했다는 의미로 by myself를 사용합니다." },
+      { wrong: "He enjoyed him.", correct: "He enjoyed himself.", explanation: "즐거웠다는 의미로 enjoy oneself를 사용합니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "She cooked dinner by ____.",
+        options: ["her", "hers", "herself", "she"],
+        correctAnswer: 2,
+        explanation: "혼자 요리했다는 의미로 by herself를 사용합니다."
+      },
+      {
+        question: "Don't worry about us. We can take care of ____.",
+        options: ["us", "our", "ours", "ourselves"],
+        correctAnswer: 3,
+        explanation: "우리 스스로 돌볼 수 있다는 의미로 ourselves를 사용합니다."
+      }
+    ],
+    tags: ["중급", "대명사"]
+  },
+  {
+    id: "g10",
+    category: "Adjectives/Adverbs",
+    title: "Comparatives and Superlatives (비교급과 최상급)",
+    difficulty: "medium",
+    explanation: "둘 이상을 비교할 때 비교급(-er, more), 셋 이상에서 가장~을 나타낼 때 최상급(-est, most)을 사용합니다.",
+    examples: [
+      { en: "My house is bigger than yours.", ko: "내 집이 네 집보다 크다." },
+      { en: "She is more intelligent than her brother.", ko: "그녀는 오빠보다 더 똑똑하다." },
+      { en: "This is the best book I've ever read.", ko: "이것은 내가 읽은 책 중 가장 좋은 책이다." },
+      { en: "It was the most exciting movie ever.", ko: "그것은 역대 가장 흥미진진한 영화였다." }
+    ],
+    commonMistakes: [
+      { wrong: "He is more tall than me.", correct: "He is taller than me.", explanation: "짧은 단어는 -er를 붙입니다." },
+      { wrong: "She is beautifuler.", correct: "She is more beautiful.", explanation: "긴 단어는 more를 앞에 붙입니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "This test is ____ (difficult) than the last one.",
+        options: ["difficult", "difficulter", "more difficult", "most difficult"],
+        correctAnswer: 2,
+        explanation: "3음절 이상의 형용사는 more를 사용해 비교급을 만듭니다."
+      },
+      {
+        question: "That was the ____ (bad) movie I've ever seen.",
+        options: ["bad", "worse", "worst", "baddest"],
+        correctAnswer: 2,
+        explanation: "bad의 최상급은 worst입니다."
+      }
+    ],
+    tags: ["중급", "형용사", "부사", "비교"]
+  },
 
- // ========== 고급 문법 ==========
- {
- id: "g11",
- category: "Conditionals",
- title: "Second Conditional (2차 조건문)",
- difficulty: "hard",
- explanation: "현재와는 다른 가상의 상황과 그 결과를 표현합니다. If + 과거 시제, 주절 + would/could/might + 동사원형 구조입니다. be동사는 were를 사용합니다.",
- examples: [
- { en: "If I won the lottery, I would buy a big house.", ko: "만약 복권에 당첨된다면, 큰 집을 살 것이다." },
- { en: "If I were you, I would apologize.", ko: "만약 내가 너라면, 사과할 것이다." },
- { en: "She could travel if she had more money.", ko: "만약 돈이 더 많다면, 여행할 수 있을 것이다." },
- { en: "What would you do if you could fly?", ko: "만약 날 수 있다면 무엇을 할 건가요?" }
- ],
- commonMistakes: [
- { wrong: "If I was you, I would go.", correct: "If I were you, I would go.", explanation: "가정법에서 be동사는 인칭에 관계없이 were를 사용합니다." },
- { wrong: "If I have money, I would buy.", correct: "If I had money, I would buy.", explanation: "If절은 과거 시제를 사용해야 합니다." }
- ],
- practiceQuestions: [
- {
- question: "If I ____ (be) younger, I ____ (travel) more.",
- options: ["am / will travel", "were / would travel", "was / will travel", "were / travel"],
- correctAnswer: 1,
- explanation: "가정법 2차에서 be동사는 were, 주절은 would + 동사원형을 사용합니다."
- },
- {
- question: "What ____ you ____ (do) if you ____ (find) a wallet?",
- options: ["would / do / found", "will / do / find", "do / do / find", "did / do / found"],
- correctAnswer: 0,
- explanation: "가상의 상황이므로 2차 조건문을 사용합니다."
- }
- ],
- tags: ["고급", "조건문", "가정법"]
- },
- {
- id: "g12",
- category: "Tenses",
- title: "Past Perfect (과거 완료형)",
- difficulty: "hard",
- explanation: "과거의 어떤 시점보다 더 이전에 일어난 행동을 표현합니다. had + 과거분사 형태로 사용하며, '과거의 과거'를 나타냅니다.",
- examples: [
- { en: "I had already eaten when he arrived.", ko: "그가 도착했을 때 나는 이미 먹었었다." },
- { en: "She had lived in Paris for 10 years before moving to London.", ko: "런던으로 이사하기 전에 그녀는 파리에서 10년 동안 살았었다." },
- { en: "Had you finished your work before the meeting?", ko: "회의 전에 작업을 끝냈었나요?" },
- { en: "They didn't get the job because they hadn't prepared.", ko: "준비하지 않았었기 때문에 그들은 직업을 얻지 못했다." }
- ],
- commonMistakes: [
- { wrong: "I finished when he arrived.", correct: "I had finished when he arrived.", explanation: "두 과거 행동 중 먼저 일어난 것에 과거 완료를 사용합니다." },
- { wrong: "I had eat before.", correct: "I had eaten before.", explanation: "had 뒤에는 과거분사(eaten)를 사용해야 합니다." }
- ],
- practiceQuestions: [
- {
- question: "The movie ____ (already / start) when we ____ (get) to the theater.",
- options: ["already started / got", "had already started / got", "already starts / get", "had already start / got"],
- correctAnswer: 1,
- explanation: "영화가 시작된 것이 더 먼저 일어났으므로 과거 완료를 사용합니다."
- },
- {
- question: "She ____ (not / see) him before they ____ (meet) at the party.",
- options: ["didn't see / met", "hadn't seen / met", "didn't see / meet", "hadn't saw / met"],
- correctAnswer: 1,
- explanation: "파티에서 만나기 전까지 못 봤었으므로 과거 완료를 사용합니다."
- }
- ],
- tags: ["고급", "시제", "완료형"]
- },
- {
- id: "g13",
- category: "Clauses",
- title: "Relative Clauses (관계대명사절)",
- difficulty: "hard",
- explanation: "명사를 수식하는 절로, who(사람), which(사물), that(사람/사물), whose(소유), where(장소), when(시간) 등을 사용합니다.",
- examples: [
- { en: "The woman who is standing there is my teacher.", ko: "거기 서 있는 여자는 내 선생님이다." },
- { en: "The book which I bought yesterday is very interesting.", ko: "어제 산 책이 매우 재미있다." },
- { en: "That's the house where I grew up.", ko: "그곳이 내가 자란 집이다." },
- { en: "Do you know the boy whose bike was stolen?", ko: "자전거를 도난당한 그 소년을 아나요?" }
- ],
- commonMistakes: [
- { wrong: "The man which called you is here.", correct: "The man who called you is here.", explanation: "사람은 who를, 사물은 which를 사용합니다." },
- { wrong: "I know a girl where lives in Seoul.", correct: "I know a girl who lives in Seoul.", explanation: "사람은 who, 장소는 where를 사용합니다." }
- ],
- practiceQuestions: [
- {
- question: "The café ____ we met last time is closed now.",
- options: ["who", "which", "where", "when"],
- correctAnswer: 2,
- explanation: "장소를 나타내므로 where를 사용합니다."
- },
- {
- question: "Is this the book ____ you recommended?",
- options: ["who", "which", "where", "whose"],
- correctAnswer: 1,
- explanation: "사물(책)을 나타내므로 which를 사용합니다."
- }
- ],
- tags: ["고급", "절", "관계대명사"]
- },
- {
- id: "g14",
- category: "Modal Verbs",
- title: "Modal Perfects (완료형 조동사)",
- difficulty: "hard",
- explanation: "과거에 대해 추측, 후회, 비판 등을 표현할 때 사용합니다. should have(했어야 했다), could have(할 수 있었을 텐데), must have(틀림없이 했을 것이다), might have(아마 했을지도) 등이 있습니다.",
- examples: [
- { en: "You should have called me yesterday.", ko: "어제 나에게 전화했어야 했어요." },
- { en: "She must have forgotten about the meeting.", ko: "그녀는 회의에 대해 잊었음에 틀림없다." },
- { en: "We could have won the game if we had tried harder.", ko: "더 열심히 노력했다면 경기에 이길 수 있었을 것이다." },
- { en: "They might have missed the bus.", ko: "그들은 버스를 놓쳤을지도 모른다." }
- ],
- commonMistakes: [
- { wrong: "You should called me.", correct: "You should have called me.", explanation: "완료형 조동사는 must/should/could 등 + have + 과거분사로 사용합니다." },
- { wrong: "She must be forgot.", correct: "She must have forgotten.", explanation: "have 뒤에는 과거분사를 사용해야 합니다." }
- ],
- practiceQuestions: [
- {
- question: "I ____ (should / study) more for the exam.",
- options: ["should study", "should have studied", "should studied", "should be study"],
- correctAnswer: 1,
- explanation: "과거에 했어야 했는데 안 한 것을 후회할 때 should have + 과거분사를 사용합니다."
- },
- {
- question: "The ground is wet. It ____ (must / rain) last night.",
- options: ["must rain", "must be rain", "must have rained", "must rained"],
- correctAnswer: 2,
- explanation: "과거에 대한 강한 추측은 must have + 과거분사를 사용합니다."
- }
- ],
- tags: ["고급", "조동사", "완료형"]
- },
- {
- id: "g15",
- category: "Inversion",
- title: "Inversion (도치 구문)",
- difficulty: "hard",
- explanation: "부사나 부사구가 문장 앞에 오면 주어와 동사의 위치를 바꾸는 구문입니다. 강조, 부정어 시작 문장, only로 시작하는 문장 등에서 사용합니다.",
- examples: [
- { en: "Never have I seen such a beautiful sunset.", ko: "이렇게 아름다운 석양을 본 적이 없다." },
- { en: "Only then did I understand what he meant.", ko: "그때서야 그가 무슨 뜻인지 이해했다." },
- { en: "Rarely do we get this opportunity.", ko: "우리는 이런 기회를 거의 얻지 못한다." },
- { en: "Not only did he forget his keys, but he also missed the bus.", ko: "그는 열쇠를 잊었을 뿐만 아니라 버스도 놓쳤다." }
- ],
- commonMistakes: [
- { wrong: "Never I have seen that.", correct: "Never have I seen that.", explanation: "부정어로 시작하면 주어와 조동사를 도치시켜야 합니다." },
- { wrong: "Only then I understood.", correct: "Only then did I understand.", explanation: "only로 시작하면 도치가 필요하며, 일반동사는 do/does/did를 앞에 놓습니다." }
- ],
- practiceQuestions: [
- {
- question: "Hardly ever ____ (she / go) to the movies.",
- options: ["she goes", "does she go", "she does go", "goes she"],
- correctAnswer: 1,
- explanation: "Hardly ever로 시작하므로 도치 구문을 사용합니다."
- },
- {
- question: "Not until midnight ____ (they / arrive).",
- options: ["they arrived", "did they arrive", "they did arrive", "arrived they"],
- correctAnswer: 1,
- explanation: "Not until로 시작하므로 도치 구문을 사용합니다."
- }
- ],
- tags: ["고급", "도치", "강조"]
- }
+  // ========== 고급 문법 ==========
+  {
+    id: "g11",
+    category: "Conditionals",
+    title: "Second Conditional (2차 조건문)",
+    difficulty: "hard",
+    explanation: "현재와는 다른 가상의 상황과 그 결과를 표현합니다. If + 과거 시제, 주절 + would/could/might + 동사원형 구조입니다. be동사는 were를 사용합니다.",
+    examples: [
+      { en: "If I won the lottery, I would buy a big house.", ko: "만약 복권에 당첨된다면, 큰 집을 살 것이다." },
+      { en: "If I were you, I would apologize.", ko: "만약 내가 너라면, 사과할 것이다." },
+      { en: "She could travel if she had more money.", ko: "만약 돈이 더 많다면, 여행할 수 있을 것이다." },
+      { en: "What would you do if you could fly?", ko: "만약 날 수 있다면 무엇을 할 건가요?" }
+    ],
+    commonMistakes: [
+      { wrong: "If I was you, I would go.", correct: "If I were you, I would go.", explanation: "가정법에서 be동사는 인칭에 관계없이 were를 사용합니다." },
+      { wrong: "If I have money, I would buy.", correct: "If I had money, I would buy.", explanation: "If절은 과거 시제를 사용해야 합니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "If I ____ (be) younger, I ____ (travel) more.",
+        options: ["am / will travel", "were / would travel", "was / will travel", "were / travel"],
+        correctAnswer: 1,
+        explanation: "가정법 2차에서 be동사는 were, 주절은 would + 동사원형을 사용합니다."
+      },
+      {
+        question: "What ____ you ____ (do) if you ____ (find) a wallet?",
+        options: ["would / do / found", "will / do / find", "do / do / find", "did / do / found"],
+        correctAnswer: 0,
+        explanation: "가상의 상황이므로 2차 조건문을 사용합니다."
+      }
+    ],
+    tags: ["고급", "조건문", "가정법"]
+  },
+  {
+    id: "g12",
+    category: "Tenses",
+    title: "Past Perfect (과거 완료형)",
+    difficulty: "hard",
+    explanation: "과거의 어떤 시점보다 더 이전에 일어난 행동을 표현합니다. had + 과거분사 형태로 사용하며, '과거의 과거'를 나타냅니다.",
+    examples: [
+      { en: "I had already eaten when he arrived.", ko: "그가 도착했을 때 나는 이미 먹었었다." },
+      { en: "She had lived in Paris for 10 years before moving to London.", ko: "런던으로 이사하기 전에 그녀는 파리에서 10년 동안 살았었다." },
+      { en: "Had you finished your work before the meeting?", ko: "회의 전에 작업을 끝냈었나요?" },
+      { en: "They didn't get the job because they hadn't prepared.", ko: "준비하지 않았었기 때문에 그들은 직업을 얻지 못했다." }
+    ],
+    commonMistakes: [
+      { wrong: "I finished when he arrived.", correct: "I had finished when he arrived.", explanation: "두 과거 행동 중 먼저 일어난 것에 과거 완료를 사용합니다." },
+      { wrong: "I had eat before.", correct: "I had eaten before.", explanation: "had 뒤에는 과거분사(eaten)를 사용해야 합니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "The movie ____ (already / start) when we ____ (get) to the theater.",
+        options: ["already started / got", "had already started / got", "already starts / get", "had already start / got"],
+        correctAnswer: 1,
+        explanation: "영화가 시작된 것이 더 먼저 일어났으므로 과거 완료를 사용합니다."
+      },
+      {
+        question: "She ____ (not / see) him before they ____ (meet) at the party.",
+        options: ["didn't see / met", "hadn't seen / met", "didn't see / meet", "hadn't saw / met"],
+        correctAnswer: 1,
+        explanation: "파티에서 만나기 전까지 못 봤었으므로 과거 완료를 사용합니다."
+      }
+    ],
+    tags: ["고급", "시제", "완료형"]
+  },
+  {
+    id: "g13",
+    category: "Clauses",
+    title: "Relative Clauses (관계대명사절)",
+    difficulty: "hard",
+    explanation: "명사를 수식하는 절로, who(사람), which(사물), that(사람/사물), whose(소유), where(장소), when(시간) 등을 사용합니다.",
+    examples: [
+      { en: "The woman who is standing there is my teacher.", ko: "거기 서 있는 여자는 내 선생님이다." },
+      { en: "The book which I bought yesterday is very interesting.", ko: "어제 산 책이 매우 재미있다." },
+      { en: "That's the house where I grew up.", ko: "그곳이 내가 자란 집이다." },
+      { en: "Do you know the boy whose bike was stolen?", ko: "자전거를 도난당한 그 소년을 아나요?" }
+    ],
+    commonMistakes: [
+      { wrong: "The man which called you is here.", correct: "The man who called you is here.", explanation: "사람은 who를, 사물은 which를 사용합니다." },
+      { wrong: "I know a girl where lives in Seoul.", correct: "I know a girl who lives in Seoul.", explanation: "사람은 who, 장소는 where를 사용합니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "The café ____ we met last time is closed now.",
+        options: ["who", "which", "where", "when"],
+        correctAnswer: 2,
+        explanation: "장소를 나타내므로 where를 사용합니다."
+      },
+      {
+        question: "Is this the book ____ you recommended?",
+        options: ["who", "which", "where", "whose"],
+        correctAnswer: 1,
+        explanation: "사물(책)을 나타내므로 which를 사용합니다."
+      }
+    ],
+    tags: ["고급", "절", "관계대명사"]
+  },
+  {
+    id: "g14",
+    category: "Modal Verbs",
+    title: "Modal Perfects (완료형 조동사)",
+    difficulty: "hard",
+    explanation: "과거에 대해 추측, 후회, 비판 등을 표현할 때 사용합니다. should have(했어야 했다), could have(할 수 있었을 텐데), must have(틀림없이 했을 것이다), might have(아마 했을지도) 등이 있습니다.",
+    examples: [
+      { en: "You should have called me yesterday.", ko: "어제 나에게 전화했어야 했어요." },
+      { en: "She must have forgotten about the meeting.", ko: "그녀는 회의에 대해 잊었음에 틀림없다." },
+      { en: "We could have won the game if we had tried harder.", ko: "더 열심히 노력했다면 경기에 이길 수 있었을 것이다." },
+      { en: "They might have missed the bus.", ko: "그들은 버스를 놓쳤을지도 모른다." }
+    ],
+    commonMistakes: [
+      { wrong: "You should called me.", correct: "You should have called me.", explanation: "완료형 조동사는 must/should/could 등 + have + 과거분사로 사용합니다." },
+      { wrong: "She must be forgot.", correct: "She must have forgotten.", explanation: "have 뒤에는 과거분사를 사용해야 합니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "I ____ (should / study) more for the exam.",
+        options: ["should study", "should have studied", "should studied", "should be study"],
+        correctAnswer: 1,
+        explanation: "과거에 했어야 했는데 안 한 것을 후회할 때 should have + 과거분사를 사용합니다."
+      },
+      {
+        question: "The ground is wet. It ____ (must / rain) last night.",
+        options: ["must rain", "must be rain", "must have rained", "must rained"],
+        correctAnswer: 2,
+        explanation: "과거에 대한 강한 추측은 must have + 과거분사를 사용합니다."
+      }
+    ],
+    tags: ["고급", "조동사", "완료형"]
+  },
+  {
+    id: "g15",
+    category: "Inversion",
+    title: "Inversion (도치 구문)",
+    difficulty: "hard",
+    explanation: "부사나 부사구가 문장 앞에 오면 주어와 동사의 위치를 바꾸는 구문입니다. 강조, 부정어 시작 문장, only로 시작하는 문장 등에서 사용합니다.",
+    examples: [
+      { en: "Never have I seen such a beautiful sunset.", ko: "이렇게 아름다운 석양을 본 적이 없다." },
+      { en: "Only then did I understand what he meant.", ko: "그때서야 그가 무슨 뜻인지 이해했다." },
+      { en: "Rarely do we get this opportunity.", ko: "우리는 이런 기회를 거의 얻지 못한다." },
+      { en: "Not only did he forget his keys, but he also missed the bus.", ko: "그는 열쇠를 잊었을 뿐만 아니라 버스도 놓쳤다." }
+    ],
+    commonMistakes: [
+      { wrong: "Never I have seen that.", correct: "Never have I seen that.", explanation: "부정어로 시작하면 주어와 조동사를 도치시켜야 합니다." },
+      { wrong: "Only then I understood.", correct: "Only then did I understand.", explanation: "only로 시작하면 도치가 필요하며, 일반동사는 do/does/did를 앞에 놓습니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "Hardly ever ____ (she / go) to the movies.",
+        options: ["she goes", "does she go", "she does go", "goes she"],
+        correctAnswer: 1,
+        explanation: "Hardly ever로 시작하므로 도치 구문을 사용합니다."
+      },
+      {
+        question: "Not until midnight ____ (they / arrive).",
+        options: ["they arrived", "did they arrive", "they did arrive", "arrived they"],
+        correctAnswer: 1,
+        explanation: "Not until로 시작하므로 도치 구문을 사용합니다."
+      }
+    ],
+    tags: ["고급", "도치", "강조"]
+  }
   ,
   // ========== 실전 회화 (Daily Life) ==========
   {
@@ -919,5 +919,227 @@ export const grammarContents: ContentLine[] = [
       }
     ],
     tags: ["고급", "수동태", "문법"]
+  },
+  // ========== 추가된 문법 컨텐츠 ==========
+  {
+    id: "g27",
+    category: "Tenses",
+    title: "Past Simple (과거 단순형)",
+    difficulty: "easy",
+    explanation: "이미 끝난 과거의 행동이나 상태를 표현할 때 사용합니다. 규칙동사는 -ed, 불규칙동사는 과거형을 사용합니다.",
+    examples: [
+      { en: "I visited Seoul last summer.", ko: "지난 여름에 서울을 방문했다." },
+      { en: "She bought a new car yesterday.", ko: "그녀는 어제 새 차를 샀다." },
+      { en: "They didn't go to the party.", ko: "그들은 파티에 가지 않았다." },
+      { en: "Did you watch the movie?", ko: "그 영화를 봤니?" }
+    ],
+    commonMistakes: [
+      { wrong: "I go to school yesterday.", correct: "I went to school yesterday.", explanation: "과거 사건에는 과거형(went)을 사용해야 합니다." },
+      { wrong: "She didn't went home.", correct: "She didn't go home.", explanation: "부정문에서는 did not + 동사원형을 사용합니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "I ____ (visit) my grandparents last weekend.",
+        options: ["visit", "visited", "visiting", "have visited"],
+        correctAnswer: 1,
+        explanation: "지난 주말이라는 과거 시간을 나타내므로 과거 단순형 visited를 사용합니다."
+      },
+      {
+        question: "____ you ____ (see) the new movie last night?",
+        options: ["Do / see", "Did / see", "Have / seen", "Are / seeing"],
+        correctAnswer: 1,
+        explanation: "과거 질문은 Did + 동사원형 형태입니다."
+      }
+    ],
+    tags: ["기초", "시제", "과거"]
+  },
+  {
+    id: "g28",
+    category: "Tenses",
+    title: "Past Continuous (과거 진행형)",
+    difficulty: "medium",
+    explanation: "과거 특정 시점에 진행 중이던 행동을 표현합니다. was/were + 동사-ing 형태를 사용합니다.",
+    examples: [
+      { en: "I was sleeping when you called.", ko: "네가 전화했을 때 나는 자고 있었다." },
+      { en: "They were playing football at 3 PM.", ko: "그들은 오후 3시에 축구를 하고 있었다." },
+      { en: "What were you doing yesterday evening?", ko: "어제 저녁에 뭐 하고 있었어?" }
+    ],
+    commonMistakes: [
+      { wrong: "I was sleep when he came.", correct: "I was sleeping when he came.", explanation: "be동사 뒤에는 -ing 형태를 사용합니다." },
+      { wrong: "She were watching TV.", correct: "She was watching TV.", explanation: "3인칭 단수 주어에는 was를 사용합니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "While I ____ (cook), the phone ____ (ring).",
+        options: ["was cooking / rang", "cooked / was ringing", "was cooking / was ringing", "cook / ring"],
+        correctAnswer: 0,
+        explanation: "요리하는 동안(진행) 전화가 울렸다(순간) → 과거 진행 + 과거 단순."
+      }
+    ],
+    tags: ["중급", "시제", "과거 진행"]
+  },
+  {
+    id: "g29",
+    category: "Prepositions",
+    title: "Prepositions of Place (장소 전치사: in/on/at)",
+    difficulty: "easy",
+    explanation: "장소를 나타내는 전치사입니다. in(안/큰 영역), on(위/표면), at(구체적인 지점)에 사용합니다.",
+    examples: [
+      { en: "The book is on the table.", ko: "책이 테이블 위에 있다." },
+      { en: "She lives in Busan.", ko: "그녀는 부산에 산다." },
+      { en: "I'll meet you at the station.", ko: "역에서 만나자." }
+    ],
+    commonMistakes: [
+      { wrong: "I live at Seoul.", correct: "I live in Seoul.", explanation: "도시나 큰 장소에는 in을 사용합니다." },
+      { wrong: "The keys are in the table.", correct: "The keys are on the table.", explanation: "표면 위에는 on을 사용합니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "My phone is ____ the desk.",
+        options: ["in", "on", "at", "to"],
+        correctAnswer: 1,
+        explanation: "책상 표면 위이므로 on을 사용합니다."
+      }
+    ],
+    tags: ["기초", "전치사", "장소"]
+  },
+  {
+    id: "g30",
+    category: "Conditionals",
+    title: "Third Conditional (3차 조건문)",
+    difficulty: "hard",
+    explanation: "과거에 일어나지 않은 가정과 그 결과를 표현합니다. If + 과거완료, would have + 과거분사 구조입니다.",
+    examples: [
+      { en: "If I had studied harder, I would have passed the exam.", ko: "더 열심히 공부했더라면 시험에 합격했을 텐데." },
+      { en: "She wouldn't have missed the flight if she had left earlier.", ko: "더 일찍 출발했더라면 비행기를 놓치지 않았을 거예요." }
+    ],
+    commonMistakes: [
+      { wrong: "If I would have known, I would tell you.", correct: "If I had known, I would have told you.", explanation: "If절에는 과거완료(had + p.p.)를 사용합니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "If you ____ (call) me, I ____ (help) you.",
+        options: ["had called / would have helped", "called / would help", "have called / helped", "would call / would have helped"],
+        correctAnswer: 0,
+        explanation: "3차 조건문은 과거 가정 상황에 사용됩니다."
+      }
+    ],
+    tags: ["고급", "조건문", "가정법"]
+  },
+  {
+    id: "g31",
+    category: "Clauses",
+    title: "Reported Speech (간접화법)",
+    difficulty: "medium",
+    explanation: "남의 말을 간접적으로 전달할 때 사용합니다. 시제, 대명사, 시간 표현이 바뀝니다.",
+    examples: [
+      { en: "He said he was tired.", ko: "그는 피곤하다고 말했다." },
+      { en: "She told me she would come tomorrow.", ko: "그녀는 내일 온다고 나에게 말했다." }
+    ],
+    commonMistakes: [
+      { wrong: "He said I am tired.", correct: "He said he was tired.", explanation: "대명사와 시제를 과거로 바꿔야 합니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "Direct: 'I love you.' → She said ____.",
+        options: ["she loved me", "I love you", "she loves me", "I loved you"],
+        correctAnswer: 0,
+        explanation: "1인칭 → 3인칭, 현재 → 과거로 바뀝니다."
+      }
+    ],
+    tags: ["중급", "간접화법"]
+  },
+  {
+    id: "g32",
+    category: "Daily Life",
+    title: "길 묻기 & 방향 설명 (Directions)",
+    difficulty: "easy",
+    explanation: "길을 물어보고 알려주는 실전 표현입니다.",
+    examples: [
+      { en: "Excuse me, how do I get to the subway station?", ko: "실례지만, 지하철역은 어떻게 가나요?" },
+      { en: "Go straight and turn left at the traffic light.", ko: "직진하다가 신호등에서 좌회전하세요." },
+      { en: "It's on your right.", ko: "오른쪽에 있어요." }
+    ],
+    commonMistakes: [
+      { wrong: "Where is subway?", correct: "How do I get to the subway station?", explanation: "가는 방법을 물을 때는 How do I get to~가 자연스럽습니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "길을 물을 때 가장 자연스러운 표현은? Excuse me, ____ to the museum?",
+        options: ["where is", "how do I get", "which way", "tell me"],
+        correctAnswer: 1,
+        explanation: "How do I get to~가 가장 흔한 표현입니다."
+      }
+    ],
+    tags: ["실전", "길 찾기", "여행"]
+  },
+  {
+    id: "g33",
+    category: "Daily Life",
+    title: "비즈니스 미팅 표현 (Business Meeting)",
+    difficulty: "medium",
+    explanation: "회의에서 의견 제시, 동의, 반대 등을 자연스럽게 표현하는 방법입니다.",
+    examples: [
+      { en: "I think we should consider this option.", ko: "이 옵션을 고려해야 한다고 생각합니다." },
+      { en: "I agree with you on that point.", ko: "그 부분에 동의합니다." },
+      { en: "Could you elaborate on that?", ko: "그 부분에 대해 더 자세히 설명해주실 수 있나요?" }
+    ],
+    commonMistakes: [
+      { wrong: "Your idea is bad.", correct: "I'm not sure that would work.", explanation: "비즈니스에서는 부드럽게 반대 의견을 표현하는 것이 중요합니다." }
+    ],
+    practiceQuestions: [
+      {
+        question: "동의할 때 쓰는 표현? I ____ with you.",
+        options: ["disagree", "agree", "am agree", "agreeing"],
+        correctAnswer: 1,
+        explanation: "I agree with you.가 표준 표현입니다."
+      }
+    ],
+    tags: ["비즈니스", "미팅", "실전"]
+  },
+  {
+    id: "g34",
+    category: "Phrasal Verbs",
+    title: "추가 필수 구동사 2",
+    difficulty: "medium",
+    explanation: "더 많은 일상 구동사를 익혀보세요.",
+    examples: [
+      { en: "Please turn off the lights.", ko: "불 좀 꺼주세요." },
+      { en: "I can't put up with this noise.", ko: "이 소음을 참을 수 없어." },
+      { en: "She came up with a great idea.", ko: "그녀는 좋은 아이디어를 생각해냈다." }
+    ],
+    commonMistakes: [],
+    practiceQuestions: [],
+    tags: ["중급", "구동사"]
+  },
+  {
+    id: "g35",
+    category: "Emotion",
+    title: "감정 표현 마스터 (Expressing Emotions)",
+    difficulty: "medium",
+    explanation: "기쁨, 슬픔, 실망, 흥분 등을 자연스럽게 표현하는 방법입니다.",
+    examples: [
+      { en: "I'm thrilled to hear that!", ko: "그 소식을 듣고 정말 기뻐!" },
+      { en: "I'm a bit disappointed.", ko: "조금 실망스러워." },
+      { en: "That makes me so angry!", ko: "정말 화나네!" }
+    ],
+    commonMistakes: [],
+    practiceQuestions: [],
+    tags: ["감정", "실전"]
+  },
+  {
+    id: "g36",
+    category: "SNS",
+    title: "SNS에서 쓰는 영어 (Social Media)",
+    difficulty: "easy",
+    explanation: "인스타, 트위터, 댓글 등에서 자주 쓰이는 캐주얼 표현입니다.",
+    examples: [
+      { en: "This is goals! 🔥", ko: "이게 바로 인생샷이야!" },
+      { en: "No cap, this is the best.", ko: "진짜로 이게 최고야." },
+      { en: "DM me if you want the details.", ko: "자세한 거 원하면 DM 해." }
+    ],
+    commonMistakes: [],
+    practiceQuestions: [],
+    tags: ["SNS", "캐주얼"]
   }
 ];

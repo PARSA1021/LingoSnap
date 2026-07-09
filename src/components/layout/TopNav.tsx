@@ -12,6 +12,7 @@ const tabs = [
  { name: '복습', href: '/review' },
  { name: '문법', href: '/contents' },
  { name: '단어', href: '/vocab' },
+ { name: '문장', href: '/writing' },
  { name: '말하기', href: '/speaking' },
 ];
 

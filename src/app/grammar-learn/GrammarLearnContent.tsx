@@ -2,12 +2,12 @@
 
 import * as React from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { 
-  XCircle, 
-  ChevronRight, 
-  CheckCircle2, 
-  Sparkles, 
-  BookOpen, 
+import {
+  XCircle,
+  ChevronRight,
+  CheckCircle2,
+  Sparkles,
+  BookOpen,
   Volume2,
   Check,
   X
@@ -20,7 +20,7 @@ export default function GrammarLearnContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const grammarId = searchParams.get('grammar');
-  
+
   const currentContent = React.useMemo(() => {
     return grammarContents.find(c => c.id === grammarId) || grammarContents[0];
   }, [grammarId]);
@@ -53,7 +53,7 @@ export default function GrammarLearnContent() {
     }
   };
 
-  const isCorrect = currentContent.practiceQuestions && 
+  const isCorrect = currentContent.practiceQuestions &&
     quizAnswer === currentContent.practiceQuestions[0]?.correctAnswer;
 
   return (
@@ -76,7 +76,7 @@ export default function GrammarLearnContent() {
               </span>
             </div>
             <div className="h-2.5 w-full bg-[var(--color-muted)] rounded-full overflow-hidden border border-[var(--color-border)]">
-              <div 
+              <div
                 className="h-full bg-[var(--color-primary)] rounded-full transition-all duration-500 ease-out"
                 style={{ width: `${((currentStep + 1) / totalSteps) * 100}%` }}
               />
@@ -182,7 +182,7 @@ export default function GrammarLearnContent() {
                   const isSelected = quizAnswer === idx;
                   const showCorrectness = showResult;
                   const isOptionCorrect = idx === currentContent.practiceQuestions[0].correctAnswer;
-                  
+
                   return (
                     <button
                       key={idx}
@@ -191,7 +191,7 @@ export default function GrammarLearnContent() {
                       className={cn(
                         "w-full text-left p-4 rounded-2xl border transition-all duration-200",
                         showCorrectness ? (
-                          isOptionCorrect 
+                          isOptionCorrect
                             ? "bg-[var(--color-success)]/10 border-[var(--color-success)] text-[var(--color-success)]"
                             : isSelected
                               ? "bg-[var(--color-error)]/10 border-[var(--color-error)] text-[var(--color-error)]"
@@ -243,7 +243,7 @@ export default function GrammarLearnContent() {
               {showResult && (
                 <div className={cn(
                   "rounded-2xl p-5 border",
-                  isCorrect 
+                  isCorrect
                     ? "bg-[var(--color-success)]/10 border-[var(--color-success)]"
                     : "bg-[var(--color-error)]/10 border-[var(--color-error)]"
                 )}>

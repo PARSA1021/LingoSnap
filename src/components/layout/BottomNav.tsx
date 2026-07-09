@@ -3,7 +3,7 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Lightbulb, BookA, Mic, RotateCcw, BookOpen } from 'lucide-react';
+import { Home, Lightbulb, BookA, Mic, RotateCcw, BookOpen, PenTool } from 'lucide-react';
 import { cn } from '@/lib/utils/cn';
 
 const tabs = [
@@ -12,6 +12,7 @@ const tabs = [
  { name: '복습', href: '/review', icon: RotateCcw },
  { name: '문법', href: '/contents', icon: BookOpen },
  { name: '단어', href: '/vocab', icon: BookA },
+ { name: '문장', href: '/writing', icon: PenTool },
  { name: '말하기', href: '/speaking', icon: Mic },
 ];
 
