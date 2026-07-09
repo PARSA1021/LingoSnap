@@ -3918,13 +3918,25 @@
   },
   {
     "word": "Why not?",
-    "meaning": "왜 안 돼?",
+    "meaning": "좋고 말고!, 당연하지! (제안에 대한 적극적 수락)",
     "level": "beginner",
     "category": "캐주얼",
     "examples": [
       {
-        "text": "Want to try? Why not?",
-        "translation": "해볼래? 왜 안 돼?"
+        "text": "Wanna grab some pizza tonight?",
+        "translation": "오늘 밤에 피자 먹으러 갈래?"
+      },
+      {
+        "text": "Why not? I'm starving.",
+        "translation": "당연하지! 나 엄청 배고파."
+      },
+      {
+        "text": "Do you want to join us for the trip?",
+        "translation": "우리 여행 가는데 같이 갈래?"
+      },
+      {
+        "text": "Why not? Count me in!",
+        "translation": "좋고 말고! 나도 껴줘!"
       }
     ]
   },
