@@ -90,11 +90,21 @@ export const grammarContents: ContentLine[] = [
       { en: "I drink coffee every morning.", ko: "나는 매일 아침 커피를 마신다." },
       { en: "She works in an office.", ko: "그녀는 사무실에서 일한다." },
       { en: "The sun rises in the east.", ko: "태양은 동쪽에서 뜬다." },
-      { en: "They play football on weekends.", ko: "그들은 주말에 축구를 한다." }
+      { en: "They play football on weekends.", ko: "그들은 주말에 축구를 한다." },
+      // --- 추가된 예문 ---
+      { en: "Water freezes at 0 degrees Celsius.", ko: "물은 섭씨 0도에서 언다. (일반적 진실)" },
+      { en: "He always arrives on time.", ko: "그는 항상 제시간에 도착한다. (반복되는 습관)" },
+      { en: "We live in Seoul.", ko: "우리는 서울에 산다. (현재의 상태)" },
+      { en: "Cats hate water.", ko: "고양이는 물을 싫어한다. (일반적 사실)" },
+      { en: "The train leaves at 6 PM.", ko: "기차는 오후 6시에 떠난다. (시간표/일정)" }
     ],
     commonMistakes: [
       { wrong: "He go to school.", correct: "He goes to school.", explanation: "3인칭 단수 주어 뒤에는 동사에 -s/-es를 붙여야 합니다." },
-      { wrong: "She don't like pizza.", correct: "She doesn't like pizza.", explanation: "3인칭 단수일 때 don't 대신 doesn't를 사용합니다." }
+      { wrong: "She don't like pizza.", correct: "She doesn't like pizza.", explanation: "3인칭 단수일 때 don't 대신 doesn't를 사용합니다." },
+      // --- 추가된 흔한 실수 ---
+      { wrong: "Do he know the answer?", correct: "Does he know the answer?", explanation: "3인칭 단수 의문문에서는 Do가 아니라 Does로 시작하고, 본동사는 원형을 써야 합니다." },
+      { wrong: "He is like his father.", correct: "He likes his father.", explanation: "상태를 나타내는 일반동사 like는 be동사(is)와 함께 쓸 수 없습니다." },
+      { wrong: "Where you live?", correct: "Where do you live?", explanation: "의문사를 사용한 현재 단순형 의문문에는 조동사 do/does가 필요합니다." }
     ],
     practiceQuestions: [
       {
@@ -108,6 +118,25 @@ export const grammarContents: ContentLine[] = [
         options: ["don't like", "doesn't like", "not like", "am not like"],
         correctAnswer: 0,
         explanation: "1인칭 주어 'I' 뒤에는 don't를 사용합니다."
+      },
+      // --- 추가된 연습 문제 ---
+      {
+        question: "____ your brother play the guitar?",
+        options: ["Do", "Does", "Is", "Are"],
+        correctAnswer: 1,
+        explanation: "주어 'your brother'는 3인칭 단수이므로 의문문 만들 때 조동사 Does를 사용합니다."
+      },
+      {
+        question: "The Earth ____ around the Sun.",
+        options: ["move", "moves", "moving", "moved"],
+        correctAnswer: 1,
+        explanation: "지구(The Earth)는 3인칭 단수이고 불변의 진실을 나타내므로 현재형 moves를 씁니다."
+      },
+      {
+        question: "We usually ____ breakfast at 7:30 AM.",
+        options: ["has", "have", "having", "had"],
+        correctAnswer: 1,
+        explanation: "주어가 'We'이므로 1·2인칭 및 복수형에 쓰이는 동사 원형 'have'를 사용합니다."
       }
     ],
     tags: ["기초", "시제", "현재"]
@@ -122,11 +151,21 @@ export const grammarContents: ContentLine[] = [
       { en: "I am eating dinner now.", ko: "나는 지금 저녁을 먹고 있다." },
       { en: "They are watching TV.", ko: "그들은 TV를 보고 있다." },
       { en: "Is she working today?", ko: "그녀는 오늘 일하고 있나요?" },
-      { en: "We aren't going to the party.", ko: "우리는 파티에 안 간다." }
+      { en: "We aren't going to the party.", ko: "우리는 파티에 안 간다." },
+      // --- 추가된 예문 ---
+      { en: "Hurry up! The bus is coming.", ko: "서두르세요! 버스가 오고 있어요." },
+      { en: "He is reading a book in his room.", ko: "그는 방에서 책을 읽고 있다." },
+      { en: "Are they playing soccer outside?", ko: "그들은 밖에서 축구를 하고 있나요?" },
+      { en: "It is raining heavily right now.", ko: "지금 밖에는 비가 많이 내리고 있다." },
+      { en: "I am looking for my keys.", ko: "나는 내 열쇠를 찾는 중이다." }
     ],
     commonMistakes: [
       { wrong: "I eating now.", correct: "I am eating now.", explanation: "주어 뒤에 be동사(am/is/are)를 반드시 넣어야 합니다." },
-      { wrong: "He is eat.", correct: "He is eating.", explanation: "be동사 뒤에는 동사에 -ing를 붙여야 합니다." }
+      { wrong: "He is eat.", correct: "He is eating.", explanation: "be동사 뒤에는 동사에 -ing를 붙여야 합니다." },
+      // --- 추가된 흔한 실수 ---
+      { wrong: "She is knowing the truth.", correct: "She knows the truth.", explanation: "소유나 상태를 나타내는 동사(know, like, want 등)는 진행형으로 쓸 수 없습니다." },
+      { wrong: "You are run in the park.", correct: "You are running in the park.", explanation: "단모음+단자음으로 끝나는 동사는 마지막 자음을 겹쳐서 -ing를 붙여야 합니다 (running)." },
+      { wrong: "Are he sleeping?", correct: "Is he sleeping?", explanation: "주어가 3인칭 단수(he)이므로 be동사는 are가 아니라 is를 사용해야 합니다." }
     ],
     practiceQuestions: [
       {
@@ -140,6 +179,25 @@ export const grammarContents: ContentLine[] = [
         options: ["do / do", "are / doing", "is / doing", "did / do"],
         correctAnswer: 1,
         explanation: "you와 함께 쓰이는 be동사는 are이고, 뒤에는 doing이 옵니다."
+      },
+      // --- 추가된 연습 문제 ---
+      {
+        question: "Shh! The baby ____ (sleep) in the bedroom.",
+        options: ["sleeps", "is sleeping", "sleeping", "sleep"],
+        correctAnswer: 1,
+        explanation: "'Shh!'(쉿!)라는 신호는 지금 이 순간 조용해야 하는 상황이므로 현재 진행형 'is sleeping'을 씁니다."
+      },
+      {
+        question: "Listen! Someone ____ (sing) a lovely song.",
+        options: ["sings", "is singing", "singing", "is sing"],
+        correctAnswer: 1,
+        explanation: "'Listen!'(들어봐!)이라는 표현 뒤에는 현재 진행 중인 동작을 나타내는 'is singing'이 적절합니다."
+      },
+      {
+        question: "We ____ (have) a wonderful time at the moment.",
+        options: ["have", "has", "are having", "is having"],
+        correctAnswer: 2,
+        explanation: "주어 'We'에 어울리는 be동사는 are이며, have는 끝의 e를 빼고 -ing를 붙여 are having이 됩니다."
       }
     ],
     tags: ["기초", "시제", "현재", "진행형"]
@@ -154,11 +212,21 @@ export const grammarContents: ContentLine[] = [
       { en: "I have a book.", ko: "나는 책이 하나 있다." },
       { en: "She is an engineer.", ko: "그녀는 엔지니어다." },
       { en: "A dog is barking.", ko: "개 한 마리가 짖고 있다." },
-      { en: "He ate an apple.", ko: "그는 사과를 하나 먹었다." }
+      { en: "He ate an apple.", ko: "그는 사과를 하나 먹었다." },
+      // --- 추가된 예문 ---
+      { en: "She wants to be a doctor.", ko: "그녀는 의사가 되고 싶어 한다." },
+      { en: "This is an interesting story.", ko: "이것은 흥미로운 이야기다." },
+      { en: "I saw an old man in the park.", ko: "나는 공원에서 노인 한 분을 보았다." },
+      { en: "He has a cat and a dog.", ko: "그는 고양이 한 마리와 개 한 마리를 가지고 있다." },
+      { en: "Please wait for a moment.", ko: "잠시만 기다려 주세요." }
     ],
     commonMistakes: [
       { wrong: "an university", correct: "a university", explanation: "university는 'y' 소리로 시작하므로 a를 사용합니다." },
-      { wrong: "a hour", correct: "an hour", explanation: "hour는 'h'가 묵음이므로 모음 소리로 시작해 an을 사용합니다." }
+      { wrong: "a hour", correct: "an hour", explanation: "hour는 'h'가 묵음이므로 모음 소리로 시작해 an을 사용합니다." },
+      // --- 추가된 흔한 실수 ---
+      { wrong: "I want a apples.", correct: "I want an apple.", explanation: "a/an 뒤에는 셀 수 있는 명사의 '단수형'이 와야 하므로 복수형(-s)을 쓸 수 없습니다." },
+      { wrong: "He is a honest man.", correct: "He is an honest man.", explanation: "honest의 'h'는 소리가 나지 않아 모음으로 시작하므로 a가 아닌 an을 써야 합니다." },
+      { wrong: "She likes a water.", correct: "She likes water.", explanation: "물(water)은 셀 수 없는 명사(불가산 명사)이므로 앞에 a/an을 붙이지 않습니다." }
     ],
     practiceQuestions: [
       {
@@ -172,6 +240,25 @@ export const grammarContents: ContentLine[] = [
         options: ["a", "an", "the", "X"],
         correctAnswer: 0,
         explanation: "new는 자음 소리로 시작하므로 a를 사용합니다."
+      },
+      // --- 추가된 연습 문제 ---
+      {
+        question: "He is ____ honest person.",
+        options: ["a", "an", "the", "X"],
+        correctAnswer: 1,
+        explanation: "honest는 'h'가 묵음이라 모음 소리('아')로 시작하므로 an을 사용합니다."
+      },
+      {
+        question: "I waited for ____ hour at the station.",
+        options: ["a", "an", "the", "X"],
+        correctAnswer: 1,
+        explanation: "hour 역시 'h'가 발음되지 않고 모음 소리로 시작하므로 an을 선택합니다."
+      },
+      {
+        question: "My father drives ____ orange car.",
+        options: ["a", "an", "the", "X"],
+        correctAnswer: 1,
+        explanation: "orange는 모음 'o' 소리로 시작하므로 an을 사용합니다."
       }
     ],
     tags: ["기초", "관사"]

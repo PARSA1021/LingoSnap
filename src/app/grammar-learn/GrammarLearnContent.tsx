@@ -25,14 +25,30 @@ export default function GrammarLearnContent() {
     return grammarContents.find(c => c.id === grammarId) || grammarContents[0];
   }, [grammarId]);
 
-  const [currentStep, setCurrentStep] = React.useState(0);
+  const questions = currentContent.practiceQuestions || [];
+  const totalQuizCount = questions.length;
+
+  const [currentStep, setCurrentStep] = React.useState(0); 
+  // 학습 단계: 0=설명, 1=예문, 2=퀴즈(여러 문제 반복), 3=완료
+  
+  const [currentQuizIndex, setCurrentQuizIndex] = React.useState(0); // 현재 풀고 있는 퀴즈 번호
   const [quizAnswer, setQuizAnswer] = React.useState<number | null>(null);
   const [showResult, setShowResult] = React.useState(false);
+  const [correctCount, setCorrectCount] = React.useState(0); // 맞춘 개수 기록
 
-  // 학습 단계: 0=설명, 1=예문, 2=퀴즈, 3=완료
   const totalSteps = 4;
 
   const handleNext = () => {
+    if (currentStep === 2) {
+      // 퀴즈 단계인 경우: 아직 풀 퀴즈가 남았다면 다음 퀴즈로 이동
+      if (currentQuizIndex < totalQuizCount - 1) {
+        setCurrentQuizIndex(prev => prev + 1);
+        setQuizAnswer(null);
+        setShowResult(false);
+        return;
+      }
+    }
+
     if (currentStep < totalSteps - 1) {
       setCurrentStep(prev => prev + 1);
       setQuizAnswer(null);
@@ -48,13 +64,19 @@ export default function GrammarLearnContent() {
   };
 
   const handleQuizSubmit = () => {
-    if (quizAnswer !== null) {
+    if (quizAnswer !== null && questions[currentQuizIndex]) {
       setShowResult(true);
+      if (quizAnswer === questions[currentQuizIndex].correctAnswer) {
+        setCorrectCount(prev => prev + 1);
+      }
     }
   };
 
-  const isCorrect = currentContent.practiceQuestions &&
-    quizAnswer === currentContent.practiceQuestions[0]?.correctAnswer;
+  const currentQuestion = questions[currentQuizIndex];
+  const isCorrect = currentQuestion && quizAnswer === currentQuestion.correctAnswer;
+
+  // 다음 버튼 활성화 조건 (퀴즈 단계에서는 제출 후이거나, 설명/예문 단계에서는 항상 가능)
+  const canProceed = currentStep !== 2 || showResult;
 
   return (
     <div className="min-h-screen bg-[var(--color-background)] flex flex-col">
@@ -72,7 +94,7 @@ export default function GrammarLearnContent() {
             <div className="flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-[var(--color-primary)]" />
               <span className="text-[11px] font-bold text-[var(--color-muted-foreground)] uppercase tracking-wider">
-                문법 학습
+                문법 학습 {currentStep === 2 && `(문제 ${currentQuizIndex + 1}/${totalQuizCount})`}
               </span>
             </div>
             <div className="h-2.5 w-full bg-[var(--color-muted)] rounded-full overflow-hidden border border-[var(--color-border)]">
@@ -170,18 +192,23 @@ export default function GrammarLearnContent() {
             </div>
           )}
 
-          {/* Step 2: Practice Quiz */}
-          {currentStep === 2 && currentContent.practiceQuestions && (
+          {/* Step 2: Practice Quiz (Multiple questions support) */}
+          {currentStep === 2 && currentQuestion && (
             <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-300">
-              <h3 className="text-lg font-bold text-[var(--color-foreground)] mb-2">
-                {currentContent.practiceQuestions[0].question}
+              <div className="flex items-center justify-between mb-1">
+                <span className="text-xs font-bold text-[var(--color-primary)] uppercase tracking-wider">
+                  Question {currentQuizIndex + 1} of {totalQuizCount}
+                </span>
+              </div>
+              <h3 className="text-lg font-bold text-[var(--color-foreground)] mb-4">
+                {currentQuestion.question}
               </h3>
 
               <div className="space-y-3">
-                {currentContent.practiceQuestions[0].options.map((option, idx) => {
+                {currentQuestion.options.map((option, idx) => {
                   const isSelected = quizAnswer === idx;
                   const showCorrectness = showResult;
-                  const isOptionCorrect = idx === currentContent.practiceQuestions[0].correctAnswer;
+                  const isOptionCorrect = idx === currentQuestion.correctAnswer;
 
                   return (
                     <button
@@ -257,11 +284,11 @@ export default function GrammarLearnContent() {
                       "font-bold text-base",
                       isCorrect ? "text-[var(--color-success)]" : "text-[var(--color-error)]"
                     )}>
-                      {isCorrect ? "정답이에요! 🎉" : "아쉽지만 다음 기회에..."}
+                      {isCorrect ? "정답이에요! 🎉" : "아쉽네요, 틀렸습니다."}
                     </span>
                   </div>
                   <p className="text-sm text-[var(--color-muted-foreground)]">
-                    {currentContent.practiceQuestions[0].explanation}
+                    {currentQuestion.explanation}
                   </p>
                 </div>
               )}
@@ -278,7 +305,7 @@ export default function GrammarLearnContent() {
                 학습 완료! 🎊
               </h3>
               <p className="text-[var(--color-muted-foreground)] mb-8">
-                {currentContent.title} 문법을 마스터했어요!
+                {currentContent.title} 문법 마스터 및 퀴즈 완료 ({correctCount}/{totalQuizCount} 정답)!
               </p>
               <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-6 mb-8 text-left">
                 <h4 className="font-bold text-[var(--color-foreground)] mb-3">배운 내용 요약</h4>
@@ -307,9 +334,15 @@ export default function GrammarLearnContent() {
             variant="primary"
             className="w-full h-14 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2"
             onClick={handleNext}
+            disabled={!canProceed}
           >
             {currentStep === totalSteps - 1 ? (
               "문법 목록으로 돌아가기"
+            ) : currentStep === 2 && currentQuizIndex < totalQuizCount - 1 ? (
+              <>
+                다음 문제
+                <ChevronRight className="w-5 h-5" />
+              </>
             ) : (
               <>
                 다음 단계
