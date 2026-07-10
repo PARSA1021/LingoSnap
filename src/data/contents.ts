@@ -273,11 +273,18 @@ export const grammarContents: ContentLine[] = [
       { en: "The sky is blue.", ko: "하늘은 파랗다." },
       { en: "I saw a cat. The cat was black.", ko: "나는 고양이를 보았다. 그 고양이는 검았다." },
       { en: "The sun is shining.", ko: "태양이 빛나고 있다." },
-      { en: "She is in the kitchen.", ko: "그녀는 부엌에 있다." }
+      { en: "She is in the kitchen.", ko: "그녀는 부엌에 있다." },
+      { en: "Please close the door.", ko: "문을 닫아 주세요. (특정한 그 문)" },
+      { en: "The Han River runs through Seoul.", ko: "한강은 서울을 가로지른다. (강 이름 앞)" },
+      { en: "He plays the piano very well.", ko: "그는 피아노를 아주 잘 친다. (악기 앞)" },
+      { en: "The Philippines is made up of many islands.", ko: "필리핀은 많은 섬들로 이루어져 있다. (복수형 국가명)" }
     ],
     commonMistakes: [
       { wrong: "I go to the school every day.", correct: "I go to school every day.", explanation: "학교에 '공부하러' 가는 경우 the를 붙이지 않습니다." },
-      { wrong: "The my book is on the table.", correct: "My book is on the table.", explanation: "소유격(my, your 등)과 the는 함께 쓰지 않습니다." }
+      { wrong: "The my book is on the table.", correct: "My book is on the table.", explanation: "소유격(my, your 등)과 the는 함께 쓰지 않습니다." },
+      { wrong: "He plays piano well.", correct: "He plays the piano well.", explanation: "악기 이름 앞에는 the를 붙이는 것이 원칙입니다." },
+      { wrong: "I like the dogs.", correct: "I like dogs.", explanation: "동물 전체를 일반적으로 말할 때는 the를 붙이지 않습니다." },
+      { wrong: "The Korea is a beautiful country.", correct: "Korea is a beautiful country.", explanation: "대부분의 나라 이름 앞에는 the를 붙이지 않습니다." }
     ],
     practiceQuestions: [
       {
@@ -291,6 +298,24 @@ export const grammarContents: ContentLine[] = [
         options: ["a", "an", "the", "X"],
         correctAnswer: 2,
         explanation: "특정한 소금(테이블에 있는 소금)을 가리키므로 the를 사용합니다."
+      },
+      {
+        question: "She plays ____ violin in the orchestra.",
+        options: ["a", "an", "the", "X"],
+        correctAnswer: 2,
+        explanation: "악기 이름 앞에는 the를 사용합니다."
+      },
+      {
+        question: "____ Alps are located in Europe.",
+        options: ["A", "An", "The", "X"],
+        correctAnswer: 2,
+        explanation: "산맥처럼 복수형 지명 앞에는 the를 사용합니다."
+      },
+      {
+        question: "I usually have breakfast ____ home.",
+        options: ["a", "an", "the", "X (관사 없음)"],
+        correctAnswer: 3,
+        explanation: "at home처럼 관용적으로 관사를 쓰지 않는 표현입니다."
       }
     ],
     tags: ["기초", "관사"]
@@ -305,11 +330,18 @@ export const grammarContents: ContentLine[] = [
       { en: "I was born in 1990.", ko: "나는 1990년에 태어났다." },
       { en: "We have a meeting on Monday.", ko: "우리는 월요일에 회의가 있다." },
       { en: "The movie starts at 7 PM.", ko: "영화는 저녁 7시에 시작한다." },
-      { en: "It snows in winter.", ko: "겨울에는 눈이 온다." }
+      { en: "It snows in winter.", ko: "겨울에는 눈이 온다." },
+      { en: "The store opens at 9 AM.", ko: "가게는 오전 9시에 문을 연다." },
+      { en: "I'll see you on New Year's Day.", ko: "새해 첫날에 보자." },
+      { en: "She was born in July.", ko: "그녀는 7월에 태어났다." },
+      { en: "We're leaving at midnight.", ko: "우리는 자정에 출발한다." }
     ],
     commonMistakes: [
       { wrong: "See you in Friday.", correct: "See you on Friday.", explanation: "요일 앞에는 on을 사용합니다." },
-      { wrong: "I wake up at 7.", correct: "I wake up at 7.", explanation: "구체적인 시간 앞에는 at이 맞습니다!" }
+      { wrong: "I wake up on 7.", correct: "I wake up at 7.", explanation: "구체적인 시각 앞에는 at을 사용합니다." },
+      { wrong: "My birthday is at March.", correct: "My birthday is in March.", explanation: "월(月) 앞에는 in을 사용합니다." },
+      { wrong: "I'll call you at Monday morning.", correct: "I'll call you on Monday morning.", explanation: "특정 날의 아침/오후/저녁은 on을 사용합니다 (일반적인 morning은 in the morning)." },
+      { wrong: "We met on 2020.", correct: "We met in 2020.", explanation: "연도 앞에는 in을 사용합니다." }
     ],
     practiceQuestions: [
       {
@@ -323,6 +355,24 @@ export const grammarContents: ContentLine[] = [
         options: ["in", "on", "at", "to"],
         correctAnswer: 2,
         explanation: "noon(정오)과 같은 구체적인 시간 앞에는 at을 사용합니다."
+      },
+      {
+        question: "The concert starts ____ 8 o'clock ____ Friday evening.",
+        options: ["at / on", "on / at", "in / on", "at / in"],
+        correctAnswer: 0,
+        explanation: "구체적 시각은 at, 특정 요일의 저녁은 on을 사용합니다."
+      },
+      {
+        question: "I was born ____ 1995.",
+        options: ["in", "on", "at", "for"],
+        correctAnswer: 0,
+        explanation: "연도 앞에는 in을 사용합니다."
+      },
+      {
+        question: "Let's meet ____ Christmas Day.",
+        options: ["in", "on", "at", "to"],
+        correctAnswer: 1,
+        explanation: "특정한 날(공휴일 이름 포함) 앞에는 on을 사용합니다."
       }
     ],
     tags: ["기초", "전치사", "시간"]
@@ -339,11 +389,18 @@ export const grammarContents: ContentLine[] = [
       { en: "I have visited Paris twice.", ko: "나는 파리를 두 번 방문한 적이 있다." },
       { en: "She has finished her homework.", ko: "그녀는 숙제를 끝냈다." },
       { en: "We have lived here for 5 years.", ko: "우리는 여기 5년 동안 살고 있다." },
-      { en: "Have you ever eaten sushi?", ko: "스시를 먹어본 적이 있나요?" }
+      { en: "Have you ever eaten sushi?", ko: "스시를 먹어본 적이 있나요?" },
+      { en: "I've just finished my lunch.", ko: "나는 방금 점심을 끝냈다. (완료)" },
+      { en: "He has lost his wallet.", ko: "그는 지갑을 잃어버렸다. (현재도 없는 상태, 결과)" },
+      { en: "They have already left.", ko: "그들은 이미 떠났다." },
+      { en: "Has she called you yet?", ko: "그녀가 아직 전화했나요?" }
     ],
     commonMistakes: [
       { wrong: "I have seen him yesterday.", correct: "I saw him yesterday.", explanation: "구체적인 과거 시간(yesterday)이 나오면 현재 완료가 아니라 과거 시제를 사용합니다." },
-      { wrong: "She has go to the store.", correct: "She has gone to the store.", explanation: "have/has 뒤에는 과거분사(gone)를 사용해야 합니다." }
+      { wrong: "She has go to the store.", correct: "She has gone to the store.", explanation: "have/has 뒤에는 과거분사(gone)를 사용해야 합니다." },
+      { wrong: "I have been to Japan since 2020.", correct: "I have lived in Japan since 2020.", explanation: "'been to'는 방문 경험, 지속 상태를 말할 때는 live/stay 등의 동사를 씁니다." },
+      { wrong: "I have visited there last week.", correct: "I visited there last week.", explanation: "last week처럼 명확한 과거 시점 부사와는 현재완료를 함께 쓰지 않습니다." },
+      { wrong: "How long you have known him?", correct: "How long have you known him?", explanation: "의문문에서는 have가 주어 앞으로 와야 합니다 (조동사 도치)." }
     ],
     practiceQuestions: [
       {
@@ -357,6 +414,24 @@ export const grammarContents: ContentLine[] = [
         options: ["did / study", "do / study", "have / studied", "are / studying"],
         correctAnswer: 2,
         explanation: "기간을 물을 때는 현재 완료형을 사용합니다."
+      },
+      {
+        question: "She ____ (just / finish) her homework.",
+        options: ["just finished", "has just finished", "is just finishing", "just finishes"],
+        correctAnswer: 1,
+        explanation: "'방금 막' 완료된 일은 have/has just + 과거분사로 표현합니다."
+      },
+      {
+        question: "I ____ (lose) my keys. I can't find them anywhere.",
+        options: ["lost", "have lost", "am losing", "lose"],
+        correctAnswer: 1,
+        explanation: "과거의 행동이 현재까지 영향(결과)을 미치므로 현재완료를 사용합니다."
+      },
+      {
+        question: "We ____ (not / see) each other for ten years.",
+        options: ["didn't see", "haven't seen", "don't see", "aren't seeing"],
+        correctAnswer: 1,
+        explanation: "'for + 기간'과 함께 지속의 의미를 나타낼 때 현재완료를 사용합니다."
       }
     ],
     tags: ["중급", "시제", "완료형"]
@@ -371,11 +446,18 @@ export const grammarContents: ContentLine[] = [
       { en: "If it rains tomorrow, we will stay home.", ko: "만약 내일 비가 오면, 우리는 집에 있을 것이다." },
       { en: "If you study hard, you will pass the exam.", ko: "만약 열심히 공부하면, 시험에 합격할 것이다." },
       { en: "She will be late if she doesn't hurry.", ko: "만약 그녀가 서두르지 않으면, 늦을 것이다." },
-      { en: "What will you do if you have free time?", ko: "만약 시간이 나면 무엇을 할 건가요?" }
+      { en: "What will you do if you have free time?", ko: "만약 시간이 나면 무엇을 할 건가요?" },
+      { en: "If you don't hurry, you will miss the bus.", ko: "서두르지 않으면 버스를 놓칠 것이다." },
+      { en: "I'll text you if I find out anything.", ko: "뭔가 알아내면 문자할게." },
+      { en: "If she calls, tell her I'm busy.", ko: "그녀가 전화하면, 내가 바쁘다고 전해줘." },
+      { en: "Unless you leave now, you will be late.", ko: "지금 떠나지 않으면 늦을 것이다." }
     ],
     commonMistakes: [
       { wrong: "If it will rain, I will stay.", correct: "If it rains, I will stay.", explanation: "If절에는 현재 시제를 사용하고 미래 시제(will)를 사용하지 않습니다." },
-      { wrong: "If you will study, you pass.", correct: "If you study, you will pass.", explanation: "주절에는 will을 사용해야 합니다." }
+      { wrong: "If you will study, you pass.", correct: "If you study, you will pass.", explanation: "주절에는 will을 사용해야 합니다." },
+      { wrong: "If I will see him, I tell him.", correct: "If I see him, I will tell him.", explanation: "If절은 현재시제, 결과절은 will을 사용해야 합니다." },
+      { wrong: "Unless it doesn't rain, we will go hiking.", correct: "Unless it rains, we will go hiking.", explanation: "unless는 이미 '만약 ~하지 않으면'이라는 부정의 의미를 포함하므로 다시 부정문을 만들지 않습니다." },
+      { wrong: "If you don't study, you will to fail.", correct: "If you don't study, you will fail.", explanation: "will 뒤에는 to 없이 동사 원형을 사용합니다." }
     ],
     practiceQuestions: [
       {
@@ -389,6 +471,24 @@ export const grammarContents: ContentLine[] = [
         options: ["happens / miss", "will happen / miss", "will happen / will miss", "happens / will miss"],
         correctAnswer: 1,
         explanation: "의문문에서도 If절은 현재 시제, 주절은 미래 시제입니다."
+      },
+      {
+        question: "____ you don't apologize, she will stay angry.",
+        options: ["If", "Unless", "When", "Because"],
+        correctAnswer: 0,
+        explanation: "'~하지 않으면'을 If + not으로 표현할 수도 있습니다 (Unless를 쓰면 not을 빼야 함)."
+      },
+      {
+        question: "If it ____ (be) sunny tomorrow, we ____ (have) a picnic.",
+        options: ["is / will have", "will be / have", "is / have", "was / would have"],
+        correctAnswer: 0,
+        explanation: "If절 현재시제(is), 주절 미래시제(will have)의 1차 조건문 구조입니다."
+      },
+      {
+        question: "She will be upset ____ you don't tell her the truth.",
+        options: ["if", "unless", "when", "because"],
+        correctAnswer: 1,
+        explanation: "unless는 '만약 ~하지 않는다면'의 뜻으로 부정문 없이 사용합니다."
       }
     ],
     tags: ["중급", "조건문"]
@@ -403,11 +503,18 @@ export const grammarContents: ContentLine[] = [
       { en: "You should eat more vegetables.", ko: "채소를 더 많이 먹어야 해요." },
       { en: "I must finish this report today.", ko: "오늘 이 보고서를 끝내야만 해요." },
       { en: "She has to work on Saturday.", ko: "그녀는 토요일에 일해야 해요." },
-      { en: "Should I call him?", ko: "그에게 전화해야 할까요?" }
+      { en: "Should I call him?", ko: "그에게 전화해야 할까요?" },
+      { en: "You must not park here.", ko: "여기 주차하면 안 됩니다. (강한 금지)" },
+      { en: "You don't have to come if you're busy.", ko: "바쁘면 안 와도 돼요. (불필요, 의무 없음)" },
+      { en: "We must wear a seatbelt in the car.", ko: "차 안에서는 안전벨트를 반드시 매야 한다." },
+      { en: "I think you should see a doctor.", ko: "병원에 가보는 게 좋을 것 같아요." }
     ],
     commonMistakes: [
       { wrong: "You should to go now.", correct: "You should go now.", explanation: "조동사 뒤에는 to 없이 동사 원형을 사용합니다." },
-      { wrong: "She musts study.", correct: "She must study.", explanation: "must는 인칭이나 수에 따라 변하지 않습니다." }
+      { wrong: "She musts study.", correct: "She must study.", explanation: "must는 인칭이나 수에 따라 변하지 않습니다." },
+      { wrong: "You don't must smoke here.", correct: "You must not smoke here.", explanation: "must의 부정은 don't must가 아니라 must not(mustn't)입니다." },
+      { wrong: "You mustn't come if you're busy.", correct: "You don't have to come if you're busy.", explanation: "'안 해도 된다(불필요)'는 don't have to, '하면 안 된다(금지)'는 mustn't로 의미가 다릅니다." },
+      { wrong: "She has to studies every day.", correct: "She has to study every day.", explanation: "have to/has to 뒤에는 동사 원형이 와야 합니다." }
     ],
     practiceQuestions: [
       {
@@ -421,6 +528,24 @@ export const grammarContents: ContentLine[] = [
         options: ["have leave", "have to leave", "has to leave", "having to leave"],
         correctAnswer: 1,
         explanation: "have to 뒤에는 동사 원형이 옵니다."
+      },
+      {
+        question: "You ____ tell anyone about this. It's a secret.",
+        options: ["don't have to", "must not", "should", "can"],
+        correctAnswer: 1,
+        explanation: "강한 금지를 나타낼 때는 must not을 사용합니다."
+      },
+      {
+        question: "You ____ pay for parking here; it's free on Sundays.",
+        options: ["mustn't", "don't have to", "shouldn't", "can't"],
+        correctAnswer: 1,
+        explanation: "'할 필요가 없다'는 don't have to를 사용합니다."
+      },
+      {
+        question: "Students ____ wear a uniform at this school. It's a strict rule.",
+        options: ["should", "must", "could", "might"],
+        correctAnswer: 1,
+        explanation: "규칙에 의한 강한 의무는 must를 사용합니다."
       }
     ],
     tags: ["중급", "조동사", "의무"]
@@ -435,11 +560,18 @@ export const grammarContents: ContentLine[] = [
       { en: "I taught myself to play the guitar.", ko: "나는 스스로 기타 치는 법을 배웠다." },
       { en: "She looked at herself in the mirror.", ko: "그녀는 거울에 비친 자신을 보았다." },
       { en: "We should be proud of ourselves.", ko: "우리는 스스로 자랑스러워해야 한다." },
-      { en: "Help yourself to some coffee.", ko: "커피 마음껏 드세요." }
+      { en: "Help yourself to some coffee.", ko: "커피 마음껏 드세요." },
+      { en: "The children behaved themselves at the party.", ko: "아이들은 파티에서 얌전하게 행동했다." },
+      { en: "He hurt himself while playing soccer.", ko: "그는 축구를 하다가 다쳤다." },
+      { en: "The machine turns itself off automatically.", ko: "그 기계는 자동으로 스스로 꺼진다." },
+      { en: "Did you two paint the fence yourselves?", ko: "너희 둘이서 직접 울타리를 칠했니?" }
     ],
     commonMistakes: [
       { wrong: "I did it by me.", correct: "I did it by myself.", explanation: "혼자 했다는 의미로 by myself를 사용합니다." },
-      { wrong: "He enjoyed him.", correct: "He enjoyed himself.", explanation: "즐거웠다는 의미로 enjoy oneself를 사용합니다." }
+      { wrong: "He enjoyed him.", correct: "He enjoyed himself.", explanation: "즐거웠다는 의미로 enjoy oneself를 사용합니다." },
+      { wrong: "Me and my friend went to the party myself.", correct: "My friend and I went to the party by ourselves.", explanation: "여럿이 함께 '스스로'라는 의미일 때는 ourselves를 사용합니다." },
+      { wrong: "They introduce themself.", correct: "They introduce themselves.", explanation: "복수 주어(they)에는 themselves를 사용해야 하며, themself는 표준 표현이 아닙니다." },
+      { wrong: "I looked myself in the mirror.", correct: "I looked at myself in the mirror.", explanation: "look은 자동사이므로 전치사 at이 필요합니다: look at myself." }
     ],
     practiceQuestions: [
       {
@@ -453,6 +585,24 @@ export const grammarContents: ContentLine[] = [
         options: ["us", "our", "ours", "ourselves"],
         correctAnswer: 3,
         explanation: "우리 스스로 돌볼 수 있다는 의미로 ourselves를 사용합니다."
+      },
+      {
+        question: "The cat is licking ____.",
+        options: ["it", "its", "itself", "them"],
+        correctAnswer: 2,
+        explanation: "주어(the cat)가 스스로에게 하는 행동이므로 itself를 사용합니다."
+      },
+      {
+        question: "Did you boys build that treehouse ____?",
+        options: ["yourself", "yourselves", "themselves", "yours"],
+        correctAnswer: 1,
+        explanation: "복수 대상(you boys)에게는 yourselves를 사용합니다."
+      },
+      {
+        question: "He talks to ____ when he's nervous.",
+        options: ["him", "his", "himself", "he"],
+        correctAnswer: 2,
+        explanation: "행위의 대상이 주어 자신이므로 재귀대명사 himself를 사용합니다."
       }
     ],
     tags: ["중급", "대명사"]
@@ -467,11 +617,18 @@ export const grammarContents: ContentLine[] = [
       { en: "My house is bigger than yours.", ko: "내 집이 네 집보다 크다." },
       { en: "She is more intelligent than her brother.", ko: "그녀는 오빠보다 더 똑똑하다." },
       { en: "This is the best book I've ever read.", ko: "이것은 내가 읽은 책 중 가장 좋은 책이다." },
-      { en: "It was the most exciting movie ever.", ko: "그것은 역대 가장 흥미진진한 영화였다." }
+      { en: "It was the most exciting movie ever.", ko: "그것은 역대 가장 흥미진진한 영화였다." },
+      { en: "This bag is as heavy as that one.", ko: "이 가방은 저 가방만큼 무겁다. (동등 비교)" },
+      { en: "The more you practice, the better you get.", ko: "연습할수록 더 잘하게 된다." },
+      { en: "He runs faster than anyone else in the class.", ko: "그는 반에서 그 누구보다 빨리 달린다." },
+      { en: "This is by far the cheapest option.", ko: "이것이 단연코 가장 저렴한 선택지다." }
     ],
     commonMistakes: [
       { wrong: "He is more tall than me.", correct: "He is taller than me.", explanation: "짧은 단어는 -er를 붙입니다." },
-      { wrong: "She is beautifuler.", correct: "She is more beautiful.", explanation: "긴 단어는 more를 앞에 붙입니다." }
+      { wrong: "She is beautifuler.", correct: "She is more beautiful.", explanation: "긴 단어는 more를 앞에 붙입니다." },
+      { wrong: "This is the most best movie.", correct: "This is the best movie.", explanation: "best는 이미 최상급이므로 most를 중복해서 쓰지 않습니다." },
+      { wrong: "My phone is as good than yours.", correct: "My phone is as good as yours.", explanation: "동등 비교는 as + 형용사 + as 구조를 사용합니다." },
+      { wrong: "She is the tallest of her class.", correct: "She is the tallest in her class.", explanation: "장소/집단을 나타낼 때는 최상급 뒤에 of가 아니라 in을 사용합니다 (of는 복수 명사와 함께)." }
     ],
     practiceQuestions: [
       {
@@ -485,6 +642,24 @@ export const grammarContents: ContentLine[] = [
         options: ["bad", "worse", "worst", "baddest"],
         correctAnswer: 2,
         explanation: "bad의 최상급은 worst입니다."
+      },
+      {
+        question: "This car is ____ expensive ____ that one.",
+        options: ["as / as", "more / than", "so / as", "much / than"],
+        correctAnswer: 0,
+        explanation: "동등 비교는 as + 형용사 + as로 표현합니다."
+      },
+      {
+        question: "She is ____ (good) singer in the group.",
+        options: ["the goodest", "the better", "the best", "more good"],
+        correctAnswer: 2,
+        explanation: "good의 최상급은 best이며 앞에 the를 붙입니다."
+      },
+      {
+        question: "The weather is getting ____ and ____ every day.",
+        options: ["hot / hot", "hotter / hotter", "more hot / more hot", "hottest / hottest"],
+        correctAnswer: 1,
+        explanation: "'점점 더 ~해지다'는 비교급 + and + 비교급 구조를 사용합니다."
       }
     ],
     tags: ["중급", "형용사", "부사", "비교"]
@@ -501,11 +676,18 @@ export const grammarContents: ContentLine[] = [
       { en: "If I won the lottery, I would buy a big house.", ko: "만약 복권에 당첨된다면, 큰 집을 살 것이다." },
       { en: "If I were you, I would apologize.", ko: "만약 내가 너라면, 사과할 것이다." },
       { en: "She could travel if she had more money.", ko: "만약 돈이 더 많다면, 여행할 수 있을 것이다." },
-      { en: "What would you do if you could fly?", ko: "만약 날 수 있다면 무엇을 할 건가요?" }
+      { en: "What would you do if you could fly?", ko: "만약 날 수 있다면 무엇을 할 건가요?" },
+      { en: "If I had more time, I would learn Spanish.", ko: "시간이 더 있다면 스페인어를 배울 텐데." },
+      { en: "If he asked me, I would say yes.", ko: "만약 그가 물어본다면, 나는 그렇다고 할 것이다." },
+      { en: "We would go camping if the weather were better.", ko: "날씨가 더 좋다면 캠핑을 갈 텐데." },
+      { en: "If she weren't so busy, she would join us.", ko: "그녀가 그렇게 바쁘지 않다면 우리와 함께할 텐데." }
     ],
     commonMistakes: [
       { wrong: "If I was you, I would go.", correct: "If I were you, I would go.", explanation: "가정법에서 be동사는 인칭에 관계없이 were를 사용합니다." },
-      { wrong: "If I have money, I would buy.", correct: "If I had money, I would buy.", explanation: "If절은 과거 시제를 사용해야 합니다." }
+      { wrong: "If I have money, I would buy.", correct: "If I had money, I would buy.", explanation: "If절은 과거 시제를 사용해야 합니다." },
+      { wrong: "I would to travel if I had time.", correct: "I would travel if I had time.", explanation: "would 뒤에는 to 없이 동사 원형을 사용합니다." },
+      { wrong: "If I would win the lottery, I would quit.", correct: "If I won the lottery, I would quit.", explanation: "If절에는 would를 쓰지 않고 과거 시제를 사용합니다." },
+      { wrong: "If she was here, she would help.", correct: "If she were here, she would help.", explanation: "가정법 과거의 be동사는 격식체에서 were로 통일합니다." }
     ],
     practiceQuestions: [
       {
@@ -519,6 +701,24 @@ export const grammarContents: ContentLine[] = [
         options: ["would / do / found", "will / do / find", "do / do / find", "did / do / found"],
         correctAnswer: 0,
         explanation: "가상의 상황이므로 2차 조건문을 사용합니다."
+      },
+      {
+        question: "If I ____ (know) his number, I ____ (call) him.",
+        options: ["know / will call", "knew / would call", "knew / call", "know / would call"],
+        correctAnswer: 1,
+        explanation: "현재 사실과 반대되는 가정이므로 과거형(knew)과 would call을 사용합니다."
+      },
+      {
+        question: "She would be happier if she ____ (live) closer to her family.",
+        options: ["lives", "lived", "will live", "has lived"],
+        correctAnswer: 1,
+        explanation: "가정법 과거는 If절에 단순 과거형을 사용합니다."
+      },
+      {
+        question: "If I ____ (be) you, I wouldn't say that.",
+        options: ["am", "was", "were", "will be"],
+        correctAnswer: 2,
+        explanation: "가정법에서 be동사는 주어와 상관없이 were를 사용합니다."
       }
     ],
     tags: ["고급", "조건문", "가정법"]
@@ -533,11 +733,18 @@ export const grammarContents: ContentLine[] = [
       { en: "I had already eaten when he arrived.", ko: "그가 도착했을 때 나는 이미 먹었었다." },
       { en: "She had lived in Paris for 10 years before moving to London.", ko: "런던으로 이사하기 전에 그녀는 파리에서 10년 동안 살았었다." },
       { en: "Had you finished your work before the meeting?", ko: "회의 전에 작업을 끝냈었나요?" },
-      { en: "They didn't get the job because they hadn't prepared.", ko: "준비하지 않았었기 때문에 그들은 직업을 얻지 못했다." }
+      { en: "They didn't get the job because they hadn't prepared.", ko: "준비하지 않았었기 때문에 그들은 직업을 얻지 못했다." },
+      { en: "By the time I arrived, everyone had left.", ko: "내가 도착했을 때는 이미 모두 떠난 뒤였다." },
+      { en: "She realized she had forgotten her passport.", ko: "그녀는 여권을 잊어버렸다는 것을 깨달았다." },
+      { en: "I couldn't find my keys because I had left them at work.", ko: "직장에 두고 와서 열쇠를 찾을 수 없었다." },
+      { en: "He was tired because he hadn't slept well.", ko: "그는 잠을 잘 못 자서 피곤했다." }
     ],
     commonMistakes: [
       { wrong: "I finished when he arrived.", correct: "I had finished when he arrived.", explanation: "두 과거 행동 중 먼저 일어난 것에 과거 완료를 사용합니다." },
-      { wrong: "I had eat before.", correct: "I had eaten before.", explanation: "had 뒤에는 과거분사(eaten)를 사용해야 합니다." }
+      { wrong: "I had eat before.", correct: "I had eaten before.", explanation: "had 뒤에는 과거분사(eaten)를 사용해야 합니다." },
+      { wrong: "When I had arrived, he left.", correct: "When I arrived, he had left.", explanation: "먼저 일어난 사건(그가 떠난 것)에 과거완료를 사용해야 하며, 나중에 일어난 사건에는 단순 과거를 사용합니다." },
+      { wrong: "She had went to bed early.", correct: "She had gone to bed early.", explanation: "had 뒤에는 과거분사 gone을 사용해야 하며 went(과거형)를 쓰면 안 됩니다." },
+      { wrong: "I have finished my homework before dinner yesterday.", correct: "I had finished my homework before dinner yesterday.", explanation: "과거의 특정 시점(yesterday)보다 더 이전 일이므로 현재완료가 아닌 과거완료를 사용합니다." }
     ],
     practiceQuestions: [
       {
@@ -551,6 +758,24 @@ export const grammarContents: ContentLine[] = [
         options: ["didn't see / met", "hadn't seen / met", "didn't see / meet", "hadn't saw / met"],
         correctAnswer: 1,
         explanation: "파티에서 만나기 전까지 못 봤었으므로 과거 완료를 사용합니다."
+      },
+      {
+        question: "By the time the ambulance arrived, the patient ____ (already / recover).",
+        options: ["already recovered", "has already recovered", "had already recovered", "already recovers"],
+        correctAnswer: 2,
+        explanation: "구급차 도착보다 회복이 먼저 일어났으므로 과거완료를 사용합니다."
+      },
+      {
+        question: "I ____ (never / try) sushi before I ____ (visit) Japan.",
+        options: ["never tried / visited", "had never tried / visited", "never try / visit", "have never tried / visited"],
+        correctAnswer: 1,
+        explanation: "일본 방문 전에 있었던 경험이므로 과거완료를 사용합니다."
+      },
+      {
+        question: "He was upset because his flight ____ (be) delayed.",
+        options: ["was", "is", "had been", "has been"],
+        correctAnswer: 2,
+        explanation: "화가 난 것(과거)보다 지연된 것이 더 먼저 일어난 일이므로 과거완료(had been)를 사용합니다."
       }
     ],
     tags: ["고급", "시제", "완료형"]
@@ -565,11 +790,18 @@ export const grammarContents: ContentLine[] = [
       { en: "The woman who is standing there is my teacher.", ko: "거기 서 있는 여자는 내 선생님이다." },
       { en: "The book which I bought yesterday is very interesting.", ko: "어제 산 책이 매우 재미있다." },
       { en: "That's the house where I grew up.", ko: "그곳이 내가 자란 집이다." },
-      { en: "Do you know the boy whose bike was stolen?", ko: "자전거를 도난당한 그 소년을 아나요?" }
+      { en: "Do you know the boy whose bike was stolen?", ko: "자전거를 도난당한 그 소년을 아나요?" },
+      { en: "I remember the day when we first met.", ko: "우리가 처음 만났던 그날을 기억한다." },
+      { en: "The movie that we watched last night was amazing.", ko: "어젯밤에 본 영화가 정말 놀라웠다." },
+      { en: "This is the reason why I called you.", ko: "이것이 내가 너에게 전화한 이유다." },
+      { en: "People who exercise regularly tend to be healthier.", ko: "규칙적으로 운동하는 사람들은 더 건강한 경향이 있다." }
     ],
     commonMistakes: [
       { wrong: "The man which called you is here.", correct: "The man who called you is here.", explanation: "사람은 who를, 사물은 which를 사용합니다." },
-      { wrong: "I know a girl where lives in Seoul.", correct: "I know a girl who lives in Seoul.", explanation: "사람은 who, 장소는 where를 사용합니다." }
+      { wrong: "I know a girl where lives in Seoul.", correct: "I know a girl who lives in Seoul.", explanation: "사람은 who, 장소는 where를 사용합니다." },
+      { wrong: "The book who I read was boring.", correct: "The book which/that I read was boring.", explanation: "사물에는 who가 아니라 which나 that을 사용합니다." },
+      { wrong: "This is the house who I was born.", correct: "This is the house where I was born.", explanation: "장소를 나타낼 때는 where를 사용합니다." },
+      { wrong: "The man whose car is red he is my uncle.", correct: "The man whose car is red is my uncle.", explanation: "관계대명사절 뒤에 주어(he)를 중복해서 쓰지 않습니다." }
     ],
     practiceQuestions: [
       {
@@ -583,6 +815,24 @@ export const grammarContents: ContentLine[] = [
         options: ["who", "which", "where", "whose"],
         correctAnswer: 1,
         explanation: "사물(책)을 나타내므로 which를 사용합니다."
+      },
+      {
+        question: "I'll never forget the day ____ I graduated.",
+        options: ["who", "which", "when", "whose"],
+        correctAnswer: 2,
+        explanation: "시간을 나타내는 선행사(the day)에는 when을 사용합니다."
+      },
+      {
+        question: "The teacher ____ class I enjoy the most is Mr. Park.",
+        options: ["who", "which", "whose", "where"],
+        correctAnswer: 2,
+        explanation: "소유를 나타내는 관계대명사는 whose입니다."
+      },
+      {
+        question: "People ____ work too much often feel stressed.",
+        options: ["who", "which", "whose", "where"],
+        correctAnswer: 0,
+        explanation: "사람(People)을 선행사로 하는 주격 관계대명사는 who입니다."
       }
     ],
     tags: ["고급", "절", "관계대명사"]
@@ -597,11 +847,18 @@ export const grammarContents: ContentLine[] = [
       { en: "You should have called me yesterday.", ko: "어제 나에게 전화했어야 했어요." },
       { en: "She must have forgotten about the meeting.", ko: "그녀는 회의에 대해 잊었음에 틀림없다." },
       { en: "We could have won the game if we had tried harder.", ko: "더 열심히 노력했다면 경기에 이길 수 있었을 것이다." },
-      { en: "They might have missed the bus.", ko: "그들은 버스를 놓쳤을지도 모른다." }
+      { en: "They might have missed the bus.", ko: "그들은 버스를 놓쳤을지도 모른다." },
+      { en: "You shouldn't have said that to her.", ko: "그녀에게 그렇게 말하지 말았어야 했어." },
+      { en: "I can't have left my phone at home.", ko: "내가 휴대폰을 집에 두고 왔을 리가 없어." },
+      { en: "He must have worked really hard to pass.", ko: "그는 합격하려고 정말 열심히 일했음에 틀림없다." },
+      { en: "They could have called before coming.", ko: "그들은 오기 전에 전화할 수도 있었을 텐데." }
     ],
     commonMistakes: [
       { wrong: "You should called me.", correct: "You should have called me.", explanation: "완료형 조동사는 must/should/could 등 + have + 과거분사로 사용합니다." },
-      { wrong: "She must be forgot.", correct: "She must have forgotten.", explanation: "have 뒤에는 과거분사를 사용해야 합니다." }
+      { wrong: "She must be forgot.", correct: "She must have forgotten.", explanation: "have 뒤에는 과거분사를 사용해야 합니다." },
+      { wrong: "I should have go earlier.", correct: "I should have gone earlier.", explanation: "have 뒤에는 원형(go)이 아니라 과거분사(gone)를 사용해야 합니다." },
+      { wrong: "He shouldn't have to say that.", correct: "He shouldn't have said that.", explanation: "후회를 나타낼 때는 shouldn't have + p.p.이며 to를 넣지 않습니다." },
+      { wrong: "It can't have been him, he was with me all evening.", correct: "It can't have been him, he was with me all evening.", explanation: "이 문장은 이미 올바릅니다! can't have + p.p.는 '~였을 리가 없다'는 강한 부정 추측을 나타냅니다." }
     ],
     practiceQuestions: [
       {
@@ -615,6 +872,24 @@ export const grammarContents: ContentLine[] = [
         options: ["must rain", "must be rain", "must have rained", "must rained"],
         correctAnswer: 2,
         explanation: "과거에 대한 강한 추측은 must have + 과거분사를 사용합니다."
+      },
+      {
+        question: "I'm so sorry, I ____ (shouldn't / say) that to you.",
+        options: ["shouldn't say", "shouldn't have said", "shouldn't said", "don't should say"],
+        correctAnswer: 1,
+        explanation: "과거의 행동을 후회할 때는 shouldn't have + 과거분사를 사용합니다."
+      },
+      {
+        question: "She isn't answering. She ____ (might / be) asleep.",
+        options: ["might be", "might have been", "might is", "might been"],
+        correctAnswer: 0,
+        explanation: "현재 상태에 대한 추측은 might + 동사원형을 사용합니다 (완료형 아님)."
+      },
+      {
+        question: "You ____ (could / help) me, but you didn't.",
+        options: ["could help", "could have helped", "could helped", "can have helped"],
+        correctAnswer: 1,
+        explanation: "과거에 할 수 있었지만 하지 않은 것을 나타낼 때는 could have + 과거분사를 사용합니다."
       }
     ],
     tags: ["고급", "조동사", "완료형"]
