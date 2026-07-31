@@ -5,11 +5,12 @@ import { SpeakingPractice } from '@/components/speaking/SpeakingPractice';
 import { getRandomElements } from '@/lib/utils/random';
 import { useLessonSessionStore } from '@/store/useLessonSessionStore';
 import { useLearningStore } from '@/store/useLearningStore';
+import { soundFX } from '@/lib/sound';
 import type { LessonStep, ReviewItem } from '@/types/lesson';
 import type { Word } from '@/types';
 import sentenceData from '@/data/sentences.json';
 import { grammarContents, getCategoryWords, vocabulary } from '@/data/contents';
-import { XCircle } from 'lucide-react';
+import { XCircle, Flame } from 'lucide-react';
 import { WordRevealStep } from '@/components/learn/WordRevealStep';
 import { ChoiceQuizStep } from '@/components/learn/ChoiceQuizStep';
 import { ListeningQuizStep } from '@/components/learn/ListeningQuizStep';
@@ -50,6 +51,7 @@ export function LearnClient({
   const addPoints = useLearningStore(s => s.addPoints);
 
   const [result, setResult] = React.useState<StepResult>({ kind: 'none' });
+  const [comboCount, setComboCount] = React.useState(0);
 
   const step = steps[stepIndex];
   const total = Math.max(steps.length - 1, 1);
@@ -57,7 +59,7 @@ export function LearnClient({
 
   React.useEffect(() => { setResult({ kind: 'none' }); }, [stepIndex]);
 
-  // Start the session exactly once on mount, capturing the initial config values.
+  // Start the session exactly once on mount
   const hasStarted = React.useRef(false);
   React.useEffect(() => {
     if (hasStarted.current) return;
@@ -75,15 +77,22 @@ export function LearnClient({
   const markWrong = React.useCallback((item: ReviewItem, msg?: string) => {
     pushToReview(item);
     setResult({ kind: 'wrong', msg });
+    setComboCount(0);
+    soundFX.playWrong();
   }, [pushToReview]);
 
   const markCorrect = React.useCallback((item?: ReviewItem) => {
     setResult({ kind: 'correct' });
-    addPoints(10); // Reward points for correct answer
+    setComboCount(prev => prev + 1);
+    soundFX.playCorrect();
+
+    const bonusPoints = comboCount >= 3 ? 15 : 10;
+    addPoints(bonusPoints);
+    
     if (mode === 'review' && item) {
       removeFromReview(item);
     }
-  }, [mode, removeFromReview, addPoints]);
+  }, [mode, removeFromReview, addPoints, comboCount]);
 
   const handleNext = React.useCallback(() => {
     setResult({ kind: 'none' });
@@ -92,12 +101,14 @@ export function LearnClient({
     // Check if moving to result step
     if (steps[stepIndex + 1]?.type === 'result') {
       recordLearningActivity();
+      soundFX.playVictory();
     }
   }, [next, steps, stepIndex, recordLearningActivity]);
 
   const handleRestart = React.useCallback(() => {
     restart();
     hasStarted.current = false;
+    setComboCount(0);
     startLesson(
       movieId
         ? buildMovieSteps(movieId)
@@ -120,34 +131,41 @@ export function LearnClient({
   return (
     <div className="min-h-screen flex flex-col bg-[var(--color-background)] relative">
       {/* Header */}
-      <header className="sticky top-0 z-40 w-full px-4 pt-4 pb-3 bg-[var(--color-surface)] border-b border-[var(--color-border)] shadow-sm">
-        <div className="max-w-4xl mx-auto flex items-center gap-4">
-          {/* Back to setup — clearly red exit */}
+      <header className="sticky top-0 z-30 w-full px-4 pt-4 pb-3 bg-[var(--color-surface)] border-b border-[var(--color-border)] shadow-xs">
+        <div className="max-w-4xl mx-auto flex items-center gap-3 sm:gap-4">
+          {/* Back to setup */}
           <button
             onClick={() => window.history.back()}
             title="나가기"
-            className="h-10 w-10 rounded-[14px] bg-[var(--color-muted)] text-[var(--color-muted-foreground)] flex items-center justify-center hover:bg-[var(--color-surface-hover)] hover:text-[var(--color-foreground)] transition-colors shrink-0"
+            className="h-10 w-10 rounded-2xl bg-[var(--color-muted)] text-[var(--color-muted-foreground)] flex items-center justify-center hover:bg-[var(--color-surface-hover)] hover:text-[var(--color-foreground)] transition-colors shrink-0"
           >
             <XCircle className="w-6 h-6" />
           </button>
 
-          {/* Progress */}
-          <div className="flex-1 flex flex-col gap-2 overflow-hidden">
+          {/* Progress & Combo */}
+          <div className="flex-1 flex flex-col gap-1.5 overflow-hidden">
             <div className="flex justify-between items-center px-1">
               <div className="flex items-center gap-2">
-                <span className="text-[11px] font-bold text-[var(--color-muted-foreground)] uppercase tracking-wider">
+                <span className="text-[11px] font-extrabold text-[var(--color-muted-foreground)] uppercase tracking-wider">
                   {mode === 'review' ? '복습 세션' : '레슨 진행중'}
                 </span>
                 {isTurbo && (
-                  <span className="text-[9px] font-black bg-[var(--color-warning)] text-white px-2 py-0.5 rounded-full">
+                  <span className="text-[9px] font-black bg-amber-500 text-white px-2 py-0.5 rounded-full">
                     TURBO
                   </span>
                 )}
               </div>
+
+              {comboCount >= 2 && (
+                <div className="flex items-center gap-1 text-xs font-black text-orange-500 animate-bounce">
+                  <Flame className="w-3.5 h-3.5 fill-current" />
+                  <span>{comboCount} COMBO!</span>
+                </div>
+              )}
             </div>
             <div className="h-3.5 w-full bg-[var(--color-muted)] rounded-full overflow-hidden border border-[var(--color-border)]">
               <div
-                className="h-full bg-[var(--color-secondary)] rounded-full relative transition-all duration-300 ease-out"
+                className="h-full bg-gradient-to-r from-[var(--color-primary)] to-pink-500 rounded-full relative transition-all duration-300 ease-out"
                 style={{ width: `${progress}%` }}
               />
             </div>
@@ -157,7 +175,7 @@ export function LearnClient({
           {step && step.type !== 'result' && (
             <button
               onClick={handleNext}
-              className="h-10 px-4 rounded-[14px] border border-[var(--color-border)] bg-[var(--color-surface)] text-sm font-bold text-[var(--color-muted-foreground)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] hover:bg-[var(--color-primary)]/5 transition-all shrink-0 flex items-center gap-1.5"
+              className="h-10 px-3.5 sm:px-4 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] text-xs sm:text-sm font-bold text-[var(--color-muted-foreground)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] hover:bg-[var(--color-primary)]/5 transition-all shrink-0 flex items-center gap-1"
             >
               건너뛰기
             </button>
@@ -166,7 +184,7 @@ export function LearnClient({
       </header>
 
       {/* Main Container */}
-      <main className="flex-1 px-4 py-6 flex flex-col items-center custom-scrollbar">
+      <main className="flex-1 px-3 sm:px-4 py-6 flex flex-col items-center custom-scrollbar">
         <div className="max-w-4xl mx-auto w-full flex-1 flex flex-col justify-center pb-28 sm:pb-36">
           <div key={stepIndex} className="w-full">
             {renderStep()}
@@ -287,7 +305,7 @@ function buildOptions(answer: string, pool: string[], manualDistractors?: string
   return getRandomElements([answer, ...distractors], 4);
 }
 
-// ─── Step Builders ────────────────────────────────────────────────────────────
+// ─── Step Builders (Interleaved Micro-Learning) ────────────────────────────────
 
 function buildLessonSteps(wordCount: 5 | 10 | 15, category: string = 'all', isTurbo: boolean = false): LessonStep[] {
   const vocabPool = getCategoryWords(category);
@@ -310,14 +328,19 @@ function buildLessonSteps(wordCount: 5 | 10 | 15, category: string = 'all', isTu
 
   const steps: LessonStep[] = [];
 
-  for (const w of words) {
-    steps.push({ type: 'word_reveal', word: w });
-  }
+  // Interleaved Micro-Learning Flow:
+  // Presentation -> Immediate Active Test -> Next Concept -> Interleaved Review
+  for (let i = 0; i < words.length; i++) {
+    const w = words[i];
 
-  for (const w of words) {
+    // 1. Reveal Word
+    steps.push({ type: 'word_reveal', word: w });
+
+    // 2. Immediate Active Choice Quiz for Word
     steps.push({ type: 'choice_quiz', word: w, options: buildOptions(w.word, pool, w.distractors) });
 
     if (!isTurbo) {
+      // 3. Sentence completion or building
       if (w.example) {
         steps.push({
           type: 'fill_blank',
@@ -328,13 +351,26 @@ function buildLessonSteps(wordCount: 5 | 10 | 15, category: string = 'all', isTu
       } else {
         steps.push({ type: 'sentence_build', word: w });
       }
+
+      // 4. Every 2 words, trigger an interleaved review quiz of previous words
+      if (i > 0 && i % 2 === 1) {
+        const previousWord = words[i - 1];
+        steps.push({
+          type: 'listening_quiz',
+          answer: previousWord.word,
+          options: buildOptions(previousWord.word, pool, previousWord.distractors),
+          prompt: `[복습] 방금 학습한 표현의 원어민 발음을 다시 들어볼까요?`
+        });
+      }
     }
   }
 
+  // 5. Final Speaking Challenge
   if (!isTurbo) {
     steps.push({ type: 'speaking', expectedSentence: speakingSentence });
   }
 
+  // 6. Result & Celebration
   steps.push({ type: 'result' });
 
   return steps;
@@ -344,7 +380,7 @@ function buildReviewSteps(queue: ReviewItem[]): LessonStep[] {
   const allVocab = vocabulary;
   const pool = allVocab.map(w => w.word).filter(Boolean);
 
-  const items = getRandomElements(queue.slice(0, 15), 10);
+  const items = getRandomElements(queue.slice(0, 15), Math.min(queue.length || 5, 10));
   const steps: LessonStep[] = [];
 
   for (const item of items) {
@@ -392,6 +428,11 @@ function buildReviewSteps(queue: ReviewItem[]): LessonStep[] {
         steps.push({ type: 'sentence_build', word: fullWord || item.word });
         break;
     }
+  }
+
+  if (steps.length === 0) {
+    // Fallback if queue is empty
+    return buildLessonSteps(5);
   }
 
   steps.push({ type: 'result' });
