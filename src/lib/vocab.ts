@@ -4,6 +4,7 @@ import type { Word } from '@/types';
 export type VocabExample = { text: string; translation?: string };
 
 export type ProcessedVocabItem = Word & {
+  phonetic?: string;
   examples?: VocabExample[];
 };
 
@@ -23,6 +24,56 @@ const CATEGORY_MAP: Record<string, string> = {
   학술: '학술',
   감정: '감정',
 };
+
+// Common IPA dictionary mapping for fast offline phonetic lookup
+const COMMON_IPA_MAP: Record<string, string> = {
+  coffee: '/ˈkɔːfi/',
+  apple: '/ˈæp.əl/',
+  book: '/bʊk/',
+  water: '/ˈwɔː.tər/',
+  hello: '/həˈloʊ/',
+  friend: '/frend/',
+  travel: '/ˈtræv.əl/',
+  family: '/ˈfæm.əl.i/',
+  school: '/skuːl/',
+  work: '/wɜːrk/',
+  time: '/taɪm/',
+  day: '/deɪ/',
+  night: '/naɪt/',
+  money: '/ˈmʌn.i/',
+  food: '/fuːd/',
+  happy: '/ˈhæp.i/',
+  beautiful: '/ˈbjuː.t̬ə.fəl/',
+  important: '/ɪmˈpɔːr.tənt/',
+  business: '/ˈbɪz.nɪs/',
+  meeting: '/ˈmiː.t̬ɪŋ/',
+  email: '/ˈiː.meɪl/',
+  project: '/ˈprɑː.dʒekt/',
+  opportunity: '/ˌɑː.pɚˈtuː.nə.t̬i/',
+  experience: '/ɪkˈspɪr.i.əns/',
+  knowledge: '/ˈnɑː.lɪdʒ/',
+  success: '/səkˈses/',
+  challenge: '/ˈtʃæl.ɪndʒ/',
+  focus: '/ˈfoʊ.kəs/',
+  goal: '/ɡoʊl/',
+  habit: '/ˈhæb.ɪt/',
+  future: '/ˈfjuː.tʃɚ/',
+  system: '/ˈsɪs.təm/',
+  service: '/ˈsɝː.vɪs/',
+  question: '/ˈkwes.tʃən/',
+  answer: '/ˈæn.sɚ/',
+  conversation: '/ˌkɑːn.vɚˈseɪ.ʃən/',
+  pronunciation: '/prəˌnʌn.siˈeɪ.ʃən/',
+};
+
+export function getPhonetic(word: string): string {
+  const clean = word.toLowerCase().trim();
+  if (COMMON_IPA_MAP[clean]) {
+    return COMMON_IPA_MAP[clean];
+  }
+  // Simple heuristic IPA-like formatter for words not in the quick lookup map
+  return `/${clean}/`;
+}
 
 export function normalizeCategory(raw?: string): string {
   if (!raw) return '기타';
@@ -54,6 +105,7 @@ export function getProcessedVocabulary(): ProcessedVocabItem[] {
       map.set(key, {
         word: item.word,
         meaning: item.meaning,
+        phonetic: getPhonetic(item.word),
         example: item.example || '',
         exampleTranslation: item.exampleTranslation,
         category: normalizeCategory(item.category),
@@ -92,11 +144,12 @@ export function filterVocabulary(
   });
 }
 
-export function toWord(item: ProcessedVocabItem): Word & { examples?: VocabExample[] } {
+export function toWord(item: ProcessedVocabItem): Word & { phonetic?: string; examples?: VocabExample[] } {
   return {
     id: item.word,
     word: item.word,
     meaning: item.meaning,
+    phonetic: item.phonetic || getPhonetic(item.word),
     example: item.example,
     exampleTranslation: item.exampleTranslation,
     category: item.category,

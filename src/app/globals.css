@@ -7,13 +7,13 @@
   --color-secondary: #00A699; /* Refreshing teal */
   --color-accent: #FFB400; /* Warm yellow */
   
-  --color-background: #F7F7F9; /* Very soft gray background for light mode */
+  --color-background: #F7F7F9; /* Soft gray background for light mode */
   --color-surface: #FFFFFF;
   --color-surface-hover: #F1F1F1;
   --color-border: #EBEBEB;
   --color-muted: #F7F7F9;
-  --color-muted-foreground: #717171; /* Soft text color */
-  --color-foreground: #222222; /* Dark, almost black for primary text */
+  --color-muted-foreground: #717171;
+  --color-foreground: #222222;
 
   --color-success: #00A699;
   --color-warning: #FFB400;
@@ -37,7 +37,7 @@
 }
 
 .dark {
-  --color-background: #111111; /* Very dark background for depth */
+  --color-background: #111111;
   --color-surface: #1E1E1E;
   --color-surface-hover: #2A2A2A;
   --color-border: #333333;
@@ -51,6 +51,7 @@
 
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html, body {
@@ -62,6 +63,18 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.3s ease, color 0.3s ease;
+  overscroll-behavior-y: none;
+}
+
+/* Mobile Input Auto-Zoom Prevention on iOS */
+input, select, textarea {
+  font-size: 16px !important;
+  touch-action: manipulation;
+}
+
+button, a {
+  touch-action: manipulation;
+  user-select: none;
 }
 
 /* Typography styles */
