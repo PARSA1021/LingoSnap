@@ -111,6 +111,17 @@ export function LearnClient({
     }
   }, [next, steps, stepIndex, recordLearningActivity]);
 
+  // Auto-advance after correct answer
+  React.useEffect(() => {
+    let timeout: NodeJS.Timeout;
+    if (result.kind === 'correct') {
+      timeout = setTimeout(() => {
+        handleNext();
+      }, 1500);
+    }
+    return () => clearTimeout(timeout);
+  }, [result.kind, handleNext]);
+
   const handleRestart = React.useCallback(() => {
     restart();
     hasStarted.current = false;
