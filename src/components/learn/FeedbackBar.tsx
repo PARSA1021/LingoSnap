@@ -30,10 +30,10 @@ export function FeedbackBar({ result, onNext }: FeedbackBarProps) {
 
   return (
     <motion.div
-      initial={{ y: 100, opacity: 0 }}
+      initial={{ y: 120, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      exit={{ y: 100, opacity: 0 }}
-      className="fixed bottom-0 left-0 right-0 z-50 px-4 sm:px-6 pb-6 sm:pb-8 flex flex-col items-center pointer-events-none"
+      exit={{ y: 120, opacity: 0 }}
+      className="fixed bottom-0 left-0 right-0 z-50 px-4 sm:px-6 pb-[calc(5rem+env(safe-area-inset-bottom))] md:pb-8 flex flex-col items-center pointer-events-none"
     >
       <div className="w-full max-w-xl space-y-2 pointer-events-auto">
         <AnimatePresence>
