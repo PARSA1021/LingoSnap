@@ -130,17 +130,17 @@ export default function HomePage() {
               LingoSnap
             </span>
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[var(--color-foreground)] tracking-tight mb-1 sm:mb-2">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[var(--color-foreground)] tracking-tight mb-1 sm:mb-2 break-keep">
             반가워요! 👋
           </h1>
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-[var(--color-muted-foreground)] font-medium max-w-md md:max-w-lg">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-[var(--color-muted-foreground)] font-medium max-w-md md:max-w-lg break-keep">
             오늘도 영어를 정복해 볼까요? 조금씩 꾸준히 하는 게 가장 좋아요.
           </p>
         </div>
 
         {/* 메인 CTA */}
         <div>
-          <Link href="/learn" className="block w-full group">
+          <Link href="/learn" className="block w-full group active:scale-[0.98] transition-transform duration-300">
             <div className="relative w-full bg-gradient-to-br from-[var(--color-primary)] via-[var(--color-primary)] to-pink-600 rounded-[28px] sm:rounded-[32px] md:rounded-[40px] p-5 sm:p-7 md:p-10 lg:p-12 shadow-[0_8px_40px_rgba(255,56,92,0.25)] hover:shadow-[0_15px_50px_rgba(255,56,92,0.35)] hover:-translate-y-1 sm:hover:-translate-y-2 transition-all duration-400 overflow-hidden isolate">
               {/* 배경 장식 요소 */}
               <div className="absolute top-0 right-0 w-48 sm:w-64 h-48 sm:h-64 bg-white/20 rounded-full blur-2xl sm:blur-3xl -translate-y-1/2 translate-x-1/2" />
@@ -156,11 +156,11 @@ export default function HomePage() {
                     </span>
                   </div>
                   <div>
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight mb-2 sm:mb-3">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight mb-2 sm:mb-3 break-keep">
                       필수 표현 <br className="hidden sm:block" />
                       마스터하기
                     </h2>
-                    <p className="text-white/85 text-sm sm:text-base md:text-lg font-medium max-w-xs sm:max-w-sm md:max-w-md">
+                    <p className="text-white/85 text-sm sm:text-base md:text-lg font-medium max-w-xs sm:max-w-sm md:max-w-md break-keep">
                       오늘 배운 표현으로 자신감 있게 대화해보세요
                     </p>
                   </div>
@@ -192,7 +192,7 @@ export default function HomePage() {
               const Icon = item.icon;
               return (
                 <div key={item.title} className="h-full">
-                  <Link href={item.href} className="block h-full group">
+                  <Link href={item.href} className="block h-full group active:scale-[0.96] transition-transform duration-300">
                     <div className={`h-full bg-gradient-to-br ${item.color} rounded-[24px] sm:rounded-[28px] p-4 sm:p-5 md:p-6 shadow-lg hover:shadow-xl hover:-translate-y-1 sm:hover:-translate-y-2 transition-all duration-300 overflow-hidden relative isolate`}>
                       {/* 배경 효과 */}
                       <div className="absolute top-0 right-0 w-24 sm:w-32 h-24 sm:h-32 bg-white/20 rounded-full blur-xl sm:blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:translate-x-1/4 transition-transform duration-500" />
@@ -241,7 +241,7 @@ export default function HomePage() {
               <Link 
                 key={course.id} 
                 href={course.href} 
-                className="block min-w-[260px] sm:min-w-[280px] md:min-w-[320px] shrink-0"
+                className="block min-w-[240px] sm:min-w-[280px] md:min-w-[320px] shrink-0 active:scale-[0.98] transition-transform duration-300"
               >
                 <div className={`bg-[var(--color-surface)] border-2 transition-all duration-300 rounded-[24px] sm:rounded-[28px] p-4 sm:p-5 md:p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 sm:hover:-translate-y-2 group h-full ${
                   course.type === 'grammar' 
@@ -275,7 +275,7 @@ export default function HomePage() {
                     </div>
                     
                     <div className="flex-1">
-                      <p className="text-xs sm:text-sm text-[var(--color-muted-foreground)] mb-2 sm:mb-3 line-clamp-2">
+                      <p className="text-xs sm:text-sm text-[var(--color-muted-foreground)] mb-2 sm:mb-3 line-clamp-2 break-keep">
                         {course.desc}
                       </p>
                       <div className="flex items-center justify-between">

@@ -1,7 +1,13 @@
 'use client';
 
 import * as React from 'react';
-import { SpeakingPractice } from '@/components/speaking/SpeakingPractice';
+import { motion, AnimatePresence } from 'framer-motion';
+import dynamic from 'next/dynamic';
+
+const SpeakingPractice = dynamic(
+  () => import('@/components/speaking/SpeakingPractice').then((mod) => mod.SpeakingPractice),
+  { ssr: false }
+);
 import { getRandomElements } from '@/lib/utils/random';
 import { useLessonSessionStore } from '@/store/useLessonSessionStore';
 import { useLearningStore } from '@/store/useLearningStore';
@@ -185,10 +191,21 @@ export function LearnClient({
 
       {/* Main Container */}
       <main className="flex-1 px-3 sm:px-4 py-6 flex flex-col items-center custom-scrollbar">
-        <div className="max-w-4xl mx-auto w-full flex-1 flex flex-col justify-center pb-28 sm:pb-36">
-          <div key={stepIndex} className="w-full">
-            {renderStep()}
-          </div>
+        <div className="max-w-4xl mx-auto w-full flex-1 grid place-items-center pb-28 sm:pb-36 overflow-x-hidden">
+          <AnimatePresence mode="wait">
+            <motion.div 
+              key={stepIndex} 
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -30 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              className="w-full flex justify-center"
+            >
+              <div className="w-full max-w-xl">
+                {renderStep()}
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </main>
 

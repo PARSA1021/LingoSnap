@@ -33,9 +33,7 @@ export function SentenceCompletion({ sentence, translation, targetWord, onSucces
     return sentence.split(regex);
   }, [sentence, targetWord]);
 
-  const [options, setOptions] = React.useState<string[]>([]);
-
-  React.useEffect(() => {
+  const options = React.useMemo(() => {
     type VocabItem = { word: string; category?: string };
     const vocabItems = vocabData as unknown as VocabItem[];
 
@@ -55,9 +53,7 @@ export function SentenceCompletion({ sentence, translation, targetWord, onSucces
       .slice(0, 2)
       .map(v => v.word);
 
-    setOptions([targetWord, ...distractors].sort(() => 0.5 - Math.random()));
-    setSelectedWord(null);
-    setStatus('idle');
+    return [targetWord, ...distractors].sort(() => 0.5 - Math.random());
   }, [targetWord]);
 
   const handleOptionClick = (word: string) => {
